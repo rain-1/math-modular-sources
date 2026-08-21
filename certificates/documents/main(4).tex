@@ -1,0 +1,1261 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,
+            urlcolor=blue!60!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{status}[theorem]{Status}
+
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Zp}{\mathbb Z_{(p)}}
+\newcommand{\bin}[2]{\binom{#1}{#2}}
+\newcommand{\Hd}[2]{H_{#1}^{(#2)}}
+\newcommand{\Hh}[1]{H_{#1}}
+\newcommand{\Ad}[2]{A_{#1}(#2)}
+\newcommand{\Bd}[2]{B_{#1}(#2)}
+\DeclareMathOperator{\ord}{ord}
+
+\title[Harmonic companion rows]{Harmonic companion rows for binomial and
+Ap\'ery-like sums:\\closed forms, Lucas descent, and the $\zeta(2)$ boundary}
+\author{}
+\date{August 2026}
+
+\begin{document}
+\begin{abstract}
+For $d\geq1$ let $A_d(n)=\sum_k\binom nk^d$.  We prove a Lucas theorem for
+every even coefficient of the Straub--Zudilin deformation of $A_d$.  In
+particular, its normalized quadratic coefficient is
+\[
+ B_d(n)=\sum_{k=0}^n\binom nk^d\left\{
+ \frac{H_k^{(2)}+H_{n-k}^{(2)}}{2(d+1)}
+ +\frac{d(H_k-H_{n-k})^2}{2(d+1)}\right\}.
+\]
+and satisfies the uniform digit law
+\[
+ p^2B_d(ap+r)\equiv B_d(a)A_d(r)\pmod p
+ \qquad(0\leq a,r<p,\ p\nmid2(d+1)).
+\]
+More generally the coefficient of $t^{2j}$ satisfies a $p^{2j}$ digit law,
+with an explicit weight given by a complete Bell polynomial in harmonic
+numbers.  For $d=3$ and $4$, finite certificates identify the quadratic rows with the
+canonical second solutions of the Franel and $s_{10}$ recurrences.  Both
+identifications and their recurrence-level Lucas laws have also been checked in
+Lean, including every boundary cell.  We explain the rank-two harmonic
+certificate mechanism and derive exact Casoratian series, alternating error
+bounds, and a polynomial continued fraction for $5/\zeta(2)$.  We compare the
+result with the minimal weight-three formula for
+Ap\'ery's $\zeta(3)$ companion, and settle the previously open minimal
+$\zeta(2)$ formula.  We also obtain a new five-term harmonic companion for
+Cooper's sporadic sequence $s_7$.  It proves a $p^2$ companion Lucas law, the
+Ap\'ery limit $\zeta(2)/7$, and an associated polynomial continued fraction.
+The minimal Ap\'ery proof lifts the harmonic weight to a proper
+two-parameter hypergeometric deformation, differentiates an order-three
+creative telescope, and eliminates the auxiliary derivatives in the Ore
+algebra of shifts.
+\end{abstract}
+\maketitle
+
+\section{Introduction and main results}
+
+Put
+\[
+ \Hd m q=\sum_{j=1}^m\frac1{j^q},\qquad \Hd 0q=0,
+\]
+and write $H_m=H_m^{(1)}$.  The sums
+\[
+ \Ad dn=\sum_{k=0}^n\bin nk^d
+\]
+include the Franel numbers at $d=3$ and the sporadic sequence usually denoted
+$s_{10}$ at $d=4$.  Straub and Zudilin~\cite{StraubZudilin} embedded these rows
+in an analytic deformation and determined its Ap\'ery limits.  Its normalized
+quadratic coefficient is the following entirely finite sum.
+
+\begin{definition}[harmonic companion row]\label{def:Bd}
+For $d\geq1$, set
+\begin{equation}\label{eq:Bd}
+ \Bd dn=\sum_{k=0}^n\bin nk^d w_d(n,k),\qquad
+ w_d(n,k)=\frac{\sigma(n,k)+d\delta(n,k)^2}{2(d+1)},
+\end{equation}
+where
+\begin{equation}\label{eq:sigdel}
+ \sigma(n,k)=\Hd k2+\Hd{n-k}2,
+ \qquad \delta(n,k)=H_k-H_{n-k}.
+\end{equation}
+Thus $B_d(0)=0$ and $B_d(1)=1$.
+\end{definition}
+
+Our first result does not require a recurrence.
+
+\begin{theorem}[uniform Lucas law]\label{thm:universal}
+Let $d\geq1$, let $p$ be a prime with $p\nmid2(d+1)$, and let
+$0\leq a,r<p$.  Then $p^2B_d(ap+r)$ is $p$-integral and
+\begin{equation}\label{eq:universal}
+ p^2\Bd d{ap+r}\equiv \Bd da\Ad dr\pmod {p\Zp}.
+\end{equation}
+\end{theorem}
+
+Here and below a rational congruence $x\equiv y\pmod{p\Zp}$ means that both
+numbers are in the localization $\Zp$ and $x-y\in p\Zp$.  This convention is
+essential because harmonic numbers need not themselves be $p$-integral.
+
+For $d=3,4$ the companion rows are genuine second solutions of order-two
+recurrences.
+
+\begin{theorem}[Franel companion]\label{thm:franel}
+Let $F_n=\sum_k\bin nk^3$ and let $C_0=0,C_1=1$ satisfy
+\begin{equation}\label{eq:Frec}
+ (n+1)^2C_{n+1}=(7n^2+7n+2)C_n+8n^2C_{n-1}\qquad(n\geq1).
+\end{equation}
+Then
+\begin{equation}\label{eq:Fform}
+ C_n=\sum_{k=0}^n\bin nk^3
+ \left\{\frac{\Hd k2+\Hd{n-k}2}{8}
+       +\frac38(H_k-H_{n-k})^2\right\}=B_3(n).
+\end{equation}
+For every odd prime $p$ and $0\leq a,r<p$,
+\begin{equation}\label{eq:Flucas}
+ p^2C_{ap+r}\equiv C_aF_r\pmod {p\Zp}.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}[$s_{10}$ companion]\label{thm:s10}
+Let $S_n=\sum_k\bin nk^4$ and let $D_0=0,D_1=1$ satisfy
+\begin{equation}\label{eq:s10rec}
+ (n+1)^3D_{n+1}=(2n+1)(6n^2+6n+2)D_n
+                 +n(64n^2-4)D_{n-1}.
+\end{equation}
+Then
+\begin{equation}\label{eq:s10form}
+ D_n=\sum_{k=0}^n\bin nk^4
+ \left\{\frac{\Hd k2+\Hd{n-k}2}{10}
+       +\frac25(H_k-H_{n-k})^2\right\}=B_4(n).
+\end{equation}
+If $p\nmid10$ and $0\leq a,r<p$, then
+\begin{equation}\label{eq:s10lucas}
+ p^2D_{ap+r}\equiv D_aS_r\pmod {p\Zp}.
+\end{equation}
+\end{theorem}
+
+The harmonic formulas in Theorems~\ref{thm:franel} and~\ref{thm:s10} are the
+$d=3,4$ specializations of the known deformation coefficient.  The additions
+here are (i) the direct Lucas descent for the normalized companion row,
+(ii) explicit finite all-boundary recurrence certificates in these two cases,
+and (iii) a machine-checked identification with the recurrence-defined second
+solutions.
+
+\section{The deformation and the universal weight}
+
+Consider the Straub--Zudilin deformation
+\begin{equation}\label{eq:deformation}
+ \mathcal A_d(n,t)=\sum_{k=0}^n\bin nk^d
+ \prod_{j=1}^k\left(1-\frac tj\right)^{-d}
+ \prod_{j=1}^{n-k}\left(1+\frac tj\right)^{-d}.
+\end{equation}
+The substitution $k\mapsto n-k$, $t\mapsto-t$ shows that the sum is even in
+$t$.  For a fixed summand, logarithmic expansion gives
+\[
+ \begin{split}
+ &\prod_{j=1}^k(1-t/j)^{-d}
+  \prod_{j=1}^{n-k}(1+t/j)^{-d}\\
+ &\qquad=\exp\left(dt\delta+\frac d2t^2\sigma+O(t^3)\right)
+ =1+dt\delta+\frac{t^2}{2}\bigl(d\sigma+d^2\delta^2\bigr)+O(t^3).
+ \end{split}
+\]
+Consequently, if $\mathcal A_{d,1}(n)$ denotes the coefficient of $t^2$ in
+\eqref{eq:deformation}, then
+\begin{equation}\label{eq:coefficient}
+ \mathcal A_{d,1}(n)=d(d+1)B_d(n).
+\end{equation}
+The normalization is forced by $\mathcal A_{d,1}(1)=d(d+1)$.
+
+Straub and Zudilin proved that deformation coefficients solve the telescoping
+recurrences attached to $A_d$ in their stated stable range and that
+\begin{equation}\label{eq:limit}
+ \lim_{n\to\infty}\frac{B_d(n)}{A_d(n)}=\frac{\zeta(2)}{d+1}.
+\end{equation}
+The limit is also transparent directly from~\eqref{eq:Bd}: the binomial-power
+measure concentrates at $k=n/2$, where $\sigma(n,k)\to2\zeta(2)$ and
+$\delta(n,k)\to0$.  Formula~\eqref{eq:limit} is contextual rather than a new
+claim here.
+
+For $d\geq5$ the minimal recurrence for $A_d$ need not have order two, so the
+phrase ``second solution'' is no longer canonical.  Definition~\ref{def:Bd}
+and Theorem~\ref{thm:universal}, however, remain meaningful for every $d$.
+
+\section{Proof of the universal Lucas law}
+
+The proof uses only ordinary Lucas congruence and harmonic digit descent.
+
+\begin{lemma}[harmonic descent]\label{lem:harmonic}
+For a prime $p$, $q\geq1$, $b\geq0$, and $0\leq s<p$,
+\begin{equation}\label{eq:hdesc}
+ p^q H_{bp+s}^{(q)}\in\Zp,
+ \qquad p^q H_{bp+s}^{(q)}\equiv H_b^{(q)}\pmod {p\Zp}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Separate the summation indices divisible by $p$:
+\[
+ p^q\sum_{j=1}^{bp+s}\frac1{j^q}
+ =\sum_{i=1}^b\frac1{i^q}
+  +\sum_{\substack{1\leq j\leq bp+s\\p\nmid j}}\frac{p^q}{j^q}.
+\]
+Every term in the second sum belongs to $p\Zp$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:universal}]
+Write every $k\leq ap+r$ uniquely as $k=bp+s$, with $0\leq s<p$.
+By Lemma~\ref{lem:harmonic}, $p^2w_d(ap+r,k)$ is $p$-integral.  If $s>r$,
+Lucas' theorem gives $p\mid\binom{ap+r}{bp+s}$; hence
+\[
+ \binom{ap+r}{bp+s}^{d}p^2w_d(ap+r,bp+s)\equiv0\pmod {p\Zp}.
+\]
+If $s\leq r$, subtraction has no borrow:
+\[
+ ap+r-(bp+s)=(a-b)p+(r-s).
+\]
+Lucas' theorem and Lemma~\ref{lem:harmonic} now give
+\begin{align*}
+ \binom{ap+r}{bp+s}^{d}&\equiv\binom ab^d\binom rs^d\pmod p,\\
+ p^2\sigma(ap+r,bp+s)&\equiv H_b^{(2)}+H_{a-b}^{(2)}\pmod {p\Zp},\\
+ p^2\delta(ap+r,bp+s)^2&\equiv(H_b-H_{a-b})^2\pmod {p\Zp}.
+\end{align*}
+Because $2(d+1)$ is a unit in $\Zp$, the last two lines say
+$p^2w_d(ap+r,bp+s)\equiv w_d(a,b)$.  Summing the surviving digit rectangle
+$0\leq b\leq a$, $0\leq s\leq r$ factors the result:
+\[
+ p^2B_d(ap+r)\equiv
+ \sum_{b=0}^a\sum_{s=0}^r\binom ab^d\binom rs^d w_d(a,b)
+ =B_d(a)A_d(r).
+\]
+\end{proof}
+
+\begin{remark}
+The proof explains both the exponent $p^2$ and the shape of the answer.  Each
+monomial in the weight is homogeneous of harmonic weight two, so multiplication
+by $p^2$ extracts its high digit.  Cells with a low-digit borrow disappear
+through the binomial shell; the remaining rectangle separates into high and low
+digit sums.
+\end{remark}
+
+\section{The full higher-coefficient Lucas tower}\label{sec:tower}
+
+The quadratic row is the first case of a theorem for every coefficient of the
+deformation.  Put
+\begin{equation}\label{eq:Lq}
+ \mathcal L_q(n,k)=H_k^{(q)}+(-1)^qH_{n-k}^{(q)}
+\end{equation}
+and define the homogeneous polynomial
+\begin{equation}\label{eq:Qdm}
+ \mathcal Q_{d,m}(n,k)
+ =[t^m]\exp\left(d\sum_{q\geq1}\frac{\mathcal L_q(n,k)}q,t^q\right).
+\end{equation}
+Equivalently,
+\begin{equation}\label{eq:partitionQ}
+ \mathcal Q_{d,m}
+ =\sum_{m_1+2m_2+\cdots+mm_m=m}
+   \prod_{q=1}^{m}\frac1{m_q!}
+   \left(\frac{d\mathcal L_q}{q}\right)^{m_q}.
+\end{equation}
+Every monomial on the right has total harmonic weight $m$.  By logarithmic
+expansion of~\eqref{eq:deformation}, its coefficient rows are
+\begin{equation}\label{eq:Adj}
+ A_{d,j}^{\langle2\rangle}(n)
+ :=[t^{2j}]\mathcal A_d(n,t)
+ =\sum_{k=0}^n\binom nk^d\mathcal Q_{d,2j}(n,k).
+\end{equation}
+
+\begin{theorem}[higher-coefficient Lucas tower]\label{thm:tower}
+Let $d,j\geq1$, let $p>2j$ be prime, and let $0\leq a,r<p$.  Then
+\begin{equation}\label{eq:tower}
+ p^{2j}A_{d,j}^{\langle2\rangle}(ap+r)
+ \equiv A_{d,j}^{\langle2\rangle}(a)A_d(r)\pmod {p\Zp}.
+\end{equation}
+If
+\begin{equation}\label{eq:normalizer}
+ c_{d,j}:=A_{d,j}^{\langle2\rangle}(1)
+ =2\binom{d+2j-1}{2j}
+\end{equation}
+is a $p$-adic unit, the normalized row
+$\widehat A_{d,j}=A_{d,j}^{\langle2\rangle}/c_{d,j}$ satisfies
+\begin{equation}\label{eq:towernorm}
+ p^{2j}\widehat A_{d,j}(ap+r)
+ \equiv\widehat A_{d,j}(a)A_d(r)\pmod {p\Zp}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For $q\leq2j$, Lemma~\ref{lem:harmonic} gives
+\[
+ p^q\mathcal L_q(ap+r,bp+s)
+ \equiv\mathcal L_q(a,b)\pmod {p\Zp}
+\]
+whenever $s\leq r$, since then
+$ap+r-(bp+s)=(a-b)p+(r-s)$.  Formula~\eqref{eq:partitionQ} is homogeneous of
+weight $2j$; its denominators $q$ and $m_q!$ are $p$-adic units because
+$p>2j$.  Hence
+\begin{equation}\label{eq:Qdescent}
+ p^{2j}\mathcal Q_{d,2j}(ap+r,bp+s)
+ \equiv\mathcal Q_{d,2j}(a,b)\pmod {p\Zp}.
+\end{equation}
+For a borrow cell $s>r$, $p^{2j}\mathcal Q_{d,2j}$ is $p$-integral and
+Lucas' theorem makes $\binom{ap+r}{bp+s}^d$ divisible by $p$.  Those cells
+therefore vanish.  On the remaining rectangle Lucas' theorem and
+\eqref{eq:Qdescent} give
+\begin{align*}
+ p^{2j}A_{d,j}^{\langle2\rangle}(ap+r)
+ &\equiv\sum_{b=0}^a\sum_{s=0}^r
+   \binom ab^d\binom rs^d\mathcal Q_{d,2j}(a,b)\\
+ &=A_{d,j}^{\langle2\rangle}(a)A_d(r).
+\end{align*}
+At $n=1$, equation~\eqref{eq:deformation} is
+$(1-t)^{-d}+(1+t)^{-d}$, whose $t^{2j}$ coefficient is
+$2\binom{d+2j-1}{2j}$.  Division by a $p$-adic unit proves the normalized
+statement.
+\end{proof}
+
+The coefficientwise tower has a useful generating-series form.  Adopt the
+convention $A_{d,0}^{\langle2\rangle}=A_d$ and, for a prime $p$, put
+\begin{equation}\label{eq:truncatedFrob}
+ \mathcal F_{d,p}^{[J]}(n;T)
+ =\sum_{j=0}^{J}p^{2j}A_{d,j}^{\langle2\rangle}(n)T^{2j}.
+\end{equation}
+
+\begin{corollary}[truncated generating-series Lucas law]\label{cor:seriesLucas}
+Let $d,J\geq1$, let $p>2J$ be prime, and let $0\leq a,r<p$.  Then, coefficientwise
+in $(\Zp/p\Zp)[T]$,
+\begin{equation}\label{eq:seriesLucas}
+ \boxed{\displaystyle
+ \mathcal F_{d,p}^{[J]}(ap+r;T)
+ \equiv A_d(r)\mathcal F_{d,p}^{[J]}(a;T)\pmod p.}
+\end{equation}
+Thus the rescaled truncated deformation, rather than any single harmonic row,
+is itself a Lucas object.
+\end{corollary}
+
+\begin{proof}
+The constant coefficient is the ordinary Lucas congruence for $A_d$.  For
+$1\leq j\leq J$, the coefficient of $T^{2j}$ is exactly
+Theorem~\ref{thm:tower}; the common hypothesis $p>2J$ implies $p>2j$.
+\end{proof}
+
+Theorem~\ref{thm:universal} is the case $j=1$, because
+\[
+ \mathcal Q_{d,2}=\frac d2\sigma+\frac{d^2}{2}\delta^2
+ =d(d+1)w_d.
+\]
+The first genuinely new weight occurs at $j=2$.  If
+$\delta_q=H_k^{(q)}-H_{n-k}^{(q)}$ and
+$\sigma_q=H_k^{(q)}+H_{n-k}^{(q)}$, then
+\begin{equation}\label{eq:Q4}
+ \mathcal Q_{d,4}
+ =\frac d4\sigma_4+\frac{d^2}{3}\delta_1\delta_3
+  +\frac{d^2}{8}\sigma_2^2+\frac{d^3}{4}\delta_1^2\sigma_2
+  +\frac{d^4}{24}\delta_1^4.
+\end{equation}
+
+\begin{corollary}[the $p^4$ row]\label{cor:p4}
+Let
+\[
+ \widehat A_{d,2}(n)=
+ \frac{12}{d(d+1)(d+2)(d+3)}
+ \sum_{k=0}^n\binom nk^d\mathcal Q_{d,4}(n,k).
+\]
+For $p>4$, $0\leq a,r<p$, and
+$p\nmid d(d+1)(d+2)(d+3)$,
+\[
+ p^4\widehat A_{d,2}(ap+r)
+ \equiv\widehat A_{d,2}(a)A_d(r)\pmod {p\Zp}.
+\]
+Moreover, after Straub--Zudilin~\cite{StraubZudilin},
+\begin{equation}\label{eq:zeta4limit}
+ \lim_{n\to\infty}\frac{\widehat A_{d,2}(n)}{A_d(n)}
+ =\frac{3(5d+2)}{(d+1)(d+2)(d+3)}\zeta(4).
+\end{equation}
+For $d\geq5$ the row solves every telescoping recurrence in the stable range
+specified in their theorem.
+\end{corollary}
+
+\begin{proof}
+The congruence is Theorem~\ref{thm:tower}.  The coefficient of $t^4$ in
+$(t/\sin t)^d$ is $d(5d+2)/360$; divide the resulting limit
+$d(5d+2)\pi^4/360$ by
+$c_{d,2}=d(d+1)(d+2)(d+3)/12$ and use $\zeta(4)=\pi^4/90$.
+\end{proof}
+
+\section{Finite recurrence certificates for \texorpdfstring{$d=3,4$}{d=3,4}}
+
+The analytic deformation proves recurrence membership in a stable range.  For
+the Franel and $s_{10}$ rows we instead use a finite identity valid at every
+$n\geq1$, including the top cells.  We summarize the method because it also
+explains why the harmonic weight in~\eqref{eq:Bd} is tractable.
+
+Let $S_d(n,k)=\binom nk^d$ and let
+\[
+ L[u]_n=c_+(n)u_{n+1}+c_0(n)u_n+c_-(n)u_{n-1}.
+\]
+A Zeilberger certificate $G$ is chosen so that
+\begin{equation}\label{eq:Zcert}
+ L[S_d(\cdot,k)]_n=G(n,k+1)-G(n,k),
+ \qquad
+ G(n,k)=S_d(n,k)\frac{k^d\rho(n,k)}{(n+1-k)^d}.
+\end{equation}
+The symmetric letters in~\eqref{eq:sigdel} obey
+\begin{align}
+ \sigma(n+1,k)-\sigma(n,k)&=(n+1-k)^{-2},&
+ \delta(n+1,k)-\delta(n,k)&=-(n+1-k)^{-1},\label{eq:ndiff}\\
+ \sigma(n,k+1)-\sigma(n,k)&=(k+1)^{-2}-(n-k)^{-2},&
+ \delta(n,k+1)-\delta(n,k)&=(k+1)^{-1}+(n-k)^{-1}.\label{eq:kdiff}
+\end{align}
+Thus, after Abel summation, every residual term belongs to the rank-two module
+\[
+ S_d(n,k)\bigl(\Q(n,k)+\Q(n,k)\delta(n,k)\bigr).
+\]
+It is enough to solve two rational Gosper equations and form
+\begin{equation}\label{eq:Psi}
+ \Psi(n,k)=S_d(n,k)\bigl(z_0(n,k)+z_1(n,k)\delta(n,k)\bigr).
+\end{equation}
+The remaining assertion is a finite list of rational identities plus boundary
+values at $k=0,n,n+1$.  Clearing denominators turns each one into a polynomial
+identity over $\Q$.
+
+For reference, the Franel Zeilberger numerator is
+\begin{align}\label{eq:rhoF}
+ \rho_F(n,k)=-\frac1n\bigl(&4-12k+12k^2-4k^3+22n-39kn+18k^2n\\
+ &+32n^2-27kn^2+14n^3\bigr).
+\end{align}
+The two Gosper numerators may be taken as
+\begin{align*}
+N_F=\frac{3k^2}{4n}\bigl(&4-16k+24k^2-16k^3+4k^4+26n-68kn+63k^2n-20k^3n\\
+ &+54n^2-88kn^2+39k^2n^2+46n^3-36kn^3+14n^4\bigr),\\
+M_F=-\frac{k}{2n}\bigl(&2-10k+20k^2-20k^3+10k^4-2k^5+15n-50kn+70k^2n\\
+ &-45k^3n+11k^4n+40n^2-90kn^2+80k^2n^2-25k^3n^2\\
+ &+50n^3-70kn^3+30k^2n^3+30n^4-20kn^4+7n^5\bigr),
+\end{align*}
+with $z_1=N_F/(n+1-k)^4$ and $z_0=M_F/(n+1-k)^5$.
+They satisfy the forced top values
+\[
+ \rho_F(n,n+1)=-(n+1)^2,
+ \quad N_F(n)=\frac34\bigl((n+1)^5-(n+1)\bigr),
+ \quad M_F(n)=-\frac12\bigl((n+1)^5+1\bigr).
+\]
+The $d=4$ certificate has the same architecture but substantially larger
+polynomials; it is recorded exactly in the accompanying Lean source.  Its top
+values are
+\[
+ \rho_{10}(n,n+1)=-(n+1)^3,
+ \quad N_{10}(n)=\frac45\bigl((n+1)^7-(n+1)^2\bigr),
+ \quad M_{10}(n)=-\frac12\bigl((n+1)^7+(n+1)\bigr).
+\]
+Equations~\eqref{eq:Zcert}--\eqref{eq:Psi}, the boundary identities, and the
+initial values prove Theorems~\ref{thm:franel} and~\ref{thm:s10};
+Theorem~\ref{thm:universal} then gives their Lucas congruences.
+
+The first values provide a useful normalization check:
+\[
+ \begin{array}{c|rrrrrr}
+ n&0&1&2&3&4&5\\ \hline
+ C_n&0&1&4&208/9&1280/9&208384/225
+ \end{array}
+\]
+and
+\[
+ \begin{array}{c|rrrrr}
+ n&0&1&2&3&4\\ \hline
+ D_n&0&1&21/4&1001/18&85085/144.
+ \end{array}
+\]
+
+\section{A new harmonic companion for Cooper's \texorpdfstring{$s_7$}{s7}}
+\label{sec:s7}
+
+The harmonic-lifting method is not confined to powers of a single binomial
+coefficient.  Consider Cooper's sporadic sequence
+$s_7$~\cite{Gorodetsky,MalikStraub},
+\begin{equation}\label{eq:s7shell}
+ A_n^{(7)}=\sum_{k=0}^n S_7(n,k),\qquad
+ S_7(n,k)=\bin nk^2\bin{n+k}k\bin{2k}n.
+\end{equation}
+It satisfies
+\begin{equation}\label{eq:s7rec}
+ (n+1)^3u_{n+1}=(2n+1)(13n^2+13n+4)u_n
+                  +3n(9n^2-1)u_{n-1}.
+\end{equation}
+Let $B_0^{(7)}=0,B_1^{(7)}=1$ denote its normalized companion solution.
+
+\begin{theorem}[the $s_7$ harmonic companion]\label{thm:s7harm}
+For every $n\geq0$,
+\begin{equation}\label{eq:s7harm}
+ \boxed{\displaystyle
+ B_n^{(7)}=\frac1{28}\sum_{k=0}^nS_7(n,k)
+ \left\{
+ 3(H_k-H_{n-k})(2H_{2k}-3H_k+H_{n-k})
+ +5H_k^{(2)}+2H_n^{(2)}-3H_{n-k}^{(2)}
+ \right\}.}
+\end{equation}
+The proof also gives the auxiliary identity
+\begin{equation}\label{eq:s7zero}
+ \sum_{k=0}^nS_7(n,k)(2H_{2k}-3H_k+H_{n-k})=0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Put
+\[
+ X_m(t)=\frac{m!}{(1-t)_m}
+       =\prod_{j=1}^m(1-t/j)^{-1}
+\]
+and lift the summand to the proper hypergeometric deformation
+\begin{align}\label{eq:s7Phi}
+ \Phi_n(u,v)=\sum_k S_7(n,k)\,&
+ \frac{X_k(3u+5v/3)}{X_k(14v/3)}X_{n-k}(-3u+v)X_{2k}(2v)\notag\\
+ &\times\frac{X_n(2u+2v)}{X_n(u+v)^2}.
+\end{align}
+At the origin the two logarithmic derivatives of its summand are
+\[
+ \mathcal A=3(H_k-H_{n-k}),\qquad
+ \mathcal B=2H_{2k}-3H_k+H_{n-k},
+\]
+and its mixed logarithmic derivative is
+\[
+ \mathcal C=5H_k^{(2)}+2H_n^{(2)}-3H_{n-k}^{(2)}.
+\]
+Consequently the mixed derivative of the summand is
+$S_7(\mathcal A\mathcal B+\mathcal C)$, exactly twenty-eight times the
+summand in~\eqref{eq:s7harm}.
+
+It remains to prove recurrence membership; a single direct harmonic Gosper
+telescope does not exist.  We instead polarize the mixed derivative.  Set
+\[
+ \Phi^u_n(t)=\Phi_n(t,0),\qquad
+ \Phi^v_n(t)=\Phi_n(0,t),\qquad
+ \Phi^d_n(t)=\Phi_n(t,t).
+\]
+The diagonal is especially small:
+\begin{equation}\label{eq:s7diag}
+ \Phi^d_n(t)=\sum_kS_7(n,k)
+ \frac{X_{n-k}(-2t)X_{2k}(2t)X_n(4t)}{X_n(2t)^2}.
+\end{equation}
+Exact creative telescoping gives parameter-dependent operators of orders
+$2,4,3$ for $\Phi^u,\Phi^v,\Phi^d$, respectively.  Write
+$C_r^x=\partial_t^rC^x(t)|_{t=0}$ for their operator coefficients and put
+\[
+ U=\partial_u\Phi|_0,\quad V=\partial_v\Phi|_0,\quad
+ U_2=\partial_u^2\Phi|_0,\quad V_2=\partial_v^2\Phi|_0,
+ \quad D_2=\frac{d^2}{dt^2}\Phi(t,t)\big|_{t=0}.
+\]
+For the forward operator
+\begin{equation}\label{eq:s7L}
+ \mathcal L_7=-3(n+1)(3n+2)(3n+4)
+ -(2n+3)(13n^2+39n+30)E+(n+2)^3E^2,
+\end{equation}
+exact right division gives
+\begin{align*}
+ C_0^u&=-7(n+1)^2(n+2)^3\mathcal L_7,\\
+ C_0^v&=Q_0\mathcal L_7, & C_1^v&=Q_1\mathcal L_7.
+\end{align*}
+for explicit order-two rational operators $Q_0,Q_1$.  The first derivative
+of the $v$-telescope therefore gives $C_0^vV=0$.  The leading coefficient
+does not vanish for $n\geq0$, while $V_0=V_1=V_2=V_3=0$; this proves
+\eqref{eq:s7zero}.
+
+The second derivatives of the three telescopes now read
+\begin{align*}
+ C_0^uU_2+2C_1^uU+C_2^uA^{(7)}&=0,\\
+ C_0^vV_2+C_2^vA^{(7)}&=0,\\
+ C_0^dD_2+2C_1^dU+C_2^dA^{(7)}&=0.
+\end{align*}
+Eliminating $A^{(7)}$ and $U$ in the Ore algebra gives
+\begin{equation}\label{eq:s7Ore}
+ \mathcal P\mathcal L_7J=0,qquad
+ J=\frac{D_2-U_2-V_2}{2}=\partial_u\partial_v\Phi|_0,
+\end{equation}
+where $\mathcal P=P_0+P_1E+P_2E^2$ and
+\begin{align*}
+ P_0={}&2(n+1)(n+2)(98n^3+1029n^2+3526n+3931),\\
+ P_1={}&(n+2)(392n^4+4606n^3+19543n^2+35229n+22598),\\
+ P_2={}&(n+3)(2n+7)(98n^3+735n^2+1762n+1336).
+\end{align*}
+All three cell identities, their Taylor coefficients, and the right remainder
+in~\eqref{eq:s7Ore} are exact rational identities.  At integer $n$ the
+certificate flux has finite support; equivalently, one may regularize
+$n$ to $n+\varepsilon$ and take the removable limits at the exceptional
+cells.  Thus summing the cell identities introduces no endpoint term.
+
+The order-four operator $\mathcal P\mathcal L_7$ has nonzero leading
+coefficient for every $n\geq0$.  Finally,
+\[
+ (J_0,J_1,J_2,J_3)=(0,28,315,45010/9)
+ =28(B_0^{(7)},B_1^{(7)},B_2^{(7)},B_3^{(7)}).
+\]
+Since $\mathcal L_7B^{(7)}=0$, four initial values prove $J=28B^{(7)}$.
+\end{proof}
+
+\begin{theorem}[$s_7$ companion Lucas law]\label{thm:s7lucas}
+Let $p\nmid28$ be prime and let $0\leq a,r<p$.  Then
+\begin{equation}\label{eq:s7lucas}
+ p^2B_{ap+r}^{(7)}\equiv B_a^{(7)}A_r^{(7)}\pmod {p\Zp}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Write $k=bp+s$, $0\leq s<p$.  The three binomial factors in~\eqref{eq:s7shell}
+give the termwise Lucas congruence
+\begin{equation}\label{eq:s7termLucas}
+ S_7(ap+r,bp+s)\equiv S_7(a,b)S_7(r,s)\pmod p.
+\end{equation}
+Indeed, if the left side is nonzero modulo $p$, the low digit of
+$\binom{ap+r}{bp+s}$ forces $s\leq r$, while that of
+$\binom{(a+b)p+r+s}{bp+s}$ forces $r+s<p$.  Hence $2s<p$ as well, and ordinary
+Lucas factorization applies without a low-digit carry to all three factors.
+If either condition fails, the corresponding low-digit factor and the right
+side of~\eqref{eq:s7termLucas} both vanish.
+
+Let $w_7(n,k)$ denote the expression in braces in~\eqref{eq:s7harm}, divided
+by $28$.  Lemma~\ref{lem:harmonic} shows that $p^2w_7(ap+r,bp+s)$ is
+$p$-integral.  On a nonvanishing Lucas cell we have $s\leq r$ and $2s<p$, so
+the same lemma, now for the indices $k,n-k,2k,n$, gives
+\[
+ p^2w_7(ap+r,bp+s)\equiv w_7(a,b)\pmod {p\Zp}.
+\]
+All other cells vanish modulo $p$.  Summing the surviving digit rectangle and
+using~\eqref{eq:s7termLucas} gives
+\[
+ p^2B_{ap+r}^{(7)}\equiv
+ \sum_{b=0}^a\sum_{s=0}^rS_7(a,b)S_7(r,s)w_7(a,b)
+ =B_a^{(7)}A_r^{(7)}.
+\]
+\end{proof}
+
+\begin{corollary}[the $s_7$ Ap\'ery limit]\label{cor:s7limit}
+\begin{equation}\label{eq:s7limit}
+ \lim_{n\to\infty}\frac{B_n^{(7)}}{A_n^{(7)}}=\frac{\zeta(2)}7.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+The factorial form of the shell is
+\[
+ S_7(n,k)=\frac{(n+k)!(2k)!}{k!^3(n-k)!^2(2k-n)!}.
+\]
+Its consecutive quotient is
+\[
+ \frac{S_7(n,k+1)}{S_7(n,k)}
+ =\frac{(n+k+1)(2k+2)(2k+1)(n-k)^2}
+ {(k+1)^3(2k-n+1)(2k-n+2)}.
+\]
+For $k/n\to x\in(1/2,1)$ this tends to
+$4(1+x)(1-x)^2/[x(2x-1)^2]$, and the equation that this limit equal one
+reduces to $4-5x=0$.  The quotient bounds therefore give exponential
+concentration at $k/n=4/5$.
+
+At that saddle,
+\[
+ H_k-H_{n-k}\longrightarrow\log4,qquad
+ 2H_{2k}-3H_k+H_{n-k}\longrightarrow0,qquad
+ H_m^{(2)}\longrightarrow\zeta(2)
+\]
+for each linearly growing index $m$.  The complement of a fixed saddle
+neighborhood is exponentially negligible, even after the $O(\log^2 n)$
+harmonic weight is included.  Substitution in~\eqref{eq:s7harm} leaves
+$(5+2-3)\zeta(2)/28=\zeta(2)/7$.
+\end{proof}
+
+\section{Formal verification}
+
+The Franel and $s_{10}$ recurrence proofs and their two specialized Lucas laws
+have been formalized in Lean~4 with Mathlib.  The $s_7$ theorem is presently
+verified by the exact symbolic audit described above, but not yet in Lean.
+The relevant declarations in
+\nolinkurl{lean/ZetaLucas/FranelClosedForm.lean} are
+\[
+\begin{array}{ll}
+\texttt{franel\_harmonic\_closed\_form},&
+\texttt{s10\_harmonic\_closed\_form},\\
+\texttt{franelB\_lucas},&\texttt{s10B\_lucas}.
+\end{array}
+\]
+The proof does not infer recurrence membership from a finite sample.  Lean
+checks the generic cleared-denominator identities, the exceptional boundary
+cells, the telescoping finite sums, and the initial-value identification.  The
+Lucas statements are transferred to the recurrence-defined sequences only
+after the harmonic sums have been identified with those sequences.
+
+The target reproduces with
+\begin{verbatim}
+cd lean
+lake build ZetaLucas.FranelClosedForm
+\end{verbatim}
+and contains no \texttt{sorry}, \texttt{admit}, custom axiom, or unsafe
+declaration.  The axiom audit of the four headline theorems reports only
+Mathlib's standard logical axioms \texttt{propext},
+\texttt{Classical.choice}, and \texttt{Quot.sound}.
+
+\section{Casoratians, certified brackets, and continued fractions}\label{sec:cas}
+
+The closed forms identify the companion rows, but the recurrence alone then
+supplies another exact description.  We record the general observation first.
+
+\begin{lemma}[Casoratian and alternating error]\label{lem:cas}
+Suppose positive sequences $A_n$ and $B_n$ satisfy
+\begin{equation}\label{eq:genericrec}
+ \alpha_nu_{n+1}=\beta_nu_n+\gamma_nu_{n-1}\qquad(n\geq1),
+\end{equation}
+where $\alpha_n,\beta_n,\gamma_n>0$, and suppose
+$A_0=1$, $B_0=0$, $B_1=1$.  Put
+\[
+ W_n=A_nB_{n+1}-A_{n+1}B_n.
+\]
+Then
+\begin{equation}\label{eq:Wgeneric}
+ W_0=1,\qquad W_n=-\frac{\gamma_n}{\alpha_n}W_{n-1},
+\end{equation}
+and
+\begin{equation}\label{eq:increment}
+ \frac{B_{n+1}}{A_{n+1}}-\frac{B_n}{A_n}
+ =\frac{W_n}{A_nA_{n+1}}.
+\end{equation}
+If $B_n/A_n\to L$, then
+\begin{equation}\label{eq:casSeries}
+ L=\sum_{m=0}^{\infty}\frac{W_m}{A_mA_{m+1}}.
+\end{equation}
+Moreover, with $R_n=B_n/A_n$ and
+$\varepsilon_n=|W_n|/(A_nA_{n+1})$,
+\begin{equation}\label{eq:brackets}
+ \begin{cases}
+  R_n<L<R_n+\varepsilon_n,&n\text{ even},\\
+  R_n-\varepsilon_n<L<R_n,&n\text{ odd}.
+ \end{cases}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Substitute the recurrence for $A_{n+1}$ and $B_{n+1}$ into the determinant;
+the $\beta_n$ terms cancel and give~\eqref{eq:Wgeneric}.  Division by
+$A_nA_{n+1}$ gives~\eqref{eq:increment}, which telescopes.  The terms alternate
+by~\eqref{eq:Wgeneric}, and their absolute values strictly decrease because
+\[
+ \frac{\varepsilon_n}{\varepsilon_{n-1}}
+ =\frac{\gamma_n}{\alpha_n}\frac{A_{n-1}}{A_{n+1}}<1;
+\]
+the strict inequality is the positive $\beta_nA_n$ term in
+\eqref{eq:genericrec}.  They tend to zero since the partial sums converge to
+$L$.  The alternating-series remainder theorem proves~\eqref{eq:brackets}.
+\end{proof}
+
+For the Franel recurrence, Lemma~\ref{lem:cas} gives
+\begin{equation}\label{eq:WF}
+ F_nC_{n+1}-F_{n+1}C_n=\frac{(-8)^n}{(n+1)^2}.
+\end{equation}
+Consequently,
+\begin{equation}\label{eq:Fseries}
+ \boxed{\displaystyle
+ \zeta(2)=4\sum_{n=0}^{\infty}
+ \frac{(-8)^n}{(n+1)^2F_nF_{n+1}}.}
+\end{equation}
+This identity, and its connection with a continued fraction discovered by the
+Ramanujan Machine, is proved in~\cite{FranelCF}.  Here it also follows at once
+from Theorem~\ref{thm:franel} and its Ap\'ery limit.  The additional conclusion
+\eqref{eq:brackets} gives certified rational intervals: if
+\[
+ R_n^{F}=\frac{C_n}{F_n},\qquad
+ \varepsilon_n^{F}=\frac{8^n}{(n+1)^2F_nF_{n+1}},
+\]
+then for even $n$,
+$4R_n^F<\zeta(2)<4(R_n^F+\varepsilon_n^F)$, with the odd case given by
+the second line of~\eqref{eq:brackets}.
+
+The same calculation for $s_{10}$ appears not to have been recorded in the
+sources located for this paper.
+
+\begin{theorem}[$s_{10}$ Casoratian and Basel series]\label{thm:s10cas}
+With $S_n,D_n$ as in Theorem~\ref{thm:s10},
+\begin{equation}\label{eq:Ws10}
+ S_nD_{n+1}-S_{n+1}D_n
+ =(-64)^n\frac{(1)_n(3/4)_n(5/4)_n}{(2)_n^3}.
+\end{equation}
+Hence
+\begin{equation}\label{eq:s10series}
+ \boxed{\displaystyle
+ \zeta(2)=5\sum_{n=0}^{\infty}
+ \frac{(-64)^n(1)_n(3/4)_n(5/4)_n}
+ {(2)_n^3S_nS_{n+1}}.}
+\end{equation}
+The partial ratios $D_n/S_n$ give the strict alternating brackets
+\eqref{eq:brackets} for $\zeta(2)/5$.
+\end{theorem}
+
+\begin{proof}
+Here
+\[
+ \frac{W_n}{W_{n-1}}
+ =-\frac{n(64n^2-4)}{(n+1)^3}
+ =-64\frac{n(n-1/4)(n+1/4)}{(n+1)^3}.
+\]
+Iterating from $W_0=1$ proves~\eqref{eq:Ws10}.  Equations
+\eqref{eq:s10series} and the brackets follow from Lemma~\ref{lem:cas} and
+$D_n/S_n\to\zeta(2)/5$.
+\end{proof}
+
+\begin{theorem}[$s_{10}$ polynomial continued fraction]\label{thm:s10cf}
+Set
+\[
+ a_n=(2n+1)(6n^2+6n+2),\qquad
+ b_n=n^4(64n^2-4).
+\]
+Then
+\begin{equation}\label{eq:s10cf}
+ \boxed{\displaystyle
+ \frac5{\zeta(2)}
+ =a_0+\cfrac{b_1}{a_1+\cfrac{b_2}{a_2+
+             \cfrac{b_3}{a_3+\ddots}}}.}
+\end{equation}
+The $n$th convergent is exactly $S_{n+1}/D_{n+1}$.
+\end{theorem}
+
+\begin{proof}
+Let $P_{-2}=0,P_{-1}=1$ and $Q_{-1}=0,Q_0=1$ be the Euler--Wallis numerator
+and denominator sequences, so
+\[
+ P_n=a_nP_{n-1}+b_nP_{n-2}\quad(n\geq0),\qquad
+ Q_n=a_nQ_{n-1}+b_nQ_{n-2}\quad(n\geq1).
+\]
+Multiplying~\eqref{eq:s10rec} by $n!^3$ shows, including the initial cells,
+\[
+ P_n=(n+1)!^3S_{n+1},\qquad Q_n=(n+1)!^3D_{n+1}.
+\]
+Thus the $n$th convergent is $P_n/Q_n=S_{n+1}/D_{n+1}$, which tends to
+$5/\zeta(2)$.
+\end{proof}
+
+The new $s_7$ companion supplies a direct harmonic proof of the continued
+fraction evaluation discussed in~\cite{MOCooper}.
+
+\begin{theorem}[$s_7$ Basel series and continued fraction]\label{thm:s7cf}
+With $A_n^{(7)},B_n^{(7)}$ as in Theorem~\ref{thm:s7harm},
+\begin{equation}\label{eq:Ws7}
+ A_n^{(7)}B_{n+1}^{(7)}-A_{n+1}^{(7)}B_n^{(7)}
+ =(-27)^n\frac{(1)_n(2/3)_n(4/3)_n}{(2)_n^3}.
+\end{equation}
+Consequently
+\begin{equation}\label{eq:s7series}
+ \boxed{\displaystyle
+ \zeta(2)=7\sum_{n=0}^{\infty}
+ \frac{(-27)^n(1)_n(2/3)_n(4/3)_n}
+ {(2)_n^3A_n^{(7)}A_{n+1}^{(7)}}.}
+\end{equation}
+The partial ratios $B_n^{(7)}/A_n^{(7)}$ give the strict alternating brackets
+of Lemma~\ref{lem:cas} for $\zeta(2)/7$.  Moreover, if
+\[
+ a_n=(2n+1)(13n^2+13n+4),\qquad
+ b_n=3n^4(9n^2-1),
+\]
+then
+\begin{equation}\label{eq:s7cf}
+ \boxed{\displaystyle
+ \frac7{\zeta(2)}
+ =4+\cfrac{b_1}{a_1+\cfrac{b_2}{a_2+
+              \cfrac{b_3}{a_3+\ddots}}}.}
+\end{equation}
+Its $n$th convergent is $A_{n+1}^{(7)}/B_{n+1}^{(7)}$.
+\end{theorem}
+
+\begin{proof}
+Recurrence~\eqref{eq:s7rec} gives
+\[
+ \frac{W_n}{W_{n-1}}
+ =-27\frac{n(n-1/3)(n+1/3)}{(n+1)^3}.
+\]
+Iteration proves~\eqref{eq:Ws7}; Corollary~\ref{cor:s7limit} and
+Lemma~\ref{lem:cas} give the series and brackets.  Multiplication of
+\eqref{eq:s7rec} by $n!^3$ gives the Euler--Wallis recurrence with partial
+denominators $a_n$ and partial numerators $b_n$.  Its convergents are the
+displayed ratios and tend to $7/\zeta(2)$.
+\end{proof}
+
+\begin{remark}[arithmetic strength]\label{rem:s7irr}
+Theorem~\ref{thm:s7harm} gives a direct harmonic proof of the limit and hence
+of the continued-fraction evaluation, but it does not by itself give a new
+Ap\'ery proof of the irrationality of $\zeta(2)$.  The characteristic equation
+at infinity of~\eqref{eq:s7rec} is
+\[
+ \lambda^2-26\lambda-27=(\lambda-27)(\lambda+1).
+\]
+The two formal scales are $27^nn^{-3/2}$ and $(-1)^nn^{-3/2}$.  Thus the
+dominant part cancels in
+$\zeta(2)A_n^{(7)}-7B_n^{(7)}$, but the remaining linear form is only on the
+polynomial scale $O(n^{-3/2})$, rather than exponentially small.  Meanwhile
+the evident denominator clearing supplied by~\eqref{eq:s7harm} is
+$28\operatorname{lcm}(1,\ldots,2n)^2$.  After that clearing the linear forms
+do not tend to zero, so the standard Ap\'ery integrality argument cannot
+close.  What the theorem does supply is the harmonic numerator formula, the
+companion Lucas law~\eqref{eq:s7lucas}, the exponentially convergent Basel
+series~\eqref{eq:s7series}, and the strict rational brackets.
+\end{remark}
+
+\section{Comparison with Ap\'ery's \texorpdfstring{$\zeta(3)$}{zeta(3)} companion}
+
+The same program produces a strikingly smaller formula for the numerator row
+in Ap\'ery's proof of the irrationality of $\zeta(3)$.  Let
+\[
+ a_n=\sum_{k=0}^n\bin nk^2\bin{n+k}k^2,
+\]
+and let $b_0=0,b_1=6$ satisfy Ap\'ery's recurrence
+\begin{equation}\label{eq:z3rec}
+ (n+2)^3b_{n+2}=(34n^3+153n^2+231n+117)b_{n+1}-(n+1)^3b_n.
+\end{equation}
+Then the minimal harmonic form is
+\begin{equation}\label{eq:z3form}
+ b_n=\sum_{k=0}^n\bin nk^2\bin{n+k}k^2
+       \left(2H_n^{(3)}-H_k^{(3)}\right).
+\end{equation}
+An explicit certificate proof and a Lean formalization establish this identity.
+Its Lucas descent is the weight-three counterpart of
+Theorem~\ref{thm:universal}: multiplication by $p^3$ extracts the high digit of
+the harmonic weight.
+
+There is an instructive contrast.  The binomial-power companions use the
+symmetric rank-two algebra generated by $1$ and
+$\delta=H_k-H_{n-k}$ after differencing.  Formula~\eqref{eq:z3form} is even
+smaller: it is linear in order-three harmonic numbers and needs no nested tail.
+Neither simplification survives unchanged in the $\zeta(2)$ Ap\'ery pair.
+
+\section{The \texorpdfstring{$\zeta(2)$}{zeta(2)} companion: two closed forms}\label{sec:z2}
+
+Let
+\begin{equation}\label{eq:z2kernel}
+ T(n,k)=\bin nk^2\bin{n+k}k,\qquad a_n=\sum_{k=0}^nT(n,k),
+\end{equation}
+and define
+\begin{equation}\label{eq:z2op}
+ (Lu)_n=(n+1)^2u_{n+1}-(11n^2+11n+3)u_n-n^2u_{n-1}.
+\end{equation}
+Thus $La=0$.  Let $B_0=0,B_1=1$ and $LB=0$; classically
+$B_n/a_n\to\zeta(2)/5$.
+
+\subsection{A proved nested-tail closed form}
+
+Put
+\[
+ e(n)=\sum_{m=1}^n\frac{(-1)^{m-1}}{m^2},\qquad
+ \tau(n,k)=\sum_{m=1}^{\min(k,n)}
+ \frac{(-1)^{n+m-1}}{m^2\bin nm\bin{n+m}m}.
+\]
+
+\begin{theorem}[$\zeta(2)$ nested-tail formula]\label{thm:z2tail}
+For every $n\geq0$,
+\begin{equation}\label{eq:z2tail}
+ 5B_n=\sum_{k=0}^nT(n,k)\bigl(2e(n)+\tau(n,k)\bigr).
+\end{equation}
+\end{theorem}
+
+The proof is an explicit certificate chain.  Its decisive cancellation can be
+stated compactly.  If
+\[
+ \rho(n,k)=k^2+k(1+6n)-4-15n-11n^2,
+\]
+then the Zeilberger and Abel residual simplifies to
+\begin{equation}\label{eq:miracleW}
+ W(n,k)=3-\frac{3(n+1)}{n+1-k}.
+\end{equation}
+The apparent double pole at $k=n+1$ and the pole at $k=-n$ cancel.  The last
+sum is then the elementary binomial identity
+\[
+ \sum_{k=0}^n\frac{(-1)^k\bin nk}{n+1-k}=\frac{(-1)^n}{n+1}.
+\]
+The mechanism behind~\eqref{eq:miracleW} is the tail shift
+\[
+ m^2+(n+1-m)(n+1+m)=(n+1)^2,
+\]
+which makes the inner $m$-sum telescope.  This proves recurrence membership at
+all cells and, with the two initial values, proves
+Theorem~\ref{thm:z2tail}.
+
+\subsection{The minimal formula}
+
+The substantially shorter depth-one form is
+\begin{equation}\label{eq:z2minimal}
+ B_n=\frac15\sum_{k=0}^nT(n,k)
+ \left[H_n^{(2)}+H_k\bigl(2H_k-H_{n-k}-H_n\bigr)\right].
+\end{equation}
+Define
+\[
+ A_n^\star=\sum_{k=0}^nT(n,k)H_k(2H_k-H_{n-k}-H_n).
+\]
+
+\begin{theorem}[minimal $\zeta(2)$ companion]\label{thm:z2minimal}
+For every $n\geq0$, formula~\eqref{eq:z2minimal} holds.  Equivalently,
+\begin{equation}\label{eq:L2}
+ (LA^\star)_n=-a_{n+1}-a_{n-1}\qquad(n\geq1).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The harmonic shifts give the exact identity
+\[
+ L[H_n^{(2)}a_n]=a_{n+1}+a_{n-1}.
+\]
+Hence applying $L$ to the right side of~\eqref{eq:z2minimal} yields zero
+precisely when~\eqref{eq:L2} holds.  The initial values agree.
+
+\medskip
+We prove~\eqref{eq:L2} by moving the harmonic letters back into parameters.
+Set
+\begin{equation}\label{eq:Xmt}
+ X_m(t)=\frac{m!}{(1-t)_m}
+       =\prod_{j=1}^m\left(1-\frac tj\right)^{-1}
+\end{equation}
+and introduce the proper hypergeometric sum
+\begin{equation}\label{eq:PhiZ2}
+ \Phi_n(u,v)=\sum_{k=0}^nT(n,k)X_k(u)
+ \frac{X_k(v)^2}{X_{n-k}(v)X_n(v)}.
+\end{equation}
+At the origin its relevant Taylor coefficients are
+\begin{equation}\label{eq:PhiDerivs}
+ \Phi_n=a_n,\quad \partial_u\Phi_n=U_n,\quad
+ \partial_v\Phi_n=V_n,\quad \partial_u\partial_v\Phi_n=A_n^\star,
+\end{equation}
+where every derivative is evaluated at $(u,v)=(0,0)$ and
+\[
+ U_n=\sum_kT(n,k)H_k,\qquad
+ V_n=\sum_kT(n,k)(2H_k-H_{n-k}-H_n).
+\]
+
+Let $E$ denote the forward shift in $n$ and write
+\begin{equation}\label{eq:Lforward}
+ \mathcal L=-(n+1)^2-(11n^2+33n+25)E+(n+2)^2E^2.
+\end{equation}
+Thus $(\mathcal Lu)_n=(Lu)_{n+1}$.  Creative telescoping applied directly to
+the summand of~\eqref{eq:PhiZ2} gives an order-three operator
+\begin{equation}\label{eq:Cparam}
+ \mathcal C(u,v)=\sum_{i=0}^3C_i(n;u,v)E^i
+\end{equation}
+and a rational certificate $R(n,k;u,v)$ satisfying
+\begin{equation}\label{eq:paramCell}
+ \sum_{i=0}^3C_i(n;u,v)F(n+i,k;u,v)
+ =\Delta_k\bigl(R(n,k;u,v)F(n,k;u,v)\bigr).
+\end{equation}
+The exact certificate is generated and independently rechecked in
+\nolinkurl{work/z2cf/parameter_proof.mac}.  Its denominator in $k$ is
+$(n-k+1)^3(n-k+2)^3(n-k+3)^3$.  Summing~\eqref{eq:paramCell} over the natural
+finite ranges produces ten top cells and two certificate endpoints.  Their
+coefficients of $1,u,v,uv$ reduce respectively to
+\begin{equation}\label{eq:paramBoundary}
+ 0,\qquad0,\qquad0,\qquad0.
+\end{equation}
+
+At the origin the operator and its $v$-derivative factor on the right:
+\begin{equation}\label{eq:paramFactors}
+ \mathcal C(0,0)=Q_0\mathcal L,qquad
+ \partial_v\mathcal C(0,0)=Q_v\mathcal L,
+\end{equation}
+where
+\begin{align}\label{eq:Q0Qv}
+ Q_0={}&-2(2n+3)(29n+69)+(n+3)(29n+40)E,\\
+ Q_v={}&\frac{204n^3+1221n^2+2320n+1383}{(n+1)(n+3)}
+ -\frac{138n^2+523n+468}{n+2}E.
+\end{align}
+The $v$-derivative of the telescoped relation gives $Q_0\mathcal LV=0$,
+because $\mathcal La=0$.  Directly $V_0=V_1=V_2=0$, and the leading
+coefficient $(n+3)^3(29n+40)$ never vanishes for $n\geq0$; hence
+\begin{equation}\label{eq:Vzero}
+ V_n=0\qquad(n\geq0).
+\end{equation}
+
+Write $C_u=\partial_u\mathcal C(0,0)$ and
+$C_{uv}=\partial_u\partial_v\mathcal C(0,0)$.  There are first-order rational
+operators $X,Y$ such that
+\begin{equation}\label{eq:lclm}
+ XQ_v=YQ_0.
+\end{equation}
+Normalize the coefficient of $E$ in $X$ to $1$; its constant coefficient is
+\begin{equation}\label{eq:Xconstant}
+ -\frac{2(n+1)(2n+3)
+ (10092n^5+133835n^4+700700n^3+1808755n^2+2300030n+1151344)}
+ {(n+3)(n+4)
+ (10092n^5+83375n^4+266280n^3+408745n^2+299740n+83112)}.
+\end{equation}
+Exact Ore division gives, for a rational operator $H$,
+\begin{equation}\label{eq:decisiveOre}
+ YC_u-XC_{uv}-(XQ_0)J=H\mathcal L,qquad J=-(1+E^2).
+\end{equation}
+The computed right remainder is identically $(0,0,0)$.
+
+Differentiate the telescoped recurrence first in $u$, and then in both $u,v$.
+Using~\eqref{eq:Vzero}, one obtains
+\[
+ Q_0\mathcal LU+C_ua=0,qquad
+ Q_0\mathcal LA^\star+Q_v\mathcal LU+C_{uv}a=0.
+\]
+Multiply these equations by $Y$ and $X$, use~\eqref{eq:lclm}, and subtract.
+Equation~\eqref{eq:decisiveOre} and $\mathcal La=0$ then yield
+\[
+ XQ_0(\mathcal LA^\star-Ja)=0.
+\]
+The leading coefficient of $XQ_0$ is $(n+4)(29n+69)$, while direct evaluation
+at $n=0,1$ gives
+$(\mathcal LA^\star-Ja)_0=(\mathcal LA^\star-Ja)_1=0$.  Thus
+$\mathcal LA^\star=Ja$, which is precisely~\eqref{eq:L2} after shifting the
+index.  This proves Theorem~\ref{thm:z2minimal}.
+\end{proof}
+
+\begin{status}[current $\zeta(2)$ status]\label{status:z2}
+Both the nested-tail identity~\eqref{eq:z2tail} and the minimal depth-one
+identity~\eqref{eq:z2minimal} are now proved by exact symbolic certificates.
+The full latter theorem is not yet formalized in Lean.  Its first formal stage,
+in \texttt{lean/ZetaLucas/Z2Shell.lean}, contains no \texttt{sorry} and proves
+the shell absorption identities, the base Ap\'ery recurrence, and the identity
+$L(H_n^{(2)}a_n)=a_{n+1}+a_{n-1}$.  The remaining stage is the certificate and
+pre-operator elimination.  Earlier exclusions of three fixed harmonic
+certificate modules remain valid: the successful proof escapes them by
+telescoping the proper hypergeometric deformation before differentiating.
+\end{status}
+
+\section{Structural summary and open problems}
+
+\begin{center}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{.17\textwidth}
+                >{\raggedright\arraybackslash}p{.28\textwidth}
+                >{\raggedright\arraybackslash}p{.20\textwidth}
+                >{\raggedright\arraybackslash}p{.22\textwidth}}
+\toprule
+row & closed-form weight & recurrence proof & Lucas/formal status\\
+\midrule
+Franel $d=3$ & $(\sigma+3\delta^2)/8$ & finite rank-two certificate &
+$p^2$ Lucas law; closed form and law in Lean\\
+$s_{10}$, $d=4$ & $(\sigma+4\delta^2)/10$ & finite rank-two certificate &
+$p^2$ Lucas law; closed form and law in Lean\\
+Cooper $s_7$ & equation~\eqref{eq:s7harm} & three polarized parameter
+telescopes and Ore elimination & $p^2$ Lucas law; exact symbolic audit;
+Lean open\\
+Ap\'ery $\zeta(3)$ & $2H_n^{(3)}-H_k^{(3)}$ & finite minimal certificate &
+weight-three Lucas descent; Lean proof\\
+Ap\'ery $\zeta(2)$ & nested tail and minimal depth-one forms, proved &
+finite tail certificate; parameter telescope and Ore elimination &
+exact symbolic audit; Lean formalization open\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The immediate questions are:
+\begin{enumerate}
+\item Formalize Theorems~\ref{thm:tower}, \ref{thm:s7harm}, and
+      \ref{thm:z2minimal} in Lean, including the parameter telescopes and
+      Ore-operator identities.
+\item Find comparably small all-boundary recurrence certificates for the
+      higher deformation rows when $d\geq5$.
+\item Strengthen the one-digit congruences to higher powers of $p$ or to a
+      compatible multi-digit theory.
+\item For $d\geq5$, relate the deformation rows canonically to the
+      higher-order recurrence
+      solution space rather than merely to the deformation coefficient.
+\end{enumerate}
+
+\section*{Reproducibility record}
+
+The formal source is
+\texttt{lean/ZetaLucas/FranelClosedForm.lean}; the human-readable formal audit
+is \texttt{work/FRANEL\_S10\_LEAN.md}.  The full $\zeta(2)$ tail proof and the
+minimal formula are recorded in \texttt{work/z2cf/note.tex}.  The exact
+parameter telescope, all boundary checks, operator factorizations, and Ore
+remainder are independently recomputed by
+\nolinkurl{work/z2cf/parameter_proof.mac}.  For $s_7$, the three exact
+telescopes and Taylor certificates are generated by the
+\nolinkurl{work/s7_param/extract_*.mac} scripts; the Ore elimination and
+right-factor audit are in \nolinkurl{work/s7_param/ore_eliminate.py}.  Running
+\nolinkurl{work/s7_param/verify.sh} rebuilds all of them and also performs an
+independent exact check of the first fifty rows.  All numerical checks mentioned in
+this paper are supplementary evidence only; no theorem labeled ``proved'' uses
+finite checking as a proof step.
+
+\begin{thebibliography}{99}
+
+\bibitem{ChamStraub}
+M.~Chamberland and A.~Straub,
+\emph{Ap\'ery limits: experiments and proofs},
+Amer. Math. Monthly \textbf{128} (2021), no.~9, 811--824;
+\texttt{arXiv:2011.03400}.
+
+\bibitem{FranelCF}
+J.~Tonien,
+\emph{Franel numbers and a continued fraction conjecture discovered by the
+Ramanujan Machine},
+Math. Intelligencer (2026), doi:10.1007/s00283-025-10497-9.
+
+\bibitem{Gessel1982}
+I.~M.~Gessel,
+\emph{Some congruences for Ap\'ery numbers},
+J. Number Theory \textbf{14} (1982), no.~3, 362--368.
+
+\bibitem{Gorodetsky}
+O.~Gorodetsky,
+\emph{New representations for all sporadic Ap\'ery-like sequences, with
+applications to congruences},
+Exp. Math. \textbf{32} (2023), no.~4, 641--656;
+\texttt{arXiv:2102.11839}.
+
+\bibitem{MalikStraub}
+A.~Malik and A.~Straub,
+\emph{Divisibility properties of sporadic Ap\'ery-like numbers},
+Res. Number Theory \textbf{2} (2016), article 5;
+\texttt{arXiv:1508.00297}.
+
+\bibitem{MOCooper}
+T.~Piezas III,
+\emph{On the continued fractions using Cooper's sequences $s_7,s_{10},s_{18}$
+and the Zudilin--Cohen sequence},
+MathOverflow question 447166 (2023),
+\url{https://mathoverflow.net/questions/447166/}.
+
+\bibitem{Nesterenko1996}
+Yu.~V.~Nesterenko,
+\emph{A few remarks on $\zeta(3)$},
+Math. Notes \textbf{59} (1996), 625--636.
+
+\bibitem{Schneider2007}
+C.~Schneider,
+\emph{Ap\'ery's double sum is plain sailing indeed},
+Electron. J. Combin. \textbf{14} (2007), \#N5.
+
+\bibitem{StraubLucas}
+A.~Straub,
+\emph{Gessel--Lucas congruences for sporadic sequences},
+Monatsh. Math. \textbf{203} (2024), 677--690;
+\texttt{arXiv:2301.12248}.
+
+\bibitem{StraubZudilin}
+A.~Straub and W.~Zudilin,
+\emph{Sums of powers of binomials, their Ap\'ery limits, and Franel's
+suspicions},
+Int. Math. Res. Not. \textbf{2023}, no.~11, 9861--9879;
+\texttt{arXiv:2112.09576}.
+
+\bibitem{vdPoorten1979}
+A.~van der Poorten,
+\emph{A proof that Euler missed\dots\ Ap\'ery's proof of the irrationality of
+$\zeta(3)$},
+Math. Intelligencer \textbf{1} (1979), no.~4, 195--203.
+
+\bibitem{Zagier2009}
+D.~Zagier,
+\emph{Integral solutions of Ap\'ery-like recurrence equations},
+in: Groups and Symmetries, CRM Proc. Lecture Notes \textbf{47}, Amer. Math.
+Soc., 2009, 349--366.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ChatGPT Research Archiver</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Research Archiver</h1>
+  <p id="summary">Loading queue…</p>
+
+  <div class="buttons">
+    <button id="add-current">Add current project</button>
+    <button id="discover">Find projects</button>
+  </div>
+  <div id="project-picker" hidden>
+    <p><strong>Select the five relevant Projects:</strong></p>
+    <p id="selection-count">Selected 0 of 5</p>
+    <div id="project-list"></div>
+    <button id="add-projects">Queue selected projects</button>
+  </div>
+  <div id="queued-projects" hidden>
+    <p><strong>Queued Projects:</strong></p>
+    <ol id="queued-project-list"></ol>
+  </div>
+
+  <label for="urls">Or paste conversation URLs, one per line</label>
+  <textarea id="urls" rows="5" placeholder="https://chatgpt.com/c/…"></textarea>
+  <button id="add-urls">Add pasted URLs</button>
+
+  <fieldset>
+    <legend>Save formats</legend>
+    <label><input id="markdown" type="checkbox" checked> Markdown</label>
+    <label><input id="html" type="checkbox" checked> HTML</label>
+    <label><input id="json" type="checkbox" checked> JSON</label>
+  </fieldset>
+
+  <label for="delay">Pause between conversations</label>
+  <select id="delay">
+    <option value="30">30–60 seconds</option>
+    <option value="90" selected>90–180 seconds</option>
+    <option value="300">5–10 minutes</option>
+    <option value="1200">20–40 minutes</option>
+  </select>
+
+  <div class="buttons primary">
+    <button id="start">Start / resume</button>
+    <button id="pause">Pause</button>
+  </div>
+  <div class="buttons">
+    <button id="retry">Retry errors</button>
+    <button id="export-index">Download index</button>
+  </div>
+
+  <p id="notice" role="status"></p>
+  <details>
+    <summary>Important</summary>
+    <p>Keep ChatGPT signed in. The extension opens one inactive tab and stops if it detects a login page, access challenge, or rate-limit message. It archives the currently selected branch shown by ChatGPT.</p>
+  </details>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\Z}{\mathbf Z}
+\newcommand{\Qtwo}{\mathbf Q_2}
+\newcommand{\vTwo}{v_2}
+\newcommand{\Dn}{D}
+\newcommand{\phiG}{\varphi}
+
+\title{A modular--$2$-adic two-row approximation to Catalan's constant\\
+with worthiness $0.9025266028\ldots$}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $G=\beta(2)$ be Catalan's constant and $\phiG=(1+\sqrt5)/2$.  We combine
+Zudilin's Ap\'ery-like Catalan recurrence with a second, modular recurrence
+coming from a weight-$3$ Eisenstein series with character $\chi_{-4}$.  The
+key arithmetic input is that the two rational approximants converge to the
+same $2$-adic Catalan period, but with different speeds.  Sampling the
+Zudilin row at $5n$ and the modular row at $8n$ balances these two $2$-adic
+speeds and produces a hidden determinant divisor of size $2^{40n+o(n)}$.
+A correlated rank-two congruence lattice then gives rational approximants
+$p_n/q_n$ satisfying
+\[
+ \liminf_{n\to\infty}
+ \frac{-\log|G-p_n/q_n|}{\log|q_n|}
+ \ge
+ \frac{50\log\phiG}
+ {10-2\log2+\frac{75}{2}\log\phiG}
+ =0.902526602856971\ldots .
+\]
+The bound is below $1$, so it is not an irrationality proof.  We also explain
+why the ratio $5:8$ is forced by the arithmetic and is optimal within this
+particular two-row scalar architecture.
+\end{abstract}
+
+\section{The two Ap\'ery rows}
+
+We write $D_N=\operatorname{lcm}(1,\dots,N)$.  Zudilin's Catalan sequences
+$Q_m,P_m$ are characterized by
+\[
+ Q_0=1,\quad Q_1=\frac74,\qquad
+ P_0=0,\quad P_1=\frac{13}{8},
+\]
+and the same second-order recurrence
+\begin{align*}
+ &(2m+1)^2(2m+2)^2(20m^2-8m+1)u_{m+1}\\
+ &\quad=
+ (3520m^6+5632m^5+2064m^4-384m^3-156m^2+16m+7)u_m\\
+ &\qquad +(2m-1)^2(2m)^2(20m^2+32m+13)u_{m-1}.
+\end{align*}
+We use the standard asymptotics
+\begin{equation}\label{eq:Zarch}
+ \frac1m\log|Q_m|\to5\log\phiG,
+ \qquad
+ \frac1m\log|Q_mG-P_m|\to-5\log\phiG,
+\end{equation}
+and Zudilin's denominator bounds, in the convenient form
+\begin{equation}\label{eq:Zden}
+ 2^{e_m}Q_m\in\Z,
+ \qquad
+ 2^{e_m}D_{2m-1}^{\,2}P_m\in\Z,
+ \qquad
+ e_m=4m+O(\log m).
+\end{equation}
+
+The second row is modular.  Put
+\[
+ t(\tau)=
+ \frac{\eta(\tau)^4\eta(4\tau)^2\eta(8\tau)^4}{\eta(2\tau)^{10}},
+ \qquad
+ F(\tau)=
+ \frac{\eta(2\tau)^{10}}{\eta(\tau)^4\eta(4\tau)^4}.
+\]
+Then $F=\sum_{n\ge0}A_nt^n$, where
+\begin{equation}\label{eq:Erec}
+ (n+1)^2u_{n+1}
+ =\bigl(12n(n+1)+4\bigr)u_n-32n^2u_{n-1},
+\end{equation}
+with $A_0=1,A_1=4$.  The canonical modular source is
+\[
+ \Phi_E=F\,q\frac{dt}{dq}=S-8S(2\tau),
+\]
+where $S=E_{3,\chi_{-4},1}$ in Fourier normalization.  Hence
+\[
+ L(\Phi_E,s)=(1-8\,2^{-s})\beta(s)\zeta(s-2),
+ \qquad
+ L(\Phi_E,2)=\frac{G}{2}.
+\]
+This explains the choice of the modular form: weight $3$ is the natural
+weight for the value $L(2,\chi_{-4})$, and the oldform factor $1-8V_2$
+kills the unwanted endpoint at $s=3$ while retaining the Catalan period.
+
+Let $B(t)=\sum B_nt^n$ be the normalized companion $B_0=0,B_1=1$.  The
+modular rectification is
+\begin{equation}\label{eq:companion}
+ B(t(q))=F(q)D_q^{-2}\Phi_E(q),
+ \qquad D_q=q\frac d{dq}.
+\end{equation}
+Two integrations immediately give
+\begin{equation}\label{eq:Eden}
+ A_n\in\Z,
+ \qquad D_n^2B_n\in\Z.
+\end{equation}
+Indeed the coefficient of $t^n$ only sees Fourier indices $m\le n$, and
+$D_q^{-2}$ contributes only $m^{-2}$.  The characteristic roots of
+\eqref{eq:Erec} are $8$ and $4$; therefore
+\begin{equation}\label{eq:Earch}
+ \frac1n\log|A_n|\to\log8,
+ \qquad
+ \frac1n\log\left|\frac G2A_n-B_n\right|\to\log4.
+\end{equation}
+
+\section{The hidden $2$-adic bridge}
+
+The crucial fact is that the two recurrences represent the same $2$-adic
+period.  We isolate the exact statement needed below.
+
+\begin{lemma}[common $2$-adic Catalan period]\label{lem:p2}
+There exists $G_2\in\Qtwo$ such that
+\begin{align}
+ \vTwo\!\left(G_2-\frac{P_m}{Q_m}\right)
+ &=8m-1-4s_2(m),\label{eq:Ztail}\\
+ \vTwo\!\left(G_2-\frac{2B_n}{A_n}\right)
+ &=5n-1-4s_2(n),\label{eq:Etail}
+\end{align}
+where $s_2(r)$ is the number of $1$'s in the binary expansion of $r$.
+Consequently
+\begin{equation}\label{eq:diag}
+ \vTwo(P_mA_{2m}-2B_{2m}Q_m)=4m-1.
+\end{equation}
+\end{lemma}
+
+\begin{proof}[Idea of proof]
+The exact Wronskians are
+\[
+ P_mQ_{m-1}-Q_mP_{m-1}
+ =(-1)^{m-1}\frac{20m^2-8m+1}{8m^2(2m-1)^2}
+\]
+and
+\[
+ A_nB_{n-1}-A_{n-1}B_n=-\frac{32^{n-1}}{n^2}.
+\]
+Together with
+\[
+ \vTwo(Q_m)=-4m+2s_2(m),
+ \qquad
+ \vTwo(A_n)=2s_2(n),
+\]
+they give the exact tail valuations \eqref{eq:Ztail} and \eqref{eq:Etail}
+once the two limits are identified.
+
+That identification is the meeting point of two classical constructions.
+Rivoal's moving Pad\'e specialization of Beukers's continued fraction is
+exactly Zudilin's sequence.  If one defines the Pad\'e target with the
+sign-safe normalization
+\[
+ \mathcal T(x)=2R(x)-R(x/2),
+\]
+where $R$ is Beukers's $p$-adic Hurwitz series, then
+\[
+ \mathcal T(x+1)+\mathcal T(x)=\frac{2}{x^2},
+ \qquad
+ \mathcal T_2(1/2)=8\zeta_2(2).
+\]
+At the moving point $x_m=\tfrac12-m$, Rivoal's exact Pad\'e identity and the
+shift equation show that $P_m/Q_m$ converges to the single constant
+$\zeta_2(2)$.  Beukers's Pad\'e estimate is uniform for the odd numerator
+$1-2m$, so the moving-point passage is legitimate.
+
+On the modular side, \eqref{eq:companion} is the level-$8$ form of Calegari's
+overconvergent $2$-adic Catalan construction: after the standard
+Teichm\"uller normalization its constant term is the same $\zeta_2(2)$.
+Thus both limits equal $G_2:=\zeta_2(2)$.  Finally, at $n=2m$ the two tail
+valuations are respectively
+\[
+ 8m-1-4s_2(m),\qquad10m-1-4s_2(m),
+\]
+so the first is strictly smaller.  Ultrametricity therefore gives equality
+for the difference of the two ratios; multiplying by $Q_mA_{2m}$ yields
+\eqref{eq:diag}.
+\end{proof}
+
+The diagonal identity is more useful than it first appears, because it forces
+the two $2$-adic limits to be equal; hence the exact tails give an
+off-diagonal inequality for arbitrary indices.  If
+\[
+ \Delta_{i,k}=P_iA_k-2Q_iB_k,
+\]
+then
+\begin{equation}\label{eq:roof}
+\begin{split}
+ \vTwo(\Delta_{i,k})\ge\min\{&
+ 4i-1-2s_2(i)+2s_2(k),\\
+ &5k-4i-1+2s_2(i)-2s_2(k)\}.
+\end{split}
+\end{equation}
+The two affine slopes balance when $8i=5k$.  This is the arithmetic reason
+for the apparently strange sampling ratio
+\[
+ \boxed{i=5n,\qquad k=8n.}
+\]
+Since $s_2(8n)=s_2(n)$, \eqref{eq:roof} gives
+\begin{equation}\label{eq:58delta}
+ \vTwo(\Delta_{5n,8n})
+ \ge20n-1-2|s_2(5n)-s_2(n)|
+ =20n-O(\log n).
+\end{equation}
+
+\section{The correlated congruence lattice}
+
+Put
+\[
+ S_n=D_{10n}^2.
+\]
+Since $10n$ is never a prime power, $D_{10n}=D_{10n-1}$.  Define the two
+integer rows
+\[
+ (X_{1,n},Y_{1,n})
+ =S_n(A_{8n},2B_{8n}),
+\]
+\[
+ (X_{2,n},Y_{2,n})
+ =2^{e_{5n}}S_n(Q_{5n},P_{5n}).
+\]
+Write $X_{r,n}=S_na_{r,n}$.  Their mixed minor after removing the common
+$S_n$ from the first coordinates is
+\[
+ h_n=a_{1,n}Y_{2,n}-a_{2,n}Y_{1,n}
+ =2^{e_{5n}}S_n\Delta_{5n,8n}.
+\]
+Since $e_{5n}=20n+O(\log n)$ and \eqref{eq:58delta} holds, there is an
+explicit power $T_n$ with
+\begin{equation}\label{eq:T}
+ T_n\mid h_n,
+ \qquad
+ \frac1n\log T_n\to40\log2.
+\end{equation}
+For example one may take
+\[
+ T_n=2^{40n-3-2\lfloor\log_2(5n)\rfloor}.
+\]
+
+The point is that this determinant divisibility is \emph{correlated}: it can
+be used in two congruences at the cost of one copy of $T_n$, rather than
+$T_n^2$.  Set $M_n=S_nT_n$ and consider
+\[
+ K_n=\left\{(c_1,c_2)\in\Z^2:
+ \begin{array}{l}
+ a_{1,n}c_1+a_{2,n}c_2\equiv0\pmod{T_n},\\
+ Y_{1,n}c_1+Y_{2,n}c_2\equiv0\pmod{S_nT_n}
+ \end{array}
+ \right\}.
+\]
+Then
+\[
+ q(c)=\frac{c_1X_{1,n}+c_2X_{2,n}}{M_n},
+ \qquad
+ p(c)=\frac{c_1Y_{1,n}+c_2Y_{2,n}}{M_n}
+\]
+are integers.
+
+A two-line Smith-normal-form computation gives the useful index formula
+\[
+ [\Z^2:K_n]
+ =\frac{S_nT_n^2}
+ {\gcd(h_n,T_nY_{1,n},T_nY_{2,n},S_nT_na_{1,n},S_nT_na_{2,n},S_nT_n^2)}.
+\]
+Since $T_n\mid h_n$, we obtain
+\begin{equation}\label{eq:index}
+ [\Z^2:K_n]\le S_nT_n=M_n.
+\end{equation}
+By replacing one basis vector by a suitable positive integer multiple we may,
+without losing integrality, pass to a sublattice $L_n\subseteq K_n$ with
+\begin{equation}\label{eq:covol}
+ M_n\le\operatorname{covol}(L_n)<2M_n.
+\end{equation}
+Thus the division modulus and the coefficient-lattice covolume have the same
+exponential rate
+\begin{equation}\label{eq:sigma}
+ \sigma=20+40\log2,
+\end{equation}
+because $\log D_N=N+o(N)$.
+
+\section{Balancing the two rows}
+
+Let
+\[
+ \lambda_{r,n}=X_{r,n}G-Y_{r,n}.
+\]
+From \eqref{eq:Zarch}--\eqref{eq:Earch} and $\log S_n=20n+o(n)$ we get
+\begin{align*}
+ A_1&=20+24\log2,& E_1&=20+16\log2,\\
+ A_2&=20+20\log2+25\log\phiG,
+ &E_2&=20+20\log2-25\log\phiG,
+\end{align*}
+where $A_r$ is the exponential height of $X_{r,n}$ and $E_r$ that of
+$\lambda_{r,n}$.  Moreover
+\[
+ (A_2+E_1)-(A_1+E_2)=50\log\phiG-8\log2>0,
+\]
+so the mixed determinant has a unique dominant real term.
+
+We use the following standard rank-two form of the two-successive-minima
+argument.  If a coefficient lattice has covolume $e^{\sigma n+o(n)}$, the
+outputs are divided by $e^{\sigma n+o(n)}$, and the above crossed gap holds,
+then choose the coefficient anisotropy
+\[
+ x=\frac{\sigma+E_2-E_1}{2}.
+\]
+Minkowski's second theorem applied to the rectangle
+$|c_1|\le e^{xn}$, $|c_2|\le e^{(\sigma-x)n}$ yields an integer output with
+\begin{equation}\label{eq:HFgen}
+ \log|q_n|\ge Hn-o(n),
+ \qquad
+ \log|q_nG-p_n|\le Fn+o(n),
+\end{equation}
+where
+\[
+ H=A_2-x,
+ \qquad
+ F=x+E_1-\sigma.
+\]
+The use of two successive minima, rather than only Minkowski's first theorem,
+is what prevents an exceptionally short rationality-kernel vector from
+spoiling the lower bound on $|q_n|$.
+
+Substituting \eqref{eq:sigma} gives
+\[
+ x=10+22\log2-\frac{25}{2}\log\phiG,
+\]
+and therefore
+\begin{equation}\label{eq:HF}
+ \boxed{H=10-2\log2+\frac{75}{2}\log\phiG},
+ \qquad
+ \boxed{F=10-2\log2-\frac{25}{2}\log\phiG}.
+\end{equation}
+Both are positive, and $H-F=50\log\phiG$.
+
+\begin{theorem}\label{thm:main}
+There are integer pairs $(q_n,p_n)$ with $q_n\ne0$, $q_nG-p_n\ne0$ and
+$|q_n|\to\infty$ such that
+\[
+ \liminf_{n\to\infty}
+ \frac{-\log|G-p_n/q_n|}{\log|q_n|}
+ \ge
+ \frac{50\log\phiG}
+ {10-2\log2+\frac{75}{2}\log\phiG}
+ =0.9025266028569714694\ldots .
+\]
+\end{theorem}
+
+\begin{proof}
+Apply \eqref{eq:HFgen} and use
+\[
+ -\log|G-p_n/q_n|
+ =\log|q_n|-\log|q_nG-p_n|.
+\]
+Hence the liminf is at least $1-F/H=(H-F)/H$, and \eqref{eq:HF} gives the
+stated constant.
+\end{proof}
+
+\section{Why $5:8$ is the scalar optimum}
+
+There is a useful conceptual coda.  Sample Zudilin at $i=an$ and the modular
+row at $k=cn$.  The common LCM-square contributes $2\max(2a,c)$ to the
+exponential logarithmic cost, while the $2$-adic roof \eqref{eq:roof}
+contributes
+\[
+ \min(8a,5c)\log2.
+\]
+The same balancing calculation gives
+\[
+ H(a,c)=\max(2a,c)+(2a+c)\log2
+ -\frac12\min(8a,5c)\log2
+ +\frac{15}{2}a\log\phiG,
+\]
+and
+\[
+ \delta(a,c)=\frac{10a\log\phiG}{H(a,c)}.
+\]
+By homogeneity put $r=c/a$.  Then $H(r)$ is strictly decreasing for
+$0<r<8/5$ and strictly increasing for $r>8/5$ (with the elementary change of
+formula at $r=2$).  Thus
+\[
+ \boxed{r=\frac85}
+\]
+is the unique optimum within this specific scalar architecture.  In other
+words, the same equality $8i=5k$ that balances the two $2$-adic convergence
+rates also optimizes the final Diophantine exponent.
+
+\begin{remark}
+The theorem is deliberately a statement about the \emph{worthiness} of an
+explicit family of rational approximations.  Since the bound is $<1$, it does
+not imply that $G$ is irrational.  The scalar optimum above is likewise only
+an optimum inside the present two-realization, common-LCM-square,
+$2$-adic-cross, two-minimum construction; it is not a universal obstruction
+to other Catalan constructions.
+\end{remark}
+
+\begin{thebibliography}{9}
+
+\bibitem{Zudilin2002}
+W.~Zudilin,
+\emph{An Ap\'ery-like difference equation for Catalan's constant},
+arXiv:math/0201024 (2002).
+
+\bibitem{ZudilinRemarks}
+W.~Zudilin,
+\emph{A few remarks on linear forms involving Catalan's constant},
+arXiv:math/0210423 (2002).
+
+\bibitem{Rivoal2006}
+T.~Rivoal,
+\emph{Nombres d'Euler, approximants de Pad\'e et constante de Catalan},
+Ramanujan J. \textbf{11} (2006), 199--214.
+
+\bibitem{Calegari2004}
+F.~Calegari,
+\emph{Irrationality of certain $p$-adic periods for small $p$},
+arXiv:math/0408214.
+
+\bibitem{Beukers2006}
+F.~Beukers,
+\emph{Irrationality of some $p$-adic $L$-values},
+arXiv:math/0603277.
+
+\end{thebibliography}
+
+\end{document}

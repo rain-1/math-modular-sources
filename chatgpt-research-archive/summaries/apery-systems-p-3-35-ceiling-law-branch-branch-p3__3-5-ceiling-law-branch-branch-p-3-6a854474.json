@@ -1,0 +1,960 @@
+{
+  "family": "apery-systems-p-3::3/5 ceiling law Branch \u00b7 Branch \u00b7 p=3",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+  "title_human": "3/5 ceiling law Branch \u00b7 Branch \u00b7 p=3",
+  "claims": [
+    {
+      "statement": "# apery systems p=3 - 3/5 ceiling law Branch \u00b7 Branch \u00b7 p=3",
+      "object": "Ap\u00e9ry-like sequence",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "- Project: apery systems p=3\n- Source: https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a854474-7ff8-83eb-883d-7a262d108f2b\n- Captured: 2026-08-20T22:58:41.438Z",
+      "object": "Ap\u00e9ry-like sequence",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "That is extremely promising yeah please do prove it",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Yes. The p=3 homogeneous theorem can now be proved cleanly. The hoped-for connection to the existing two-row Catalan worthiness theorem, however, is more subtle: the obvious scalar connection is actually false. What remains is a vector/affine 3-adic problem.",
+      "object": "Catalan constant",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The distinction is important.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "1. Exact p=3 Catalan recurrence theorem",
+      "object": "Catalan constant",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "A(t)=\u03c6(q)\n2\n=\nn\u22650\n\u2211\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "t\nn\n=1+4t+20t\n2\n+120t\n3\n+804t\n4\n+\u22ef.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The underlying ordinary Catalan period is the same level-8 E-period whose original recurrence and G/2 companion are already established. catalan_level16_research_notes",
+      "object": "Catalan constant",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "where \u03c8 is the native Zagier C-period. We have the exact algebraic relation",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "h\n4\n\u2212(1+18t\u221227t\n2\n)h\n2\n+16t=0.\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The C-period satisfies",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "\u03b8\n2\n\u03c8\u2212t(10\u03b8\n2\n+10\u03b8+3)\u03c8+9t\n2\n(\u03b8+1)\n2\n\u03c8=0,\u03b8=t\ndt\nd\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "\u03b8v=\n(1\u2212t)(1\u22129t)\n(10t\u221218t\n2\n)v+(3t\u22129t\n2\n)\u03c8\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Differentiating (1) gives, after reduction by (1),",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "\u03b8h=\n18t\n2\n\u221220t+2\n\u2212h\n3\n\u22129ht\n2\n+4ht+h\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Equations (1), (3), and (4) make",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "K=Q(t)[h]/(h\n4\n\u2212(1+18t\u221227t\n2\n)h\n2\n+16t)",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Exact elimination gives a differential relation of order four for A. More importantly for arithmetic, coefficient extraction gives the following width-six recurrence:",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(n)=n\n2\n(2n\u22121)\n2\nQ(n),\nQ(n)=64n\n4\n\u2212768n\n3\n+3440n\n2\n\u22126528n+4239,\nr\n1\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "3840n\n8\n\u221261184n\n7\n+408832n\n6\n\u22121470976n\n5\n+3088244n\n4\n\u22123853164n\n3\n+2760345n\n2\n\u22121011852n+136809),\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "98560n\n8\n\u22122130176n\n7\n+19839232n\n6\n\u2212103256192n\n5\n+325376332n\n4\n\u2212626802692n\n3\n+703867383n\n2\n\u2212401193792n+77494320),\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "27904n\n7\n\u2212562432n\n6\n+4743680n\n5\n\u221221498048n\n4\n+55660476n\n3\n\u221279995260n\n2\n+55538163n\u221211997756),\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "3840n\n7\n\u221282944n\n6\n+744704n\n5\n\u22123576832n\n4\n+9789556n\n3\n\u221214839496n\n2\n+10800561n\u22122401839),\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(n)=729(n\u22126)\n2\n(2n\u22129)\n2\nQ(n+1).\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The all-n proof is short once the algebra above is set up. Associate to (5) the differential operator",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "A=0 is exactly equivalent to (5). Reducing R\n6\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(h\u03c8) using (1), (3), and (4) gives",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "So (5) is now an exact theorem, not a finite coefficient certificate.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(n) its Gauss valuation. The polynomial contents of",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "This is the precise theorem we were looking for.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=3\n6\n(\nn(2n\u22121)\n(n\u22126)(2n\u22129)\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "+1)\n\u00d7a\u00a0telescoping\u00a0rational\u00a0factor,",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "8tu\n2\n+(1\u22128t\u22129t\n2\n)u+9t\n2\n\u2212t=0.\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=(t\u22121)(3t\u22121)\n2\n(9t\u22121).\n(14)",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=(2u\u22121)\n2\n(16u\n2\n\u221216u+1).\n(15)",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "-closed space. modular_catalan_apery_research_\u2026",
+      "object": "Catalan constant",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "and the two Eisenstein orientations and their 3-dilates. modular_catalan_apery_research_\u2026",
+      "object": "Catalan constant",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "This is already a rigorous no-go: a nonzero determinant of the first twelve residual coefficient vectors proves the formal series are independent.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "This is the analogue of what our quintic Catalan work taught us: even when the homogeneous geometry splits beautifully, the full Catalan extension can remain intrinsically vector-valued. In the quintic case the affine block recurrence has the homogeneous isogeny matrices, yet the orientation involution exchanges the eigen-extensions rather than allowing a scalar decomposition. quintic_catalan_isogeny_cobound\u2026",
+      "object": "Catalan constant",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "For the Yang d=3 rows, determinants such as",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "have only digit-scale/O(logn) 3-adic valuations.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "6. What we have therefore proved",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "There is a clean theorem/no-go pair.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Theorem \u2014 engineered 3-adic Catalan contraction.\nThe Catalan theta period, transported to Zagier's C-coordinate, satisfies the exact six-step recurrence (5). Over the Gauss-valued 3-adic difference field its Newton slopes are",
+      "object": "Catalan constant",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "No-go \u2014 scalar splitting.\nThe full natural 12-dimensional rational W\n4\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "the\u00a0p=3\u00a0contraction\u00a0belongs\u00a0to\u00a0Layer\u00a0A/Lattice\u00a0C,\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "7. Can it still improve Catalan worthiness?",
+      "object": "Catalan constant",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The homogeneous part has the proved filtration",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "That is exactly the sort of arithmetic datum the Frobenius/holonomy framework was designed to exploit: the useful object need not be a scalar gcd; it may be a positive-dimensional subspace on which one denominator layer becomes free. ARITHMETIC_HOLONOMY_FROBENIUS_S\u2026",
+      "object": "Frobenius",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Concretely, the next theorem to prove is something like",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": ",dimU>0,3\n2n\u2212O(logn)\n\u00a0divides\u00a0the\u00a0relevant\u00a0projected\u00a0lattice\u00a0on\u00a0U.\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "If dimU=1, we get a modest but real Frobenius penalty reduction.",
+      "object": "Frobenius",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "the effect in a vector arithmetic-holonomy argument could be much stronger, because free-depth savings enter quadratically in the improved subspace dimension.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "So the result is not the simple 3\n2n\n scalar divisor we initially hoped for. But we have now proved something more structural:",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Catalan\u00a0possesses\u00a0a\u00a0deliberately\u00a0engineered\u00a0p=3\u00a0contracting\u00a0realization,\n\t\u200b",
+      "object": "Catalan constant",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "and we have also proved why it cannot be harvested by the naive scalar trace construction.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The remaining connection problem is now precisely the affine Frobenius filtration of (20). That is the calculation I would pursue next; there is no longer any reason to search for another prime or another modular host.",
+      "object": "Frobenius",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Branched from Branch \u00b7 p=3",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "I pushed it further, and the p=3 construction has now crystallized into a fairly clean theorem/no-go package.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The main new result is that the minimal level-96 realization is not best regarded as one scalar recurrence. It naturally generates a six-dimensional rational module with two different preferred decompositions: one adapted to the archimedean Catalan period and one adapted to p=3.",
+      "object": "Catalan constant",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=(2X\u22121)(4X\u22121)(4X+1)(1+V\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": ")g,\n=(2X\u22121)(4X+1)(1+V\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": ")g,\n=\u2212(2X\u22121)(48X\n2\n\u221216X\u22125)(1+V\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=(2X\u22121)(2X+1)(4X\u22121)(1\u2212V\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": ")g\n\u2228\n,\n=\u2212(4X\u22121)(20X\n2\n+8X\u22123)(1\u2212V\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": ")g\n\u2228\n,\n=\u2212X(2X+1)(4X\u22121)(1\u2212V\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Thus we have two bases of the same rational six-dimensional object:",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=diag(+9,\u22129)\nD\n\u22122\nU\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Earlier I quoted 75/512; that was the same rank statement after different row scalings. Equation (16) is the determinant in the normalized moment basis I am using here.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Z=(1,\u22122,\u221216,32;0,0,0,0)\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "T=(\u2212192,\u2212384,1536,0;15,\u2212100,60,400).\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "of\u00a0Smith\u00a0factors\n(0,0,0,0,1,1)\n(0,0,0,0,0,2)\n(0,0,0,1,2,2)\n(0,0,0,0,1,2)\n(0,0,0,0,2,2)\n(0,0,0,1,1,2).\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "This is only a finite exact computation, not an all-n theorem, but it is a fairly hostile one: it tests the entire determinantal ideal rather than a preferred minor.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The hidden p=2 phenomenon is genuinely stronger. There the project has an actual cross-realization determinant with 2\n24n\n divisibility, not merely a locally integral Frobenius eigenspace.",
+      "object": "Frobenius",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "CATALAN_HIDDEN_2ADIC_PROOF_DOSS\u2026",
+      "object": "Catalan constant",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "I also checked whether there is an existing second p=3 Catalan Pad\u00e9 realization in the Beukers\u2013Calegari framework that we could simply plug in.",
+      "object": "Catalan constant",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Calegari's paper proves the 2-adic Catalan analogue, while its p=3 result concerns the p-adic analogue of \u03b6(3), not Catalan. \narXiv",
+      "object": "zeta function",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Beukers is even more informative. His Pad\u00e9 function \u0398(x)\u2014the same Pad\u00e9 system connected with Rivoal's classical Catalan approximations\u2014does give exponentially good p-adic approximants. He proves",
+      "object": "Catalan constant",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "has an exponential-in-n bound when p\u2223F, and his Theorem 7.2 turns this into irrationality results. \narXiv",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "But his explicit p=3 specializations are",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Pad\u00e9 contraction we want at p=3, but the standard Beukers specialization lands on the wrong local L-value.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "-twisted\u00a0analogue\u00a0of\u00a0Beukers\u2019s\u00a0\u0398-Pad\ne\n\u02ca\n\u00a0realization\u00a0at\u00a0p=3,\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "and then identify its p-adic target with the +1/\u22121 Catalan extension section inside the six-dimensional module (3).",
+      "object": "Catalan constant",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "So I think the p=3 warm-up has reached the right frontier. We have solved the local realization problem quite explicitly\u2014the six-dimensional module (1)\u2013(15) is a concrete answer. What remains is not another modular-oldform search. It is to build a \u03c7\n\u22124\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Yes. The twisted p=3 realization can now be written as an explicit theorem, and it gives a literal simultaneous 2-adic/3-adic Pl\u00fccker divisor.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "have leading term +x\n\u22122\n; Proposition 5.1 and its displayed proof at x=1/2 also differ in sign. \narXiv\n+1\n It is safest to define the operational Pad\u00e9 branch",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "\u0398\n(x+1)+\n\u0398\n(x)=\nx\n2\n2\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=(2m(m+1)+1\u2212x+x\n2\n)u\nm\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Equation (1) shows that R\nn,m\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(a) is the moving Pad\u00e9 approximation to the fixed value \n\u0398\n(a). Now put",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(\u22121)\nk\n(\n(6k+1)\n2\n1\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "In the normalization of our modular p=3 realization,",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "At x=a\u2212n, a=1/6 or 5/6,",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "If k<m, subtraction of (13) gives",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Thus k=m is the unique minimum and",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "\u0398(m,x)=(\u22121)\nm\nk\u2265m\n\u2211\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "]=\nx(x+1)\u22ef(x+k)\nk!\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Again k=m is uniquely minimal, giving",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(\u0398(m,a\u2212n))=3m+2\u2212s\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "For a=1/6 and 5/6, the two normalized leading units are equal modulo 3; hence their sum is still a unit. Division by 80 costs nothing at 3. Therefore",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "It is much stronger than Beukers's general estimate in Proposition 7.1. Beukers notes that his general condition is insufficient to prove irrationality of the p=3,\u00a0x=1/6 value. \narXiv\n+1",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "4. Exact p=2 tail simultaneously",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(\u0398(m,a\u2212n))=4m+2\u22122s\n2\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Notice that this is exactly the Zudilin/Rivoal 2-adic Catalan tail law. That is not coincidence: Beukers explicitly states that the moving specialization x=\u2212n+\n2\n1\n\t\u200b",
+      "object": "Catalan constant",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(m+1)]\u2212[8m\u22121\u22124s\n2\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(m+1)]\u2212[6m+2\u22122s\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "which has precisely those valuations, and (21), (18) propagate them to the entire family.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Multiplying (25)\u2013(26) by the denominators yields the literal integer Pl\u00fccker coordinate",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "2\n8n\u2212o(n)\n3\n6n\u2212o(n)\n\u2223\u0394\nn\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "This is the p=3 interference theorem we were trying to engineer.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "\\begin{array}{c|c|c} \\text{realization}&p=2&p=3\\\\ \\hline \\text{Zudilin / efficient rows}&\\text{excellent}&\\text{generic/bad}\\\\ \\text{level-96 modular Catalan}&\\text{not optimized}&\\text{canonical local section}\\\\ \\boxed{\\mathcal G_{n,m}}& \\boxed{\\text{exact }8m\\text{ tail}& \\boxed{\\text{exact }6m\\text{ tail} \\end{array}",
+      "object": "Catalan constant",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The divisor mass of (31) is",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "per unit Pad\u00e9 order. The row itself is too arithmetically expensive to replace the good real rows\u2014the denominator growth is large, consistent with Beukers's arithmetic bounds for denominator F=6. \narXiv\n So the correct use is as an auxiliary bridge inside a higher-rank coefficient lattice, not as a standalone Ap\u00e9ry proof.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "That also explains why na\u00efvely multiplying our old 2\n24n\n divisor by a new 3\n6n\n factor would be wrong. Once a p=3-generic real-efficient row is added, the local rank at 3 changes. The next geometry-of-numbers theorem has to use the local Smith ranks prime by prime, rather than pairwise gcds.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "7. The old p=2 normalization gap is now much narrower",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "CATALAN_HIDDEN_2ADIC_PROOF_DOSS\u2026",
+      "object": "Catalan constant",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The new x=1/6 realization gives an equivalent discrepancy",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "It satisfies, exactly,",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "\u221272(n+1)\n2\n(n+2)(2n+1)(36n\n2\n+188n+237)D\nn\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "+2(n+2)(7776n\n5\n+69120n\n4\n+236664n\n3\n+393740n\n2\n+321316n+103281)D\nn+1\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "\u2212(15552n\n6\n+187488n\n5\n+930672n\n4\n+2435792n\n3\n+3542948n\n2\n+2710278n+848621)D\nn+2\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "+(2n+5)\n2\n(6n+13)(6n+17)(36n\n2\n+116n+85)D\nn+3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=\n(2n+3)\n2\n2(n+1)(2n+1)\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=\n(6n+7)(6n+11)\n36(n+1)\n2\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "I have not yet promoted (35) to an all-N proof: this remains a genuine 2-adic connection problem, not something the local recurrence alone determines. But the 1/6 formulation is much better aligned with Beukers's proved special value",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "and (33) gives a very compact route for a binary/Dwork-style induction. \narXiv",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "the\u00a0p=3\u00a0realization\u00a0itself\u00a0is\u00a0solved.\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "We have a rational Catalan Pad\u00e9 row with exact simultaneous 2- and 3-adic tails and an exact",
+      "object": "Catalan constant",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The next genuinely new theorem is the higher-rank adelic selection theorem that combines this bridge row with the real-efficient p=2 rows without losing the p=3 local rank defect. That is now the part I would attack next, rather than searching for yet another recurrence.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "I\u2019ll now treat the bridge row as an auxiliary arithmetic row and derive the smallest higher-rank selection theorem that can actually use its mixed 2/3-adic Pl\u00fccker mass without double-counting. The immediate goal is a three-row coefficient lattice: two real-efficient Catalan rows plus the new Pad\u00e9 bridge, with separate local Smith constraints at 2 and 3.",
+      "object": "Catalan constant",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Derived and developed a higher-rank adelic selection theorem",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The quotient-lattice viewpoint resolves an important conceptual issue: after any number of coefficient rows, the actual output lattice still has rank 2. Extra rows do not create extra Minkowski dimensions; they only change the local Smith saturation of that rank-two image. This means the p=3 bridge helps a global Catalan construction only if every archimedean-active row lies in the same rank-one projective cluster modulo 3\nan\n. A single 3-generic row restores local rank 2 and makes the 3\na\n divi",
+      "object": "Catalan constant",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "So the decisive next test is now very sharp: determine whether Nesterenko\u2019s real-efficient row belongs to the new 3-adic bridge cluster. Zudilin does not. If Nesterenko does, we can replace the old two-row packet by a Nesterenko + bridge packet and genuinely harvest 3\n6n\n; if it does not, the p=3 modulus cannot improve that two-dimensional selection.",
+      "object": "unknown mathematical object",
+      "status": "abandoned",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Evaluated p-adic rank criteria and computed explicit approximation ratios\nComputed p-adic valuations of hypergeometric factorial expressions\nSearched 1 website\nEstimated recurrence asymptotic exponents\nAnalyzed coefficient exponents at k=24\nComputing exact denominator growth of \\(\\mathcal G_{n,m}\\)",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+      "notes": "extracted from research notes"
+    }
+  ],
+  "connections_to_literature": [],
+  "open_threads_or_handoffs": [],
+  "in_ledger": "no",
+  "ledger_notes": "",
+  "flags": []
+}

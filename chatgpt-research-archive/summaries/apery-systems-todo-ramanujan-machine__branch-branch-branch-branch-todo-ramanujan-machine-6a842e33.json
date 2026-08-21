@@ -1,0 +1,99 @@
+{
+  "family": "apery-systems::TODO: Ramanujan machine",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+    "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+  "title_human": "Chain C: Shvets L(4,χ₋₃) construction taken to publication-level completeness",
+  "claims": [
+    {
+      "statement": "Trunk content (level-12 ζ(5) construction, twelve-family canonical-source theorem, Cooper cubic divisibility results, period-annihilation dimension formula, V7/V8 adelic Hecke-Eisenstein theory, Shvets 11-sequence integration) is shared context for this chain — see trunk summary.",
+      "object": "trunk",
+      "status": "conjectural",
+      "source_file": "branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+      "notes": "Not restated in full; this chain's tail diverges after Assistant 14 in the trunk to focus on finishing the Shvets L(4,χ₋₃) application."
+    },
+    {
+      "statement": "The Shvets L(4,χ₅,₁)... construction is now closed at publication level, with a standalone 9-page paper promoting the exploratory construction into a theorem-proof presentation establishing the complete chain Sym³H → E_{5,χ₋₃,1} → (32/7)L(4,χ₋₃) → level-24 rational Apéry realization.",
+      "object": "Shvets L(4,χ₋₃) level-24 construction",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+      "notes": "Assistant claims this is now theorem-quality rather than research-dossier level; status as stated by the thread itself, not independently verified here."
+    },
+    {
+      "statement": "The paper proves the purified sources S_24=(1−2V²)(1−8V²)(1−32V²)S and T_24=(1−V²)(1−4V²)(1−16V²)T, their exact W_24-exchange and ±i eigenlines, and L(S_24,4) = (32/7) L(4,χ₋₃).",
+      "object": "level-24 purified sources S_24, T_24",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+      "notes": "Stated as theorem-level in the standalone publication PDF referenced by the thread."
+    },
+    {
+      "statement": "The pure CM evaluation is theorem-level: Θ₊(√(1/24) i) = (32/7) L(4,χ₋₃), with the explicit Lambert/polylogarithmic identity derived from the period-polynomial transformation.",
+      "object": "CM evaluation of Θ₊ at level 24",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+      "notes": "Verified numerically to roughly 10^-23 per the thread's reproducibility certificate."
+    },
+    {
+      "statement": "For x(τ) = η(2τ)η(12τ)η(3τ)²η(8τ)² / (η(τ)²η(24τ)²η(4τ)η(6τ)), the complete finite cusp audit gives x(1/2)=x(1/12)=−1, x(1/4)=x(1/6)=+1, derived explicitly from the Dedekind-η multiplier system rather than left as a generic cusp calculation.",
+      "object": "level-24 eta-quotient x(τ), cusp phases",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+      "notes": "Described as the 'principal missing modular-geometry step from the earlier dossier' now closed exactly."
+    },
+    {
+      "statement": "The Fricke quotient geometry is Y² = x⁴+8x³+2x²−8x+1, with Y = Dx / (η(2τ)η(4τ)η(6τ)η(12τ)), and its first two positive branch values satisfy x₂/x₁ = 3−2√2.",
+      "object": "level-24 Fricke curve and branch-gap ratio",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+      "notes": "Same branch-gap ratio 3−2√2 appears already in the trunk (Assistant 13) as a numerical/predicted value; here it's presented as proved as part of the completed Fricke geometry."
+    },
+    {
+      "statement": "The rational trace construction is proved with A_Q=U(2τ), B_Q=U(2τ)Θ_S − 8V(4τ)Θ_T, giving the all-n arithmetic theorem A_n ∈ Z, d_n⁴ B_n ∈ Z (writing A_Q=∑A_n x^n, B_Q=∑B_n x^n).",
+      "object": "level-24 rational Apéry pair (A_n, B_n)",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+      "notes": "Independently audited numerically through n=60 per the reproducibility certificate description."
+    },
+    {
+      "statement": "The analytic convergence is proved rigorous: A_n/B_n → (32/7) L(4,χ₋₃), with limsup_{n→∞} |A_n/B_n − (32/7)L(4,χ₋₃)|^{1/n} ≤ 3−2√2, using the local W_24-parity at the first branch together with the completed cusp and branch census.",
+      "object": "convergence rate for level-24 Apéry pair to L(4,χ₋₃)",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+      "notes": "This is a convergence-rate bound, not yet an irrationality proof (see next claim)."
+    },
+    {
+      "statement": "There is still no irrationality claim for L(4,χ₋₃): the depth-four arithmetic cost is too large for the elementary scalar estimate, even though the modular construction itself is complete and theorem-quality rather than dossier-level.",
+      "object": "irrationality status of L(4,χ₋₃)",
+      "status": "abandoned",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+      "notes": "Explicit self-assessment that the construction does not reach an irrationality result; 'abandoned' here reflects that this specific line of attack (elementary scalar estimate) does not close the gap, per the thread's own words."
+    },
+    {
+      "statement": "Shvets's symmetric-cube construction supplies the original modular object and its mod-p⁴ congruence, and his subsequent work strengthens this to the tower a_{mp^r} ≡ a_{mp^{r-1}} (mod p^{4r}) for p ≥ 5; the paper is careful not to transfer that congruence automatically to the descended x-coordinate coefficients.",
+      "object": "Shvets mod-p^4 supercongruence tower vs. descended level-24 coefficients",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+      "notes": "The supercongruence tower is attributed to Shvets (external, independently proved); the thread explicitly flags that it is NOT automatically valid for the new descended coordinate coefficients — an open caveat, not a proved extension."
+    },
+    {
+      "statement": "An exact reproducibility certificate was built verifying the projector algebra, Mellin zeros, level-24 cusp phases, the quartic identity through q^57, the exact branch gap, displayed Apéry coefficients, the d_n^4 lattice through n=60 as an independent audit of the all-n proof, and the CM identity numerically to roughly 10^-23.",
+      "object": "reproducibility certificate for the Shvets L(4,χ₋₃) publication",
+      "status": "experimental/numerical",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+      "notes": "Numerical/computational certificate, distinct from the theorem-level claims it supports."
+    }
+  ],
+  "connections_to_literature": [
+    "Shvets's original Belyi scan (integrality and Sym²-pullback structure for eleven sequences) and his symmetric-cube supercongruence paper — see trunk",
+    "CDT (arithmetic-holonomy) L(2,χ₋₃) construction — see trunk"
+  ],
+  "open_threads_or_handoffs": [
+    "No irrationality claim for L(4,χ₋₃) exists yet; the depth-four arithmetic cost exceeds what the elementary scalar estimate can close — explicitly left open at the end of this chain.",
+    "Whether Shvets's mod-p^4 (and mod-p^{4r}) supercongruence tower transfers to the descended x-coordinate coefficients of the level-24 construction is explicitly left unresolved (not claimed)."
+  ],
+  "in_ledger": "no",
+  "ledger_notes": "No Ledger or Do Not Overstate rows reference Shvets, L(4,χ₋₃)/L(4,chi_{-3}), the level-24 construction, or the eta-quotient x(τ) described here; the Ledger's tracked programmes (Companion/modular anchors, Cuspidal Apéry apparatus, Brown–Zudilin/Frobenius constants, p-adic Brown–Zudilin) are a different, earlier research thread (level-12 ζ(5)/Domb-focused) than this chain's Shvets/level-24 χ₋₃ work. This entire chain appears to postdate or sit outside the ledger's current scope.",
+  "flags": []
+}

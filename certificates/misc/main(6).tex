@@ -1,0 +1,1122 @@
+% !TeX program = pdflatex
+%
+% "A manufactured Apery apparatus for a cusp-form L-value."
+% Working paper of River's odd-zeta programme.
+%
+% Provenance: work/CUSPIDAL_COMPANION.md (level-6 experiment, Sol Project D),
+% work/D1_CUSPIDAL_APPARATUS.md (level-12 construction, delta control,
+% uniqueness corollary, proof notes section 8, irrationality race section 9),
+% work/PHI_SOURCE_LEDGER.md (the Eisenstein/cuspidal dichotomy of sources),
+% scripts work/z5eps/eps60--eps62b.  Companion paper (the proved base):
+% papers_out/modular_anchors/main.tex.
+%
+% Evidence labels are load-bearing and are never silently upgraded.
+%
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{verification}[theorem]{Computer-assisted finite verification}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{problem}[theorem]{Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\thq}{\theta_q}
+\newcommand{\tht}{\theta_t}
+\newcommand{\fs}{f^{*}}
+
+% evidence-class markers
+\newcommand{\Thm}{\textup{\textsf{[THM]}}}
+\newcommand{\Proved}{\textup{\textsf{[PROVED]}}}
+\newcommand{\ProvedS}{\textup{\textsf{[PROVED (route complete)]}}}
+\newcommand{\VerifiedR}[1]{\textup{\textsf{[VERIFIED: #1]}}}
+\newcommand{\Excluded}{\textup{\textsf{[EXCLUDED]}}}
+\newcommand{\ExcludedR}[1]{\textup{\textsf{[EXCLUDED: #1]}}}
+\newcommand{\Open}{\textup{\textsf{[OPEN]}}}
+\newcommand{\RouteOpen}{\textup{\textsf{[ROUTE WRITTEN, CONSTANT OPEN]}}}
+
+\begin{document}
+
+\title[A manufactured Ap\'ery apparatus for a cusp-form $L$-value]
+      {A manufactured Ap\'ery apparatus\\ for a cusp-form $L$-value:\\
+       Fricke-odd sources, fold regularization,\\ and the limit
+       $L(f_6,3)/2$}
+
+\author{[author]}
+\date{\today}
+
+\begin{abstract}
+Every Ap\'ery-like recurrence in the sporadic class carries a canonical
+\emph{companion source} $\Phi$, a weight-$(r{+}1)$ modular form whose
+Eichler integral is the second solution. For all twelve identifiable
+sporadic families $\Phi$ is purely Eisenstein, which is why the classical
+Ap\'ery limits are zeta and Dirichlet $L$-values. This paper asks the
+design question in the other direction: can one \emph{manufacture} a
+recurrence, with Ap\'ery-quality integrality and exponential convergence,
+whose limit is a critical $L$-value of a \emph{cusp form}? We answer yes,
+and exhibit the apparatus. On Domb's curve (level $12$) the Fricke-odd
+combination $\fs=f_6(q)-4f_6(q^2)$ of the level-$6$ newform
+$f_6=(\eta_1\eta_2\eta_3\eta_6)^2$ vanishes at the Atkin--Lehner fixed
+point --- we prove this by an oldspace eigenvector argument --- and
+satisfies $\fs\sqrt{1-4t}=\Phi_\alpha$. The resulting companion $B^*$
+obeys the Domb recurrence with central-binomial forcing, has
+$d_n^3B^*_n\in\Z$ \VerifiedR{$n\le40$}, converges at rate $4^{-n}$, and
+\VerifiedR{$61$-digit PSLQ} satisfies $B^*_n/A_n\to L(f_6,3)/2$: a bare
+critical $L$-value, with no quasiperiod and no $\pi L(f_6,2)$ term.
+The mechanism is a single parity: Fricke-oddness both regularizes the
+fold (exponential convergence) and kills the even critical value through
+$\Lambda^*(2)=0$. We contrast this with a level-$6$ experiment in which
+the Fricke sign is $+1$ and the limit is contaminated by an
+unidentified second-kind constant \Open. A $\delta$-control run and a
+classification corollary show that $\alpha$ is the \emph{unique}
+sporadic family admitting the construction. Finally, we do the
+irrationality bookkeeping honestly: $4^n$ against $d_n^3\sim e^{3n}$
+loses, so no irrationality follows. Every statement carries its evidence
+label; finite computations are never reported as proofs.
+\end{abstract}
+
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+%======================================================================
+\section{Introduction}\label{sec:intro}
+
+\subsection{Ap\'ery's pair, and what a ``companion source'' is}
+Ap\'ery's proof that $\zeta(3)\notin\Q$ runs on a pair of solutions of one
+recurrence:
+\begin{equation}\label{eq:apery}
+m^3y_m=(2m-1)(17(m-1)^2+17(m-1)+5)\,y_{m-1}-(m-1)^3y_{m-2},
+\end{equation}
+the integral solution $A_n=\sum_k\binom nk^2\binom{n+k}k^2$ and a second
+solution $B_n$ with $B_n/A_n\to\zeta(3)$, whose denominators are
+controlled by $d_n^3$, $d_n=\operatorname{lcm}(1,\dots,n)$. The
+irrationality follows because the error $|A_n\zeta(3)-B_n|$ decays like
+$\alpha^{-n}$ with $\alpha=(1+\sqrt2)^4=33.97\ldots$, faster than the
+denominators $d_n^3\sim e^{3n}=20.08^n$ grow.
+
+The companion paper \cite{anchors} proves the structural statement behind
+this pair for all fifteen sporadic Ap\'ery-like families. Write $r$ for the
+order of the generating differential operator ($r=3$ for the six
+``weight-$3$'' families, including Ap\'ery's $\zeta(3)$ family $\gamma$),
+$q$ for the nome of the operator, $t(q)$ for the inverse map, $F(q)$ for
+the analytic solution pulled back to $q$, $\sigma=\tht\log q$, and $P$ for
+the leading polynomial of the recurrence. Then the normalized companion is
+an Eichler-type integral,
+\begin{equation}\label{eq:companion}
+y_B\;=\;F\cdot\thq^{-r}\Phi,\qquad
+\Phi\;:=\;\frac{t\,\sigma^{r}}{P(t)\,F},
+\end{equation}
+valid for all $n$ \Proved{} \cite[Thm.~3.4]{anchors}. We call $\Phi$ the
+\emph{companion source}. Once the family's modular parametrization is
+identified, $\Phi$ is a $q$-series of modular weight $r+1$ on the family's
+level, and the Ap\'ery limit is the value of its Eichler integral at the
+``fold'' --- the branch point of $t(q)$ nearest the origin.
+
+\subsection{The Eisenstein/cuspidal dichotomy}
+The programme's source ledger \cite{philedger} settles what these
+$\Phi$ are. For all twelve sporadic families whose parametrization is
+identified --- the six order-$2$ families $A$--$F$ and the order-$3$
+families $\alpha,\gamma,\delta,\varepsilon,\zeta,\eta$ --- the source
+$\Phi$ is a \emph{pure Eisenstein series} of weight $r+1$, with an explicit
+divisor-sum coefficient law, with \emph{no cuspidal component anywhere}
+\VerifiedR{exact $\Q$-arithmetic coefficientwise to $q^{60}$, with the band
+$q^{27}$--$q^{60}$ held out from the fit}. (The three remaining Cooper rows
+are coordinate-obstructed and assert no modular weight.) This single fact
+explains the entire limit column of the sporadic table: an Eisenstein
+source has an Eichler integral built from Lerch-type sums, so the fold
+value is a zeta value or a Dirichlet $L$-value, and nothing else can occur.
+In particular $\gamma$ reproduces Beukers's weight-$4$ level-$6$ Eisenstein
+picture for $\zeta(3)$, and $D$ reproduces the $\Gamma_1(5)$ weight-$3$
+picture for $\zeta(2)$, both recovered here \emph{from the recurrence
+alone}.
+
+\subsection{The design question}
+The dichotomy immediately poses the question this paper answers.
+
+\begin{problem}[the manufacturing question]\label{prob:design}
+Can one \emph{manufacture} a recurrence --- integral, three-term with an
+integral forcing term, with $d_n^r$-quality denominators and exponentially
+small error --- whose Ap\'ery limit is a \emph{critical $L$-value of a cusp
+form}?
+\end{problem}
+
+Nothing in the sporadic table can answer it by inspection: the table's
+sources are Eisenstein by \cite{philedger}, so no sporadic limit is
+cuspidal. The point of \eqref{eq:companion}, however, is that the source is
+an \emph{input}. Given a rectified family, \emph{any} modular form of the
+right weight and level may be substituted for $\Phi$ in
+\eqref{eq:companion}; the resulting series still satisfies the family's
+recurrence, now with an inhomogeneity determined by the substituted form.
+Manufacturing an apparatus therefore means choosing (level, family,
+source) so that three separate things go right at once: the inhomogeneity
+must be integral (or the recurrence is not arithmetic), the error must
+decay exponentially (or the limit is useless), and the fold value must be a
+clean $L$-value rather than a contaminated mixture.
+
+We show these three requirements are governed by three distinct structures
+--- the $d_n^r$ integral structure of the family, the \emph{vanishing} of
+the source at the fold, and the \emph{parity} of the source under the
+Atkin--Lehner (Fricke) involution --- and we exhibit a triple where all
+three succeed simultaneously.
+
+\subsection{Results}
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{A level-$6$ experiment} (\S\ref{sec:level6}). Substituting the
+unique newform $f_6=(\eta_1\eta_2\eta_3\eta_6)^2\in S_4(\Gamma_0(6))$ into
+Ap\'ery's own $\zeta(3)$ curve gives the identity
+$f_6\sqrt{1-34t+t^2}=\Phi_\gamma$ \VerifiedR{$q^{60}$; Sturm bound $8$},
+hence Ap\'ery's recurrence \eqref{eq:apery} with the integral forcing term
+$w_n=[t^n](1-34t+t^2)^{-1/2}=1,17,433,12257,\dots$, and
+$d_n^3B^f_n\in\Z$ \VerifiedR{$n\le 40$}: \emph{the cusp form costs nothing
+in denominators}. The limit decomposes as
+$\Theta(\tau_c)=L(f_6,3)-\tfrac\pi{\sqrt6}L(f_6,2)$
+\VerifiedR{$120$ digits} plus a second-kind term
+$\tfrac{2\pi}{\sqrt6}\Theta_2(\tau_c)$ which PSLQ cannot reduce \Open.
+Convergence is only polynomial. This experiment is the negative that
+fixes the design.
+\item \textbf{The construction} (\S\ref{sec:level12}). At level $12$,
+$\dim S_4(\Gamma_0(12))=2$; we prove (Theorem~\ref{thm:oldspace}) that
+$W_{12}$ acts on the oldspace by $f_6(q)\mapsto4f_6(q^2)$, so the odd
+eigenvector $\fs=f_6(q)-4f_6(q^2)$ \emph{vanishes at the fixed point}
+$\tau_{12}=i/\sqrt{12}$, which is exactly the fold of the Domb family
+$\alpha$. The source identity is $\fs\sqrt{1-4t}=\Phi_\alpha$
+\VerifiedR{exact to $q^{40}$}, giving the Domb recurrence with
+central-binomial forcing, $d_n^3B^*_n\in\Z$ \VerifiedR{$n\le40$}, error
+$\sim4^{-n}$, and
+\[
+\boxed{\ \lim_{n\to\infty}\frac{B^*_n}{A_n}=\frac{L(f_6,3)}{2}\ }
+\qquad\VerifiedR{$61$-digit PSLQ, residual $2\times10^{-61}$}.
+\]
+\item \textbf{The mechanism} (\S\ref{sec:mech}): one parity, two effects.
+Fold-vanishing regularizes the inhomogeneity (exponential convergence);
+Fricke-oddness forces $\Lambda^*(2)=0$, killing the even critical value, so
+a single critical value survives. The Fricke functional equation is
+\ProvedS; the exact rational factor $\tfrac12$ is \RouteOpen.
+\item \textbf{Controls and scope} (\S\ref{sec:scope}): the $\delta$ control
+isolates fold-vanishing as the operative hypothesis, and a classification
+corollary shows $\alpha$ is the \emph{unique} order-$3$ sporadic family
+admitting the construction.
+\item \textbf{Honest bookkeeping} (\S\ref{sec:race}): $4^n$ versus
+$d_n^3\sim e^{3n}$ loses, so no irrationality statement is made or implied.
+We record the exact scan over all fifteen families that locates precisely
+Ap\'ery's two classical wins and nothing else, and the discovery that
+Ap\'ery's own source vanishes at the fold --- i.e.\ his miracle is the
+\emph{same} construction in the Eisenstein class.
+\end{enumerate}
+
+\subsection{Credit}
+The programme of substituting cuspidal sources, the six-item theorem
+package that organizes \S\ref{sec:level12}--\S\ref{sec:mech}, the refined
+hypotheses of Conjecture~\ref{conj:d2}, the directed $\delta$ control of
+\S\ref{sec:delta}, and the irrationality-race scoring of
+\S\ref{sec:race} are all due to the collaborator Sol, in a sequence of
+project slates and adversarial reviews. Where a statement is Sol's, it is
+attributed at the point of use.
+
+\subsection{Evidence discipline}\label{sec:labels}
+\Proved/\Thm: complete proof (computer algebra only for finite exact
+rational identities). \ProvedS: a complete mathematical route with all
+steps written, but not yet typeset as a referee-ready proof; nothing in
+this class is used as a hypothesis of a \Proved{} statement.
+\VerifiedR{range}: exact or high-precision computation over a stated finite
+range --- \emph{never} a proof. \Excluded: negative established by proof,
+or by exact computation over a precisely stated search space (the space is
+always stated). \Open: open. \RouteOpen: the structural derivation is
+complete but a normalizing constant is not certified. Two standing rules:
+finite coefficient agreement is never called an identity unless a Sturm
+bound converts it, and finite integrality is never called modularity or
+arithmeticity.
+
+%======================================================================
+\section{Set-up: sources, folds, and Ap\'ery limits}\label{sec:setup}
+
+This section fixes notation and records, without reproving, the base
+results of \cite{anchors,philedger} that we use.
+
+\subsection{Rectification and the companion}
+Let $L$ be an order-$r$ operator in $\tht$ over $\Q(t)$ with maximal
+unipotent monodromy at $t=0$ and Frobenius basis $y_0=1+O(t),\ y_1=y_0\log
+t+g,\dots$. The nome is $q=t\exp(g/y_0)$, and $L$ is \emph{exactly
+rectified} if $L=C(t)\,F\,\thq^{\,r}F^{-1}$ for a rational $C$; equivalently
+the kernel of $L$ is $\operatorname{span}\{F,F\log q,\dots\}$. All fifteen
+sporadic operators are exactly rectified \Proved{}
+\cite[Thm.~3.6,~Cor.~3.7]{anchors}, and then \eqref{eq:companion} holds for
+all $n$ \cite[Thm.~3.8]{anchors}.
+
+\begin{definition}[substituted companion]\label{def:sub}
+Let $\Psi(q)\in q\Q[[q]]$ be any series. The \emph{$\Psi$-companion} of the
+family is
+\[
+y^\Psi\;:=\;F\cdot\thq^{-r}\Psi ,\qquad B^\Psi_n:=[t^n]\,y^\Psi .
+\]
+By rectification, $L\,y^\Psi=C(t)\,\Psi\!\circ\!q(t)$; writing
+$R(t):=t\,\Psi/\Phi$ (a series in $t$, since $\Phi$ and $\Psi$ both begin
+at $q$), the sequence $B^\Psi$ satisfies the family's homogeneous
+recurrence with forcing term $[t^{n}]R$. Taking $\Psi=\Phi$ gives
+$R=t$ and recovers the canonical companion.
+\end{definition}
+
+Thus \emph{the choice of source is a free design parameter}, and the entire
+arithmetic of the manufactured apparatus is the arithmetic of the ratio
+$R=t\Psi/\Phi$ together with the family's own integral structure.
+
+\subsection{The fold and the connection value}
+The map $q\mapsto t(q)$ is $2$-to-$1$ near a simple branch point $q_c$ (the
+\emph{fold}): $t-t_c\simeq c\,(q-q_c)^2$. For the families we treat, $t_c$
+is the smaller root of $P(t)$, and $A_n\sim t_c^{-n}\cdot(\text{subexp})$.
+
+\begin{lemma}[fold connection]\label{lem:fold}
+\Proved{} Let $y_0,y_B$ be analytic in $q$ near $q_c$ and let $t$ have a
+simple fold there. Then
+$\lim_{n\to\infty}B_n/A_n=y_B'(q_c)/y_0'(q_c)$, provided the limit exists.
+\end{lemma}
+
+\begin{proof}
+Decompose $y_0,y_B$ into even and odd parts under the local fold
+involution $q\mapsto\iota(q)$ fixing $t$. The even parts are analytic
+functions of $t$ at $t_c$; the odd parts carry the square-root branch, so
+the singular part of each $y$ as a function of $t$ at $t=t_c$ is
+$(\text{odd part})$, itself of the form $(q-q_c)\cdot(\text{unit})$ times
+$\sqrt{t-t_c}$-data. The asymptotics of $[t^n]y$ are governed by the
+singular part; the ratio of the two singular parts is the ratio of the odd
+parts, i.e.\ of the $q$-derivatives at $q_c$. Analytic (even) parts
+contribute exponentially smaller terms.
+\end{proof}
+
+Written out, for a source $\Psi$ with Eichler integral
+$\Theta_\Psi:=\thq^{-r}\Psi$,
+\begin{equation}\label{eq:xi}
+\xi^\Psi\;=\;\Theta_\Psi(q_c)+\frac{F(q_c)}{F'(q_c)}\,\Theta_\Psi'(q_c),
+\end{equation}
+which is the formula used throughout: a \emph{period-type} term plus a
+\emph{quasiperiod-type} term. The second term is where the difficulty
+lives.
+
+\begin{remark}[the level of rigour of the modular inputs]
+Statements like ``$\Phi_\gamma$ is the weight-$4$ level-$6$ Eisenstein
+series with coefficient law $\sigma_3(m)-28\sigma_3(m/2)+63\sigma_3(m/3)
+-36\sigma_3(m/6)$'' are theorems \emph{conditional} on the certification
+that the $\eta$-quotient expressions for $t$ and $F$ are modular of the
+stated weight, level and character and satisfy the family ODE. That
+certification is complete for the level-$9$ family $\zeta$ and routine but
+unwritten for the others \cite{philedger}. We flag this once here and do
+not repeat it; it affects the \emph{interpretation} of the identities
+below, not their exactness as $q$-series statements.
+\end{remark}
+
+%======================================================================
+\section{The level-$6$ experiment: a cuspidal source on Ap\'ery's own curve}
+\label{sec:level6}
+
+The first thing to try is the cheapest thing: keep Ap\'ery's curve and swap
+the source. This experiment was proposed by Sol (Project D) and is
+instructive precisely because it half-fails.
+
+\subsection{The substitution}
+Family $\gamma$ has $r=3$, $P_\gamma(t)=1-34t+t^2$, $A_n$ the Ap\'ery
+numbers, and (as recovered in \cite{philedger}) an Eisenstein source
+$\Phi_\gamma$ of weight $4$ and level $6$. Now $\dim S_4(\Gamma_0(6))=1$,
+spanned by the newform
+\[
+f_6=(\eta_1\eta_2\eta_3\eta_6)^2=q-2q^2-3q^3+4q^4+6q^5+6q^6-16q^7+\cdots
+\qquad(\text{LMFDB }6.4.a.a).
+\]
+We substitute $\Psi=f_6$ in Definition~\ref{def:sub}.
+
+\begin{verification}[the eta identity]\label{ver:eta6}
+\VerifiedR{coefficientwise to $q^{60}$, exact $\Q$}
+\[
+f_6^2\cdot P_\gamma(t)\;=\;\Phi_\gamma^2 ,
+\qquad\text{equivalently}\qquad
+f_6\,\sqrt{1-34t+t^2}\;=\;\Phi_\gamma .
+\]
+Both sides lie in $M_8(\Gamma_0(6))$, whose Sturm bound is $8$. Hence,
+conditional on the modularity certification of $t,F,\Phi_\gamma$, the
+identity is theorem-grade: agreement to $q^{60}$ vastly exceeds the bound.
+\end{verification}
+
+The reader new to this style should note the shape of the argument. A
+finite computation is not a proof; but a finite computation that verifies
+an identity between two elements of a finite-dimensional space of modular
+forms, past that space's Sturm bound, \emph{is} converted into a proof by
+the Sturm criterion. We use this conversion whenever it is available, and
+say so; where the ambient space is not pinned down we do not.
+
+\subsection{The forced recurrence and its integrality}
+By Definition~\ref{def:sub},
+\[
+R(t)=t\,f_6/\Phi_\gamma=t/\sqrt{1-34t+t^2}.
+\]
+The reconstruction is exact: fitting a rational function times a square
+root against the exact $t$-series determines $(P,\text{numerator})$
+uniquely at degree $2$.
+
+\begin{proposition}[the level-$6$ forced recurrence]\label{prop:rec6}
+\Proved{} \emph{(given Verification~\ref{ver:eta6})}
+Put $w_n:=[t^n](1-34t+t^2)^{-1/2}$. Then $w_0=1$, $w_1=17$, and
+\[
+(n+1)w_{n+1}=17(2n+1)w_n-n\,w_{n-1},
+\]
+so $w=1,17,433,12257,\dots\in\Z$; and $B^{f}_n:=B^{f_6}_n$ satisfies
+Ap\'ery's recurrence with this forcing:
+\[
+m^3B^{f}_m=(2m-1)\bigl(17(m-1)^2+17(m-1)+5\bigr)B^{f}_{m-1}
+-(m-1)^3B^{f}_{m-2}+w_{m-1},
+\]
+with $B^f_0=0$, $B^f_1=1$; e.g.\ $B^f_2=67/4$, $B^f_3=12515/36$.
+\end{proposition}
+
+\begin{proof}
+The recurrence for $w$ is the Gauss contiguous relation for
+$(1-34t+t^2)^{-1/2}$, whose coefficients are Legendre polynomials
+evaluated at $17$; integrality follows by induction from $w_0,w_1\in\Z$
+together with the classical integrality of $P_n(17)\cdot$(Legendre
+normalization) --- concretely, $w_n=P_n(17)$ and the three-term Legendre
+recurrence with the stated initial data produces integers because at each
+step $(n+1)\mid\bigl(17(2n+1)w_n-nw_{n-1}\bigr)$, which is the
+classical statement that $P_n(x)\in\Z[x]$ has integral values at odd
+integers of this shape. The recurrence for $B^f$ is
+Definition~\ref{def:sub} with $R=t/\sqrt{P_\gamma}$: the forcing term is
+$[t^m]R=w_{m-1}$.
+\end{proof}
+
+\begin{verification}[Ap\'ery-quality denominators]\label{ver:den6}
+\VerifiedR{exact, $n\le40$} $d_n^3\,B^f_n\in\Z$ for all $n\le40$,
+$d_n=\operatorname{lcm}(1,\dots,n)$.
+\end{verification}
+
+This is the experiment's clean positive: \emph{the cusp form costs nothing
+in integrality}. Whatever obstructs a cuspidal irrationality proof, it is
+not the denominators --- at least not at this level, over this range.
+
+\subsection{The limit, and the contamination}
+The fold of $\gamma$ is the Fricke fixed point $\tau_c=i/\sqrt6$, i.e.\
+$q_c=e^{-2\pi/\sqrt6}$ \VerifiedR{matches the fold nome to series
+precision}. Write, for the newform $f_6=\sum a_nq^n$,
+\[
+\Theta(\tau):=\sum_{n\ge1}\frac{a_n}{n^3}q^n,\qquad
+\Theta_2(\tau):=\sum_{n\ge1}\frac{a_n}{n^2}q^n ,
+\]
+the third and second Eichler integrals.
+
+\begin{verification}[Eichler value at the Fricke point]\label{ver:theta6}
+\VerifiedR{$120$ digits, residual $1.2\times10^{-121}$}
+\[
+\Theta(\tau_c)\;=\;L(f_6,3)-\frac{\pi}{\sqrt6}\,L(f_6,2).
+\]
+Proof route \ProvedS: the Fricke sign of $f_6$ is $\varepsilon=+1$ (from
+$a_2=-2,a_3=-3$, giving $\lambda_2=-a_2/2=1$, $\lambda_3=-a_3/3=1$);
+evaluate the degree-$2$ period polynomial of $f_6$ under $W_6$ at the fixed
+point, and use $\Lambda(1)=\Lambda(3)$ to remove $L(f_6,1)$.
+\end{verification}
+
+\begin{verification}[the fold value]\label{ver:xi6}
+\VerifiedR{formula versus direct fold computation agree to $2\times10^{-29}$}
+The eta transformation gives $F_\gamma(-1/(6\tau))=-6\tau^2F_\gamma(\tau)$,
+whence $F'(\tau_c)/F(\tau_c)=6\tau_c$ exactly, and \eqref{eq:xi} becomes
+\[
+\xi_f=\lim_{n\to\infty}\frac{B^f_n}{A_n}
+ =\Theta(\tau_c)+\frac{2\pi}{\sqrt6}\,\Theta_2(\tau_c)
+ =0.264718537218080276566224788434303077935\ldots
+\]
+\end{verification}
+
+\begin{observation}[the two defects]\label{obs:defects6}
+\begin{enumerate}[leftmargin=2em]
+\item \emph{Contamination.} $\Theta_2(\tau_c)=0.0740870938237972\ldots$ is a
+\emph{second-kind} Eichler value. PSLQ finds no relation with the critical
+values $L(f_6,s)$, the derivative values $L'(f_6,2),L'(f_6,3)$, $\zeta(3)$,
+powers of $\pi$, or log-twists \ExcludedR{PSLQ over the stated bases,
+tolerance $10^{-25}$; all hits spurious}. Status of the constant:
+\Open. Hence $\xi_f$ is not a bare $L$-value.
+\item \emph{Slow convergence.} $B^f_n-\xi_fA_n$ decays only polynomially
+relative to $A_n$ (numerically like $\alpha^{n}n^{-7/2}$ against
+$A_n\sim\alpha^n$), so naive ratio extrapolation stalls near $8$ digits.
+The cause is visible in $R=t/\sqrt{P_\gamma}$: the inhomogeneity is
+\emph{singular at the fold}. Equivalently $f_6(\tau_c)\ne0$.
+\end{enumerate}
+\end{observation}
+
+\begin{observation}[why the Eisenstein table looked clean]
+For Eisenstein sources the second-kind term in \eqref{eq:xi} is elementary
+and cancels against the quasiperiod of $F$ --- a Legendre-type relation ---
+so the fold value is a bare $L$-value. The cuspidal experiment shows that
+this cancellation is a \emph{feature of the Eisenstein class}, not a general
+mechanism. The general shape is
+\[
+\text{fold value}\;=\;\text{period-polynomial part}
+\;+\;\text{quasiperiod}\times\text{second-kind part}.
+\]
+\end{observation}
+
+\subsection{The problem the experiment leaves}
+\begin{problem}[D-1, Sol]\label{prob:d1}
+Find a linear form in the family's solutions whose limit is exactly the
+period part --- i.e.\ kill the second-kind term --- and determine its
+denominator growth. If $d_n^3$-quality survives, this is a
+rational-approximation apparatus aimed directly at a cuspidal $L$-value.
+\end{problem}
+
+Two routes present themselves; one is excluded.
+
+\begin{verification}[$\kappa$-cancellation excluded]\label{ver:kappa}
+\ExcludedR{PSLQ, $40$ digits, over $\Q$ and over real quadratic fields with
+stated height caps}
+The ratio $\kappa=\Theta_{f,2}(\tau_c)/\Theta_{\Phi,2}(\tau_c)
+=1.39173177734068830824\ldots$ is neither rational nor quadratic. Hence no
+$\Q$-combination of the level-$6$ cuspidal and Eisenstein companions
+cancels the quasiperiod term.
+\end{verification}
+
+That leaves the structural route: \emph{change the source so that the
+second-kind term is never generated}. By Observation~\ref{obs:defects6},
+Ap\'ery-quality error requires a source \emph{vanishing at the fold}. At
+level $6$ this is impossible: $\dim S_4(\Gamma_0(6))=1$, so the only
+cuspidal direction is $f_6$ itself, and $f_6(\tau_c)\ne0$. One must go to a
+level with a two-dimensional cusp space. This is the whole design.
+
+%======================================================================
+\section{The construction: Domb's curve at level $12$}\label{sec:level12}
+
+\subsection{The choice}
+Take the sporadic family $\alpha$ (Domb's numbers), with $r=3$,
+\[
+P_\alpha(t)=1-20t+64t^2=(1-4t)(1-16t),
+\]
+homogeneous recurrence
+$m^3A_m=(2m-1)(10(m-1)^2+10(m-1)+4)A_{m-1}-64(m-1)^3A_{m-2}$, and
+$A=1,4,28,256,2716,31504,\dots$. Its level is $12$, and:
+
+\begin{verification}[the fold is the Fricke point]\label{ver:fold12}
+\VerifiedR{matches the fold nome to series precision}
+The fold nome of $\alpha$ is $q_c=e^{-2\pi/\sqrt{12}}$, i.e.\
+$\tau_{12}=i/\sqrt{12}$, the fixed point of the Fricke involution $W_{12}$
+on $\HH$. Correspondingly $t_c=1/16$ and the conjugate root is
+$t_c'=1/4$.
+\end{verification}
+
+Now $\dim S_4(\Gamma_0(12))=2$: there is no newform, and the space is the
+oldspace spanned by the two embeddings $f_6(q)$ and $f_6(q^2)$ of the
+level-$6$ newform. A two-dimensional space is exactly what
+Problem~\ref{prob:d1} demands, and the Atkin--Lehner involution splits it
+into eigenlines.
+
+\subsection{The oldspace vanishing lemma}
+This is the technical heart, and it is proved.
+
+\begin{theorem}[oldspace swap and vanishing]\label{thm:oldspace}
+\ProvedS{} Let $f_6\in S_4(\Gamma_0(6))$ be the newform above, with Fricke
+eigenvalue $\varepsilon_6:=\varepsilon(f_6,W_6)=+1$. Then, on
+$S_4(\Gamma_0(12))=\operatorname{span}\{f_6(q),f_6(q^2)\}$, the Fricke
+involution $W_{12}$ acts by
+\[
+f_6(q)\;\longmapsto\;4f_6(q^2),\qquad
+f_6(q^2)\;\longmapsto\;\tfrac14f_6(q).
+\]
+Consequently the eigenvectors are $f_6\mp4f_6(q^2)$ with eigenvalues
+$\pm1$; the odd eigenvector
+\[
+\fs:=f_6(q)-4f_6(q^2)=q-6q^2-3q^3+12q^4+6q^5+\cdots\in S_4(\Gamma_0(12))
+\]
+satisfies $\fs|_4W_{12}=-\fs$, and
+\[
+\fs(\tau_{12})=0 .
+\]
+\end{theorem}
+
+\begin{proof}
+The Fricke sign of $f_6$ is $+1$: from $a_2=-2$ and $a_3=-3$ the
+Atkin--Lehner pseudo-eigenvalues at $2$ and $3$ are
+$\lambda_2=-a_2/2^{k/2-1}\!\cdot\!2^{-1}=1$ and $\lambda_3=1$ in the
+weight-$4$ normalization used here, and $\varepsilon_6=\lambda_2\lambda_3
+=+1$.
+
+Compute the slash directly. With $k=4$,
+\begin{align*}
+(f_6|_4W_{12})(\tau)
+&=f_6\!\left(\frac{-1}{12\tau}\right)(\sqrt{12}\,\tau)^{-4}
+ =f_6\!\left(\frac{-1}{6\cdot(2\tau)}\right)(\sqrt{12}\,\tau)^{-4}\\
+&=\varepsilon_6\,(\sqrt6\cdot2\tau)^4f_6(2\tau)\,(\sqrt{12}\,\tau)^{-4}
+ =4f_6(2\tau),
+\end{align*}
+using $(\sqrt6\cdot2\tau)^4/(\sqrt{12}\tau)^4=(24/12)^2=4$. Since $W_{12}$
+is an involution on the space, the second formula follows, and the
+eigenvectors and eigenvalues are immediate.
+
+For the vanishing: at the fixed point $\tau_{12}=i/\sqrt{12}$ one has
+$-1/(12\tau_{12})=\tau_{12}$ and the weight-$4$ automorphy factor is
+$(\sqrt{12}\,\tau_{12})^4=(i)^4=1$. Hence for the odd eigenvector
+$\fs(\tau_{12})=(\fs|_4W_{12})(\tau_{12})=-\fs(\tau_{12})$, so
+$\fs(\tau_{12})=0$.
+\end{proof}
+
+\begin{remark}[what this upgraded]
+Both the relation $f_6(\tau_{12})=4f_6(2\tau_{12})$ and the vanishing
+$\fs(\tau_{12})=0$ were first found numerically \VerifiedR{PSLQ, $35^+$
+digits}. Theorem~\ref{thm:oldspace} replaces both by an argument: the
+constant $4$ is not a fitted number, it is the eigenvector condition. This
+is the single place in the paper where a \VerifiedR{} statement was
+upgraded, and the upgrade is recorded rather than performed silently. The
+label is \ProvedS{} rather than \Proved{} only because the normalization of
+the Atkin--Lehner pseudo-eigenvalues at $2$ and $3$ is quoted from the
+standard theory rather than rederived.
+\end{remark}
+
+The general principle behind Theorem~\ref{thm:oldspace} is worth stating
+separately, since it is what a newcomer should carry away.
+
+\begin{corollary}[odd forms vanish at AL fixed points]\label{cor:oddvanish}
+\Proved{} Let $g\in M_k(\Gamma_0(N))$ with $g|_kW_N=-g$ and $k\equiv0\pmod
+4$. Then $g$ vanishes at the fixed point $i/\sqrt N$ of $W_N$, because the
+automorphy factor there is $(\sqrt N\cdot i/\sqrt N)^k=i^k=1$.
+\end{corollary}
+
+\subsection{The source identity}
+\begin{verification}[the level-$12$ source identity]\label{ver:src12}
+\VerifiedR{exact coefficientwise to $q^{40}$; ambient $M_8(\Gamma_0(12))$,
+Sturm bound $16$}
+\[
+\fs\cdot\sqrt{1-4t}\;=\;\Phi_\alpha ,
+\qquad\text{equivalently}\qquad
+R^*(t):=\frac{t\,\fs}{\Phi_\alpha}=\frac{t}{\sqrt{1-4t}} .
+\]
+\end{verification}
+
+This identity is the crux, and it says something sharp: $P_\alpha$
+factors as $(1-4t)(1-16t)$, and the vanishing combination $\fs$
+extracts \emph{only the conjugate root factor} $\sqrt{1-4t}$, dropping
+$\sqrt{1-16t}$ --- the factor that vanishes at the fold $t_c=1/16$.
+That is precisely the analytic shadow of $\fs(\tau_{12})=0$: the
+would-be singularity of $R^*$ at the fold has been cancelled by the zero
+of the source.
+
+The rational reconstruction is exact, and its coefficients are the plainest
+possible integers:
+\[
+\frac{t}{\sqrt{1-4t}}=\sum_{m\ge1}\binom{2m-2}{m-1}t^m
+= t+2t^2+6t^3+20t^4+70t^5+\cdots
+\]
+--- the central binomial coefficients.
+
+\subsection{The apparatus}
+\begin{construction}[the manufactured apparatus]\label{con:app}
+Set $B^*_0=0$, $B^*_1=1$, and
+\begin{equation}\label{eq:starrec}
+m^3B^*_m=(2m-1)\bigl(10(m-1)^2+10(m-1)+4\bigr)B^*_{m-1}
+-64(m-1)^3B^*_{m-2}+\binom{2m-2}{m-1}.
+\end{equation}
+Thus
+\[
+B^*=0,\ 1,\ \tfrac{37}4,\ \tfrac{818}9,\ \tfrac{141587}{144},\
+\tfrac{51588841}{4500},\ \dots
+\]
+and $A_n$ is the Domb sequence
+$1,4,28,256,2716,31504,\dots$.
+\end{construction}
+
+Everything in \eqref{eq:starrec} is over $\Z$: the homogeneous
+coefficients, the forcing term, the initial data. That is the arithmetic
+half of the design requirement.
+
+\begin{proposition}\label{prop:starrec}
+\Proved{} \emph{(given Verification~\ref{ver:src12})} $B^*_n=[t^n]\,y^{\fs}$
+for the $\fs$-companion of family $\alpha$, i.e.\ \eqref{eq:starrec} is
+Definition~\ref{def:sub} for $\Psi=\fs$.
+\end{proposition}
+
+\begin{proof}
+Immediate from Definition~\ref{def:sub}: the family's homogeneous operator
+is $\alpha$'s, and the forcing term is $[t^m]R^*=\binom{2m-2}{m-1}$ by
+Verification~\ref{ver:src12}.
+\end{proof}
+
+\begin{verification}[integrality]\label{ver:den12}
+\VerifiedR{exact, $n\le40$} $d_n^3\,B^*_n\in\Z$.
+\end{verification}
+
+We stress the label. This is $40$ exact rational computations, not a
+theorem; the corresponding statement for Ap\'ery's own Eisenstein companion
+\emph{is} a theorem, by the classical Ap\'ery--Cohen denominator argument,
+but that argument has not been transported to the cuspidal setting. See
+\S\ref{sec:status}, item (6).
+
+\begin{verification}[exponential convergence]\label{ver:conv}
+\VerifiedR{$n\le200$ at $120$-digit precision}
+$B^*_n/A_n$ stabilizes at rate $\approx4^{-n}$; the increment between
+$n=100$ and $n=300$ is $\approx5\times10^{-61}$, and
+$|B^*_{200}/A_{200}-\xi^*|\approx10^{-121}$.
+\end{verification}
+
+\begin{verification}[the limit]\label{ver:limit}
+\VerifiedR{PSLQ, residual $2\times10^{-61}$, over the basis
+$\{\xi^*,L(f_6,3),L(f_6,2),\pi L(f_6,2),\zeta(3),\pi^3,1\}$ with the stated
+coefficient cap}
+With $\xi^*:=\lim_nB^*_n/A_n=0.36455672878339462975728560797\ldots$, PSLQ
+returns the relation $-2\xi^*+L(f_6,3)=0$, i.e.
+\[
+\boxed{\ \lim_{n\to\infty}\frac{B^*_n}{A_n}\;=\;\frac{L(f_6,3)}{2}\ }
+\]
+with \emph{no} quasiperiod term, \emph{no} $\pi L(f_6,2)$, and \emph{no}
+$\zeta(3)$.
+\end{verification}
+
+\begin{remark}[what has been manufactured]
+Collecting: an integral three-term recurrence with integral forcing, whose
+two solutions $A_n\in\Z$ and $B^*_n\in d_n^{-3}\Z$ \VerifiedR{$n\le40$}
+satisfy $B^*_n/A_n\to L(f_6,3)/2$ with error decaying like $4^{-n}$. To our
+knowledge this is the first Ap\'ery-style apparatus --- integral
+$d_n^3$-denominators, exponential convergence, three-term-plus-forcing
+recurrence over $\Z$ --- whose limit is a critical $L$-value of a cusp
+form. It was \emph{manufactured, not found}: the level was chosen for
+$\dim S_4=2$, the source was chosen in the Fricke-odd line, and the
+vanishing at the fold is by construction (Theorem~\ref{thm:oldspace}).
+This answers Problem~\ref{prob:design} affirmatively, and answers
+Problem~\ref{prob:d1} in a stronger form than asked: the second-kind term
+is not cancelled between two companions, it is never generated.
+\end{remark}
+
+%======================================================================
+\section{The mechanism: one parity, two effects}\label{sec:mech}
+
+Why did it work? The answer is a single hypothesis --- Fricke-oddness of
+the source at a fold sitting at the involution's fixed point --- acting
+through two logically independent channels.
+
+\subsection{Effect 1: fold regularization (exponential convergence)}
+\begin{lemma}[fold regularity]\label{lem:regular}
+\Proved{} \emph{(given Verification~\ref{ver:src12})}
+$R^*=t/\sqrt{1-4t}$ is analytic on $|t|<1/4$; in particular it is regular
+at the fold $t_c=1/16$, its nearest singularity being at the conjugate root
+$t_c'=1/4$.
+\end{lemma}
+
+The consequence is the convergence rate. The homogeneous solutions grow
+like $t_c^{-n}=16^n$; the particular solution generated by an
+inhomogeneity whose singularity sits at $t_c'$ contributes
+$(t_c')^{-n}=4^n$. Hence
+\[
+\frac{B^*_n}{A_n}-\xi^*\;\sim\;\Bigl(\frac{t_c}{t_c'}\Bigr)^{\!n}
+=4^{-n},
+\]
+matching Verification~\ref{ver:conv}. Structurally: \emph{a source
+vanishing at the fold moves the inhomogeneity's singularity off the fold
+and onto the conjugate root}, and the error ratio becomes the root ratio.
+Contrast the level-$6$ experiment, where $f_6(\tau_c)\ne0$ leaves
+$R=t/\sqrt{P_\gamma}$ singular at the fold itself, so the particular
+solution has the \emph{same} exponential rate as the homogeneous ones and
+only a polynomial gap survives (Observation~\ref{obs:defects6}(2)). We
+record the general statement:
+
+\begin{proposition}[regularization criterion]\label{prop:regcrit}
+\ProvedS{} For a substituted source $\Psi$ on a rectified family with a
+simple fold at $q_c$, the ratio $R=t\Psi/\Phi$ is regular at $t_c$ if and
+only if $\Psi$ vanishes at $q_c$ to at least the order of the vanishing of
+$\Phi$ there; when it is regular, the approximation error decays
+geometrically with ratio $t_c/t_c^{\mathrm{next}}$, where
+$t_c^{\mathrm{next}}$ is the nearest singularity of $R$.
+\end{proposition}
+
+\subsection{Effect 2: period parity (a single critical value)}
+The second effect is arithmetic. Let $\Lambda^*(s)$ be the completed
+$L$-function of $\fs$ at level $12$. Fricke-oddness, $\varepsilon(\fs)=-1$,
+forces an odd functional equation, and this has an immediate consequence.
+
+\begin{proposition}[the even critical value dies]\label{prop:parity}
+\ProvedS{} $\varepsilon(\fs)=-1$ implies
+\[
+\Lambda^*(2)=0,\qquad \Lambda^*(1)=-12\,\Lambda^*(3),
+\]
+and (by the scaling of the two embeddings)
+$\Lambda^*(3)=L(f_6,3)/(8\pi^3)$. All three are confirmed numerically
+\VerifiedR{to truncation precision}.
+\end{proposition}
+
+$\Lambda^*(2)=0$ \emph{is} the reason no $L(f_6,2)$ appears in
+Verification~\ref{ver:limit}: the weight-$4$ period polynomial of an odd
+form carries only its odd critical data, and at weight $4$ that is a single
+value. This is the exact contrast with \S\ref{sec:level6}, where
+$\varepsilon(f_6,W_6)=+1$ and both $L(f_6,3)$ and $L(f_6,2)$ survive
+(Verification~\ref{ver:theta6}).
+
+\subsection{The fold split, and where the constant $\tfrac12$ is open}
+Writing $\Theta^*,\Theta^*_2$ for the third and second Eichler integrals of
+$\fs$, formula \eqref{eq:xi} at the level-$12$ fold reads
+\begin{equation}\label{eq:split12}
+\xi^*=\Theta^*(\tau_{12})+\frac{2\pi}{\sqrt{12}}\,\Theta^*_2(\tau_{12}),
+\end{equation}
+\VerifiedR{$25$ digits}, with $F_\alpha|W_{12}=-12\tau^2F_\alpha$ (an eta
+computation), so $F'(\tau_{12})=12\tau_{12}F(\tau_{12})$. The
+$\varepsilon=-1$ value identity $\rho^*(\tau_{12})=0$ checks, and is
+equivalent to $\Lambda^*(1)+12\Lambda^*(3)=0$ from
+Proposition~\ref{prop:parity}.
+
+\begin{proposition}[the exact rational factor]\label{prop:half}
+\RouteOpen{} The route to $\xi^*=L(f_6,3)/2$ is: differentiate the
+weight-$(-2)$ Eichler cocycle relation for $\fs$ at the fixed point
+$\tau_{12}$, substitute $\Theta^{*\prime}=2\pi i\,\Theta^*_2$ and
+$F'/F=12\tau_{12}$ into \eqref{eq:split12}, and reduce the resulting
+combination by Proposition~\ref{prop:parity}. Every step of this route is
+written; the hand computation of the derivative fixed-point identity
+produced an inconsistent orientation/normalization constant, so the exact
+rational factor $\tfrac12$ is, at the time of writing, established only by
+Verification~\ref{ver:limit}.
+\end{proposition}
+
+We are explicit about this because it is the paper's one soft joint. The
+\emph{shape} of the limit --- that it is a rational multiple of the single
+odd critical value $L(f_6,3)$, with no second-kind contamination --- is
+supported by Propositions~\ref{prop:parity}, \ref{prop:half} and the split
+\eqref{eq:split12}. The \emph{value} $\tfrac12$ of the rational factor is
+at present a $61$-digit PSLQ identification.
+
+\subsection{Sol's six-item package}
+For the record, the proof programme that organizes this section, formulated
+by Sol as a review of the construction, and the status of each item:
+
+\begin{center}
+\begin{tabular}{@{}rlp{6.9cm}@{}}
+\toprule
+& item & status \\
+\midrule
+1 & source identity $\fs\sqrt{1-4t}=\Phi_\alpha$ &
+\VerifiedR{$q^{40}$}, Sturm-boundable ($M_8(\Gamma_0(12))$, bound $16$) \\
+2 & forced recurrence \eqref{eq:starrec} &
+\Proved{} formally, given item 1 (Prop.~\ref{prop:starrec}) \\
+3 & fold-regularity lemma &
+\Proved{} given $R^*=t/\sqrt{1-4t}$ (Lemma~\ref{lem:regular}) \\
+4 & Fricke functional equation / oldspace swap &
+\ProvedS{} (Theorem~\ref{thm:oldspace}) \\
+5 & period parity &
+structure \ProvedS{} (Prop.~\ref{prop:parity}); exact constant \RouteOpen{}
+(Prop.~\ref{prop:half}) \\
+6 & denominator theorem $d_n^3B^*_n\in\Z$ &
+\VerifiedR{$n\le40$}; \Open{} beyond \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%======================================================================
+\section{Controls, scope, and the general conjecture}\label{sec:scope}
+
+A mechanism claim is only as good as its controls. Two were run.
+
+\subsection{The $\delta$ control: fold-vanishing is the operative hypothesis}
+\label{sec:delta}
+Family $\delta$ also lives at level $12$, so the \emph{same} source $\fs$
+can be substituted into a \emph{different} curve. Sol proposed this as a
+directed test, and it separates the layers cleanly.
+
+\begin{verification}[the $\delta$ control]\label{ver:delta}
+\VerifiedR{exact, $n\le40$; numerics at $120$ digits}
+For the $\fs$-companion on $\delta$'s curve:
+\begin{enumerate}[leftmargin=2em]
+\item $d_n^3B^{\fs,\delta}_n\in\Z$ still holds for $n\le40$. The
+integrality layer is a property of (level, weight, $d_n$-structure), and is
+\emph{independent of the curve}.
+\item But $\delta$'s fold is complex, $q_c^\delta\approx0.1137-0.1970i$,
+which is \emph{not} the Fricke point, and
+$\fs(q_c^\delta)\approx0.292+0.103i\ne0$. There is no regularization:
+the coefficients of $R_\delta$ oscillate with $|{\rm ratio}|\to9$, both
+conjugate folds being singular.
+\end{enumerate}
+\end{verification}
+
+So the three design requirements really are carried by three different
+structures, and the vanishing-\emph{at-the-fold} hypothesis is necessary,
+not decorative.
+
+\subsection{The uniqueness corollary}
+\begin{corollary}[$\alpha$ is the only sporadic host]\label{cor:unique}
+\Proved{} \emph{(given the fold and dimension data of
+\cite{philedger,anchors})}
+A rational vanishing source in the sense of \S\ref{sec:level12} requires
+(i) a \emph{real} fold sitting at an Atkin--Lehner fixed point, and
+(ii) $\dim S_{r+1}\ge2$ at the family's level. Among the nine order-$3$
+sporadic families, real folds occur only for $\alpha,\gamma,\varepsilon,
+\zeta$ (levels $12,6,8,9$), whose cusp dimensions are $2,1,1,1$
+respectively. Hence \textbf{$\alpha$ is the unique sporadic family
+admitting the construction.}
+\end{corollary}
+
+\begin{proof}
+(i) is Corollary~\ref{cor:oddvanish} together with
+Proposition~\ref{prop:regcrit}: the vanishing must occur at the fold, and
+the only mechanism producing a forced zero of a rational integral source is
+oddness under an involution fixing that point; a complex fold is not an
+Atkin--Lehner fixed point on $\HH$ for a real involution. (ii) is needed
+because at $\dim S_{r+1}=1$ the eigenline decomposition is trivial and the
+unique cusp direction has whatever Fricke sign it has --- at level $6$ it
+is $+1$, so no odd cuspidal direction exists at all. The dimension and
+fold data are then read off the table.
+\end{proof}
+
+\begin{remark}
+The complex-fold families ($B,\delta,\eta$) are excluded over $\R$
+outright by clause (i). In particular Sol's suggested test at level $20$
+via family $\eta$ is answered without computation: $\eta$'s discriminant is
+$-16$. Further instances therefore require \emph{non-sporadic} rectified
+families at genus-zero levels with larger cusp spaces --- the reverse
+factory's next search domain, now equipped with a quantitative objective
+(maximize the error-decay base against the denominator-growth base).
+\end{remark}
+
+\subsection{The general conjecture}
+\begin{conjecture}[D-2, in Sol's refined mechanism form]\label{conj:d2}
+For a modular Picard--Fuchs family with a fold fixed by an Atkin--Lehner
+involution, a rational integral source in the $(-1)$-eigenspace that
+vanishes to the required order at the fold yields a regularized companion
+whose connection value lies in the odd critical-period line. Quantitatively:
+for every genus-zero level $N$ with $\dim S_{r+1}\ge2$ and a rectified
+family whose fold is the $W_N$-fixed point, the Fricke-odd vanishing
+combination yields a $d_n^r$-integral, exponentially convergent apparatus
+whose limit is a rational multiple of an odd critical $L$-value.
+\end{conjecture}
+
+Status: \Open. Evidence: two data points (levels $6$ and $12$, the second
+positive and the first explaining the necessity of the parity hypothesis),
+plus the $\delta$ control isolating the vanishing clause, plus the three
+separated layers --- \emph{integral structure} $\Rightarrow d_n^r$;
+\emph{fold-vanishing} $\Rightarrow$ regularization; \emph{odd parity}
+$\Rightarrow$ odd critical value --- each of which is independently
+supported. Two data points is not evidence for a general law, and we do
+not present it as such; the value of the conjecture is that it states
+exactly which hypotheses a third data point must test.
+
+%======================================================================
+\section{Honest irrationality bookkeeping}\label{sec:race}
+
+It would be easy to over-read \S\ref{sec:level12}. We therefore state the
+negative plainly.
+
+\subsection{The apparatus loses the race}
+An Ap\'ery-style irrationality proof needs the cleared error to tend to
+zero:
+\[
+\bigl|\,d_n^{3}\bigl(A_n\,\xi^*-B^*_n\bigr)\,\bigr|\;\longrightarrow\;0 .
+\]
+Here $d_n^3\sim e^{3n}=(20.08\ldots)^n$ while $A_n|B^*_n/A_n-\xi^*|$ decays
+only like $4^{-n}$ relative to $A_n$; the product behaves like
+$e^{3n}\cdot4^{-n}\cdot(\text{subexponential})\to\infty$.
+
+\begin{observation}[no irrationality]\label{obs:noirr}
+\Proved{} The apparatus of Construction~\ref{con:app} does \emph{not}
+prove, and does not bear on, the irrationality of $L(f_6,3)$. The
+decay base $4$ loses to the denominator base $e^3=20.08\ldots$.
+\end{observation}
+
+Its value is structural: cuspidal critical $L$-values are now inside the
+modular-anchor factory with Ap\'ery-quality arithmetic, and the
+convergence/denominator trade-off becomes an \emph{optimization problem}
+over the triple (level, family, source) --- the same problem that Ap\'ery's
+$\zeta(3)$ construction wins in the Eisenstein class.
+
+\subsection{The race, scored over all fifteen families}
+Sol's scoring criterion: with $A_n\sim\alpha^n$, error $\sim\beta^n$, and
+denominators $\ll\delta^n$, one needs $\delta|\beta|<1$. For our families
+$|A_n\xi-B_n|\sim|t_c'|^{-n}$ and $\delta=e^{r}$, so the score is
+$e^{r}/|t_c'|$ with $t_c'$ the larger root of $P$.
+
+\begin{verification}[Route-1 scan]\label{ver:race}
+\VerifiedR{exact roots, all fifteen families}
+\begin{center}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+family & $r$ & $|t_c'|$ & $e^{r}/|t_c'|$ & verdict \\
+\midrule
+$D$ ($\zeta(2)$)      & 2 & $11.09$ & $0.67$ & \textbf{win} --- Ap\'ery's $\zeta(2)$ \\
+$\gamma$ ($\zeta(3)$) & 3 & $33.97$ & $0.59$ & \textbf{win} --- Ap\'ery's $\zeta(3)$ \\
+$\varepsilon$         & 3 & $1.457$ & $13.8$ & fail (best of the rest) \\
+all others            &   & $\le1$  & $\ge7.4$ & fail \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{verification}
+
+Exactly the two classical wins, with nothing near the boundary. The
+sporadic table is exhausted as a source of irrationality proofs.
+
+\subsection{Ap\'ery's miracle is the same construction}
+\begin{verification}[the classical source vanishes at its fold]\label{ver:phigamma}
+\VerifiedR{$|\Phi_\gamma(\tau_c)|<10^{-122}$}
+$\Phi_\gamma(\tau_c)=0$: Ap\'ery's own $\zeta(3)$ source vanishes at the
+fold. It is the $W_6$-\emph{odd} Eisenstein direction, and the vanishing is
+Corollary~\ref{cor:oddvanish} again --- any weight-$4$ form odd under
+$W_6$ vanishes at $i/\sqrt6$ since the automorphy factor there is $+1$.
+\end{verification}
+
+This reframes the whole picture. Ap\'ery's construction \emph{is} the
+construction of \S\ref{sec:level12}: an odd source vanishing at an
+Atkin--Lehner-fixed fold. It succeeds where ours does not only because its
+level has root ratio $34>e^3$. One mechanism, two classes:
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+& odd Eisenstein source & odd cusp source \\
+\midrule
+level $6$ (ratio $34>e^3$) & Ap\'ery's $\zeta(3)$ proof &
+$S_4^-(\Gamma_0(6))=0$ --- none exists \\
+level $12$ (ratio $4<e^3$) & $\zeta(3)$-type, loses race &
+our $L(f_6,3)/2$ apparatus, loses race \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Note also that the ``mixed-source fix'' at level $6$ --- subtract a
+multiple of the Eisenstein source to force $f_6$ to vanish at the fold ---
+is impossible: $\Phi_\gamma$ \emph{already} vanishes there, so no multiple
+of it changes the value of $f_6$ at $\tau_c$ \ExcludedR{verified}.
+
+\subsection{The precise open problem}
+\begin{problem}[the cuspidal-Ap\'ery question]\label{prob:cusp}
+\Open{} Find a genus-zero group $\Gamma$ carrying a rectified family whose
+Atkin--Lehner-fixed fold has conjugate root $|t_c'|>e^{r}$, and with
+$S^-_{r+1}(\Gamma)\ne0$. The odd cuspidal companion would then give a
+race-winning $d_n^r$-apparatus for a cusp-form critical $L$-value --- an
+irrationality proof of a cuspidal period --- \emph{provided} the
+$d_n^r$-integrality, which is proved in the Eisenstein class but only
+observed in the cuspidal one, survives.
+\end{problem}
+
+Two failure modes deserve respect. First, cuspidal modular-symbol
+denominators may be genuinely worse than $d_n^r$ (Sol's warning); our
+$n\le40$ data cannot see this. Second, the sporadic table itself is
+exhausted (Verification~\ref{ver:race}, Corollary~\ref{cor:unique}), so the
+search must move to non-sporadic rectified families.
+
+%======================================================================
+\section{Evidence status}\label{sec:status}
+
+Consolidated, with nothing upgraded relative to the ledgers.
+
+\begin{enumerate}[leftmargin=2.4em,label=(\arabic*)]
+\item \textbf{The Eisenstein/cuspidal dichotomy of sources}
+(\S\ref{sec:intro}): \VerifiedR{exact $\Q$, coefficientwise to $q^{60}$,
+held-out band $q^{27}$--$q^{60}$}, conditional on the modularity
+certification of $t,F$ per family (complete only for level $9$).
+\item \textbf{Level-$6$ identity} $f_6\sqrt{1-34t+t^2}=\Phi_\gamma$:
+\VerifiedR{$q^{60}$}, theorem-grade modulo the same certification, via the
+Sturm bound $8$ in $M_8(\Gamma_0(6))$.
+\item \textbf{Level-$6$ limit} $\Theta(\tau_c)=L(f_6,3)-\tfrac\pi{\sqrt6}
+L(f_6,2)$: \VerifiedR{$120$ digits}; period-polynomial proof route stated,
+not written out. Second-kind constant $\Theta_2(\tau_c)$: \Open{} (PSLQ
+negative over the stated bases).
+\item \textbf{Oldspace swap and $\fs(\tau_{12})=0$}: \ProvedS{}
+(Theorem~\ref{thm:oldspace}); previously \VerifiedR{PSLQ $35^+$ digits}.
+\item \textbf{Source identity} $\fs\sqrt{1-4t}=\Phi_\alpha$:
+\VerifiedR{exact to $q^{40}$} via the central-binomial reconstruction of
+$R^*$; Sturm-boundable in $M_8(\Gamma_0(12))$ (bound $16$), which the
+verification range exceeds.
+\item \textbf{$d_n^3$-integrality} of $B^f$ and $B^*$: \VerifiedR{$n\le40$}
+in both cases; \Open{} beyond. No denominator theorem is claimed.
+\item \textbf{The limit} $B^*_n/A_n=L(f_6,3)/2$: \VerifiedR{$61$-digit
+PSLQ, residual $2\times10^{-61}$}, with $121$-digit stability of the ratio;
+the shape (rational multiple of the odd critical value) is supported by
+Propositions~\ref{prop:parity}--\ref{prop:half}, the factor $\tfrac12$ is
+\RouteOpen.
+\item \textbf{Mechanism}: Effect 1 \Proved{} given item (5)
+(Lemma~\ref{lem:regular}); Effect 2 structurally \ProvedS{}
+(Proposition~\ref{prop:parity}), exact constant \RouteOpen.
+\item \textbf{$\delta$ control}: \VerifiedR{$n\le40$ exact, $120$-digit
+numerics}. \textbf{Uniqueness of $\alpha$}: \Proved{} given the tabulated
+fold and dimension data.
+\item \textbf{$\kappa$-cancellation}: \ExcludedR{PSLQ, $40$ digits, stated
+bases and height caps}.
+\item \textbf{Race scan and} $\Phi_\gamma(\tau_c)=0$:
+\VerifiedR{exact roots; $10^{-122}$}.
+\item \textbf{Conjecture D-2}: \Open, two data points.
+\item \textbf{Irrationality}: none. Observation~\ref{obs:noirr} is a
+proved negative about \emph{this} apparatus, not about $L(f_6,3)$.
+\end{enumerate}
+
+\begin{remark}[for the newcomer]
+The pattern to internalize: a $61$-digit PSLQ identification is
+overwhelming \emph{evidence} and zero \emph{proof}; a $q^{40}$ coefficient
+agreement inside a space with Sturm bound $16$ \emph{is} a proof, once the
+ambient space is certified; and an integrality check to $n=40$ is neither,
+because denominator theorems in this subject fail first at moderate $n$ for
+reasons invisible in small data. Keeping these three apart is the whole of
+the discipline.
+\end{remark}
+
+%======================================================================
+\section{Provenance and data}\label{sec:prov}
+
+All computations are logged in the programme's ledgers, with exact
+arithmetic (Python \texttt{Fraction}) for series work and \texttt{mpmath}
+at $120$ decimal digits for the numerics.
+
+\begin{sloppypar}
+\begin{itemize}[leftmargin=1.6em]
+\item Source dichotomy and the twelve identifications:
+\texttt{work/PHI\_SOURCE\_LEDGER.md}; scripts
+\texttt{work/z5eps/eps60\_phi\_source.py},
+\texttt{eps60b\_phi\_holdouts.py}, \texttt{eps61\_eichler\_limits.py}.
+\item Level-$6$ experiment (\S\ref{sec:level6}):
+\texttt{work/CUSPIDAL\_COMPANION.md}; scripts
+\texttt{work/z5eps/eps62\_cuspidal\_companion.py},
+\texttt{eps62b\_cusp\_limit.py}.
+\item Level-$12$ construction, $\delta$ control, uniqueness, proof notes,
+race scan (\S\ref{sec:level12}--\S\ref{sec:race}):
+\texttt{work/D1\_CUSPIDAL\_APPARATUS.md}, \S\S1--9.
+\item Proved base (rectification, companion inversion, uniform companion
+formula): \texttt{papers\_out/modular\_anchors/main.tex}.
+\end{itemize}
+\end{sloppypar}
+
+\subsection*{Acknowledgements}
+The collaborator Sol proposed the cuspidal-source project, formulated open
+problem D-1 and the six-item theorem package, supplied the refined
+hypotheses of Conjecture~\ref{conj:d2}, directed the $\delta$ control, and
+devised the irrationality-race scoring used in \S\ref{sec:race}; the
+reviews were adversarial in the productive sense and several negative
+results in this paper exist because of them.
+
+\begin{thebibliography}{9}
+\bibitem{anchors} \emph{Modular anchors for Ap\'ery-like companions:
+second solutions as Eichler integrals, with the symmetric-square theorem
+for the sporadic operators}, companion paper of this programme,
+\texttt{papers\_out/modular\_anchors}.
+\bibitem{philedger} \emph{The companion sources $\Phi$ of the fifteen
+sporadic pairs}, programme ledger \texttt{work/PHI\_SOURCE\_LEDGER.md}.
+\bibitem{apery} R.~Ap\'ery, \emph{Irrationalit\'e de $\zeta(2)$ et
+$\zeta(3)$}, Ast\'erisque \textbf{61} (1979), 11--13.
+\bibitem{beukers} F.~Beukers, \emph{Irrationality proofs using modular
+forms}, Ast\'erisque \textbf{147--148} (1987), 271--283.
+\bibitem{zagier} D.~Zagier, \emph{Integral solutions of Ap\'ery-like
+recurrence equations}, in: Groups and Symmetries, CRM Proc.\ Lecture Notes
+\textbf{47} (2009), 349--366.
+\bibitem{alw} A.~O.~L.~Atkin, J.~Lehner, \emph{Hecke operators on
+$\Gamma_0(m)$}, Math.\ Ann.\ \textbf{185} (1970), 134--160.
+\bibitem{sturm} J.~Sturm, \emph{On the congruence of modular forms},
+Lecture Notes in Math.\ \textbf{1240}, Springer (1987), 275--280.
+\bibitem{cooper} S.~Cooper, \emph{Sporadic sequences, modular forms and
+new series for $1/\pi$}, Ramanujan J.\ \textbf{29} (2012), 163--183.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,59 @@
+{
+  "family": "zeta::Mathematical Dimension Calculations",
+  "chain": [
+    "chatgpt-research-archive/conversations/zeta/mathematical-dimension-calculations-6a801f54.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/zeta/mathematical-dimension-calculations-6a801f54.md",
+  "title_human": "Level-169 \u03b6(5) no-go theorem and Brown\u2013Zudilin refinement",
+  "claims": [
+    {
+      "statement": "Original weighted seven-cusp ansatz is dead at T_6: rank A_6=11, rank[A_6|b_6]=12. Natural holomorphic parity-compatible construction reached full rank with zero nullity.",
+      "object": "level-169 \u03b6(5) construction space",
+      "status": "obstruction",
+      "source_file": "mathematical-dimension-calculations-6a801f54.md",
+      "notes": "Certified obstruction"
+    },
+    {
+      "statement": "For n=5,6,7,8, full tensor rank is 861/861, 959/959, 1057/1057, 1155/1155 with zero nullity. Nonzero pivot-product: 432750 (mod 1000033).",
+      "object": "level-169 Riemann\u2013Roch obstruction",
+      "status": "proved",
+      "source_file": "mathematical-dimension-calculations-6a801f54.md",
+      "notes": "Exact finite-field certificates"
+    },
+    {
+      "statement": "No hidden finite-degree D_\u221e-tower relation: approximant-basis computation through order 500 gives rank 5 with balanced minimal degrees; every candidate relation trained through T_499 fails at T_500",
+      "object": "level-169 functional field relations",
+      "status": "proved",
+      "source_file": "mathematical-dimension-calculations-6a801f54.md",
+      "notes": "Verified through held-out window"
+    },
+    {
+      "statement": "Brown\u2013Zudilin refined vector a=(11,11,10,8,17,20,22,18) gives conditional crossing: \u03b3_\u2113=1 = 1.125139675 > 1",
+      "object": "Brown\u2013Zudilin parameter improvement",
+      "status": "conjectural",
+      "source_file": "mathematical-dimension-calculations-6a801f54.md",
+      "notes": "Requires refined denominator theorem proof"
+    },
+    {
+      "statement": "Missing statement: prove refined denominator theorem holds with \u2113=1 for this parameter family, i.e., \u03a6_n^(-1) d_(25n) d_(11n) d_(8n) d_(7n) d_(6n) I'(an) \u2208 Z\u03b6(5)+Z",
+      "object": "Brown\u2013Zudilin conditional irrationality",
+      "status": "open",
+      "source_file": "mathematical-dimension-calculations-6a801f54.md",
+      "notes": "High-value computational target"
+    }
+  ],
+  "connections_to_literature": [
+    "Brown\u2013Zudilin arXiv paper on \u03b6(5) approximation"
+  ],
+  "open_threads_or_handoffs": [
+    "Prove refined denominator theorem with \u2113=1 for a=(11,11,10,8,17,20,22,18)",
+    "Complete exact partial-fraction/prime-valuation proof",
+    "Extend dimensional obstruction analysis"
+  ],
+  "in_ledger": "partially",
+  "ledger_notes": "Brown\u2013Zudilin work related to B01 (marked OPEN/flagship problem)",
+  "flags": [
+    "No proof of irrationality of \u03b6(5) reached yet",
+    "Conditional crossing is not a theorem without denominator proof"
+  ]
+}

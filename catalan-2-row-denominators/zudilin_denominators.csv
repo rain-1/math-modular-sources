@@ -1,0 +1,14 @@
+m,is_power_of_two,v2_denom,e_m_bound
+1,True,2,6
+2,True,6,12
+3,True,8,17
+5,True,16,26
+8,True,30,38
+10,True,36,47
+15,True,52,67
+20,True,76,88
+30,True,112,128
+40,True,156,169
+60,True,232,249
+80,True,316,330
+100,True,394,410

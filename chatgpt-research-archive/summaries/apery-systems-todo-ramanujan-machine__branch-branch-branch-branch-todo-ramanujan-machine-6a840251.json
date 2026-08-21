@@ -1,0 +1,100 @@
+{
+  "family": "apery-systems::TODO: Ramanujan machine",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+    "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a840251.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a840251.json",
+  "title_human": "L(3,chi_5) eta-fold connection, Hadamard purification, and X_0(20) six-sheet cusp/holonomy audit",
+  "claims": [
+    {
+      "statement": "Under z = tau + 1/2, the level-20 eta system reduces to level 5: t_eta(tau) = -(eta(z)/eta(5z))^6, F_eta(tau) = eta(z)^5/eta(5z). Moreover Phi_eta(tau) = -S(z) and Theta_eta(tau) = -D^{-3} S(z), where S = E_{4,chi_5,1}, so the oldform expression (1 - 14 V_2 - 16 V_4) S is, after the half-translation, literally the primitive orientation.",
+      "object": "L(3,chi_5) eta-sporadic source, level 20 / level 5 fold",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a840251.md",
+      "notes": "Presented as closing the main gap ('the actual fold connection') left open in the prior L3_CHI5_APPLICATION_DOSSIER_v2/v4 dossiers."
+    },
+    {
+      "statement": "The two order-two elliptic points z_2 = (2+i)/5, z_3 = (3+i)/5 (fixed by matrices [[2,-1],[5,-2]] and [[3,-2],[5,-3]]) geometrically explain the previously-noted conjugate roots 11 ± 2i.",
+      "object": "L(3,chi_5) eta-sporadic elliptic fold geometry",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a840251.md",
+      "notes": null
+    },
+    {
+      "statement": "With Lambda = L(3,chi_5), the finite cotangent sum sum_{m>=1} chi_5(m) cot(2*pi*m/5) / m^3 = 4*pi^3 / (125*sqrt5), giving exact fold constants C_pm = Lambda/2 +- 2i*pi^3/(125*sqrt5), so C_+ + C_- = Lambda (symmetric part = (1/2) L(3,chi_5)) and C_+ - C_- = 4i*pi^3/(125*sqrt5) (antisymmetric part = pure Tate pi^3).",
+      "object": "L(3,chi_5) exact fold constants",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a840251.md",
+      "notes": "Described as upgrading a previously connection-dependent (i.e. conjectural) result from the v2 dossier to a proved exact identity."
+    },
+    {
+      "statement": "Setting X = A*A, Y = A*B, Z = B*B (Hadamard/tensor products) and H_Lambda = Lambda*X - 2Y, the logarithmic coefficient of H_Lambda at the cross puncture t_+ t_- = 1/125 vanishes exactly (not conjecturally); the remaining amplitudes at the other two punctures are -4i*pi^3/(125*sqrt5) and +4i*pi^3/(125*sqrt5), so H_Lambda has removed the entire non-Tate component and what remains is purely Tate.",
+      "object": "L(3,chi_5) Hadamard purification theorem",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a840251.md",
+      "notes": "A centered basis U_0=X, U_1 = Y - (Lambda/2)X, U_2 = Z - Lambda*Y + (Lambda^2/4)X is given, with all three U_j rational-Taylor-coefficient objects assuming Lambda is rational, and every nonconstant connection coordinate a Tate period."
+    },
+    {
+      "statement": "The uncentered branch matrix M = [[1,1,1],[C_+,(C_++C_-)/2? ,C_-],[C_+^2,2C_+C_-,C_-^2]] (3x3 with rows powers 0,1,2 of C_+, symmetric mean, C_-) has det M = (C_- - C_+)^3 = (-4i*pi^3/(125*sqrt5))^3, which is nonzero over any coefficient field. Hence no nonzero scalar combination aX+bY+cZ can cancel all three nearest branch germs simultaneously.",
+      "object": "L(3,chi_5) tensor no-go theorem",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a840251.md",
+      "notes": "Interpreted as ruling out any 'miraculous scalar linear combination' inside the rank-three tensor space; further improvement needs more extension directions or arithmetic holonomy."
+    },
+    {
+      "statement": "In the natural Hadamard variable (not the rescaled x = 125z), X_n = A_n^2 in Z, d_n^3 Y_n in Z, and d_n^6 Z_n in Z; consequently if Lambda = a/b in Q, then b * d_n^3 * [z^n] H_Lambda in Z, i.e. the cross-purified Hadamard object has arithmetic weight 3, not 6, and the centered basis has arithmetic grading 0, 3, 6.",
+      "object": "L(3,chi_5) Hadamard object arithmetic weight",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a840251.md",
+      "notes": "Builds on the general depth-three denominator theorem d_n^3 B_n in Z stated for the eta companion (from RESEARCH_MASTER_NOTES_2026-08-17, not independently verified here) plus the discrete Wronskian A_n B_{n-1} - A_{n-1} B_n = -n^3 / 125^{n-1}."
+    },
+    {
+      "statement": "The order-six operator L_6 for the eta system has local exponents 0,0,0,0,0,0 at 0; 0,1,2,2,3,4 at 1; 0,1,2,2,3,4 at alpha, alpha-bar (where 125*alpha^2 - 234*alpha + 125 = 0); 0,1,2,4,5,6 at -1; and 1,1,1,1,1,1 at infinity, satisfying Fuchs' relation exactly. An exact subset audit over all possible factor orders m=1,...,5 shows no choice of local exponents can satisfy the factor's Fuchs relation without introducing new apparent singularities, so L_6 has no proper singularity-preserving factor over Q(x).",
+      "object": "L(3,chi_5) order-six operator minimality",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a840251.md",
+      "notes": "Explicitly NOT upgraded to full irreducibility: a rational factor could still introduce apparent singularities not ruled out by exponent bookkeeping; a van Hoeij-style factorization certificate would be needed for that. p-curvature at p=7 was checked to be regular nilpotent with ranks 5,4,3,2,1,0, consistent with but not proving MUM/irreducibility."
+    },
+    {
+      "statement": "The affine target-zero direction Delta_eta = (-1 + 26 V_2 - 144 V_4) S was tested as a candidate pure-Tate auxiliary; numerically its fold constants are -0.2628716645577661... +- 0.1530474284194148...i, which do not reduce to small combinations of the already-isolated Lambda and pi^3 directions, so this route does not appear to supply the missing auxiliary.",
+      "object": "L(3,chi_5) failed auxiliary-direction test",
+      "status": "abandoned",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a840251.md",
+      "notes": "Framed as a useful negative result illustrating that target-zero at the base cusp does not by itself guarantee a globally Tate extension — additional additive-twist cusp periods can survive."
+    },
+    {
+      "statement": "A denominator audit shows the centered Hadamard row U_1 has sharp depth 3 at every good prime, and so do all its Euler derivatives, ruling out a hidden d_n^2 saving as a route to an irrationality proof for L(3,chi_5) via this row alone.",
+      "object": "L(3,chi_5) U_1 denominator depth audit",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a840251.md",
+      "notes": "Motivates escalating from the single centered row to a six-sheet direct image to look for cheap homogeneous directions via representation-theoretic projections."
+    },
+    {
+      "statement": "For the six-sheet monodromy analysis of X_0(20), the universal-cover coordinate can be normalized on torsion points of an elliptic curve so that Q = 1/6, 2Q = 1/3, 3Q = 1/2, 4Q = 2/3, allowing an upper bound on the relevant conformal radius via the larger domain C minus {1/6, 1/2} (equivalent after affine normalization to the classical twice-punctured plane at 1/2).",
+      "object": "L(3,chi_5) six-sheet genus-one conformal radius bound",
+      "status": "experimental/numerical",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a840251.md",
+      "notes": "Framed as a shortcut check: if this upper bound already misses the CDT arithmetic-holonomy threshold, the whole genus-one route is dead without needing to solve the full accessory-parameter problem. Result of the check is not given in this excerpt."
+    },
+    {
+      "statement": "For the full depth-three Eichler cocycle P_gamma(tau) = chi_5(d_gamma)^{-1} (c_gamma*tau + d_gamma)^2 Theta(gamma*tau) - Theta(tau) evaluated on the six old-Eisenstein directions S, V_2 S, V_4 S, T, V_2 T, V_4 T at the six cusps of X_0(20): each single cusp imposes rank 3 on the six-dimensional S/T oldspace, two generic cusps already give rank 6 (so no nonzero extension can be simultaneously parabolically trivial there), and there is exactly one exceptional cusp pair (0 and 1/2) whose combined cocycle has rank 5, leaving a single candidate line.",
+      "object": "L(3,chi_5) six-cusp Eichler cocycle rank computation",
+      "status": "experimental/numerical",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a840251.md",
+      "notes": "Described as 'numerically' computed; the thread ends mid-investigation while reconstructing the exceptional candidate line and checking whether it retains the L(3,chi_5) target and is regular at the Taylor cusp. No final resolution given in this chain's content."
+    }
+  ],
+  "connections_to_literature": [
+    "See trunk for Zagier R_2 Eisenstein phenomenon, CDT arithmetic-holonomy programme, Beukers-type p-adic methods.",
+    "CDT-style arithmetic-holonomy inequality is the explicit target framework for testing whether the L(3,chi_5) construction can cross an irrationality threshold."
+  ],
+  "open_threads_or_handoffs": [
+    "No irrationality theorem has been obtained for L(3,chi_5); the thread explicitly states the remaining frontier is 'genuinely arithmetic-holonomic': full module irreducibility, exact prime-by-prime denominator savings, the independent pure-function tuple, and the Bost/Charles/CDT energy inequality.",
+    "Full van Hoeij-style factorization certificate needed to upgrade 'no singularity-preserving factor' to genuine irreducibility of L_6.",
+    "Six-sheet direct image / cusp cocycle computation is left unresolved mid-computation: whether the single candidate line (from the rank-5 exceptional cusp pair 0, 1/2) retains the L(3,chi_5) target and is regular at the Taylor cusp is not answered in this chain."
+  ],
+  "in_ledger": "no",
+  "ledger_notes": "No ledger entries (Ledger sheet or Do Not Overstate sheet) correspond to this specific L(3,chi_5)/X_0(20) eta-fold, Hadamard-purification, or six-sheet cusp/monodromy material; the general depth-three denominator claim invoked here is structurally similar to ledger item E09 ('d_n^3 B*_n in Z for all n', flagged in Do Not Overstate as 'NOT PROVED, only verified for n<=40') but E09 is for a different family, so this is not a direct match. No superseded/overstated flags apply directly.",
+  "flags": []
+}

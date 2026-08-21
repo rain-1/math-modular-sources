@@ -1,0 +1,1698 @@
+% !TeX program = pdflatex
+%
+% "The fifteen sporadic Apery-like pairs: second solutions, the chi-twisted
+%  Lucas law, and the closed forms" -- status paper of River's odd-zeta programme.
+%
+% Provenance of every statement: work/LBW_GENERAL.md (T1-T4), work/LEMMAD_CHECK.md,
+% work/SPORADIC_BARE.md, work/MINIMAL_FORM_PROOF.md (7-9), lean/ZetaLucas.
+% Companion papers: papers_out/lucas2nd, papers_out/lucas_min.
+%
+% Evidence labels are load-bearing and are never silently upgraded; see 1.4.
+%
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{problem}[theorem]{Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Zp}{\Z_{(p)}}
+\newcommand{\vp}{v_p}
+\newcommand{\bin}[2]{\binom{#1}{#2}}
+\newcommand{\HH}[2]{H^{(#1)}_{#2}}
+\newcommand{\KK}[3]{K^{(#1)}_{#2}\!\left(#3\right)}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\ct}{ct}
+
+% evidence-class markers
+\newcommand{\Thm}{\textup{\textsf{[THM]}}}
+\newcommand{\Proved}{\textup{\textsf{[PROVED]}}}
+\newcommand{\Lean}{\textup{\textsf{[LEAN]}}}
+\newcommand{\Verified}{\textup{\textsf{[VERIFIED]}}}
+\newcommand{\VerifiedR}[1]{\textup{\textsf{[VERIFIED: #1]}}}
+\newcommand{\Excluded}{\textup{\textsf{[EXCLUDED]}}}
+\newcommand{\Open}{\textup{\textsf{[OPEN]}}}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\title[The fifteen sporadic Ap\'ery-like pairs]
+      {The fifteen sporadic Ap\'ery-like pairs:\\
+       second solutions, the $\chi$-twisted Lucas law,\\ and the closed forms}
+
+\author{}
+\date{\today}
+
+\subjclass[2020]{11A07, 11B65, 11S80, 33F10, 05A10}
+\keywords{Ap\'ery-like sequences, sporadic sequences, Lucas congruences, second
+solution, Ap\'ery limits, Dwork crystals, creative telescoping, Gosper's algorithm}
+
+\begin{abstract}
+For each of the fifteen sporadic Ap\'ery-like sequences $A(n)$ --- Zagier's six, the six
+Almkvist--Zudilin cases and Cooper's three --- let $B(n)$ be the second solution of the
+same three-term recurrence, normalised by $B(0)=0$, $B(1)=1$. The first row obeys a Lucas
+congruence $A(ap+r)\equiv A(a)A(r)\pmod p$. We report the current state of the second row.
+Exact computation across all fifteen pairs and all primes $5\le p\le 103$ says that the
+naive analogue $p^{w}B(ap+r)\equiv B(a)A(r)$ is \emph{false} for exactly seven of the
+fifteen, at exactly the primes at which a quadratic Dirichlet character $\chi$ takes the
+value $-1$, and that inserting the single factor $\chi(p)$ repairs it with $p$-adic floor
+exactly $w$ in every cell tested. We isolate the mechanism (one line of Frobenius descent
+for a $\chi$-twisted harmonic letter), prove the descent under five explicit hypotheses,
+and correct the product-region hypothesis of the earlier statement: the surviving digit set
+is a proper subset and carries a base-level defect $\Delta(a)$, whose vanishing is an
+additional clause. The clause is automatic for tame weights, fails for $\alpha$
+(Domb), $\varepsilon$ and $\mathbf E$, and \emph{no admissible weight repairs it} --- for
+$\mathbf E$, the only known instance with $\chi\ne1$, the defect is independent of the
+choice of decomposition. Four instances are theorems ($\gamma$, $\mathbf A$, $\mathbf D$,
+$s_{10}$), one ($s_7$) is one bounded local lemma away, three are blocked as above, and
+seven remain conjectural. Separately, a step-three endpoint transform proves the previously computational
+denominator bound $d_n^2B(n)\in\Z$ for Zagier's $\mathbf B$, shows the exponent two is
+optimal, and classifies its full dilation family by the exact condition $3\mid h$.
+On the closed-form side we record a proof, formalised in Lean~4,
+of $b_n=\sum_k\bin nk^2\bin{n+k}k^2(2\HH3n-\HH3k)$ for Ap\'ery's $\zeta(3)$ numerators;
+finite-certificate proofs, valid for every $n$, of the symmetric closed forms for the Franel
+numbers and for $\sum_k\bin nk^4$ --- these sums are the $t^2$-coefficients of
+Straub--Zudilin's deformation, and we say so, together with an elementary re-derivation of
+the Ap\'ery limits $\zeta(2)/4$ and $\zeta(2)/5$ that they proved for all exponents; a proof
+that the mechanism behind those two \emph{cannot} close the $\zeta(2)$-Ap\'ery case; and a
+$\chi_{-4}$-twisted closed form for the Catalan-constant family $\mathbf E$. Three of the fifteen have no archimedean
+Ap\'ery limit at all and satisfy the $p$-adic law regardless: the descent is a statement
+about Frobenius. We locate the law precisely against Beukers--Vlasenko's Conjecture 7.5:
+the two are the two rows of one $2\times2$ Frobenius matrix, neither implies the other, and
+the character is invisible in unit-root formulations.
+\end{abstract}
+
+\maketitle
+
+%======================================================================
+\section{Introduction}
+
+\subsection{The two rows}
+Ap\'ery's proof that $\zeta(3)\notin\Q$ rests on a pair of solutions of one three-term
+recurrence: the integral solution $a_n=\sum_k\bin nk^2\bin{n+k}k^2$ and a companion $b_n$
+with $b_n/a_n\to\zeta(3)$. The arithmetic of the two rows is not symmetric. The first row
+is integral and satisfies a Lucas congruence,
+\begin{equation}\label{eq:Arow}
+  A(ap+r)\;\equiv\;A(a)A(r)\pmod p\qquad(0\le a,r<p),
+\end{equation}
+proved for $a_n$ by Gessel \cite{Gessel1982}, extended to the sporadic class by
+Malik--Straub \cite{MalikStraub}, obtained for fourteen of the fifteen in a strong form by
+Gorodetsky \cite{Gorodetsky}, and completed for all fifteen by Straub \cite{Straub2301},
+who resolves the two remaining cases with constant-term representations. The second row is not integral --- it has denominators
+$d_n^{\,w}$, $d_n=\lcm(1,\dots,n)$ --- and no congruence of Lucas type for it appears in
+the literature.
+
+This paper is a status report on the second row for the whole sporadic class. It collects
+what is proved, states honestly what is only computed, and --- this is its main technical
+purpose --- records two corrections to the companion papers
+\cite{CompanionLucas2nd,CompanionLucasMin}, and assembles the closed forms that the
+congruence machinery consumes.
+
+\subsection{The law}
+Write $q=\lfloor n/p\rfloor$. For each sporadic pair there is an integer $w\in\{2,3\}$ and
+a quadratic Dirichlet character $\chi$ (possibly trivial) such that, empirically,
+\begin{equation}\label{eq:master}
+  \vp\bigl(p^{w}B(n)A(q)-\chi(p)B(q)A(n)\bigr)\;\ge\;w ,
+  \tag{$\mathrm{LB}_w^\chi$}
+\end{equation}
+with equality in every cell tested. The untwisted form ($\chi\equiv1$) is
+\emph{false} for seven of the fifteen families, and the failing primes are exactly those
+with $\chi(p)=-1$; there the valuation drops to $0$ in the single-digit range and as low as
+the integrality bound permits beyond it. The character is the character of the sequence's
+Ap\'ery limit: the limit is a rational multiple of $\zeta(w)$ when $\chi$ is trivial and of
+$L(\chi,w)$ otherwise.
+
+We prove the single-digit, mod-$p$ shadow of \eqref{eq:master},
+\begin{equation}\label{eq:LB}
+  p^{w}B(ap+r)\;\equiv\;\chi(p)^{e}\,B(a)\,A(r)\pmod p\qquad(1\le a<p,\ 0\le r<p),
+\end{equation}
+under hypotheses (H1)--(H5) of \S\ref{sec:LB}, and verify those hypotheses for four of the
+fifteen. The full statement \eqref{eq:master} --- all $n$, modulus $p^w$ --- is
+\Verified\ only and is stated as Conjecture~\ref{conj:master}; we never call it a theorem.
+
+\subsection{What is new here}
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{A correction to the product-region hypothesis} (\S\ref{sec:LB}). The
+  hypothesis (H2) used in \cite{CompanionLucas2nd} asserts that the set of surviving
+  base-$p$ digits is $\{0\le b\le a\}\times\Sigma_r$. That is false: the $b$-side is a
+  proper subset for every $a\ge(p+1)/2$, already for the Ap\'ery $\zeta(3)$ pair, and the
+  omitted terms contribute a \emph{base-level defect} $\Delta(a)$ whose vanishing mod $p$
+  is a further clause. The clause is automatic under tameness, so the four proved instances
+  are unaffected; it is exactly what fails for $\alpha$, $\varepsilon$, $\mathbf E$.
+\item \textbf{A proved negative} (\S\ref{sec:blocked}). No admissible harmonic weight
+  repairs $\Delta(a)$ for $\alpha$, $\varepsilon$ or $\mathbf E$; for $\mathbf E$ the class
+  $\Delta(a)\bmod p$ is an invariant of the family, not of the fitted weight. Consequently
+  the earlier plan --- ``prove one valuation inequality and move four families inside the
+  theorem'' --- is wrong; it works for $s_7$ alone.
+\item \textbf{Two closed forms with complete finite certificates} (\S\ref{sec:closed}).
+  Symmetric harmonic weights for the Franel numbers and for $\sum_k\bin nk^4$, with every
+  certificate identity re-verified symbolically here, valid for every $n\ge1$. These sums
+  are \emph{not} new: they are the $t^2$-coefficients of Straub--Zudilin's analytic
+  deformation \cite{StraubZudilin}, as we show in Remark~\ref{rem:SZ}, and their Ap\'ery
+  limits $\zeta(2)/(d+1)$ are theorems of \emph{loc.\ cit.} What is contributed here is the
+  finite certificate proof --- Straub--Zudilin obtain the recurrence only for large enough
+  $n$, and their route passes through a locally uniform limit --- and the explicit
+  harmonic-monomial display, which is what Theorem~\ref{thm:LB} consumes.
+\item \textbf{A provable insufficiency} (\S\ref{sec:Dobstruction}). The mechanism that
+  proves those two closed forms provably fails for the $\zeta(2)$-Ap\'ery pair: one
+  component of the correction is not Gosper-summable. This is the first place in the
+  programme where the rank-two mechanism is \emph{provably} insufficient.
+\end{enumerate}
+
+\subsection{Evidence classes}\label{sec:labels}
+The programme's labelling discipline is retained verbatim in this paper, and the labels are
+load-bearing. \Thm: proved and adversarially refereed. \Proved: a complete proof is given
+or cited to a written proof. \Lean: checked by the Lean~4 kernel with no \texttt{sorry}.
+\Verified\ (with a range): an exact finite computation, \emph{never} treated as proof.
+\Excluded: a proved negative. \Open. A statement carrying \Verified\ is never restated
+later as though it carried \Proved.
+
+\subsection{Relation to the companion papers}
+The weight-three congruence \eqref{eq:LB} for the Ap\'ery $\zeta(3)$ pair, its elementary
+self-contained proof, the sharpness analysis at $p=2,3$ and the general theorem are the
+subject of \cite{CompanionLucas2nd}; the closed form for $b_n$ together with its Lean
+formalisation is \cite{CompanionLucasMin}. We do not repeat those proofs. What is here is
+the class-wide picture, the corrections of items~1--2 above, and the closed-form material
+of \S\ref{sec:closed}.
+
+\subsection{Conventions}
+$p$ is a prime, $\Zp$ the localisation of $\Z$ at $p$, $\vp$ the $p$-adic valuation on
+$\Q$, and $x\equiv y\pmod{p^m}$ for $x,y\in\Q$ means $\vp(x-y)\ge m$. We write
+$\HH ry=\sum_{m=1}^y m^{-r}$ and, for a Dirichlet character $\chi$,
+$\KK r\chi y=\sum_{m=1}^{y}\chi(m)m^{-r}$; thus $\HH ry=\KK r{\mathbf 1}y$. $\chi_D$ is the
+Kronecker symbol $\bigl(\tfrac D\cdot\bigr)$, and $L(\chi,s)=\sum_{m\ge1}\chi(m)m^{-s}$.
+
+%======================================================================
+\section{The fifteen pairs}\label{sec:pairs}
+
+\subsection{The recurrences}
+Two families of three-term recurrences, with $u_{-1}=0$, $u_0=1$:
+\begin{align}
+  (n+1)^2u_{n+1}&=(an^2+an+b)u_n-cn^2u_{n-1},\label{eq:R2}\\
+  (n+1)^3u_{n+1}&=(2n+1)(an^2+an+b)u_n-n(cn^2+d)u_{n-1}.\label{eq:R3}
+\end{align}
+Up to degenerate cases, \eqref{eq:R2} has six sporadic integral solutions, found by Zagier
+\cite{Zagier2009} and labelled $\mathbf A,\dots,\mathbf F$; \eqref{eq:R3} with $d=0$ has six,
+found by Almkvist--Zudilin \cite{AlmkvistZudilin2006} and labelled
+$\alpha,\gamma,\delta,\varepsilon,\zeta,\eta$; and Cooper \cite{Cooper2012} found three
+further solutions with $d\ne0$ (so counted in \cite[\S2]{MalikStraub}; \cite{Cooper2012}
+itself announces two), labelled $s_7$, $s_{10}$, $s_{18}$ after the levels of the
+associated modular forms; they satisfy two-term supercongruences \cite{OsburnSahuStraub},
+and Cooper has since extended the search to four-term recurrences \cite{Cooper2302}. We
+follow the labelling and the binomial sums of Malik--Straub \cite[Tables 1--2]{MalikStraub},
+whose second column records the alternative Almkvist--van~Straten--Zudilin labels
+$(\mathrm a),\dots,(\mathrm g)$.
+
+\begin{definition}\label{def:B}
+For each pair, $B(n)$ is the second solution: $B(0)=0$, $B(1)=1$, and the recurrence is
+imposed for $n\ge1$ (the step $n=0$ is degenerate). This is Ap\'ery's own normalisation and
+that of Chamberland--Straub \cite{ChamStraub}. Rescaling $B$ by a $p$-unit rational does not
+affect any statement below, so for $p\ge5$ the normalisation is harmless.
+\end{definition}
+
+\subsection{The table}
+Table~\ref{tab:fifteen} lists the fifteen pairs with their parameters, first row, Ap\'ery
+limit $L=\lim B(n)/A(n)$, weight $w$ and character $\chi$.
+
+\begin{table}[t]
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}rllll@{\ }cc@{}}
+\toprule
+\# & family & $(a,b,c[,d])$ & $A(n)$ & $L$ & $w$ & $\chi$\\
+\midrule
+1&$\mathbf A$ (a)&$(7,2,-8)$&$\sum_k\bin nk^3$ (Franel)&$\zeta(2)/4$&2&$\mathbf 1$\\
+2&$\mathbf B$ (f)&$(9,3,27)$&$\sum_k(-1)^k3^{n-3k}\bin n{3k}\tfrac{(3k)!}{k!^3}$&none&2&$\chi_{-3}$\\
+3&$\mathbf C$ (c)&$(10,3,9)$&$\sum_k\bin nk^2\bin{2k}k$&$L(\chi_{-3},2)/2$&2&$\chi_{-3}$\\
+4&$\mathbf D$ (b)&$(11,3,-1)$&$\sum_k\bin nk^2\bin{n+k}n$&$\zeta(2)/5$&2&$\mathbf 1$\\
+5&$\mathbf E$ (d)&$(12,4,32)$&$\sum_k\bin nk\bin{2k}k\bin{2(n-k)}{n-k}$&$G/2$&2&$\chi_{-4}$\\
+6&$\mathbf F$ (g)&$(17,6,72)$&$\sum_k(-1)^k8^{n-k}\bin nk\sum_l\bin kl^3$&$\tfrac58L(\chi_{-3},2)$&2&$\chi_{-3}$\\
+7&$\alpha$&$(10,4,64,0)$&$\sum_k\bin nk^2\bin{2k}k\bin{2(n-k)}{n-k}$ (Domb)&$7\zeta(3)/24$&3&$\mathbf 1$\\
+8&$\gamma$&$(17,5,1,0)$&$\sum_k\bin nk^2\bin{n+k}n^2$ (Ap\'ery)&$\zeta(3)/6$&3&$\mathbf 1$\\
+9&$\delta$&$(7,3,81,0)$&$\sum_k(-1)^k3^{n-3k}\bin n{3k}\bin{n+k}n\tfrac{(3k)!}{k!^3}$&none&3&$\mathbf 1$\\
+10&$\varepsilon$&$(12,4,16,0)$&$\sum_k\bin nk^2\bin{2k}n^2$&$7\zeta(3)/32$&3&$\mathbf 1$\\
+11&$\zeta$&$(9,3,-27,0)$&$\sum_{k,l}\bin nk^2\bin nl\bin kl\bin{k+l}n$&$L(\chi_{-3},3)/3$&3&$\chi_{-3}$\\
+12&$\eta$&$(11,5,125,0)$&$\sum_k(-1)^k\bin nk^3\bigl[\bin{4n-5k-1}{3n}+\bin{4n-5k}{3n}\bigr]$&none&3&$\chi_{5}$\\
+13&$s_7$&$(13,4,-27,3)$&$\sum_k\bin nk^2\bin{n+k}k\bin{2k}n$&$\zeta(2)/7$&2&$\mathbf 1$\\
+14&$s_{10}$&$(6,2,-64,4)$&$\sum_k\bin nk^4$&$\zeta(2)/5$&2&$\mathbf 1$\\
+15&$s_{18}$&$(14,6,192,-12)$&see \eqref{eq:s18}&$L(\chi_{-3},2)/2$&2&$\chi_{-3}$\\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The fifteen sporadic pairs. Parenthesised letters in column~2 are the
+Almkvist--van~Straten--Zudilin labels of \cite[Table~1]{MalikStraub}. $G=L(\chi_{-4},2)$ is
+Catalan's constant. Rows 1--6 satisfy \eqref{eq:R2}; rows 7--12 satisfy \eqref{eq:R3} with
+$d=0$; rows 13--15 satisfy \eqref{eq:R3} with $d\ne0$.}
+\label{tab:fifteen}
+\end{table}
+
+Here $s_{18}(0)=1$ and, for $n\ge1$,
+\begin{equation}\label{eq:s18}
+  s_{18}(n)=\sum_{k=0}^{\lfloor n/3\rfloor}(-1)^k\bin nk\bin{2k}k\bin{2(n-k)}{n-k}
+     \Bigl[\bin{2n-3k-1}n+\bin{2n-3k}n\Bigr].
+\end{equation}
+
+\VerifiedR{$n\le12$, exact} each binomial sum in Table~\ref{tab:fifteen} satisfies its
+recurrence, re-checked independently for this paper.
+
+\subsection{The limits}
+\VerifiedR{$400$ digits} The limits in Table~\ref{tab:fifteen} were identified by two-term
+integer relation detection against a $33$-constant basis
+($\zeta(2),\zeta(3),\zeta(4)$; $L(\chi_D,2)$, $L(\chi_D,3)$ for
+$D=-3,-4,-7,-8,-11,-15,-20,-24,5,8,12,13,24$; $\log^22$, $\pi^2\log2$, $\log^32$), matching
+to between $31$ and $401$ digits (the slowest, $\mathbf F$, converges at rate $(8/9)^n$).
+\emph{We claim no novelty for any of these values.} Almkvist--van~Straten--Zudilin
+\cite[\S2]{ASvSZ} tabulate the limits of the six weight-two families --- $\pi^2/24$
+($\mathbf A$), $\pi^2/30$ ($\mathbf D$), $L(\chi_{-3},2)/2$ ($\mathbf C$), $G/2$
+($\mathbf E$), $\tfrac58L(\chi_{-3},2)$ ($\mathbf F$) --- and record that the remaining
+one, $\mathbf B$, is \emph{not convergent}, attributing the proofs to Zagier
+\cite{Zagier2009} and Yang \cite{Yang2008}. The Franel and $\sum_k\bin nk^4$ limits are
+also \cite[eq.~(20)]{ChamStraub} (Cusick, via \cite[p.~202]{vdPoorten1979}) and are proved
+in general by Straub--Zudilin \cite{StraubZudilin}; $\zeta(3)/6$ is Ap\'ery's; and the Domb
+limit $7\zeta(3)/24$, for exactly the normalisation of Definition~\ref{def:B}, is proved by
+Shvets \cite{Shvets2026}. The values for $\varepsilon$, $\zeta$, $s_7$, $s_{18}$ and the
+non-convergence of $\delta$ and $\eta$ we have not located in the literature, but they are
+of the shape predicted by \cite{Zagier2009,AlmkvistZudilin2006} and we record them only as
+\Verified.
+
+\subsection{The weights, and their sharpness}
+\begin{observation}\label{obs:weight}
+\VerifiedR{$n\le600$; independently $n\le120$ for this paper}
+Let $w$ be the least exponent with $d_n^{\,w}B(n)\in\Z$ for all $n$ in the tested range,
+$d_n=\lcm(1,\dots,n)$. Then
+\begin{align*}
+  w&=2 &&\text{for all six of \eqref{eq:R2} \emph{and} all three of Cooper's $d\ne0$
+     cases},\\
+  w&=3 &&\text{for all six Almkvist--Zudilin $d=0$ cases}.
+\end{align*}
+It is sharp: $d_n^{\,w-1}B(n)\notin\Z$ for at least $596$ of the $600$ values of $n$ in the
+first sweep (and for $116$--$119$ of the $120$ in the second). Per prime,
+$\vp(B(n))\ge-w\lfloor\log_pn\rfloor$, \VerifiedR{$0$ failures, $15$ families $\times$
+$16$ primes $\times$ $n\le400$}.
+\end{observation}
+
+Two things are worth isolating. First, $w$ tracks the Cooper deformation $d\ne0$, not the
+shape of the recurrence: Cooper's three live in the cubic family \eqref{eq:R3} and have
+weight $2$, not $3$. Second, wherever the Ap\'ery limit exists it is a rational multiple of
+$\zeta(w)$ or $L(\chi,w)$, so $w$ agrees with the motivic weight of the limit --- $12$
+cases out of $12$.
+
+\subsection{Three pairs with no archimedean limit}\label{sec:nolimit}
+\begin{proposition}\label{prop:nolimit}
+\Proved\ For $\mathbf B$, $\delta$ and $\eta$ the characteristic equation of the recurrence
+has a pair of complex-conjugate roots of equal modulus, with discriminants
+\[
+  \mathbf B:\ a^2-4c=-27,\qquad
+  \delta:\ 4a^2-4c=-128,\qquad
+  \eta:\ 4a^2-4c=-16 ,
+\]
+so that Poincar\'e--Perron provides no dominant solution and $B(n)/A(n)$ does not converge.
+Every other sporadic pair has real distinct characteristic roots.
+\end{proposition}
+
+\begin{proof}
+The characteristic equation of \eqref{eq:R2} is $\lambda^2-a\lambda+c=0$ and of
+\eqref{eq:R3} is $\lambda^2-2a\lambda+c=0$; substitute the parameters of
+Table~\ref{tab:fifteen}. The discriminants of the remaining twelve are
+$81,64,125,16,1,144,1152,512,432,784,400,16$, all positive.
+\end{proof}
+
+\VerifiedR{$n=590$ vs.\ $n=600$} the ratios $B(n)/A(n)$ for these three agree to $0$ digits,
+against $380$ digits for the convergent families. Nevertheless all three satisfy
+\eqref{eq:master} flat, with $\chi=\chi_{-3}$, $\mathbf 1$, $\chi_5$ respectively. This is
+the cleanest evidence in the programme that \eqref{eq:master} is a statement about
+\emph{Frobenius}, not about the archimedean limit; we return to it in \S\ref{sec:BV}.
+
+%======================================================================
+\section{The $\chi$-twisted law}\label{sec:law}
+
+\subsection{Where the untwisted law dies}
+\VerifiedR{$5\le p\le43$, $n\le300$, exact rational arithmetic}
+Testing $\vp(p^wB(n)A(q)-B(q)A(n))\ge w$ with $q=\lfloor n/p\rfloor$:
+
+\begin{center}\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+verdict & families\\
+\midrule
+holds flat at every prime tested &
+  $\mathbf A,\mathbf D,\alpha,\gamma,\delta,\varepsilon,s_7,s_{10}$\quad(8)\\
+fails at $p\equiv2\pmod 3$ & $\mathbf B,\mathbf C,\mathbf F,\zeta,s_{18}$\quad(5)\\
+fails at $p\equiv3\pmod 4$ & $\mathbf E$\quad(1)\\
+fails at $p\equiv\pm2\pmod 5$ & $\eta$\quad(1)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The failures are total, not marginal: at a failing prime the single-digit floor is $0$ (the
+difference is a $p$-unit) and in the multi-digit range the valuation falls to
+$-w\cdot(\#\text{digits}-1)$, i.e.\ as low as Observation~\ref{obs:weight} permits. They
+are not explained by exceptional digits ($p\mid A(a)$), by the centre residue, or by
+$\vp\bin{2n}n$: the failing set is exactly $\{p:\chi(p)=-1\}$ for one quadratic $\chi$. The
+cross-checks that isolate the character are \Verified: the passing primes of the
+$\chi_{-3}$ group are mixed mod $4$ and mod $5$; those of $\mathbf E$ are mixed mod $3$ and
+mod $5$; and those of $\eta$ in the tested range, $11,19,29,31,41$, are mixed mod $3$ and
+mod $4$ and are precisely the $p\equiv\pm1\pmod5$.
+
+\subsection{The repair}
+\begin{conjecture}[master form]\label{conj:master}
+For every sporadic pair, with $w$ and $\chi$ as in Table~\ref{tab:fifteen}, every prime
+$p\ge5$ and every $n\ge1$, writing $q=\lfloor n/p\rfloor$,
+\[
+  \vp\bigl(p^{w}B(n)A(q)-\chi(p)B(q)A(n)\bigr)\;\ge\;w .
+\]
+\end{conjecture}
+
+\VerifiedR{$0$ failures} all $15$ pairs, all primes $5\le p\le103$, $n\le400$; and
+$n\le1200$ for $p=5,7,11$ --- five base-$p$ digits at $p=5$. In every one of the
+$15\times16=240$ (family, prime) cells with $5\le p\le61$ the floor is \emph{exactly} $w$:
+perfectly flat, with no dependence on the digit pattern, no centre-residue exception and no
+exceptional-digit exception. Independently for this paper: all $15$ families at $p=5$ and
+$p=7$, all $n<p^3$, floor exactly $w$ in all $30$ cells.
+
+\begin{remark}[the ramified prime]\label{rem:ramified}
+For $\eta$ the prime $p=5$ is ramified, $\chi_5(5)=0$, and Conjecture~\ref{conj:master}
+degenerates to $\vp(p^3B(n)A(q))\ge3$, i.e.\ to the $5$-integrality of $B(n)$. That is
+true: \VerifiedR{$n\le500$} $\min_n v_5(B(n))=0$, the pole simply does not develop at the
+ramified prime, and the floor is exactly $3$. This is the only prime $\ge5$ at which any of
+the fifteen characters ramifies; the $\chi_{-3}$ and $\chi_{-4}$ families ramify only at
+$3$ and $2$.
+\end{remark}
+
+\begin{remark}[$p=2,3$]
+Excluded, correctly. With the twisted law and $n\le120$ the floor drops below $w$ for
+$\mathbf A$ ($p=2$, floor $1$), $\mathbf F$ ($p=2$, $1$), $\alpha$ ($p=2$ and $p=3$, $2$),
+$\gamma$ ($p=3$, $2$), $\delta$ ($p=3$, $1$), $\varepsilon$ ($p=2$, $2$). See
+\cite[\S8]{CompanionLucas2nd} for the analysis of where $p\ge5$ enters.
+\end{remark}
+
+%======================================================================
+\section{Lemma K and Theorem LB}\label{sec:LB}
+
+\subsection{The source of the character}
+\begin{lemma}[Lemma K]\label{lem:K}
+\Proved\ Let $\chi$ be completely multiplicative (a Dirichlet character; $\chi\equiv1$
+allowed), let $r\ge1$ and $y\ge0$. Then, as an identity in $\Q$,
+\[
+  p^{r}\,\KK r\chi y \;=\; \chi(p)\,\KK r\chi{\lfloor y/p\rfloor}\;+\;p^{r}T,
+  \qquad T:=\sum_{m\le y,\ p\nmid m}\frac{\chi(m)}{m^{r}}\in\Zp .
+\]
+\end{lemma}
+
+\begin{proof}
+Split the sum according to $p\mid m$. The $p$-divisible part is
+$\sum_{j\le\lfloor y/p\rfloor}\chi(jp)(jp)^{-r}
+ =\chi(p)p^{-r}\sum_{j\le\lfloor y/p\rfloor}\chi(j)j^{-r}$, by complete multiplicativity.
+The complementary part has $p$-integral terms.
+\end{proof}
+
+This one line is the entire source of the factor $\chi(p)$ in \eqref{eq:LB}: a second
+solution whose weight needs $\chi$-twisted harmonic letters inherits $\chi(p)$ when the
+letters descend, and one whose weight is a pure $\zeta$-harmonic monomial inherits $+1$.
+
+\begin{corollary}\label{cor:K2}
+\Proved\ Let $M=\prod_{t=1}^{s}\KK{r_t}{\chi_t}{x_t}$ with $\sum_t r_t=w$, and suppose every
+$\KK{r_t}{\chi_t}{\lfloor x_t/p\rfloor}$ lies in $\Zp$. Then
+$p^{w}M\equiv\bigl(\prod_t\chi_t(p)\bigr)\prod_t\KK{r_t}{\chi_t}{\lfloor x_t/p\rfloor}
+ \pmod p$.
+\end{corollary}
+
+\begin{proof}
+$p^wM=\prod_t\bigl(\chi_t(p)\KK{r_t}{\chi_t}{\lfloor x_t/p\rfloor}+p^{r_t}T_t\bigr)$ by
+Lemma~\ref{lem:K}; expand. Every factor is $p$-integral and every cross term carries a
+factor $p$.
+\end{proof}
+
+\subsection{The hypotheses, corrected}
+Fix a prime $p$ and write $n=ap+r$, $k=bp+s$ with $1\le a<p$, $0\le r,s<p$. Let
+\[
+  S(n,k)=\prod_i\bin{L_i(n,k)}{M_i(n,k)},\quad A(n)=\sum_kS(n,k),\quad
+  B(n)=\sum_kS(n,k)\,\mathfrak w(n,k),
+\]
+with $L_i,M_i$ integer linear forms, and let the weight be a $\Q$-combination of monomials
+of total degree $w$,
+\begin{equation}\label{eq:weightshape}
+  \mathfrak w(n,k)=\sum_j c_j\prod_t \KK{r_{jt}}{\chi}{x_{jt}(n,k)},\qquad
+  \sum_t r_{jt}=w ,
+\end{equation}
+in letters attached to one fixed quadratic character $\chi$ and to the trivial character,
+with $x_{jt}$ integer linear forms. Put $\mathcal B_a=\{b: p\nmid S(a,b)\}$ and define the
+\emph{base-level defect}
+\begin{equation}\label{eq:Delta}
+  \Delta(a)\;:=\;\sum_{b\notin\mathcal B_a}S(a,b)\,\mathfrak w(a,b)
+  \;=\;B(a)-\sum_{b\in\mathcal B_a}S(a,b)\,\mathfrak w(a,b).
+\end{equation}
+
+\begin{itemize}[leftmargin=2.4em]
+\item[(H1)] \emph{Lucas/carry dichotomy.} For every $k$, either $p\mid S(n,k)$ or
+  $S(n,k)\equiv S(a,b)S(r,s)\pmod p$.
+\item[(H2)] \emph{Product region and base-level defect.} The surviving set
+  $\{k:p\nmid S(n,k)\}$ is $\mathcal B_a\times\Sigma_r$ for some $\Sigma_r\subseteq[0,p)$;
+  $\sum_{s\in\Sigma_r}S(r,s)\equiv A(r)\pmod p$; and $\Delta(a)\equiv0\pmod p$.
+\item[(H3)] \emph{Digit compatibility.} On the surviving set,
+  $\lfloor x(n,k)/p\rfloor=x(a,b)$ for every argument form $x$ occurring in
+  $\mathfrak w$.
+\item[(H4)] \emph{Tameness.} $0\le x(n,k)\le n$ on the summation range for every argument
+  form $x$; and $c_j\in\Zp$ for every $j$.
+\item[(H5)] \emph{$\chi$-homogeneity.} Every monomial of $\mathfrak w$ contains the same
+  number $e\in\{0,1\}$ of $\chi$-letters, the others being trivial-character letters.
+\end{itemize}
+
+\begin{remark}[what was corrected, and why it matters]\label{rem:H2}
+The version of (H2) used in \cite{CompanionLucas2nd} reads ``the surviving set is
+$\{0\le b\le a\}\times\Sigma_r$'', with no $\Delta$-clause. The $b$-side is \emph{not}
+$\{0,\dots,a\}$ in general. Already for $\gamma$, with
+$S(n,k)=\bin nk^2\bin{n+k}n^2$, one has $p\mid\bin{a+b}a$ as soon as $a+b\ge p$, so digits
+$b$ with $b>p-1-a$ drop out, and the $b$-side is proper for every $a\ge(p+1)/2$; the same
+happens for $\mathbf D$ and, with a different mechanism, for $\alpha$ (at $p=5$, $a=3$ the
+digit $b=0$ is dropped because $5\mid\bin63$). \VerifiedR{all four non-tame families,
+$5\le p\le23$} The omitted terms are collected by $\Delta(a)$, and the proof below needs
+$\Delta(a)\equiv0$. Lemma~\ref{lem:Deltatame} shows the clause is free under (H4), so the
+conclusions of \cite{CompanionLucas2nd} for the four tame families stand as stated; the
+clause is nevertheless the exact obstruction for $\alpha$, $\varepsilon$ and $\mathbf E$
+(\S\ref{sec:blocked}).
+\end{remark}
+
+\begin{lemma}\label{lem:Deltatame}
+\Proved\ If (H4) holds then $\mathfrak w(a,b)\in\Zp$ for all $b$, and hence
+$\Delta(a)\equiv0\pmod p$ automatically.
+\end{lemma}
+
+\begin{proof}
+By (H4), every argument satisfies $x(a,b)\le a<p$, so no denominator of
+$\KK{r}{\chi}{x(a,b)}$ is divisible by $p$; with $c_j\in\Zp$ this gives
+$\mathfrak w(a,b)\in\Zp$. Each term of \eqref{eq:Delta} then has $p\mid S(a,b)$ times a
+$p$-integral factor.
+\end{proof}
+
+\subsection{The theorem}
+\begin{theorem}[Theorem LB]\label{thm:LB}
+\Proved\ Under \textup{(H1)--(H5)}, for all $1\le a<p$ and $0\le r<p$,
+\[
+  p^{w}\,B(ap+r)\;\equiv\;\chi(p)^{e}\,B(a)\,A(r)\pmod p .
+\]
+\end{theorem}
+
+\begin{proof}
+Let $n=ap+r$. By (H4) every argument satisfies $x(n,k)\le n<p^2$, so
+$\lfloor x(n,k)/p\rfloor\le a<p$ and each descended letter
+$\KK{r}{\chi}{\lfloor x(n,k)/p\rfloor}$ lies in $\Zp$; likewise $x(a,b)\le a<p$, so
+$\mathfrak w(a,b)\in\Zp$, and $p^w\mathfrak w(n,k)\in\Zp$ for \emph{every} $k$.
+Corollary~\ref{cor:K2} and (H5) give, for every $k$,
+\[
+  p^{w}\mathfrak w(n,k)\;\equiv\;\chi(p)^{e}\,\widetilde{\mathfrak w}(n,k)\pmod p,
+  \qquad
+  \widetilde{\mathfrak w}(n,k)
+   =\sum_jc_j\prod_t\KK{r_{jt}}{\chi}{\lfloor x_{jt}(n,k)/p\rfloor},
+\]
+and (H3) upgrades $\widetilde{\mathfrak w}(n,k)=\mathfrak w(a,b)$ on the surviving set. Now
+split
+\[
+  p^{w}B(n)=\sum_{k:\,p\mid S(n,k)}S(n,k)\,p^{w}\mathfrak w(n,k)
+           +\sum_{k\ \mathrm{surviving}}S(n,k)\,p^{w}\mathfrak w(n,k).
+\]
+Every $p^{w}\mathfrak w(n,k)$ is $p$-integral, so the first sum is $\equiv0\pmod p$. In the
+second, substitute (H1) and the displayed congruence and use the product structure of (H2):
+\[
+  p^{w}B(n)\;\equiv\;\chi(p)^{e}\Bigl(\sum_{b\in\mathcal B_a}S(a,b)\mathfrak w(a,b)\Bigr)
+                     \Bigl(\sum_{s\in\Sigma_r}S(r,s)\Bigr)
+   \;\equiv\;\chi(p)^{e}\bigl(B(a)-\Delta(a)\bigr)A(r)\pmod p ,
+\]
+and the clause $\Delta(a)\equiv0$ of (H2) finishes.
+\end{proof}
+
+\begin{remark}[the hypotheses in context]
+(H1) and the product structure in (H2) are exactly the Lucas-factorisation-plus-carry-\-
+annihilation property established for all fifteen summands by Malik--Straub
+\cite{MalikStraub}, so they are available class-wide. What is \emph{not} needed is a
+per-carry valuation bound: (H4) makes $p^{w}\mathfrak w$ $p$-integral outright. Where
+tameness fails one needs a substitute, and \S\ref{sec:blocked} shows what that substitute
+has to be.
+\end{remark}
+
+\begin{remark}[the formalised variant]\label{rem:leanH}
+The Lean formulation (\S\ref{sec:lean}) replaces (H1) and the product clause of (H2) by the
+single unconditional congruence $S(ap+r,bp+s)\equiv S(a,b)S(r,s)\pmod p$ for all $a,b$ and
+all $r,s<p$, together with $S(n,k)=0$ for $k>n$. In the carrying regime both sides vanish
+mod $p$, so the dichotomy is absorbed; the double sum then factors because a \emph{full}
+block $[0,(a+1)p)$ is split and both marginal sums are complete. The formalised theorem is
+therefore immune to the defect of Remark~\ref{rem:H2} --- there is no product-region
+argument in it at all --- at the cost of demanding the digit congruence for every $b$, not
+only for $b\le a$. This is a genuine simplification and we recommend it as the definitive
+form of the hypothesis.
+\end{remark}
+
+\begin{observation}[integrality]\label{obs:integrality}
+\VerifiedR{$0$ failures, $15$ families $\times$ $16$ primes $\times$ $n\le400$}
+$\vp(B(n))\ge-w\lfloor\log_pn\rfloor$, i.e.\ $d_n^{\,w}B(n)\in\Zp$.
+\end{observation}
+
+\begin{remark}\label{rem:integrality}
+This is \emph{not} a corollary of Theorem~\ref{thm:LB}. That theorem is a single-digit
+statement --- (H4) is used in the form $x(n,k)\le n<p^2$, which is precisely $a<p$ --- and
+the iteration over base-$p$ digits would need it at $a\ge p$, where the descended letters
+$\KK r\chi{\lfloor x/p\rfloor}$ are no longer $p$-integral. Even granting
+Conjecture~\ref{conj:master}, passing to the ratio form
+$p^{w}B(n)/A(n)\equiv\chi(p)B(q)/A(q)$ requires $A(n)$ and $A(q)$ to be $p$-units, which is
+a separate matter (see \cite{MalikStraub} for the primes that never divide a given
+sporadic sequence). Apart from the $\mathbf B$ case proved in
+Theorem~\ref{thm:Bden} below, we therefore record
+Observation~\ref{obs:integrality} as computed, and
+in \S\ref{sec:BV} treat the implication from \eqref{eq:master} to mirror-map integrality as
+a heuristic and not as a proof.
+\end{remark}
+
+\begin{theorem}[sharp denominator for $\mathbf B$]\label{thm:Bden}
+For $h\in\Z$, let $B_h(0)=0$, $B_h(1)=1$, and
+\[
+ (n+1)^2B_h(n+1)
+ =h(3n^2+3n+1)B_h(n)-3h^2n^2B_h(n-1).
+\]
+Then
+\[
+ \bigl(\forall n\ge0,\ d_n^2B_h(n)\in\Z\bigr)
+ \quad\Longleftrightarrow\quad 3\mid h.
+\]
+At $h=3$ this is Zagier's sporadic pair $\mathbf B$.  Hence the $\mathbf B$ row of
+Observation~\ref{obs:integrality} is a theorem, and its exponent $2$ is optimal.
+\end{theorem}
+
+\begin{proof}
+Set
+\[
+ T_h(n)=\sum_{k=0}^n\binom nk(-h)^{n-k}B_h(k),
+ \qquad T_h(m)=0\quad(m\le0).
+\]
+Conjugating the recurrence by this binomial transform gives the step-three endpoint
+recurrence
+\[
+ n^2T_h(n)+h^3(n-2)(n-1)T_h(n-3)=(-h)^{n-1}.
+\]
+Indeed, at the generating-function level the original operator
+\[
+ \theta^2-hz(3\theta^2+3\theta+1)+3h^2z^2(\theta+1)^2
+\]
+is conjugated to
+\[
+ \theta^2+h^3z^3(\theta+1)(\theta+2).
+\]
+Iteration yields
+\[
+ (-1)^{n-1}T_h(n)=h^{n-1}
+ \sum_{\substack{0\le j<n\\n-j\equiv1\ (3)}}
+ \frac{\prod_{t=0}^{r-1}(j+2+3t)(j+3+3t)}
+      {\prod_{t=0}^{r}(j+1+3t)^2},
+ \qquad r=\frac{n-j-1}{3}.
+\tag{B-end}\label{eq:Bend}
+\]
+All propagation signs agree because $j+r\equiv n-1\pmod2$.
+
+Let $R(n,j)$ denote the quotient in \eqref{eq:Bend}.  If $p\ne3$, counting multiples of
+each $p^a$ in the three arithmetic progressions shows
+\[
+ v_p(R(n,j))\ge-2v_p(d_n):
+\]
+the doubled denominator progression has length $r+1$, the two numerator progressions
+have length $r$, and the deficit for each $p^a$ is at most $2$.  For $p=3$, choose a
+factor of maximal $3$-adic valuation in $D=\prod_{t=0}^r(j+1+3t)$.  The difference of any
+other factor from it is $3$ times an index difference, whence
+\[
+ v_3(D)\le v_3(d_n)+r+v_3(r!),
+ \qquad
+ v_3(R(n,j))\ge-2v_3(d_n)-2r-2v_3(r!).
+\]
+If $3\mid h$, then $n-1=j+3r\ge3r$ and $v_3(r!)\le r/2$, so every summand of
+$d_n^2T_h(n)$ in \eqref{eq:Bend} is integral.  Binomial inversion and $d_k\mid d_n$
+transfer the result to $B_h(n)$.
+
+Conversely, direct recurrence propagation gives
+\[
+ B_h(6)=-\frac{39521h^5}{32400},\qquad
+ d_6^2B_h(6)=-\frac{39521h^5}{9}.
+\]
+Since $3\nmid39521$, integrality at $n=6$ forces $3\mid h$.  Finally
+$B_3(2)=21/4$, so $d_2B_3(2)=21/2\notin\Z$; the exponent $2$ is sharp.
+\end{proof}
+
+%======================================================================
+\section{Status of the fifteen}\label{sec:status}
+
+Table~\ref{tab:status} is the summary; the four subsections that follow justify it.
+
+\begin{table}[t]
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llccl@{}}
+\toprule
+family & $\mathfrak w$ known? & tame? & $\Delta\equiv0$? & status of \eqref{eq:LB}\\
+\midrule
+$\gamma$   & yes, $2$ terms  & yes & free & \Thm\ $p\ge5$; \Lean\\
+$\mathbf A$& yes, $3$ terms  & yes & free & \Thm\ $p\ge5$ ($p\ne2$ suffices); \Lean\\
+$\mathbf D$& yes, $4$ terms  & yes & free & \Thm\ $p\ge7$; $p=5$ \Verified\ only\\
+$s_{10}$   & yes, $3$ terms  & yes & free & \Thm\ $p\ge7$\\[2pt]
+$s_7$      & yes, $8$ terms  & no  & \Verified\ $p\le37$ & reachable; two local bounds, \Open\\[2pt]
+$\alpha$   & yes, $14$ terms & no  & \Excluded & blocked; needs (LD)\\
+$\varepsilon$& yes, $10$ terms& no & \Excluded & blocked; needs (LD)\\
+$\mathbf E$& yes, $5$ terms, $\chi_{-4}$ & no & \Excluded\ (inv.) & blocked; needs (LD)\\[2pt]
+$\mathbf B,\mathbf C,\mathbf F,\delta,\zeta,\eta,s_{18}$
+           & no (\Excluded) & --- & --- & conjectural\\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{Status of the second-row congruence \eqref{eq:LB}. ``Tame'' means every letter
+argument lies in $[0,n]$ on the summation range, i.e.\ (H4). ``$\Delta\equiv0$ free'' means
+Lemma~\ref{lem:Deltatame} applies.}
+\label{tab:status}
+\end{table}
+
+\subsection{The harmonic decompositions}\label{sec:decomps}
+All of the following were obtained by exact linear fitting of an ansatz
+$B(n)=\sum_kS(n,k)\mathfrak w(n,k)$ with $\mathfrak w$ as in \eqref{eq:weightshape}, solved
+over a large prime field, rationally reconstructed, then \emph{validated exactly over $\Q$
+on held-out $n$}. Each row below is \VerifiedR{held out $n=60,\dots,72$, exact; and
+re-validated for this paper at $n\le20$}.
+
+\begin{center}\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+family & $w$ & $\mathfrak w(n,k)$ & arguments\\
+\midrule
+$\gamma$&3&$\tfrac13\HH3n-\tfrac16\HH3k$&$n,k$\\
+$\mathbf A$&2&$\tfrac14\HH2k+\tfrac34\HH1k(\HH1k-\HH1{n-k})$&$k,n-k$\\
+$\mathbf D$&2&$\tfrac15\bigl[\HH2n+\HH1k(2\HH1k-\HH1{n-k}-\HH1n)\bigr]$&$n,k,n-k$\\
+$s_{10}$&2&$\tfrac15\HH2k+\tfrac45\HH1k(\HH1k-\HH1{n-k})$&$k,n-k$\\
+$s_7$&2&$8$ terms in $H^{(1)},H^{(2)}$&$k,n-k,n,2k$\\
+$\varepsilon$&3&$10$ terms in $H^{(1)},H^{(2)},H^{(3)}$&$k,n-k,2k,2k-n$\\
+$\alpha$&3&$14$ terms in $H^{(1)},H^{(2)},H^{(3)}$&$k,n-k,2k,2n-2k$\\
+$\mathbf E$&2&$\tfrac12\KK2{\chi_{-4}}{2k}
+  +\bigl(\tfrac34\HH1k-\tfrac12\HH1{2k}\bigr)
+   \bigl(\KK1{\chi_{-4}}{2k}-\KK1{\chi_{-4}}{2n-2k}\bigr)$&$k,2k,2n-2k$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}[the dichotomy: a heuristic, not a theorem]\label{obs:dichotomy}
+A pure harmonic monomial $\prod_t\HH{r_t}{x_t}$ produces, in the limit, values in the
+$\Q$-algebra generated by $\zeta(2),\zeta(3),\dots$ and $\log2$ (the last from letters at
+wide arguments, e.g.\ $\HH1{2k}-\HH1k\to\log2$). \emph{If} $L(\chi,w)$ lies outside that
+algebra --- which is expected but open, already for Catalan's constant
+$G=L(\chi_{-4},2)$, whose irrationality is not known --- then no $\chi$-twisted family can
+have a pure-$\zeta$ harmonic decomposition, and its letters must be twisted. We label this
+as what it is: an expectation resting on unavailable transcendence input. It is not used in
+the proof of any theorem below; it is the explanation the data invites.
+\end{remark}
+
+This is confirmed by the decisive experiment on $\mathbf E$: \VerifiedR{bases of up to $44$
+elements over $8$ argument forms} $\mathbf E$'s fitting system is \emph{inconsistent in
+every pure harmonic basis tried}, and becomes consistent the moment $\chi_{-4}$-letters are
+admitted, yielding the five-term weight above. $\mathbf E$ is the only known instance of the
+twisted case $e=1$ of Theorem~\ref{thm:LB}.
+
+\subsection{The four theorems}\label{sec:proved}
+\begin{theorem}\label{thm:four}
+\Thm\ Congruence \eqref{eq:LB} holds for $\gamma$ and $\mathbf A$ with $\chi\equiv1$ and
+all $p\ge5$, and for $\mathbf D$ and $s_{10}$ with $\chi\equiv1$ and all $p\ge7$.
+\end{theorem}
+
+\begin{proof}
+Apply Theorem~\ref{thm:LB} with the weights of \S\ref{sec:decomps}. (H5) holds with $e=0$.
+(H4): the arguments are among $n,k,n-k$, all in $[0,n]$; the coefficients have denominators
+$3,6$ ($\gamma$), $4$ ($\mathbf A$), $5$ ($\mathbf D$), $5$ ($s_{10}$), whence the stated
+prime bounds. (H2)'s $\Delta$-clause is free by Lemma~\ref{lem:Deltatame}. For (H1)--(H3),
+write $S=\bin nk^{\alpha}\bin{n+k}n^{\beta}$: the surviving set is $\{s\le r\}$ (no borrow
+in $\bin nk$) intersected with $\{r+s<p\}$ (no carry in $\bin{n+k}n$; this second
+constraint is vacuous for $\mathbf A$ and $s_{10}$, where $\beta=0$), a product region;
+there $\bin nk\equiv\bin ab\bin rs$ and $\bin{n+k}n\equiv\bin{a+b}a\bin{r+s}r$ by Lucas, and
+the deleted terms with $r+s\ge p$ vanish mod $p$, so
+$\sum_{s\in\Sigma_r}S(r,s)\equiv A(r)$. Digit compatibility is
+$\lfloor k/p\rfloor=b$, $\lfloor(n-k)/p\rfloor=a-b$ (no borrow), $\lfloor n/p\rfloor=a$.
+The details are \cite[\S3]{CompanionLucas2nd}.
+\end{proof}
+
+\VerifiedR{$0$ failures, all cells $n=ap+r<p^2$} both layers of the proof separately:
+$\gamma$, $\mathbf A$, $s_{10}$ at $p=5,7,11,13$; $\mathbf D$ at $p=7,11,13$, with $11$
+failing cells at $p=5$ --- exactly the (H4) coefficient condition, $\mathbf D$'s
+coefficients being $\tfrac15(1,2,-1,-1)$. So $\mathbf D$'s proof is unconditional for
+$p\ge7$ and $p=5$ is \Verified\ only. ($s_{10}$'s coefficients are likewise
+$\tfrac15(1,4,-4)$; it happens to show no $p=5$ defect, but the proof as written still
+requires $p\ge7$.) \emph{No other defect of any kind appears in the tame cases: the only
+obstruction the mechanism ever meets is the coefficient condition.}
+
+\subsection{$s_7$: reachable}\label{sec:s7}
+For $s_7$, $\varepsilon$, $\alpha$ and $\mathbf E$ the known weight is \emph{not} tame:
+arguments reach $2n$ (letters at $2k$, $2n-2k$, $2k-n$), so for $k$ in the vanishing layer
+$\lfloor x/p\rfloor$ can reach $2p-1$, the descended letter acquires a pole, and
+$p^{w}\mathfrak w(n,k)$ is no longer $p$-integral. The two-layer split of the proof of
+Theorem~\ref{thm:LB} then fails \emph{layer by layer}: each of
+\[
+  V(n)=\!\!\sum_{k:\,p\mid S(n,k)}\!\!S(n,k)p^{w}\mathfrak w(n,k),
+  \qquad
+  U(n)=\!\!\sum_{k:\,p\nmid S(n,k)}\!\!S(n,k)p^{w}\mathfrak w(n,k)
+\]
+separately misses its intended value. (It does \emph{not} fail index by index in $k$; that
+misreading led to a false claim in an earlier memo of the programme, corrected in
+\cite{LemmaDCheck}.)
+
+\begin{proposition}\label{prop:s7}
+\Verified\ For $s_7$ and every prime $p\in\{5,11,13,17,19,23,29,31,37,41\}$, all cells
+$n=ap+r<p^2$ and all summation indices $k$:
+\[
+  \textup{(V1)}\quad \vp(S(n,k))+\vp\bigl(p^{2}\mathfrak w(n,k)\bigr)\ge1
+  \quad\text{whenever }p\mid S(n,k),
+\]
+with minimum exactly $1$ ($1\,659\,068$ vanishing-layer terms, $0$ violations); and
+\[
+  \textup{(V2)}\quad \vp(S(a,b))+\vp(\mathfrak w(a,b))\ge1
+  \quad\text{whenever }p\mid S(a,b),\ a<p,
+\]
+$0$ violations for $p\in\{5,11,13,17,19,23,29,31,37\}$.
+\end{proposition}
+
+\noindent
+\textup{(V1)} implies that the vanishing layer is $\equiv0\pmod p$ and \textup{(V2)} that
+$\Delta(a)\equiv0\pmod p$, so at each prime at which \textup{(V1)}, \textup{(V2)}, (H1),
+(H3) and the product structure are known --- all \VerifiedR{$5\le p\le23$, $0$ failures}
+--- the proof of Theorem~\ref{thm:LB} goes through for $s_7$. At those primes
+\eqref{eq:LB} was in any case verified directly, so what \emph{is} gained is not a fact but
+a route: a proof of \textup{(V1)} and \textup{(V2)} for all $p\ge5$, $p\ne7$ would make
+$s_7$ a theorem. We state this as a problem and not as a proposition.
+
+The prime $p=7$ is excluded for $s_7$: its coefficients have denominator $28$, and there are
+$13$ failing cells at $p=7$ against none at $p=5,11,13$. The reason (V1) is true for $s_7$
+and false for the other three is structural: in $s_7$'s weight the argument $2k$ occurs
+\emph{only inside weight-one letters}, so the pole has order at most $1$ and a single Kummer
+carry in $\bin{2k}n$ beats it. This is a bounded, purely local Kummer-versus-order-one-pole
+problem.
+
+\begin{problem}\label{prob:s7}
+\Open\ Prove (V1) and (V2) for $s_7$, $p\ge5$, $p\ne7$. This would take the proved count
+from four to five. It does \emph{not} deliver an instance with $\chi\ne1$: $s_7$ has
+$\chi=\mathbf 1$.
+\end{problem}
+
+\subsection{$\alpha$, $\varepsilon$, $\mathbf E$: blocked, and provably so}\label{sec:blocked}
+
+\begin{proposition}[the defect is real]\label{prop:defectreal}
+\Verified\ For $\alpha$, $\varepsilon$ and $\mathbf E$, the inequality
+$\vp(S(n,k))+\vp(p^{w}\mathfrak w(n,k))\ge1$ on $\{p\mid S(n,k)\}$ is \emph{false}, with
+explicit counterexamples, and so is its aggregated weakening $\vp(V(n))\ge1$.
+\end{proposition}
+
+The minimal certificates, in exact rational arithmetic, are:
+\begin{itemize}[leftmargin=1.6em]
+\item $\alpha$ (Domb), $p=5$, $n=20=4\cdot5+0$, $k=5$:
+  $S=\bin{20}5^2\bin{10}5\bin{30}{15}$ has $v_5(S)=1$, while
+  $v_5(\mathfrak w(20,5))=-5$, so $v_5(p^3\mathfrak w)=-2$ and the sum is $-1<1$. The pole
+  sits at $2n-2k=30\ge p^2$, through the monomials $\HH1k\bigl(\HH1{2n-2k}\bigr)^2$ and
+  $\HH2k\HH1{2n-2k}$; the term $S\,p^{w}\mathfrak w$ is not even $p$-integral.
+\item $\varepsilon$, $p=5$, $n=15$, $k=15$: $v_5(S)=2$, $v_5(p^3\mathfrak w)=-2$, sum $0<1$;
+  pole at $2k=30$, through $\HH3{2k}$ and $\HH2{2k}\HH1{2k}$.
+\item $\mathbf E$, $p=5$, $n=15$, $k=15$: $v_5(S)=1$, $v_5(p^2\mathfrak w)=-1$, sum $0<1$;
+  pole at $2k=30$, through $\KK2{\chi_{-4}}{2k}$ and $\HH1{2k}\KK1{\chi_{-4}}{2k}$.
+\end{itemize}
+The observed minima are uniform in $n$ and $p$ ($-1$ for $\alpha$, $0$ for $\varepsilon$
+and $\mathbf E$, \VerifiedR{$5\le p\le23$}), so a \emph{corrected} inequality with a
+constant amount of slack does exist --- and is useless, because the proof needs
+$\ge1$ exactly. Note the sharpening that $\varepsilon$'s summand $\bin nk^2\bin{2k}n^2$ is a
+square, so $\vp(S)\in2\Z$ and one Kummer carry already buys two orders; that is why
+$\varepsilon$ lands at $0$ rather than $-2$.
+
+\begin{proposition}[what is true instead]\label{prop:LD}
+\Verified\ For all four non-tame families, all cells $n=ap+r<p^2$ and
+$p\in\{5,7,11,13,17,19,23\}$ ($\alpha,\varepsilon,\mathbf E$) resp.\
+$p\in\{5,11,\dots,37\}$ ($s_7$), $0$ failures in $20/20$, $42/42$, $110/110$, $156/156$,
+$272/272$, $342/342$, $506/506$ cells for \emph{both} lines:
+\begin{align}
+  V(n)&\equiv\chi(p)^{e}\,\Delta(a)\,A(r) \pmod p, \tag{LD}\label{eq:LD}\\
+  U(n)&\equiv\chi(p)^{e}\,\bigl(B(a)-\Delta(a)\bigr)A(r) \pmod p. \tag{LD$'$}
+\end{align}
+Adding the two lines returns \eqref{eq:LB}. So \eqref{eq:LD} is exactly the missing
+ingredient, and nothing else is missing.
+\end{proposition}
+
+This is the precise content of the earlier, vaguer statement that ``the vanishing-layer and
+surviving-layer defects occur in equal numbers and cancel''. They are equal in number
+because they are the \emph{same} number, $\chi(p)^{e}\Delta(a)A(r)$, with opposite signs.
+We stress that ``equal numbers'' was never independent evidence: given the (verified)
+conclusion \eqref{eq:LB}, $V$ fails if and only if $U$ does. The genuine new information is
+the closed form. Certificates: $\alpha$ at $p=5$, $n=20$: $V\equiv\Delta(4)A(0)=37259/54$,
+matched at $v_5=3$; $\mathbf E$ at $p=7$, $n=28$: $\Delta(4)=379/9$, $\chi_{-4}(7)=-1$,
+$V\equiv-379/9$, matched at $v_7=2$. Note also that $\Delta(a)=0$ identically for
+$a\le(p-1)/2$ --- the defect is a large-digit phenomenon.
+
+\begin{theorem}[no admissible weight repairs the defect]\label{thm:norepair}
+\Excluded\ Let $\mathcal K$ be the exact $\Q$-kernel of the fitting system for one of
+$\alpha$, $\varepsilon$, $\mathbf E$ over the argument alphabets below, so that the
+admissible weights form the affine space $\mathfrak w_0+\mathcal K$. Then, \emph{for each
+of the primes $p\in\{5,7,11,13,17,19,23\}$ marked} $\times$ \emph{below}, the $\mathbb
+F_p$-linear system $\sum_{b\in\mathcal B_a}S(a,b)\mathfrak w(a,b)\equiv B(a)$
+($a=1,\dots,p-1$), i.e.\ $\Delta(a)\equiv0$ for all $a$, is \emph{inconsistent}:
+\begin{center}\small
+\begin{tabular}{@{}llccccccccc@{}}
+\toprule
+family & alphabet & cols & $\dim\mathcal K$ & $5$&$7$&$11$&$13$&$17$&$19$&$23$\\
+\midrule
+$\alpha$&$\{k,n-k,2k,2n-2k\}$&40&21&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$\\
+$\alpha$&$+\,n$&65&32&\checkmark&\checkmark&$\times$&$\times$&$\times$&$\times$&$\times$\\
+$\varepsilon$&$\{k,n-k,2k,2k-n\}$&40&2&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$\\
+$\varepsilon$&$+\,n,\ 2n-2k$&98&7&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$\\
+$\mathbf E$&$\{k,n-k,2k,2n-2k\}+\chi_{-4}$, (H5)&20&10&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$\\
+$\mathbf E$&$+\,n$, (H5) dropped&65&28&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$\\
+$s_7$&$\{n,k,n-k,2k\}$ ($+$enlarged)&14/27&2&\checkmark&$\times$&\checkmark&\checkmark&\checkmark&\checkmark&\checkmark\\
+\bottomrule
+\end{tabular}
+\end{center}
+For $\mathbf E$ the kernel has rank $0$ against $\Delta$ at each of those primes:
+\emph{every} admissible weight produces the \emph{same} $\Delta(a)\bmod p$.
+\end{theorem}
+
+\begin{remark}
+The obvious extrapolation --- that $\Delta(a)\bmod p$ is an invariant of $\mathbf E$ at
+every prime, not an artefact of the fit --- is not proved here and is recorded as such.
+Nothing below depends on it: what the theorem already excludes is the strategy of
+re-choosing the weight, and it excludes it at every prime that has been examined.
+\end{remark}
+
+\begin{proof}[Method and scope]
+The kernel basis is computed exactly (row reduction modulo four primes, CRT, rational
+reconstruction) and each basis vector is verified over $\Q$ by
+$\sum_kS(n,k)\kappa(n,k)=0$ for $n=1,\dots,21$ ($0$ failures in every case); the
+$\mathbb F_p$ system is then solved exactly. The $\mathbf E$ statement is confirmed
+independently by direct perturbation: at $p=5$ all ten kernel vectors leave
+$(\Delta(3),\Delta(4))\equiv(3,1)\bmod 5$ unchanged; for $\alpha$ only two kernel vectors
+move it, and only along $(1,-1)$, never onto $(0,0)$.
+\emph{Scope, stated honestly:} this excludes every weight-homogeneous $\Q$-combination of
+bare letters at the listed argument forms. It does not exclude a wholly different ansatz ---
+rational-function coefficients, a constant-term representation, or new letters.
+\end{proof}
+
+\begin{corollary}\label{cor:count}
+The route ``prove one valuation inequality and move $\alpha,\varepsilon,s_7,\mathbf E$
+inside Theorem~\ref{thm:LB}'' --- proposed in an earlier memo of the programme and repeated
+in \cite[\S9]{CompanionLucas2nd} --- is wrong. The inequality is false for
+$\alpha,\varepsilon,\mathbf E$; it works for $s_7$ alone, taking the proved count from four
+to five, not from four to eight. For $\alpha$, $\varepsilon$, $\mathbf E$ the target is
+\eqref{eq:LD}, which is a \emph{descent} congruence of the same logical type as the theorem
+it is meant to prove, not a local Kummer estimate. That is a materially larger gap, and it
+is where the programme's first instance with $\chi\ne1$ is gated.
+\end{corollary}
+
+Two structural leads survive. First, $\Delta(a)=0$ identically for $a\le(p-1)/2$. Second,
+the per-digit refinement $V_b(n)\equiv\chi(p)^{e}S(a,b)\mathfrak w(a,b)A(r)$ of
+\eqref{eq:LD} is \VerifiedR{$0$ failures, $p=5,7,11,13$} for $\varepsilon$, $\mathbf E$ and
+$s_7$, so for those (LD) is provable one digit at a time; it is \emph{false} for $\alpha$
+(e.g.\ $16$ of $30$ defect-digits fail at $p=5$), so $\alpha$ needs the aggregated form.
+
+Finally, $\mathbf E$ is provably non-tame in a stronger sense: attempts to find a
+\emph{tame} $\chi_{-4}$-decomposition for $\mathbf E$ over the complete tame argument set
+$\{n,k,n-k\}$, with $\chi_{-4}$, with three characters, with and without (H5), are all
+\Excluded\ at $106$--$154$ excess equations; the only other tame representation of
+$\mathbf E$'s first row that exists, $A(n)=\sum_k4^{\,n-2k}\bin n{2k}\bin{2k}k^2$
+(\VerifiedR{$n\le30$}), supports no decomposition at all ($230$ columns, rank $230$, $90$
+excess); and a sweep of $4.4$ million tame templates finds no third representation. The wide
+arguments are essential, so the twisted case of Theorem~\ref{thm:LB} is proved as a
+mechanism but has, at present, no tame instance.
+
+\subsection{The conjectural seven}\label{sec:seven}
+For $\mathbf B$, $\mathbf C$, $\mathbf F$, $\delta$, $\zeta$, $\eta$, $s_{18}$ no harmonic
+decomposition is known and \eqref{eq:master} is \Verified\ only. The searches were run to
+completion in every \emph{complete tame} alphabet (the set of tame integer linear forms on a
+given support is finite and explicitly computable), at up to $520$ columns and with $55$ to
+$193$ excess equations; all $30$ runs are inconsistent, and each headline negative was
+recomputed at a second, unrelated modulus with identical rank and verdict. Two of these are
+worth stating as results.
+
+\begin{proposition}[$\mathbf C$]\label{prop:C}
+\Excluded\ $\mathbf C$'s second solution admits no harmonic-monomial decomposition on the
+summand $\bin nk^2\bin{2k}k$ in any basis tried: plain harmonic monomials at $\{n,k,n-k,2k\}$
+($14$ elements) and at $\{n,k,n-k,2k,n+k,2n-2k,2n,2n-k\}$ ($44$), and with
+$\chi_{-3}$-letters added ($44$ and $152$ elements, $110$ and $220$ exact equations); and,
+sharper, not even when the conductor-three arguments $3k$, $3n-3k$, $3n$ that the summand
+does not supply are furnished by hand ($90$ columns / $64$ excess and $132$ / $63$). By
+the heuristic of Remark~\ref{obs:dichotomy} its letters are expected to be twisted; the
+obstruction is therefore not merely the missing arguments. Moreover $\mathbf C$'s complete tame form set is only
+$\{n,k,n-k\}$ (its $2k$ reaches $2n$), so Theorem~\ref{thm:LB} could not be applied to
+$\mathbf C$ even if a decomposition were found in a wide alphabet.
+\end{proposition}
+
+\begin{proposition}[$\delta$]\label{prop:delta}
+\Excluded\ $\delta$'s second solution admits no weight-three harmonic decomposition over its
+complete tame alphabet $\{n,k,2k,3k,n-k,n-2k,n-3k\}$ at full degree ($140$ columns, $60$
+excess; also $330$ columns / $70$ excess with $\chi_{-3}$-letters), and $\delta$ possesses no
+tame binomial representation whatsoever in a $4.4$-million-template sweep.
+\end{proposition}
+
+A useful diagnostic emerged from these runs: the rank deficiency of the design matrix.
+Families that do have a decomposition have large kernels ($\mathbf E$: rank $37$ of $65$;
+$\alpha$: $19$ of $40$); $\mathbf C$, $\mathbf F$, $s_{18}$, $\eta$ have small ones
+($86/90$, $100/152$, $107/110$, $153/156$); and $\mathbf B$, $\delta$, $\zeta$ have
+\emph{rank $=$ columns in every run} --- no $\Q$-relation at all between their summand and
+the harmonic letters. So enlarging the alphabet will not help those three; the ansatz has to
+change. The recommended replacement is Gorodetsky's constant-term representation
+\cite{Gorodetsky}, which supplies exactly the sort of new letters that
+Proposition~\ref{prop:C} shows are needed.
+
+The open coverage gaps, stated rather than hidden: degree-three-in-weight-one coverage for
+$\zeta$ and $\eta$ in their complete tame spaces, and for $\mathbf F$ at seven tame
+arguments, would need $424$--$1088$ columns and correspondingly $500$--$1150$ rows; those
+three runs at full degree were not made.
+
+%======================================================================
+\section{Closed forms}\label{sec:closed}
+
+\subsection{Ap\'ery's $\zeta(3)$ numerators}
+\begin{theorem}\label{thm:gamma}
+\Thm\ \Lean\ Let $b_n$ be defined by $b_0=0$, $b_1=6$ and
+$(n+2)^3b_{n+2}=(34n^3+153n^2+231n+117)\,b_{n+1}-(n+1)^3b_n$, i.e.\ Ap\'ery's recurrence.
+Then for every $n\ge0$
+\[
+  b_n=\sum_{k=0}^n\bin nk^2\bin{n+k}k^2\bigl(2\HH3n-\HH3k\bigr).
+\]
+\end{theorem}
+
+The proof is in \cite{CompanionLucasMin}; it is elementary --- two Zeilberger/Gosper
+certificates that are polynomial identities in $\Q[n,k]$, combined into a \emph{single}
+telescope with vanishing boundary values --- and it is formalised (\S\ref{sec:lean}). It
+replaces both Ap\'ery's own weight
+$\HH3n+\sum_{m\le k}(-1)^{m-1}\bigl(2m^3\bin nm\bin{n+m}m\bigr)^{-1}$ and Nesterenko's
+weight $\HH3k+(2\HH1k-\HH1{n+k}-\HH1{n-k})\HH2k$ \cite{Nesterenko1996}: the fitting system
+has an $11$-dimensional kernel, so the harmonic-monomial representation is far from unique,
+and this is the shortest member. We have not located it in the literature; see
+\cite[\S9]{CompanionLucasMin} for the search record.
+
+\subsection{The symmetric template}\label{sec:template}
+For the $d$-fold sums $A^{(d)}(n)=\sum_k\bin nk^d$ the summand is symmetric under
+$k\mapsto n-k$, so any fitted weight may be replaced by its $k\leftrightarrow n-k$ average
+without changing $B(n)$. Writing
+\begin{equation}\label{eq:sigmadelta}
+  \sigma(n,k)=\HH2k+\HH2{n-k},\qquad \delta(n,k)=\HH1k-\HH1{n-k},
+\end{equation}
+the fitted weights of \S\ref{sec:decomps} symmetrise to
+$\mathfrak w=\alpha_d\sigma+\beta_d\delta^2$ with
+$\alpha_d=\tfrac1{2(d+1)}$, $\beta_d=\tfrac d{2(d+1)}$; note $\alpha_d+\beta_d=\tfrac12$ for
+every $d$.
+
+This is not cosmetic. In the symmetric form the only weight-one letter that ever appears is
+the single antisymmetric combination $\delta$, because $\sigma$ differences to
+\emph{rational} functions under $n\mapsto n\pm1$ and $k\mapsto k+1$:
+\begin{equation}\label{eq:diffs}
+\begin{aligned}
+  \sigma(n+1,k)-\sigma(n,k)&=\frac{1}{(n+1-k)^2},&
+  \delta(n+1,k)-\delta(n,k)&=\frac{-1}{n+1-k},\\
+  \sigma(n-1,k)-\sigma(n,k)&=\frac{-1}{(n-k)^2},&
+  \delta(n-1,k)-\delta(n,k)&=\frac{1}{n-k},\\
+  \sigma(n,k+1)-\sigma(n,k)&=\tfrac1{(k+1)^2}-\tfrac1{(n-k)^2},&
+  \delta(n,k+1)-\delta(n,k)&=e(n,k):=\tfrac1{k+1}+\tfrac1{n-k}.
+\end{aligned}
+\end{equation}
+So the certificate module is free of rank $2$ on $\{1,\delta\}$ instead of rank $4$ on
+$\{1,\HH1k,\HH1{n-k},\HH1n\}$: \emph{two} Gosper problems instead of four.
+
+\medskip\noindent\textbf{The template.} Let $c_+(n)u_{n+1}+c_0(n)u_n+c_-(n)u_{n-1}=0$ be the
+recurrence and $S(n,k)=\bin nk^d$.
+\begin{enumerate}[leftmargin=2em,label=(\arabic*)]
+\item \emph{Zeilberger certificate.} Seek $\rho\in\Q(n)[k]$ with
+  $G(n,k)=S(n,k)k^d\rho(n,k)/(n+1-k)^d$ satisfying
+  \begin{equation}\label{eq:Z}
+    c_+S(n+1,k)+c_0S(n,k)+c_-S(n-1,k)=G(n,k+1)-G(n,k).
+  \end{equation}
+  Because $S(n,k+1)/S(n,k)=\bigl((n-k)/(k+1)\bigr)^d$, one has
+  $G(n,k+1)=S(n,k)\rho(n,k+1)$: \emph{the shifted certificate is the summand times a
+  polynomial}. This is what makes the scheme work, and it turns \eqref{eq:Z} into one
+  identity in $\Q(n,k)$.
+\item \emph{Split and Abel.} With $\Delta^{\pm}$ the $n$-differences \eqref{eq:diffs},
+  \[
+    L[B](n)=\sum_{k=0}^{n}\mathfrak w(n,k)\bigl(G(n,k+1)-G(n,k)\bigr)
+            +\sum_{k}\mathrm{Corr}(n,k)+\mathrm{Top}(n),
+  \]
+  $\mathrm{Corr}=c_+S(n+1,k)\Delta^+\mathfrak w+c_-S(n-1,k)\Delta^-\mathfrak w$ and
+  $\mathrm{Top}(n)=c_+(n)S(n+1,n+1)\mathfrak w(n+1,n+1)$; Abel summation and $G(n,0)=0$
+  turn the first sum into
+  $\mathfrak w(n,n)G(n,n+1)-\sum_{k=0}^{n-1}G(n,k+1)\Delta_k\mathfrak w$.
+\item \emph{Two Gosper problems.} By \eqref{eq:diffs} the residual $k$-summand is
+  $S(n,k)\bigl(\mathcal A(n,k)+\mathcal B(n,k)\delta(n,k)\bigr)$ with
+  $\mathcal A,\mathcal B\in\Q(n,k)$. Seek $Z(n,k)=S(n,k)(z_0+z_1\delta)$ with
+  $Z(n,k+1)-Z(n,k)$ equal to it. Since $\delta(n,k+1)=\delta(n,k)+e(n,k)$, matching
+  coefficients of $1$ and $\delta$ gives, with $r=S(n,k+1)/S(n,k)$,
+  \begin{align}
+    r(n,k)\,z_1(n,k+1)-z_1(n,k)&=\mathcal B(n,k),\label{eq:G1}\\
+    r(n,k)\,z_0(n,k+1)-z_0(n,k)&=\mathcal A(n,k)-r(n,k)z_1(n,k+1)e(n,k).\label{eq:G2}
+  \end{align}
+  The ansatz $z_1=N(k)/(n+1-k)^{d+1}$, $z_0=M(k)/(n+1-k)^{d+2}$ reduces both to linear
+  systems over $\Q(n)$.
+\item \emph{Boundary.} Everything cancels iff $Z(n,0)=0$ and three scalar identities hold.
+\end{enumerate}
+
+\begin{proposition}[the boundary identities, for every $d$]\label{prop:boundary}
+\Proved\ With $\mathfrak w=\alpha\sigma+\beta\delta^2$, and provided \eqref{eq:Z},
+\eqref{eq:G1}, \eqref{eq:G2} and $Z(n,0)=0$ hold, one has $L[B](n)=0$ for all $n\ge1$
+as soon as
+\begin{equation}\label{eq:boundary}
+\begin{gathered}
+  \rho(n,n+1)=-c_+(n),\qquad
+  N(n)=2\beta\,c_+(n)\Bigl((n+1)^d-\tfrac1{n+1}\Bigr),\\
+  M(n)=-c_+(n)(\alpha+\beta)\Bigl((n+1)^d+\tfrac1{(n+1)^2}\Bigr).
+\end{gathered}
+\end{equation}
+In particular, for $c_+(n)=(n+1)^{d-1}$, $\alpha=\alpha_d$, $\beta=\beta_d$,
+\[
+  \rho(n,n+1)=-(n+1)^{d-1},\qquad
+  N(n)=\tfrac{d}{d+1}\bigl((n+1)^{2d-1}-(n+1)^{d-2}\bigr),
+\]
+\[
+  M(n)=-\tfrac12\bigl((n+1)^{2d-1}+(n+1)^{d-3}\bigr).
+\]
+\end{proposition}
+
+\begin{proof}
+Assemble step (2)--(4). Since $S(n-1,k)=0$ for $k\ge n$ and $S(n,n)=S(n+1,n+1)=1$,
+\[
+  L[B](n)=Z(n,n)-Z(n,0)+\mathrm{Corr}(n,n)+\mathfrak w(n,n)G(n,n+1)+\mathrm{Top}(n).
+\]
+Now $\sigma(n,n)=\HH2n$, $\delta(n,n)=\HH1n$, $G(n,n+1)=\rho(n,n+1)$,
+$Z(n,n)=M(n)+N(n)\HH1n$, $\mathrm{Corr}(n,n)=c_+(n+1)^d\bigl[\alpha+\beta(1-2\HH1n)\bigr]$
+and $\mathrm{Top}(n)=c_+\bigl[\alpha\HH2{n+1}+\beta(\HH1{n+1})^2\bigr]$. Substituting
+$\HH2{n+1}=\HH2n+(n+1)^{-2}$ and $\HH1{n+1}=\HH1n+(n+1)^{-1}$ and collecting the
+coefficients of $\HH2n$, $(\HH1n)^2$, $\HH1n$ and $1$ shows that \eqref{eq:boundary} makes
+each of the four coefficients vanish identically --- the first two both reduce to
+$\rho(n,n+1)+c_+(n)=0$ --- whence $L[B](n)=0$. The last statement follows by substituting
+$\alpha_d+\beta_d=\tfrac12$.
+\end{proof}
+
+\begin{remark}
+The conditions \eqref{eq:boundary} are also necessary, since $\HH2n$, $(\HH1n)^2$, $\HH1n$
+and $1$ are linearly independent over $\Q(n)$ --- a standard fact of $\Pi\Sigma$-difference
+field theory, cf.\ \cite{Schneider2007} --- but we do not use necessity and do not prove it
+here.
+\end{remark}
+
+\begin{remark}
+Proposition~\ref{prop:boundary} says the boundary is \emph{never} the obstruction: the three
+identities hold for every $d$. The only $d$-dependent step is the existence of a rational
+solution of \eqref{eq:G1}--\eqref{eq:G2}. It is worth noting where this leaves the general
+$d$: Chamberland--Straub's conjecture \cite[Conj.~9]{ChamStraub} was proved for every $d$ by
+Straub--Zudilin \cite{StraubZudilin} by an entirely different route (Remark~\ref{rem:SZ}),
+so the template is not needed for it; what the template supplies, where it closes, is a
+\emph{finite certificate} valid for every $n\ge1$.
+\end{remark}
+
+\subsection{Franel and $\sum_k\bin nk^4$: finite certificates}\label{sec:franel}
+
+The two closed forms below are not new --- see Remark~\ref{rem:SZ} --- but the proofs are,
+and it is the harmonic-monomial \emph{display} that \S\ref{sec:status} needs.
+
+\begin{theorem}[Franel]\label{thm:franel}
+\Thm\ Let $A(n)=\sum_k\bin nk^3$ (A000172), so $(n+1)^2u_{n+1}=(7n^2+7n+2)u_n+8n^2u_{n-1}$.
+Then the second solution is
+\[
+  B(n)=\sum_{k=0}^n\bin nk^3\Bigl[\tfrac18\bigl(\HH2k+\HH2{n-k}\bigr)
+        +\tfrac38\bigl(\HH1k-\HH1{n-k}\bigr)^2\Bigr].
+\]
+\end{theorem}
+
+\begin{theorem}[$s_{10}$]\label{thm:s10}
+\Thm\ Let $A(n)=\sum_k\bin nk^4$, so
+$(n+1)^3u_{n+1}=(2n+1)(6n^2+6n+2)u_n+n(64n^2-4)u_{n-1}$. Then the second solution is
+\[
+  B(n)=\sum_{k=0}^n\bin nk^4\Bigl[\tfrac1{10}\bigl(\HH2k+\HH2{n-k}\bigr)
+        +\tfrac25\bigl(\HH1k-\HH1{n-k}\bigr)^2\Bigr].
+\]
+\end{theorem}
+
+\begin{proof}[Proof of Theorems \ref{thm:franel} and \ref{thm:s10}]
+Both sides vanish at $n=0$ and equal $1$ at $n=1$, so it suffices to prove that the right-hand
+side is annihilated by the recurrence operator for $n\ge1$; the leading coefficient
+$(n+1)^{d-1}$ never vanishes, so the second solution is then determined. Apply the template
+of \S\ref{sec:template} with the certificates
+\begin{align*}
+ \rho_F(n,k)&=-\tfrac1n\bigl(4-12k+12k^2-4k^3+22n-39kn+18k^2n+32n^2-27kn^2+14n^3\bigr),\\
+ N_F(k)&=\tfrac{3k^2}{4n}\bigl(4-16k+24k^2-16k^3+4k^4+26n-68kn+63k^2n-20k^3n\\
+    &\qquad\qquad+54n^2-88kn^2+39k^2n^2+46n^3-36kn^3+14n^4\bigr),\\
+ M_F(k)&=-\tfrac{k}{2n}\bigl(2-10k+20k^2-20k^3+10k^4-2k^5+15n-50kn+70k^2n-45k^3n\\
+    &\qquad\quad+11k^4n+40n^2-90kn^2+80k^2n^2-25k^3n^2+50n^3-70kn^3+30k^2n^3\\
+    &\qquad\quad+30n^4-20kn^4+7n^5\bigr)
+\end{align*}
+for $d=3$, and the analogous $\rho_{10}$ (degree $5$ in $k$, degree $6$ in $n$), $N_{10}$,
+$M_{10}$ (degree $9$ in $k$) for $d=4$, recorded in the data file accompanying
+\cite{MinimalFormMemo}. Every one of \eqref{eq:Z}, \eqref{eq:G1}, \eqref{eq:G2} is an identity
+in $\Q(n,k)$ and was verified symbolically, by clearing denominators and expanding to $0$;
+$z_1(n,0)=z_0(n,0)=0$ because $N$ and $M$ carry factors $k^2$, $k$ ($d=3$) resp.\ $k^3$,
+$k^2$ ($d=4$). The three boundary identities \eqref{eq:boundary} hold:
+$\rho_F(n,n+1)=-(n+1)^2$, $N_F(n)=\tfrac34\bigl((n+1)^5-(n+1)\bigr)$,
+$M_F(n)=-\tfrac12\bigl((n+1)^5+1\bigr)$; and $\rho_{10}(n,n+1)=-(n+1)^3$,
+$N_{10}(n)=\tfrac45\bigl((n+1)^7-(n+1)^2\bigr)$,
+$M_{10}(n)=-\tfrac12\bigl((n+1)^7+(n+1)\bigr)$ --- exactly the values forced by
+Proposition~\ref{prop:boundary}. Proposition~\ref{prop:boundary} then gives $L[B]=0$.
+\end{proof}
+
+\begin{remark}[certificate audit]\label{rem:audit}
+The identities \eqref{eq:Z}, \eqref{eq:G1}, \eqref{eq:G2}, $Z(n,\cdot)$ at $k=0$, and
+\eqref{eq:boundary} were each re-derived and re-verified symbolically for the present paper,
+independently of the memo they come from, in a computer-algebra system, each returning $0$
+after simplification. In addition $L[B]=0$ was checked in exact rational arithmetic for
+$n\le15$ for both families, and $B(0)=0$, $B(1)=1$ by hand.
+\end{remark}
+
+\begin{remark}[these sums are Straub--Zudilin's $t^2$-coefficients]\label{rem:SZ}
+Straub--Zudilin \cite{StraubZudilin} study the analytic deformation
+\[
+  A^{(s)}(n,t)=\sum_{k=0}^n\bin nk^{s}
+    \prod_{j=1}^{k}\Bigl(1-\frac tj\Bigr)^{-s}\prod_{j=1}^{n-k}\Bigl(1+\frac tj\Bigr)^{-s}
+  \;=\;\sum_{j\ge0}A^{(s)}_j(n)\,t^{2j},
+\]
+and prove (their Theorem 1.3) that every $A^{(s)}_j(n)$ solves the telescoping recurrence of
+$A^{(s)}(n)$ for large enough $n$, with $A^{(s)}_1(1)=s(s+1)$. Since
+\[
+  \prod_{j\le k}\Bigl(1-\tfrac tj\Bigr)^{-s}\prod_{j\le n-k}\Bigl(1+\tfrac tj\Bigr)^{-s}
+  =\exp\Bigl(s\,t\,\delta+\tfrac{s}{2}t^{2}\sigma+O(t^{3})\Bigr)
+  =1+st\delta+t^{2}\Bigl(\tfrac s2\sigma+\tfrac{s^{2}}2\delta^{2}\Bigr)+O(t^{3})
+\]
+with $\sigma,\delta$ as in \eqref{eq:sigmadelta}, one gets
+$A^{(s)}_1(n)/\bigl(s(s+1)\bigr)=\sum_k\bin nk^{s}\bigl(\alpha_s\sigma+\beta_s\delta^2\bigr)$
+identically. \emph{So Theorems~\ref{thm:franel} and~\ref{thm:s10} are the cases $s=3,4$ of
+\cite[Thm.~1.3]{StraubZudilin}, written out in harmonic numbers}
+(\VerifiedR{exact, $s=3,4,5,6$, $n\le12$}). What the proof above adds is that the identity
+holds for \emph{every} $n\ge1$ --- \cite{StraubZudilin} obtains the recurrence only for $n$
+large --- by a finite certificate rather than a locally uniform analytic limit; that
+certificate is what makes the statement formalisable in the sense of \S\ref{sec:lean}.
+\end{remark}
+
+\begin{corollary}[Ap\'ery limits, after Straub--Zudilin]\label{cor:limits}
+\Proved\ For $d=3$ and $d=4$,
+\[
+  \lim_{n\to\infty}\frac{B^{(d)}(n)}{A^{(d)}(n)}=\frac{\zeta(2)}{d+1},
+\]
+i.e.\ $\pi^2/24$ and $\pi^2/30$.
+\end{corollary}
+
+\begin{proof}
+Write $m=\lfloor n/2\rfloor$ and $T=\lceil n^{3/4}\rceil$. By Hoeffding's bound
+$\bin nk\le2^ne^{-2(k-n/2)^2/n}$ and $\bin nm\ge2^n/(n+1)$, so
+$\bin nk\le(n+1)\bin nme^{-2(k-n/2)^2/n}$ for all $k$. Hence, with
+$A^{(d)}(n)\ge\bin nm^d$,
+\[
+  \frac1{A^{(d)}(n)}\sum_{|k-n/2|\ge T}\bin nk^d
+  \;\le\;(n+1)^d\!\!\sum_{|u|\ge T}\!e^{-2du^2/n}
+  \;\le\;\frac{(n+1)^d\,n}{d\,(T-1)}\,e^{-2d(T-1)^2/n}
+  \;=\;O\bigl(e^{-\sqrt n}\bigr),
+\]
+the sum over $u\in\tfrac12\Z$ being bounded by twice the corresponding integral. On the
+complementary range $|k-n/2|<T$ we have, for $n$ large, $k\ge n/3$ and $n-k\ge n/3$, whence
+$|\HH2k-\zeta(2)|\le1/k\le3/n$ and likewise for $n-k$, so $|\sigma(n,k)-2\zeta(2)|\le6/n$;
+and, assuming $k\ge n-k$ without loss of generality,
+$|\delta(n,k)|=\sum_{j=n-k+1}^{k}j^{-1}\le(2k-n)/(n-k)\le 6n^{-1/4}$, so
+$\delta(n,k)^2\le36n^{-1/2}$. Globally $0\le\sigma\le2\zeta(2)$ and
+$|\delta|\le\HH1n\le1+\log n$. Therefore
+\[
+  \Bigl|\frac{B^{(d)}(n)}{A^{(d)}(n)}-2\alpha_d\zeta(2)\Bigr|
+  \;\le\;\frac{6\alpha_d}{n}+36\beta_d n^{-1/2}
+       +O\bigl(e^{-\sqrt n}\bigr)\bigl(4\alpha_d\zeta(2)+\beta_d(1+\log n)^2\bigr)
+  \;\longrightarrow\;0 ,
+\]
+and $2\alpha_d\zeta(2)=\zeta(2)/(d+1)$. Theorems~\ref{thm:franel} and~\ref{thm:s10} identify
+the sums with the second solutions normalised as in Definition~\ref{def:B}, which is the
+normalisation of \cite[eq.~(20)]{ChamStraub}.
+\end{proof}
+
+\begin{remark}
+Both limits were observed numerically by Cusick and are reported by van der Poorten
+\cite[p.~202]{vdPoorten1979}; the case $d=3$ was proved by Zagier \cite{Zagier2009} using
+modular forms, and \emph{both cases, indeed all $d$}, are Example 1.5 of Straub--Zudilin
+\cite{StraubZudilin}, which settles \cite[Conj.~9]{ChamStraub}. Corollary~\ref{cor:limits}
+is therefore a re-proof, not a new result. It is nevertheless worth recording, for two
+reasons: it is elementary, using no modular forms and no analytic deformation, only the
+closed form plus a Chernoff estimate; and it exhibits the mechanism --- the summand
+$\bin nk^d$ concentrates at $k=n/2$, where $\delta(n,k)\to0$ and $\sigma(n,k)\to2\zeta(2)$,
+so that the Ap\'ery limit is simply $2\alpha_d\zeta(2)$ and the $\delta^2$-part contributes
+nothing. The argument does not reach $d\ge5$: the concentration estimate is uniform in $d$,
+but the minimal recurrence then has order $>2$ and the closed form of
+\S\ref{sec:template} is not available. \emph{Equation and conjecture numbers quoted from
+\cite{ChamStraub} are those of its arXiv version; the journal version may renumber.}
+\end{remark}
+
+\subsection{A provable insufficiency: the $\zeta(2)$-Ap\'ery pair}\label{sec:Dobstruction}
+\begin{observation}\label{obs:Dform}
+\VerifiedR{$n\le25$} For $\mathbf D$, $A(n)=\sum_k\bin nk^2\bin{n+k}k$ (A005258),
+$(n+1)^2u_{n+1}=(11n^2+11n+3)u_n+n^2u_{n-1}$, the second solution is
+\[
+  B(n)=\tfrac15\sum_k\bin nk^2\bin{n+k}k
+        \Bigl[\HH2n+\HH1k\bigl(2\HH1k-\HH1{n-k}-\HH1n\bigr)\Bigr],
+\]
+with $B(0),\dots,B(6)=0,1,\tfrac{25}4,\tfrac{1741}{36},\tfrac{6585}{16},
+\tfrac{13327519}{3600},\tfrac{124308457}{3600}$.
+\end{observation}
+
+Steps (1)--(3) of the template go through, and beautifully. The Zeilberger certificate is
+the smallest in the programme,
+\[
+  \rho_D(n,k)=k^2+k(1+6n)-4-15n-11n^2,\qquad
+  G_D(n,k)=\frac{k^3\rho_D(n,k)\bin{n+1}k^2\bin{n+k-1}k}{n(n+1)^2},
+\]
+\Proved\ (a rational identity, expanded to $0$; re-verified here). The structural boundary
+identity holds \emph{exactly}:
+$\rho_D(n,n+1)=-2(n+1)(2n+1)=-(n+1)^2\bin{2n+2}{n+1}\big/\bin{2n}n=-c_+(n)S(n+1,n+1)/S(n,n)$.
+The correction decomposes as $Y(n,k)/S(n,k)=\mathcal A+\mathcal B_1\HH1k
++\mathcal B_2(\HH1{n-k}+\HH1n)$ with $\mathcal B_2=\rho_D(n,k+1)/(5(k+1))$
+\VerifiedR{exact, $n=2,\dots,8$}.
+
+\begin{theorem}[the $\HH1{n-k}$ component is not Gosper-summable]\label{thm:gosper}
+\Proved\ Regard $n$ as an indeterminate and put $T(k)=S_D(n,k)\mathcal B_2(n,k)$. Then
+$T(k+1)/T(k)=\bigl(a(k)/b(k)\bigr)\bigl(c(k+1)/c(k)\bigr)$ with
+$a=(n-k)^2(n+k+1)$, $b=(k+1)^2(k+2)$, $c(k)=\rho_D(n,k+1)$, and
+$\gcd\bigl(a(k),b(k+j)\bigr)=1$ in $\Q(n)[k]$ for every $j\ge0$ (the roots of $a$ are $n$
+and $-n-1$, those of $b(k+j)$ are $-j-1$ and $-j-2$), so this is Gosper's normal form.
+Gosper's key equation $a(k)x(k+1)-b(k-1)x(k)=c(k)$ has no solution $x\in\Q(n)[k]$.
+Consequently $T$ has no hypergeometric antidifference with certificate rational in $n$,
+which is what a proof uniform in $n$ requires.
+\end{theorem}
+
+\begin{proof}
+Write $A=a(k)$, $B=b(k-1)$ and use
+\[
+  Ax(k+1)-Bx(k)=\tfrac12(A-B)\bigl(x(k+1)+x(k)\bigr)+\tfrac12(A+B)\bigl(x(k+1)-x(k)\bigr).
+\]
+Here
+\[
+  A-B=-n\bigl(k^2+(n+2)k-n(n+1)\bigr),\qquad
+  A+B=2k^3+(2-n)k^2-(n^2+2n)k+(n^3+n^2),
+\]
+so $\deg(A-B)=2<3=\deg(A+B)$ and one is in the second case of Gosper's degree bound. For
+$x$ of degree $m$ with leading coefficient $x_m$, the coefficient of $k^{m+2}$ on the left
+is $\tfrac12\bigl((-n)\cdot2x_m+2\cdot mx_m\bigr)=x_m(m-n)$, which is nonzero in $\Q(n)$
+because $n$ is an indeterminate. Hence $\deg\bigl(Ax(k+1)-Bx(k)\bigr)=m+2$, forcing
+$m=\deg c-2=0$. With $x=x_0$ constant, the coefficient of $k^2$ in $x_0(A-B)=c(k)$ gives
+$x_0=-1/n$; the coefficient of $k$ is then $n+2$, against the required $6n+3$, and
+$n+2\ne6n+3$ in $\Q(n)$. Contradiction. \Verified: solving the linear system directly also
+returns no solution for any $\deg x\le8$.
+\end{proof}
+
+\begin{remark}
+The restriction to $\Q(n)$ is not cosmetic: for a \emph{fixed} positive integer $n$ the
+degeneracy $m=n$ is not excluded and $\gcd\bigl(a(k),b(k+n)\bigr)\ne1$. The theorem rules
+out a certificate valid uniformly in $n$ --- the only kind that can prove a closed form ---
+and says nothing about individual values of $n$.
+\end{remark}
+
+\begin{remark}[diagnosis]
+In the Franel and $s_{10}$ cases the weight is $k\leftrightarrow n-k$ symmetric, the
+certificate module has rank $2$ on $\{1,\delta\}$, and each component telescopes
+separately. For $\mathbf D$ the weight is genuinely three-lettered ($\HH1k$, $\HH1{n-k}$,
+$\HH1n$) and the components do not telescope separately, while the weight-two part of any
+enlarged ansatz is forced to vanish ($\Delta_k(Sz)=0\Rightarrow z=0$). Closing $\mathbf D$
+therefore needs either a different gauge for $\mathfrak w$ --- the harmonic-monomial fit has
+a large kernel, and a kernel shift changes the correction --- or a genuine $\Pi\Sigma$-field
+ansatz allowing nested sums, as in Schneider's treatment of Ap\'ery's double sum
+\cite{Schneider2007}. \Open. This is the first place in the programme where the rank-two
+mechanism is \emph{provably} insufficient, and the obstruction is exactly the one met at
+weight $5$: two independent letters at the top.
+\end{remark}
+
+\subsection{$\mathbf E$: a twisted closed form}\label{sec:E}
+\begin{observation}\label{obs:Eform}
+\VerifiedR{$n\le50$ by direct re-implementation; $n\le20$ re-checked here; held out
+$n=70,\dots,82$ in the original fit}
+For $\mathbf E$, $A(n)=\sum_k\bin nk\bin{2k}k\bin{2(n-k)}{n-k}$, the second solution is
+\[
+  B(n)=\sum_k\bin nk\bin{2k}k\bin{2(n-k)}{n-k}\,
+       \Bigl[\tfrac12\KK2{\chi_{-4}}{2k}
+       +\bigl(\tfrac34\HH1k-\tfrac12\HH1{2k}\bigr)
+        \bigl(\KK1{\chi_{-4}}{2k}-\KK1{\chi_{-4}}{2n-2k}\bigr)\Bigr],
+\]
+with $B(0),B(1),B(2),B(3)=0,1,7,\tfrac{404}9$, and $B(n)/A(n)\to G/2$, $G$ Catalan's
+constant.
+\end{observation}
+
+This is the only known closed form for a sporadic second solution with a non-trivial
+character, and it is the empirical anchor of the whole $\chi$-twist story: the same fitting
+problem is inconsistent in every pure harmonic basis and consistent as soon as
+$\chi_{-4}$-letters are admitted --- exactly what the heuristic of
+Remark~\ref{obs:dichotomy} predicts for a limit of the form $L(\chi_{-4},2)/2$. Every argument of the weight is wide
+($2k$, $2n-2k$), and by the exhaustion recorded in \S\ref{sec:blocked} no tame alternative
+exists; this is why $\mathbf E$ sits outside Theorem~\ref{thm:LB}.
+
+%======================================================================
+\section{Relation to Beukers--Vlasenko's Conjecture 7.5}\label{sec:BV}
+
+Set $f(x)=1-t\,g(x)$ for a Laurent polynomial $g$ and $F(t)=\sum_nf_nt^n$ with
+$f_n=\ct\bigl(g(x)^n\bigr)$; for the sporadic families these $f_n$ are the $A(n)$
+\cite{Gorodetsky,Straub2301}. Let $F_N(t)$ be the truncation of $F$ at $t^N$, let
+$F(t)\log t+G(t)$ be the second solution of the Picard--Fuchs operator --- so that the
+coefficients of $G$ are our $B(n)$, up to normalisation --- and let
+$q(t)=t\exp\bigl(G(t)/F(t)\bigr)$ be the canonical (mirror) coordinate. Beukers--Vlasenko
+prove in \cite[\S7]{BVthree}, building on \cite{BVtwo}, that for all $m,s\ge1$,
+\begin{equation}\label{eq:BV76}
+  \frac{F(t)}{F(t^\sigma)}\;\equiv\;\frac{F_{mp^s}(t)}{F_{mp^{s-1}}(t^\sigma)}\pmod{p^s},
+\end{equation}
+whose coefficientwise reading with the naive lift $t^\sigma=t^p$ and $s=1$ is the first-row
+Lucas congruence \eqref{eq:Arow}. Their Conjecture 7.5 asserts \eqref{eq:BV76} modulo
+$p^{2s}$ for the \emph{excellent} Frobenius lift --- the unique lift with
+$q^{\sigma}=\gamma^{p-1}q^{p}$ --- in the completely symmetric Calabi--Yau families; they
+state that they could not prove it for a single $g$.
+
+The relationship to \eqref{eq:master} is as follows.
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Two rows of one matrix.} The crystal $\mathrm{CY}(g)(2)$ of \cite{BVthree} is
+  free of rank $2$ on $1/f$, $\theta(1/f)$, and its Frobenius has diagonal
+  $(\lambda_0,\lambda_2)$ with $\lambda_0=F(t)/F(t^\sigma)$ the unit root. Conjecture 7.5 is
+  a statement about $\lambda_0$ alone, sharpened from $p^s$ to $p^{2s}$. Statement
+  \eqref{eq:master} is the statement about the \emph{other} diagonal entry: that Frobenius
+  acts on the second graded piece with eigenvalue $\chi(p)p^{w}$. In coefficient form,
+  their $\lambda_0$-congruence \emph{is} the $A$-row and ours \emph{is} the $B$-row.
+  \textbf{Neither formally implies the other.}
+\item \textbf{But 7.5's standing hypothesis is a weak form of our conclusion.}
+  Conjecture 7.5 is stated only for the excellent lift, which exists as a lift of
+  $\Z_p[[t]]$ precisely because $q(t)=t\exp(G/F)\in\Z_p[[t]]$ --- $p$-integrality of the
+  mirror map, a statement about $G$, i.e.\ about $B(n)$. Observation~\ref{obs:integrality}
+  --- $\vp(B(n))\ge-w\lfloor\log_pn\rfloor$ --- is exactly the coefficient-level shadow of
+  that integrality, and it is sharper: it does not merely assert $p$-integrality, it pins
+  the depth at exactly $w$, and \eqref{eq:master} exhibits the eigenvalue $\chi(p)$ on top
+  of it. Heuristically, then,
+  \[
+    \eqref{eq:master}\ \rightsquigarrow\ \text{coefficient form of mirror integrality}\
+    \Longrightarrow\ \text{the excellent lift is defined over $\Z_p[[t]]$,}
+  \]
+  the last being the standing hypothesis of 7.5. The first arrow is written with a wavy
+  line deliberately: as Remark~\ref{rem:integrality} explains, deducing
+  Observation~\ref{obs:integrality} from \eqref{eq:master} needs both the master form and a
+  $p$-unit hypothesis on $A(n)$, so this is a statement about where the two circles of
+  ideas sit relative to one another, not a chain of implications. In that sense
+  \eqref{eq:master} is \emph{upstream} of 7.5, and certainly not equivalent to it.
+\item \textbf{The character is invisible in unit-root formulations.} No character can appear
+  in $\lambda_0=F/F^{\sigma}$: the unit root of the holomorphic period is a unit, and the
+  first-row Lucas congruence is untwisted for all fifteen families
+  \cite{MalikStraub,Straub2301}. The character surfaces only on the \emph{non-unit}
+  eigenvalue. Any crystal-theoretic proof of \eqref{eq:master} must therefore carry the
+  information that for seven of the fifteen families the second Frobenius eigenvalue is
+  $\chi(p)p^{w}$ and not $p^{w}$, i.e.\ that the family is attached to a
+  quadratic-twisted modular parametrisation. \emph{This is a concrete correction to make to
+  any ``Dwork crystals $\Rightarrow$ Lucas congruences for the second solution'' slogan.}
+  We have not located a second-solution version of \eqref{eq:BV76} in \cite{BVthree}, nor
+  elsewhere; we do not claim to have surveyed \cite{BVone,BVtwo} exhaustively.
+\item \textbf{What \eqref{eq:master} does not give.} Nothing towards the modulo-$p^{2s}$
+  \emph{doubling} that is the actual content of 7.5. Our floor is exactly $w$ and equality
+  is attained in every cell tested, so there is no hidden supercongruence in the $B$-row of
+  the kind 7.5 predicts for the $A$-row.
+\end{enumerate}
+
+Proposition~\ref{prop:nolimit} is the sharpest evidence for the Frobenius reading. For
+$\mathbf B$, $\delta$ and $\eta$ the archimedean Ap\'ery limit does not exist --- the
+characteristic roots are complex conjugates of equal modulus and $B(n)/A(n)$ oscillates
+forever --- yet \eqref{eq:master} holds flat for all three, with $\chi=\chi_{-3}$,
+$\mathbf 1$, $\chi_5$. The $p$-adic Ap\'ery limit survives where the archimedean one does
+not; whatever \eqref{eq:master} is measuring, it is not the limit.
+
+%======================================================================
+\section{Machine verification}\label{sec:lean}
+
+The following are formalised in Lean~4 with Mathlib and checked by the kernel with no
+\texttt{sorry} and no \texttt{native\_decide}; for each of them
+\[
+  \texttt{\#print axioms}\;\longrightarrow\;
+  [\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}].
+\]
+
+\begin{center}\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+declaration & statement\\
+\midrule
+\texttt{theorem\_LB} & Theorem~\ref{thm:LB} in the abstract form of Remark~\ref{rem:leanH}\\
+\texttt{bMin\_eq\_bApery} & $\sum_k\bin nk^2\bin{n+k}k^2(2\HH3n-\HH3k)=b_n$, $b_n$ defined by Ap\'ery's recurrence\\
+\texttt{apery\_b\_harmonic\_closed\_form} & the same, with the harmonic sums written out\\
+\texttt{bMin\_lucas} & $p^3\,\tilde b_{ap+r}\equiv\tilde b_a\,a_r\pmod p$ for the explicit sum, any prime $p$\\
+\texttt{bApery\_lucas} & the same for the sequence defined by Ap\'ery's recurrence\\
+\texttt{bFranel\_lucas} & $p^2\,\beta_{ap+r}\equiv\beta_a f_r\pmod p$, $p\ne2$\\
+\texttt{apery\_lucas} & Gessel's congruence $a_{ap+r}\equiv a_aa_r\pmod p$, in digit-product form\\
+\texttt{Q\_lucas} & its analogue for a Brown--Zudilin double sum (not a sporadic first row)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Three scope remarks, stated because they are easy to overstate.
+\begin{enumerate}[leftmargin=2em]
+\item \texttt{bMin\_lucas} carries \emph{no} hypothesis $p\ge5$: the minimal weight's
+  coefficients are the integers $2,-1$, so the (H4) coefficient clause is vacuous. The
+  $p\ge5$ of the informal statement is an artefact of Ap\'ery's original weight, which
+  carries $1/(2m^3)$. Similarly \texttt{bFranel\_lucas} needs only $p\ne2$.
+\item That \texttt{bFranel} is the second solution of the Franel recurrence is
+  \Verified\ upstream and \emph{not} formalised; the Lean theorem is about the explicit sum.
+  Theorem~\ref{thm:franel} of the present paper supplies the missing identification on
+  paper, but it is not machine-checked. The corresponding identification \emph{is}
+  formalised in the $\gamma$ case (\texttt{bMin\_eq\_bApery}).
+\item The equivalence of the minimal form with van der Poorten's classical double sum
+  is proved on paper \cite[\S5]{MinimalFormMemo} and is \emph{not} formalised.
+\end{enumerate}
+Nothing in \S\ref{sec:status} beyond Theorem~\ref{thm:LB} and its two instances is
+formalised; in particular Theorem~\ref{thm:norepair}, Theorem~\ref{thm:gosper} and
+Corollary~\ref{cor:limits} are paper proofs.
+
+A standing lesson of the programme belongs here: \texttt{\#print axioms} cannot detect a
+false undischarged hypothesis. In a different part of the development a hypothesis that was
+false as stated left everything downstream ``axiom-clean''; only an attempt to discharge it
+caught the error. The house rule that followed --- no certificate reaches the kernel without
+a faithful re-implementation outside Lean --- is why Remark~\ref{rem:audit} exists.
+
+%======================================================================
+\section{Open problems}\label{sec:open}
+
+Ranked by the ratio of value to distance.
+
+\begin{enumerate}[leftmargin=2em,label=\textbf{P\arabic*.}]
+\item \textbf{$s_7$, two local bounds.} Problem~\ref{prob:s7}: prove (V1) and (V2) for
+  $s_7$, $p\ge5$, $p\ne7$. Bounded, purely local, Kummer-versus-order-one-pole; both are
+  \Verified\ with $0$ violations in $1.66$ million vanishing-layer terms and the minimum is
+  exactly $1$, so nothing is being asked for beyond what the data already shows. Proved
+  count $4\to5$.
+\item \textbf{The descent congruence \eqref{eq:LD}.} Prove
+  $V(n)\equiv\chi(p)^{e}\Delta(a)A(r)\pmod p$ for $\alpha$, $\varepsilon$, $\mathbf E$. This
+  is where the first instance with $\chi\ne1$ is gated. Two leads: $\Delta(a)=0$ for
+  $a\le(p-1)/2$, so it is a large-digit phenomenon; and the per-digit refinement is
+  \Verified\ for $\varepsilon$ and $\mathbf E$ (not for $\alpha$), which makes those two
+  provable one digit at a time. By Theorem~\ref{thm:norepair} re-fitting the weight is
+  excluded, so the proof must use something the fit does not see.
+\item \textbf{The master form.} Prove Conjecture~\ref{conj:master} --- the mod-$p^w$,
+  all-$n$ statement --- in even one case. Theorem~\ref{thm:LB} gives only the single-digit
+  mod-$p$ shadow. The gap is the same one left open at weight $3$ in
+  \cite{CompanionLucas2nd}.
+\item \textbf{New letters for the conjectural seven.} By the rank diagnostic of
+  \S\ref{sec:seven}, $\mathbf B$, $\delta$, $\zeta$ admit no $\Q$-relation at all between
+  summand and harmonic letters, so no enlargement of a $\sum_kS\cdot\mathfrak w$ fit will
+  succeed. The two candidates are (a) Gorodetsky-style constant-term representations
+  \cite{Gorodetsky}, now known to be necessary rather than optional for $\mathbf C$
+  (Proposition~\ref{prop:C}), and (b) rational-function coefficients $c_j(n,k)$, which would
+  require replacing (H4)'s coefficient clause by $c_j(n,k)\equiv c_j(a,b)\pmod p$ on the
+  surviving set --- note that the obvious candidates $1/(2k+1)$ and $1/(n+1)$ \emph{fail}
+  that test.
+\item \textbf{$\mathbf D$'s closed form.} Upgrade Observation~\ref{obs:Dform} to a theorem.
+  Theorem~\ref{thm:gosper} says the rank-two mechanism cannot do it; try a gauge change
+  inside the $11$-dimensional kernel of the fit, or a $\Pi\Sigma$ ansatz
+  \cite{Schneider2007}. This is a miniature of the weight-$5$ blockage in a case small
+  enough to compute, and it should be settled before anyone spends weeks at weight $5$.
+\item \textbf{Deformations as a source of letters.} Straub--Zudilin's deformation
+  $A^{(s)}(n,t)$ (Remark~\ref{rem:SZ}) produces the entire harmonic weight of
+  $\sum_k\bin nk^{s}$ as one Taylor coefficient. Does an analogue exist for the other
+  sporadic summands? This is a strictly larger class than the one already excluded in
+  \S\ref{sec:seven}: the programme's earlier ``$\Gamma$-derivation'' probe covered only
+  \emph{degree-one} weights $\sum_x\lambda_x\HH wx$ and found $\gamma$ alone consistent,
+  whereas the deformation above yields the degree-two weight
+  $\alpha\sigma+\beta\delta^2$. Since $\mathbf B$, $\delta$ and $\zeta$ admit no
+  $\Q$-relation at all between summand and harmonic letters, a deformation --- which
+  changes the summand, not the alphabet --- is precisely the kind of move that could
+  supply letters no fit can find.
+\item \textbf{A crystal-theoretic proof.} Give the argument of \S\ref{sec:BV} its natural
+  home: a Frobenius-eigenvalue statement on the second graded piece of
+  $\mathrm{CY}(g)(2)$, carrying the character. The three families with no archimedean limit
+  are the test cases, because for them no archimedean argument can be smuggled in.
+\end{enumerate}
+
+%======================================================================
+\section*{Provenance and data}
+
+Every statement above is traceable to one of the following memos of the programme, which
+contain the scripts and the raw logs: \cite{LBWGeneral} (the fifteen pairs, the sweeps, the
+decompositions, Lemma K and Theorem LB), \cite{LemmaDCheck} (the (H2) correction,
+Propositions~\ref{prop:defectreal} and \ref{prop:LD}, Theorem~\ref{thm:norepair}),
+\cite{SporadicBare} (the complete tame searches, Propositions~\ref{prop:C} and
+\ref{prop:delta}, the rank diagnostic), \cite{MinimalFormMemo} (\S\ref{sec:closed}). All
+arithmetic underlying a \Verified\ label is exact --- \texttt{Fraction} arithmetic or
+fixed-precision $p$-adics cross-validated against it cell by cell --- and no verdict rests
+on a single modulus: every negative in \S\ref{sec:seven} and \S\ref{sec:blocked} was
+recomputed at a second, unrelated prime with identical rank and verdict. For the present
+paper the following were re-derived independently: the recurrences of all fifteen binomial
+sums ($n\le12$); the five decompositions of \S\ref{sec:decomps} ($n\le20$); the twisted
+congruence \eqref{eq:LB} for all fifteen families at $p=5,7,11,13$ ($4920$ cells, $0$
+failures); the master floor for all fifteen at $p=5,7$ and all $n<p^3$ (exactly $w$ in all
+$30$ cells); the discriminants of Proposition~\ref{prop:nolimit}; the weights of
+Observation~\ref{obs:weight} ($n\le120$); and every certificate identity of
+\S\ref{sec:template}--\S\ref{sec:Dobstruction}.
+
+%======================================================================
+\begin{thebibliography}{99}
+
+\bibitem{AlmkvistZudilin2006}
+G.~Almkvist and W.~Zudilin,
+\emph{Differential equations, mirror maps and zeta values},
+in: Mirror Symmetry V, AMS/IP Stud.\ Adv.\ Math.\ \textbf{38}, Amer.\ Math.\ Soc.,
+Providence, RI, 2006, 481--515; \texttt{arXiv:math/0402386}.
+
+\bibitem{ASvSZ}
+G.~Almkvist, D.~van~Straten and W.~Zudilin,
+\emph{Ap\'ery limits of differential equations of order 4 and 5},
+in: Modular Forms and String Duality, Fields Inst.\ Commun.\ \textbf{54}, Amer.\ Math.\
+Soc., Providence, RI, 2008, 105--123.
+
+\bibitem{BVone}
+F.~Beukers and M.~Vlasenko,
+\emph{Dwork crystals I},
+Int.\ Math.\ Res.\ Not.\ (2021), no.~12, 8807--8844; \texttt{arXiv:1903.11155}.
+
+\bibitem{BVtwo}
+F.~Beukers and M.~Vlasenko,
+\emph{Dwork crystals II},
+Int.\ Math.\ Res.\ Not.\ (2021), 4427--4444; \texttt{arXiv:1907.10390}.
+
+\bibitem{BVthree}
+F.~Beukers and M.~Vlasenko,
+\emph{Dwork crystals III: from excellent Frobenius lifts towards supercongruences},
+Int.\ Math.\ Res.\ Not.\ (2023), doi:10.1093/imrn/rnad101; \texttt{arXiv:2105.14841}.
+
+\bibitem{ChamStraub}
+M.~Chamberland and A.~Straub,
+\emph{Ap\'ery limits: experiments and proofs},
+Amer.\ Math.\ Monthly \textbf{128} (2021), no.~9, 811--824; \texttt{arXiv:2011.03400}.
+
+\bibitem{Cooper2012}
+S.~Cooper,
+\emph{Sporadic sequences, modular forms and new series for $1/\pi$},
+Ramanujan J.\ \textbf{29} (2012), no.~1--3, 163--183.
+
+\bibitem{Cooper2302}
+S.~Cooper,
+\emph{Ap\'ery-like sequences defined by four-term recurrence relations},
+\texttt{arXiv:2302.00757}.
+
+\bibitem{Gessel1982}
+I.~M.~Gessel,
+\emph{Some congruences for Ap\'ery numbers},
+J.\ Number Theory \textbf{14} (1982), no.~3, 362--368.
+
+\bibitem{Gorodetsky}
+O.~Gorodetsky,
+\emph{New representations for all sporadic Ap\'ery-like sequences, with applications to
+congruences},
+Exp.\ Math.\ \textbf{32} (2023), no.~4, 641--656; \texttt{arXiv:2102.11839}.
+
+\bibitem{MalikStraub}
+A.~Malik and A.~Straub,
+\emph{Divisibility properties of sporadic Ap\'ery-like numbers},
+\texttt{arXiv:1508.00297}.
+
+\bibitem{Nesterenko1996}
+Yu.~V.~Nesterenko,
+\emph{A few remarks on $\zeta(3)$},
+Mat.\ Zametki \textbf{59} (1996), no.~6, 865--880;
+English transl.\ Math.\ Notes \textbf{59} (1996), 625--636.
+
+\bibitem{OsburnSahuStraub}
+R.~Osburn, B.~Sahu and A.~Straub,
+\emph{Supercongruences for sporadic sequences},
+Proc.\ Edinburgh Math.\ Soc.\ (2) \textbf{59} (2016), no.~2, 503--518;
+\texttt{arXiv:1312.2195}.
+
+\bibitem{Schneider2007}
+C.~Schneider,
+\emph{Ap\'ery's double sum is plain sailing indeed},
+Electron.\ J.\ Combin.\ \textbf{14} (2007), \#N5, 3 pp.
+
+\bibitem{Shvets2026}
+A.~Shvets,
+\emph{The Domb Ap\'ery-limit and a proof of the Ramanujan Machine conjecture Z2},
+\texttt{arXiv:2604.06239}.
+
+\bibitem{Straub2301}
+A.~Straub,
+\emph{Gessel--Lucas congruences for sporadic sequences},
+Monatsh.\ Math.\ (2023), doi:10.1007/s00605-023-01894-3; \texttt{arXiv:2301.12248}.
+
+\bibitem{StraubZudilin}
+A.~Straub and W.~Zudilin,
+\emph{Sums of powers of binomials, their Ap\'ery limits, and Franel's suspicions},
+Int.\ Math.\ Res.\ Not.\ \textbf{2023}, no.~11, 9861--9879, doi:10.1093/imrn/rnac125;
+\texttt{arXiv:2112.09576}.
+
+\bibitem{vdPoorten1979}
+A.~van der Poorten,
+\emph{A proof that Euler missed\dots\ Ap\'ery's proof of the irrationality of $\zeta(3)$},
+Math.\ Intelligencer \textbf{1} (1979), no.~4, 195--203.
+
+\bibitem{Yang2008}
+Y.~Yang,
+\emph{Ap\'ery limits and special values of $L$-functions},
+J.\ Math.\ Anal.\ Appl.\ (2008), doi:10.1016/j.jmaa.2008.01.094; \texttt{arXiv:0709.1968}.
+
+\bibitem{Zagier2009}
+D.~Zagier,
+\emph{Integral solutions of Ap\'ery-like recurrence equations},
+in: J.~Harnad and P.~Winternitz (eds.), Groups and Symmetries: From Neolithic Scots to John
+McKay, CRM Proc.\ Lecture Notes \textbf{47}, Amer.\ Math.\ Soc., 2009, 349--366.
+
+\medskip
+\hrule
+\medskip
+
+\bibitem{CompanionLucas2nd}
+[Author],
+\emph{$\chi$-twisted Lucas congruences for the second solutions of Ap\'ery-like
+recurrences}, companion preprint.
+
+\bibitem{CompanionLucasMin}
+[Author],
+\emph{A closed form and a Lucas congruence for Ap\'ery's companion sequence},
+companion preprint.
+
+\bibitem{LBWGeneral}
+[Author], memo \texttt{LBW\_GENERAL} (2026): the fifteen pairs, the exact sweeps, the
+harmonic decompositions, Lemma K and Theorem LB, with scripts and logs.
+
+\bibitem{LemmaDCheck}
+[Author], memo \texttt{LEMMAD\_CHECK} (2026): the (H2) correction, the counterexample
+certificates, the cancellation identity (LD), the exact-kernel no-repair computation.
+
+\bibitem{SporadicBare}
+[Author], memo \texttt{SPORADIC\_BARE} (2026): the complete tame alphabets, the thirty
+exclusion runs, the tame-representation sweep, the rank diagnostic.
+
+\bibitem{MinimalFormMemo}
+[Author], memo \texttt{MINIMAL\_FORM\_PROOF} (2026): the closed-form proofs of
+\S\ref{sec:closed} with all certificates, and the literature ledger.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,1469 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=green!40!black,
+            urlcolor=blue!60!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{observation}[theorem]{Observation}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Zp}{\mathbb Z_{(p)}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\ct}{\operatorname{CT}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\e}{\mathrm e}
+\newcommand{\HH}[2]{H_{#1}^{(#2)}}
+\newcommand{\KH}[3]{H_{#1}^{(#2,#3)}}
+\newcommand{\mix}{\partial_1\cdots\partial_r}
+\newcommand{\Verified}{\textcolor{blue!65!black}{\textsc{verified}}}
+\newcommand{\Open}{\textcolor{orange!75!black}{\textsc{open}}}
+
+\title{Harmonic Jets of Hypergeometric Sums:\\
+Inverse Parameter Lifting, Cyclotomic Holonomicity, and Lucas Descent}
+\author{[Author]}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop a general calculus for finite sums in which a hypergeometric kernel is
+multiplied by a polynomial in ordinary or cyclotomic harmonic numbers.  The first result
+is an inverse to the familiar operation of differentiating Pochhammer symbols: every
+harmonic polynomial of prescribed weight is a finite linear combination of mixed
+derivatives of explicit hypergeometric parameter products.  An inclusion--exclusion
+product isolates a single letter $H_m^{(r)}$ without contamination by lower set
+partitions.  It follows, after a finite residue-class split, that every finite proper
+hypergeometric sum with polynomial cyclotomic harmonic weight is P-recursive; the proof
+is constructive and reduces recurrence certification to ordinary creative telescoping.
+
+The second result is arithmetic.  We prove a character-resolved Lucas descent theorem:
+under a termwise digit factorisation and a transparent compatibility condition on the
+harmonic arguments, the weight-$w$ companion satisfies
+\[
+ p^w B_\eta(ap+r)\equiv \eta(p)B_\eta(a)A(r)\pmod p.
+\]
+Different character signatures therefore form separate Frobenius eigenspaces.  Finally
+we apply the lifting calculus to a sporadic recurrence whose Ap\'ery limit is one half of
+Catalan's constant.  A compact two-parameter product has as its mixed derivative a new
+$\chi_{-4}$-harmonic closed form for the second solution.  We prove the identity by an
+exact coupled holonomic reduction: two different recurrence residuals share an order-$10$
+Ore factor, and finite coefficient propagation proves that their difference is $1$.
+The formula then evaluates its own limit as $G/2$ by a positive-shell concentration
+argument, yields a positive error series for Catalan's constant, and gives a
+character-twisted Lucas congruence on the uniform half-digit range.  A second,
+Casoratian-based argument proves the unrestricted digit congruence at every prime for
+which the first-solution digit block has no zero modulo $p$.  Finally, an endpoint
+binomial transform decouples the companion recurrence and proves the sharp global
+denominator bound $\operatorname{lcm}(1,\ldots,n)^2B_E(n)\in\mathbb Z$.  The same
+transform represents $G$ as the finite part of a zero-balanced reciprocal-central-
+binomial series; the full transform family has an optimally accelerated member with
+convergence factor $1/3$, but also gives a sharp obstruction to obtaining irrationality
+from any fixed integral binomial transform.  More generally, endpoint descent gives a
+complete denominator classification for the dilation family: its normalized companion
+has the $L_n^2$ bound at every index if and only if the dilation parameter is divisible
+by $4$.
+\end{abstract}
+
+\section{Introduction}
+
+Finite binomial sums with harmonic weights occur in Ap\'ery limits, congruences,
+Feynman-integral calculations, and symbolic summation.  A typical object is
+\begin{equation}\label{eq:typical}
+ B(n)=\sum_k S(n,k)\,W(n,k),
+\end{equation}
+where $S$ is a proper hypergeometric term and $W$ is a polynomial in letters such as
+$H_k$, $H_{n-k}^{(2)}$, or
+\[
+ H_m^{(q,\chi)}:=\sum_{1\le j\le m}\frac{\chi(j)}{j^q}.
+\]
+The standard direction is to introduce parameters into factorials and differentiate.
+The reverse direction is usually performed by inspired guessing: given $W$, one searches
+for a deformation that happens to produce it.  The first purpose of this paper is to make
+that reverse step canonical.
+
+Three principles emerge.
+\begin{enumerate}[leftmargin=2em]
+\item A harmonic letter is a \emph{connected parameter derivative}.  Boolean-lattice
+  inclusion--exclusion removes every disconnected product of lower-weight letters.
+\item Cyclotomic letters become ordinary hypergeometric parameters after splitting the
+  relevant indices into finitely many residue classes.
+\item Under Lucas factorisation, harmonic weight is a Frobenius degree: a letter of
+  weight $q$ contributes $p^{-q}$, while its Dirichlet character contributes the
+  eigenvalue $\chi(p)$.
+\end{enumerate}
+
+These statements sit next to, but are different from, several established theories.
+Difference-ring algorithms handle very general nested and cyclotomic sums
+\cite{Schneider2016,ABS2011}; the point here is an elementary finite construction that
+lands directly in proper hypergeometric creative telescoping.  Parameter deformations
+are central in the work of Straub--Zudilin on binomial powers and Ap\'ery limits
+\cite{StraubZudilin}.  Taylor coefficients also occur in refined Lucas congruences for
+Ap\'ery numbers \cite{RowlandYassawiKratt}.  Our focus is the inverse lifting operation
+and the character-resolved coefficientwise descent of an arbitrary homogeneous harmonic
+weight.
+
+Parameter differentiation as a source of harmonic identities is classical and remains
+active; representative references include derivative-operator telescoping
+\cite{WeiGong}, all-order hypergeometric parameter expansions \cite{KalmykovWardYost},
+and the recent monoidal-alphabet organisation of generalized harmonic sums
+\cite{Phadikar}.  We have not found in these sources the Boolean connected lift
+\eqref{eq:Rdef}, the resulting arbitrary-weight inverse theorem, or the
+character-resolved Lucas theorem in the form proved below.  This is a literature-search
+boundary, not a claim that no equivalent formulation can exist.
+
+The last section gives a concrete test.  The recurrence
+\begin{equation}\label{eq:Erec-intro}
+ (n+1)^2u_{n+1}=(12n^2+12n+4)u_n-32n^2u_{n-1}
+\end{equation}
+has a binomial first solution and a second-solution limit involving Catalan's constant.
+The lifting calculus explains, in one formula, both the product of weight-one letters and
+the apparently exceptional weight-two correction in a newly found closed form.
+Existing Lucas and Gessel--Lucas results for the sporadic families concern their integral
+first solutions \cite{MalikStraub,StraubGessel}.  We have not found in the sources
+searched the finite $\chi_{-4}$-harmonic second solution below or a twisted Lucas law for
+it; as above, this records the boundary of our search rather than asserting absolute
+priority.
+
+\paragraph{Status convention.}
+Every theorem and lemma below is proved.  The Catalan recurrence proof is
+computer-assisted but exact: its scalar recurrences, right divisions over $\Q(x)$,
+leading coefficient polynomials, and finite propagation bounds are reproduced below and
+in the accompanying scripts.  Irrationality of Catalan's constant remains open; no
+transcendence or irrationality conclusion is asserted.
+
+\section{Harmonic alphabets and parameter products}
+
+For $m,q\ge0$ put $H_0^{(q)}=0$ and, for $q\ge1$,
+\[
+ H_m^{(q)}=\sum_{j=1}^m j^{-q}.
+\]
+If $\chi$ is periodic, define $H_m^{(q,\chi)}$ by the same formula with numerator
+$\chi(j)$.  We give a letter $H^{(q,\chi)}$ weight $q$; a product has total weight the sum
+of its letter weights.
+
+The basic parameter product is
+\begin{equation}\label{eq:Xdef}
+ X_m(t):=\prod_{j=1}^m(1-t/j)^{-1}=\frac{m!}{(1-t)_m}.
+\end{equation}
+Its logarithm is the harmonic generating series
+\begin{equation}\label{eq:logX}
+ \log X_m(t)=\sum_{q\ge1}\frac{H_m^{(q)}}q\,t^q.
+\end{equation}
+For a residue class $a\bmod M$ we similarly set
+\begin{equation}\label{eq:Xres}
+ X_{m;a,M}(t):=
+ \prod_{\substack{1\le j\le m\\j\equiv a\ (M)}}(1-t/j)^{-1}.
+\end{equation}
+Then $\partial_t^q\log X_{m;a,M}(0)=(q-1)!$ times the harmonic sum restricted to that
+residue class.
+
+\subsection{The connected lift}
+
+Let $[r]=\{1,\ldots,r\}$, write $t_T=\sum_{i\in T}t_i$, and take $X_m(0)=1$.
+
+\begin{definition}[connected lift]\label{def:connected}
+For $r\ge1$ define
+\begin{equation}\label{eq:Rdef}
+ \mathcal R_{m,r}(t_1,\ldots,t_r)
+ :=\prod_{T\subseteq[r]}X_m(t_T)^{(-1)^{r-|T|}}.
+\end{equation}
+\end{definition}
+
+For example,
+\[
+ \mathcal R_{m,1}(u)=X_m(u),\qquad
+ \mathcal R_{m,2}(u,v)=\frac{X_m(u+v)}{X_m(u)X_m(v)}.
+\]
+The next theorem is the elementary engine of the paper.
+
+\begin{theorem}[single-letter inverse lift]\label{thm:singlelift}
+For every $m\ge0$ and $r\ge1$,
+\begin{equation}\label{eq:singlelift}
+ \left.\partial_{t_1}\cdots\partial_{t_r}
+ \mathcal R_{m,r}(t_1,\ldots,t_r)\right|_{t=0}
+ =(r-1)!H_m^{(r)}.
+\end{equation}
+Moreover, every nonconstant monomial of $\log\mathcal R_{m,r}$ contains every one of the
+variables $t_1,\ldots,t_r$.
+\end{theorem}
+
+\begin{proof}
+From \eqref{eq:logX},
+\[
+ \log\mathcal R_{m,r}
+ =\sum_{q\ge1}\frac{H_m^{(q)}}q
+   \sum_{T\subseteq[r]}(-1)^{r-|T|}t_T^q.
+\]
+If a monomial omits $t_i$, its coefficient cancels between $T$ and $T\cup\{i\}$.
+Consequently every surviving monomial contains all $r$ variables and has degree at least
+$r$.  The coefficient of $t_1\cdots t_r$ comes only from $q=r$; in $t_T^r$ it is zero
+unless $T=[r]$, when it is $r!$.  Thus the full mixed derivative of
+$\log\mathcal R_{m,r}$ at the origin is $(r-1)!H_m^{(r)}$.  Since the logarithm has no
+terms of degree below $r$, the same mixed derivative of its exponential
+$\mathcal R_{m,r}$ has the same value.
+\end{proof}
+
+This is a finite-difference version of the moment--cumulant relation.  The Boolean signs
+are exactly what prevents, for example, $H_m^2$ from contaminating the lift of
+$H_m^{(2)}$.
+
+\begin{theorem}[inverse lifting of a harmonic polynomial]\label{thm:universal}
+Let $W$ be a polynomial over a characteristic-zero field in finitely many letters
+$H_{m_i}^{(q)}$, homogeneous of total weight $w$.  Then $W$ is a finite linear
+combination of order-$w$ mixed derivatives at the origin of products and quotients of
+terms $X_{m_i}(L(t))$, where $L$ is a linear form with coefficients $0$ or $1$.
+
+The construction is explicit: replace each occurrence of $H_{m}^{(q)}$ by
+$\mathcal R_{m,q}/(q-1)!$, give different occurrences disjoint parameter blocks, multiply,
+and differentiate once in every parameter.
+\end{theorem}
+
+\begin{proof}
+It suffices by linearity to treat a monomial
+$\prod_{i=1}^s H_{m_i}^{(q_i)}$ with $\sum_iq_i=w$.  Give its $i$th factor a fresh block
+of $q_i$ variables and multiply the connected lifts
+$\mathcal R_{m_i,q_i}/(q_i-1)!$.  The variables are disjoint, so the order-$w$ derivative
+factors.  Theorem~\ref{thm:singlelift} gives the required monomial.
+\end{proof}
+
+\begin{corollary}[economical weight two]\label{cor:weighttwo}
+Every quadratic harmonic expression in the letters $h_i=H_{m_i}$ and
+$q_i=H_{m_i}^{(2)}$ is a linear combination of mixed derivatives of
+\begin{equation}\label{eq:weight2blocks}
+ X_{m_i}(u)X_{m_j}(v),\qquad
+ \frac{X_{m_i}(u+v)}{X_{m_i}(u)X_{m_i}(v)}.
+\end{equation}
+Indeed the first block gives $h_ih_j$ and the second gives $q_i$.
+\end{corollary}
+
+\begin{remark}[polarisation]
+If a two-parameter term $F(u,v)$ is expensive to telescope, its mixed derivative can be
+recovered from three one-parameter families:
+\begin{equation}\label{eq:polarization}
+ F_{uv}(0,0)=\frac12\left(\frac{d^2}{dt^2}F(t,t)\big|_{t=0}
+ -F_{uu}(0,0)-F_{vv}(0,0)\right).
+\end{equation}
+This elementary identity was effective in the binomial companion calculations that
+motivated the present formalism.
+\end{remark}
+
+\section{Cyclotomic letters and finite residue splitting}
+
+Let $M\ge1$.  Every periodic weight $\chi$ of period $M$ decomposes into residue
+indicators, so
+\begin{equation}\label{eq:resdecomp}
+ H_m^{(q,\chi)}=
+ \sum_{a=1}^M\chi(a)
+ \sum_{\substack{1\le j\le m\\j\equiv a\ (M)}}j^{-q}.
+\end{equation}
+Applying Theorem~\ref{thm:singlelift} to $X_{m;a,M}$ therefore gives an inverse lift for
+every cyclotomic letter.  The construction is over the field generated by the values of
+$\chi$.
+
+The relevance to hypergeometric summation is that residue products are Pochhammer ratios.
+Write $m=M\ell+s$, $0\le s<M$.  Up to a factor independent of $\ell$,
+\begin{equation}\label{eq:respoch}
+ X_{M\ell+s;a,M}(t)
+ =\frac{(a/M)_{\ell+\epsilon_{a,s}}}
+ {((a-t)/M)_{\ell+\epsilon_{a,s}}},
+ \qquad \epsilon_{a,s}\in\{0,1\},
+\end{equation}
+with the evident convention for the representative $a\in\{1,\ldots,M\}$.  Its quotient
+under $\ell\mapsto\ell+1$ is rational in $\ell$ and $t$.
+
+\begin{theorem}[cyclotomic inverse lift]\label{thm:cyclolift}
+Let $W$ be a polynomial in finitely many cyclotomic harmonic letters with a common period
+dividing $M$.  After splitting each affine harmonic argument and each summation index
+modulo $M$, $W$ is a finite linear combination of parameter derivatives of products of
+Pochhammer ratios whose shift quotients are rational.
+\end{theorem}
+
+\begin{proof}
+Use \eqref{eq:resdecomp}, Theorem~\ref{thm:universal}, and then
+\eqref{eq:respoch}.  Only finitely many residue choices occur.  On each choice, floors and
+the corrections $\epsilon_{a,s}$ are fixed affine functions, so all shift quotients are
+rational.
+\end{proof}
+
+For a real primitive character one may package the residue factors more compactly as
+\begin{equation}\label{eq:Ychi}
+ Y_m^\chi(t):=\prod_{j=1}^m(1-t/j)^{-\chi(j)},\qquad
+ \log Y_m^\chi(t)=\sum_{q\ge1}\frac{H_m^{(q,\chi)}}q t^q.
+\end{equation}
+When $\chi(j)\in\{0,\pm1\}$ this itself has rational shift quotients after residue
+splitting.  For non-real characters the residue-indicator construction is preferable: it
+keeps every hypergeometric exponent integral.
+
+\section{Holonomicity is automatic}
+
+We use ``proper hypergeometric'' in the standard Wilf--Zeilberger sense: the quotients
+under unit shifts of the discrete variables are rational, with finite factorial support.
+
+\begin{theorem}[cyclotomic harmonic holonomicity]\label{thm:holonomic}
+Let $S(n,k)$ be a proper hypergeometric term with finite, linearly bounded support in $k$.
+Let $W(n,k)$ be a polynomial in cyclotomic harmonic letters whose arguments are
+nonnegative affine integer forms on that support.  Then
+\begin{equation}\label{eq:BW}
+ B(n)=\sum_kS(n,k)W(n,k)
+\end{equation}
+is P-recursive over the number field generated by the coefficients and character values.
+Moreover, a recurrence and certificate for $B$ can be obtained by finitely many ordinary
+proper-hypergeometric creative-telescoping computations followed by linear elimination.
+\end{theorem}
+
+\begin{proof}
+Choose a common period $M$ and apply Theorem~\ref{thm:cyclolift}.  Split $n,k$ modulo $M$.
+Each resulting lift is a proper hypergeometric term over a rational function field in its
+parameters.  Zeilberger's theorem supplies a recurrence for its finite definite sum
+\cite{WZ1990,PWZ}.  Differentiate the recurrence to the finite order prescribed by $W$
+and set the parameters to zero.  A derivative of a parameter-dependent recurrence may
+couple the target derivative to lower derivatives, but there are only finitely many of
+them.  Closure of holonomic systems under finite elimination gives a scalar recurrence
+for the desired derivative.  Finally interlace the finitely many residue subsequences;
+P-recursive sequences are closed under finite interlacing.
+\end{proof}
+
+\begin{remark}[what the theorem does and does not optimize]
+Theorem~\ref{thm:holonomic} guarantees an algorithm, not a minimal recurrence.  Direct
+difference-field summation can be dramatically smaller, and parameter families may
+produce large nonminimal operators before elimination.  The advantage is universality:
+failure of a direct harmonic Gosper ansatz is never a failure of holonomicity.
+\end{remark}
+
+\begin{corollary}[bounded lifting complexity]\label{cor:complexity}
+If $W$ is a sum of $N$ harmonic monomials of total weight $w$, the construction needs at
+most $N$ order-$w$ parameter derivatives.  At weight two, one may instead use exactly one
+block of \eqref{eq:weight2blocks} per nonzero quadratic coefficient.  Thus parameter
+lifting has complexity controlled by the support of $W$, not by the sizes of its harmonic
+arguments.
+\end{corollary}
+
+\section{Character-resolved Lucas descent}
+
+Fix a prime $p$.  In this section all $\chi$ are Dirichlet characters (the trivial
+character is allowed).  Congruences involving rational harmonic numbers are interpreted in
+$\Zp$ after the displayed power of $p$ has cleared the possible $p$-denominators.  Assume
+throughout this section that $p$ does not divide the periods of the characters.
+
+\begin{lemma}[one-letter descent]\label{lem:letterdescent}
+Let $q\ge1$, let $\chi$ be completely multiplicative, and let $y\ge0$.  Then
+\begin{equation}\label{eq:letterdescent}
+ p^q H_y^{(q,\chi)}
+ =\chi(p)H_{\lfloor y/p\rfloor}^{(q,\chi)}+p^qT,
+ \qquad
+ T=\sum_{\substack{j\le y\\p\nmid j}}\frac{\chi(j)}{j^q}\in\Zp.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Separate the summands with $p\mid j$, write $j=p\ell$, and use
+$\chi(p\ell)=\chi(p)\chi(\ell)$.  The complementary denominators are $p$-units.
+\end{proof}
+
+A character signature is a product $\eta=\prod_i\chi_i$, with repetitions allowed.  A
+monomial $\prod_iH_{x_i}^{(q_i,\chi_i)}$ has weight $w=\sum_iq_i$ and signature $\eta$.
+
+\begin{lemma}[monomial descent]\label{lem:monomial}
+Suppose $0\le y_i<p^2$ for every $i$.  Then
+\begin{equation}\label{eq:monomial}
+ p^w\prod_iH_{y_i}^{(q_i,\chi_i)}
+ \equiv \eta(p)\prod_iH_{\lfloor y_i/p\rfloor}^{(q_i,\chi_i)}\pmod p.
+\end{equation}
+Both sides belong to $\Zp$.
+\end{lemma}
+
+\begin{proof}
+Multiply the identities \eqref{eq:letterdescent}.  Because
+$\lfloor y_i/p\rfloor<p$, every descended denominator is a $p$-unit.  Every term other
+than the product of the leading terms contains a positive power of $p$.
+\end{proof}
+
+We now state a strong, clean digit theorem.  It is designed so that no informal
+``surviving rectangle'' argument is needed.
+
+\begin{theorem}[character-resolved harmonic Lucas theorem]\label{thm:lucas}
+Let $S(n,k)\in\Z$, extended by zero outside its finite support, and put
+$A(n)=\sum_kS(n,k)$.  Let
+\[
+ W=\sum_\eta W_\eta
+\]
+be a finite sum in which each $W_\eta(n,k)$ is a homogeneous weight-$w$ polynomial in
+cyclotomic harmonic letters of signature $\eta$.  Put
+$B_\eta(n)=\sum_kS(n,k)W_\eta(n,k)$.
+
+Let $n=ap+r$ with $0\le a,r<p$.  Assume:
+\begin{enumerate}[label=\textup{(L\arabic*)},leftmargin=2.4em]
+\item for every $b\ge0$ and $0\le s<p$,
+\[
+ S(ap+r,bp+s)\equiv S(a,b)S(r,s)\pmod p;
+\]
+\item every harmonic argument $x$ occurring in $W$ satisfies
+$0\le x(ap+r,bp+s)<p^2$ on the support and
+\[
+ \left\lfloor\frac{x(ap+r,bp+s)}p\right\rfloor=x(a,b);
+\]
+\item the coefficients of $W$ belong to $\Zp$.
+\end{enumerate}
+Then
+\begin{equation}\label{eq:lucasmain}
+ p^wB_\eta(ap+r)\equiv \eta(p)B_\eta(a)A(r)\pmod p
+\end{equation}
+for every signature $\eta$, and hence
+\begin{equation}\label{eq:lucassum}
+ p^wB(ap+r)\equiv A(r)\sum_\eta\eta(p)B_\eta(a)\pmod p.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Write each $k$ uniquely as $bp+s$, $0\le s<p$, and enlarge to a full finite block using
+the zero extension of $S$.  Lemma~\ref{lem:monomial}, linearity, and (L2) give
+\[
+ p^wW_\eta(ap+r,bp+s)\equiv\eta(p)W_\eta(a,b)\pmod p.
+\]
+This expression is $p$-integral on every cell.  Therefore (L1) gives
+\begin{align*}
+ p^wB_\eta(ap+r)
+ &\equiv\eta(p)\sum_{b,s}S(a,b)S(r,s)W_\eta(a,b)\pmod p\\
+ &=\eta(p)B_\eta(a)A(r),
+\end{align*}
+which proves \eqref{eq:lucasmain}; summing over signatures gives
+\eqref{eq:lucassum}.
+\end{proof}
+
+\begin{corollary}[Frobenius eigenspaces]\label{cor:eigenspaces}
+If all monomials have one signature $\eta$, the companion has the scalar digit law
+\eqref{eq:lucasmain}.  If several signatures occur, their components do not mix: the
+digit map acts diagonally with eigenvalues $\eta(p)$.  Thus character-homogeneity is not a
+technical convenience but the condition that the harmonic jet lie in one Frobenius
+eigenspace.
+\end{corollary}
+
+\begin{corollary}[coefficientwise jet descent]\label{cor:jet}
+Collect all homogeneous harmonic polynomials of weight $w$ satisfying (L2) into a formal
+weight-$w$ jet $\mathcal J_w(n)$.  Then the digit map on $\mathcal J_w$ is the tensor
+product of multiplication by $A(r)$ with the diagonal character action
+$\eta\mapsto\eta(p)$, together with the Tate factor $p^{-w}$.
+\end{corollary}
+
+\begin{remark}[scope]
+The restriction $a<p$ ensures that descended harmonic numbers are $p$-integral.  Iterating
+\eqref{eq:lucasmain} without rechecking this point is not justified.  Multi-digit laws
+require either stronger denominator control or a divided-power formulation.  The theorem
+is deliberately single-digit.
+\end{remark}
+
+\section{A compact lift for the Catalan companion}
+
+Let $\chi_{-4}$ be the real character modulo $4$:
+\[
+ \chi_{-4}(j)=0\ (2\mid j),\qquad
+ \chi_{-4}(j)=(-1)^{(j-1)/2}\ (j\text{ odd}),
+\]
+and abbreviate $K_m^{(q)}=H_m^{(q,\chi_{-4})}$.  Define
+\begin{equation}\label{eq:Eshell}
+ S_E(n,k)=\binom nk\binom{2k}k\binom{2n-2k}{n-k},\qquad
+ A_E(n)=\sum_{k=0}^nS_E(n,k).
+\end{equation}
+The sequence $A_E=1,4,20,112,676,\ldots$ satisfies \eqref{eq:Erec-intro}.  The second
+solution normalized by $B_E(0)=0$, $B_E(1)=1$ has Ap\'ery limit $G/2$, where
+$G=L(2,\chi_{-4})$ is Catalan's constant; this value belongs to the established sporadic
+Ap\'ery-limit tables \cite{Zagier,ChamStraub,MalikStraub}.
+This $A_E$ is the scaled Catalan--Larcombe--French sequence.  A useful second shell is
+\begin{equation}\label{eq:parityshell}
+ A_E(n)=\sum_{0\le k\le n/2}
+ \binom{2k}{k}^{\!2}\binom n{2k}4^{n-2k},
+\end{equation}
+and its first-solution congruences have been studied extensively
+\cite{JiSunCLF,StraubGessel}.  The arithmetic results below instead concern its rational
+second solution.
+
+\begin{theorem}[Catalan harmonic companion]\label{thm:Catalan}
+For every $n\ge0$, the normalized second solution of \eqref{eq:Erec-intro} is
+\begin{equation}\label{eq:CatalanB}
+ B_E(n)=\sum_{k=0}^nS_E(n,k)\left\{
+ \frac12K_{2k}^{(2)}+
+ \left(\frac34H_k-\frac12H_{2k}\right)
+ \left(K_{2k}^{(1)}-K_{2n-2k}^{(1)}\right)\right\}.
+\end{equation}
+The first values are
+\[
+ 0,\ 1,\ 7,\ \frac{404}{9},\ \frac{2603}{9},\
+ \frac{428284}{225},\ \frac{2884316}{225}.
+\]
+These values satisfy \eqref{eq:Erec-intro} for every $n\ge1$.  Moreover,
+\begin{equation}\label{eq:Catalanlimit}
+ \lim_{n\to\infty}\frac{B_E(n)}{A_E(n)}=\frac G2.
+\end{equation}
+\end{theorem}
+
+The formula was originally found by exact linear algebra in a weight-two cyclotomic
+alphabet.  The following proposition explains why all three pieces of its weight occur
+together.  The recurrence proof is completed after the generating-function
+factorisation below.
+
+\begin{proposition}[two-parameter Catalan lift]\label{prop:Catalanlift}
+Let $X$ be \eqref{eq:Xdef}, let $Y_m(t)=Y_m^{\chi_{-4}}(t)$ be \eqref{eq:Ychi}, and put
+\begin{align}\label{eq:FE}
+ \mathcal F_E(n,k;u,v):={}&S_E(n,k)
+ \frac{X_k(3u/4)}{X_{2k}(u/2)}
+ \frac{Y_{2k}(v)}{Y_{2n-2k}(v)}\\[-2mm]
+ &\hspace{8mm}\times
+ \frac{Y_{2k}(u+v/2)}{Y_{2k}(u)Y_{2k}(v/2)}.\notag
+\end{align}
+Then the summand in \eqref{eq:CatalanB} is exactly
+\begin{equation}\label{eq:mixedFE}
+ \left.\partial_u\partial_v\mathcal F_E(n,k;u,v)\right|_{u=v=0}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+All parameter factors equal $1$ at the origin.  From \eqref{eq:logX} and
+\eqref{eq:Ychi}, the first logarithmic derivatives of \eqref{eq:FE} are
+\[
+ \partial_u\log\mathcal F_E\big|_0=\frac34H_k-\frac12H_{2k},\qquad
+ \partial_v\log\mathcal F_E\big|_0=K_{2k}^{(1)}-K_{2n-2k}^{(1)}.
+\]
+Only the last quotient in \eqref{eq:FE} has a mixed logarithmic derivative.  It is the
+connected lift $Y_{2k}(u+v/2)/(Y_{2k}(u)Y_{2k}(v/2))$, so
+\[
+ \partial_u\partial_v\log\mathcal F_E\big|_0=\frac12K_{2k}^{(2)}.
+\]
+Finally $F_{uv}/F=(\log F)_u(\log F)_v+(\log F)_{uv}$, which is precisely the weight in
+\eqref{eq:CatalanB}.
+\end{proof}
+
+The lift is not merely formal: it reduces to proper hypergeometric terms.
+
+\begin{lemma}[parity reduction]\label{lem:parity}
+Put $P_q(t)=Y_{2q}(t)$.  For $j\ge0$,
+\begin{align}
+ P_{2j}(t)
+ &=\frac{(1/4)_j}{((1-t)/4)_j}
+   \frac{((3-t)/4)_j}{(3/4)_j},\label{eq:P2j}\\
+ P_{2j+1}(t)
+ &=P_{2j}(t)\frac{4j+1}{4j+1-t}.\label{eq:P2j1}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+In $Y_{4j}$ the positive character values occur at $1,5,\ldots,4j-3$ and the negative
+ones at $3,7,\ldots,4j-1$.  Grouping these two products and extracting powers of $4$
+gives \eqref{eq:P2j}.  Passing from $4j$ to $4j+2$ adds only the positive factor
+$(1-t/(4j+1))^{-1}$, giving \eqref{eq:P2j1}.
+\end{proof}
+
+\begin{corollary}[certifiability of the Catalan formula]\label{cor:certCatalan}
+After writing $n=2m+\epsilon$ and $k=2j+\delta$, the summand
+$\mathcal F_E(n,k;u,v)$ is proper hypergeometric in $m,j$ on each of the four parity
+cells.  Consequently the right side of \eqref{eq:CatalanB} is P-recursive and admits a
+finite creative-telescoping certificate.
+\end{corollary}
+
+\begin{proof}
+The $X$-factors are factorial ratios.  Lemma~\ref{lem:parity} turns every $Y$-factor into
+a Pochhammer ratio after the parity choice.  The remaining factor $S_E$ is proper
+hypergeometric.  Apply Theorem~\ref{thm:holonomic}.
+\end{proof}
+
+There is also a useful convolution structure.  With $\ell=n-k$, \eqref{eq:FE} factors as
+\[
+ \binom nk\,P_k(u,v)Q_\ell(v),
+\]
+where
+\begin{align*}
+ P_k(u,v)&=\binom{2k}k\frac{X_k(3u/4)}{X_{2k}(u/2)}
+ \frac{Y_{2k}(v)Y_{2k}(u+v/2)}{Y_{2k}(u)Y_{2k}(v/2)},\\
+ Q_\ell(v)&=\binom{2\ell}\ell\,Y_{2\ell}(v)^{-1}.
+\end{align*}
+Thus the exponential generating function of the lifted sum is the product
+\begin{equation}\label{eq:EGFfactor}
+ \left(\sum_{k\ge0}P_k(u,v)\frac{x^k}{k!}\right)
+ \left(\sum_{\ell\ge0}Q_\ell(v)\frac{x^\ell}{\ell!}\right).
+\end{equation}
+The determinant hidden in this factorisation leads to a substantially smaller proof than
+the raw parity-split telescoper.  Put
+\begin{equation}\label{eq:cadef}
+ c_k=\binom{2k}{k},\qquad
+ \alpha_k=\frac34H_k-\frac12H_{2k},\qquad
+ a_k=c_k\alpha_k,\qquad d_k=c_kK_{2k}^{(1)},
+\end{equation}
+and
+\begin{equation}\label{eq:edef}
+ e_k=c_k\left(\frac12K_{2k}^{(2)}+\alpha_kK_{2k}^{(1)}\right).
+\end{equation}
+If capital letters denote exponential generating functions, binomial convolution gives
+\begin{equation}\label{eq:Bdet}
+ B(x):=\sum_{n\ge0}B_E(n)\frac{x^n}{n!}=E(x)C(x)-A(x)D(x).
+\end{equation}
+Thus the companion is a $2\times2$ determinant of four harmonic jets.
+
+The elementary increments behind the certificate are
+\begin{align}
+ \alpha_{k+1}-\alpha_k&=\frac{k}{2(k+1)(2k+1)},\notag\\
+ K_{2k+2}^{(1)}-K_{2k}^{(1)}&=\frac{(-1)^k}{2k+1},&
+ K_{2k+2}^{(2)}-K_{2k}^{(2)}&=\frac{(-1)^k}{(2k+1)^2}.
+ \label{eq:increments}
+\end{align}
+With $p_k=(-1)^kc_k$ and $s_k=(-1)^ka_k$, direct substitution gives the coupled system
+\begin{align}
+ (k+1)c_{k+1}&=2(2k+1)c_k,\notag\\
+ (k+1)^2a_{k+1}&=2(k+1)(2k+1)a_k+kc_k,\notag\\
+ (k+1)d_{k+1}&=2(2k+1)d_k+2p_k,\notag\\
+ (k+1)p_{k+1}&=-2(2k+1)p_k,\label{eq:coupledsystem}\\
+ (k+1)^2s_{k+1}&=-2(k+1)(2k+1)s_k-kp_k,\notag\\
+ (k+1)^2e_{k+1}&=2(k+1)(2k+1)e_k+p_k+2(k+1)s_k+kd_k.\notag
+\end{align}
+In particular, the scalar input recurrences below are consequences of first-order
+rational identities, not interpolated recurrences.
+
+Let $\theta=xD_x$ and define
+\begin{equation}\label{eq:LaperyEGF}
+ \mathcal L=(\theta+1)^2D_x-(12\theta^2+12\theta+4)+32x(\theta+1).
+\end{equation}
+For an exponential generating function $F(x)=\sum f_nx^n/n!$, the coefficient of
+$x^n/n!$ in $\mathcal LF$ is
+\[
+ (n+1)^2f_{n+1}-(12n^2+12n+4)f_n+32n^2f_{n-1}.
+\]
+Set $Y_1=\mathcal L(EC)$ and $Y_2=\mathcal L(AD)$.
+
+\begin{proposition}[exact common-factor certificate]\label{prop:OreCatalan}
+The two residual series satisfy
+\begin{equation}\label{eq:Ydifference}
+ Y_1-Y_2=1.
+\end{equation}
+Exact holonomic closure applied to \eqref{eq:coupledsystem} produces annihilators
+$\mathcal H_1,\mathcal H_2$ of orders $44,29$.  After clearing scalar denominators,
+both have the same right factor $\mathcal C\in\Q[x]\langle D_x\rangle$, of order $10$
+and degree $29$:
+\begin{equation}\label{eq:rightfactors}
+ \mathcal H_1=\mathcal U_1\mathcal C,\qquad
+ \mathcal H_2=\mathcal U_2\mathcal C,\qquad
+ \ord(\mathcal U_1)=34,\quad\ord(\mathcal U_2)=19.
+\end{equation}
+Moreover $\mathcal C(1)=0$.
+\end{proposition}
+
+\begin{proof}
+All operations are exact over $\Q(x)$.  Elimination from
+\eqref{eq:coupledsystem}, exponential normalisation, product closure, and association by
+\eqref{eq:LaperyEGF} give $\mathcal H_1$ and $\mathcal H_2$.  An independently fitted
+order-$11$, degree-$17$ operator is used only to locate $\mathcal C$; the identities in
+\eqref{eq:rightfactors} are then established by exact zero-remainder right division, so
+the fit has no logical role in the certificate.
+
+We record the finite uniqueness check.  For a polynomial differential operator
+$T=\sum t_{j,i}x^iD_x^j$, the coefficient of $f_{n+r}$ in $T(\sum f_nx^n)$, where
+$r=\max(j-i)$, is
+\begin{equation}\label{eq:forwardcoeff}
+ P_T(n)=\sum_{j-i=r}t_{j,i}(n-i+1)\cdots(n-i+j).
+\end{equation}
+For $\mathcal U_1,\mathcal U_2,\mathcal C$, the largest forward shift is $4$ and, up to
+nonzero rational constants, the three forward coefficients are
+\begin{align*}
+ &(z+1)(z+2)^2(z+3)^2(z+4)^3(z+5)^3\prod_{j=6}^{9}(z+j)^2\\[-1mm]
+ &\quad\times
+ \left(z^5+\frac{61}{2}z^4+370z^3+\frac{4461}{2}z^2
+             +\frac{26709}{4}z+\frac{63465}{8}\right)^3,\\
+ &(z+1)(z+2)^2(z+3)^2(z+4)^3(z+5)^3\prod_{j=6}^{9}(z+j)^2,\\
+ &(z+1)(z+2)^2(z+3)^2(z+4)^4(z+5).
+\end{align*}
+They are nonzero at every nonnegative integer.  Their complete forward coefficients are
+present from $z=30,15,6$, respectively.  Exact expansion gives the first $34$
+coefficients of $\mathcal CY_1$ and the first $19$ coefficients of $\mathcal CY_2$ equal
+to zero.  The first two recurrences therefore imply
+$\mathcal CY_1=\mathcal CY_2=0$.  Since $\mathcal C(1)=0$, the series $Y_1-Y_2-1$ is a
+$\mathcal C$-solution; its first $10$ coefficients vanish, and the third recurrence gives
+\eqref{eq:Ydifference}.
+
+The reconstructed operator $\mathcal C$ has SHA-256 fingerprint
+\[
+ \texttt{5f255471c10932d5a24a7cf4f429729bda8d9f73740aa3a1c37e261e70312fba}.
+\]
+The accompanying exact-arithmetic scripts reconstruct it and check every assertion.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:Catalan}, recurrence part]
+By \eqref{eq:Bdet}, Proposition~\ref{prop:OreCatalan} says $\mathcal LB=1$.
+Coefficient comparison gives \eqref{eq:Erec-intro} for $n\ge1$.  The finite sum gives
+$B_E(0)=0$ and $B_E(1)=1$, hence it is the normalized second solution.
+\end{proof}
+
+The harmonic representation also evaluates its own Ap\'ery limit, without appealing to
+the sporadic tables.  This is one of the principal benefits of having a finite companion
+formula.
+
+\begin{proposition}[direct Catalan limit]\label{prop:directlimit}
+Formula \eqref{eq:CatalanB} implies \eqref{eq:Catalanlimit} by elementary estimates.
+\end{proposition}
+
+\begin{proof}
+Write $D_m=K_{2m}^{(1)}$, $Q_m=K_{2m}^{(2)}$, and put
+$\mu_n(k)=S_E(n,k)/A_E(n)$.  Since $S_E(n,k)=S_E(n,n-k)$, symmetrising
+\eqref{eq:CatalanB} gives, with $\ell=n-k$,
+\begin{equation}\label{eq:symaverage}
+ \frac{B_E(n)}{A_E(n)}=
+ \sum_{k=0}^n\mu_n(k)\left\{
+ \frac14(Q_k+Q_\ell)
+ +\frac12(\alpha_k-\alpha_\ell)(D_k-D_\ell)\right\}.
+\end{equation}
+
+We first control the shell measure.  The elementary bounds
+\[
+ \binom{2m}{m}\le4^m,\qquad
+ \binom{2m}{m}\ge\frac{4^m}{2m+1},\qquad
+ \max_k\binom nk\ge\frac{2^n}{n+1}
+\]
+give, by taking $k=\lfloor n/2\rfloor$,
+\begin{equation}\label{eq:Alower}
+ A_E(n)\ge\frac{8^n}{(n+1)^3}.
+\end{equation}
+On the other hand, $S_E(n,k)\le4^n\binom nk$.  The exponential-moment estimate
+\[
+ \sum_{k\le n/4}\binom nk
+ \le 3^{n/4}\sum_{k=0}^n\binom nk3^{-k}
+ =\frac{4^n}{3^{3n/4}}
+\]
+and symmetry therefore show that
+\begin{equation}\label{eq:boundarymass}
+ \sum_{k<n/4\ \mathrm{or}\ k>3n/4}\mu_n(k)
+ \le2(n+1)^3\left(\frac{2}{3^{3/4}}\right)^n.
+\end{equation}
+
+On the bulk $n/4\le k,\ell\le3n/4$, the alternating-series estimate gives
+\begin{equation}\label{eq:alternatingbounds}
+ |Q_m-G|\le(2m+1)^{-2},\qquad
+ |D_k-D_\ell|\le(2\min(k,\ell)+1)^{-1}.
+\end{equation}
+Moreover \eqref{eq:increments} implies
+\[
+ 0\le\alpha_{m+1}-\alpha_m\le\frac1{4(m+1)},
+\]
+so $|\alpha_k-\alpha_\ell|$ is bounded uniformly on the bulk.  Thus the expression in
+braces in \eqref{eq:symaverage} is $G/2+O(1/n)$ there.  Globally,
+$|D_m|,|Q_m|\le1$ and $0\le\alpha_m\le H_m/4$, so the same expression is
+$O(\log(n+1))$.  Equation \eqref{eq:boundarymass} makes the boundary contribution tend
+to zero, proving \eqref{eq:Catalanlimit}.
+\end{proof}
+
+\begin{proof}[Completion of the proof of Theorem~\ref{thm:Catalan}]
+The recurrence and initial values were proved above, and
+Proposition~\ref{prop:directlimit} proves the claimed limit.
+\end{proof}
+
+\begin{corollary}[positive error formula]\label{cor:Catalanerror}
+The approximants $B_E(n)/A_E(n)$ increase strictly to $G/2$, and
+\begin{align}
+ \frac G2-\frac{B_E(n)}{A_E(n)}
+ &=\sum_{m=n+1}^{\infty}
+   \frac{32^{m-1}}{m^2A_E(m)A_E(m-1)},\label{eq:errorseries}\\
+ G&=2\sum_{m=1}^{\infty}
+   \frac{32^{m-1}}{m^2A_E(m)A_E(m-1)}.\label{eq:Gseries}
+\end{align}
+\end{corollary}
+
+\begin{proof}
+For two solutions $A,B$ of \eqref{eq:Erec-intro}, their Casoratian
+$W_n=A_nB_{n-1}-A_{n-1}B_n$ satisfies
+\[
+ W_{n+1}=\frac{32n^2}{(n+1)^2}W_n.
+\]
+The initial values give $W_1=-1$, hence $W_n=-32^{n-1}/n^2$.  Dividing by
+$A_E(n)A_E(n-1)>0$ yields
+\[
+ \frac{B_E(n)}{A_E(n)}-\frac{B_E(n-1)}{A_E(n-1)}
+ =\frac{32^{n-1}}{n^2A_E(n)A_E(n-1)}>0.
+\]
+Sum this identity and use Proposition~\ref{prop:directlimit}; taking $n=0$ gives
+\eqref{eq:Gseries}.
+\end{proof}
+
+The error formula does not expose the true denominator: its summands contain quotients
+of first solutions.  The harmonic formula gives a first bound.
+
+\begin{corollary}[termwise denominator bound]\label{cor:Catalanden}
+Put $L_0=1$ and $L_m=\operatorname{lcm}(1,2,\ldots,m)$ for $m\ge1$.  Then
+\begin{equation}\label{eq:denbound}
+ 4L_{2n}^2B_E(n)\in\Z.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Every first-order harmonic letter in \eqref{eq:CatalanB} has denominator dividing
+$L_{2n}$, and every second-order letter has denominator dividing $L_{2n}^2$.
+The factor $4$ clears the rational coefficients in $\alpha_k$ and the leading $1/2$;
+the shell is integral.
+\end{proof}
+
+The factor $L_{2n}^2$ is not sharp.  A binomial transform at the endpoint $4$ of the
+two characteristic roots exposes all the cancellation that is invisible termwise in
+\eqref{eq:CatalanB}.
+
+\begin{theorem}[sharp global denominator]\label{thm:sharpden}
+For every $n\ge0$,
+\begin{equation}\label{eq:sharpden}
+ L_n^2B_E(n)\in\Z.
+\end{equation}
+More precisely, define the endpoint transform
+\begin{equation}\label{eq:Ttransform}
+ T_n=\sum_{k=0}^n\binom nk(-4)^{n-k}B_E(k).
+\end{equation}
+Then $T_0=0$ and, with $T_{-1}=0$,
+\begin{equation}\label{eq:Trec}
+ (n+1)^2T_{n+1}-16n^2T_{n-1}=(-4)^n\qquad(n\ge0).
+\end{equation}
+For $n\ge1$ this has the signed sum-of-squares solution
+\begin{equation}\label{eq:Tsquares}
+ (-1)^{n-1}T_n=
+ \sum_{\substack{0\le j<n\\n-j\ {m odd}}}R_{n,j}^2,
+ \qquad
+ R_{n,j}=2^{n-1}
+ \frac{(j+2)(j+4)\cdots(n-1)}{(j+1)(j+3)\cdots n},
+\end{equation}
+where an empty numerator is $1$.  Every $L_nR_{n,j}$ is an integer.
+\end{theorem}
+
+\begin{proof}
+Let $B(z)=\sum_{n\ge0}B_E(n)z^n$ and $\theta=zD_z$.  Including the exceptional
+initial residual $B_E(1)-4B_E(0)=1$, the recurrence is equivalent to
+\begin{equation}\label{eq:BOGF}
+ \bigl\{\theta^2-z(12\theta^2+12\theta+4)
+       +32z^2(\theta+1)^2\bigr\}B(z)=z.
+\end{equation}
+The ordinary generating function of \eqref{eq:Ttransform} is
+\begin{equation}\label{eq:TOGF}
+ T(z)=\frac1{1+4z}B\!\left(\frac z{1+4z}\right).
+\end{equation}
+A chain-rule substitution in \eqref{eq:BOGF} gives
+\[
+ \{\theta^2-16z^2(\theta+1)^2\}T(z)=\frac z{1+4z}.
+\]
+Coefficient comparison is exactly \eqref{eq:Trec}.
+
+Iterating \eqref{eq:Trec} separately on the even and odd indices shows that the
+contribution of its forcing term $(-4)^j$ to $T_n$, for $n-j$ odd, is
+\[
+ \frac{(-4)^j}{(j+1)^2}
+ \prod_{\substack{j+2\le r<n\\r\equiv j\ (2)}}
+ \frac{16r^2}{(r+1)^2}=(-1)^jR_{n,j}^2.
+\]
+All admissible $j$ have parity $n-1$, proving \eqref{eq:Tsquares}.
+
+It remains to prove the asserted denominator of $R_{n,j}$.  Fix an odd prime $p$.
+For every $a\ge1$, the multiples of $p^a$ in the interval $[j+1,n]$ are $p^a$
+times a consecutive interval of integers.  Because $p^a$ is odd, multiplication by it
+preserves parity.  Hence the number of those multiples in the denominator progression
+of $R_{n,j}$ exceeds the number in its numerator progression by at most one.  Summing
+over $a$ gives
+\[
+ -v_p(R_{n,j})\le \#\{a:p^a\le n\}=v_p(L_n)
+\]
+whenever the left side is positive.  At $p=2$, the denominator progression is either
+odd or has $2$-adic valuation at most $v_2(n!)\le n-1$, which is absorbed by the
+factor $2^{n-1}$.  Thus $L_nR_{n,j}\in\mathbb Z$.
+
+Equation \eqref{eq:Tsquares} now gives $L_n^2T_n\in\mathbb Z$.  Binomial inversion in
+\eqref{eq:Ttransform} reads
+\[
+ B_E(n)=\sum_{k=0}^n\binom nk4^{n-k}T_k.
+\]
+Since $L_k\mid L_n$ for $k\le n$, every summand becomes integral after multiplication
+by $L_n^2$, proving \eqref{eq:sharpden}.
+\end{proof}
+
+\begin{theorem}[general endpoint-denominator classification]
+\label{thm:generalendpoint}
+Let $b\in\mathbb Z$, and let $B^{(b)}_n$ be the unique rational sequence with
+$B^{(b)}_0=0$, $B^{(b)}_1=1$, and
+\begin{equation}\label{eq:brec}
+ (n+1)^2B^{(b)}_{n+1}
+ =b(3n^2+3n+1)B^{(b)}_n-2b^2n^2B^{(b)}_{n-1}
+ \qquad(n\ge1).
+\end{equation}
+Define
+\begin{equation}\label{eq:btransform}
+ T^{(b)}_n=\sum_{k=0}^n\binom nk(-b)^{n-k}B^{(b)}_k.
+\end{equation}
+Then
+\begin{equation}\label{eq:bTrec}
+ (n+1)^2T^{(b)}_{n+1}-b^2n^2T^{(b)}_{n-1}=(-b)^n
+ \qquad(n\ge0),
+\end{equation}
+and, for $n\ge1$,
+\begin{equation}\label{eq:bTsquares}
+ (-1)^{n-1}T^{(b)}_n
+ =b^{n-1}\!
+ \sum_{\substack{0\le j<n\\n-j\ {\rm odd}}}
+ \left\{
+ \frac{(j+2)(j+4)\cdots(n-1)}
+      {(j+1)(j+3)\cdots n}
+ \right\}^{\!2}.
+\end{equation}
+Moreover, the following are equivalent:
+\begin{equation}\label{eq:bclassification}
+ 4\mid b
+ \qquad\Longleftrightarrow\qquad
+ L_n^2B^{(b)}_n\in\mathbb Z\quad\hbox{for every }n\ge0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let $B^{(b)}(z)=\sum_{n\ge0}B^{(b)}_nz^n$.  Including the initial residual
+$B^{(b)}_1-bB^{(b)}_0=1$, recurrence \eqref{eq:brec} is equivalent to
+\begin{equation}\label{eq:bOGF}
+ \{\theta^2-bz(3\theta^2+3\theta+1)
+       +2b^2z^2(\theta+1)^2\}B^{(b)}(z)=z.
+\end{equation}
+The binomial transform has generating function
+\[
+ T^{(b)}(z)=\frac1{1+bz}
+ B^{(b)}\!\left(\frac z{1+bz}\right).
+\]
+Substitution in \eqref{eq:bOGF} cancels both the middle term and every term of order
+$z^3$, leaving
+\[
+ \{\theta^2-b^2z^2(\theta+1)^2\}T^{(b)}(z)=\frac z{1+bz}.
+\]
+Coefficient comparison proves \eqref{eq:bTrec}.
+
+As in the proof of Theorem~\ref{thm:sharpden}, iterate the even and odd recurrences.
+The contribution of the forcing term with index $j$ to $T^{(b)}_n$ is
+\[
+ \frac{(-b)^j}{(j+1)^2}
+ \prod_{\substack{j+2\le r<n\\r\equiv j\ (2)}}
+ \frac{b^2r^2}{(r+1)^2}
+ =(-1)^jb^{n-1}
+ \left\{
+ \frac{(j+2)(j+4)\cdots(n-1)}
+      {(j+1)(j+3)\cdots n}
+ \right\}^{\!2}.
+\]
+All admissible $j$ have parity $n-1$, proving \eqref{eq:bTsquares}.
+
+Suppose first that $b=4d$.  Write the rational number in braces in
+\eqref{eq:bTsquares} as $P_{n,j}$.  The denominator argument in
+Theorem~\ref{thm:sharpden} proved the stronger statement
+\[
+ L_n\,2^{n-1}P_{n,j}\in\mathbb Z.
+\]
+Consequently
+\[
+ L_n^2b^{n-1}P_{n,j}^2
+ =d^{\,n-1}\bigl(L_n2^{n-1}P_{n,j}\bigr)^2\in\mathbb Z.
+\]
+Equation \eqref{eq:bTsquares} therefore gives
+$L_n^2T^{(b)}_n\in\mathbb Z$.  Binomial inversion reads
+\[
+ B^{(b)}_n=\sum_{k=0}^n\binom nkb^{n-k}T^{(b)}_k.
+\]
+Since $L_k\mid L_n$, multiplying by $L_n^2$ makes every summand integral.  This proves
+the forward implication in \eqref{eq:bclassification}.
+
+For the converse, direct propagation of \eqref{eq:brec} gives
+\begin{equation}\label{eq:btestvalues}
+ B^{(b)}_4=\frac{2603b^3}{576},\qquad
+ B^{(b)}_8=\frac{6802537507b^7}{180633600}.
+\end{equation}
+Since $L_4=12$ and $2603$ is odd, integrality at $n=4$ says
+$2603b^3/4\in\mathbb Z$, forcing $b$ to be even.  If $b=2d$ with $d$ odd, then
+$L_8=840$ and the second value in \eqref{eq:btestvalues} gives
+\[
+ L_8^2B^{(b)}_8=\frac{6802537507b^7}{256}
+ =\frac{6802537507d^7}{2},
+\]
+which is not integral.  Thus integrality at every index forces $4\mid b$, completing
+the reverse implication.
+\end{proof}
+
+\begin{remark}[why this family decouples]\label{rem:endpointlocus}
+For the general quadratic recurrence and a nonzero shift $h$,
+\[
+ (n+1)^2u_{n+1}
+ =\{\alpha n(n+1)+\beta\}u_n-\gamma n^2u_{n-1},
+\]
+the binomial shift conjugates its ordinary generating-function operator to
+\begin{align*}
+ \theta^2
+ &-z\{(\alpha-3h)(\theta^2+\theta)+(\beta-h)\}\\
+ &+z^2(\gamma-2\alpha h+3h^2)(\theta+1)^2
+ +z^3h(\gamma-\alpha h+h^2)(\theta+1)(\theta+2).
+\end{align*}
+The coefficient at $z$ vanishes only when $\alpha=3h$ and $\beta=h$.  Under these
+conditions the order-three coefficient vanishes exactly when $\gamma=2h^2$.  Thus,
+apart from the trivial zero-shift
+degeneracy, \eqref{eq:brec} is exactly the endpoint-decoupling locus, not an arbitrary
+parameter insertion.  It is also a dilation:
+$B^{(b)}_n=b^{n-1}B^{(1)}_n$ for $n\ge1$.  The arithmetic content of
+Theorem~\ref{thm:generalendpoint} is that precisely the dilations $4\mid b$ supply the
+full $2$-adic factor needed by the parity quotient while the odd-prime deficit is
+absorbed by $L_n$.
+\end{remark}
+
+\begin{remark}[where the cancellation occurs]\label{rem:sharpden}
+The summands of the harmonic formula \eqref{eq:CatalanB} can retain primes between
+$n$ and $2n$, so Theorem~\ref{thm:sharpden} is genuinely global in that shell.  The
+endpoint transform moves the cancellation into the elementary parity interlacing of
+\eqref{eq:Tsquares}; there it is termwise after multiplication by $L_n^2$.
+\end{remark}
+
+The same transform retains the Ap\'ery limit in an unexpected way: $G$ becomes the
+finite part of a logarithmically divergent reciprocal-binomial sum.  Reciprocal-binomial
+accelerations of $G$ have a substantial history \cite{BradleyCatalan}; the point here is
+that this particular zero-balanced finite part is forced directly by the endpoint
+transform of the companion.
+
+\begin{corollary}[endpoint finite part and a series for $G$]\label{cor:Gfinitepart}
+One has the absolutely convergent identity
+\begin{equation}\label{eq:Grecipseries}
+ \sum_{j=1}^{\infty}\left\{
+  \frac{16^{j-1}}{j^2\binom{2j}{j}^2}-\frac{\pi}{16j}\right\}
+ =\frac{\pi}{4}\log2-\frac G2.
+\end{equation}
+Equivalently,
+\begin{equation}\label{eq:Grecipseries2}
+ G=\frac{\pi}{2}\log2+
+ \sum_{j=1}^{\infty}\left\{
+  \frac{\pi}{8j}-\frac{2\cdot16^{j-1}}{j^2\binom{2j}{j}^2}\right\}.
+\end{equation}
+In particular, the even part of the rational endpoint transform satisfies
+\begin{equation}\label{eq:Tevenfinitepart}
+ \lim_{m\to\infty}\left\{
+  \frac{T_{2m}}{\binom{2m}{m}^2}+\frac{\pi}{16}H_m
+  +\frac{\pi}{4}\log2\right\}=\frac G2.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Write
+\[
+ t_j=\frac{16^{j-1}}{j^2\binom{2j}{j}^2},\qquad
+ F(x)=\sum_{j\ge1}t_jx^j
+ =\frac{x}{4}\,{}_3F_2\!\left(\begin{matrix}1,1,1\\3/2,3/2\end{matrix};x\right).
+\]
+Euler's integral for one numerator--denominator pair, followed by
+\[
+ {}_2F_1(1,1;3/2;y)=\frac{\arcsin(\sqrt y)}{\sqrt{y(1-y)}}
+\]
+and the substitution $t=\sin^2\theta$, gives, for $0<x<1$,
+\begin{equation}\label{eq:Hintegral}
+ {}_3F_2\!\left(\begin{matrix}1,1,1\\3/2,3/2\end{matrix};x\right)
+ =\frac1{\sqrt x}\int_0^{\pi/2}
+ \frac{\arcsin(\sqrt x\sin\theta)}
+      {\sqrt{1-x\sin^2\theta}}\,d\theta.
+\end{equation}
+Let $K(x)=\int_0^{\pi/2}(1-x\sin^2\theta)^{-1/2}\,d\theta$.  Subtracting
+$\pi/2$ in the numerator of \eqref{eq:Hintegral} decomposes its right side as
+\[
+ \frac1{\sqrt x}\left\{\frac\pi2K(x)+J(x)\right\},
+ \quad
+ J(x)=\int_0^{\pi/2}
+ \frac{\arcsin(\sqrt x\sin\theta)-\pi/2}
+      {\sqrt{1-x\sin^2\theta}}\,d\theta.
+\]
+The standard endpoint estimate is
+$K(x)=\log4-\tfrac12\log(1-x)+o(1)$.  Dominated convergence applies to $J$:
+if $a=\arccos(\sqrt x\sin\theta)$, the absolute value of its integrand is
+$a/\sin a\le\pi/2$.  Therefore
+\[
+ \lim_{x\uparrow1}J(x)
+ =-\int_0^{\pi/2}\frac{u}{\sin u}\,du
+ =2\int_0^{\pi/4}\log(\tan v)\,dv=-2G.
+\]
+It follows that
+\begin{equation}\label{eq:Ffinitepart}
+ \lim_{x\uparrow1}\left\{F(x)+\frac\pi{16}\log(1-x)\right\}
+ =\frac\pi4\log2-\frac G2.
+\end{equation}
+Stirling's formula gives $t_j=\pi/(16j)+O(j^{-2})$.  Hence the series obtained by
+subtracting $\pi/(16j)$ is absolutely convergent, and Abel's theorem turns
+\eqref{eq:Ffinitepart} into \eqref{eq:Grecipseries}.  Rearrangement gives
+\eqref{eq:Grecipseries2}.
+
+Finally, the even recurrence in \eqref{eq:Trec}, or directly
+\eqref{eq:Tsquares}, gives
+\[
+ \frac{T_{2m}}{\binom{2m}{m}^2}=-\sum_{j=1}^m t_j.
+\]
+Since $H_m-\log m\to\gamma$, the partial-sum form of
+\eqref{eq:Grecipseries} proves \eqref{eq:Tevenfinitepart}.
+\end{proof}
+
+The endpoint $c=4$ is part of a full transport family.  It also explains why ordinary
+binomial acceleration alone cannot turn this companion into an irrationality proof.
+
+\begin{proposition}[binomial transport and its optimal acceleration]\label{prop:bintransport}
+For a sequence $U$, set
+\[
+ U_n^{[c]}=\sum_{k=0}^n\binom nk(-c)^{n-k}U_k.
+\]
+If $U=A_E$, respectively $U=B_E$, then
+\begin{align}\label{eq:transportrec}
+ &(n+1)^2U_{n+1}^{[c]}
+ -(4-c)(3n^2+3n+1)U_n^{[c]}
+ +(32-24c+3c^2)n^2U_{n-1}^{[c]}\notag\\
+ &\hspace{25mm}
+ +c(4-c)(8-c)n(n-1)U_{n-2}^{[c]}
+ =\begin{cases}0,&U=A_E,\\(-c)^n,&U=B_E.\end{cases}
+\end{align}
+Its characteristic polynomial factors as
+\begin{equation}\label{eq:transportroots}
+ (X-(8-c))(X-(4-c))(X+c).
+\end{equation}
+For $c=0,1,2,3$,
+\begin{equation}\label{eq:transportlimit}
+ \lim_{n\to\infty}\frac{B_n^{[c]}}{A_n^{[c]}}=\frac G2,\qquad
+ \limsup_{n\to\infty}
+ \left|\,\frac G2-\frac{B_n^{[c]}}{A_n^{[c]}}\,\right|^{1/n}
+ =\frac{\max(c,4-c)}{8-c}.
+\end{equation}
+Thus $c=2$ is the unique optimum on $[0,4)$, improving the convergence factor from
+$1/2$ to $1/3$.  Nevertheless no integral transform in this family produces a
+linear form tending to zero: the numerator
+$A_n^{[c]}G/2-B_n^{[c]}$ has exponential scale
+$\max(c,4-c)\ge2$ for $c=0,1,2,3$, while $c=4$ has scale $4$ and the logarithmic
+collision displayed in \eqref{eq:Tevenfinitepart}.
+\end{proposition}
+
+\begin{proof}
+Ordinary binomial convolution gives
+\[
+ U^{[c]}(z)=\frac1{1+cz}U\!\left(\frac z{1+cz}\right).
+\]
+Substitute this identity into \eqref{eq:BOGF}; the chain rule gives
+\eqref{eq:transportrec}.  The homogeneous leading part factors as
+\eqref{eq:transportroots}.
+
+For completeness, the nonvanishing of the relevant asymptotic components can be read
+without a connection calculation.  The bounds \eqref{eq:Alower} and
+$A_E(n)\le8^n$ give $A_E(n)^{1/n}\to8$.  The positive error formula
+\eqref{eq:errorseries}, together with the recurrence, gives
+\[
+ \lim_{n\to\infty}|A_E(n)G/2-B_E(n)|^{1/n}=4.
+\]
+Under the generating-function substitution, these two singular scales move to
+$8-c$ and $4-c$.  The latter singularity cannot disappear because the prefactor is
+regular and nonzero at its preimage.  In addition, the right side of
+\eqref{eq:transportrec} forces the simple characteristic root $-c$ in the transformed
+linear form.  Poincar\'e asymptotics therefore give \eqref{eq:transportlimit}.
+Finally,
+\[
+ \frac{\max(c,4-c)}{8-c}=
+ \begin{cases}(4-c)/(8-c),&0\le c\le2,\\
+ c/(8-c),&2\le c<4,\end{cases}
+\]
+which decreases to $1/3$ and then increases.  The asserted raw scales and the endpoint
+case follow at once.
+\end{proof}
+
+\begin{theorem}[half-digit twisted Lucas law]\label{thm:CatalanLucas}
+Let $p$ be an odd prime and let $0\le a,r<p$ with $2a+1<p$.  In the localisation
+$\Zp$,
+\begin{equation}\label{eq:CatalanLucas}
+ p^2B_E(ap+r)\equiv
+ \chi_{-4}(p)B_E(a)A_E(r)\pmod p.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Write $k=bp+s$, $0\le s<p$, and extend the shell by zero outside $0\le k\le n$.
+Lucas' theorem, applied also to the two central binomial coefficients, gives
+\[
+ S_E(ap+r,bp+s)\equiv S_E(a,b)S_E(r,s)\pmod p.
+\]
+Since $2a+1<p$, every harmonic argument in a contributing cell is strictly below
+$p^2$.  Thus multiplying a weight-$q$ letter by $p^q$ makes it $p$-integral.
+
+If $S_E(r,s)\not\equiv0\pmod p$, then Kummer's carry criterion gives
+\[
+ s\le r,\qquad 2s<p,\qquad 2(r-s)<p.
+\]
+Consequently
+\[
+ \left\lfloor\frac{k}{p}\right\rfloor=b,\qquad
+ \left\lfloor\frac{2k}{p}\right\rfloor=2b,\qquad
+ \left\lfloor\frac{2(n-k)}p\right\rfloor=2(a-b).
+\]
+Every monomial in the weight in \eqref{eq:CatalanB} has total weight $2$ and character
+signature $\chi_{-4}$.  Lemma~\ref{lem:monomial} therefore gives
+\[
+ p^2W(ap+r,bp+s)\equiv\chi_{-4}(p)W(a,b)\pmod p.
+\]
+If $S_E(r,s)\equiv0$, the shell congruence and $p$-integrality of $p^2W$ make both
+sides of the corresponding summand congruence zero.  Summing over the full digit block
+separates the $b$- and $s$-sums and proves \eqref{eq:CatalanLucas}.
+\end{proof}
+
+\begin{lemma}[the last digit]\label{lem:CatalanLastDigit}
+For every odd prime $p$,
+\begin{equation}\label{eq:CatalanLastDigit}
+ A_E(p-1)\equiv(-1)^{(p-1)/2}=\chi_{-4}(p)\pmod p.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Put $h=(p-1)/2$.  In the sum defining $A_E(p-1)$, the factor
+$\binom{2k}{k}$ vanishes modulo $p$ when $k>h$, while
+$\binom{2p-2-2k}{p-1-k}$ vanishes when $k<h$.  Only $k=h$ remains.  Since
+$\binom{p-1}{h}\equiv(-1)^h\pmod p$, its shell value is
+$(-1)^{3h}=(-1)^h$.  The last equality in \eqref{eq:CatalanLastDigit} is Euler's
+criterion for the quadratic character modulo $4$.
+\end{proof}
+
+\begin{theorem}[unit-digit full Lucas law]\label{thm:CatalanUnitLucas}
+Let $p$ be an odd prime such that
+\begin{equation}\label{eq:unitdigit}
+ p\nmid A_E(j)\qquad(0\le j<p).
+\end{equation}
+Then for every $0\le a,r<p$ the unrestricted congruence
+\begin{equation}\label{eq:CatalanUnitLucas}
+ p^2B_E(ap+r)\equiv
+ \chi_{-4}(p)B_E(a)A_E(r)\pmod p
+\end{equation}
+holds in $\Zp$.
+\end{theorem}
+
+\begin{proof}
+Write $N=ap+r$.  Summing the Casoratian increments in the proof of
+Corollary~\ref{cor:Catalanerror}, but stopping at $N$, gives the rational identity
+\begin{equation}\label{eq:finitevariation}
+ \frac{B_E(N)}{A_E(N)}=
+ \sum_{m=1}^{N}\frac{32^{m-1}}{m^2A_E(m)A_E(m-1)}.
+\end{equation}
+Summing the shell factorisation used in the proof of
+Theorem~\ref{thm:CatalanLucas} gives
+$A_E(cp+s)\equiv A_E(c)A_E(s)\pmod p$.  Under \eqref{eq:unitdigit}, every
+$A_E(m)$ with $0\le m<p^2$ is therefore a $p$-unit.  After multiplying
+\eqref{eq:finitevariation} by $p^2$, all summands with $p\nmid m$ vanish modulo
+$p$.  Writing the remaining indices as $m=jp$, Fermat's theorem and Lucas descent give
+\begin{align*}
+ \frac{p^2B_E(N)}{A_E(N)}
+ &\equiv \sum_{j=1}^{a}
+ \frac{32^{j-1}}{j^2A_E(j)A_E(j-1)A_E(p-1)}\\
+ &=\frac{B_E(a)}{A_E(a)A_E(p-1)}\pmod p.
+\end{align*}
+Finally $A_E(N)\equiv A_E(a)A_E(r)$, and
+$A_E(p-1)^{-1}\equiv\chi_{-4}(p)$ by
+Lemma~\ref{lem:CatalanLastDigit}.  This proves \eqref{eq:CatalanUnitLucas}.
+\end{proof}
+
+\begin{corollary}[optimality of the denominator exponent]\label{cor:denoptimal}
+For every prime $p\ge5$,
+\begin{equation}\label{eq:vpBp}
+ v_p(B_E(p))=-2.
+\end{equation}
+Consequently the exponent $2$ in Theorem~\ref{thm:sharpden} cannot be lowered in any
+uniform bound $L_n^eB_E(n)\in\mathbb Z$.
+\end{corollary}
+
+\begin{proof}
+Take $a=1$ and $r=0$ in Theorem~\ref{thm:CatalanLucas}; its half-digit condition is
+$3<p$.  Since $B_E(1)=A_E(0)=1$, it gives
+$p^2B_E(p)\equiv\chi_{-4}(p)\not\equiv0\pmod p$.  Theorem~\ref{thm:sharpden}
+already gives $v_p(B_E(p))\ge-2$, so equality follows.
+\end{proof}
+
+\begin{remark}[the full-digit carry problem]\label{rem:fullLucas}
+Exact recurrence computation gives \eqref{eq:CatalanLucas} for every
+$0\le a,r<p$, without the half-digit restriction, for all odd primes $p\le31$.
+The unrestricted statement does not follow termwise from
+Theorem~\ref{thm:lucas}: when $2k$ crosses $p^2$, individual carry cells develop
+$p$-adic poles.  Their sum nevertheless cancels in every test.  Proving this
+second-digit carry cancellation would remove the residual zero-digit condition not
+covered by Theorem~\ref{thm:CatalanUnitLucas} and yield a full companion Lucas law.
+\end{remark}
+
+\begin{remark}[irrationality boundary]
+The formula is a new finite harmonic representation of the normalized second solution,
+but not an irrationality proof for $G$.  The characteristic roots of
+\eqref{eq:Erec-intro} are $8$ and $4$; the complementary linear form grows on the
+$4^n$ scale instead of tending to zero, and clearing harmonic denominators only worsens
+the arithmetic estimate.  This is consistent with the obstruction in earlier
+Ap\'ery-like constructions for Catalan's constant \cite{ZudilinCatalanRemarks}.
+Theorem~\ref{thm:sharpden} improves the clearing factor from the elementary
+$L_{2n}^2=\exp((4+o(1))n)$ bound to $L_n^2=\exp((2+o(1))n)$, but the resulting
+linear form still has size on the $4^nL_n^2$ scale.  Thus the new sharp denominator
+theorem does not by itself imply irrationality.  Proposition~\ref{prop:bintransport}
+sharpens this statement: even the optimal fixed integral binomial acceleration has a
+raw small-form scale $2^n$, before any denominator is cleared.
+\end{remark}
+
+\section{Algorithm and further directions}
+
+The results suggest the following reproducible search-and-proof pipeline.
+\begin{enumerate}[leftmargin=2em]
+\item Fit a candidate weight in a graded alphabet of ordinary and residue-coloured
+  harmonic letters.  Separate character signatures from the beginning.
+\item Convert every fitted monomial to its connected lift by
+  Theorem~\ref{thm:universal}.  At weight two use Corollary~\ref{cor:weighttwo}; compact
+  several blocks by matching logarithmic derivatives when possible.
+\item Split indices only by the least common period needed for cyclotomic letters.
+  Theorem~\ref{thm:cyclolift} then produces proper hypergeometric cells.
+\item Telescope one-parameter polarizations such as \eqref{eq:polarization}, differentiate
+  their recurrences, and eliminate lower jets.  Verify the rational certificates before
+  using any initial values.
+\item Test Theorem~\ref{thm:lucas} termwise.  If digit compatibility fails, the obstruction
+  identifies exactly which wide argument or carry correction must be repaired.
+\end{enumerate}
+
+Two directions look particularly worthwhile.
+
+\paragraph{Higher characters.}
+The residue-indicator construction treats non-real characters without fractional
+hypergeometric exponents.  It should make weight-two companions for cubic characters as
+accessible as the $\chi_{-4}$ example, at the cost of a larger finite residue split.
+
+\paragraph{Minimal operators from connected lifts.}
+The universal lift proves existence but can produce a large Ore operator.  Connected
+lifts contain much more cancellation than a generic parameter derivative.  A systematic
+criterion for when those cancellations force the original Ap\'ery operator, rather than
+a left multiple, would turn many experimentally minimal harmonic formulas into short
+proofs.
+
+\paragraph{Multi-digit divided-power jets.}
+The single-digit bound in Theorem~\ref{thm:lucas} is honest.  A natural replacement for
+iteration is to package the parameter Taylor series in divided powers, where denominators
+and successive Frobenius descents can be tracked simultaneously.  This may connect the
+elementary harmonic-jet picture with unit-root and crystal formulations of Ap\'ery
+congruences.
+
+\section{Reproducibility}
+
+The accompanying script \nolinkurl{work/harmonic_jets/check_lifts.py} uses only Python's
+integer and rational arithmetic.  It checks the logarithmic-derivative decomposition in
+Proposition~\ref{prop:Catalanlift} cell by cell for $n\le19$ and audits
+\eqref{eq:CatalanB} and \eqref{eq:Erec-intro} through $n=30$.  The script
+\nolinkurl{work/harmonic_jets/verify_catalan_scalar.py} proves the scalar input
+recurrences symbolically from \eqref{eq:increments}.  Finally
+\nolinkurl{work/harmonic_jets/prove_catalan_ore.py} reconstructs the common factor,
+verifies
+the exact right divisions, and performs the finite propagation checks in
+Proposition~\ref{prop:OreCatalan}; it runs in the open-source
+PassageMath/\texttt{ore\_algebra} environment.  The Maxima file
+\nolinkurl{work/harmonic_jets/explore_e.mac} records the parity-split setup, with
+two-dimensional display disabled.  The exact audit
+\nolinkurl{work/harmonic_jets/check_catalan_lucas.py} checks the unrestricted
+congruence in Remark~\ref{rem:fullLucas} for every odd prime through $31$ and reports
+which of them satisfy the proved unit-digit hypothesis.
+The script \nolinkurl{work/harmonic_jets/check_catalan_endpoint_transform.py} checks
+\eqref{eq:transportrec} for $0\le c\le8$, \eqref{eq:Trec}, the square expansion
+\eqref{eq:Tsquares}, and the termwise divisibility $L_nR_{n,j}\in\mathbb Z$ through
+$n=300$.  The SymPy script
+\nolinkurl{work/harmonic_jets/verify_catalan_transport_symbolic.py} verifies the
+generating-function chain rule and characteristic factorisation for symbolic $c$.
+The independent script
+\nolinkurl{work/harmonic_jets/verify_general_endpoint.py} verifies
+\eqref{eq:bTrec} for symbolic $b$, audits \eqref{eq:bTsquares} through $n=120$ for
+several positive and negative parameters divisible by $4$, and derives both necessity
+witnesses in \eqref{eq:btestvalues} symbolically.
+The older independent recurrence audit
+\nolinkurl{work/harmonic_jets/check_catalan_denominators.py} verifies
+Theorem~\ref{thm:sharpden} directly through $n=500$.
+A detailed Lean handoff is provided in
+\nolinkurl{work/harmonic_jets/LEAN_CATALAN_HANDOFF.md}.
+
+\begin{thebibliography}{99}
+
+\bibitem{BradleyCatalan}
+D.~M.~Bradley,
+\emph{A class of series acceleration formulae for Catalan's constant},
+Ramanujan J. \textbf{3} (1999), no.~2, 159--173;
+\texttt{arXiv:0706.0356}.
+
+\bibitem{ABS2011}
+J.~Ablinger, J.~Bl\"umlein and C.~Schneider,
+\emph{Harmonic sums and polylogarithms generated by cyclotomic polynomials},
+J. Math. Phys. \textbf{52} (2011), 102301; \texttt{arXiv:1105.6063}.
+
+\bibitem{ChamStraub}
+M.~Chamberland and A.~Straub,
+\emph{Ap\'ery limits: experiments and proofs},
+Amer. Math. Monthly \textbf{128} (2021), no.~9, 811--824;
+\texttt{arXiv:2011.03400}.
+
+\bibitem{KalmykovWardYost}
+M.~Yu.~Kalmykov, B.~F.~L.~Ward and S.~A.~Yost,
+\emph{Multiple (inverse) binomial sums of arbitrary weight and depth and the all-order
+$\varepsilon$-expansion of generalized hypergeometric functions with one half-integer
+value of parameter},
+J. High Energy Phys. 2007, no.~10, 048; \texttt{arXiv:0707.3654}.
+
+\bibitem{JiSunCLF}
+X.-J.~Ji and Z.-H.~Sun,
+\emph{Congruences for Catalan--Larcombe--French numbers},
+Publ. Math. Debrecen \textbf{90} (2017), no.~3--4, 387--406;
+\texttt{arXiv:1505.00668}.
+
+\bibitem{MalikStraub}
+A.~Malik and A.~Straub,
+\emph{Divisibility properties of sporadic Ap\'ery-like numbers},
+\texttt{arXiv:1508.00297}.
+
+\bibitem{PWZ}
+M.~Petkov\v{s}ek, H.~S.~Wilf and D.~Zeilberger,
+\emph{$A=B$}, A K Peters, Wellesley, MA, 1996.
+
+\bibitem{Phadikar}
+J.~Phadikar,
+\emph{Monoidal alphabets for generalized harmonic sums},
+preprint (2026), \texttt{arXiv:2605.21525}.
+
+\bibitem{RowlandYassawiKratt}
+E.~Rowland, R.~Yassawi and C.~Krattenthaler,
+\emph{Lucas congruences for the Ap\'ery numbers modulo $p^2$},
+Integers \textbf{21} (2021), A20; \texttt{arXiv:2005.04801}.
+
+\bibitem{Schneider2016}
+C.~Schneider,
+\emph{A difference ring theory for symbolic summation},
+J. Symbolic Comput. \textbf{72} (2016), 82--127.
+
+\bibitem{StraubZudilin}
+A.~Straub and W.~Zudilin,
+\emph{Sums of powers of binomials, their Ap\'ery limits, and Franel's suspicions},
+Int. Math. Res. Not. \textbf{2023}, no.~11, 9861--9879;
+\texttt{arXiv:2112.09576}.
+
+\bibitem{StraubGessel}
+A.~Straub,
+\emph{Gessel--Lucas congruences for sporadic sequences},
+Monatsh. Math. \textbf{203} (2024), 883--898;
+\texttt{arXiv:2301.12248}.
+
+\bibitem{WZ1990}
+H.~S.~Wilf and D.~Zeilberger,
+\emph{Rational functions certify combinatorial identities},
+J. Amer. Math. Soc. \textbf{3} (1990), no.~1, 147--158.
+
+\bibitem{WeiGong}
+C.~Wei and D.~Gong,
+\emph{Telescoping method, derivative operators and harmonic number identities},
+Ramanujan J. \textbf{31} (2013), 177--188; \texttt{arXiv:1203.2051}.
+
+\bibitem{Zagier}
+D.~Zagier,
+\emph{Integral solutions of Ap\'ery-like recurrence equations},
+in: Groups and Symmetries, CRM Proc. Lecture Notes \textbf{47},
+Amer. Math. Soc., 2009, 349--366.
+
+\bibitem{ZudilinCatalanRemarks}
+W.~Zudilin,
+\emph{A few remarks on linear forms involving Catalan's constant},
+\texttt{arXiv:math/0210423}.
+
+\end{thebibliography}
+
+\end{document}

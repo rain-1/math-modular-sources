@@ -1,0 +1,148 @@
+{
+  "family": "apery-systems-2::MASTER 05",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+  "title_human": "MASTER 05",
+  "claims": [
+    {
+      "statement": "MASTER_RESEARCH_FIELD_MANUAL(4).txt\nDocument\n05_CUSPIDAL_APERY_GAMMA1_7_DESCENT_IRRATIONALITY.txt\nDocument\ngo",
+      "object": "Ap\u00e9ry-like sequence",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Completed the descent attack requested in Prompt 05. The source identifies rational descent from the real cubic field as the decisive obstruction and explicitly asks for trace, norm, restriction-of-scalars, Galois-conjugate, and rational-resolvent tests.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "05_CUSPIDAL_APERY_GAMMA1_7_DESC\u2026",
+      "object": "Ap\u00e9ry-like sequence",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "MASTER_RESEARCH_FIELD_MANUAL",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The cubic field has discK=49, while Z[\u03b2] has index 7 in O\nK\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "C(u)=u\n3\n+149u\n2\n\u221222u\u22121,S(u)=u\n3\n+37u\n2\n+6u\u22121.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "and their product is exactly 1. This yields a quantitative obstruction to scalar trace/restriction-of-scalars descent: a nonzero rational trace necessarily inherits the bad conjugate branch at modulus 0.1021465\u2026<1. Even an arbitrary normalized real M\u00f6bius optimization cannot raise the common scalar radius above 0.148.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "denominator theorem of weight 3, norm descent costs weight 9, while the product of the three archimedean branch radii is exactly 1, giving no exponential gain.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Q(t)=\nt(t+1)(t\n3\n+8t\n2\n+5t\u22121)\nt\n6\n\u221221t\n4\n\u221232t\n3\n\u22126t\n2\n+6t+1\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Q+2=\nD\n(t\n3\n+t\n2\n\u22122t\u22121)\n2\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": ",Q+30=\nD\n(t\n3\n+15t\n2\n+12t\u22121)\n2\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": ",Q+3=\nD\n(t\n2\n+t+1)\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=\nD\n(t\n3\n+t\n2\n\u22122t\u22121)(t\n3\n+15t\n2\n+12t\u22121)\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "This isolates determinant/wedge descent as the principal nonlinear mechanism not ruled out by the scalar obstructions.",
+      "object": "unknown mathematical object",
+      "status": "abandoned",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(7) Picard\u2013Fuchs arithmetic and prove an Atkin\u2013Swinnerton-Dyer congruence for its coefficient series. \narXiv\n Current modular-form data also show the trivial-character weight-4 level-7 newform is one-dimensional over Q with Fricke sign +1, while the order-three-character orbit has dimension 2 and coefficient field Q(\n\u22123\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "No irrationality theorem is claimed. The main unresolved pieces are now sharply reduced to the explicit Fricke-odd source/companion, the all-n O\nK\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "denominator theorem, complete monodromy at Q=\u221230,\u22122,\u22123, and the determinant/wedge descent.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Exact SymPy certificate",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "GAMMA1_7_ARITHMETIC_DESCENT_RESEARCH_NOTE.md\nDocument\ngamma1_7_descent_certificate.py\nCode\nSources",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+      "notes": "extracted from research notes"
+    }
+  ],
+  "connections_to_literature": [],
+  "open_threads_or_handoffs": [],
+  "in_ledger": "no",
+  "ledger_notes": "",
+  "flags": []
+}

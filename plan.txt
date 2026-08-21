@@ -1,0 +1,23 @@
+We have loads of threads that need consolidated.
+
+# High level overview
+
+* Mainly we have a geometric modular source theory that helps classify and organize apery sequences.
+* We also have a multiple-lattice method for improving worthiness exponents.
+* (more: TODO)
+
+# Connections with existing mathematics
+
+* modular sources: ?
+* period anihillation: Our period anihillation technique was subsumed by a more general modern theory
+* multiple-lattice: BZ zeta5 work
+* The arithmetic holonomy irrationality technique (we're starting to use this method)
+
+
+# Expository Ideas
+
+Let's apply our classification to: AN AP´ERY-LIKE DIFFERENCE EQUATION FOR CATALAN’S CONSTANT - Wadim Zudilin which provides maybe the first Catalan sequence + cf, and a new(?) z4 one 
+the follow up paper A FEW REMARKS ON LINEAR FORMS INVOLVING CATALAN’S CONSTANT - Wadim Zudilin actually proves the full experimentally found result on denominators of the previous papers construction. They also apply acceleration to it to get another recurrences and CF.  Next they build a permutation group related to the constant, this is very interesting - what is the analog of this in our theory?
+'Unfortunately, the inclusion (24) is beyond the reach of even the powerful group-structure approach to proving irrationality results developed in [RV]' we should try to think about if this permutation stuff has a geometric meaning.
+ARITHMETIC OF CATALAN’S CONSTANT AND ITS RELATIVES - WADIM ZUDILIN the beta(s) family seems interesting, I think we might have classified them?! or maybe not. we should check. or maybe they're not the most natural sequence.
+

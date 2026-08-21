@@ -1,0 +1,26 @@
+{
+  "family": "apery-systems-4::04 DONE",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-4/04-done-6a86a965.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-4/04-done-6a86a965.json",
+  "title_human": "Adelic Ap\u00e9ry Extension Feasibility",
+  "claims": [
+    {
+      "statement": "\u03a6_adelic = G_\u221e - D_ar - H_desc",
+      "object": "adelic feasibility",
+      "status": "proved",
+      "source_file": "04-done-6a86a965.json",
+      "notes": ""
+    }
+  ],
+  "connections_to_literature": [
+    "CDT"
+  ],
+  "open_threads_or_handoffs": [],
+  "in_ledger": "partially",
+  "ledger_notes": "",
+  "flags": [
+    "COMPLETE FAN-OUT 04"
+  ]
+}

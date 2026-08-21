@@ -1,0 +1,18 @@
+read("cover.gp"); read("relfind.gp");
+Z(f)=if(f==O(q^PREC),"EXACT",Str("val=",valuation(f,q)));
+print("[1] tF = (v-u)/(9v-1)        : ",Z(x-(v-u)/(9*v-1)));
+print("[2] tF = (v-u^2)/(8v)        : ",Z(x-(v-u^2)/(8*v)));
+print("[3] modular eq v^2-(9u^2-8u+1)v+u^2=0 : ",Z(v^2-(9*u^2-8*u+1)*v+u^2));
+print("[4] u quadratic (9x-1)u^2+(1-8x)u+x(8x-1)=0 : ",Z((9*x-1)*u^2+(1-8*x)*u+x*(8*x-1)));
+print("[5] FC(2t)/FC = (1-3u)/(1+3v): ",Z(Vd(FC,2)/FC-(1-3*u)/(1+3*v)));
+print("[6] FF = FC^2/FC(2t)         : ",Z(FF-FC^2/Vd(FC,2)));
+print("[7] G := FC/FC(2t) = (1+3v)/(1-3u): ",Z(FC/Vd(FC,2)-(1+3*v)/(1-3*u)));
+ub=(8*x-1)/(9*x-1)-u; vb=(18*x^2-10*x+1)/(9*x-1)^2-v;
+print("[8] ubar = (1-v)/(9v-1)      : ",Z(ub-(1-v)/(9*v-1)));
+print("[9] vbar = (1-u)/(9u-1)      : ",Z(vb-(1-u)/(9*u-1)));
+print("[10] disc(u-quad)=(1-8x)(1-6x)^2 : ",(1-8*x)^0*0==0, "  ",Z((1-8*x)*(1-6*x)^2-((1-8*x)^2-4*(9*x-1)*x*(8*x-1))));
+print("[11] is tB rational in (u,v)?");
+LL=List();TT=List();
+for(i=0,3,for(j=0,3, listput(LL,u^i*v^j); listput(TT,[0,i,j]); listput(LL,tB*u^i*v^j); listput(TT,[1,i,j])));
+K=relker(Vec(LL),70); print("     kerdim ",#K);
+if(#K>0, for(c=1,min(#K,2), my(s=K[,c]); s=s/content(s); print("     ",sum(i=1,#TT, s[i]*'T^TT[i][1]*'U^TT[i][2]*'V^TT[i][3]))));

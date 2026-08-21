@@ -1,0 +1,1091 @@
+% !TeX program = pdflatex
+%
+% "Why Apery is alone: a scan of the modular irrationality race"
+% Expository paper of the 2026-08-05 arc of River's odd-zeta programme.
+% Primary sources: work/SCANNER_LEDGER.md (all eight sections),
+% work/D1_CUSPIDAL_APPARATUS.md sec. 9, work/CATALAN_CONTROL.md,
+% work/KZ_ELLIPTIC_REPORT.md, script work/z5eps/eps65_scanner.py.
+%
+% Evidence discipline: no claim is asserted here at a higher grade than in
+% its source ledger. Finite computation is NEVER stated as proof.
+%
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{problem}[theorem]{Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{lesson}[theorem]{Lesson}
+\newtheorem{finding}[theorem]{Finding}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\HHH}{\mathbb{H}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dn}{d_n}
+\newcommand{\tc}{t_c}
+\newcommand{\tcp}{t_c'}
+\newcommand{\Ga}{\Gamma_0}
+
+% evidence-class markers
+\newcommand{\Thm}{\textup{\textsf{[THM]}}}
+\newcommand{\Proved}{\textup{\textsf{[PROVED]}}}
+\newcommand{\Verified}{\textup{\textsf{[VERIFIED]}}}
+\newcommand{\VerifiedR}[1]{\textup{\textsf{[VERIFIED: #1]}}}
+\newcommand{\Excluded}{\textup{\textsf{[EXCLUDED]}}}
+\newcommand{\ExcludedR}[1]{\textup{\textsf{[EXCLUDED: #1]}}}
+\newcommand{\Open}{\textup{\textsf{[OPEN]}}}
+
+\begin{document}
+
+\title[Why Ap\'ery is alone]{Why Ap\'ery is alone:\\ a scan of the modular irrationality race}
+
+\author{[author]}
+
+\date{August 5, 2026}
+
+\begin{abstract}
+Ap\'ery's 1978 proof that $\zeta(3)\notin\Q$ is usually described as a
+miracle: a recurrence appears, its two solutions have the right
+denominators, and a race between denominator growth and approximation
+decay is won by a hair. We recall the race in a form that makes its two
+competing exponents visible, and then --- following a scanner proposal of
+our collaborator Sol --- we run the race over an entire class of
+constructions: the companions attached to genus-zero modular curves with
+an Atkin--Lehner fold.
+
+Two things come out. First, a unification: the classical Ap\'ery
+$\zeta(3)$ source itself \emph{vanishes at the fold},
+$\Phi_\gamma(\tau_c)=0$ \VerifiedR{$10^{-122}$}, because it is the
+$W_6$-odd Eisenstein direction. Ap\'ery's construction is therefore an
+instance of exactly the mechanism used to manufacture cuspidal
+companions --- an odd source vanishing at an Atkin--Lehner fixed point ---
+realised in the Eisenstein class at a level whose fold ratio happens to
+exceed $e^3$. Second, a bounded negative: over standard integral
+eta-quotient hauptmoduln of level $N\le 25$, level $6$ is the
+\emph{unique} winner of the $r=3$ race, and its odd cusp space
+$S_4^-(\Ga(6))$ is zero; every level carrying odd cusp forms loses the
+race by a factor $\ge 4$. The boundary levels $10$ and $14$, which sit at
+score exactly $e^3$, are settled by direct computation as well. Along the
+way the scan produces new arithmetic: the odd-cusp companion at level
+$10$ has denominator exponent $\kappa=3$ at generic primes, with
+deflation only at level primes, and an exact $5$-adic descent law
+$v_5(B_{5m})=v_5(B_m)-2$ \VerifiedR{$m\le11$}. We state what is proved,
+what is only computed, and the two problems that survive.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction: the race}
+\label{sec:intro}
+
+\subsection{Ap\'ery's theorem, in the shape we need}
+
+In 1978 Ap\'ery announced that $\zeta(3)$ is irrational. The proof, as
+digested by van der Poorten, Cohen and Beukers, fits on one page once one
+knows the two sequences. Put
+\[
+  A_n \;=\; \sum_{k=0}^n \binom{n}{k}^2\binom{n+k}{k}^2,
+\]
+the \emph{Ap\'ery numbers} $1,5,73,1445,\dots$, and let $B_n$ be the
+second solution of the same three-term recurrence
+\begin{equation}
+\label{eq:aperyrec}
+  n^3 u_n \;=\; (34n^3-51n^2+27n-5)\,u_{n-1}\;-\;(n-1)^3u_{n-2},
+\end{equation}
+normalised by $B_0=0$, $B_1=6$. Then $A_n\in\Z$, the rational numbers
+$B_n$ have denominators dividing $2\dn^3$ where
+$\dn=\operatorname{lcm}(1,\dots,n)$, and
+\[
+  \frac{B_n}{A_n}\;\longrightarrow\;\zeta(3).
+\]
+So far this is only a fast approximation scheme. The proof is the
+bookkeeping that follows. Three exponential rates govern everything:
+
+\begin{itemize}[leftmargin=1.4em]
+\item the \emph{growth rate} $\alpha$: $A_n\sim \alpha^n$ up to
+  subexponential factors, here $\alpha=(1+\sqrt2)^4\approx 33.97$;
+\item the \emph{decay rate} $\beta$: $|A_n\zeta(3)-B_n|\sim\beta^n$, here
+  $\beta=(\sqrt2-1)^4\approx 0.0294=1/\alpha$;
+\item the \emph{denominator rate} $\delta$: a common denominator for
+  $A_n,B_n$ grows like $\delta^n$, here $\delta=e^3$ because
+  $\dn\sim e^n$ by the prime number theorem and the exponent is $3$.
+\end{itemize}
+
+Clearing denominators produces genuine integers $\tilde A_n=\dn^3A_n$ and
+$\tilde B_n = 2\dn^3B_n$ with
+\[
+  0\;<\;|\tilde A_n\zeta(3)-\tilde B_n|\;\approx\;(\delta\beta)^n .
+\]
+If $\zeta(3)=p/q$ were rational, the left-hand side would be a nonzero
+integer multiple of $1/q$, hence bounded below by $1/q$; but the
+right-hand side tends to $0$ as soon as $\delta\beta<1$. Contradiction.
+Everything therefore rests on a single inequality.
+
+\begin{definition}[The race condition; Sol's score]
+\label{def:score}
+For a construction with rates $(\alpha,\beta,\delta)$ as above, the
+\emph{score} is
+\[
+  \mathrm{score} \;:=\; \delta\,|\beta| ,
+\]
+and the construction \emph{wins the race} (i.e.\ proves irrationality of
+its limit) precisely when $\mathrm{score}<1$.
+\end{definition}
+
+For Ap\'ery's $\zeta(3)$: $\delta|\beta| = e^3\cdot 0.0294 \approx
+20.09/33.97 \approx 0.59 <1$. The margin is $41\%$; there is no slack to
+spare and none of the three rates could be much worse. For Ap\'ery's
+$\zeta(2)$ construction (the $\binom{n}{k}^2\binom{n+k}{k}$ family) the
+corresponding numbers are $\delta=e^2$, $|\beta|^{-1}=\varphi^{10}
+\approx 11.09$, and the score is $0.67$.
+
+\begin{remark}
+The formulation of the race as a one-number \emph{score} attached to a
+construction --- and the proposal to scan it systematically over a class of
+constructions rather than admire it in the two classical cases --- is due
+to our collaborator Sol. The entire paper is an execution of that
+proposal. We keep the terminology.
+\end{remark}
+
+\subsection{Why the score is computable in the modular world}
+
+The reason a scan is possible at all is that for the constructions we
+care about --- the ones attached to modular curves --- the three rates are
+not independent mysteries. They are read off from one picture.
+
+Suppose $\Gamma$ is a genus-zero congruence group with hauptmodul $t$
+(a generator of its function field, normalised to $t=q+O(q^2)$), and
+suppose $F$ is a weight-$k$ modular form on $\Gamma$ that, written as a
+function of $t$, satisfies a Picard--Fuchs equation
+$L\,F=0$ whose coefficient sequence $A_n=[t^n]F$ is integral. In the
+sporadic cases this is exactly the classical dictionary between Ap\'ery-like
+sequences and modular parametrisations. The differential operator $L$ has
+singularities at the roots of a polynomial $P(t)$; write $\tc$ for the
+root nearest the origin (the \emph{fold}) and $\tcp$ for the conjugate
+root. Then:
+
+\begin{itemize}[leftmargin=1.4em]
+\item $\alpha = 1/|\tc|$ --- the growth of $A_n$ is governed by the
+  nearest singularity;
+\item if the companion $B_n$ is built from a \emph{source} that vanishes
+  at the fold, the particular solution's own singularity is pushed out to
+  $\tcp$, so the error decays like $|\tcp|^{-n}$, i.e.\
+  $|\beta| = 1/|\tcp|$;
+\item $\delta=e^r$ where $r$ is the denominator exponent: $r=3$ for a
+  weight-$4$ source over a weight-$2$ family, $r=2$ for weight-$3$ over
+  weight-$1$.
+\end{itemize}
+
+Hence
+
+\begin{equation}
+\label{eq:score}
+  \boxed{\;\mathrm{score}_r \;=\; \frac{e^r}{|\tcp|}\;}
+\end{equation}
+
+and \emph{the race is won exactly when the conjugate singularity of the
+Picard--Fuchs operator is farther from the origin than $e^r$}. That is a
+statement about one complex number attached to a level, and one can
+enumerate levels.
+
+For Ap\'ery's $\zeta(3)$ the relevant curve is level $6$ with
+$P(t)=1-34t+t^2$, whose roots are $\tc=17-12\sqrt2\approx 0.0294$ and
+$\tcp = 17+12\sqrt2\approx 33.97$, giving score $20.09/33.97=0.59$ as
+above. The whole of \S\ref{sec:scan} is the systematic version of this
+one line.
+
+\subsection{What this paper contains}
+
+\S\ref{sec:unification} explains the structural discovery that makes the
+scan meaningful: Ap\'ery's source vanishes at the fold, so his
+construction is the \emph{same} construction as the deliberately
+manufactured cuspidal apparatus of the companion paper --- one mechanism
+in two representation-theoretic classes. \S\ref{sec:scan} runs the scan
+and reports the verdict, together with a lesson about normalisation
+dependence that changes what the optimisation problem even is.
+\S\ref{sec:s1} settles the two boundary levels. \S\ref{sec:s2} reports
+the arithmetic that the scan turned up as a by-product --- a prime-local
+denominator law and an exact $5$-adic descent law --- and closes the
+``arithmetic loophole''. \S\ref{sec:limits} states honestly what is
+bounded, assumed, and unproved.
+
+The intended reader is a graduate student who has seen Ap\'ery's proof
+once and knows what a modular form is. We have kept the modular
+prerequisites to: hauptmoduln, Atkin--Lehner involutions, oldforms, and
+the dimension formula for $S_k(\Ga(N))$.
+
+\subsection{Evidence discipline}
+
+This programme labels every assertion. \Proved{} means a paper proof
+exists; \Thm{} means proved and adversarially refereed; \VerifiedR{range}
+means exact computation over a stated finite range and is \emph{never}
+treated as proof; \Excluded{} means a proved negative; \Open{} means open,
+stated in its sharpest known form. Nothing in this paper is asserted at a
+higher grade than in its source ledger. In particular the central
+negative result of \S\ref{sec:scan} is a bounded computational verdict
+over an explicitly delimited search domain, not a theorem about all
+modular constructions --- and we say so again in \S\ref{sec:limits}.
+
+\section{The unification: Ap\'ery's source vanishes at the fold}
+\label{sec:unification}
+
+\subsection{Sources and companions}
+
+Fix a genus-zero level $N$, a hauptmodul $t$, and a weight-$2$ modular
+form $F$ with $A_n=[t^n]F\in\Z$ and Picard--Fuchs operator $L$. A
+\emph{companion} of $F$ is a second solution: a sequence $B_n$ satisfying
+the same recurrence with an inhomogeneity. The standard way to produce
+one is to pick a modular form $g$ of weight $r+1$ (the \emph{source}) and
+set
+\[
+  B \;=\; F\,\theta_q^{-r} g, \qquad \theta_q = q\frac{d}{dq},
+\]
+where $\theta_q^{-r}$ is the $r$-fold formal antiderivative in $q$
+(an Eichler integral). Expanding $B$ in powers of $t$ gives $B_n$, and
+the operator applied to $B$ returns a computable inhomogeneity: in the
+normalised form used throughout this programme,
+\[
+  L\bigl(F\theta_q^{-r}g\bigr) \;=\; \Phi\quad\text{with}\quad
+  \Phi \;=\; \frac{t\,\sigma^r}{P\,F}\cdot(\dots),
+\]
+where $\sigma=\theta_q t/t$. The point of the modular-anchor programme is
+that $\Phi$ is again a modular object, and that for all twelve
+identifiable sporadic families it is a \emph{pure Eisenstein series} of
+weight $r+1$ \VerifiedR{$q^{60}$, held-out band $q^{27}$--$q^{60}$}.
+
+Ap\'ery's $B_n$ is the case $N=6$, $r=3$, with source $\Phi_\gamma$ the
+weight-$4$ Eisenstein direction on $\Ga(6)$.
+
+\subsection{The vanishing mechanism, first seen in the cuspidal case}
+
+The mechanism was isolated in the reverse direction. On Domb's curve
+(level $12$, $\dim S_4(\Ga(12))=2$, spanned by the two embeddings
+$f_6(q), f_6(q^2)$ of the level-$6$ newform $f_6=(\eta_1\eta_2\eta_3\eta_6)^2$),
+one has the Atkin--Lehner action
+\[
+  (f_6|_4W_{12})(\tau) \;=\; 4f_6(2\tau) \qquad \Proved,
+\]
+which makes
+\[
+  f^{*} \;=\; f_6(q)-4f_6(q^2)\;=\;q-6q^2-3q^3+12q^4+6q^5+\cdots
+  \;\in\;S_4(\Ga(12))
+\]
+the $W_{12}$-\emph{odd} eigenvector. Because the weight-$4$ automorphy
+factor at the fixed point $\tau_{12}=i/\sqrt{12}$ equals $1$, oddness
+forces $f^{*}(\tau_{12}) = -f^{*}(\tau_{12})$, i.e.
+\[
+  f^{*}(\tau_{12})\;=\;0 .
+\]
+That single vanishing does two independent jobs (see the companion paper
+on the cuspidal apparatus, and \cite[\S4]{D1}):
+
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item \textbf{Exponential convergence.} The inhomogeneity
+  $t f^{*}/\Phi$ becomes regular at the fold, so the particular solution
+  is singular only at the \emph{conjugate} root; the error ratio is
+  $(\tc/\tcp)^n$ instead of $O(1)$.
+\item \textbf{Clean limit.} For an $\eps=-1$ source, the fixed-point
+  Eichler equation selects value-plus-quasiderivative data that the odd
+  period polynomial reduces to a single critical $L$-value; the
+  second-kind (quasiperiod) term is structurally absent.
+\end{enumerate}
+
+The resulting apparatus has $\dn^3B^{*}_n\in\Z$ \VerifiedR{$n\le40$},
+error $\approx 4^{-n}$, and
+$\lim B^{*}_n/A_n = L(f_6,3)/2$ \VerifiedR{PSLQ, 61 digits}. Its score,
+however, is $e^3/4\approx 5.0>1$: it does \emph{not} prove irrationality
+of $L(f_6,3)$. It was built to test whether cuspidal $L$-values could be
+brought inside the machinery at all. They can.
+
+\subsection{The discovery}
+
+Having isolated ``odd source vanishing at the Atkin--Lehner fold'' as the
+mechanism, one naturally asks what Ap\'ery's own source does at his fold.
+The answer:
+
+\begin{finding}[$\Phi_\gamma(\tau_c)=0$]
+\label{find:phi}
+For the level-$6$ family $\gamma$ (Ap\'ery's $\zeta(3)$ construction), the
+source $\Phi_\gamma$ vanishes at the Atkin--Lehner fixed point
+$\tau_c = i/\sqrt6$: \[\Phi_\gamma(\tau_c)=0\qquad
+\VerifiedR{$|\Phi_\gamma(\tau_c)|<10^{-122}$}.\]
+The reason is the same parity argument as for $f^{*}$: $\Phi_\gamma$ lies
+in the $W_6$-\emph{odd} part of the weight-$4$ space, and any $W_N$-odd
+weight-$4$ form vanishes at the fixed point because the automorphy factor
+there is $+1$.
+\end{finding}
+
+We label the numerical statement \Verified{} and the parity explanation
+\Proved{} (it is the two-line argument just given, once the eigenvalue
+$\eps(\Phi_\gamma,W_6)=-1$ is known; the eigenvalue itself is read off
+the Eisenstein decomposition).
+
+The consequence is conceptual, and it is the reason this paper exists:
+
+\begin{observation}[One mechanism, two classes]
+\label{obs:unify}
+Ap\'ery's $\zeta(3)$ construction is \emph{not} a separate miracle from
+the manufactured cuspidal apparatus. Both are instances of:
+\begin{center}
+\emph{an odd source, vanishing at an Atkin--Lehner-fixed fold, integrated
+against a modular family.}
+\end{center}
+They differ only in which part of the weight-$(r+1)$ space the source
+lives in --- Eisenstein or cuspidal --- and in whether the level's fold
+ratio beats $e^r$.
+\end{observation}
+
+This organises the landscape into a $2\times2$ table.
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{4.6cm}>{\raggedright\arraybackslash}p{5.0cm}@{}}
+\toprule
+ & \textbf{odd Eisenstein source} & \textbf{odd cusp source} \\
+\midrule
+\textbf{level 6} \newline ($|\tcp|=33.97>e^3$) &
+  \textbf{Ap\'ery's $\zeta(3)$ proof} --- score $0.59$, wins &
+  none exists: $S_4^-(\Ga(6))=0$ \newline ($f_6$ is Fricke-\emph{even}) \\
+\textbf{level 12} \newline ($|\tcp|=4<e^3$) &
+  a $\zeta(3)$-type companion; loses the race &
+  the $L(f_6,3)/2$ apparatus; loses the race (score $\approx5.0$) \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The mechanism in its two classes at the two relevant levels.}
+\label{tab:2x2}
+\end{table}
+
+Reading Table~\ref{tab:2x2} the obvious question writes itself.
+
+\begin{problem}[The cuspidal-Ap\'ery cell]
+\label{prob:cell}
+Is there a genus-zero group $\Gamma$, with a rectified family whose
+Atkin--Lehner-fixed fold has $|\tcp|>e^r$, and with
+$S^-_{r+1}(\Gamma)\ne 0$? Such a level would give a race-winning
+apparatus whose limit is a critical $L$-value of a cusp form --- an
+irrationality proof for a cuspidal period.
+\end{problem}
+
+Both diagonal cells of Table~\ref{tab:2x2} are occupied; the top-right
+cell is empty for a reason specific to level $6$ ($\dim S_4=1$ and that
+one form has the wrong parity). Is the emptiness an accident of small
+level? \S\ref{sec:scan} answers.
+
+\begin{remark}[Two repairs that do not work]
+Two obvious fixes are excluded before the scan starts. (i) At level $6$
+one cannot subtract an Eisenstein multiple to force a cusp form to vanish
+at the fold, because $\Phi_\gamma$ already vanishes there --- the
+correction term one would want is identically zero on the fold
+\Verified. (ii) Moving to a level with a complex fold does not help: the
+regularisation argument requires a \emph{real} fold at an Atkin--Lehner
+fixed point, as the $\delta$-family control test showed (there the fold
+is at $q_c\approx 0.1137-0.1970i$, $f^{*}$ does not vanish, and the
+companion's coefficient ratios oscillate with both conjugate folds
+singular).
+\end{remark}
+
+\subsection{Why the modular class is the right arena}
+
+A reader might object that we are scanning a small pond. Two control
+experiments justify the choice of arena; both are negative results about
+the \emph{hypergeometric} alternative.
+
+\emph{Zudilin's Catalan recurrence} (a well-poised ${}_6F_5$-world
+construction with limit Catalan's constant $G$) satisfies the universal
+boundary-defect structure of our formalism --- $L(y_v)=\tfrac{13}{2}t$
+exactly \VerifiedR{$q^{40}$} --- but fails both halves of the
+modular-anchor mechanism: its canonical nome admits \emph{no} integralising
+rational rescale (exhaustive scan over $\mu=\pm2^a3^b5^c$, $|a|\le8$,
+$|b|\le3$, $|c|\le2$), and its fold connection value misses $(2/13)G$ by
+$3.2\times10^{-2}$, far above truncation error. The diagnosis is
+structural: the raw operator has order six with half-integer indicial
+pairs $\{0,0,\tfrac12,\tfrac12,\cdot,\cdot\}$. \ExcludedR{bounded}
+
+\emph{Koutschan--Zudilin's elliptic $L$-value construction} --- the unique
+one in the literature realising elliptic $L$-values as Ap\'ery limits ---
+carries the same half-integer structure ($x^{n-1/2}$ integrands,
+$(2n\pm1)$ coefficients). Executed at $z=1/2$ (the conductor-$32$ CM
+case, where CM might have saved it), modular rectification fails
+maximally: canonical-nome denominators $1352, 1.7\times10^{13},
+1.9\times10^{25}$ at $n=2,3,4$, no integralising rescale, and the
+indicial polynomial $\theta(\theta+1)^2(2\theta-1)^2(2\theta+1)^2\cdots$
+has exponent $0$ only \emph{simple}, so no Frobenius log-partner exists
+and the canonical coordinate is not even well-founded. \ExcludedR{bounded}
+
+\begin{lesson}
+The source of a companion depends on the \emph{geometric realisation},
+not on the constant. The same $G$ is reached inside the modular class
+(sporadic family E, level $8$, pure weight-$3$ $\chi_{-4}$-Eisenstein
+source, integral mirror map) and outside it (Zudilin's recurrence, no
+modular structure in the canonical coordinate). Denominator and
+congruence phenomena belong to the realisation.
+\end{lesson}
+
+Consequently: the known non-modular $L$-value recurrences are
+hypergeometric-realised and outside our mechanism, while the mechanism
+itself has exactly one known race winner per weight. Scanning the modular
+class is scanning the place where the winners live.
+
+\section{The scan}
+\label{sec:scan}
+
+\subsection{Method}
+
+The scanner (\texttt{work/z5eps/eps65\_scanner.py}) implements
+\eqref{eq:score} directly. For each level $N$ in a list of levels
+carrying a standard integral eta-quotient hauptmodul $t$, it computes:
+
+\begin{enumerate}[label=\textbf{Step \arabic*.},leftmargin=3.4em]
+\item \textbf{The hauptmodul.} $t=\prod_m\eta(m\tau)^{e_m}$ with the
+  standard exponent vectors --- e.g.\ level $6$:
+  $(\eta_1\eta_6/\eta_2\eta_3)^{12}$; level $12$:
+  $(\eta_1\eta_{12}/\eta_3\eta_4)^{4}$; level $10$:
+  $(\eta_1\eta_{10}/\eta_2\eta_5)^{6}$; prime levels
+  $(\eta_1/\eta_N)^{24/(N-1)}$.
+\item \textbf{The Atkin--Lehner M\"obius map.} $t\circ W_N$ is again a
+  hauptmodul, hence $t\circ W_N=(at+b)/(ct+d)$ for constants determined
+  by the level. These are fitted numerically from samples
+  $\tau=iy$, $y\in\{0.35,0.45,0.55,0.65\}$, with the fourth sample used
+  as a consistency check (residuals reported per level).
+\item \textbf{The critical values.} The singular values of the operator
+  are the critical values of $t$, i.e.\ the values of $t$ at the zeros of
+  \[
+    \sigma/t \;=\; \tfrac{1}{24}\sum_m e_m\,m\,E_2(q^m),
+  \]
+  found by seeded Newton iteration over the complex disc --- both the real
+  folds and the complex second classes. Equivalently, and as a
+  cross-check, they are the fixed points of the M\"obius involution of
+  Step 2: solving $ct^2+(d-a)t-b=0$ gives $\{\tc,\tcp\}$, and $\tc$ is
+  identified as the one nearest $t(i/\sqrt N)$.
+\item \textbf{The score and the cusp dimension.} Output
+  $\mathrm{score}_r=e^r/|\tcp|$ for $r=2,3$, together with
+  $\dim S_4(\Ga(N))$ from the classical genus/elliptic-point formula.
+\end{enumerate}
+
+\subsection{Validation anchors}
+
+A scan is worth only its anchors. The following were reproduced
+\emph{exactly} by the pipeline before any new level was trusted:
+
+\begin{itemize}[leftmargin=1.4em]
+\item \textbf{Level 6} (Ap\'ery's $\zeta(3)$): $\tc=0.0294\ldots$,
+  $|\tcp|=33.97\ldots$ --- the roots of $1-34t+t^2$, known from the family
+  operator.
+\item \textbf{Level 12} (Domb): $\tc=1/16$, $|\tcp|=1/4$ --- the roots of
+  $P_\alpha=(1-4t)(1-16t)$.
+\item \textbf{Level 8} (family $\eps$): $(0.0429\ldots,\,1.457\ldots)$.
+\item \textbf{Level 20} (family $\eta$): the complex fold
+  $0.088\pm0.016i$, matching the known complex-fold classification (disc
+  $-16$).
+\item \textbf{Level 5}: the symmetric $\pm1/\sqrt5$-scale pair, i.e.\
+  $|\tc|=|\tcp|$, consistent with $t\mapsto\kappa/t$.
+\end{itemize}
+
+\subsection{The table}
+
+Table~\ref{tab:scan} is the full first run, at $r=3$
+($\mathrm{score}_3=e^3/|\tcp|\approx 20.09/|\tcp|$; win iff $<1$).
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+$N$ & $\dim S_4$ & $\tc$ & $|\tcp|$ & $\mathrm{score}_3$ & verdict\\
+\midrule
+$2,3,4,5,$ & $0$--$5$ & $\pm\sqrt\kappa$ & $=|\tc|$ & --- & no analytic gain\\
+$7,9,13,25$ & & symmetric & & & ($t\mapsto\kappa/t$)\\
+$6$ & $1$ & $0.0294$ & $\mathbf{33.97}$ & $\mathbf{0.59}$ &
+   \textbf{WIN} --- but $S_4^-(\Ga(6))=0$\\
+$8$ & $1$ & $0.0429$ & $1.457$ & $13.8$ & fail\\
+$10$ & $3$ & $0.0557$ & $1.000$ & $20.09$ & fail (exactly $e^3$)\\
+$12$ & $3$ & $0.0625$ & $0.25$ & $80$ & fail (Domb; the $L(f_6,3)/2$ apparatus)\\
+$14$ & $4$ & $0.1497$ & $1.000$ & $20.09$ & fail (exactly $e^3$)\\
+$15$ & $4$ & $0.2011$ & $0.726$ & $27.7$ & fail\\
+$18$ & $5$ & $0.0895$ & $\lesssim1$ & $\gg1$ & fail (second class not fully resolved)\\
+$20$ & $6$ & complex fold & --- & --- & excluded (no real AL fold)\\
+$24$ & $8$ & $0.0981$ & $0.545$ & $36.8$ & fail\\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The $r=3$ scan over standard integral eta hauptmoduln,
+$N\le25$. \VerifiedR{numeric, $50$ digits working precision}}
+\label{tab:scan}
+\end{table}
+
+The $r=2$ scan (score $e^2/|\tcp|$, relevant for weight-$3$ sources over
+weight-$1$ families) produced no winner either, subject to the
+normalisation caveat of \S\ref{sec:normalisation}.
+
+\subsection{The verdict}
+
+\begin{finding}[The cuspidal-Ap\'ery cell is empty in the scanned domain]
+\label{find:verdict}
+Within the natural search domain --- standard integral eta hauptmoduln,
+levels $N\le25$ --- Problem~\ref{prob:cell} has no solution.
+Level $6$ is the unique $r=3$ race winner, and its odd cusp space
+vanishes; every level carrying odd cusp forms loses the race by a factor
+$\ge 4$. \VerifiedR{Table~\ref{tab:scan}; domain as stated}
+\end{finding}
+
+Or, in one sentence: \emph{Ap\'ery's $\zeta(3)$ apparatus is the unique
+odd-vanishing race-winning construction in its class --- and it is
+Eisenstein because it has to be.} The classical picture, in which the
+Eisenstein-ness of Ap\'ery's source looks like a lucky feature, inverts:
+the cuspidal alternative is not available at any level where the race can
+be won.
+
+The reader should note carefully what kind of statement
+Finding~\ref{find:verdict} is. It is a verdict over an enumerated finite
+domain, computed numerically. It is \emph{not} a theorem that no
+race-winning cuspidal construction exists. \S\ref{sec:limits} lists
+precisely which doors it leaves open, and \S\ref{sec:normalisation}
+explains why one of those doors is much wider than it first appears.
+
+\subsection{Two boundary curiosities}
+
+Levels $10$ and $14$ sit at $|\tcp|=1.000$ to all computed digits ---
+their conjugate class lies on the unit $t$-circle --- hence at score
+\emph{exactly} $e^3$. This is the knife edge: the analysis contributes
+nothing either way, and the outcome is decided entirely by arithmetic.
+Since $\dim S_4=3$ and $4$ there, odd cusp vectors could exist. Any
+denominator improvement whatsoever --- a $\dn^{3-\eps}$ law of the sort the
+sporadic ``deflation'' phenomena hint at --- would tip these levels into
+the win column and produce a cuspidal irrationality proof. This was the
+sharpest target the first run produced, recorded as:
+
+\begin{problem}[S-1]
+\label{prob:s1}
+Determine the exact odd-cusp dimensions at levels $10$ and $14$, and
+whether any integral normalisation or auxiliary-source choice achieves
+denominator growth strictly below $e^{3n}$.
+\end{problem}
+
+\S\ref{sec:s1} answers it.
+
+\subsection{The normalisation lesson}
+\label{sec:normalisation}
+
+Before that, a lesson that reshapes the problem. Look again at the first
+row of Table~\ref{tab:scan}: at prime level the standard hauptmodul is
+\emph{symmetric}, $t\circ W_N=\kappa/t$, so its two fixed points are
+$\pm\sqrt\kappa$ and $|\tc|=|\tcp|$ identically. There is zero analytic
+gain \emph{by construction}. Yet the classical Ap\'ery $\zeta(2)$ proof
+lives at level $5$ and does win its race.
+
+The resolution: the $\zeta(2)$ win exists in the $\Gamma_1(5)$
+(asymmetric) normalisation of the level-$5$ hauptmodul, where
+$|\tcp|/|\tc| = \varphi^{10}\approx123$; in the symmetric eta
+normalisation the same level shows no gain at all. Both are integral
+coordinates on the same curve.
+
+\begin{lesson}[Normalisation non-invariance]
+\label{lesson:norm}
+The race score is \emph{not} an invariant of the level. It is an
+invariant of the \emph{integral normalisation of the hauptmodul}. Two
+integral coordinates on the same modular curve can give scores on
+opposite sides of $1$.
+\end{lesson}
+
+This is a genuine two-coordinate comparison at a single level, so it
+settles the question of principle: score is coordinate-dependent. The
+consequence for Problem~\ref{prob:cell} is that the true optimisation
+domain is not the (small, enumerable) set of levels but the
+\emph{lattice of integral M\"obius changes of $t$}, each trading
+singularity positions against denominator growth --- one cannot move
+$|\tcp|$ outward for free, because rescaling $t$ rescales $A_n$ and
+$B_n$ and hence the denominators. This is precisely Sol's
+``extremal function'' formulation, now with data attached. We return to it
+as the surviving open problem in \S\ref{sec:s2}.
+
+\section{S-1: the level-$10$ boundary test}
+\label{sec:s1}
+
+Problem~\ref{prob:s1} asks whether the knife-edge levels can be tipped.
+We report the level-$10$ computation in full, because every layer of the
+mechanism behaves \emph{exactly} as the theory predicts --- and the
+construction still fails, for a reason the first framing of S-1 had
+mis-stated.
+
+\subsection{The odd vector exists}
+
+The level-$10$ weight-$4$ oldspace contains the embeddings of
+$f_5=\eta_1^4\eta_5^4$, the level-$5$ newform. Its Atkin--Lehner
+eigenvalue is $\eps_5=+1$, read off from $a_5=-5$; the general oldspace
+lemma (whose two previous instances are levels $12$ and $6$) gives
+$c=\eps p^{k/2}$, here $c=4$, so
+\[
+  (f_5|_4W_{10}) = 4f_5(q^2),
+\]
+and therefore
+\[
+  \boxed{\,f^- \;=\; f_5(q)-4f_5(q^2)\,}
+\]
+is the $W_{10}$-odd eigenvector. It vanishes at the fold automatically,
+by the same automorphy-factor parity argument as in
+\S\ref{sec:unification}. This is the \emph{third} instance of the
+oldspace vanishing lemma and the exact structural analogue of level
+$12$'s $f^{*}$. \Verified
+
+\subsection{The families are rectified}
+
+Level $10$ supports integral principal solutions: for
+$F=2E_2(q^2)-E_2(q)$ one gets $A_n = 1,24,168,1752,\dots\in\Z$, and for
+$F=(5E_2(q^5)-E_2(q))/4$ one gets $1,6,54,582,\dots\in\Z$. Nothing about
+level $10$ is degenerate. \VerifiedR{exact, series to $q^{36}$}
+
+\subsection{Integrality holds}
+
+The odd-cusp companion $B_n=[t^n]F\theta_q^{-3}f^-$ satisfies
+\[
+  \dn^3 B_n \in \Z \qquad \VerifiedR{$n\le36$, exact}.
+\]
+The $\dn^3$-integrality layer --- which the programme has now observed at
+levels $6$, $12$ and $10$, cuspidally and Eisenstein-wise, on several
+curves --- holds yet again. (It remains \emph{observed}, not proved, in
+the cuspidal case; see \S\ref{sec:limits}.)
+
+\subsection{And yet the construction fails}
+
+Two ways, both fatal:
+
+\begin{itemize}[leftmargin=1.4em]
+\item \textbf{The denominators grow.} $\log(\mathrm{den}\,B_n)/n \approx
+  2.27$--$2.43$ for $n=20$--$36$: slightly below the nominal $\dn^3$-rate
+  $3$, but nowhere near bounded. There is no $\dn^{3-\eps}$ miracle with
+  $\eps$ big enough to matter, and certainly no boundedness.
+\item \textbf{The forms do not decay.} At $|\tcp|=1.000$ the linear forms
+  $A_n\xi-B_n$ are $O(1)$: they do not tend to $0$ at all. A score of
+  exactly $1$ does not mean ``arithmetic decides''; it means the analytic
+  input is \emph{zero}, and one would need bounded denominators
+  \emph{and} strictly decaying forms. Level $10$ has neither.
+\end{itemize}
+
+\begin{finding}[S-1 answered: NO]
+\label{find:s1}
+The cuspidal-Ap\'ery cell is empty in the full scanned domain, now
+including the boundary levels. \VerifiedR{level $10$ exact to $q^{36}$;
+level $14$ by the same unit-circle argument}
+\end{finding}
+
+For level $14$ we note a correction: its hauptmodul was mis-specified in
+the first run; the correct one is $(\eta_2\eta_{14}/\eta_1\eta_7)^3$, and
+its conjugate class sits at the same unit-circle scale, so the same
+argument applies.
+
+\begin{remark}[What survives of S-1]
+Only the normalisation-optimisation question of
+Lesson~\ref{lesson:norm}: whether some integral M\"obius change of
+coordinate at \emph{any} level can push $|\tcp|$ above the observed
+denominator rate. At the time this finding was recorded, the empirical
+rate for odd-cusp companions looked like $e^{2.3n}$ rather than $e^{3n}$,
+which would have lowered the bar --- a level with $|\tcp|>e^{2.3}\approx
+10$ and odd cusp forms is not obviously excluded. That deflation was
+real in the data and unexplained. Resolving it was posed as S-2, and it
+is the subject of the next section.
+\end{remark}
+
+\section{S-2: the prime-local denominator law, and the closing of the loophole}
+\label{sec:s2}
+
+\subsection{The question}
+
+Is the odd-cusp companion's true denominator exponent $\kappa=3$, or is
+it genuinely smaller? Everything hinges on this: the threshold to beat is
+$e^\kappa$, and the difference between $e^3\approx20.1$ and
+$e^{2.3}\approx10.0$ is the difference between ``no candidate levels''
+and ``several''.
+
+The protocol: compute $B_n$ exactly for $n\le72$ for both integral
+choices of $F$ at level $10$, and split the denominator prime by prime.
+Write $h_p(n)=v_p(\dn)=\lfloor \log_p n\rfloor$ for the $p$-adic
+valuation of $\operatorname{lcm}(1,\dots,n)$, and $e_p(n)=-v_p(B_n)$ for
+the power of $p$ actually appearing in the denominator of $B_n$. The
+nominal law is $e_p\le 3h_p$; the question is where it is sharp.
+
+\subsection{The law}
+
+\begin{finding}[Prime-local denominator law at level 10]
+\label{find:kappa}
+Uniformly across both integral $F$'s, for $n\le72$
+\VerifiedR{exact rational arithmetic}:
+\begin{align}
+  e_p(n) &= 3h_p(n) &&\text{for } p\nmid 10 \quad\text{(generic primes:
+   the \emph{full} $\dn^3$ cost)},\label{eq:generic}\\
+  e_5(n) &= 2h_5(n) &&\text{exactly},\label{eq:five}\\
+  e_2(n) &\ll 2h_2(n) &&\text{(the strongest deflation).}\label{eq:two}
+\end{align}
+Concretely for \eqref{eq:generic}: $e_7=3$ at $n=7$, $e_7=6$ at $n=49$,
+and likewise for $p=11,13$. For \eqref{eq:five}: $e_5=2$ at $n=5$,
+$e_5=4$ at $n=25$. The auxiliary quantity
+$Q_n=\mathrm{den}(B_n)/\gcd(\mathrm{den}(B_n),\dn^2)$ contains every
+generic prime $\le n$ to power exactly $1$ --- which is precisely the
+difference between $3h_p$ and $2h_p$ --- and contains $5$ never.
+\end{finding}
+
+Two consequences, one negative and one positive.
+
+\begin{corollary}[$\kappa=3$; the $2.3$ was an artifact]
+The globally fitted exponent $2.27$ of \S\ref{sec:s1} was a finite-size
+effect. It \emph{rises} with $n$ --- reaching $2.75$ by $n=72$ --- tracking
+$3\psi(n)/n$ minus $O(\log n)$ worth of level-prime savings, where
+$\psi$ is Chebyshev's function. The true exponent is
+$\boxed{\kappa=3}$, and the analytic threshold stays $e^3$.
+\end{corollary}
+
+Hence the candidate universal ``$\dn^2$-type'' theorem --- which would have
+made the boundary levels winnable --- is \Excluded{} at generic primes.
+The scanner verdict of \S\ref{sec:scan} stands, and now stands
+arithmetically as well as analytically: \emph{the cuspidal-Ap\'ery cell
+remains empty, with the arithmetic loophole closed}.
+
+\subsection{What is gained: level-prime deflation}
+
+The positive consequence is new arithmetic. The deflations at $p\mid N$
+are real, structured, and provable-looking --- they are the local behaviour
+of Frobenius on the Eichler extension at the primes of bad reduction. The
+$5$-adic one turns out to have an exceptionally clean form. Probing
+$n\le60$ exactly:
+
+\begin{finding}[The exact $5$-adic descent law]
+\label{find:descent}
+For the level-$10$ odd-cusp companion,
+\[
+  \boxed{\;v_5(B_{5m}) \;=\; v_5(B_m)-2\;}
+\]
+\VerifiedR{all tested $m\le11$, uniformly, including cases with
+$v_5(B_m)<0$}.
+That is: each $5$-adic digit of $n$ costs exactly \emph{two} powers of
+$5$. The mechanism visible in the data: the division by $m^3$ in the
+recurrence loses three powers, and the numerator of the forced recurrence
+recovers exactly one.
+\end{finding}
+
+Everything else about the $5$-adic side follows from
+Finding~\ref{find:descent} by digit bookkeeping: the equality set of
+$e_5=2h_5$ (which holds for $34$ of the $60$ values $n\le60$) and its
+exception windows --- the $5$-adic digit patterns
+$21_5$--$24_5$, $41_5$--$44_5$, $111_5$--$114_5$, \dots --- are exactly
+what the descent law predicts. Moreover $25\cdot B_{5m}\bmod 5$ is a unit
+whose value tracks the pair $(A,B)$: this is the digit-transition
+constant of a mixed Lucas congruence, one experiment away from explicit.
+
+Note the shape of the law: it is an \emph{equality}, a $5$-adic
+recursion, not an inequality. That is unusual and is what makes it look
+provable.
+
+\begin{problem}[S-3, open]
+\label{prob:s3}
+Prove $v_5(B_{5m})=v_5(B_m)-2$ for all $m$. Two routes are identified:
+the source side (the action of $U_5$ on $\theta_q^{-3}f^-$, which would
+explain why the law is independent of the choice of $F$ --- the observed
+$F$-invariance is otherwise unexplained), or the forced recurrence
+directly (shortest). \Open
+\end{problem}
+
+\subsection{The surviving extremal problem}
+
+With the arithmetic loophole closed, exactly one route to a cuspidal
+irrationality proof survives inside this mechanism, and it is the one
+Lesson~\ref{lesson:norm} opened.
+
+\begin{problem}[The integral-model extremal problem]
+\label{prob:extremal}
+\begin{center}
+\fbox{\parbox{0.88\linewidth}{\medskip
+Find a quadruple $(N,\,t,\,F,\,f^-)$ --- a level, an \emph{integral}
+coordinate $t$ on the modular curve, a rectified weight-$2$ family $F$
+with integral $t$-coefficients, and a $W_N$-odd cusp form $f^-$ of weight
+$4$ --- such that the conjugate singular value satisfies
+\[
+  |\tcp| \;>\; e^{3}\approx 20.09
+\]
+in that coordinate, with the $\dn^3$-integrality of the companion
+preserved. \Open\medskip}}
+\end{center}
+Equivalently: optimise the score over the lattice of integral M\"obius
+changes of coordinate, where every outward push of $|\tcp|$ is paid for
+in denominator growth.
+\end{problem}
+
+This is a genuine extremal problem, not a restatement of
+Problem~\ref{prob:cell}: the scan fixed one standard coordinate per
+level, and Lesson~\ref{lesson:norm} proves that this choice can decide
+the race. Level $5$ is the existence proof that the coordinate lattice
+matters --- there the asymmetric normalisation gains a factor
+$\varphi^{10}\approx123$ over the symmetric one.
+
+Together with Problem~\ref{prob:s3}, this is what the arc leaves open.
+Everything else in the cell is settled, for the scanned class:
+analytically by Table~\ref{tab:scan}, at the boundary by
+Finding~\ref{find:s1}, and arithmetically by Finding~\ref{find:kappa}.
+
+\subsection{Summary of the position}
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{6.6cm}l@{}}
+\toprule
+statement & grade\\
+\midrule
+$\Phi_\gamma(\tau_c)=0$ (Ap\'ery's source is odd, vanishes at the fold)
+  & \VerifiedR{$10^{-122}$} + \Proved{} parity argument\\
+$(f|_kW_{Np})=\eps p^{k/2}f(q^p)$ on the oldspace (three instances)
+  & \Proved{} (level 12), \Verified{} (levels 6, 10)\\
+Level 6 is the unique $r=3$ winner, $N\le25$, standard hauptmoduln
+  & \VerifiedR{Table~\ref{tab:scan}}\\
+$S_4^-(\Ga(6))=0$
+  & \Proved{} ($\dim S_4=1$, $f_6$ Fricke-even)\\
+Boundary levels $10,14$ do not win
+  & \VerifiedR{$n\le36$ exact}\\
+$\dn^3B_n\in\Z$ for cuspidal companions
+  & \VerifiedR{$n\le36$--$40$} --- \emph{not} proved\\
+$e_p=3h_p$ at generic $p$, i.e.\ $\kappa=3$
+  & \VerifiedR{$n\le72$, both $F$}\\
+Universal $\dn^2$-type theorem
+  & \ExcludedR{generic primes}\\
+$v_5(B_{5m})=v_5(B_m)-2$
+  & \VerifiedR{$m\le11$} --- \Open{} as S-3\\
+Integral-model extremal problem
+  & \Open\\
+Catalan / Koutschan--Zudilin outside the modular class
+  & \ExcludedR{bounded scans}\\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{Evidence ledger for the claims of this paper.}
+\label{tab:evidence}
+\end{table}
+
+\section{Honest limits}
+\label{sec:limits}
+
+This section exists because the central result is a negative, and a
+negative is only as good as its stated domain. Everything below is a
+limitation of the present work, not a hedge.
+
+\subsection{Search bounds}
+
+\begin{enumerate}[label=(L\arabic*),leftmargin=3em]
+\item \textbf{Levels $\le25$.} Larger levels were not scanned. There is
+  no theoretical bar at $25$; it is where genus-zero standard eta
+  hauptmoduln run out in the tabulated list used.
+\item \textbf{One hauptmodul per level.} Exactly one standard integral
+  eta-quotient coordinate was scanned per level --- with the sole
+  exception of level $5$, whose two normalisations straddle the
+  win/no-gain line. That exception is not a nuisance: it is the
+  \emph{proof} that the single-coordinate scan is incomplete in principle
+  (Lesson~\ref{lesson:norm}), and it is why
+  Problem~\ref{prob:extremal} is open rather than closed.
+\item \textbf{Seeded zero-finding.} The Newton search for critical values
+  is seeded. At levels $6$, $12$ and $18$ the second class was taken from
+  the known family operators or from scale estimates rather than found
+  fresh. For levels $6$ and $12$ these values are independently known and
+  exact; for level $18$ only the \emph{scale} is used, which suffices to
+  rule out a win but does not resolve the second class.
+\item \textbf{Odd-part dimensions not split in general.} The scan reports
+  $\dim S_4(\Ga(N))$, not $\dim S_4^\pm$. The splitting was carried out
+  only where it mattered --- level $6$ (where $\dim S_4=1$ and the sign is
+  $+$) and level $10$. At other losing levels the odd dimension is
+  irrelevant, since they lose the race regardless.
+\item \textbf{Weight $r=2$ under-scanned.} The weight-$3$-with-character
+  spaces relevant to $r=2$ were not systematically scanned; the reported
+  $r=2$ column is a by-product of the same fold data.
+\item \textbf{Level 14's coordinate.} Mis-specified in the first run and
+  corrected afterwards (see \S\ref{sec:s1}). The corrected level sits at
+  the same unit-circle scale, so the verdict is unchanged --- but the
+  incident is a reminder that hauptmodul bookkeeping is error-prone and
+  every entry of Table~\ref{tab:scan} should be re-derived by any reader
+  who wants to build on it.
+\end{enumerate}
+
+\subsection{What is assumed rather than proved}
+
+\begin{enumerate}[label=(A\arabic*),leftmargin=3em]
+\item \textbf{The $\dn^r$ cost.} The identification $\delta=e^r$ assumes
+  that the cuspidal companion's denominators really are governed by
+  $\dn^r$. For the Eisenstein (classical) cases this is proved. For the
+  cuspidal companions it is \emph{observed}: exactly to $n\le40$ at
+  levels $12$ and $6$, to $n\le36$ at level $10$, and prime-locally to
+  $n\le72$. It is not a theorem. A reader looking for a way through
+  Problem~\ref{prob:cell} should note that this cuts both ways: the
+  cuspidal denominators could in principle be \emph{worse} than $\dn^r$
+  at some level, which would only strengthen the negative --- or better at
+  some unexamined level, which would weaken it.
+\item \textbf{The rate dictionary.} The identifications
+  $\alpha=1/|\tc|$, $|\beta|=1/|\tcp|$ are the standard singularity
+  analysis of the Picard--Fuchs operator, valid when the source vanishes
+  at the fold to the required order and the fold is a regular singular
+  point with the expected exponents. They were checked against the two
+  classical constructions and the manufactured level-$12$ apparatus. They
+  are not re-derived here for each scanned level.
+\item \textbf{Numerical fold data.} Table~\ref{tab:scan}'s entries are
+  numerical, at $50$ digits working precision, with a per-level M\"obius
+  residual check. The exact values are known independently only at levels
+  $5$, $6$, $8$, $12$ and $20$.
+\item \textbf{$\Phi_\gamma(\tau_c)=0$.} The numerical statement is
+  overwhelming ($10^{-122}$), and the parity argument that explains it is
+  a proof \emph{given} the Atkin--Lehner eigenvalue of $\Phi_\gamma$,
+  which is read off the Eisenstein decomposition rather than derived here
+  from first principles. We grade the combination \Proved{} but flag the
+  input.
+\item \textbf{Mechanism claims.} The two effects of fold-vanishing
+  (\S\ref{sec:unification}(i),(ii)) are argued and observed; the
+  period-parity half in particular has a written route with one
+  normalisation constant still open in the source ledger. Nothing in this
+  paper's verdict depends on that constant, since the verdict is about
+  rates.
+\end{enumerate}
+
+\subsection{What the negative does and does not say}
+
+It says: within an explicit finite family of modular constructions ---
+one standard integral coordinate per genus-zero level $N\le25$, odd
+sources, Atkin--Lehner folds --- Ap\'ery's level-$6$ Eisenstein
+construction is the only one whose score is below $1$, and no level with
+a nonzero odd cusp space comes within a factor of $4$.
+
+It does not say that no cuspidal irrationality proof exists, nor even
+that none exists by this mechanism. Two doors are explicitly open:
+Problem~\ref{prob:extremal} (a different integral coordinate, at any
+level, possibly large), and the possibility of a structurally different
+mechanism altogether --- for which the two hypergeometric control
+experiments of \S\ref{sec:unification} suggest the known candidates in
+the literature are not it.
+
+\section{Closing: what a scan is for}
+\label{sec:closing}
+
+A scan of this kind produces three kinds of output, and it is worth
+separating them.
+
+\emph{A verdict.} The cuspidal-Ap\'ery cell is empty in the scanned
+domain, analytically and arithmetically. If one is looking for a second
+Ap\'ery, one should not look here.
+
+\emph{A reframing.} Before the scan, ``why is Ap\'ery's source
+Eisenstein?'' had no answer beyond ``that is what the computation gives''.
+After Finding~\ref{find:phi} and Observation~\ref{obs:unify}, it has one:
+Ap\'ery's construction is the odd-source-vanishing-at-the-fold mechanism,
+and at the only level where that mechanism wins its race, the odd part of
+the weight-$4$ space is purely Eisenstein. The Eisenstein-ness is forced.
+Table~\ref{tab:2x2} is the whole story, and three of its four cells are
+now understood.
+
+\emph{New arithmetic that nobody was looking for.} The scan was a search
+for a race winner and found none; but en route it produced the third
+instance of the oldspace vanishing lemma, the $\kappa=3$ generic
+denominator law, the exclusion of the universal $\dn^2$ theorem, and the
+exact $5$-adic descent law $v_5(B_{5m})=v_5(B_m)-2$ --- an equality, not
+an inequality, with two identified proof routes. In this programme
+bounded negatives are deliverables, and the structure they force out on
+the way is usually the durable part.
+
+What remains, precisely: prove the descent law (Problem~\ref{prob:s3}),
+and solve the extremal problem over integral models
+(Problem~\ref{prob:extremal}). Failing both, a cuspidal irrationality
+proof needs a mechanism this paper has not scanned.
+
+\subsection*{Acknowledgements}
+
+The score formulation of the race, the scanner proposal, the protocol for
+the prime-local denominator split, and the extremal-function framing of
+the surviving open problem are all due to our collaborator Sol.
+
+\appendix
+
+\section{Provenance}
+\label{app:prov}
+
+For a reader wishing to reproduce or extend the computations, the
+underlying records of this programme are:
+
+\begin{itemize}[leftmargin=1.4em]
+\item \texttt{work/SCANNER\_LEDGER.md} --- the scan itself: method
+  (\S1), the table (\S2), the verdict (\S3), the normalisation lesson
+  (\S4), honest limits (\S5), the level-$10$ boundary test (\S6), the
+  prime-local law (\S7), and the $5$-adic descent law (\S8). All of
+  \S\ref{sec:scan}--\S\ref{sec:limits} above tracks this ledger.
+\item \texttt{work/D1\_CUSPIDAL\_APPARATUS.md} --- the manufactured
+  cuspidal apparatus, and (\S9) the race framework together with the
+  $\Phi_\gamma(\tau_c)=0$ discovery and the $2\times2$ table.
+\item \texttt{work/CATALAN\_CONTROL.md},
+  \texttt{work/KZ\_ELLIPTIC\_REPORT.md} --- the hypergeometric boundary:
+  why the modular class is the arena.
+\item \texttt{work/z5eps/eps65\_scanner.py} --- the scanner: eta
+  hauptmodul table, numerical Atkin--Lehner M\"obius fit, fixed points,
+  $\dim S_k(\Ga(N))$, and the score columns for $r=2,3$. The remaining
+  computations (levels $10$, $14$; the prime-local splits; the descent
+  law probe) were run inline in the same session's exact-arithmetic
+  environment.
+\end{itemize}
+
+The companion papers of this arc are the cuspidal-companion paper (the
+$L(f_6,3)/2$ apparatus, the oldspace lemma, the parity mechanism and the
+six-item proof package) and the modular-anchor papers of the wider
+programme, to which we refer for the theory of sources
+$\Phi=t\sigma^r/(PF)$ and the fold connection formula.
+
+\begin{thebibliography}{9}
+
+\bibitem{Apery} R. Ap\'ery, \emph{Irrationalit\'e de $\zeta(2)$ et
+$\zeta(3)$}, Ast\'erisque \textbf{61} (1979), 11--13.
+
+\bibitem{vdP} A. van der Poorten, \emph{A proof that Euler missed\dots\
+Ap\'ery's proof of the irrationality of $\zeta(3)$}, Math. Intelligencer
+\textbf{1} (1979), 195--203.
+
+\bibitem{Beukers} F. Beukers, \emph{Irrationality proofs using modular
+forms}, Ast\'erisque \textbf{147--148} (1987), 271--283.
+
+\bibitem{Zagier} D. Zagier, \emph{Integral solutions of Ap\'ery-like
+recurrence equations}, in: Groups and Symmetries, CRM Proc. Lecture
+Notes \textbf{47} (2009), 349--366.
+
+\bibitem{ZudilinCatalan} W. Zudilin, \emph{An Ap\'ery-like difference
+equation for Catalan's constant}, Electron. J. Combin. \textbf{10}
+(2003), \#R14; arXiv:math/0201024.
+
+\bibitem{KZ} C. Koutschan and W. Zudilin, \emph{Ap\'ery limits for
+elliptic $L$-values}, Bull. Aust. Math. Soc. \textbf{106} (2022),
+273--279; arXiv:2111.08796.
+
+\bibitem{AtkinLehner} A. O. L. Atkin and J. Lehner, \emph{Hecke operators
+on $\Gamma_0(m)$}, Math. Ann. \textbf{185} (1970), 134--160.
+
+\bibitem{D1} [author] and collaborators, \emph{A cuspidal companion: an
+Ap\'ery-quality apparatus for a critical $L$-value}, companion paper of
+this arc; technical record \texttt{work/D1\_CUSPIDAL\_APPARATUS.md}.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,65 @@
+{
+  "family": "apery-systems::TODO: Ramanujan machine",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+    "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842ce2.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842ce2.json",
+  "title_human": "Chain D: proving the boundary-completed Franke/Layer-B theorem",
+  "claims": [
+    {
+      "statement": "For k>=3, Franke's weak functions have at most simple poles, so Res_{z=0}(z^{k-1} eta(z) omega-hat(z/tau)) = 0 automatically; consequently the paper's prior 'retain Franke's residue term' formulation (open Problem 5.3 in V8) was based on a wrong analytic completion, since the removable-singularity hypothesis only matters in weights 1,2.",
+      "object": "Franke critical-value theory / Layer-B boundary completion",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842ce2.md",
+      "notes": "Presented as a correction to the trunk's V8 paper; the thread explicitly says the earlier open problem asked for the wrong analytic completion."
+    },
+    {
+      "statement": "Boundary-completed Franke-Layer-B theorem: given a finite-dimensional Eisenstein space E with Franke subspace E_F on which L = L_{S,k}: E_F -> C_crit is surjective, and any finite linear boundary map d: E -> B with K_crit := ker L, K_d := ker L ∩ ker d, B_var := d(K_crit), there is an exact sequence 0 -> K_d -> E -> P_d -> 0 with P_d := im(L,d) ⊆ C_crit ⊕ B, and a canonical exact sequence 0 -> B_var -> P_d -> C_crit -> 0. Choosing a right inverse s of L (L∘s = id) and defining the reduced boundary coordinate d_s(f) := d(f - s(Lf)) gives a split exact sequence 0 -> K_d -> E -> C_crit ⊕ B_var -> 0, with dim K_d = dim E - |S| - rank(d|_{K_crit}).",
+      "object": "Layer-B classification / Franke critical-boundary exact sequence",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842ce2.md",
+      "notes": "Full proof given by first-isomorphism-theorem + rank-nullity arguments in the thread; explicitly framed as replacing the previously open Layer-B problem from the trunk's V8 paper with a theorem."
+    },
+    {
+      "statement": "For an Eisenstein basis element the cusp constant terms are explicit algebraic combinations of generalized Bernoulli values L(1-k, psi) = -B_{k,psi}/k (times Gauss/conductor factors), so the abstract boundary map d: E -> B can be represented by an explicit finite Bernoulli boundary matrix; concretely the level-100 computation used two 18x3 character-resolved cusp matrices of full rank with explicit nonzero minors.",
+      "object": "Bernoulli boundary matrix / level-100 Franke-eta example",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842ce2.md",
+      "notes": "Ties the abstract Layer-B theorem to the concrete level-100 numerical example already present (see trunk mention of the level-100 boundary experiment)."
+    },
+    {
+      "statement": "In the level-100 Franke-eta worked example, dim K_sc = 3, dim K_or = 1, dim K_d = 0, with the unique middle direction (1,-10,16) = (1-2V_2)(1-8V_2), and the full cusp matrix has rank 3 so no nonzero boundary-invisible direction remains -- i.e. the theoretical 3->1->0 kernel filtration matches the paper's exact cusp computation.",
+      "object": "level-100 Franke-eta example, critical-orientation-boundary filtration",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842ce2.md",
+      "notes": "Presented as confirming the abstract theorem numerically/exactly, not merely as evidence for it."
+    },
+    {
+      "statement": "For a primitive nonprincipal character chi of conductor f with chi(-1) = (-1)^k, the two standard Eisenstein orientations S_chi = E_{k,chi,1} and T_chi = E_{k,1,chi-bar} have constant terms a_infinity(S_chi)=0 while a_infinity(T_chi) = (1/2)L(1-k, chi-bar) != 0, and by Fricke a_0(T_chi)=0, a_0(S_chi) != 0, so the map {S_chi,T_chi} -> C^2 sending f to (a_infinity(f), a_0(f)) is an isomorphism -- i.e. the two opposite-parity principal-character regulator orientations lie outside Franke's 0,infinity-vanishing sector and are genuine boundary coordinate directions.",
+      "object": "principal-character Eisenstein orientations vs. Franke's nonprincipal critical sector",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842ce2.md",
+      "notes": "Uses standard Fourier/Atkin-Lehner theory for character Eisenstein newforms."
+    },
+    {
+      "statement": "A follow-up 12-page standalone research report (BOUNDARY_COMPLETED_FRANKE_LAYERB_REPORT.pdf) restates the theorem as a split exact sequence 0 -> K_F -> E_F ⊕ P_chi -> C_crit ⊕ C^2 -> 0 after adjoining the two principal-character Eisenstein orientations as the missing boundary datum (rather than a surviving weak-function residue term), and additionally proves the kernel filtration K_{d,or} ⊆ K_or ⊆ K_sc, independence of the theorem from the chosen endpoint regularization on the principal-character plane, degeneracy/Hecke stability of Franke's critical-null kernel, and states a finite 'Franke-Bernoulli algorithm' (Franke/Vandermonde kernel -> orientation projectors -> cusp/Bernoulli matrix -> K_d).",
+      "object": "Boundary-completed Franke/Layer-B theorem, extended report version",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842ce2.md",
+      "notes": "Report claims to close the specific gap the trunk's Franke integration note had left open; a closed-form rank formula for the all-cusp Bernoulli matrix at general level/character is explicitly left open (see open_threads)."
+    }
+  ],
+  "connections_to_literature": [
+    "Franke's theory of critical-value kernels for Eisenstein series, including Theorem 2.11/2.13 on weak functions and the explicit weak-function/Vandermonde machinery for the critical kernel (arXiv, per-thread citation) — see trunk for the initial identification of this as the 'boundary-completed Franke picture' target",
+    "Standard Fourier-coefficient and Atkin-Lehner/Fricke theory for character Eisenstein series (pseudo-eigenvalues, constant terms at cusps)"
+  ],
+  "open_threads_or_handoffs": [
+    "No closed-form rank formula has been proved for the all-cusp Bernoulli boundary matrix at general level/character families (K_d's rank is computable algorithmically but not given a closed formula).",
+    "The precise motivic normalization comparing the modular constant-term/Bernoulli boundary coordinates with Eisenstein-symbol boundary residues is not established.",
+    "The thread flags that the foundational paper's (V8) discussion of Franke Theorem 2.11 needs correction: the residue term is not the relevant boundary phenomenon for k>=3 systems; this correction has not yet been confirmed as merged back into the main paper within this chain."
+  ],
+  "in_ledger": "no",
+  "ledger_notes": "Searched Ledger and Do Not Overstate sheets of Odd_Zeta_Research_Master_Ledger.xlsx for 'Franke', 'boundary', 'layer-b', 'layer b', 'eisenstein', 'bernoulli', 'critical', 'level-12', 'w_12', '144/25', 'shvets' — no rows correspond to this Franke/Layer-B classification theorem or the level-100 worked example. This chain's content (an abstract Eisenstein-space exact-sequence theorem) sits entirely outside the ledger's current tracked claims, which are about specific Apery/companion/source results.",
+  "flags": []
+}

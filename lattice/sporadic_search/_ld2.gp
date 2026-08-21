@@ -1,0 +1,13 @@
+default(realprecision, 70);
+L = 0.73729299618559624017642619780229369796091914327652918522286888511299610621863822;
+c2=lfun(-3,2); c3=lfun(-3,3);
+v=[1, zeta(2), zeta(3), Catalan, c2, c3, Pi^2, Pi^3, Pi^4, L];
+print(lindep(v));
+print(lindep([1,zeta(2),L]));
+print(lindep([1,zeta(3),L]));
+print(lindep([1,Catalan,L]));
+print(lindep([1,c2,L]));
+print(lindep([1,Pi^2,L]));
+print(lindep([1,log(2),L]));
+print(lindep([1,Pi,L]));
+print(lindep([L]));

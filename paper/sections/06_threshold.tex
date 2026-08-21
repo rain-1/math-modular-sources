@@ -1,0 +1,58 @@
+\section{Past the threshold: what a two-row construction cannot prove}\label{sec:threshold}
+
+The Zudilin$\times$Nesterenko construction for Catalan's constant $G$ is, in the terminology of Section~\ref{sec:tworow}, \emph{supercritical}: its $2$-adic cross divisibility holds at rate $24$ while the break-even rate is $k^*=22.3512\ldots$ \cite{CatalanLean}. The formal continuation of the quality formula past $k^*$ gives $\delta(k)>1$, and a numerical lattice reduction at $k=23$ produces integer pairs $(q_n,p_n)$ with $|q_nG-p_n|=e^{-0.8n}$. This section explains precisely why no irrationality statement follows, and what would.
+
+\subsection{The rationality-kernel vector}
+
+Let $\mathcal K_n\subset\mathbb Z^2$ be the congruence lattice of coefficient vectors $(c_Z,c_N)$ for which the combination $(q,p)=(c_ZX_n+c_NV_n,\ c_ZY_n+c_NU_n)/M_n$ of the two integer rows is integral. $\mathcal K_n$ is defined by the rows alone and does not involve $G$. Only the metric in which short vectors are sought---weighting the coordinate $q$ and the linear form $qG-p$ differently---depends on $G$.
+
+\begin{proposition}[Control]\label{prop:control}
+Let $G^*=\mathrm{bestappr}(G,10^{320})$. The lattice reduction that produces $(q_n,p_n)$ returns the same pairs for $G$ and $G^*$, and at $n=98$
+\[
+|q_nG-p_n|=e^{-78.051},\qquad |q_nG^*-p_n|=e^{-78.050}.
+\]
+\end{proposition}
+A rational number therefore produces the identical table. No finite portion of such data can be evidence of irrationality: the Diophantine content of ``$|q_nG-p_n|\to0$'' lies entirely in the assertion that $q_nG-p_n\ne0$, and for a rational $G=a/b$ the lattice contains the \emph{kernel vector} $(c_Z,c_N)\propto(aV-bU,\,-(aX-bY))$, whose form vanishes identically. In the regime $F<0$ the Minkowski box has area equal to the covolume, the selection degenerates to Dirichlet's theorem, and the selected vector may be the kernel vector. The selection theorem of \cite{CatalanLCM} requires $F>0$ for exactly this reason; the Lean formalisation carries it as the hypothesis \texttt{hF}, which is unsatisfiable at $k\ge k^*$ \cite{CatalanLean}.
+
+\subsection{Absorption}
+
+One might hope to exclude the kernel vector by arithmetic. The following statements, each verified on the exact rows and proved in the indicated generality, show that every device expressible through valuations is absorbed.
+
+\begin{theorem}[Absorption]\label{thm:absorption}
+Let $G=a/b$ be a hypothetical rational value and $(q_n,p_n)=M_n(b,a)$ the kernel output. Then:
+\begin{enumerate}
+\item \emph{(Exact $2$-adic content.)} $v_2(M_n)\ge(24-k)n-O(\log n)$.
+\item \emph{(Ceiling.)} With $\gamma_h$ the archimedean growth rate of the reduced cross determinant $h_n$, one has the exact identity $\gamma_h=k^*\log2+H^*$. Consequently, for $k=k^*+\eta$, excluding the kernel output by a lower bound on the divisibility of $h_n$ would require a divisor of $h_n$ of size $e^{(\gamma_h+\eta\log2/2)n}$, larger than $h_n$ itself. No factorisation information about $h_n$ can exclude it.
+\item \emph{(Homogeneous congruences.)} Any further congruence imposed on $\mathcal K_n$ at a prime $\ell$ that is a unit for the rows caps the Smith invariant at $v_\ell(T_n)$; if the rows gain an extra factor of $\ell$ the kernel vector gains the same factor.
+\item \emph{(Coefficient direction.)} If $\ell$ divides both coordinates of one row to higher order than the other, the kernel vector has $\ell\mid c_Z$; but the defining congruence $c_ZY+c_NU\equiv0\pmod{S_n}$ already forces the same divisibility on every vector of $\mathcal K_n$ (net directional mass $0$ for all $n\le60$), and the coefficient box does not shrink as $k\downarrow k^*$ ($\beta_Z(k^*)=E_N$).
+\item \emph{(More rows.)} For three aligned rows the kernel vectors form a rank-two plane whose two short directions force the third successive minimum to expand by exactly the nominal gain.
+\end{enumerate}
+\end{theorem}
+Parts (2) and (3) are due to GPT-5 (``Sol'') in the project's research log; (1), (4), (5) were established in the audit documents \texttt{CATALAN\_AUDIT}, \texttt{CATALAN\_DIRECTIONAL}.
+
+\subsection{Positivity}
+
+Sign is the one datum valuations cannot see. Both source forms are strictly positive: $(-1)^m(Q_mG-P_m)>0$ by Zudilin's double integral \cite{Zud02a}, and $J_n=4B_nG-C_n>0$ by Nesterenko's. Hence any coefficient vector in the closed positive cone (after orienting the Zudilin row) gives a nonvanishing form.
+
+\begin{proposition}[One kernel]\label{prop:onekernel}
+With $w=xy/(1-xy)$ and $K^{(m)}_Z$ the Zudilin integrand of index $m$,
+\[
+K^{(n)}_N(x,y)=K^{(3n)}_Z(x,y)\,w(x,y)^n .
+\]
+Hence for every $(c_Z,c_N)$ the combined form is a single integral $\iint_{[0,1]^2}K^{(3n)}_Z\,(\alpha+\beta w^n)\,dx\,dy$.
+\end{proposition}
+Since $w$ maps the open square onto $(0,\infty)$, the bracket has constant sign iff $\alpha,\beta$ do: Proposition~\ref{prop:onekernel} recovers the cone statement and nothing more. Moreover, for $P\in\mathbb Z[w]$ with nonnegative coefficients the form $\iint K^{(3n)}_ZP(w)$ is a positive combination of moments and is minimised at a vertex, so it never beats the best single moment; sums of squares $P=Q^2$ do cancel but are bounded below by $e^{-8.25n}$ independently of $\deg Q$, because the pushforward of $K^{(3n)}_Z$ to the $w$-line has a Pareto tail and all orthogonal-polynomial norms share one exponential order. An explicit positive construction in the style of Beukers therefore does not exist within this family.
+
+Empirically the story is different from the pessimism above: for $n\le44$ the shortest vector of $\mathcal K_n$ lies in the positive cone in $61\%$ of cases, and the shortest vector \emph{of the cone} has form decaying like $e^{-0.25n}$ at $n=44$, tracking $\tfrac1{2n}\log\mathrm{covol}$. The rational control of Proposition~\ref{prop:control} applies verbatim to these numbers.
+
+\subsection{The remaining lemma}
+
+\begin{lemma*}[P2]
+There is $\eta>0$ such that for all large $n$ the first minimum of $\mathcal K_n$, in the metric weighting the form by $e^{-Fn}$, is attained in the positive cone up to a factor $e^{o(n)}$.
+\end{lemma*}
+
+\begin{proposition}
+Lemma P2, together with the proved $2$-adic package of \cite{CatalanLean} and the standard rates, implies that $G\notin\mathbb Q$. Conversely, Lemma P2 is false for every rational $G=a/b$: the kernel direction has scaled length $\asymp b\,e^{2Fn}$ and becomes the first minimum for $n\gtrsim\log b/|F|$.
+\end{proposition}
+
+Lemma P2 is thus not a lattice-theoretic lemma but a restatement of the irrationality of $G$: any proof must distinguish $G$ from $G^*$ at precision growing with $n$, i.e.\ must use analytic information about $G$. What the two-row method contributes is an exact reduction with no loss---worthiness $1$ is proved \cite{CatalanLean}, and irrationality is equivalent to the single statement P2 about one explicit moment lattice. We return to this in Problem~\ref{prob:adelic-pade}.

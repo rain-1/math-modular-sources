@@ -1,0 +1,26 @@
+{
+  "family": "apery-systems-2::MASTER 15",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-2/master-15-6a82cda7.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-2/master-15-6a82cda7.json",
+  "title_human": "HG_d / Leg_d Classification",
+  "claims": [
+    {
+      "statement": "No exponential root separation",
+      "object": "Legendre",
+      "status": "obstruction",
+      "source_file": "master-15-6a82cda7.json",
+      "notes": ""
+    }
+  ],
+  "connections_to_literature": [
+    "Cyclotomic dilogarithms"
+  ],
+  "open_threads_or_handoffs": [],
+  "in_ledger": "partially",
+  "ledger_notes": "",
+  "flags": [
+    "COMPLETE CLASSIFICATION"
+  ]
+}

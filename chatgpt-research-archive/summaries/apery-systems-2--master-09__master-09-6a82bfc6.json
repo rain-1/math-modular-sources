@@ -1,0 +1,54 @@
+{
+  "family": "apery-systems-2::MASTER 09",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-2/master-09-6a82bfc6.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-2/master-09-6a82bfc6.md",
+  "title_human": "Brown\u2013Zudilin weight-7 arithmetic audit",
+  "claims": [
+    {
+      "statement": "Principal Q^(-2)-symbol divisibility by d is insufficient for arithmetic divisibility. Necessary-and-sufficient residual test: d|N if and only if d|(A_(-1)+QA_0)",
+      "object": "d-factor divisibility theorem",
+      "status": "proved",
+      "source_file": "master-09-6a82bfc6.md",
+      "notes": "Exact algebraic distinction between projective factor and genuine divisor theorem"
+    },
+    {
+      "statement": "If c_2 and f_2 are 2\u00d72 minors sharing one auxiliary column, then d=c_2-f_2 is itself a minor after integral column subtraction (unimodular operation)",
+      "object": "minor-difference identity",
+      "status": "proved",
+      "source_file": "master-09-6a82bfc6.md",
+      "notes": "Lemma 4.1"
+    },
+    {
+      "statement": "For the prime-ratio band 1/19 \u2264 n/p < 1/18, the exponential log-divisor gain is \u03c8(1/18)-\u03c8(1/19) = 1.0044554803233388...",
+      "object": "Brown\u2013Zudilin band gain",
+      "status": "proved",
+      "source_file": "master-09-6a82bfc6.md",
+      "notes": "Brown\u2013Zudilin report this only experimentally through n=40"
+    },
+    {
+      "statement": "For Brown\u2013Zudilin's published 5040-orbit example with parameter (8,16,10,15,12,16,18,13), the cleared \u03b6(5) linear form misses the Ap\u00e9ry inequality by exponential log-height 18.05277880...",
+      "object": "\u03b6(5) height threshold",
+      "status": "numerical",
+      "source_file": "master-09-6a82bfc6.md",
+      "notes": "Single extra band gives only 1.00445548..."
+    }
+  ],
+  "connections_to_literature": [
+    "Brown\u2013Zudilin arXiv 26 January 2026"
+  ],
+  "open_threads_or_handoffs": [
+    "OPEN: Full numerator divisibility by d=c_2-f_2",
+    "OPEN: Identification of d as actual project minor",
+    "OPEN: Exact weight-7 jet certificate",
+    "OPEN: Weight-7 analytic connection constant",
+    "OPEN: Explicit Z_3, Z_6, \u03a0^(2), P_7 coordinates"
+  ],
+  "in_ledger": "partially",
+  "ledger_notes": "Related to B01 (Brown\u2013Zudilin bridge) which is marked OPEN",
+  "flags": [
+    "Do not claim d is arithmetic divisor merely from principal symbol divisibility",
+    "Do not claim irrationality of \u03b6(5)"
+  ]
+}

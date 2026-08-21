@@ -1,0 +1,765 @@
+
+apery systems toplevel - Catalan nonvanishing
+
+Skip to content
+
+New chat
+
+Search
+
+Recents
+
+Chat history
+ChatGPT Plus
+
+New chat
+
+CtrlShiftO
+
+Library
+
+Scheduled
+
+Plugins
+
+More
+
+Projects
+
+apery systems 4
+
+apery systems toplevel
+
+Catalan nonvanishing
+
+Branch · Continue text
+
+Branch · Branch · Continue text
+
+Fan-out 04 Research Note
+
+Catalan Exactification Theory
+
+Show more
+
+apery systems 2
+
+apery systems
+
+apery systems p=3
+
+Show more
+
+Chats
+
+GPU price advice
+
+Create elliptic explorer
+
+AI Safety Post-Training Experiment
+
+Beautiful Modular Form Results
+
+Branch · AI Safety Post-Training Experiment
+
+Valence Formula Visualization
+
+Tao City Roadmap Overview
+
+AI Harness Design Tips
+
+Pretty print code
+
+Huggingface Logo Devoured
+
+Huggingface AI Incident
+
+Eclipse Projection Setup
+
+17-square packing SVG
+
+Modular Forms Geometry
+
+Set Primary PetWork
+
+Pet settings request
+
+Independent AI Safety Researcher TAC
+
+History of RH Progress
+
+Reasoning Inversion and Style
+
+Branch · Valence Formula Visualization
+
+MSS425F Hacking Options
+
+Scan RTX Price Watch
+
+JFrog Artifactory Button Request
+
+Mathematical Proof Analysis
+
+Branch · Mathematical Proof Analysis
+
+Primary Sources on HacksWork
+
+Branch · Apery's b_n Formula AnalysisWork
+
+Branch · Apery's b_n Formula AnalysisWork
+
+River
+
+Plus
+
+apery systems toplevel
+
+Share
+
+ChatGPT said:
+Worked for 3m 27s
+
+Yes.
+ There are two distinct ideas here, and the first one looks 
+substantially more promising now than it did before we found the 2-adic bridge.
+
+The striking fact is that our arithmetic already has enough capacity to cross 1. The obstruction is no longer the exponent; it is nonvanishing.
+
+For the present construction,
+
+F(k)=2log2​(k∗​−k),k∗​=22.3512905953…,
+while the Plücker theorem gives divisibility all the way up to
+
+k<24.
+So there is an actual interval
+
+k∗​<k<24​
+in which the formal calculation gives F(k)<0. If we could use the same geometry-of-numbers construction there and guarantee
+
+qn​G−pn​=0,
+then the integer linear form would tend exponentially to zero. That would prove G irrational and automatically give δ>1.
+
+For example, at k=23, the formal continuation of the formula gives roughly
+
+δ≈1.0153,
+and as k→24−, roughly
+
+δ→1.0397.
+Those are targets, not presently theorems.
+
+1. The route I would pursue to cross 1
+
+The current selection theorem stops at F>0 because of the possibility that the very short vector found by Minkowski lies in the exact kernel
+
+qG−p=0.
+If G
+ were rational, such kernel vectors really could exist. That is why 
+merely making the convex body smaller does not prove irrationality.
+
+But now we have an additional weapon:
+
+G2​∈/Q.​
+The irrationality of the relevant 2-adic Catalan period is known: Calegari proved irrationality of the 2-adic analogue of Catalan's constant, and Beukers proved the corresponding ζ2​(2)/Θ2​(1/2) statement. arXiv+1
+
+This suggests a new nonvanishing lemma.
+
+For a selected coefficient vector c=(c1​,c2​), the final integer pair pn​,qn​ also satisfies a 2-adic estimate of the shape
+
+v2​(qn​G2​−pn​)≥(24−k)n−O(logn).(1)
+That comes from the two source rows: their normalized 2-adic linear forms have slopes 24 and 28, and we divide by a modulus with slope k.
+
+If in addition we can arrange
+
+v2​(qn​)=o(n),​(2)
+then
+
+v2​(G2​−qn​pn​​)→+∞.
+Thus the same rational numbers pn​/qn​ converge 2-adically to G2​.
+
+Now suppose the real linear form vanished for infinitely many n:
+
+qn​G−pn​=0.
+Then
+
+qn​pn​​=G
+on that subsequence. In particular G would be rational and, viewed inside Q2​, that fixed rational number would converge to G2​. Hence
+
+G=G2​∈Q2​,
+forcing G2​ to be rational, contradiction.
+
+So (1)+(2)+known irrationality of G2​ would imply
+
+qn​G−pn​=0eventually.​
+That is precisely the missing ingredient needed to enter F<0.
+
+The concrete new lemma to prove
+
+The problem becomes:
+
+Among the short vectors in the 
+correlated coefficient lattice, choose one for which the final 
+denominator has only subexponential 2-adic valuation.
+
+I think this is plausible.
+
+Define
+
+q(c)=Tn​a1​c1​+a2​c2​​.
+Inside our coefficient lattice, impose the additional condition
+
+2rn​∤q(c),rn​=O(logn).
+The vectors violating it form a 
+sublattice (or a union of controlled cosets) of only polynomially larger
+ index. A polynomial loss is eo(n), so it should not affect F or H.
+
+In the strongest version one would choose
+
+qn​ odd.
+But we do not need that. Even
+
+v2​(qn​)≤Clogn
+is enough.
+
+I would call this the primitive-denominator sieve lemma. If it works, I think it is our cleanest route to an actual Catalan irrationality theorem.
+
+2. Why the arithmetic surplus is significant
+
+There is a useful numerical way to view what happened.
+
+The real construction needs
+
+k∗​=22.35129…
+units of 2-adic exponent per n merely to reach the boundary.
+
+The arithmetic gives
+
+24.
+So the surplus is
+
+24−k∗​=1.6487094…
+binary powers per n.
+
+In logarithmic terms the spare capacity is
+
+(24−k∗​)log2≈1.1428
+per n.
+
+That is not an O(logn)
+ margin. It is an honest exponential margin. Therefore we can afford 
+polynomial-index refinements, parity conditions, primitivity sieves, 
+finite coset restrictions, etc., essentially for free at the exponential
+ scale.
+
+That is why I now think pushing across 1 is a genuine research direction rather than simply wishing for a slightly better estimate.
+
+A second possible route would be to
+ use an exact Wronskian/determinant argument to show that the 
+exceptionally short Minkowski vector cannot be a kernel vector. A third 
+would be to work exactly at F=0 and win from subexponential factors. But the G2​-irrationality route seems much cleaner.
+
+3. The general method: an adelic cross-realization principle
+
+Yes, I think the same mechanism is considerably more general.
+
+Suppose a real period
+
+α∞​∈R
+has a p-adic realization
+
+αp​∈Qp​.
+Suppose also that we possess two rational approximation systems
+
+R1,n​=Q1,n​P1,n​​,R2,n​=Q2,n​P2,n​​,
+defined over Q.
+
+Archimedeanly they both encode α∞​, but with different growth/error profiles.
+
+p-adically suppose
+
+vp​(αp​−R1,n​)=λ1​n+o(n),
+vp​(αp​−R2,n​)=λ2​n+o(n),
+with
+
+λ1​=λ2​.
+Then ultrametricity immediately gives
+
+vp​(R1,n​−R2,n​)=min(λ1​,λ2​)n+o(n).
+But
+
+R1,n​−R2,n​=Q1,n​Q2,n​P1,n​Q2,n​−P2,n​Q1,n​​.
+Therefore the common p-adic period disappears and leaves a large p-divisor in the rational cross determinant
+
+P1,n​Q2,n​−P2,n​Q1,n​.​
+After clearing denominators this becomes an ordinary divisibility statement in Z.
+
+That divisibility can then be fed into an Archimedean geometry-of-numbers construction.
+
+So the reusable machine is
+
+two rational realizations+one common p-adic period​
+⇓
+Plu¨cker superdivisibility​
+⇓
+smaller correlated integer lattice​
+⇓
+better approximation at the real place.​
+This is much broader than Catalan.
+
+4. Multiple primes should work too
+
+There is no reason to restrict to one prime.
+
+Suppose the same cross determinant satisfies
+
+pτp​n+o(n)∣Δn​
+for several primes p∈S.
+
+By the Chinese remainder theorem we can impose a combined modulus approximately
+
+Mn​=p∈S∏​pkp​n,kp​≤τp​.
+The logarithmic arithmetic gain is then additive:
+
+p∈S∑​kp​logp.​
+This suggests defining an adelic capacity
+
+C=p∈S∑​τp​logp.
+For the two-row balanced construction, there is an Archimedean deficit—the amount of modulus required to reach F=0. Call it
+
+D.
+Then conceptually there are three regimes:
+
+C<D:subcritical, only δ<1;
+C=D:critical;
+C>D:supercritical arithmetic capacity.​
+Catalan has just entered the third regime.
+
+The remaining issue is nonvanishing.
+
+I think this is a useful general conceptual criterion.
+
+5. Where I would try this next
+
+Several classes look natural.
+
+ζ(3).
+ This is probably the best laboratory. There are many distinct 
+Apéry/modular/hypergeometric realizations of the same real period, and 
+extremely rich p-adic
+ congruence structures. Dwork congruences for Apéry-type period 
+sequences are very well developed; for example, Apéry numbers arise in 
+families satisfying Dwork and supercongruence phenomena. download.uni-mainz.de+1 Calegari and Beukers also prove irrationality of several p-adic ζp​(3) values at small primes. University of Chicago Math Department+1 So one could deliberately search for pairs of real ζ(3) constructions whose p-adic realizations coincide but whose p-adic tail slopes differ.
+
+Other Dirichlet L-values. Beukers' framework treats p-adic L-series and Hurwitz-zeta values beyond ordinary ζp​(k). arXiv This makes values such as
+
+β(4),L(2,χ−3​),L(3,χ5​)
+natural candidates whenever we have two rational real realizations.
+
+Higher odd zeta values. This is harder, but structurally attractive. There is now a substantial theory of p-adic linear forms in odd zeta values, including recent irrationality results and p-adic analogues of Zudilin/Ball–Rivoal phenomena. Springer Link The problem on the real side is finding two sufficiently good rational rows representing the same isolated period.
+
+Geometric periods/Picard–Fuchs families. Dwork theory is almost designed for this. Modern Dwork-crystal results produce systematic p-adic Frobenius congruences for periods of Laurent-polynomial and Calabi–Yau families. OUP Academic+1
+ If two Picard–Fuchs constructions yield the same real extension period,
+ their Frobenius realizations could generate exactly the sort of Plücker
+ divisibility we used here.
+
+6. Which primes?
+
+The best prime is usually not arbitrary.
+
+For Catalan, p=2 is exceptional because the half-integral parameters and conductor 4 generate very large powers of 2. That is why the slope 24 appeared.
+
+For other motives, one should search primes where:
+
+the hypergeometric parameters have large p-adic denominator effects;
+
+the conductor has strong p-part;
+
+Frobenius has special slope structure;
+
+there is ordinary/unit-root geometry;
+
+two realizations have different p-adic convergence slopes.
+
+Small primes are particularly attractive. Calegari's modular method, for example, succeeds for ζp​(3) at p=2,3, while the same simple criterion does not automatically work at all other genus-zero primes. University of Chicago Math Department
+
+But for our method, an odd prime need not by itself prove any p-adic irrationality. It can still be valuable simply by contributing divisibility to the cross determinant.
+
+That distinction is important:
+
+a prime can be useful as an arithmetic bridge even when its p-adic period is not the final target.​
+So I would search all relevant primes, calculate their cross-determinant slopes, and sum their adelic capacities.
+
+The most immediate research task, however, is clear: prove the primitive-denominator sieve for the Catalan lattice and test k=23.
+ If that works, the current construction may already contain enough 
+arithmetic to cross the irrationality threshold without discovering a 
+new approximation family.
+
+You said:
+oh wonderful. I understand you conceptual explanation there. Let's prove catalan irrational next. I think your approach sounds very good!
+
+ChatGPT said:
+Worked for 26m 5s
+
+I pushed this substantially further. There is one important negative theorem and then a new route that looks more concrete.
+
+The window-A computation confirms that the old projective law
+
+ℓ2Pm​/Qm​≡χ−4​(ℓ)≡un​/(vn​/ℓ2)(modℓ)
+really determines a common local 
+line, but not a fixed global scalar. The old project itself had isolated
+ that scalar-coherence problem as separate and open. FABLE_CATALAN_RESEARCH_PROGRAM
+ Exact experiments with the current conservative normalization show that the amplitude scalar varies substantially with (n,ℓ), so the hoped-for immediate fixed N±Z combination does not materialize.
+
+More importantly, I can now formulate a fairly definitive two-row obstruction.
+
+For the general double-congruence lattice, locally at a prime ℓ, the Smith minors contain
+
+TY,TU.
+If Y,U are ℓ-units, these cap the Smith gcd at vℓ​(T). Thus the best possible local index is exactly the ST index we already exploit. If Y,U themselves gain an extra ℓ, the index can improve—but then the hypothetical rational-kernel vector gains exactly the same ℓ, so the improvement is absorbed.
+
+Thus:
+
+No additional homogeneous two-row congruence can by itself break the critical kernel wall.​
+That explains why repeated searches for another gcd or another prime-window modulus keep cancelling.
+
+There is, however, a different consequence of the odd-prime projective law which looks more useful.
+
+Suppose ℓ∈(4n,6n) is one of the proved window primes. The common D6n2​ gives ℓ2∣Xn​,Vn​. Write
+
+a1​=Xn​/Sn​,a2​=Vn​/Sn​,Sn​=D6n2​.
+For every coefficient vector in our existing lattice,
+
+Yn​c1​+Un​c2​≡0(modℓ2).
+The window projective congruence says precisely
+
+(a1​,a2​)∥(Yn​,Un​)(modℓ).
+Therefore
+
+ℓ∣a1​c1​+a2​c2​.​(1)
+And because the dyadic division modulus is a power of 2, (1) implies something about the final ordinary denominator:
+
+ℓ∣qn​​(2)
+for every output of the correlated lattice.
+
+That is interesting because this odd-prime divisibility of qn​ costs us nothing new: it is forced by the already-imposed D6n2​ congruence together with the cross-realization projective law.
+
+Taking all primes in the window gives a universal denominator divisor
+
+Pn​=4n<ℓ<6n∏​ℓ
+(up to precisely the primes for which the proved local statement applies), so
+
+Pn​∣qn​.​(3)
+By PNT,
+
+logPn​=ψ(6n)−ψ(4n)=2n+o(n).(4)
+The older window work was indeed 
+finding this kind of cross-lattice arithmetic rather than an ordinary 
+gcd of either individual row. Its full-spectrum scan located the 
+phenomenon specifically in 4n<ℓ<6n. BRIEF_FOR_SOL
+
+Unfortunately, the 2n mass in (4) by itself is not enough: our balanced denominator qn​ has exponential height around e15n, so Pn​∣qn​ does not force qn​=0.
+
+But it suggests the right refinement.
+
+Under the rationality hypothesis
+
+G=ba​,(a,b)=1,
+an exact zero form satisfies
+
+(qn​,pn​)=Mn​(b,a).
+For every sufficiently large window prime ℓ∤ab, (2) then forces
+
+ℓ∣Mn​.
+Hence
+
+Pn​∣Mn​.​(5)
+The same reasoning in the second window should force further prime factors into the multiplier Mn​. In other words, rather than trying to prove the kernel does not exist, we can prove that if it exists, its multiplier must be arithmetically enormous.
+
+That gives a very precise new irrationality strategy:
+
+rationality⟹(q,p)=Mn​(b,a)
+and the local window laws give
+
+Φn​∣Mn​,(6)
+for an explicit product Φn​ of odd primes.
+
+Meanwhile the real geometry gives an upper bound
+
+∣Mn​∣=∣b∣∣qn​∣​≤exp(Qn+o(n)).(7)
+If we can accumulate enough free prime-window mass to establish
+
+n1​logΦn​>Q,​(8)
+then (6)-(7) are impossible.
+
+This is qualitatively different from adding Φn​ as another homogeneous modulus. We do not spend it in the coefficient lattice at all. We use it only after assuming that the selected exponentially short form is zero, to force its multiplier to be too large.
+
+That avoids the absorption theorem.
+
+The problem is now quantitative. Window 4n<ℓ<6n supplies approximately 2n
+ of free logarithmic mass. The older project reports another substantial
+ window and measured combined window masses, although those old 
+approximation headlines are superseded and must not be reused 
+uncritically. BRIEF_FOR_SOL
+ We need to redo the valuation implications specifically for the zero multiplier Mn​, because some primes may contribute once, some twice, and some may already divide a or b only finitely often.
+
+So the next exact target I would write down is:
+
+Zero-multiplier theorem:qn​G−pn​=0⟹Φn​∣gcd(qn​,pn​)​
+with
+
+n→∞liminf​nlogΦn​​
+computed from all available local cross-realization windows.
+
+This is much more promising than 
+proving a globally coherent scalar. It converts the entire prime-window 
+programme into a lower bound on the content of the bad zero vector—the 
+one place where large common content is precisely what we want.
+
+I have not yet proved that the available window mass exceeds the required upper exponent for Mn​.
+ That quantitative comparison is the next unresolved calculation, and it
+ will determine whether this route actually proves irrationality or 
+merely gives a stronger structural restriction on any hypothetical 
+rational kernel.
+
+Sources
+
+Today 6:09 AM
+You said:
+sounds good! Work on that!
+
+ChatGPT said:
+Worked for 25m 44s
+
+I
+ worked the zero-multiplier strategy through its quantitative end, and 
+the result is useful even though it does not yet prove irrationality. It
+ exposes a hard obstruction and points much more sharply at what a 
+successful Catalan proof must add.
+
+First, under a hypothetical
+
+G=ba​,(a,b)=1,
+put
+
+rZ​=aXn​−bYn​,rN​=aVn​−bUn​,gn​=gcd(rZ​,rN​).
+The primitive rational-kernel line is generated by
+
+dn​=(gn​rN​​,−gn​rZ​​).
+The canonical multiple
+
+(rN​,−rZ​)
+belongs to the correlated coefficient lattice because
+
+a1​rN​−a2​rZ​=bhn​,Yn​rN​−Un​rZ​=aSn​hn​.
+Consequently every zero output has multiplier controlled by hn​/Tn​. More precisely, if tn​dn​ is the primitive generator of the intersection of this rational kernel with our coefficient lattice, then tn​∣gn​, and its divided output is
+
+(qn​,pn​)=gn​Tn​tn​hn​​(b,a).(1)
+There is a useful exact 2-adic consequence. Since both rational approximants converge in Q2​ to the irrational G2​, while a/b=G2​, eventually
+
+v2​(rZ​)=v2​(Xn​)+ca,b​,v2​(rN​)=v2​(Vn​)+ca,b​,
+where
+
+ca,b​=v2​(a−bG2​)
+is fixed. The exact coordinate valuations are
+
+v2​(Xn​)=3+3Ln​+2s2​(3n),
+v2​(Vn​)=3+2Ln​+s2​(n)+s2​(3n),
+where Ln​=⌊log2​(6n)⌋. Thus
+
+v2​(gn​)=O(logn).​(2)
+Combining (1), (2), and
+
+v2​(hn​)=24n+O(logn)
+shows that every hypothetical zero output must retain
+
+v2​(Mn​)≥(24−k)n−O(logn),​(3)
+where
+
+(qn​,pn​)=Mn​(b,a).
+So the unused part of the 2-adic divisor genuinely survives the rational-kernel normalization. That part is rigorous.
+
+The more surprising result is that the proposed “collect enough additional odd-prime factors of hn​” strategy has an exact structural ceiling.
+
+Write γh​ for the real exponential growth rate of hn​. Since
+
+Sn​hn​=Vn​Yn​−Xn​Un​=Xn​(Vn​G−Un​)−Vn​(Xn​G−Yn​),
+and the second term dominates by the strict crossed gap,
+
+γh​=AN​+EZ​−12.​(4)
+But
+
+k∗​log2=EZ​+EN​−12
+and
+
+H∗​=AN​−EN​.
+Hence there is the exact identity
+
+γh​=k∗​log2+H∗​.​(5)
+This is not numerical coincidence. It is the balance equation itself.
+
+Now go supercritical:
+
+k=k∗​+η,η>0.
+We have
+
+F(k)=−2ηlog2​,
+and therefore
+
+H(k)=H∗​−2ηlog2​.
+Consequently
+
+klog2+H(k)​=k∗​log2+H∗​+2ηlog2​=γh​+2ηlog2​​.​(6)
+Suppose we attempted to exclude a zero output by proving that hn​/Tn​ possesses so much known prime divisibility that
+
+∣Mn​∣>eH(k)n+o(n).
+We would require a divisor of hn​ of exponential size at least
+
+e(klog2+H(k))n.
+By (6), this is
+
+e(γh​+ηlog2/2)n,
+which is exponentially larger than hn​ itself.
+
+Therefore:
+
+No amount of prime-factor information about hn​ alone can eliminate the supercritical zero branch.​(7)
+Even knowing the complete factorization of hn​ would not suffice.
+
+That kills the 
+zero-multiplier-content programme completely, rather than merely showing
+ that our currently known windows are insufficient.
+
+There is another useful conclusion 
+from the audit. Zudilin supplies an exact sign theorem, not just an 
+asymptotic one. His double-integral representation is
+
+Qm​G−Pm​=4(−1)m​∫01​∫01​(1−xy)m+1xm−1/2(1−x)mym(1−y)m−1/2​dxdy.(8)
+Thus
+
+(−1)m(Qm​G−Pm​)>0.​(9)
+Zudilin explicitly gives this positive integral representation. arXiv
+
+Nesterenko likewise has
+
+Jn​=4Bn​G−Cn​>0.
+So after orienting the Zudilin row, both source forms can be taken strictly positive.
+
+This gives a very attractive nonvanishing criterion:
+
+c1​,c2​≥0,(c1​,c2​)=(0,0)⟹c1​ΛZ​+c2​ΛN​>0.(10)
+The hypothetical rational kernel has the opposite-sign direction
+
+(rN​,−rZ​),
+so it never enters the positive cone.
+
+Unfortunately, I also checked the 
+generic lattice geometry here. Positivity alone does not guarantee a 
+sufficiently small lattice point. The elementary model
+
+x+αy≡0(modd)
+shows why: a lattice can have determinant d
+ and an extremely short opposite-sign vector while its first positive 
+vector lies at essentially the second-minimum scale. That reproduces 
+exactly the critical cancellation.
+
+So the remaining problem has become considerably sharper:
+
+\boxed{
+\begin{minipage}{0.86\linewidth}
+We need an arithmetic theorem about the \emph{direction} of the Catalan 
+congruence lattice—strong enough to guarantee a short vector in the 
+positive cone (or another explicitly non-kernel cone), not merely a 
+theorem about its determinant, index, or Plücker divisibility.
+\end{minipage}}
+\tag{11}
+That explains why the old projective prime-window work may still matter, but in a different way. The 4n<ℓ<6n experiments found a character-valued projective slope law rather than merely extra valuation: approximately 95% of tested pairs exhibited determinant excess, and the reduced local relation was
+
+ℓ2Pm​/Qm​≡χ−4​(ℓ)≡un​/(vn​/ℓ2)(modℓ).
+The project explicitly distinguishes this from the degenerate 6n<ℓ<8n window. BRIEF_FOR_SOL
+
+A direction theorem of this sort is qualitatively capable of solving (11), whereas more factors of hn​ are not.
+
+One other route I audited was adding the modular E-row as a third realization. Its 2-adic tail at index 6n has slope 30:
+
+v2​(G2​−A6n​2B6n​​)=30n−1−4s2​(3n),
+while its coefficient valuation satisfies
+
+v2​(An​)=2s2​(n).:contentReference[oaicite:6]index=6
+Together with the new Nesterenko slope 28, this implies that the Nesterenko–E Plücker minor also has at least 224n divisibility; the Zudilin–E 224n minor is already proved unconditionally. An Unconditional (0.857914) Cat…
+
+So all three rows can indeed be put into one rank-three coefficient lattice at the same dyadic depth.
+
+However, a hostile geometry check shows that merely going from two to three rows does not remove the wall. If G=a/b,
+ the exact-zero vectors form a rank-two plane. Its two short directions 
+force the third successive minimum to expand by exactly the amount 
+needed to cancel the nominal negative error exponent. This is the 
+higher-dimensional analogue of the two-row exceptional branch.
+
+So we have now ruled out three tempting shortcuts:
+
+more divisibility of hn​,another homogeneous row/common gcd,more rows + ordinary successive minima​do not by themselves prove irrationality.​
+That is substantial progress because it isolates what a successful result would actually have to be: a directional/nonhomogeneous arithmetic theorem—for
+ example, a short positive-cone point theorem specific to the Catalan 
+congruence lattice, or an explicit congruence-selected combination whose
+ real sign is known.
+
+The next object I would attack is 
+therefore not another divisor. It is the actual dyadic/projective slope 
+of the coefficient lattice, together with the odd-prime character 
+slopes, with the goal of proving that on an infinite subsequence the 
+lattice has a positive representative inside the supercritical 
+anisotropic rectangle. If such a theorem beats the generic 
+second-minimum bound by even a polynomial factor, (9)–(10) turn it 
+immediately into
+
+0<qn​G−pn​⟶0,
+which would prove Catalan’s irrationality.
+
+Sources
+
+You said:
+I see. that sounds good. work on that
+
+ChatGPT said:
+Derived directional theorems and positive cone vectors using FABLE window analysis and lattice congruences
+
+I have a different angle on the directional problem that is not in the earlier project notes: use the order structure of the positive quadrant,
+ not ordinary Minkowski. If many coefficient pairs fall in the same 
+congruence class, two of them may be comparable coordinatewise; their 
+difference is then a nonzero lattice vector with c1​,c2​≥0,
+ hence its Catalan linear form is automatically positive. I’m 
+quantifying the exact combinatorial price of forcing such a comparable 
+pair.
+
+Estimated residual GCD using pairwise determinants
+
+I found a route that is materially different from the failed “divide out more gcd” ideas.
+
+Do not divide Nesterenko’s known prime-window common factors out of the row. Under a hypothetical G=a/b, if a prime ℓ divides both coordinates of the Nesterenko row but does not divide the Zudilin residual, then the kernel equation
+
+cZ​(aX−bY)+cN​(aV−bU)=0
+forces
+
+ℓ∣cZ​.
+A
+ positive-density product of such primes therefore forces one 
+coefficient of every exact-zero vector to carry an exponential divisor. 
+Since we can take k only infinitesimally above k∗​, any positive exponential directional mass is enough to expel the zero line from the supercritical coefficient box. This is precisely the kind of directional arithmetic the determinant arguments could not see.
+
+Analyzed divisor windows and integrality of prime-independent residual units
+
+The
+ sharper Nesterenko normalization now looks like the right place to 
+invest effort. Its only serious unresolved arithmetic input is the 
+second Δ1​-window,
+ and closing that would lower both the Nesterenko height and error rates
+ by an exponential factor before we even revisit nonvanishing. The 
+remaining congruence has exactly the same finite-3​F2​ flavor as the central-prime identity we just solved, so I’m attacking it with the same finite-field/reflection machinery.
+
+Investigated hypergeometric window factorization and second Δ₁-window congruences
+
+Searched 4 websites
+
+ChatGPT can make mistakes. Check important info.
+
+High
+

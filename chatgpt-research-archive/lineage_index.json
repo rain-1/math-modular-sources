@@ -1,0 +1,1192 @@
+{
+  "apery-systems::L2-3, lattice matchup": {
+    "project_dir": "apery-systems",
+    "base_title": "L2-3, lattice matchup",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/l2-3-lattice-matchup-6a84ac2a.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:03:44.804Z",
+        "parent_path": null,
+        "n_messages": 19
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems/l2-3-lattice-matchup-6a84ac2a.json"
+      ]
+    ]
+  },
+  "apery-systems::MAIN ROOT?": {
+    "project_dir": "apery-systems",
+    "base_title": "MAIN ROOT?",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/main-root-6a843595.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:07:05.428Z",
+        "parent_path": null,
+        "n_messages": 16
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems/main-root-6a843595.json"
+      ]
+    ]
+  },
+  "apery-systems::TODO: Ramanujan machine": {
+    "project_dir": "apery-systems",
+    "base_title": "TODO: Ramanujan machine",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/todo-ramanujan-machine-6a82a28c.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T16:32:57.903Z",
+        "parent_path": null,
+        "n_messages": 8
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/branch-todo-ramanujan-machine-6a82b12f.json",
+        "depth": 1,
+        "capturedAt": "2026-08-20T16:46:13.578Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems/todo-ramanujan-machine-6a82a28c.json",
+        "n_messages": 8
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/branch-todo-ramanujan-machine-6a82d9de.json",
+        "depth": 1,
+        "capturedAt": "2026-08-20T16:48:50.236Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems/todo-ramanujan-machine-6a82a28c.json",
+        "n_messages": 9
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+        "depth": 3,
+        "capturedAt": "2026-08-20T17:10:53.471Z",
+        "parent_path": null,
+        "n_messages": 15
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json",
+        "depth": 4,
+        "capturedAt": "2026-08-20T16:54:31.320Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+        "n_messages": 16
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842ce2.json",
+        "depth": 4,
+        "capturedAt": "2026-08-20T16:57:37.995Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+        "n_messages": 16
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.json",
+        "depth": 4,
+        "capturedAt": "2026-08-20T17:01:42.141Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+        "n_messages": 18
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a840251.json",
+        "depth": 4,
+        "capturedAt": "2026-08-20T17:08:53.522Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+        "n_messages": 9
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a83fb88.json",
+        "depth": 4,
+        "capturedAt": "2026-08-20T17:12:25.513Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+        "n_messages": 10
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems/todo-ramanujan-machine-6a82a28c.json",
+        "chatgpt-research-archive/conversations/apery-systems/branch-todo-ramanujan-machine-6a82b12f.json"
+      ],
+      [
+        "chatgpt-research-archive/conversations/apery-systems/todo-ramanujan-machine-6a82a28c.json",
+        "chatgpt-research-archive/conversations/apery-systems/branch-todo-ramanujan-machine-6a82d9de.json"
+      ],
+      [
+        "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+        "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842e33.json"
+      ],
+      [
+        "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+        "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842ce2.json"
+      ],
+      [
+        "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+        "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.json"
+      ],
+      [
+        "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+        "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a840251.json"
+      ],
+      [
+        "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+        "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a83fb88.json"
+      ]
+    ]
+  },
+  "apery-systems::catalan irrat": {
+    "project_dir": "apery-systems",
+    "base_title": "catalan irrat",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/catalan-irrat-6a8599d8.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T16:39:10.369Z",
+        "parent_path": null,
+        "n_messages": 8
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems/catalan-irrat-6a8599d8.json"
+      ]
+    ]
+  },
+  "apery-systems::catalan irrat handoff": {
+    "project_dir": "apery-systems",
+    "base_title": "catalan irrat handoff",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/catalan-irrat-handoff-6a82b10f.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T16:43:35.689Z",
+        "parent_path": null,
+        "n_messages": 9
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems/catalan-irrat-handoff-6a82b10f.json"
+      ]
+    ]
+  },
+  "apery-systems::free integrations": {
+    "project_dir": "apery-systems",
+    "base_title": "free integrations",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/free-integrations-6a83fcce.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T16:32:35.125Z",
+        "parent_path": null,
+        "n_messages": 9
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems/free-integrations-6a83fcce.json"
+      ]
+    ]
+  },
+  "apery-systems::isogeny eisenstein cobundary theorem": {
+    "project_dir": "apery-systems",
+    "base_title": "isogeny eisenstein cobundary theorem",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/isogeny-eisenstein-cobundary-theorem-6a82c82c.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T16:41:45.047Z",
+        "parent_path": null,
+        "n_messages": 8
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems/isogeny-eisenstein-cobundary-theorem-6a82c82c.json"
+      ]
+    ]
+  },
+  "apery-systems::lit review research fanout": {
+    "project_dir": "apery-systems",
+    "base_title": "lit review research fanout",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/lit-review-research-fanout-6a840a13.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T16:50:35.760Z",
+        "parent_path": null,
+        "n_messages": 10
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/branch-lit-review-research-fanout-6a840f7c.json",
+        "depth": 1,
+        "capturedAt": "2026-08-20T16:52:41.086Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems/lit-review-research-fanout-6a840a13.json",
+        "n_messages": 10
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/branch-lit-review-research-fanout-6a840e97.json",
+        "depth": 1,
+        "capturedAt": "2026-08-20T16:59:48.290Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems/lit-review-research-fanout-6a840a13.json",
+        "n_messages": 13
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems/lit-review-research-fanout-6a840a13.json",
+        "chatgpt-research-archive/conversations/apery-systems/branch-lit-review-research-fanout-6a840f7c.json"
+      ],
+      [
+        "chatgpt-research-archive/conversations/apery-systems/lit-review-research-fanout-6a840a13.json",
+        "chatgpt-research-archive/conversations/apery-systems/branch-lit-review-research-fanout-6a840e97.json"
+      ]
+    ]
+  },
+  "apery-systems::pie in the sky approach 3-adic interference root": {
+    "project_dir": "apery-systems",
+    "base_title": "pie in the sky approach 3-adic interference root",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/pie-in-the-sky-approach-3-adic-interference-root-6a83fc40.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:07:20.910Z",
+        "parent_path": null,
+        "n_messages": 9
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems/pie-in-the-sky-approach-3-adic-interference-root-6a83fc40.json"
+      ]
+    ]
+  },
+  "apery-systems::zeta7 legti": {
+    "project_dir": "apery-systems",
+    "base_title": "zeta7 legti",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems/zeta7-legti-6a8353d9.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T16:35:29.275Z",
+        "parent_path": null,
+        "n_messages": 9
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems/zeta7-legti-6a8353d9.json"
+      ]
+    ]
+  },
+  "apery-systems-2::001 PRIMARY MASTER RESEARCH": {
+    "project_dir": "apery-systems-2",
+    "base_title": "001 PRIMARY MASTER RESEARCH",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/001-primary-master-research-6a820b72.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:38:36.251Z",
+        "parent_path": null,
+        "n_messages": 12
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/001-primary-master-research-6a820b72.json"
+      ]
+    ]
+  },
+  "apery-systems-2::Execute Fanout C3": {
+    "project_dir": "apery-systems-2",
+    "base_title": "Execute Fanout C3",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/execute-fanout-c3-6a87009b.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:43:15.096Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/execute-fanout-c3-6a87009b.json"
+      ]
+    ]
+  },
+  "apery-systems-2::Execute fanout C1": {
+    "project_dir": "apery-systems-2",
+    "base_title": "Execute fanout C1",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/execute-fanout-c1-6a870069.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:41:19.418Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/execute-fanout-c1-6a870069.json"
+      ]
+    ]
+  },
+  "apery-systems-2::Fanout C-2 Go": {
+    "project_dir": "apery-systems-2",
+    "base_title": "Fanout C-2 Go",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/fanout-c-2-go-6a87008b.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:39:59.995Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/fanout-c-2-go-6a87008b.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 01": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 01",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-01-6a82b170.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T21:34:38.810Z",
+        "parent_path": null,
+        "n_messages": 4
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-01-6a82b170.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 02": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 02",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-02-6a82b17f.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T20:54:55.835Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-02-6a82b17f.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 03": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 03",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-03-6a82b1b5.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T21:14:46.122Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-03-6a82b1b5.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 04": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 04",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-04-6a82b1e8.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T21:06:44.711Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-04-6a82b1e8.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 05": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 05",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T22:47:24.225Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-05-6a82b4ca.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 06": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 06",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-06-6a82b4d0.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T21:19:59.737Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-06-6a82b4d0.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 07": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 07",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-07-6a82bb4f.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T20:15:45.290Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-07-6a82bb4f.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 09": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 09",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-09-6a82bfc6.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T20:36:09.002Z",
+        "parent_path": null,
+        "n_messages": 4
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-09-6a82bfc6.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 10": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 10",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-10-6a82bfc9.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T20:29:01.154Z",
+        "parent_path": null,
+        "n_messages": 4
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-10-6a82bfc9.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 11": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 11",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-11-6a82bfe3.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:44:35.036Z",
+        "parent_path": null,
+        "n_messages": 10
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-11-6a82c525.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T18:49:30.494Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-11-6a82bfe3.json"
+      ],
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-11-6a82c525.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 12": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 12",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-12-6a82c51d.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T20:43:14.140Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-12-6a82c51d.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 13": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 13",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-13-6a82c527.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T20:49:25.878Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-13-6a82c527.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 14": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 14",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T18:40:14.594Z",
+        "parent_path": null,
+        "n_messages": 4
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 15": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 15",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-15-6a82cda7.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:48:08.305Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-15-6a82cda7.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 16": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 16",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-16-6a82cdaa.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T18:44:52.094Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-16-6a82cdaa.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 17": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 17",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-17-6a82cdab.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:46:09.670Z",
+        "parent_path": null,
+        "n_messages": 4
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-17-6a82cdab.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 8": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 8",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-8-6a82bb52.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T20:23:09.706Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-8-6a82bb52.json"
+      ]
+    ]
+  },
+  "apery-systems-2::MASTER 9": {
+    "project_dir": "apery-systems-2",
+    "base_title": "MASTER 9",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-2/master-9-6a82bb53.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T21:01:19.882Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-2/master-9-6a82bb53.json"
+      ]
+    ]
+  },
+  "apery-systems-4::01 DONE": {
+    "project_dir": "apery-systems-4",
+    "base_title": "01 DONE",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-4/01-done-6a86a95e.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:34:29.343Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-4/01-done-6a86a95e.json"
+      ]
+    ]
+  },
+  "apery-systems-4::02 DONE": {
+    "project_dir": "apery-systems-4",
+    "base_title": "02 DONE",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-4/02-done-6a86a960.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:36:53.250Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-4/02-done-6a86a960.json"
+      ]
+    ]
+  },
+  "apery-systems-4::03 COMPLETE": {
+    "project_dir": "apery-systems-4",
+    "base_title": "03 COMPLETE",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:28:43.461Z",
+        "parent_path": null,
+        "n_messages": 4
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json"
+      ]
+    ]
+  },
+  "apery-systems-4::04 DONE": {
+    "project_dir": "apery-systems-4",
+    "base_title": "04 DONE",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-4/04-done-6a86a965.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:35:41.419Z",
+        "parent_path": null,
+        "n_messages": 4
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-4/04-done-6a86a965.json"
+      ]
+    ]
+  },
+  "apery-systems-4::05 COMPLETE": {
+    "project_dir": "apery-systems-4",
+    "base_title": "05 COMPLETE",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-4/05-complete-6a86a983.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:30:45.027Z",
+        "parent_path": null,
+        "n_messages": 4
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-4/05-complete-6a86a983.json"
+      ]
+    ]
+  },
+  "apery-systems-4::Continue Modular Proof": {
+    "project_dir": "apery-systems-4",
+    "base_title": "Continue Modular Proof",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-4/continue-modular-proof-6a86a8fb.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:25:34.774Z",
+        "parent_path": null,
+        "n_messages": 8
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-4/continue-modular-proof-6a86a8fb.json"
+      ]
+    ]
+  },
+  "apery-systems-4::Zaggy Sporadic Sequences Analysis": {
+    "project_dir": "apery-systems-4",
+    "base_title": "Zaggy Sporadic Sequences Analysis",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-4/zaggy-sporadic-sequences-analysis-6a86ac2d.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T17:32:39.502Z",
+        "parent_path": null,
+        "n_messages": 8
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-4/branch-zaggy-sporadic-sequences-analysis-6a86b51f.json",
+        "depth": 1,
+        "capturedAt": "2026-08-20T17:23:48.363Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems-4/zaggy-sporadic-sequences-analysis-6a86ac2d.json",
+        "n_messages": 7
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-4/branch-zaggy-sporadic-sequences-analysis-6a86f625.json",
+        "depth": 1,
+        "capturedAt": "2026-08-20T17:26:59.300Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems-4/zaggy-sporadic-sequences-analysis-6a86ac2d.json",
+        "n_messages": 8
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-4/zaggy-sporadic-sequences-analysis-6a86ac2d.json",
+        "chatgpt-research-archive/conversations/apery-systems-4/branch-zaggy-sporadic-sequences-analysis-6a86b51f.json"
+      ],
+      [
+        "chatgpt-research-archive/conversations/apery-systems-4/zaggy-sporadic-sequences-analysis-6a86ac2d.json",
+        "chatgpt-research-archive/conversations/apery-systems-4/branch-zaggy-sporadic-sequences-analysis-6a86f625.json"
+      ]
+    ]
+  },
+  "apery-systems-p-3::(WORKING p=3?! new bound!) Branch \u00b7 Branch \u00b7 p=3 - UNSURE IF GOOD": {
+    "project_dir": "apery-systems-p-3",
+    "base_title": "(WORKING p=3?! new bound!) Branch \u00b7 Branch \u00b7 p=3 - UNSURE IF GOOD",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/working-p-3-new-bound-branch-branch-p-3-unsure-if-good-6a8540a5.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T23:24:21.650Z",
+        "parent_path": null,
+        "n_messages": 7
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/working-p-3-new-bound-branch-branch-p-3-unsure-if-good-6a8540a5.json"
+      ]
+    ]
+  },
+  "apery-systems-p-3::(dead) Branch \u00b7 airthmetic structure of (1) - RAN O UT!": {
+    "project_dir": "apery-systems-p-3",
+    "base_title": "(dead) Branch \u00b7 airthmetic structure of (1) - RAN O UT!",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/dead-branch-airthmetic-structure-of-1-ran-o-ut-6a85695d.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T23:48:03.223Z",
+        "parent_path": null,
+        "n_messages": 7
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/dead-branch-airthmetic-structure-of-1-ran-o-ut-6a85695d.json"
+      ]
+    ]
+  },
+  "apery-systems-p-3::3-adic apery writeup": {
+    "project_dir": "apery-systems-p-3",
+    "base_title": "3-adic apery writeup",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/3-adic-apery-writeup-6a84c0be.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T23:16:36.222Z",
+        "parent_path": null,
+        "n_messages": 7
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/3-adic-apery-writeup-6a84c0be.json"
+      ]
+    ]
+  },
+  "apery-systems-p-3::3/5 ceiling law Branch \u00b7 Branch \u00b7 p=3": {
+    "project_dir": "apery-systems-p-3",
+    "base_title": "3/5 ceiling law Branch \u00b7 Branch \u00b7 p=3",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T22:58:41.438Z",
+        "parent_path": null,
+        "n_messages": 7
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/3-5-ceiling-law-branch-branch-p-3-6a854474.json"
+      ]
+    ]
+  },
+  "apery-systems-p-3::SMITH FROBENIUS CELIING!": {
+    "project_dir": "apery-systems-p-3",
+    "base_title": "SMITH FROBENIUS CELIING!",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/smith-frobenius-celiing-6a84b4ef.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T23:11:00.725Z",
+        "parent_path": null,
+        "n_messages": 7
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/branch-smith-frobenius-celiing-6a869441.json",
+        "depth": 1,
+        "capturedAt": "2026-08-20T22:53:16.507Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems-p-3/smith-frobenius-celiing-6a84b4ef.json",
+        "n_messages": 10
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/branch-smith-frobenius-celiing-6a857bba.json",
+        "depth": 1,
+        "capturedAt": "2026-08-20T23:31:44.173Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems-p-3/smith-frobenius-celiing-6a84b4ef.json",
+        "n_messages": 7
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/branch-branch-smith-frobenius-celiing-6a857dcb.json",
+        "depth": 2,
+        "capturedAt": "2026-08-20T23:54:51.358Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems-p-3/branch-smith-frobenius-celiing-6a857bba.json",
+        "n_messages": 7
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/smith-frobenius-celiing-6a84b4ef.json",
+        "chatgpt-research-archive/conversations/apery-systems-p-3/branch-smith-frobenius-celiing-6a869441.json"
+      ],
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/smith-frobenius-celiing-6a84b4ef.json",
+        "chatgpt-research-archive/conversations/apery-systems-p-3/branch-smith-frobenius-celiing-6a857bba.json",
+        "chatgpt-research-archive/conversations/apery-systems-p-3/branch-branch-smith-frobenius-celiing-6a857dcb.json"
+      ]
+    ]
+  },
+  "apery-systems-p-3::YOU CAN HELP!": {
+    "project_dir": "apery-systems-p-3",
+    "base_title": "YOU CAN HELP!",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/you-can-help-6a856bcf.json",
+        "depth": 0,
+        "capturedAt": "2026-08-21T00:01:38.869Z",
+        "parent_path": null,
+        "n_messages": 7
+      },
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/branch-you-can-help-6a856e7c.json",
+        "depth": 1,
+        "capturedAt": "2026-08-21T00:09:29.876Z",
+        "parent_path": "chatgpt-research-archive/conversations/apery-systems-p-3/you-can-help-6a856bcf.json",
+        "n_messages": 7
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/you-can-help-6a856bcf.json",
+        "chatgpt-research-archive/conversations/apery-systems-p-3/branch-you-can-help-6a856e7c.json"
+      ]
+    ]
+  },
+  "apery-systems-p-3::[ charts!] \u00b7 SMITH FROBENIUS CELIING!": {
+    "project_dir": "apery-systems-p-3",
+    "base_title": "[ charts!] \u00b7 SMITH FROBENIUS CELIING!",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/charts-smith-frobenius-celiing-6a85e49b.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T21:41:56.406Z",
+        "parent_path": null,
+        "n_messages": 21
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/charts-smith-frobenius-celiing-6a85e49b.json"
+      ]
+    ]
+  },
+  "apery-systems-p-3::airthmetic structure of (1) - RAN O UT!": {
+    "project_dir": "apery-systems-p-3",
+    "base_title": "airthmetic structure of (1) - RAN O UT!",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/airthmetic-structure-of-1-ran-o-ut-6a8456b0.json",
+        "depth": 0,
+        "capturedAt": "2026-08-21T00:14:46.987Z",
+        "parent_path": null,
+        "n_messages": 8
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/airthmetic-structure-of-1-ran-o-ut-6a8456b0.json"
+      ]
+    ]
+  },
+  "apery-systems-p-3::big v_2 plucker search": {
+    "project_dir": "apery-systems-p-3",
+    "base_title": "big v_2 plucker search",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/big-v-2-plucker-search-6a84c6aa.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T23:05:42.869Z",
+        "parent_path": null,
+        "n_messages": 7
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/big-v-2-plucker-search-6a84c6aa.json"
+      ]
+    ]
+  },
+  "apery-systems-p-3::failed p=3 attempt I think Branch \u00b7 Branch \u00b7 Branch \u00b7 p=3 (deadend)": {
+    "project_dir": "apery-systems-p-3",
+    "base_title": "failed p=3 attempt I think Branch \u00b7 Branch \u00b7 Branch \u00b7 p=3 (deadend)",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/failed-p-3-attempt-i-think-branch-branch-branch-p-3-deadend-6a8549a4.json",
+        "depth": 0,
+        "capturedAt": "2026-08-20T23:39:54.097Z",
+        "parent_path": null,
+        "n_messages": 7
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/failed-p-3-attempt-i-think-branch-branch-branch-p-3-deadend-6a8549a4.json"
+      ]
+    ]
+  },
+  "apery-systems-p-3::p=3": {
+    "project_dir": "apery-systems-p-3",
+    "base_title": "p=3",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/apery-systems-p-3/p-3-6a84c2b8.json",
+        "depth": 0,
+        "capturedAt": "2026-08-21T00:21:07.310Z",
+        "parent_path": null,
+        "n_messages": 7
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/apery-systems-p-3/p-3-6a84c2b8.json"
+      ]
+    ]
+  },
+  "zeta::Mathematical Calculation Explanation": {
+    "project_dir": "zeta",
+    "base_title": "Mathematical Calculation Explanation",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/zeta/mathematical-calculation-explanation-6a801f56.json",
+        "depth": 0,
+        "capturedAt": "2026-08-21T01:03:23.327Z",
+        "parent_path": null,
+        "n_messages": 20
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/zeta/mathematical-calculation-explanation-6a801f56.json"
+      ]
+    ]
+  },
+  "zeta::Mathematical Certificate Calculation": {
+    "project_dir": "zeta",
+    "base_title": "Mathematical Certificate Calculation",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/zeta/mathematical-certificate-calculation-6a801f4d.json",
+        "depth": 0,
+        "capturedAt": "2026-08-21T00:45:05.049Z",
+        "parent_path": null,
+        "n_messages": 18
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/zeta/mathematical-certificate-calculation-6a801f4d.json"
+      ]
+    ]
+  },
+  "zeta::Mathematical Certification Discussion": {
+    "project_dir": "zeta",
+    "base_title": "Mathematical Certification Discussion",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/zeta/mathematical-certification-discussion-6a801f58.json",
+        "depth": 0,
+        "capturedAt": "2026-08-21T00:50:20.697Z",
+        "parent_path": null,
+        "n_messages": 7
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/zeta/mathematical-certification-discussion-6a801f58.json"
+      ]
+    ]
+  },
+  "zeta::Mathematical Dimension Calculations": {
+    "project_dir": "zeta",
+    "base_title": "Mathematical Dimension Calculations",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/zeta/mathematical-dimension-calculations-6a801f54.json",
+        "depth": 0,
+        "capturedAt": "2026-08-21T00:38:24.909Z",
+        "parent_path": null,
+        "n_messages": 15
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/zeta/mathematical-dimension-calculations-6a801f54.json"
+      ]
+    ]
+  },
+  "zeta::Mathematical Programme Analysis": {
+    "project_dir": "zeta",
+    "base_title": "Mathematical Programme Analysis",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/zeta/mathematical-programme-analysis-6a801f52.json",
+        "depth": 0,
+        "capturedAt": "2026-08-21T00:55:54.426Z",
+        "parent_path": null,
+        "n_messages": 17
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/zeta/mathematical-programme-analysis-6a801f52.json"
+      ]
+    ]
+  },
+  "zeta::Mathematics Completion Explanation": {
+    "project_dir": "zeta",
+    "base_title": "Mathematics Completion Explanation",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/zeta/mathematics-completion-explanation-6a801514.json",
+        "depth": 0,
+        "capturedAt": "2026-08-21T00:31:49.258Z",
+        "parent_path": null,
+        "n_messages": 9
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/zeta/mathematics-completion-explanation-6a801514.json"
+      ]
+    ]
+  },
+  "zeta::New chat": {
+    "project_dir": "zeta",
+    "base_title": "New chat",
+    "nodes": [
+      {
+        "path": "chatgpt-research-archive/conversations/zeta/new-chat-6a7ebc17.json",
+        "depth": 0,
+        "capturedAt": "2026-08-21T00:26:17.605Z",
+        "parent_path": null,
+        "n_messages": 2
+      }
+    ],
+    "chains": [
+      [
+        "chatgpt-research-archive/conversations/zeta/new-chat-6a7ebc17.json"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+\section{$p$-adic slopes and extension-class rigidity}\label{sec:padic}
+
+Throughout this section a \emph{row} is a pair of sequences $(a_n,b_n)$ solving one three-term recurrence
+\begin{equation}\label{eq:3term}
+(n+1)^{w+1}u_{n+1}=P(n)\,u_n-c\,n^{w+1}u_{n-1},\qquad a_0=1,\quad b_0=0,\ b_1=1,
+\end{equation}
+with $P\in\mathbb Z[n]$, $c\in\mathbb Q^\times$, $w\in\{1,2\}$; for $w=1$ this is Zagier's normalisation $P(n)=an^2+an+b$, for $w=2$ the Almkvist--Zudilin normalisation $P(n)=(2n+1)(an^2+an+b)$. The constant $c$ is the product of the two characteristic roots, $c=\lambda_1\lambda_2$.
+
+\subsection{The slope law}
+
+\begin{proposition}[Casoratian]\label{prop:casoratian}
+For every row of the form \eqref{eq:3term},
+\[
+a_nb_{n-1}-a_{n-1}b_n=-\frac{c^{\,n-1}}{n^{\,w+1}}\qquad(n\ge1).
+\]
+\end{proposition}
+\begin{proof}
+Write $W_n=a_nb_{n-1}-a_{n-1}b_n$. Multiplying \eqref{eq:3term} for $a$ by $b_n$ and for $b$ by $a_n$ and subtracting gives $(n+1)^{w+1}W_{n+1}=c\,n^{w+1}W_n$, and $W_1=a_1b_0-a_0b_1=-1$.
+\end{proof}
+
+\begin{definition}
+Let $p$ be prime. Say the row has \emph{denominator rate} $\kappa_p\ge0$ at $p$ if $v_p(a_n)=-\kappa_pn+O(\log n)$, and \emph{$p$-adic slope} $\sigma_p$ if
+\[
+v_p\Big(\frac{b_n}{a_n}-\frac{b_{n-1}}{a_{n-1}}\Big)=\sigma_pn+O(\log n).
+\]
+\end{definition}
+
+\begin{namedprop}[C: slope law]\label{prop:C}
+\Proved{} If the row has denominator rate $\kappa_p$ at $p$ then it has $p$-adic slope
+\[
+\sigma_p=v_p(c)+2\kappa_p .
+\]
+In particular, if $\sigma_p>0$ the ratios $b_n/a_n$ converge in $\mathbb Q_p$ to a limit $\xi_p$, with $v_p(\xi_p-b_n/a_n)=\sigma_pn+O(\log n)$.
+\end{namedprop}
+\begin{proof}
+By Proposition~\ref{prop:casoratian},
+$v_p(b_n/a_n-b_{n-1}/a_{n-1})=(n-1)v_p(c)-(w+1)v_p(n)-v_p(a_n)-v_p(a_{n-1})$, and the last two terms contribute $2\kappa_pn+O(\log n)$. Ultrametric convergence follows when $\sigma_p>0$; the tail valuation is the minimum of the remaining increments.
+\end{proof}
+
+\begin{corollary}[Product formula]\label{cor:product}
+For an integral row ($\kappa_p=0$ for all $p$),
+\[
+\sum_p\sigma_p\log p=\log|\lambda_1\lambda_2|.
+\]
+\end{corollary}
+
+Thus the archimedean defect $\log|\lambda_1\lambda_2|$ of a row---the amount by which it fails to be ``Ap\'ery-perfect'' ($\lambda_1\lambda_2=\pm1$, as for both of Ap\'ery's rows)---is exactly redistributed as $p$-adic convergence at the primes dividing $c$. For modular rows $c$ is a product of values of the Hauptmodul at cusps and elliptic points, so $\sigma_p>0$ occurs only at primes of the level. Non-integral (hypergeometric) rows have an additional resource $\kappa_p$ which the product formula does not see: Zudilin's Catalan row has $c=1$, $\kappa_2=4$ and slope $\sigma_2=8$ \cite{Zud02a}. Table~\ref{tab:census} lists $c$, $\sigma_p$ and $\kappa_p$ for every row considered in this paper; in every case the measured slope agrees with Proposition~C to within $O(\log n)/n$.
+
+\begin{remark}[Non-Zagier normalisations]\label{rem:nonzagier}
+If the trailing coefficient of the recurrence is $c\,Q(n)$ with $Q$ monic of degree $w+1$ but $Q(n)\ne n^{w+1}$, the Casoratian is $-c^{n-1}\prod_{k<n}Q(k)/(n!)^{w+1}$ and the slope acquires the extra term $\lim\frac1n v_p\bigl(\prod_{k\le n}Q(k)/(n!)^{w+1}\bigr)$, which can be negative. For the weight-three cusp row of Section~\ref{sec:sources}, $Q(n)=(n-\tfrac12)^2$, the Casoratian is $\propto4^n\binom{2n}{n}^2$ and $\sigma_2=2$, although $c=64$. The product formula then reads $\sum_p\sigma_p\log p=\log|\lambda_1\lambda_2|-\lim\frac1n\log\bigl|\prod Q(k)/(n!)^{w+1}\bigr|_{\infty}^{-1}$ and is no longer a statement about $\lambda_1\lambda_2$ alone.
+\end{remark}
+
+\subsection{Rigidity of $p$-adic limits}
+
+Let $\Lambda\in\mathbb R$ be a period and let $(a_n,b_n)$, $(a'_n,b'_n)$ be two rows with $b_n/a_n\to r\Lambda$ and $b'_n/a'_n\to r'\Lambda$, $r,r'\in\mathbb Q^\times$. Define the \emph{cross determinant}
+\[
+\Delta_n=r\,a_nb'_n-r'\,a'_nb_n .
+\]
+If both rows have positive slope at $p$ with limits $\xi_p,\xi'_p$, then $v_p(\Delta_n)$ is bounded if $r\xi'_p\ne r'\xi_p$, and $v_p(\Delta_n)=\min(\sigma_p,\sigma'_p)\,n+O(\log n)$ if $r\xi'_p=r'\xi_p$.
+
+\begin{namedconj}[D: rigidity]\label{conj:D}
+If two rows have archimedean limits $r\Lambda$, $r'\Lambda$ with the same period $\Lambda$, and both have positive slope at $p$, then their $p$-adic limits satisfy $r\xi'_p=r'\xi_p$; equivalently there is a single $\Lambda_p\in\mathbb Q_p$ with $\xi_p=r\Lambda_p$, $\xi'_p=r'\Lambda_p$.
+\end{namedconj}
+
+\begin{verification}\label{ver:rigidity}
+Conjecture~D holds, in the sense that $v_p(\Delta_n)\ge\min(\sigma_p,\sigma'_p)n-O(\log n)$ for all $n\le N$, in the following cases (scripts in \texttt{lattice/}):
+\begin{enumerate}
+\item $\Lambda=L(2,\chi_{-3})$, $p=3$: Zagier's rows B, C, F ($r=\tfrac12,\tfrac12,\tfrac58$), pairwise, $N=300$, $v_3(\Delta_n)=2n+O(1)$; and Cooper's $s_{18}$ against B and C.
+\item $\Lambda=\zeta(3)$, $p=2$: Domb $(10,4,64)$ ($r=\tfrac7{24}$) and $(12,4,16)$ ($r=\tfrac7{32}$), $N=400$, $v_2(\Delta_n)=4n+O(1)$.
+\end{enumerate}
+Conversely, for rows with different periods the cross determinant has bounded valuation even when both rows have slope at $p$ (Zagier A, E, F at $p=2$: $v_2(\Delta_n)=4$ for $n\le260$), and Ap\'ery's rows (slope $0$) align with nothing.
+\end{verification}
+
+Two features deserve emphasis. First, Zagier's row B has complex-conjugate characteristic roots, so $b_n/a_n$ has \emph{no} archimedean limit; yet its $3$-adic limit coincides with that of row C. The $p$-adic limit is an invariant of the extension class that survives when the archimedean Ap\'ery limit does not exist. Second, rigidity is a statement about \emph{slope primes} only: the project's tower limits at unramified primes $p\ge5$ exhibit no relations between rows sharing a period \cite{ProjTheory03}, so the naive ``relations transfer to every realisation'' is false.
+
+The conceptual explanation is that the companion $b$ is the Eichler integral of an Eisenstein class, so $\xi_p$ is the $p$-adic realisation of the same extension class whose archimedean realisation is $\Lambda$---for the Catalan row, Calegari's overconvergent construction identifies it with a $2$-adic $L$-value \cite{Cal05}. Proving Conjecture~D for the Zagier rows by that method is Problem~\ref{prob:rigidity}.
+
+\subsection{Slope-free systems}
+
+Every system obtained by full period annihilation in Section~\ref{sec:sources} is Fricke-symmetric and has $c=\pm1$; such systems have slope $0$ at every prime. This was verified directly for the level-$24$ $\zeta(7)$ system of Section~\ref{sec:sources}: $A_n\in\mathbb Z$, $d_n^7B_n\in\mathbb Z$, $B_n/A_n\to\tfrac{1463}{13824}\zeta(7)$ (all to $n=218$), and no $p$-adic convergence at $p=2,3,5,7$. The rows with $p$-adic slope are precisely the archimedeanly \emph{imperfect} ones. This complementarity is the starting point of Section~\ref{sec:tworow}.

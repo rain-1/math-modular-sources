@@ -1,0 +1,600 @@
+\section{Two-row constructions: the master formula and the design rule}
+\label{sec:tworow}
+
+A single Ap\'ery row proves irrationality when its linear form decays faster
+than its denominators grow.  When no single row does, one may try to combine
+two rows carrying the \emph{same} period.  This section states the closed-form
+quality of such a construction (Theorem~E), derives from it a design rule that
+decides in three numbers whether a candidate pair can work, and applies it to
+the four cases where the arithmetic has been computed.  Nothing here is an
+irrationality theorem; the calibration values are all $<1$, and \S\ref{sec:5.5}
+explains structurally why.
+
+\subsection{The correlated congruence lattice}\label{sec:5.1}
+
+We recall the construction of the Catalan papers \cite{ProjCatalan58,
+ProjCatalanWindow} in the form used below.  Let $\alpha\in\R$ be the common
+period.  Two integer rows are given,
+\[
+(X_{1,n},Y_{1,n}),\ (X_{2,n},Y_{2,n})\in\Z^2,\qquad
+\lambda_{r,n}=X_{r,n}\alpha-Y_{r,n},
+\]
+obtained from the two Ap\'ery rows after sampling (row $1$ at index $\alpha n$,
+row $2$ at $\gamma n$), clearing denominators by a common factor $S_n$ with
+$\log S_n=Kn+o(n)$, and applying any extra integralizing multiplier.  Write
+$A_r,E_r$ for the exponential rates of $X_{r,n}$ and $\lambda_{r,n}$.  The
+mixed minor, after removing the common $S_n$ from the first coordinates
+($\alpha_{r,n}=X_{r,n}/S_n$),
+\[
+h_n=\alpha_{1,n}Y_{2,n}-\alpha_{2,n}Y_{1,n},
+\]
+is the \emph{cross determinant}, and the arithmetic input of the method is a
+\emph{proved} divisor $T_n\mid h_n$ with $\tfrac1n\log T_n\to G$.  Setting
+$M_n=S_nT_n$, the \emph{correlated congruence lattice} is
+\begin{equation}\label{eq:Kn}
+K_n=\Bigl\{(c_1,c_2)\in\Z^2:\
+\alpha_{1,n}c_1+\alpha_{2,n}c_2\equiv0\ (T_n),\quad
+Y_{1,n}c_1+Y_{2,n}c_2\equiv0\ (M_n)\Bigr\},
+\end{equation}
+so that $q(c)=(c_1X_{1,n}+c_2X_{2,n})/M_n$ and
+$p(c)=(c_1Y_{1,n}+c_2Y_{2,n})/M_n$ are integers.  A two-line Smith-normal-form
+computation gives
+\[
+[\Z^2:K_n]
+=\frac{S_nT_n^2}{\gcd(h_n,T_nY_{1,n},T_nY_{2,n},S_nT_n\alpha_{1,n},
+S_nT_n\alpha_{2,n},S_nT_n^2)}\ \le\ S_nT_n=M_n
+\]
+because $T_n\mid h_n$; passing to a sublattice $L_n\subseteq K_n$ with
+$M_n\le\operatorname{covol}(L_n)<2M_n$, the division modulus and the
+coefficient-lattice covolume have the same exponential rate
+\begin{equation}\label{eq:sigma}
+\sigma=K+G .
+\end{equation}
+\emph{This is the whole point of the word ``correlated'': the determinant
+divisibility is used in two congruences at the cost of one copy of $T_n$
+rather than $T_n^2$.}
+
+The selection step is the two-successive-minima theorem of
+\cite[Thm.~5.1]{ProjCatalanWindow}, stated there for an arbitrary real
+$\alpha$ and used here as a black box.
+
+\begin{theorem}[two-minimum selection; {\cite[Thm.~5.1]{ProjCatalanWindow}}]
+\label{thm:selection}
+\Proved{} Suppose $S_n\mid X_{1,n},X_{2,n}$, the lattice and output rows are
+as above with $d_n=[\Z^2:L_n]$, the six two-sided rate statements hold,
+$s_n=\tfrac1n\log S_n\to K$ with $0\le\kappa_n=\tfrac1n\log d_n\le s_n$, the
+\emph{crossed gap} $A_2+E_1>A_1+E_2$ holds, and $H_n,F_n$ defined by
+\[
+x_n=\frac{\kappa_n+E_2-E_1}{2},\qquad
+H_n=\kappa_n-x_n+A_2-s_n,\qquad
+F_n=x_n+E_1-s_n
+\]
+are eventually bounded away from zero.  Then for all large $n$ one can select
+$c_n\in L_n$ with $q_n=q(c_n)\neq0$, $\ell_n=q_n\alpha-p_n\neq0$,
+\[
+\log|q_n|\ge H_nn-o(n),\qquad
+\frac{\log|\ell_n|}{\log|q_n|}\le\frac{F_n}{H_n}+o(1),
+\]
+hence worthiness $\delta\ge1-F_n/H_n$.
+\end{theorem}
+
+The proof applies Minkowski's second theorem to the anisotropic rectangle
+$|u|\le e^{x_nn}$, $|v|\le e^{(\kappa_n-x_n)n}$ (area $4d_n$), takes vectors
+attaining the two successive minima, and splits into three cases according to
+the size of $r_n=-\tfrac1n\log\mu_{1,n}$ and whether the first minimum's linear
+form vanishes.  The use of two minima rather than Minkowski's first theorem
+alone is what prevents an exceptionally short \emph{rationality-kernel vector}
+from spoiling the lower bound on $|q_n|$.
+
+\begin{remark}[the hypothesis $F>0$ is not decorative]\label{rem:Fpos}
+Hypothesis (4) of Theorem~\ref{thm:selection} --- $H_n$ and $F_n$ eventually
+bounded below by a \emph{positive} constant --- is exactly what fails if one
+pushes $\sigma$ past $E_1+E_2$.  In that regime $F_n<0$ and the method
+degenerates: the box area equals the covolume, so Minkowski's first theorem in
+that box \emph{is} Dirichlet's theorem, which produces such pairs for every
+real number, rational ones included.  The proof's non-vanishing $\ell_n\neq0$
+comes from the output-determinant identity, which says only that the two
+minima's forms are not \emph{both} zero; when the first minimum has $\ell=0$
+--- precisely the rationality-kernel case --- the argument switches to the
+second vector, which is nonzero but carries no $e^{F_nn}$ upper bound.  The
+construction can deliver ``$\ell_n\neq0$'' or ``$|\ell_n|\le e^{F_nn}$'', never
+both.  This was verified by an explicit control experiment: replacing the
+period $G$ by a rational $G^*=\operatorname{bestappr}(G,10^{320})$ leaves the
+lattice \eqref{eq:Kn} unchanged (it never uses $G$) and reproduces the same
+numerics, $|q_nG-p_n|=e^{-78.051}$ against $|q_nG^*-p_n|=e^{-78.050}$ at
+$n=98$, with no contradiction because $1/\operatorname{den}(G^*)=e^{-735.7}$
+\cite[\S4]{ProjCatalanAudit}.  Everything below is therefore stated in the
+regime $F>0$, where the conclusion is a worthiness statement and nothing more.
+\end{remark}
+
+\subsection{Theorem E: the master formula}\label{sec:5.2}
+
+Doing the bookkeeping of \S\ref{sec:5.1} in closed form gives one formula that
+covers every instance computed in this project.
+
+\begin{namedthm}[master formula]\label{thm:E}
+\Proved{} modulo Theorem~\ref{thm:selection}.  Consider a two-row construction
+in which
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt]
+\item the \emph{decayer} is sampled at $\gamma n$, with $|a_n|\sim
+\Lambda_{\rm dec}^{\gamma n}$ and linear form $\sim\lambda^{\gamma n}$,
+$\lambda<1$, and $p$-adic slope $\sigma_{\rm dec}$;
+\item the \emph{engine} is sampled at $\alpha n$, with linear form
+$\sim(\rho_2^{\rm eng})^{\alpha n}$ (which may grow) and slope
+$\sigma_{\rm eng}$;
+\item the common denominator clearing has rate $S=k\cdot\max(\alpha,\gamma)$,
+and any extra integralizing multiplier has rate $\eta$ per unit of $n$;
+\item the hidden divisor rate is
+$G=\sum_p\min(\sigma_p^{\rm eng}\alpha,\ \sigma_p^{\rm dec}\gamma)\log p$.
+\end{itemize}
+Then, in the notation of Theorem~\ref{thm:selection},
+\begin{equation}\label{eq:master}
+\boxed{\
+F=\tfrac12\Bigl[\underbrace{S+\eta+\alpha\log\rho_2^{\rm eng}}_{\rm COST}
+-\underbrace{\bigl(\gamma\log\tfrac1\lambda+G\bigr)}_{\rm RESOURCE}\Bigr],
+\qquad
+H=F+\gamma\log\frac{\Lambda_{\rm dec}}{\lambda},
+\qquad
+\delta=1-\frac FH\ }
+\end{equation}
+and $H-F=A_{\rm dec}-E_{\rm dec}$.  In words: \emph{$F$ is exactly one half of
+the cost--resource deficit.}
+\end{namedthm}
+
+\begin{proof}
+Immediate from $x=\tfrac12(\sigma+E_2-E_1)$, $H=A_2-x$, $F=x+E_1-\sigma$ of
+Theorem~\ref{thm:selection} with $\sigma=K+G$ as in \eqref{eq:sigma}, after
+substituting the four rates
+$A_{\rm eng}=S+\eta+\alpha\log\Lambda_{\rm eng}$,
+$E_{\rm eng}=S+\eta+\alpha\log\rho_2^{\rm eng}$,
+$A_{\rm dec}=S+\gamma\log\Lambda_{\rm dec}$,
+$E_{\rm dec}=S+\gamma\log\lambda$, and simplifying.  (The two-row roles are
+labelled so that the decayer plays the part of row $2$ in
+Theorem~\ref{thm:selection}.)  The multi-prime form of $G$ is legitimate
+because the correlated-lattice step of \S\ref{sec:5.1} needs only
+$T_n\mid h_n$ and nothing about $T_n$ being a prime power; the Smith-normal-form
+index bound goes through verbatim for $T_n=\prod_pp^{g_pn}$.
+\end{proof}
+
+\begin{remark}[calibration]\label{rem:calibration}
+Formula \eqref{eq:master} reproduces every independently derived quality
+number in the project.
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}l c c c l@{}}
+\toprule
+instance & $F$ & $H$ & $\delta$ & independent source\\
+\midrule
+Catalan, Zudilin $\times$ E at $3{:}6$ & $6-\tfrac{15}2\log\varphi$ &
+$6+\tfrac{45}2\log\varphi$ & $0.8579144525$ & \cite{ProjCatalan58} lineage\\
+Catalan, Zudilin $\times$ E at $5{:}8$ & $2.5985578256$ & $26.6591490786$ &
+$0.9025266029$ & \cite{ProjCatalan58}\\
+$\zeta(3)$, Domb $\times$ T at $2{:}3$ & $1.1627320584$ & $11.7392151026$ &
+$0.9009531687$ & \cite{ProjZeta3}\\
+Catalan, Zudilin $\times$ Nesterenko, no bridge & $7.746367029$ &
+$22.707995624$ & $0.6588705072$ & \cite{ProjCatalanLCM}\\
+same pair, at the Lean threshold $\sigma=12+k^*\log2$ & $0$ & $14.961629$ &
+$1$ & \cite{LeanCatalan}\\
+\bottomrule
+\end{tabular}
+\end{center}
+The last line is the knife-edge: $F=0$ exactly at $k=k^*$, so the Lean
+development formalizes precisely a \emph{family} of constructions,
+\[
+\delta(k)=\frac{D}{D+F(k)},\qquad
+D=A_N-E_N,\qquad F(k)=\frac{\log2}{2}(k^*-k),\qquad 0\le k<k^*,
+\]
+with $\delta(k)\to1$ as $k\uparrow k^*$ and $\delta(22)>0.99$.  The rates there
+are $A_Z=12+12\log2+15\log\varphi$, $E_Z=12+12\log2-15\log\varphi$ for the
+Zudilin row at $3n$ over $S_n=D_{6n}^2$, and
+$A_N=12+14\log2+2\log T^{+}$, $E_N=12+14\log2+2\log T^{-}$ for the Nesterenko
+$(4,7)$ row, with $T^{\pm}=(3303\pm437\sqrt{57})/144$ and $T^+T^-=32/27$;
+numerically $A_N=29.354774$, $E_N=14.393145$, $1-E_N/A_N=0.5096830$, and
+\[
+k^*=\frac{E_Z+E_N-12}{\log2}=22.3512905953\ldots\ ,\qquad 22<k^*<24 .
+\]
+The formalization introduces no axiom: the Nesterenko archimedean rates and
+the $2$-adic data (in particular the exact tail valuation
+$v_2(4B_n\mathcal G_2-C_n)=14n+2-s_2(n)-s_2(3n)$, i.e.\ the identification of
+the Nesterenko row's $2$-adic limit with the Zudilin row's) are first carried
+as a structure \texttt{NesterenkoFormInputs} and then instantiated, in
+\texttt{NesterenkoUnconditional.lean}, by theorems proved in the project; the
+main theorem \texttt{catalan\_worthiness\_one\_sub\_eps\_nesterenko} depends
+only on \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}.  \emph{No claim of
+irrationality follows}: the constructions are a family, not a single sequence
+of worthiness $1$.
+\end{remark}
+
+\subsection{The design rule}\label{sec:designrule}
+
+Formula \eqref{eq:master} has three inputs one can shop for.  Specializing it
+turns the search for a two-row pair into a one-line test.
+
+Suppose first that both rows are \emph{integral}, so $\eta=0$ and
+$\kappa_p=0$ below, and take the balance point
+$\alpha\sigma_{\rm eng}=\gamma\sigma_{\rm dec}$ at which the two $p$-adic
+tails have equal slope (so that the minimum in $G$ is attained twice).  Then
+for a single slope prime $p$ with $\log|c|=\sigma_p\log p$, the product formula
+$\Lambda\lambda=c$ of \S\ref{sec:padic} gives
+$\gamma\log\tfrac1\lambda+G=\gamma\log\Lambda_{\rm dec}$ \emph{exactly}, and
+\eqref{eq:master} collapses to
+
+\begin{proposition}[design rule, integral rows]\label{prop:design}
+\Proved{} With the above hypotheses,
+\begin{equation}\label{eq:designrule}
+\boxed{\ \delta>1
+\iff \log\Lambda_{\rm dec}>k\max(r,1)+r\log\rho_2^{\rm eng},
+\qquad r=\frac{\alpha}{\gamma}=\frac{\sigma_{\rm dec}}{\sigma_{\rm eng}} .\ }
+\end{equation}
+\end{proposition}
+
+What the decaying row contributes is therefore its \emph{numerator growth}
+$\log\Lambda$, not its archimedean decay: the $p$-adic slope makes up the whole
+difference, automatically.  The method is a machine for converting the product
+formula into Diophantine decay.  The quantity $\log\Lambda-k$ is the
+\emph{budget} of a row.
+
+Two corrections must be attached to \eqref{eq:designrule}, and both matter.
+
+\medskip
+\noindent\textbf{(i) Order $>2$.}  The step
+$\gamma\log\tfrac1\lambda+G=\gamma\log\Lambda$ uses
+$\Lambda\lambda=c$, an order-two identity.  For a scalar recurrence of order
+$m$ with roots $\lambda_1,\dots,\lambda_m$ the product formula reads
+$\sum_p\sigma_p\log p=\log|\prod_i\lambda_i|$, so the correct row score, valid
+at any order, is
+\begin{equation}\label{eq:orderm}
+\text{score}=\log\frac1{|\lambda_2|}-k,\qquad
+\text{harvestable budget}=\text{score}+\log\Bigl|\prod_i\lambda_i\Bigr|,
+\end{equation}
+which reduces to $\log|\lambda_1|-k$ only when $m=2$.  Using $\log\lambda_1-k$
+on a higher-order row overstates the budget, sometimes wildly: the level-$12$
+$\zeta(5)$ row has harvestable budget $-5$, not $+5.54$.  All the rows used
+below are of order two, so \S\S\ref{sec:5.1}--\ref{sec:worked} are unaffected.
+
+\medskip
+\noindent\textbf{(ii) Non-integral rows and $\kappa$.}  Proposition~\ref{prop:design}
+assumed $v_p(a_n)\ge0$.  If instead the row carries $p$-power denominators at
+rate $\kappa_p$, i.e.\ $v_p(a_n)=-\kappa_pn+O(\log n)$, then the two
+$-v_p(a)$ terms in the Casoratian slope law each contribute $+\kappa_pn$, and
+by Proposition~\ref{prop:C} the slope is
+\begin{equation}\label{eq:kappaslope}
+\sigma_p=v_p(c)+2\kappa_p .
+\end{equation}
+Clearing the denominators costs $\eta=\kappa_p\log p$ per index, so the
+\emph{net} resource is $(\sigma_p-\kappa_p)\log p=(v_p(c)+\kappa_p)\log p$ and
+the corrected budget is
+\begin{equation}\label{eq:kappabudget}
+\boxed{\ \text{budget}=\log\Lambda-k+\sum_p\kappa_p\log p .\ }
+\end{equation}
+The $\kappa$ term is a second, independent source of $p$-adic resource,
+\emph{invisible to the product formula}.  An integral row is capped at
+$\log\Lambda-k$ as \eqref{eq:designrule} says; a non-integral row is not capped
+there at all.  The measurement that forces this: Zudilin's Catalan row has
+$c=\lambda_1\lambda_2=1$, so $v_2(c)=0$, yet its measured $2$-adic convergence
+slope is $8$; and indeed $v_2(Q_m)=-4m+2s_2(m)$ exactly
+\VerifiedR{$1\le m\le160$, zero exceptions}, so $\kappa_2=4$ and
+$\sigma_2=0+2\cdot4=8$.  For comparison \eqref{eq:kappaslope} gives Domb
+$6+0=6$, T $4+0=4$, Catalan's $\mathbf E$ row $5+0=5$, all matching.  With
+$\log\Lambda=5\log\varphi$, $\kappa_2\log2=4\log2$ and $k=4$, Zudilin's row has
+budget $+1.17864$, by far the largest of any row known --- and every unit of
+its lead comes from $\kappa_2$.
+
+\begin{remark}[multi-prime bridging]\label{rem:multiprime}
+The bridge generalizes to several primes for free, with
+$G=\sum_p\min(\sigma_p^{\rm eng}\alpha,\sigma_p^{\rm dec}\gamma)\log p$
+(proof of Theorem~\ref{thm:E}).  But it does not raise the ceiling for integral
+rows: since $\sum_p\sigma_p^{\rm dec}\log p=\log|c^{\rm dec}|$ and
+$\log\tfrac1\lambda+\log|c|=\log\Lambda$, the resource is still at most
+$\gamma\log\Lambda_{\rm dec}$; and the balance ratio $\alpha:\gamma$ is a
+single number, so at most one prime can be balanced, the others contributing
+their unbalanced minimum.  Moreover it is \emph{unrealizable in the census}:
+across the twelve modular sporadic families the values of $c$ are
+$-8,27,9,-1,32,72,81,-27,64,125,16,1$ for
+$\mathbf A,\dots,\mathbf F,\delta,\zeta,\alpha,\eta,\varepsilon,\gamma$, so
+$\mathbf F$ ($c=72=2^3\cdot3^2$) is the unique row with two slope primes.  Its
+period $\tfrac58L(2,\chim3)$ is shared with $\mathbf B,\mathbf C,s_{18}$, all
+of which have $\sigma_2=0$; since the per-prime term is a minimum over the two
+rows, the $p=2$ contribution vanishes for every pair containing $\mathbf F$.
+Multi-prime bridging is thus available in principle and realizable nowhere in
+the canonical classification --- a clean negative, not an oversight.
+\end{remark}
+
+\subsection{Worked cases}\label{sec:worked}
+
+\input{tables/budgets}
+
+\subsubsection*{(a) Catalan, two versions}
+
+The rows are Zudilin's Ap\'ery-like Catalan recurrence \cite{Zudilin2002a,
+Zudilin2002b} --- $Q_0=1$, $Q_1=\tfrac74$, $P_0=0$, $P_1=\tfrac{13}8$, with
+$\tfrac1m\log|Q_m|\to5\log\varphi$, $\tfrac1m\log|Q_mG-P_m|\to-5\log\varphi$,
+$2^{e_m}Q_m\in\Z$, $2^{e_m}D_{2m-1}^2P_m\in\Z$, $e_m=4m+O(\log m)$ --- and the
+modular $\mathbf E$ row of \S\ref{sec:sources}, with
+$t=\eta_1^4\eta_4^2\eta_8^4/\eta_2^{10}$,
+$F=\eta_2^{10}/(\eta_1^4\eta_4^4)$, source
+$\Phi_{\mathbf E}=S-8S(2\tau)$ where $S=E_{3,\chim4,1}$, so
+$L(\Phi_{\mathbf E},s)=(1-8\cdot2^{-s})\beta(s)\zeta(s-2)$ and
+$L(\Phi_{\mathbf E},2)=G/2$; characteristic roots $8$ and $4$, $A_n\in\Z$,
+$D_n^2B_n\in\Z$.  The arithmetic bridge is the statement that the two rows
+converge to the \emph{same} $2$-adic Catalan period:
+
+\begin{lemma}[common $2$-adic period; {\cite[Lem.~1.1]{ProjCatalan58}}]
+\label{lem:G2}
+There is $G_2\in\Q_2$ with
+\[
+v_2\Bigl(G_2-\frac{P_m}{Q_m}\Bigr)=8m-1-4s_2(m),\qquad
+v_2\Bigl(G_2-\frac{2B_n}{A_n}\Bigr)=5n-1-4s_2(n),
+\]
+whence $v_2(P_mA_{2m}-2B_{2m}Q_m)=4m-1$, and for
+$\Delta_{i,k}=P_iA_k-2Q_iB_k$,
+\begin{equation}\label{eq:roof}
+v_2(\Delta_{i,k})\ge\min\bigl\{4i-1-2s_2(i)+2s_2(k),\
+5k-4i-1+2s_2(i)-2s_2(k)\bigr\}.
+\end{equation}
+\end{lemma}
+
+The proof combines the two exact Wronskians with
+$v_2(Q_m)=-4m+2s_2(m)$ and $v_2(A_n)=2s_2(n)$; the identification of the two
+limits with $\zeta_2(2)$ uses Rivoal's moving Pad\'e specialization of Beukers'
+continued fraction on the Zudilin side \cite{Rivoal2006} and the level-$8$ form
+of Calegari's overconvergent $2$-adic construction on the modular side
+\cite{Calegari2005}.  \todo{\cite{ProjCatalan58} labels this step ``Idea of
+proof'', and \cite{ProjConsolidation} records the identification of the two
+$2$-adic limits as the one genuine gap in the $0.9025$ paper.  It should be
+cited as \Proved{} only after the moving-point passage is written out; until
+then Lemma~\ref{lem:G2} is the hypothesis under which
+Theorem~\ref{thm:E} is applied to this pair.}
+
+The two affine slopes in \eqref{eq:roof} balance when $8i=5k$, which is the
+arithmetic origin of the sampling ratio $i=5n$, $k=8n$; and since
+$s_2(8n)=s_2(n)$, \eqref{eq:roof} gives
+$v_2(\Delta_{5n,8n})\ge20n-O(\log n)$.  With $e_{5n}=20n+O(\log n)$ the total
+divisor rate is $G=40\log2$.  Feeding
+$\gamma=5$, $\alpha=8$, $k=2$, $S=2\max(10,8)=20$, $\eta=\kappa_2\gamma\log2
+=20\log2$, $\rho_2^{\rm eng}=4$, $\lambda=\varphi^{-5}$,
+$\Lambda_{\rm dec}=\varphi^5$ into \eqref{eq:master}:
+\[
+F=\tfrac12\bigl[20+20\log2+16\log2-25\log\varphi-40\log2\bigr]
+=10-2\log2-\tfrac{25}2\log\varphi,\qquad
+H=F+50\log\varphi=10-2\log2+\tfrac{75}2\log\varphi,
+\]
+so $\delta=(H-F)/H=50\log\varphi/(10-2\log2+\tfrac{75}2\log\varphi)
+=0.902526602856971\ldots$, reproducing \cite{ProjCatalan58} exactly.  The same
+paper shows that $r=c/a=8/5$ is the unique optimum inside this scalar
+architecture: with $H(a,c)=\max(2a,c)+(2a+c)\log2-\tfrac12\min(8a,5c)\log2
++\tfrac{15}2a\log\varphi$ and $\delta=10a\log\varphi/H$, $H(r)$ is strictly
+decreasing for $0<r<8/5$ and strictly increasing beyond.
+
+At the coarser sampling $3n:6n$ the same formula gives
+$\gamma=3$, $\alpha=6$, $S=12$, $\eta=12\log2$,
+$\alpha\log\rho_2^{\rm eng}=12\log2$,
+$G=\min(5\cdot6,8\cdot3)\log2=24\log2$, hence
+$F=6-\tfrac{15}2\log\varphi$, $H=6+\tfrac{45}2\log\varphi$, and
+\[
+\delta_{ZE}=\frac{30\log\varphi}{6+\tfrac{45}2\log\varphi}
+=0.8579144524736\ldots
+\]
+\todo{The $0.857914$ construction is reconstructed here from the master formula
+and from the cross-divisor statement $2^{24n}$ at $m=3n$; the project's written
+source for it is a research conversation rather than a paper.  Either the
+architecture ($3n{:}6n$ sampling over $S_n=D_{6n}^2$) should be written up, or
+the number should be presented only as a specialization of
+Theorem~\ref{thm:E}, which is how it is presented above.}
+
+Against the Nesterenko $(4,7)$ row instead of $\mathbf E$, with no bridge at
+all ($G=0$, $\sigma=\log S=12$), \eqref{eq:master} gives
+$F=\tfrac{E_Z+E_N-12}2=7.746367$, $H=F+(A_N-E_N)=22.707996$,
+$\delta=0.6588705$, matching the independently derived full-LCM paper value
+$0.6588$ \cite{ProjCatalanLCM}.  The empirical measurement on River's exact
+row CSVs to $n=98$ gives $0.6460$, drifting down; the agreement is ``same
+construction'', not a precision match, the residual being finite-$n$ effects
+($\log S_n/n=11.86$ at $n=98$ against its limit $12$) and the use of a
+best-reduced-basis vector rather than the prescribed anisotropic box
+\cite[\S15]{ProjZeta3}.  Adding the missing second congruence to the same rows
+raises the measured $\delta$ from $0.646$ to $\approx1.01$, converging to $1$
+from above --- but $\log|q_nG-p_n|$ stays between $-13$ and $-23$ for all $n$
+tested and does \emph{not} tend to $-\infty$.  That is worthiness $1$, the
+knife-edge $F=0$; it is not irrationality, and it agrees exactly with the
+formalization.
+
+\subsubsection*{(b) $\zeta(3)$: Domb $\times$ T}
+
+This is the calibration case with a known answer.  In the
+Zagier/Almkvist--Zudilin normalization
+$(n+1)^3u_{n+1}=(2n+1)(an^2+an+b)u_n-cn^3u_{n-1}$, take
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}l c c c c c@{}}
+\toprule
+row & $(a,b,c)$ & $a_n\sim$ & limit & linear form & $\sigma_2=v_2(c)$\\
+\midrule
+$\mathbf D$ (Domb) & $(10,4,64)$ & $16^n$ & $\tfrac7{24}\zeta(3)$ &
+$\sim4^n$ (grows) & $6$\\
+$\mathbf T$ & $(12,4,16)$ & $\Lambda^n$, $\Lambda=12+8\sqrt2$ &
+$\tfrac7{32}\zeta(3)$ & $\sim\lambda_2^n$, $\lambda_2=12-8\sqrt2$ (decays) & $4$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+with $\Lambda\lambda_2=16$, $a^{\mathbf T}_n=\sum_k\binom nk^2\binom{2k}n^2$
+and $a^{\mathbf D}_n=\sum_k\binom nk^2\binom{2k}k\binom{2n-2k}{n-k}$.  Both are
+integral with $d_n^3b_n\in\Z$ and $k=3$ sharp: $d_n^2b_n\notin\Z$, and the
+measured $k_{\rm eff}(n)=\log\operatorname{den}(b_n)/n$ is $2.94$ at $n=400$
+against $\log d_n^3/n=2.98$ \VerifiedR{$n\le400$}.  \emph{There is no free
+denominator saving here.}
+
+The Casoratian $a_nb_{n-1}-a_{n-1}b_n=-c^{\,n-1}/n^3$ gives exactly
+$v_2(b_n/a_n-b_{n-1}/a_{n-1})=(n-1)v_2(c)-3v_2(n)-v_2(a_n)-v_2(a_{n-1})
+=:\iota(n)$ \Proved{}, so $b_n/a_n$ is $2$-adically Cauchy with
+$v_2(\xi_2-b_m/a_m)=\min_{j>m}\iota(j)$.  For $\mathbf T$ everything collapses:
+$v_2(a^{\mathbf T}_n)=3s_2(n)-[n\text{ odd}]$ and
+$\iota_{\mathbf T}(n)=4n-6-6s_2(n-1)$ \VerifiedR{$n\le700$ resp.\ $n\le699$,
+no exceptions}; for $\mathbf D$ only the bound
+$v_2(a^{\mathbf D}_n)-3s_2(n)\in[-5,9]$ for $n\le700$.  Note $\iota$ is not
+monotone here, so the ``first increment'' shortcut is wrong and one must take
+the minimum.
+
+For the cross determinant
+$\Delta_{m,n}=3a^{\mathbf T}_nb^{\mathbf D}_m-4a^{\mathbf D}_mb^{\mathbf T}_n$,
+writing $\varepsilon=3\xi^{\mathbf D}_2-4\xi^{\mathbf T}_2\in\Q_2$, one has
+\emph{conditionally on $\varepsilon=0$} the ultrametric bound
+\[
+v_2(\Delta_{m,n})\ \ge\
+v_2(a^{\mathbf T}_n)+v_2(a^{\mathbf D}_m)
++\min\{\tau_{\mathbf D}(m),\,2+\tau_{\mathbf T}(n)\},
+\]
+\VerifiedR{$1\le m,n\le60$: $0$ violations out of $3600$, with exact equality
+in $3443$ cases, the exceptions being ties}.  The affine slopes $6m$ and $4n$
+balance at $m:n=2:3$, and then
+$v_2(\Delta_{2n,3n})=12n-O(\log n)$ with
+$12n-v_2(\Delta_{2n,3n})\in[-5,17]$ for $n\le110$.  The alignment of the two
+$2$-adic limits, with the predicted rational factor, is recorded as
+$v_2(3a^{\mathbf T}_nb^{\mathbf D}_n-4a^{\mathbf D}_nb^{\mathbf T}_n)=4n+O(1)$
+($=\min(6,4)n$) checked to $n=400$ \cite{ProjTheory03}.
+(The exact values at $n=50,100,\dots,400$ are $4n-3,4n-3,4n-2,4n-3,4n-3,4n-2,4n,4n-3$; the statement used throughout is $v_2(\Delta_{n,n})=4n+O(1)$.)
+
+Feeding $\gamma=3$ ($\mathbf T$, decayer), $\alpha=2$ ($\mathbf D$, engine),
+$k=3$, $S=3\max(2,3)=9$, $\eta=0$, $\rho_2^{\rm eng}=4$, $G=12\log2$ into
+\eqref{eq:master}:
+\[
+F=\tfrac12\bigl[9+4\log2-3\log\Lambda\bigr]=1.1627320584,\qquad
+H=F+3\log\tfrac\Lambda{\lambda_2}=11.7392151026,
+\]
+\begin{equation}\label{eq:zeta3delta}
+\delta=\frac{12\log\Lambda-24\log2}{9+9\log\Lambda-20\log2}
+=0.9009531686558563\ldots\ <1 .
+\end{equation}
+So this is \emph{not} a second proof of Ap\'ery's theorem.  Numerical
+optimization over $r=\alpha/\gamma\in(0.4,100)$ gives a unique maximum at
+$r=2/3$, the same ratio that balances the two $2$-adic tails, exactly as
+$5{:}8$ did for Catalan.  Dropping the hidden divisor entirely
+($T_n=1$) gives $\delta_{\rm arch}=0.6652671861$ at $2{:}3$ and
+$\sup_r\delta_{\rm arch}=0.7278$ (approached as $r\to\infty$, not attained), so
+the $2$-adic mechanism is worth $+0.2356860$ in quality: real and large, and
+not large enough.  Two exact thresholds quantify the shortfall.  With
+everything else fixed, $\delta\ge1$ iff
+$k\le k^*=\log(12+8\sqrt2)-\tfrac43\log2=2.2248452944$, whereas $k=3$ is sharp:
+an arithmetic-method saving would have to remove $26\%$ of the denominator.
+With $k=3$, one needs $\tfrac1n\log T_n\ge9+16\log2-3\log\Lambda=10.6432$
+instead of $12\log2=8.3178$, i.e.\ an extra $2^{3.3549n}$, equivalently a Domb
+$2$-adic slope of $7.68$ instead of $6$.  Nothing in sight supplies either.
+Finally, $F>0$ here means the linear forms \emph{grow}: there is no
+irrationality statement at all, not even a weak one, and no irrationality
+measure.  For reference, even $\delta=1.033$ would give
+$\mu(\zeta(3))\le31.4$, worse than Ap\'ery's $13.42$ and far from Rhin--Viola;
+the only possible value of this architecture would be as a new proof, never as
+a measure.
+
+\subsubsection*{(c) $L(2,\chim3)$: four aligned rows and no decayer}
+
+Here the $p$-adic side is rich and the archimedean side is empty.  At $p=3$
+the rows $\mathbf B,\mathbf C,\mathbf F$ (and $s_{18}$) share the period
+$L(2,\chim3)$ with slopes $3,2,2$, and the cross-determinant valuations grow
+like $\min(\sigma_p,\sigma'_p)n$: $\mathbf B,\mathbf C$ give
+$199,398,600$ at $n=100,200,300$; $\mathbf C,\mathbf F$ give $198,401,601$;
+$\mathbf B,\mathbf F$ give $199,398,600$ --- all $2n$
+\VerifiedR{$n\le300$}.  Rows with different periods do not align even at a
+prime where both have slope ($\mathbf A,\mathbf E$ at $2$: values $4,4$, no
+slope).  But none of the four decays: $\mathbf C$ has $\lambda_2=1$ exactly
+(polynomial-size linear form), $\mathbf F$ has $\lambda_2=8$, $\mathbf B$ has
+complex-conjugate roots and oscillates, and the level-$12$ fully purified row
+of \S\ref{sec:hecke} (coefficients $1,-7,15,-57,159,\dots$) has an order-two,
+degree-nine Picard--Fuchs operator with two cusps on $|t|=1/3$ and \emph{no
+fold}, so it is not the decaying partner either.  Consistently, CDT's
+arithmetic-holonomy proof was the first \cite{CDT2024}.  The negative is
+useful: for $L(2,\chim3)$ the obstruction is the absence of a decayer, not the
+budget.
+
+\subsubsection*{(d) What the census says}
+
+Ranking every row now known by the corrected budget \eqref{eq:kappabudget}:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}l c c l@{}}
+\toprule
+row & $\kappa_2$ & budget & same-period decayer?\\
+\midrule
+Zudilin (Catalan decayer) & $4$ & $+1.1786$ & is the decayer\\
+weight-three cusp row, $L(f,2)$, $f=\eta_2^3\eta_6^3$ & $0$ & $+0.7726$ &
+\textbf{no --- none known}\\
+Ap\'ery $\zeta(3)$ $(17,5,1)$ & $0$ & $+0.5255$ & is its own\\
+$\mathbf D$, Ap\'ery $\zeta(2)$ & $0$ & $+0.4061$ & is its own\\
+$\mathbf C,\mathbf F$ ($L(2,\chim3)$) & $0$ & $+0.1972$ &
+\textbf{no --- no row in the class has $|\lambda_2|<1$}\\
+$\mathbf T$ ($\tfrac7{32}\zeta(3)$) & $0$ & $+0.1490$ &
+yes, Domb is the engine $\Rightarrow\delta=0.9010$\\
+$\mathbf A,\mathbf E$ & $0$ & $+0.0794$ &
+$\mathbf E$: yes, Zudilin's row $\Rightarrow\delta=0.9025$\\
+everything else & --- & $<0$ & ---\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+The pattern over the complete classification is unambiguous, and it is not
+about budget:
+
+\begin{observation}\label{obs:decayer}
+The two-lattice method has produced a non-trivial construction exactly twice,
+and both times the decaying partner came from outside the modular world:
+Zudilin's hypergeometric row for Catalan, and $\mathbf T$ for $\zeta(3)$
+(which decays only because $\lambda_2=12-8\sqrt2<1$ is an accident of its
+quadratic).  Every class where the method dies --- $L(2,\chim3)$ with four
+aligned rows, the weight-three cusp row with the largest budget of all --- dies
+for the same reason: \textbf{no decayer}, not insufficient budget.
+\end{observation}
+
+\subsection{Why cross-world pairs}\label{sec:5.5}
+
+Observation~\ref{obs:decayer} has a structural explanation, and it is
+\eqref{eq:kappaslope}.
+
+\begin{proposition}[cross-world principle]\label{prop:crossworld}
+\Proved{} from Proposition~\ref{prop:C}.  A modular Ap\'ery row of the kind
+classified in \S\ref{sec:sources} has $a_n\in\Z$ automatically (triangular
+peeling against $t\in q\Z[[q]]$), hence $\kappa_p=0$ at every $p$, hence
+$\sigma_p=v_p(c)$ and budget $\le\log\Lambda-k$.  A hypergeometric row
+--- Beukers/Rivoal Pad\'e, Rhin--Viola integrals, Zudilin's and Nesterenko's
+constructions --- acquires $\kappa_p>0$ from its factorial/binomial
+normalization, and is not capped there.  Therefore ``you need a cross-world
+partner'' is precisely ``you need a partner with $\kappa_p>0$, and only the
+hypergeometric world supplies it''.
+\end{proposition}
+
+Three consequences.  First, the search criterion \emph{inverts}: one should not
+look for rows with $p\mid c$, but for rows with large $p$-power
+\emph{denominators}.  Second, the claim that ``no amount of cleverness can
+exceed $\gamma\log\Lambda_{\rm dec}$'', which would have made the $\zeta(3)$
+failure a statement about the $(12,4,16)$ motive, is true only for integral
+rows and is retracted here: the $\zeta(3)$ failure is a fact about the two rows
+we happen to have, both of which are integral --- indeed
+$v_2(a^{\mathbf T}_n)\ge0$ is \emph{positive}, which slightly reduces the
+slope.  Third, this yields sharp targets: a hypergeometric $\zeta(3)$ row with
+$2$-power denominators (Rhin--Viola's $\zeta(3)$ integrals being the obvious
+place) paired with Domb as engine; and, for the weight-three cusp row of
+\S\ref{sec:thmB} with its engine parameters
+$k=2$, $\sigma_2=2$, $\log\rho_2^{\rm eng}=\log4$ (the recurrence
+$(n+1)^2a_{n+1}=(20n^2+10n+2)a_n-16(2n-1)^2a_{n-1}$ is not in Zagier
+normalisation: its trailing coefficient $64(n-\tfrac12)^2$ gives Casoratian
+$\propto4^n\binom{2n}{n}^2$, hence slope $2$ rather than $v_2(64)=6$; see
+Remark~\ref{rem:nonzagier}), a decaying partner with
+period $L(f,2)$, $f=\eta(2\tau)^3\eta(6\tau)^3$, and
+\[
+\Lambda_{\rm dec}>14.8,\ 29.6,\ 160
+\qquad\text{according as}\qquad
+\sigma_{\rm dec}=1,\ 2,\ 3 ,
+\]
+by \eqref{eq:designrule}.  The exhaustive eta-quotient census offers evidence
+against finding it inside the modular world: over all fourteen genus-zero
+levels and $520\,005$ pairs, the largest characteristic root attached to a
+known-period Ap\'ery-like row is Ap\'ery's own $\Lambda=12+8\sqrt2+\dots=33.97$,
+and raising the level does not raise $\log\Lambda$ --- levels $10,13,18$
+contribute nothing, and levels $12,16$ only reproduce rows already present at
+$4,6,8,9$ \cite{ProjSporadicSearch}.  Lowering $\log\rho_2^{\rm eng}$, by
+contrast, is the cheapest lever in \eqref{eq:master} and has never been
+optimized: every construction so far took whatever engine happened to be
+aligned, rather than the one with the slowest-growing linear form.

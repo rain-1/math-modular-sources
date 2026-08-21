@@ -1,0 +1,91 @@
+% !TeX program = pdflatex
+% Modular Apery systems: sources, slopes, and the two-row design rule.
+% Structure follows paper/OUTLINE.md.  One file per section in sections/.
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{verification}[theorem]{Computer-assisted finite verification}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}[theorem]{Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+% Named theorems of the paper (Theorem A, B, E; Proposition C; Conjecture D).
+\newtheorem{namedthm}{Theorem}
+\renewcommand{\thenamedthm}{\Alph{namedthm}}
+\newtheorem{namedprop}[namedthm]{Proposition}
+\newtheorem{namedconj}[namedthm]{Conjecture}
+
+% Unnumbered variants (used by the \S6 draft).
+\theoremstyle{plain}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{proposition*}{Proposition}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\thq}{\theta_q}
+\newcommand{\tht}{\theta_t}
+\newcommand{\chim}[1]{\chi_{-#1}}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\wt}{wt}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Sym}{Sym}
+
+% Evidence-class markers.  These are load-bearing: they are never silently upgraded.
+\newcommand{\Thm}{\textup{\textsf{[PROVED]}}}
+\newcommand{\Proved}{\textup{\textsf{[PROVED]}}}
+\newcommand{\VerifiedR}[1]{\textup{\textsf{[VERIFIED: #1]}}}
+\newcommand{\ExcludedR}[1]{\textup{\textsf{[EXCLUDED: #1]}}}
+\newcommand{\Open}{\textup{\textsf{[OPEN]}}}
+\newcommand{\Lit}{\textup{\textsf{[LIT]}}}
+
+% Editorial marker for unresolved or contradictory source material.
+% Nothing marked \todo is to be resolved silently in revision.
+\newcommand{\todo}[1]{\textbf{[\textsf{TODO}: #1]}}
+
+\begin{document}
+
+\title{Modular Ap\'ery systems: sources, slopes,\\ and the two-row design rule}
+\author{}
+\date{\today}
+
+\maketitle
+
+\input{sections/01_introduction}
+\input{sections/02_sources}
+\input{sections/03_archimedean}
+\input{sections/04_padic}
+\input{sections/05_two_row}
+\input{sections/06_threshold}
+\input{sections/07_problems}
+\input{sections/appendix_scripts}
+
+\bibliographystyle{amsplain}
+\bibliography{refs}
+
+\end{document}

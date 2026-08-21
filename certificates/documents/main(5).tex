@@ -1,0 +1,692 @@
+% !TeX program = pdflatex
+%
+% "The companion problem, from harmonic sums to modular anchors" --
+% capstone survey of the 2026-08-03/05 campaign of River's odd-zeta
+% programme. Narrative register; every claim labelled and pointed at its
+% technical home. The no-silent-upgrade policy applies to this survey
+% doubly: nothing here is asserted at a higher evidence grade than in its
+% source paper or memo.
+%
+% Technical homes: papers_out/modular_anchors (theory; post-referee),
+% papers_out/variational_anchor (jet calculus), papers_out/expository_apery
+% (pedagogical walkthrough), papers_out/half_apery (the half-Apery numbers);
+% memos and scripts as catalogued in the appendix.
+%
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{problem}[theorem]{Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{lesson}[theorem]{Lesson}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\bin}[2]{\binom{#1}{#2}}
+\newcommand{\HH}[2]{H^{(#1)}_{#2}}
+\newcommand{\Lbz}{L_{\mathrm{BZ}}}
+\newcommand{\thq}{\theta_q}
+\newcommand{\tht}{\theta_t}
+\newcommand{\ut}{\tilde u}
+
+% evidence-class markers
+\newcommand{\Thm}{\textup{\textsf{[THM]}}}
+\newcommand{\Proved}{\textup{\textsf{[PROVED]}}}
+\newcommand{\Verified}{\textup{\textsf{[VERIFIED]}}}
+\newcommand{\VerifiedR}[1]{\textup{\textsf{[VERIFIED: #1]}}}
+\newcommand{\Excluded}{\textup{\textsf{[EXCLUDED]}}}
+\newcommand{\ExcludedR}[1]{\textup{\textsf{[EXCLUDED: #1]}}}
+\newcommand{\Open}{\textup{\textsf{[OPEN]}}}
+\newcommand{\Refuted}{\textup{\textsf{[REFUTED]}}}
+
+% paper pointers
+\newcommand{\MA}{\texttt{[MA]}}
+\newcommand{\VA}{\texttt{[VA]}}
+\newcommand{\EA}{\texttt{[EA]}}
+\newcommand{\HA}{\texttt{[HA]}}
+
+\begin{document}
+
+\title[The companion problem: a programme report]
+      {The companion problem, from harmonic sums to modular anchors:\\
+       a programme report}
+
+\author{}
+\date{\today}
+
+\begin{abstract}
+This is the narrative report of a three-day campaign (2026-08-03--05) of
+the odd-zeta programme on the \emph{companion problem}: closed formulas for
+the second solutions of Ap\'ery-like recurrences --- the fifteen sporadic
+pairs, and the rows of the Brown--Zudilin cellular family for $\zeta(5)$.
+The campaign began as a siege of one identity (the programme's
+``bridge''), produced a wall of sharply structured negatives, extracted
+from those negatives first a proof-shaped obstruction (curve-blindness),
+then an instrument (the nome/anchor calculus), and ended with a proved
+theory: an abstract companion inversion theorem; a proof that all fifteen
+sporadic operators are exactly rectified by their nomes --- for the six
+third-order families via explicit symmetric-square identities with a
+uniform closed form for the square root --- and hence a uniform,
+all-$n$ Eichler-integral companion formula for every family, including the
+seven for which the complete tame harmonic ansatz is (precisely,
+finitely) excluded. Along the way: proved modular identifications, a new
+uniform weight-one congruence law that survives sixteen held-out primes
+per family, a proved annihilation law for a ``formula-less'' family's
+summand, a census finding no sixteenth sporadic pair in a defined search
+universe, mirror-type signatures of the $\zeta(5)$ operator, one refuted
+conjecture (reported with pride), and one small delightful object (the
+half-Ap\'ery numbers) whose integrality is honestly trivial and whose
+Lucas law sees the class field of $\Q(\sqrt{-6})$. We narrate the
+campaign in the order it happened, because the logic of discovery ---
+negatives with structure pointing at the missing instrument --- is the
+transferable lesson. Every claim carries its evidence label and a pointer
+to its technical home; this survey asserts nothing above its source's
+grade.
+\end{abstract}
+
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+%======================================================================
+\section{The problem, and the discipline}\label{sec:problem}
+
+\subsection{Companions}
+An \emph{Ap\'ery-like pair} is a three-term recurrence with two
+distinguished solutions: an integral one $A(n)$, given by a binomial sum,
+and a \emph{companion} $B(n)$ (normalised $B(0)=0$, $B(1)=1$), whose
+arithmetic --- denominators, congruences, limits --- carries the
+irrationality-theoretic content. Ap\'ery's $\zeta(3)$ proof is the
+archetype: $a_n=\sum_k\bin nk^2\bin{n+k}k^2$, and the companion with
+$b_n/a_n\to\zeta(3)$, whose \emph{closed formula} (a binomial sum against
+a harmonic weight) is what makes the denominator bound $d_n^3b_n\in\Z$
+provable. The fifteen sporadic pairs --- Zagier's six, the six
+Almkvist--Zudilin cases, Cooper's three --- generalise the archetype; for
+eight of them harmonic companion formulas were known, and for seven
+(``the conjectural seven'': $\mathbf B,\mathbf C,\mathbf F,\delta,\zeta,
+\eta,s_{18}$) none was known, with mounting evidence of absence.
+
+One floor up sits the Brown--Zudilin cellular family for $\zeta(5)$: a
+certified third-order recurrence $\Lbz$ with rows $(Q_n,\hat P_n,P_n)$
+and
+$I_n=Q_n(2\zeta(5)+4\zeta(3)\zeta(2))-4\hat P_n\zeta(2)-2P_n$. The middle
+row has a proved companion formula; the top row's compact formula
+\begin{equation}\label{eq:bridge}
+P_n\overset{?}{=}\sum_{k,l=0}^nT(n,k,l)\,\omega_5(n,k,l),
+\qquad
+T=\bin{n+k}{n}\bin nk^2\bin{n+l}{n}\bin nl^2\bin{n+k+l}{n},
+\tag{BRIDGE}
+\end{equation}
+is verified far beyond reasonable doubt and \Open; it is the single
+identity on which the programme's sharp low-prime denominator theorem for
+$P_n$ (the factor $2^2\cdot3$) currently rests. Sharper proved
+denominators are the only known lever on the worthiness exponent of the
+$\zeta(5)$ approximations --- which is why one identity gets a siege.
+
+\subsection{The discipline}
+The programme's evidence classes --- \Thm/\Proved, \VerifiedR{range},
+\ExcludedR{scope}, \Open, and (used once below, with satisfaction)
+\Refuted\ --- are load-bearing and never silently upgraded. Two standing
+rules were adopted mid-campaign at a referee's insistence and are now
+programme law: finite coefficient agreement is never called an identity,
+and finite integrality is never called modularity. This survey cites four
+technical papers --- \MA\ (\texttt{modular\_anchors}, the theory,
+post-referee), \VA\ (\texttt{variational\_anchor}, the jet calculus),
+\EA\ (\texttt{expository\_apery}), \HA\ (\texttt{half\_apery}) --- and
+the memos and scripts catalogued in Appendix~\ref{sec:provenance}.
+
+%======================================================================
+\section{Act I: the sieges, and what their failure taught}
+\label{sec:sieges}
+
+The campaign opened as an assault on \eqref{eq:bridge} through its
+$\varepsilon$-deformation reduction: the bridge follows (in part) from a
+single cellwise identity $\sum T\Delta_5=0$, whose symmetrised form had
+long been known to lie in the per-row kernel of the cell --- and to sit
+\emph{exactly one dimension} outside the span of every proved family of
+residue-calculus generators.
+
+Six generator classes were built or completed, each calibrated (every
+generator individually certified as an identity) at two unrelated 22-bit
+primes:
+\begin{enumerate}[leftmargin=2em,itemsep=1pt]
+\item fixed-pole jets, evaluation and derivative towers, and the
+anti-diagonal Laurent family (the programme's prior alphabet, re-based);
+\item elementary-symmetric pole cancellations on the simple-zero endpoint
+ranges and the full numerator multiset (rank $424\to426$);
+\item $z$-weighted jets --- valid identities living outside the pure
+harmonic ring, requiring an extended ring with polynomial letters
+($2030$ generators; rank $1497$);
+\item $z^2$-weighted jets and $z$-weighted towers ($2429$ generators;
+rank $2714$);
+\item nested harmonic-weighted jets, lattice and endpoint, with nested
+letters ($258$ generators);
+\item and, on the telescoping side, capped order-zero certificates for
+the residual (excluded at depths $1$--$3$, three denominator families,
+zero nullity at depth 3).
+\end{enumerate}
+The target remained exactly one dimension outside every span
+\ExcludedR{two primes, identical ranks; scripts
+\texttt{eps26}--\texttt{eps32}, \texttt{t\_deep\_r}}. Meanwhile the membership fact itself was
+stress-tested and held: the per-row kernel rank saturates at exactly
+$1673$ out to $n\le75$ \VerifiedR{\texttt{eps33}} --- a per-row
+decomposition exists; the constructive alphabet simply cannot reach it.
+
+Two consolidations made the impasse precise. The missing dimension was
+extracted as one explicit $231$-monomial identity with exact rational
+coefficients (two-prime CRT, matching pivot patterns;
+\texttt{eps31}) --- the narrowest formulation of the gap to date. And
+capped order-zero telescoping certificates for that residual were
+excluded at inflation depths $1$--$3$, three denominator families, with
+zero nullity at depth 3 (\texttt{t\_deep\_r}).
+
+\begin{lesson}\label{les:local}
+Six independent local mechanisms missing by exactly one dimension is not
+bad luck; it is a signature. All the generators were \emph{local}
+functionals of one kernel. The missing direction is a global invariant no
+local instrument detects. The productive move was not a seventh local
+family but the question: \emph{what class of instruments are we actually
+using, and what is its reach?}
+\end{lesson}
+
+%======================================================================
+\section{Act II: curve-blindness, and the tool that fell out}
+\label{sec:blind}
+
+The reach question has a clean answer for the analytic instruments. A
+\emph{curve atom} is a deformation of the cell along a polynomial curve
+$T(n+\alpha(\varepsilon),k+\beta(\varepsilon),l+\gamma(\varepsilon))$ ---
+the meromorphically honest deformations, each a Brown--Zudilin parametric
+integrand at shifted parameters.
+
+\begin{lemma}[coupling; three lines, degree-independent]\label{lem:coupling}
+\Proved\ (\VA)\quad
+A harmonic monomial of weight $w$ at $\varepsilon$-order $r$ needs
+letter-factors with $m_i\ge j_i$, $\sum m_i=r$, $\sum j_i=w$; at top grade
+$w=r$ this forces $m_i=j_i$ and $[\varepsilon^j]s_L^j=d_{1,L}^j$. So the
+top-graded content of $[\varepsilon^r]$ of \emph{any} polynomial curve,
+of any degree, depends only on its first-order direction, through pure
+$r$-th powers. Higher curve coefficients feed only lower weights; and for
+mixtures, the fifth-symmetric moment slot cannot be steered independently
+of the lower moments (polarization is blocked --- both move at the same
+order).
+\end{lemma}
+
+\begin{lemma}[Veronese saturation]\label{lem:sat}
+\Proved\ (exact ranks $6,10,15,21$; \MA)\quad
+The direction box $\{-2..2\}^3$ has full-rank Veronese images at degrees
+$2$--$5$; the finite computations therefore certify the top grade for
+\emph{every} integer direction, hence every polynomial curve.
+\end{lemma}
+
+\begin{theorem}[curve-blindness]\label{thm:blind}
+(\MA, \VA)\quad The top-graded $\varepsilon^5$ content of any pinned
+combination of polynomial-curve atoms has vanishing $P_n$-component ---
+unconditionally, by Lemmas \ref{lem:coupling}--\ref{lem:sat}; and on the
+stated boxes the entire $\varepsilon^5$ row is confined to
+$\Q Q\oplus\Q\hat P$ \ExcludedR{two primes; \texttt{eps41/42}}. The
+$\varepsilon^3$ row meanwhile realises $\hat P$ freely: analytic curve
+deformations see the $\zeta(3)$ level and are structurally blind to the
+$\zeta(5)$ level --- matching the family's weight spike $\{0,3,5\}$.
+\end{theorem}
+
+The same fact appears on the formal side: the one known
+$P$-emitting deformation (``family 1'') has letter data that is not
+curve-consistent, and admits no $\Gamma$-product realisation at any
+reasonable shift scale (minimal: $\varepsilon/120$ with multiplicities
+$\sim10^{11}$) \VerifiedR{\texttt{eps40}}. Blindness and
+non-realizability are one fact seen from two sides: \emph{the top graded
+piece requires jet data decoupled from lower jets}.
+
+\subsection{The tool}
+Decoupled jets exist analytically: mixed parameter-derivatives of the
+cellular integral. What they need is an evaluation anchor, and its first
+rung was tested and passed:
+\[
+\Lbz(\dot Q)(n)=-\sum_{i=0}^3c_i'(n)\,Q(n+i),
+\qquad
+\dot Q=\textstyle\sum_{k,l}T\cdot\Lambda_1^{(n)},
+\]
+exactly \VerifiedR{exact $\Q$, $n\le18$; \texttt{eps46}}, with a purely
+discrete proof route (differentiate the rational certificate; the $k$-
+and $l$-variations vanish identically --- they are gauge). The tower has
+an honest rung-two obstruction at the sum level (continuation cells
+revive under second derivatives; seven of nine letter directions are
+safe, $n{-}k,n{-}l$ are not, and the $B_5$ weight as tabulated needs
+order-4 unsafe jets), with two identified escapes: a null representative
+of $B_5$ with safe orders, or the integral-level tower licensed by
+Brown--Zudilin's own transfer principle, for which the explicit
+continuous-parameter contiguity matrices in the appendix of Brown's
+Mellin-transform paper are the template (\VA; memos
+\texttt{VARIATIONAL\_TOWER.md}, \texttt{BROWN26\_MINING.md}).
+
+\begin{lesson}
+The proof of an obstruction can name the missing instrument. Here it
+named two: polarized (decoupled-jet) objects for the $\zeta(5)$ row, and
+--- via the question ``what \emph{does} the jet mechanism see?'' --- the
+discovery instrument of the next act.
+\end{lesson}
+
+%======================================================================
+\section{Act III: the discovery instrument, its negatives, and a
+refutation}\label{sec:instrument}
+
+Run in reverse (scan $\to$ rational reconstruction $\to$ exact held-out
+validation, always with a positive control), the jet calculus is a
+companion-discovery instrument.
+
+\emph{Controls.} On Franel and $\mathbf D$ --- known companions --- the
+pinned scan rediscovers reachability from linear atoms, minimal support,
+and the reconstructed weights verify exactly over $\Q$ on held-out ranges;
+they differ from the published formulas by proved-null weights, i.e.\ new
+equivalent representations \VerifiedR{exact $\Q$, $n\le25$;
+\texttt{eps43}}. (The control also caught a genuine int64 overflow ---
+the standing argument for controls.)
+
+\emph{Negatives with structure.} The three families for which the
+sporadic status paper had proved no fit exists ($\mathbf B,\delta,\zeta$)
+are jet-unreachable \ExcludedR{two primes, linear+quadratic curves,
+$\varepsilon^2$ and $\varepsilon^3$, every $\zeta$-grade}. The paper's
+three never-run full-degree fits were then run --- families $\zeta$,
+$\eta$ at full degree, $\mathbf F$ at its seven tame arguments, pure and
+character-twisted --- and all six are inconsistent, with excess
+$90$--$173$ \ExcludedR{\texttt{eps44}; precise ansatz definition and the
+modular-to-rational transfer lemma in \MA}. The complete tame
+degree-$\le3$ ansatz is thereby exhausted for all seven conjectural
+families. Two diagnostic corrections emerged: $\zeta$ \emph{does} have
+summand--letter $\Q$-relations at full degree (a 15-dimensional kernel;
+the old ``rank $=$ columns'' claim fails for $\zeta$), while $\eta$ is
+maximally rigid even at $2530$ columns.
+
+\emph{The kernel pays.} Extracting $\zeta$'s kernel produced two per-cell
+annihilation laws; the first is now a theorem:
+\begin{equation}\label{eq:ann}
+\sum_lS_\zeta(n,k,l)\bigl(\HH1k-2\HH1l+\HH1{n-l}\bigr)=0
+\quad(0\le k\le n)
+\qquad\Proved
+\end{equation}
+by an order-2 Zeilberger certificate with symbolically verified
+certificate identities, endpoint vanishing, and unconditional induction
+(\texttt{eps45}; stated as a Proposition in \MA) --- the first proved
+structural fact about any conjectural-seven family's letters. The second
+law remains \VerifiedR{$n\le25$} with a documented obstruction record
+\Open. Moral: every fit for $\zeta$ had been conducted in a provably
+degenerate alphabet.
+
+\emph{A refutation, reported with pride.} The first form of the
+reachability dichotomy --- jet-reachable $\iff$ principal character with
+real limit --- made a prediction; its designed discriminating experiment
+(the Domb family $\alpha$, and $\varepsilon$: principal character, real
+limits, \emph{and} known harmonic companions) returned unreachable at
+both primes \Refuted\ (\texttt{eps54}). The surviving invariant is the
+\emph{level of the uniformization}: squarefree ($5,6$) reachable;
+non-squarefree ($8,9,12,12,36$) not --- seven data points, no exceptions
+--- and jet-reachability is strictly finer than formula existence: the
+jets detect the arithmetic of the uniformization, not the letters of the
+formula. The refuted conjecture is kept on the record in both papers.
+
+\begin{lesson}
+The campaign's conjectures are required to make predictions, and its
+experiments are designed to kill them. One died. Its successor is better.
+This is the methodology working, not failing.
+\end{lesson}
+
+%======================================================================
+\section{Act IV: modular anchors --- the centerpiece}\label{sec:modular}
+
+The refuted conjecture's successor pointed at uniformizations, so the
+campaign built the instrument that computes them: from a recurrence, the
+Frobenius basis $y_0$, $y_1=y_0\log t+g$, the nome
+$q=t\exp(g/y_0)$, the mirror map $t(q)$, and $F(q)=y_0(t(q))$ --- with
+the Ap\'ery pair as validation (the instrument reproduces Beukers'
+classical $\Gamma_0(6)$ eta parametrization exactly; \EA\ walks a reader
+through this case with tables and code).
+
+\subsection{Identifications}
+All fifteen nome expansions are integral at scale one, and twelve of
+fifteen $(t,F)$ pairs match explicit (generalized-)eta objects to
+$q^{25}$ \VerifiedR{\texttt{eps51}; dictionary memo}. Statuses,
+per the standing rules:
+\begin{itemize}[leftmargin=2em]
+\item $\zeta$: \Proved. $F_\zeta=\eta_3^{10}/(\eta_1\eta_9)^3
+=\tfrac18(9E_2(q^9)-E_2(q))$ is an identity in $M_2(\Gamma_0(9))$
+(Ligozat conditions; Sturm bound $2$; agreement to $q^{40}$) (\MA).
+\item $\mathbf B$: $F_{\mathbf B}=b(-q)$, the Borwein cubic theta
+$\eta(q)^3/\eta(q^3)$ at $-q$ \VerifiedR{all 27 computed coefficients},
+with a level-36 half-integral shift anomaly and an equivalent untwisted
+level-9 representative found by the census.
+\item $\delta$: level 12 eta quotients for both $t$ and $F$ ---
+apparently the first modular data ever attached to $\delta$ --- with the
+identification proved \emph{modulo one hypothesis} (the degree-one
+property of $t_\delta$ on the correct Atkin--Lehner extension); the
+eta-side annihilator is exactly one-dimensional and equals $\delta$'s
+operator coefficientwise (\texttt{DELTA\_MODULAR\_THEOREM.md}).
+\item $\eta$: $[\eta(q)^5/\eta(q^5)](-q)$, level 20
+\VerifiedR{all 27 coefficients}. Cooper's three: integral, not eta-type
+in this coordinate \Open.
+\end{itemize}
+
+\subsection{The theory: inversion, rectification, and the all-$n$
+companion formula}
+The centerpiece is now proved end to end (\MA):
+
+\begin{theorem}[companion inversion]\label{thm:inv}
+\Thm\quad If an order-$r$ operator is exactly rectified by its nome,
+$L=C(t)\,F\,\thq^rF^{-1}$, then the normalized companion (the unique
+log-free solution of $L(y_B)=t$ vanishing at $0$ --- the \emph{boundary
+defect} equation, itself a two-line lemma) is
+\[
+y_B=F\,\thq^{-r}\Bigl(\frac t{C\,F}\Bigr).
+\]
+\end{theorem}
+
+\begin{theorem}[rectification for the fifteen; the six symmetric
+squares]\label{thm:sym2}
+\Proved\quad Order-2 operators are rectified by Frobenius theory (nine
+families, Cooper's $d\neq0$ rows included). Each of the six third-order
+sporadic operators equals $t^3P_3(t)$ times the symmetric square of
+\[
+\widetilde D=\theta^2-t\Bigl(2a\theta^2+a\theta+\tfrac b2\Bigr)
++c\,t^2\Bigl(\theta+\tfrac12\Bigr)^2,
+\]
+uniformly in Zagier's parameters $(a,b,c)$ --- exact residual-zero
+identities in $\Q(t)$, family by family (\texttt{eps57}). (Rectification
+at $r\ge3$ is strictly stronger than maximal unipotent monodromy; the
+referee's insistence on this distinction, and the resulting repair, are
+part of the record.)
+\end{theorem}
+
+\begin{theorem}[uniform companion formula, all $n$]\label{thm:comp}
+\Thm\quad For every one of the fifteen sporadic pairs,
+\[
+B(n)=[t^n]\;F\cdot\thq^{-r}\Bigl(\frac{t\,\sigma^r}{P_r\,F}\Bigr)
+\qquad\text{for all }n\ge0 .
+\]
+\end{theorem}
+
+For the conjectural seven, whose tame harmonic ansatz is exhausted
+(\S\ref{sec:instrument}), this is a companion formula in
+provably-necessary new letters --- the first of any kind. Displayed for
+the family that started it:
+\[
+\boxed{\;B_\zeta(n)=[t^n]\,F_\zeta\cdot\thq^{-3}
+\Bigl(\frac{t\,\sigma^3}{P_3\,F_\zeta}\Bigr),\qquad
+F_\zeta=\tfrac18\bigl(9E_2(q^9)-E_2(q)\bigr).\;}
+\]
+The companion problem was never about cleverer harmonic weights; it was
+about whether the family's uniformization can be rationally eliminated.
+Where it can, the Frobenius layer collapses to harmonic sums (the
+classical formulas, which the construction reproduces); where it cannot,
+the companion is an Eichler integral of the parametrizing form.
+
+\subsection{The census}
+Run in reverse over a precisely defined universe ($\sim5\times10^4$
+hauptmodul/form pairs, fifteen genus-zero levels, stated banks, caps and
+equivalence relation), the construction manufactures Ap\'ery-like pairs
+--- and finds none new: the pipeline regenerates all ten identified
+families from their $(t,F)$ data alone ($10/10$ exact), and every
+integral three-term hit is a known sporadic or a classical degenerate
+(Zagier's criterion $a^2-4c=0$ on the nose). \emph{No sixteenth pair in
+this universe} \VerifiedR{census; \MA}. Four uncovered directions
+(generalized-eta/$\Gamma_1$, Fricke hauptmoduls, order-4, levels $>25$)
+are stated and reusable.
+
+\subsection{The state of the fifteen, in one table}
+Statuses per the standing rules ($\dagger$ = identification at
+discovery grade, coefficientwise to the stated order; theorem-grade rows
+say so).
+
+\begin{center}\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+family & $r$ & uniformization & companion formula & jet-reach & congruence \\
+\midrule
+$\mathbf A$ (Franel) & 2 & level 6$^\dagger$ & harmonic (known) $+$ Thm~\ref{thm:comp} & yes & wt-1 law \\
+$\mathbf B$ & 2 & $b(-q)$, lvl 36/9$^\dagger$ & \textbf{Thm~\ref{thm:comp}, first} & no & wt-1 law \\
+$\mathbf C$ & 2 & identified$^\dagger$ & \textbf{Thm~\ref{thm:comp}, first} & --- & wt-1 law \\
+$\mathbf D$ & 2 & $\Gamma_1(5)$-type$^\dagger$ & harmonic (verified) $+$ Thm & yes & mod-5 rule \\
+$\mathbf E$ & 2 & identified$^\dagger$, $\chi_{-4}$ & harmonic-twisted (known) $+$ Thm & --- & wt-1 law \\
+$\mathbf F$ & 2 & identified$^\dagger$ & \textbf{Thm~\ref{thm:comp}, first} & --- & wt-1 law \\
+$\alpha$ (Domb) & 3 & lvl 12$^\dagger$; Sym$^2$ \Proved & harmonic (verified) $+$ Thm & \textbf{no} & $A(p)\equiv b_p$ \\
+$\gamma$ (Ap\'ery) & 3 & $\Gamma_0(6)$; Sym$^2$ \Proved & harmonic \Proved\ $+$ Thm & --- & $A(p)\equiv b_p$ \\
+$\delta$ & 3 & lvl 12, mod one hyp.; Sym$^2$ \Proved & \textbf{Thm~\ref{thm:comp}, first} & no & $A(p)\equiv b_p$ \\
+$\varepsilon$ & 3 & lvl 8$^\dagger$; Sym$^2$ \Proved & harmonic (verified) $+$ Thm & \textbf{no} & $A(p)\equiv b_p$ \\
+$\zeta$ & 3 & \textbf{$\Gamma_0(9)$ \Proved}; Sym$^2$ \Proved & \textbf{Thm~\ref{thm:comp}, first} & no & $A(p)\equiv b_p$; $e{=}1$ \\
+$\eta$ & 3 & lvl 20$^\dagger$, Sym$^2$ \Proved & \textbf{Thm~\ref{thm:comp}, first} & --- & $A(p)\equiv b_p$ \\
+$s_7,s_{10},s_{18}$ & 2 & integral, unidentified & $s_{10}$ known; $s_7$ known; $s_{18}$ \textbf{first} & --- & $A(p)\equiv b_p$ ($s$'s) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+(``jet-reach'': the discriminating-scan verdicts of
+\S\ref{sec:instrument}; dashes were not run. Boldface marks the
+campaign's additions.)
+
+%======================================================================
+\section{Arithmetic shadows}\label{sec:arith}
+
+\emph{Weight dichotomy.} All nine modular-weight-2 families satisfy the
+classical $A(p)\equiv b_p\pmod p$ at every tested prime $p\le23$
+\VerifiedR{\texttt{eps51}}, including the unidentified Cooper three.
+
+\emph{A new weight-one law.} The six weight-one families fail the
+classical congruence with an exactly structured defect:
+\[
+A(p)\;\equiv\;b_p-b\cdot\chi_N(p)\pmod p ,
+\]
+$b$ the recurrence's constant parameter and $\chi_N$ the quadratic
+character of the \emph{level} (not the family: Franel has trivial family
+character and a $\chi_{-3}$ level defect); $\mathbf D$ follows its own
+mod-5 rule. Fitted on $p\le23$, the law \emph{passes all sixteen held-out
+primes $29\le p\le97$ for every family}
+\VerifiedR{\texttt{eps57\_heldout}} --- the referee's bar for ``credible
+arithmetic evidence,'' met. The mechanism (Atkin--Swinnerton-Dyer
+structure of the identified forms; for $\zeta$ the twist exponent equals
+the nebentypus value at the discriminating primes) is stated as a
+conjecture with $\zeta$ --- where the form is a theorem --- as the first
+target (\MA).
+
+\emph{The half-Ap\'ery numbers} (\HA). The symmetric-square theorem gives
+Ap\'ery's numbers a square root, $u=\sqrt{y_0}$, and
+$\ut_n:=4^n[t^n]u$ is an integer sequence:
+$1,10,534,40900,3672550,\dots$ Its integrality, though, is
+\emph{universal} --- $\sqrt{f(4t)}\in\Z[[t]]$ for any integral $f$ (a
+two-line Catalan-number lemma) --- and the programme's earlier reading of
+root-integrality as an arithmetic signal (including for the $\zeta(5)$
+row) was corrected accordingly, in print. The genuine treasures sit one
+layer deeper: $v_2(\ut_n)=s_2(n)$, the binary digit sum
+\VerifiedR{$n\le200$}; and the \emph{split-prime Lucas law}
+\[
+\ut_{ap+r}\equiv\ut_a\ut_r\ (\mathrm{mod}\ p)
+\iff
+\bigl(\tfrac{-6}p\bigr)=1\ \text{or}\ p\in\{2,3\}
+\]
+--- a conjecture verified at fourteen primes with perfect correlation,
+predicted from four and confirmed at ten --- with discriminant $-24$
+exactly the quadratic datum of the weight-one eta identity
+$u(t(q))=(\eta_2\eta_3)^{7/2}/(\eta_1\eta_6)^{5/2}$. The $\zeta(5)$ root
+sequences share the 2-adic law and have \emph{no} Lucas law: the
+split-prime congruence is a fingerprint of the weight-one world, not of
+root-taking. A small object, found by accident, deflated honestly, and
+still carrying a class field.
+
+%======================================================================
+\section{The $\zeta(5)$ frontier}\label{sec:frontier}
+
+What the campaign established about the Brown--Zudilin family itself, and
+what remains:
+
+\emph{Local signatures} \Proved: the order-9 generating operator has
+$t=0$ exponents $0^{(5)},\tfrac12$, and an irrational cubic --- a
+five-dimensional unipotent block, the local signature matching weight 5.
+
+\emph{Arithmetic signatures} \VerifiedR{$q^{26}$/$q^{32}$}: the block's
+mirror map and Yukawa-type datum are integral at scale one
+($t(q)=q-94q^2-\cdots$; $K(q)=87q+33895q^2+\cdots$, with $K_1=87=4P_1$).
+Root-integrality is \emph{withdrawn} as evidence (universal; \HA). The
+$q$-normal form $\thq^5+K_3\thq^3+\cdots$ is displayed in \MA;
+$K\not\equiv0$ is precisely the obstruction to bare inversion at $r=5$,
+and $K$'s gauge-invariance is honestly \Open.
+
+\emph{Sharp negatives} \Excluded: no order-5 right factor of $t$-degree
+$\le20$ splits the block globally; the naive Dwork congruence fails (three
+Frobenius slopes; the slope-refined form is the open target); the naive
+elliptic-style row avatars have growing denominators --- calibrated
+against the same pipeline recovering Beukers' weight-4 Eisenstein
+combination exactly for Ap\'ery.
+
+\emph{The two roads to the bridge.} (i) The mirror road:
+Conjecture (\MA) --- in the block's normal-form coordinates the rows
+$\hat P_n,P_n$ are Eichler-type objects in $F,K,\hat g_3,\dots$, and
+\eqref{eq:bridge} is the $t$-shadow of a $q$-side identity; the first
+computation (the \emph{proved} middle row against $\{F,K,\hat g_3\}$,
+with the $K$-corrected variation-of-parameters inversion) is in progress
+at the time of writing, as is a systematic denominator harvest from the
+companion formula (\texttt{eps58}, \texttt{eps59}). (ii) The variational
+road: the tower of \S\ref{sec:blind}, whose remaining one-time cost is
+the parametric certificate, with Brown's contiguity matrices as template.
+
+\emph{Calibration, stated plainly.} None of this touches the worthiness
+exponent. The linear forms decay like $e^{-2.47n}$; the denominators grow
+like $e^{5n}$; Brown--Zudilin's $0.86$ is best known and their analysis
+caps known constructions short of irrationality. The campaign improved
+the \emph{arithmetic} side --- companions, congruences, and the
+denominator machinery those feed --- which is the only known lever on the
+exponent, and a lever with a hard ceiling. The path to the irrationality
+of $\zeta(5)$ remains unopened; anyone reporting otherwise is reporting
+scenery.
+
+%======================================================================
+\section{Consolidated open problems}\label{sec:open}
+
+Deduplicated across all memos, ranked by value over distance; technical
+homes in brackets.
+\begin{enumerate}[leftmargin=2em,label=\textbf{P\arabic*.}]
+\item Complete $\delta$'s parametrization proof (one Atkin--Lehner
+degree-one hypothesis); extend the Ligozat--Sturm route to the remaining
+eleven identifications. [\MA; \texttt{DELTA\_MODULAR\_THEOREM.md}]
+\item Test the mirror form of the bridge on the proved middle row: the
+$K$-corrected inversion of the five-block; then $P_n$. [\MA\ P4;
+\texttt{eps59} in progress]
+\item The denominator harvest: derive and prove the bound the Eichler
+formula implies; compare with the observed sharp denominators of all
+fifteen companions; state the first denominator theorems for the seven.
+[\texttt{eps58} in progress]
+\item Prove the weight-one law from the Eisenstein structure of the
+identified forms; then the ASD mechanism for $\zeta$. [\MA\ P2]
+\item The variational tower's parametric certificate ($M_{0,8}$
+contiguity matrices); or the $B_5$ null representative with safe jet
+orders. [\VA; \texttt{VARIATIONAL\_TOWER.md}]
+\item Certify the second $\zeta$ annihilation law; mine the quotient
+alphabet. [\MA\ P3]
+\item Prove the split-prime Lucas law and the $v_2=s_2$ law for the
+half-Ap\'ery numbers; identify the inert-prime two-term structure; check
+the OEIS. [\HA]
+\item Supply $\hat g_3,\hat g_4$ and $K$'s gauge-invariance; the
+slope-refined Dwork test. [\MA\ P4]
+\item Extend the census in its four uncovered directions; identify
+Cooper's three. [\MA\ P5, P6]
+\item The bridge \eqref{eq:bridge} itself: the $231$-monomial residual by
+a genuinely global mechanism (uncapped telescoping; the two roads of
+\S\ref{sec:frontier}). [\texttt{BRIDGE\_CAMPAIGN} memo]
+\end{enumerate}
+
+%======================================================================
+\appendix
+\section{Provenance: the complete map}\label{sec:provenance}
+
+\subsection*{Papers}
+\begin{center}\small
+\begin{tabular}{@{}llp{5.6cm}@{}}
+\toprule
+tag & path & content \\
+\midrule
+\MA & \texttt{modular\_anchors} & the theory (post-referee): inversion,
+Sym$^2$, all-$n$ companion, identifications, scoped negatives, census,
+conjectural tier \\
+\VA & \texttt{variational\_anchor} & coupling lemma, curve-blindness,
+variational anchor and tower \\
+\EA & \texttt{expository\_apery} & pedagogical walkthrough (Ap\'ery), with
+verification script and Sym$^2$ lemma \\
+\HA & \texttt{half\_apery} & the half-Ap\'ery numbers \\
+\bottomrule
+\end{tabular}
+\end{center}
+(All under \texttt{papers\_out/}.)
+
+\subsection*{Memos} \texttt{work/}: \texttt{BRIDGE\_CAMPAIGN\_2026-08-03.md}
+(the sieges); \texttt{CURVE\_BLINDNESS.md}; \texttt{EPS\_DISCOVERY.md};
+\texttt{VARIATIONAL\_TOWER.md}; \texttt{BROWN26\_MINING.md};
+\texttt{MODULAR\_COACTION\_PROBE.md} (Parts A--D);
+\texttt{SPORADIC\_MODULAR\_DICTIONARY.md}; \texttt{MODULAR\_FACTORY.md};
+\texttt{DELTA\_MODULAR\_THEOREM.md}; \texttt{Z5\_MODULARITY\_PROBE.md}
+(with correction log); \texttt{SOL\_REVIEW\_MODULAR\_ANCHORS.md} (the
+referee report, the point-by-point response, and the standing
+no-silent-upgrade log); \texttt{z5eps/eps45\_zeta\_kernel.md}.
+
+\subsection*{Scripts} \texttt{work/z5eps/}: \texttt{eps26}--\texttt{eps33}
+(sieges, residual, saturation); \texttt{eps40}--\texttt{eps42}
+(realizability; curve scans); \texttt{eps43}--\texttt{eps44} (discovery
+instrument; exhaustion); \texttt{eps45} (the proved annihilation law);
+\texttt{eps46}--\texttt{eps47} (variational anchor and tower);
+\texttt{eps48}--\texttt{eps49} (nome instrument; $\zeta$ companion;
+Borwein/ASD); \texttt{eps50}, \texttt{eps53} (the $\zeta(5)$ mirror
+probes); \texttt{eps51} (dictionary and ASD sweep); \texttt{eps52}
+(Eichler construction, all fifteen); \texttt{eps54} (the discriminating
+experiments); \texttt{eps55} (census; $\delta$ theorem);
+\texttt{eps56} (half-Ap\'ery); \texttt{eps57} (Sym$^2$ identities,
+Sturm, held-out primes, saturation); \texttt{eps58}, \texttt{eps59}
+(denominator harvest and row hunt; in progress). All exact arithmetic is
+\texttt{Fraction}-based; every modular negative is certified at two
+unrelated primes with the transfer lemma of \MA; every positive control
+is stated alongside the negatives it guards.
+
+\subsection*{External review} The papers \EA\ and \MA\ each received a
+hostile referee report from an external assistant (``Sol''); both reports
+were correct in their central criticisms, both were implemented in full
+(one with a disagreement count of zero), and both made the mathematics
+stronger --- the symmetric-square theorem exists because a referee
+refused to accept MUM in its place.
+
+\begin{thebibliography}{9}
+\bibitem{MA} \emph{Modular anchors for Ap\'ery-like companions},
+\texttt{papers\_out/modular\_anchors}, this programme, 2026.
+\bibitem{VA} \emph{Variational anchors for Ap\'ery-like families},
+\texttt{papers\_out/variational\_anchor}, this programme, 2026.
+\bibitem{EA} \emph{The companion by the nome},
+\texttt{papers\_out/expository\_apery}, this programme, 2026.
+\bibitem{HA} \emph{The half-Ap\'ery numbers},
+\texttt{papers\_out/half\_apery}, this programme, 2026.
+\bibitem{Sporadics} \emph{The fifteen sporadic Ap\'ery-like pairs},
+\texttt{papers\_out/sporadics}, this programme, 2026.
+\bibitem{BZ22} F.~Brown and W.~Zudilin, \emph{On cellular rational
+approximations to $\zeta(5)$}, 2022--2026.
+\bibitem{Za09} D.~Zagier, \emph{Integral solutions of Ap\'ery-like
+recurrence equations}, 2009.
+\bibitem{Be87} F.~Beukers, \emph{Irrationality proofs using modular
+forms}, 1987.
+\end{thebibliography}
+
+\end{document}

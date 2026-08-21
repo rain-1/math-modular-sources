@@ -1,0 +1,1561 @@
+% =====================================================================
+%  Foundations of the Lambda-algebra.
+%  Sequel to "p-adic Apery limits: rate laws, valuation strata, and closed
+%  forms via the p-adic Gamma function" (Paper C of the same series).
+%
+%  DRAFT.  Author placeholder below.
+%  Evidence classes are printed in the statements; see Section 1.4.
+%
+%  REPAIR RECORD.  This draft incorporates the repairs demanded by the hostile
+%  referee pass recorded in REFEREE.md (same directory).  In summary:
+%    C-1  the section-3 slogan was stated for c_p modulo the elementary group
+%         E_p, which Theorem 3.6 does not give; it is now stated for the tower
+%         Betas, with the correct c_p-level corollary and a remark
+%         (rem:notclaimed) recording exactly what is NOT claimed.
+%    M-1  the "mechanism for Paper C's exclusions" paragraph is now labelled a
+%         heuristic and states that Theorem 3.6 does not apply to Lambda_a.
+%    M-2/3 the k<->m interchange in Prop 2.3 and the convergence of ghat are now
+%         derived from eq (eps), a consequence of the QUOTED convergence of
+%         BV eq (2), rather than from an unstated bound on v_p(zeta_p(m)).
+%    M-4  u(i,j) is defined in the statement of Thm 4.5, not in its proof.
+%    M-5  h_p^{(w)} for general w is no longer attributed to PaperC Thm 6.1
+%         (which is w=3); the extension is stated as such.
+%    M-6  subsection retitled (it contradicted the remark below it).
+%    M-7  Cor 4.10 carries its hypothesis in the statement.
+%    M-8  the independence step in Thm 5.4 is now proved (leading symbol).
+%    M-9  LLL language: "no vector below the floor was returned", not "excludes".
+%    M-10 the planted relation's third entry y is defined.
+%    M-11 the cross-family exclusion now carries its range (p=7, 12-21 digits).
+%    M-12 Prop 3.1 on Z[1/p] reduced to the integer case.
+%    m-1..m-11 as listed in REFEREE.md.
+%  Citation pointers into the companion papers were checked against their .aux
+%  label tables; PaperC Tab. 6 -> Tab. 16 was the one error found.  The
+%  Beukers-Vlasenko Frobenius-structure-constant theorem is cited without an
+%  internal number: the fetched arXiv text numbers it 1.4, Paper C cites 1.5.
+% =====================================================================
+\documentclass[11pt,reqno]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,%
+            urlcolor=blue!55!black]{hyperref}
+
+% ---------------------------------------------------------------- macros
+\newcommand{\Qp}{\mathbb{Q}_p}
+\newcommand{\Zp}{\mathbb{Z}_p}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\Gp}{\Gamma_p}
+\newcommand{\gtow}{\gamma_p}
+\newcommand{\gh}{\widehat{g}_p}
+\newcommand{\bet}{\beta_p}
+\newcommand{\Atil}{\widetilde{A}}
+\newcommand{\Btil}{\widetilde{B}}
+\newcommand{\vp}{v_p}
+\newcommand{\Pset}{\mathcal{P}}
+\newcommand{\Div}{\mathbb{D}}
+\newcommand{\El}{\mathcal{E}_p}
+\newcommand{\Kalg}{\mathcal{K}_p}
+\newcommand{\Lalg}{\mathcal{L}_p}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\cond}{cond}
+\DeclareMathOperator{\rank}{rank}
+\newcommand{\bin}[2]{\binom{#1}{#2}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+
+% evidence tags
+\newcommand{\PROVED}{{\normalfont\textsc{[proved]}}}
+\newcommand{\VER}[1]{{\normalfont\textsc{[verified:} #1\textsc{]}}}
+\newcommand{\IMPORTED}{{\normalfont\textsc{[imported]}}}
+\newcommand{\OPENTAG}{{\normalfont\textsc{[open]}}}
+
+% ---------------------------------------------------------------- theorems
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{finding}[theorem]{Finding}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}[theorem]{Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+
+\numberwithin{equation}{section}
+
+% ---------------------------------------------------------------- title
+\title{\bfseries Foundations of the $\Lambda$-algebra:\\
+the $\Gp$-tower, and the relations among\\ $p$-adic Ap\'ery limits}
+
+% ---------------------------------------------------------------------
+% AUTHOR PLACEHOLDER -- to be filled in.
+% ---------------------------------------------------------------------
+\author{[AUTHOR NAME(S) AND AFFILIATION TO BE SUPPLIED]}
+\date{Draft, \today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $(A,B)$ be a sporadic Ap\'ery-like pair of weight $w$ and character $\chi$.
+The $p$-adic Ap\'ery limit
+$\Lambda_a=\lim_{s}\chi(p)^sp^{ws}B(ap^s)/A(ap^s)$ exists in $\Qp$, is not a
+$\QQ$-affine function of any single $p$-adic zeta value, and is assembled out of
+the Kazandzidis limits $c_p(A,B)=\lim_t\bin{Ap^t}{Bp^t}$; this is the content of
+the companion Paper~C.  Here we ask what these constants \emph{are} as an
+algebra.
+
+We introduce the \emph{$\Gp$-tower product}
+$\gtow(x)=\prod_{k\ge1}\Gp(xp^k)$ and the \emph{tower Beta}
+$\bet(B,D)=\gtow(B+D)/(\gtow(B)\gtow(D))$, and prove
+$c_p(A,B)=E_p(A,B)\,\bet(B,A-B)$, where $E_p$ is an explicit finite monomial in
+$p$ and in Morita $\Gp$-values at positive integers.  This single computation
+reproves the existence of $c_p(A,B)$, isolates its transcendental part, and
+makes the relation problem combinatorial: writing
+$\delta(A,B)=[A]-[B]-[A-B]$ in the free abelian group on $\ZZ_{>0}$, we prove
+$\log\bet(B,D)$ depends on $(B,D)$ only through $\delta$, that $\delta$ is onto
+the augmentation-type subgroup $\ker(\sum c_x\mapsto\sum c_xx)$, and hence
+(\textbf{Rigidity Theorem}) that a multiplicative relation among the tower Betas
+either lies in the lattice $\ker\delta$ --- generated, in the verified range, by
+binomial symmetry and trinomial revision --- or produces a nontrivial vanishing
+$p$-adic linear form
+$\sum_{m\ \mathrm{odd}\ge3}v_m\zeta_p(m)p^m/(m(1-p^m))=0$ with explicit integer
+coefficients.  Under the resulting hypothesis $(\mathrm{IND}_p)$, the group
+generated by the tower Betas is free abelian of countably infinite rank.  We
+report the exclusion ledger for $(\mathrm{IND}_p)$: nothing below the noise
+floor at $p=5,7,11,13$ for $x\le8$ at $26$ and at $38$ certified $p$-adic
+digits, with the best heights scaling with the precision, as noise does.
+
+We then define the $\Lambda$-algebra $\Lalg$ --- the closure of the algebra
+generated by $\Gp$-values, tower products and the tower-harmonic constants
+$h_p(a)$ --- and \emph{prove} the block decomposition of $\Lambda_a$ that
+Paper~C established block by block only, thereby proving $\Lambda_a\in\Lalg$ for
+the classical Ap\'ery pair and every tower base $a$.  Finally we state the
+archimedean/$p$-adic asymmetry precisely: by the Transfer Principle of Paper~D
+the two completions share the rational skeleton of the construction exactly,
+yet the archimedean Ap\'ery limits span a one-dimensional $\QQ$-space per family
+while the $p$-adic ones require, under $(\mathrm{IND}_p)$, infinitely many
+independent generators.
+\end{abstract}
+
+\tableofcontents
+
+% =====================================================================
+\section{Introduction}\label{sec:intro}
+% =====================================================================
+
+\subsection{The object}\label{ss:object}
+
+Let $A(n)$ be one of the fifteen sporadic Ap\'ery-like binomial sums
+\cite{Zagier2009,Cooper2012,MalikStraub,Straub2023} and $B(n)$ the second
+solution of its recurrence, normalised by $B(0)=0$, $B(1)=1$.  Each pair carries
+a weight $w\in\{2,3\}$ and a quadratic (possibly trivial) Dirichlet character
+$\chi$; when the archimedean Ap\'ery limit $\lim_nB(n)/A(n)$ exists it is a
+rational multiple of $\zeta(w)$ or of $L(\chi,w)$
+\cite{ASvSZ2008,ChamberlandStraub,PaperA}.  Along a $p$-power tower $n_s=ap^s$
+with $p\nmid a$ the normalised ratios converge $p$-adically, and
+\begin{equation}\label{eq:Lam}
+  \Lambda_a\ :=\ \lim_{s\to\infty}\chi(p)^{s}\,p^{ws}\,\frac{B(ap^s)}{A(ap^s)}\ \in\ \Qp
+\end{equation}
+is the \emph{$p$-adic Ap\'ery limit}.  Its existence, its convergence rate, the
+proof that it is not a $\QQ$-affine function of $\zeta_p(3)$ or $\zeta_p(5)$ at
+accessible heights, and a block decomposition of it in terms of the
+\emph{Kazandzidis limits}
+\begin{equation}\label{eq:cp}
+  c_p(A,B)\ :=\ \lim_{t\to\infty}\bin{Ap^t}{Bp^t}\ \in\ \Qp
+  \qquad(A>B\ge1)
+\end{equation}
+are the content of the companion Paper~C \cite{PaperC}.  The present paper takes
+those results as given and asks the next question: \emph{what algebra do these
+constants generate, and what are its relations?}
+
+\subsection{What this paper adds, and what it imports}\label{ss:position}
+
+This is deliberately a foundations paper for a single class of constants, and
+its debts should be stated before its results.
+
+\paragraph{Imported, and used as a black box.}
+\begin{itemize}[leftmargin=1.4em]
+\item From Paper~A \cite{PaperA}: the twisted descent law $(\mathrm{LB}^\chi_w)$,
+  $\vp\bigl(p^wB_nA_q-\chi(p)B_qA_n\bigr)\ge w$ with $q=\floor{n/p}$, which makes
+  \eqref{eq:Lam} converge; and the table of the fifteen families with their
+  weights, characters and archimedean limits.
+\item From Paper~C \cite{PaperC}: the existence theorem for $\Lambda_a$, the rate
+  law $\min(3,r(\chi,w))$, the exclusion theorem (no low-height $\QQ$-affine
+  relation to $\zeta_p(3)$ or $\zeta_p(5)$), the exact closed form of the
+  tower-harmonic constant $h_p(a)$, and the block decomposition of $\Lambda_a$,
+  there established block by block as a Finding.
+\item From Paper~D \cite{PaperD}: the Transfer Principle --- the archimedean sum
+  and the Volkenborn integral of one rational function are linear forms with
+  \emph{the same} rational coefficients.  We use it in \S\ref{sec:mirror} and
+  reprove nothing of it.
+\end{itemize}
+
+\paragraph{New here.}
+\begin{enumerate}[label=(\Alph*),leftmargin=2.1em]
+\item \emph{The $\Gp$-tower packaging} (\S\ref{sec:tower}).  We introduce
+  $\gtow(x)=\prod_{k\ge1}\Gp(xp^k)$ and prove in one computation
+  (Theorem~\ref{thm:closed}) both that $c_p(A,B)$ exists and that
+  \[
+    c_p(A,B)=E_p(A,B)\cdot\bet(B,A-B),\qquad
+    \bet(B,D)=\frac{\gtow(B+D)}{\gtow(B)\gtow(D)},
+  \]
+  with $E_p$ elementary.  This separates the arithmetic of $c_p$ into a finite
+  $\Gp$-part and a single transcendental factor, and it is the form on which
+  everything downstream runs.  It also discharges, for these constants, an
+  orientation remark left open in \cite[\S2.4]{PaperB}.
+\item \emph{Rigidity} (\S\ref{sec:relations}).  Multiplicative relations among
+  the $\bet$ are governed by a divisor map into a free abelian group
+  (Theorem~\ref{thm:rigid}).  Either a relation is \emph{binomial} --- an element
+  of the lattice $\ker\delta$, which in the verified range is generated by
+  symmetry and trinomial revision --- or it certifies a nontrivial vanishing
+  $p$-adic linear form in the odd Kubota--Leopoldt zeta values.
+\item \emph{The $\Lambda$-algebra} (\S\ref{sec:algebra}).  We define $\Lalg$ and
+  \emph{prove} the block decomposition of $\Atil_a=\lim_sA(ap^s)$ and of
+  $\Lambda_a$ for the classical Ap\'ery pair and every $a$ with $p\nmid a$
+  (Theorems~\ref{thm:Atil}, \ref{thm:Lam}), upgrading Paper~C's Finding to a
+  theorem and giving $\Lambda_a\in\Lalg$.
+\item \emph{The asymmetry} (\S\ref{sec:mirror}), stated as a
+  precise contrast rather than a slogan: shared rational skeleton,
+  one-dimensional archimedean constant space, infinite-rank $p$-adic one.
+\item \emph{An exclusion ledger for $(\mathrm{IND}_p)$}
+  (\S\ref{sec:ledger}) and a programme (\S\ref{sec:programme}).
+\end{enumerate}
+
+\subsection{Two remarks on scope}
+
+The rigidity theorem is about the constants $c_p(A,B)$, which are the building
+blocks; it is not a determination of the relations among the $\Lambda_a$
+themselves, which are infinite assemblies of blocks.  Paper~C reports that no
+$\QQ$-linear relation among $\Lambda_a$'s, across bases or across families, is
+visible at accessible heights; the present paper explains why one should not
+expect the question to be finite-dimensional, and isolates the one hypothesis
+$(\mathrm{IND}_p)$ on which a clean answer for the blocks depends.
+
+Second: $(\mathrm{IND}_p)$ is a $p$-adic independence statement about odd zeta
+values.  It is out of reach --- no $\zeta_p(2k+1)$ is known to be irrational for
+a single prime $p\ge5$ \cite{Calegari2005,LSZ2025}.  We therefore state it as a
+hypothesis, record what it buys, and report the numerical exclusions honestly.
+
+\subsection{Evidence classes}\label{ss:evidence}
+
+Every statement carries its class, printed with it.
+
+\begin{description}[leftmargin=2.2em,style=nextline]
+\item[\PROVED] A complete proof is given here.
+\item[\IMPORTED] Proved in a cited companion paper or in the literature, and
+  used here without reproof.  The citation is given with the statement.
+\item[\VER{range}] A finite exact computation over the stated range at the
+  stated $p$-adic precision.  This is evidence, never proof.
+\item[\OPENTAG] Open, with its sharpest known formulation.
+\end{description}
+
+Statements labelled \textsc{theorem}, \textsc{proposition}, \textsc{lemma},
+\textsc{corollary} are \PROVED\ or \IMPORTED\ as marked; statements labelled
+\textsc{finding} rest on \VER\ evidence only and are never used as inputs to a
+proof.  All computations reported here use exact integer or rational arithmetic;
+no floating point occurs at any stage, and every $p$-adic digit is derived from
+an exact rational or an exact residue.  Programs are listed in
+Appendix~\ref{app:repro}.
+
+\subsection{Notation}\label{ss:notation}
+
+$p$ is a prime, always $\ge5$.  $\omega$ is the Teichm\"uller character modulo
+$p$ and $\langle x\rangle=x/\omega(x)$; following \cite[Def.~8]{LSZ2025} we set
+$\zeta_p(s)=L_p(s,\omega^{1-s})$ for integers $s\ge2$, the same normalisation as
+\cite{BV2025}.  In particular $\zeta_p(2k)=0$ for $k\ge1$, used constantly.
+$\Gp$ is Morita's $p$-adic Gamma function \cite{Morita1975}, so that for a
+positive integer $n$
+\begin{equation}\label{eq:morita-int}
+  \Gp(n)=(-1)^{n}\!\!\prod_{\substack{1\le j<n\\ p\nmid j}}\!\! j,
+  \qquad\text{and}\qquad
+  n!=p^{\vp(n!)}\prod_{i\ge0}(-1)^{n_i+1}\Gp(n_i+1),\quad n_i=\floor{n/p^i},
+\end{equation}
+the product being the iterate of Morita's relation
+$\Gp(n+1)=(-1)^{n+1}n!/(p^{\floor{n/p}}\floor{n/p}!)$ and finite because
+$\Gp(1)=-1$ makes the terms with $n_i=0$ equal to $1$.  We use throughout the
+Beukers--Vlasenko expansion \cite[eq.~(2)]{BV2025}
+\begin{equation}\label{eq:BV2}
+  \log\Gp(y)\ =\ \Gp'(0)\,y-\sum_{m\ge2}\zeta_p(m)\frac{y^m}{m},
+  \qquad y\in p\Zp .
+\end{equation}
+$\Div:=\ZZ[\ZZ_{>0}]$ is the free abelian group on the symbols $[x]$, $x\ge1$,
+and $\Pset:=\{(A,B)\in\ZZ^2:\ A>B\ge1\}$.
+
+\emph{A notational warning, inherited from Paper~C.}  The letters $A,B$ do
+double duty: $(A(n),B(n))$ is the sporadic pair of \emph{sequences} of
+\S\ref{ss:object}, while in $c_p(A,B)$, $E_p(A,B)$ and $\delta(A,B)$ the
+arguments $A,B$ are \emph{positive integers}.  The two never occur in the same
+formula, and the sequences are always written with their argument, $A(n)$,
+$B(n)$.  We also set $c_p(A,A):=1$, consistent
+with $\bin{Ap^t}{Ap^t}=1$; the pairs $(A,A)$ are excluded from $\Pset$ because
+they carry no information.
+
+% =====================================================================
+\section{The $\Gp$-tower}\label{sec:tower}
+% =====================================================================
+
+\subsection{The tower product and the tower Beta}
+
+\begin{lemma}\label{lem:lip}
+\IMPORTED\ (i)--(ii), \PROVED\ (iii)--(iv).  Let $p$ be odd.
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item $\Gp(0)=1$ and $|\Gp(x)-\Gp(y)|_p\le|x-y|_p$ for all $x,y\in\Zp$
+  \textup{(}\cite{Morita1975,Robert2000}\textup{)}.
+\item $\Gp(1+y)=-\Gp(y)$ for $y\in p\Zp$ \textup{(}same sources\textup{)}.
+\item Hence $\Gp(y)\in1+p^{e}\Zp$ and $\vp\bigl(\log\Gp(y)\bigr)\ge e$ whenever
+  $\vp(y)=e\ge1$.
+\item Hence $\Gp'(0)\in\Zp$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(iii): by (i) with $x=0$, $|\Gp(y)-1|_p\le|y|_p=p^{-e}$; the logarithm of an
+element of $1+p^e\Zp$ lies in $p^e\Zp$ for $p$ odd.  (iv): by \eqref{eq:BV2},
+$\Gp'(0)=\lim_{y\to0}\log\Gp(y)/y$ along $y\in p\Zp$, and by (iii) the quotient
+lies in $\Zp$ throughout.
+\end{proof}
+
+\begin{definition}\label{def:tower}
+For $x\in\Zp$ put
+\[
+  \gtow(x):=\prod_{k\ge1}\Gp(xp^k)\ \in\ 1+p\Zp,
+  \qquad
+  \gh(x):=-\!\!\sum_{\substack{m\ge3\\ m\ \mathrm{odd}}}\!\!
+    \zeta_p(m)\,\frac{x^m\,p^m}{m\,(1-p^m)} .
+\]
+We call $\gtow$ the \emph{$\Gp$-tower product} and $\gh$ the \emph{$\Gp$-tower
+function}.  For $B,D\ge1$ the \emph{tower Beta} is
+\[
+  \bet(B,D):=\frac{\gtow(B+D)}{\gtow(B)\,\gtow(D)} .
+\]
+\end{definition}
+
+The product converges by Lemma~\ref{lem:lip}(iii).  For $\gh$ we use the
+following consequence of \eqref{eq:BV2}, and nothing else about $\zeta_p$:
+since the series in \eqref{eq:BV2} converges for \emph{every} $y\in p\Zp$,
+its coefficients satisfy
+\begin{equation}\label{eq:eps}
+  \varepsilon_m:=\vp\bigl(\zeta_p(m)/m\bigr)\quad\text{obeys}\quad
+  \varepsilon_m+m\longrightarrow\infty .
+\end{equation}
+The $m$-th term of $\gh(x)$ then has valuation $\ge\varepsilon_m+m$ for
+$x\in\Zp$, because $\vp\bigl(p^m/(1-p^m)\bigr)=m$; so $\gh$ converges on $\Zp$.
+
+\begin{proposition}\label{prop:gtow}
+\PROVED.  Write $\ell_p:=\Gp'(0)\,p/(1-p)$.  Then for $x\in\Zp$
+\begin{equation}\label{eq:loggtow}
+  \log\gtow(x)\ =\ \ell_p\,x+\gh(x),
+\end{equation}
+and consequently, for all $B,D\ge1$,
+\begin{equation}\label{eq:logbeta}
+  \log\bet(B,D)\ =\ \gh(B+D)-\gh(B)-\gh(D).
+\end{equation}
+Moreover $\ell_p\in p\Zp$ and $\gh(x)\in p\Zp$ for every $x\in\Zp$, and $\gtow$
+satisfies the \emph{distribution relation}
+\begin{equation}\label{eq:distrib}
+  \gtow(px)=\frac{\gtow(x)}{\Gp(px)},
+  \qquad\text{equivalently}\qquad
+  \gh(px)=\gh(x)-\log\bigl(\Gp(px)e^{-\Gp'(0)px}\bigr).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Substituting $y=xp^k$ in \eqref{eq:BV2} and summing over $k\ge1$ requires
+interchanging the two summations.  This is legitimate: by \eqref{eq:eps} the
+$(k,m)$ term has valuation
+$\ge\varepsilon_m+mk\ge(\varepsilon_m+m)+2(k-1)$, which tends to $\infty$
+jointly in $(k,m)$, so the double family is summable and may be summed in either
+order.  Using the $p$-adically convergent geometric series
+$\sum_{k\ge1}p^{k}=p/(1-p)$ and $\sum_{k\ge1}p^{km}=p^m/(1-p^m)$ this gives
+$\log\gtow(x)=\Gp'(0)x\,p/(1-p)-\sum_{m\ge2}\zeta_p(m)x^mp^m/(m(1-p^m))$;
+the even $m$ drop out because $\zeta_p(2k)=0$.  This is \eqref{eq:loggtow}.
+By Lemma~\ref{lem:lip}(iii) each factor $\Gp(xp^k)$ lies in $1+p^k\Zp$, so
+$\gtow(x)\in1+p\Zp$ and $\log\gtow(x)\in p\Zp$; and $\ell_p\in p\Zp$ by
+Lemma~\ref{lem:lip}(iv), whence $\gh(x)=\log\gtow(x)-\ell_px\in p\Zp$.
+Since $(B+D)-B-D=0$, the linear terms cancel in $\log\bet$, giving
+\eqref{eq:logbeta}.  Finally $\gtow(px)=\prod_{k\ge1}\Gp(xp^{k+1})
+=\prod_{k\ge2}\Gp(xp^k)=\gtow(x)/\Gp(px)$, and the second form follows on taking
+logarithms in \eqref{eq:loggtow}.
+\end{proof}
+
+Equation~\eqref{eq:logbeta} is the point of the packaging: \emph{the
+transcendental content of the tower depends on the pair only through the formal
+difference $[B+D]-[B]-[D]$}.  This is what \S\ref{sec:relations} exploits.
+
+\begin{remark}[relation to Beukers--Vlasenko]\label{rem:BV}
+Write $G(y)=\Gp(y)e^{-\Gp'(0)y}=\exp\bigl(-\sum_{m\ge2}\zeta_p(m)y^m/m\bigr)$,
+the generating function whose Taylor coefficients at $0$ are the Frobenius
+structure constants $\alpha_j$ of \cite{BV2025}.  Then
+$e^{\gh(x)}=\prod_{k\ge1}G(xp^k)$: the constants of this paper are
+\emph{products of values} of $G$ along a $p$-power tower, where the $\alpha_j$
+are \emph{Taylor coefficients} of $G$ at $0$.  For the order-$3$ Ap\'ery
+operator the available slots $\alpha_1,\alpha_2$ both vanish
+\cite[\S5.4]{PaperC}, so no $\alpha_j$ can be one of our constants.  This
+relationship was recorded as an orientation remark, explicitly disclaimed, in
+\cite[\S2.4]{PaperB}; Theorem~\ref{thm:closed} discharges it for the
+Kazandzidis limits.
+\end{remark}
+
+\subsection{The closed form}
+
+For $A>B\ge1$ with $D=A-B$ set $A_l=\floor{A/p^l}$, $B_l=\floor{B/p^l}$,
+$D_l=\floor{D/p^l}$ and
+\begin{equation}\label{eq:Efin}
+  T(A,B):=\prod_{l\ge1}
+    \frac{(-1)^{A_l+1}\Gp(A_l+1)}
+         {(-1)^{B_l+1}\Gp(B_l+1)\cdot(-1)^{D_l+1}\Gp(D_l+1)},
+  \qquad
+  E_p(A,B):=-\,p^{\vp\binom{A}{B}}\,T(A,B)\,
+    \frac{\Gp(A+1)}{\Gp(B+1)\Gp(D+1)} .
+\end{equation}
+Both products are finite; $T(A,B)=1$ when $A<p$.  We call $E_p(A,B)$ the
+\emph{elementary part}.
+
+\begin{theorem}\label{thm:closed}
+\PROVED.  For every prime $p\ge5$ and all integers $A>B\ge1$ the limit
+$c_p(A,B)=\lim_t\bin{Ap^t}{Bp^t}$ exists in $\Qp$, and
+\begin{equation}\label{eq:closed}
+  \boxed{\ c_p(A,B)\ =\ E_p(A,B)\cdot\bet(B,A-B).\ }
+\end{equation}
+Moreover $\vp\bigl(c_p(A,B)\bigr)=\vp\bin{A}{B}$, and the convergence is at
+$3$ digits per level.
+\end{theorem}
+
+\begin{proof}
+Fix $t\ge1$ and apply \eqref{eq:morita-int} to $Ap^t$, $Bp^t$, $Dp^t$.  By
+Kummer's theorem $\vp\bin{Ap^t}{Bp^t}$ counts the carries in adding $Bp^t$ and
+$Dp^t$ in base $p$, which is the carry count of $B+D$; hence
+$\vp\bin{Ap^t}{Bp^t}=\vp\bin{A}{B}$ for all $t$.  The unit parts give
+\[
+  \bin{Ap^t}{Bp^t}
+  = p^{\vp\binom{A}{B}}\prod_{i\ge0}
+     \frac{(-1)^{X_i+1}\Gp(X_i+1)}
+          {(-1)^{Y_i+1}\Gp(Y_i+1)\,(-1)^{Z_i+1}\Gp(Z_i+1)},
+\]
+with $X_i=\floor{Ap^t/p^i}$ and similarly for $Y_i,Z_i$.  Split the product at
+$i=t$.
+
+For $i>t$ one has $X_i=A_{i-t}$, $Y_i=B_{i-t}$, $Z_i=D_{i-t}$, so the tail is
+exactly $T(A,B)$, independent of $t$.
+
+For $0\le i\le t$ put $k=t-i$, so $X_i=Ap^{k}$, $Y_i=Bp^k$, $Z_i=Dp^k$.  The
+signs contribute $(-1)^{Ap^k+1-(Bp^k+1)-(Dp^k+1)}=(-1)^{-1}=-1$ for each $k$,
+since $A=B+D$.  For $k\ge1$ the arguments lie in $p\Zp$, where
+$\Gp(1+y)=-\Gp(y)$, so
+\[
+  \frac{\Gp(Ap^k+1)}{\Gp(Bp^k+1)\Gp(Dp^k+1)}
+  =\frac{-\Gp(Ap^k)}{(-\Gp(Bp^k))(-\Gp(Dp^k))}
+  =-\frac{\Gp(Ap^k)}{\Gp(Bp^k)\Gp(Dp^k)},
+\]
+and the two minus signs cancel.  The factor $k=0$ contributes
+$-\Gp(A+1)/(\Gp(B+1)\Gp(D+1))$.  Altogether
+\begin{equation}\label{eq:finite-t}
+  \bin{Ap^t}{Bp^t}
+  = E_p(A,B)\prod_{k=1}^{t}\frac{\Gp(Ap^k)}{\Gp(Bp^k)\Gp(Dp^k)} .
+\end{equation}
+By Lemma~\ref{lem:lip} each factor lies in $1+p^k\Zp$ and differs from $1$ by at
+most $p^{-k}$, so the partial products form a Cauchy sequence converging to
+$\gtow(A)/(\gtow(B)\gtow(D))=\bet(B,D)$.  Hence the limit \eqref{eq:cp} exists
+and equals \eqref{eq:closed}.  Since $E_p(A,B)$ is a $p$-power times a unit and
+$\bet$ is a unit, $\vp(c_p)=\vp\bin{A}{B}$.
+
+For the rate we quote the classical Jacobsthal--Kazandzidis congruence
+$\bin{np}{mp}\equiv\bin nm \pmod{p^{\vp(p^3nm(n-m))}}$
+\cite{JacobsthalKazandzidis,Mestrovic}: at $n=Ap^t$, $m=Bp^t$ it gives
+\[
+  \bin{Ap^{t+1}}{Bp^{t+1}}\ \equiv\ \bin{Ap^{t}}{Bp^{t}}
+  \pmod{p^{\,3+3t+\vp(ABD)}},
+\]
+and since $\vp\bin{Ap^t}{Bp^t}$ is constant in $t$ the relative gain is at least
+$3$ digits per level.
+\end{proof}
+
+\begin{corollary}\label{cor:cp21}
+\PROVED.  $\displaystyle c_p(2,1)=\lim_s\bin{2p^s}{p^s}
+=2\exp\Bigl(-\!\!\sum_{m\ge3\ \mathrm{odd}}\!\!\zeta_p(m)\frac{(2^m-2)p^m}{m(1-p^m)}\Bigr)
+=2\,\bet(1,1)$.
+\end{corollary}
+\begin{proof}
+$T(2,1)=1$, $\vp\bin21=0$ and $\Gp(3)/\Gp(2)^2=-2$, so $E_p(2,1)=2$;
+$\gh(2)-2\gh(1)$ is the displayed series.
+\end{proof}
+
+This recovers \cite[Cor.~6.4]{PaperC}.  The new content of
+Theorem~\ref{thm:closed} is not the formula but its shape: existence and closed
+form come from one computation, and the transcendental factor is a
+\emph{single} tower Beta.
+
+\begin{finding}\label{find:closedver}
+\VER{$11$ pairs $(A,B)$ $\times$ $p\in\{5,7,11,13\}$, all $12$ certified digits,
+zero mismatches; at $p=5$ also at $15$ digits}  Formula~\eqref{eq:closed} was
+checked against $c_p(A,B)$ computed directly as a limit of exact binomial
+residues, for
+$(A,B)=(2,1),(3,1),(3,2),(4,1),(5,2),(7,3),(p,1),(p,2),(p+1,1),(p+1,p),(2p,p)$
+--- including cases with carries, with $p\mid A$, and with $\vp(c_p)=1$.  The
+two sides are computed by disjoint code paths: the left from binomial residues
+via Legendre/Morita splitting, the right from the Kubota--Leopoldt values
+$\zeta_p(m)$.
+\end{finding}
+
+\subsection{Extension to $\ZZ[1/p]$}
+
+\begin{proposition}\label{prop:homog}
+\PROVED.  $c_p(pA,pB)=c_p(A,B)$ for all $A>B\ge1$.  Consequently $c_p$ extends
+uniquely to pairs $A>B>0$ in $\ZZ[1/p]$ by $c_p(A,B):=c_p(p^jA,p^jB)$ for any
+$j$ with $p^jA,p^jB\in\ZZ$.
+\end{proposition}
+
+\begin{proof}
+Directly from \eqref{eq:cp}: $c_p(pA,pB)=\lim_t\bin{Ap^{t+1}}{Bp^{t+1}}$, a
+subsequence of the defining sequence for $c_p(A,B)$.
+\end{proof}
+
+Proposition~\ref{prop:homog} is trivial from the definition but is a nontrivial
+identity for the closed form, and it is worth recording that
+\eqref{eq:closed} satisfies it on the nose.
+
+\begin{proposition}\label{prop:homog-check}
+\PROVED.  Formula~\eqref{eq:closed} is compatible with
+Proposition~\ref{prop:homog}; the verification is the distribution relation
+\eqref{eq:distrib}.
+\end{proposition}
+
+\begin{proof}
+$\vp\bin{pA}{pB}=\vp\bin AB$ (Kummer).  Since $\floor{pA/p^l}=A_{l-1}$,
+\[
+  T(pA,pB)=\frac{(-1)^{A+1}\Gp(A+1)}
+                {(-1)^{B+1}\Gp(B+1)(-1)^{D+1}\Gp(D+1)}\,T(A,B)
+          =-\,T(A,B)\,\frac{\Gp(A+1)}{\Gp(B+1)\Gp(D+1)},
+\]
+using $A=B+D$ for the sign, while
+$\Gp(pA+1)/(\Gp(pB+1)\Gp(pD+1))=-\Gp(pA)/(\Gp(pB)\Gp(pD))$ by
+$\Gp(1+y)=-\Gp(y)$.  By \eqref{eq:distrib},
+$\bet(pB,pD)=\bet(B,D)\,\Gp(pB)\Gp(pD)/\Gp(pA)$.  Multiplying the three
+displays, all $\Gp$-factors at $p$-multiples and both extra signs cancel and one
+is left with $E_p(A,B)\bet(B,D)$.
+\end{proof}
+
+\begin{remark}
+The tower function itself does \emph{not} descend: $\gh(px)\ne\gh(x)$, and
+\eqref{eq:distrib} measures the discrepancy by a single $\Gp$-value.  It is the
+combination $E_p\cdot\bet$ that is $p$-homogeneous.  This is the first sign that
+the natural invariants of the family are the tower Betas modulo $\Gp$-values,
+which is exactly the quotient in which \S\ref{sec:relations} works.
+\end{remark}
+
+% =====================================================================
+\section{The relations}\label{sec:relations}
+% =====================================================================
+
+\subsection{Three binomial relations}
+
+\begin{proposition}\label{prop:binrels}
+\PROVED.  For $c_p$ extended as in Proposition~\ref{prop:homog}:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item (boundary) $c_p(A,A)=1$;
+\item (symmetry) $c_p(A,B)=c_p(A,A-B)$;
+\item ($p$-homogeneity) $c_p(pA,pB)=c_p(A,B)$;
+\item (trinomial revision) $c_p(A,B)\,c_p(B,C)=c_p(A,C)\,c_p(A-C,B-C)$ for
+  $A>B>C\ge1$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Each is a binomial identity that holds \emph{at every level of the tower
+simultaneously}, hence passes to the limit: $\bin{N}{K}=\bin{N}{N-K}$ for (ii),
+and
+$\bin{N}{K}\bin{K}{L}=\bin{N}{L}\bin{N-L}{K-L}$ at $N=Ap^t$, $K=Bp^t$,
+$L=Cp^t$ for (iv).  (iii) is Proposition~\ref{prop:homog}, (i) is trivial.  For
+arguments in $\ZZ[1/p]$, multiply all of $A,B,C$ by a common $p^j$ clearing
+denominators and apply (iii).
+\end{proof}
+
+\begin{finding}\label{find:rels}
+\VER{$p\in\{5,7,11,13\}$; $9$ certified digits; $66$ symmetry cells
+($2\le A\le12$), $21$ $p$-homogeneity cells ($2\le A\le7$) and $120$
+trinomial-revision cells ($3\le A\le10$) per prime; $828$ checks in total, zero
+failures}  Proposition~\ref{prop:binrels} holds on the \emph{directly computed}
+limits, i.e.\ without going through \eqref{eq:closed}.
+\end{finding}
+
+That these are verified as well as proved is not redundancy: the direct limits
+and the closed form are computed by disjoint code, and the relations are the
+only place where the two are compared across many pairs at once.
+
+\subsection{The divisor map}
+
+\begin{definition}\label{def:delta}
+Define the group homomorphisms
+\[
+  \delta:\ZZ[\Pset]\longrightarrow\Div,\quad
+  (A,B)\longmapsto[A]-[B]-[A-B];
+  \qquad
+  m_r:\Div\longrightarrow\ZZ,\quad \textstyle\sum_xc_x[x]\longmapsto\sum_xc_xx^r
+  \ (r\ge1);
+\]
+\[
+  \widehat{G}:\Div\longrightarrow\Qp,\quad
+  \textstyle\sum_xc_x[x]\longmapsto\sum_xc_x\,\gh(x).
+\]
+\end{definition}
+
+By \eqref{eq:logbeta}, for any $\mathbf n=\sum_in_i(A_i,B_i)\in\ZZ[\Pset]$,
+\begin{equation}\label{eq:key}
+  \prod_i\bet(B_i,A_i-B_i)^{n_i}\ =\ \exp\bigl(\widehat G(\delta(\mathbf n))\bigr).
+\end{equation}
+Everything in this section is a consequence of \eqref{eq:key}.
+
+\begin{proposition}\label{prop:image}
+\PROVED.  $\im\delta=\ker m_1$, a subgroup of $\Div$ of infinite rank and
+corank~$1$.
+\end{proposition}
+
+\begin{proof}
+$m_1\delta(A,B)=A-B-(A-B)=0$, so $\im\delta\subseteq\ker m_1$.  Conversely
+$\delta(2,1)=[2]-2[1]$, and $\delta(n,1)=[n]-[1]-[n-1]$ gives inductively
+$[n]-n[1]=\delta(n,1)+\bigl([n-1]-(n-1)[1]\bigr)\in\im\delta$ for all $n\ge2$.
+Finally any $\mu=\sum_xc_x[x]$ with $m_1(\mu)=0$ equals
+$\sum_xc_x([x]-x[1])$, hence lies in $\im\delta$.
+\end{proof}
+
+\begin{lemma}\label{lem:moments}
+\PROVED.  The map $\mu\mapsto(m_3(\mu),m_5(\mu),m_7(\mu),\dots)$ is injective on
+$\Div$.  Indeed if $m_r(\mu)=0$ for infinitely many $r$ then $\mu=0$.
+\end{lemma}
+
+\begin{proof}
+Suppose $\mu=\sum_xc_x[x]\ne0$ and let $X$ be the largest $x$ with $c_x\ne0$.
+Then $m_r(\mu)/X^r=c_X+\sum_{x<X}c_x(x/X)^r\to c_X\ne0$ as $r\to\infty$ in $\RR$,
+so $m_r(\mu)\ne0$ for all large $r$.
+\end{proof}
+
+\subsection{The rigidity theorem}
+
+\begin{theorem}[Rigidity]\label{thm:rigid}
+\PROVED.  Let $\mathbf n=\sum_{i=1}^{r}n_i(A_i,B_i)\in\ZZ[\Pset]$ and put
+$\mu=\delta(\mathbf n)\in\Div$, $v_m=m_m(\mu)\in\ZZ$.
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item If $\mu=0$ then, for \emph{every} prime $p\ge5$,
+  \[
+    \prod_i\bet(B_i,A_i-B_i)^{n_i}=1,
+    \qquad\text{hence}\qquad
+    \prod_ic_p(A_i,B_i)^{n_i}=\prod_iE_p(A_i,B_i)^{n_i},
+  \]
+  an explicit rational number times a monomial in $\Gp$-values at positive
+  integers.
+\item If $\mu\ne0$ and $\prod_i\bet(B_i,A_i-B_i)^{n_i}=1$ for some $p\ge5$, then
+  \begin{equation}\label{eq:forced}
+    \sum_{\substack{m\ge3\\ m\ \mathrm{odd}}}
+      v_m\,\zeta_p(m)\,\frac{p^m}{m(1-p^m)}\ =\ 0
+  \end{equation}
+  is a nontrivial vanishing $p$-adic linear form in the odd Kubota--Leopoldt
+  zeta values: the integers $v_m$ are not all zero, and
+  $|v_m|\le\bigl(\sum_x|c_x|\bigr)X^m$ where $X$ is the largest element of the
+  support of $\mu$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) is \eqref{eq:key} with $\widehat G(0)=0$, together with
+Theorem~\ref{thm:closed}.  For (ii): by Proposition~\ref{prop:gtow},
+$\widehat G(\mu)\in p\Zp$, and $\exp$ is injective on $p\Zp$ for $p$ odd, so
+\eqref{eq:key} gives $\widehat G(\mu)=0$.  Each $\gh(x)$ is by
+Definition~\ref{def:tower} a convergent series in $\Qp$, and $\mu$ has finite
+support, so the finite sum $\sum_xc_x\gh(x)$ may be resummed term by term:
+\[
+  \widehat G(\mu)
+  =-\!\!\sum_{\substack{m\ge3\\ m\ \mathrm{odd}}}\!\!
+     \Bigl(\sum_xc_xx^m\Bigr)\zeta_p(m)\frac{p^m}{m(1-p^m)}
+  =-\!\!\sum_{\substack{m\ge3\\ m\ \mathrm{odd}}}\!\!
+     v_m\,\zeta_p(m)\frac{p^m}{m(1-p^m)} .
+\]
+Lemma~\ref{lem:moments} says the $v_m$ are not all zero, and
+$|v_m|=|\sum_xc_xx^m|\le(\sum_x|c_x|)X^m$.
+\end{proof}
+
+\begin{hypothesis}[$\mathrm{IND}_p$]\label{hyp:ind}
+\OPENTAG.  The only $\mu\in\Div$ with $\widehat G(\mu)=0$ is $\mu=0$;
+equivalently, the values $\gh(1),\gh(2),\gh(3),\dots$ are $\QQ$-linearly
+independent; equivalently, \eqref{eq:forced} has no solution in integers $v_m$
+of the form $v_m=m_m(\mu)$, $\mu\ne0$.
+\end{hypothesis}
+
+\begin{corollary}\label{cor:free}
+\PROVED, under Hypothesis~\ref{hyp:ind}.  The multiplicative group generated by
+$\{\bet(B,D):B,D\ge1\}$ inside $1+p\Zp$ is free abelian of countably infinite
+rank, and $\delta$ induces an isomorphism onto $\ker m_1\subset\Div$.
+Unconditionally it is a quotient of $\ker m_1$.
+\end{corollary}
+
+\begin{proof}
+By \eqref{eq:key} the group is the image of $\ZZ[\Pset]$ under
+$\exp\circ\widehat G\circ\delta$.  Its relation module contains $\ker\delta$
+always, and equals $\ker\delta$ exactly when $\ker\widehat G\cap\im\delta=0$,
+which is Hypothesis~\ref{hyp:ind}.  Then the group is
+$\ZZ[\Pset]/\ker\delta\cong\im\delta=\ker m_1$ by
+Proposition~\ref{prop:image}.  Finally $\ker m_1$ is free, being a subgroup of
+the free abelian group $\Div$, and of infinite rank, since it contains the
+independent family $\{[n]-n[1]\}_{n\ge2}$.
+\end{proof}
+
+\subsection{The lattice of binomial relations}
+
+Theorem~\ref{thm:rigid}(i) makes $\ker\delta$ the lattice of \emph{expected}
+relations.  It contains two visible families, coming from
+Proposition~\ref{prop:binrels}(ii) and (iv):
+\begin{align}
+  (\mathrm{S}_{A,B})&:\quad (A,B)-(A,A-B), \label{eq:relS}\\
+  (\mathrm{T}_{A,B,C})&:\quad (A,B)+(B,C)-(A,C)-(A-C,B-C),\qquad A>B>C\ge1.
+  \label{eq:relT}
+\end{align}
+Both are in $\ker\delta$: for \eqref{eq:relT},
+$\delta(A,B)+\delta(B,C)=[A]-[A-B]-[C]-[B-C]=\delta(A,C)+\delta(A-C,B-C)$.
+Note that $p$-homogeneity is \emph{not} of this type --- $\delta(pA,pB)\ne
+\delta(A,B)$ --- consistently with the fact that it moves $\bet$ by a
+$\Gp$-value (Proposition~\ref{prop:homog-check}) rather than fixing it.
+
+\begin{finding}\label{find:lattice}
+\VER{$N\le11$; exact integer linear algebra, Smith normal forms over $\ZZ$}
+Let $\Pset_N=\{(A,B):N\ge A>B\ge1\}$ and $\delta_N$ the restriction of $\delta$.
+Then
+\[
+  \rank\delta_N=N-1,\qquad
+  \rank\ker\delta_N=\binom{N}{2}-(N-1)=\binom{N-1}{2},
+\]
+and $\ker\delta_N$ is generated \emph{over $\ZZ$} by the relations
+\eqref{eq:relS} and \eqref{eq:relT} with all indices $\le N$.  The argument is:
+the sublattice $L_N$ they span is contained in $\ker\delta_N$ (checked
+symbolically, not assumed); it has the same rank, hence the same $\QQ$-span; and
+the Smith normal forms of both have all elementary divisors equal to $1$, so both
+are saturated in $\ZZ[\Pset_N]$.  Two saturated sublattices with the same
+$\QQ$-span coincide.
+\end{finding}
+
+The first assertion is Proposition~\ref{prop:image} restricted, hence
+\PROVED; the generation statement is \VER{} only.
+
+\begin{problem}\label{prob:gen}
+\OPENTAG.  Prove that $\ker\delta$ is generated by \eqref{eq:relS} and
+\eqref{eq:relT}.  Equivalently: give a presentation of the free abelian group
+$\ker m_1$ by the symbols $(A,B)$ and those two families of relations.
+\end{problem}
+
+\subsection{What the theorem says, in words}
+
+Combining: the tower Betas satisfy the binomial relations \eqref{eq:relS},
+\eqref{eq:relT} --- and, under Hypothesis~\ref{hyp:ind}, \emph{nothing else}.
+Equivalently, at the level of the Kazandzidis limits: the only relations
+\[
+  \prod_ic_p(A_i,B_i)^{n_i}\ =\ \prod_iE_p(A_i,B_i)^{n_i}
+\]
+--- those in which the transcendental factor cancels \emph{identically} --- are
+the binomial ones.  A single unexpected multiplicative relation among the tower
+Betas would, by Theorem~\ref{thm:rigid}(ii), produce a nontrivial vanishing
+$\QQ$-linear form in $\zeta_p(3),\zeta_p(5),\zeta_p(7),\dots$ with explicit
+integer coefficients of controlled growth.  Since no odd $p$-adic zeta value is
+known to be irrational for any $p\ge5$, that would be a substantial result about
+$p$-adic $L$-values.  The relation problem for the building blocks of the
+$\Lambda$-algebra therefore sits directly on top of the $p$-adic odd-zeta
+problem, and not beside it.
+
+\begin{remark}[what is \emph{not} claimed]\label{rem:notclaimed}
+Theorem~\ref{thm:rigid} does not determine when $\prod_ic_p(A_i,B_i)^{n_i}$
+merely \emph{lies in} $\El$.  That would require knowing
+$\El\cap(1+p\Zp)$, which contains $\QQ^\times\cap(1+p\Zp)$ and is therefore
+large; the transcendental factor can in principle be absorbed by an elementary
+one without vanishing.  Everything we prove is about the tower Betas, where the
+elementary part has been divided out by construction.
+\end{remark}
+
+% =====================================================================
+\section{The $\Lambda$-algebra}\label{sec:algebra}
+% =====================================================================
+
+\subsection{Definition}
+
+\begin{definition}\label{def:algebras}
+Fix $p\ge5$.  Let
+\begin{align*}
+  \El&:=\text{the subgroup of }\Qp^\times\text{ generated by }\QQ^\times
+        \text{ and }\{\Gp(n):n\in\ZZ_{\ge1}\}, &&\text{(the \emph{elementary group})}\\
+  \Kalg&:=\text{the }\QQ\text{-subalgebra of }\Qp\text{ generated by }
+        \El\cup\{\bet(B,D):B,D\ge1\}, &&\text{(the \emph{Kazandzidis algebra})}\\
+  \Lalg&:=\text{the closure of }\Kalg\bigl[h_p^{(w)}(a):a\ge1,\ w\ge2\bigr]
+        \text{ in }\Qp, &&\text{(the \emph{$\Lambda$-algebra})}
+\end{align*}
+where
+\[
+  h_p^{(w)}(a):=\lim_{s\to\infty}p^{ws}\!\!\sum_{k\le ap^s}\!\!k^{-w}
+   \ =\!\!\sum_{\substack{x\in\ZZ[1/p]\\ 0<x\le a}}\!\!x^{-w}
+\]
+is the \emph{tower-harmonic constant}.  For $w=3$ this is
+\cite[Thm.~6.1]{PaperC}; the proof there --- split $\sum_{k\le n}k^{-w}$ at
+$p\mid k$, iterate, and re-index $x=k/p^i$ --- is verbatim the same for every
+$w\ge2$, and we use it in that generality.  We write $h_p=h_p^{(3)}$.
+\end{definition}
+
+By Theorem~\ref{thm:closed}, $c_p(A,B)\in\Kalg$ for all $A>B\ge1$.  $\Lalg$ is a
+closed $\QQ$-subalgebra of $\Qp$; it contains a multiplicative group of infinite
+rank (Proposition~\ref{prop:infinite} under Hypothesis~\ref{hyp:ind}).
+
+It is worth saying which $\Gp$-values are and are not in play.  The $\Gp$-values
+generating $\El$ are at \emph{positive integers}, where $\Gp$ is an explicit
+product of units by \eqref{eq:morita-int}, and at $p$-power arguments, where it
+is the tower product $\gtow$.  The $\Gp$-values at rational arguments with small
+denominator, by contrast, are \emph{algebraic}: $\Gp(1/2)^2=\pm1$ by reflection
+and $\Gp(1/3),\Gp(1/4)$ are Gauss-sum values by Gross--Koblitz
+\cite{GrossKoblitz1979}.  Those contribute nothing new to $\Lalg$, and are not
+where the transcendence of these constants can live; the tower is.
+
+\begin{proposition}\label{prop:hp}
+\PROVED.  $h_p^{(w)}(pa)=p^{-w}h_p^{(w)}(a)$ for every $a>0$ in $\ZZ[1/p]$, and
+$h_p^{(w)}$ extends to $\ZZ[1/p]_{>0}$ by this relation.
+\end{proposition}
+\begin{proof}
+$x\mapsto x/p$ is a bijection from $\{x\in\ZZ[1/p]:0<x\le pa\}$ onto
+$\{y\in\ZZ[1/p]:0<y\le a\}$, and $x^{-w}=p^{-w}y^{-w}$.
+\end{proof}
+
+This is the tower-harmonic shadow of the scaling law
+$\Lambda_{p^ka}=\chi(p)^kp^{-wk}\Lambda_a$ of \cite[Prop.~2.5(iii)]{PaperC}.
+
+\begin{remark}[the index range, which matters]\label{rem:index}
+Paper~C's series for $h^{(w)}_p$ reads
+$h^{(w)}_p(a)=\sum_ip^{wi}S_i(a)$, $S_i(a)=\sum_{k\le ap^i,\,p\nmid k}k^{-w}$,
+with $i$ running over \emph{all} integers with $ap^i\ge1$.  For $1\le a<p$ this
+is $i\ge0$ and the two descriptions of $h^{(w)}_p(a)$ agree term by term; for
+$a>p$ the terms with $i<0$ are exactly the $x$ in the sum with $\vp(x)>0$, and
+omitting them breaks Proposition~\ref{prop:hp}.  We record it because
+Proposition~\ref{prop:hp} evaluates $h^{(w)}_p$ outside the range $1\le a<p$ in
+which the two descriptions are visibly the same, and because the omission is an
+easy one to make: an implementation restricted to $i\ge0$ passes every test at
+$a<p$ and fails Proposition~\ref{prop:hp} at $a=p$, which is how
+Finding~\ref{find:hp}(a) was used here.
+\end{remark}
+
+\begin{finding}\label{find:hp}
+\VER{$p\in\{5,7\}$, $w=3$; $a\le5$; at $12$ and again at $18$ certified
+$p$-adic digits}  (a) Proposition~\ref{prop:hp} holds numerically at $a=1,2,3$.
+(b) No $\QQ$-affine relation among $h_p(1),\dots,h_p(N)$, $N\le5$, was found
+below the noise floor; every best height sits at the floor and scales with the
+precision --- e.g.\ at $p=5$, $N=1$ the best height moves from
+$1.6\times10^{4}$ (floor $1.6\times10^{4}$) to $1.6\times10^{6}$ (floor
+$2.0\times10^{6}$) when the precision goes from $12$ to $18$ digits, and at
+$p=7$, $N=3$ from $1.7\times10^{2}$ (floor $3.4\times10^{2}$) to
+$4.0\times10^{3}$ (floor $6.4\times10^{3}$).  Paper~C excludes $h_p(1)\in\QQ$
+and $h_p(1)$ quadratic over $\QQ$ \cite[\S5.2]{PaperC}; the relations
+\emph{among} different tower bases are new here.
+\end{finding}
+
+\subsection{The structure theorem, proved}
+
+Paper~C establishes the block decomposition of $\Lambda_a$ for $a=1$ block by
+block, as a Finding.  Here we prove it, for every tower base.  Throughout this
+subsection $(a_n,b_n)$ is the classical Ap\'ery $\zeta(3)$ pair,
+$a_n=\sum_k\bin nk^2\bin{n+k}k^2$ and $b_n$ the second solution with $b_0=0$,
+$b_1=6$, so $w=3$ and $\chi=1$.
+
+\begin{lemma}\label{lem:kummer}
+\PROVED.  Fix $p\nmid a$ and set $\kappa=\kappa(a,p):=\floor{\log_p(2a)}+2$.
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item For all $N\ge K\ge0$, $\ \vp\bin NK\le\floor{\log_pN}+1$.
+\item For $i\ge0$ and $1\le j\le ap^i$ with $p\nmid j$,
+  $\ i\le\vp\bin{ap^i}{j}\le i+\kappa-1$ and
+  $\vp\bin{ap^i+j}{j}\le i+\kappa-1$.
+\item $\vp\bin{ap^s}{jp^{s-i}}=\vp\bin{ap^i}{j}$ and
+  $\vp\bin{ap^s+jp^{s-i}}{jp^{s-i}}=\vp\bin{ap^i+j}{j}$ for every $s\ge i$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Kummer's theorem \cite[\S1]{Granville1997} $\vp\bin NK$ is the number of
+carries in adding $K$ and $N-K$ in base $p$.  (i): all carries occur in
+positions $0,\dots,\floor{\log_pN}$, since $N$ has $\floor{\log_pN}+1$ digits.
+(iii): multiplying $N$ and $K$ by $p^{s-i}$ shifts all digits and changes no
+carry; note $ap^s+jp^{s-i}=(ap^i+j)p^{s-i}$.  (ii), lower bound: take $N=ap^i$,
+$K=j$; the last $i$ base-$p$ digits of $N$ are $0$ while $K$ has a nonzero units
+digit, so a carry occurs out of position $0$ and, inductively, out of every
+position $<i$.  Upper bounds: apply (i) with $N=ap^i$ and with
+$N=ap^i+j\le2ap^i$, both of which are $<2ap^{i}\cdot p$, so
+$\floor{\log_pN}+1\le i+\floor{\log_p(2a)}+1=i+\kappa-1$.
+\end{proof}
+
+\begin{theorem}\label{thm:Atil}
+\PROVED.  Let $p\ge5$ and $p\nmid a$.  The limit $\Atil_a:=\lim_sa_{ap^s}$
+exists in $\Zp$ and
+\begin{equation}\label{eq:Atilblocks}
+  \Atil_a\ =\ 1+\sum_{i\ge0}\ \sum_{\substack{1\le j\le ap^i\\ p\nmid j}}
+    \Bigl[c_p\bigl(ap^i,j\bigr)\,c_p\bigl(ap^i+j,\,j\bigr)\Bigr]^{2},
+\end{equation}
+with the double series convergent in $\Zp$.  We write
+\begin{equation}\label{eq:udef}
+  u(i,j):=\bigl[c_p(ap^i,j)\,c_p(ap^i+j,j)\bigr]^{2},
+  \qquad \vp\bigl(u(i,j)\bigr)\ge2i,
+\end{equation}
+for the $(i,j)$ block.  (For $i=0$, $j=a$ the first factor is $c_p(a,a)=1$.)
+\end{theorem}
+
+\begin{proof}
+Fix $s$ and split the sum $a_{ap^s}=\sum_{k=0}^{ap^s}A(ap^s,k)$,
+$A(n,k)=\bin nk^2\bin{n+k}k^2$, according to $k=0$ and $k=jp^{s-i}$ with
+$p\nmid j$, $i=s-\vp(k)\in[0,s]$ and $1\le j\le ap^{i}$.  This is a bijection
+between $\{1,\dots,ap^s\}$ and $\{(i,j):0\le i\le s,\ 1\le j\le ap^i,\
+p\nmid j\}$, and $A(ap^s,0)=1$.
+
+Write $u_s(i,j):=A(ap^s,jp^{s-i})$.  By Lemma~\ref{lem:kummer},
+$\vp\bin{ap^s}{jp^{s-i}}=\vp\bin{ap^i}{j}\ge i$, so
+\begin{equation}\label{eq:unifbd}
+  \vp\bigl(u_s(i,j)\bigr)\ \ge\ 2i\qquad\text{for all }s\ge i,
+\end{equation}
+uniformly.  Moreover, since $ap^s=(ap^i)p^{s-i}$ and
+$ap^s+jp^{s-i}=(ap^i+j)p^{s-i}$, Theorem~\ref{thm:closed} gives
+\begin{equation}\label{eq:blocklimit}
+  \lim_{s\to\infty}u_s(i,j)
+  =\bigl[c_p(ap^i,j)\,c_p(ap^i+j,j)\bigr]^{2}=u(i,j),
+\end{equation}
+and $\vp(u(i,j))\ge2i$ by the same bound, which is \eqref{eq:udef}.
+
+Now fix $I\ge1$.  For every $s\ge I$, by \eqref{eq:unifbd},
+\[
+  \Bigl|\,a_{ap^s}-1-\sum_{i<I}\sum_ju_s(i,j)\,\Bigr|_p\ \le\ p^{-2I},
+  \qquad
+  \Bigl|\sum_{i\ge I}\sum_ju(i,j)\Bigr|_p\ \le\ p^{-2I},
+\]
+the second because a $p$-adic series with terms of valuation $\ge2I$ converges
+and has valuation $\ge2I$.  The inner sum $\sum_{i<I}\sum_j$ is finite, so by
+\eqref{eq:blocklimit} there is $S(I)$ with
+$|\sum_{i<I}\sum_j(u_s(i,j)-u(i,j))|_p\le p^{-2I}$ for $s\ge S(I)$.  Combining
+the three estimates, $|a_{ap^s}-\Sigma|_p\le p^{-2I}$ for $s\ge\max(I,S(I))$,
+where $\Sigma$ denotes the right-hand side of \eqref{eq:Atilblocks} (which
+converges, again by the valuation bound).  As $I$ was arbitrary, $a_{ap^s}\to
+\Sigma$.
+\end{proof}
+
+\begin{remark}
+The proof does not use the Beukers--Coster supercongruence
+$a_{mp^r}\equiv a_{mp^{r-1}}\pmod{p^{3r}}$ \cite{Supercong}; existence of
+$\Atil_a$ falls out of the block estimate.  It does not recover the $p^{3r}$
+either: \eqref{eq:unifbd} gives only $2$ digits per level, and the sharp rate is
+a genuinely finer fact.
+\end{remark}
+
+\begin{theorem}\label{thm:Lam}
+\PROVED.  Let $p\ge5$ and $p\nmid a$.  Then $\Btil_a:=\lim_sp^{3s}b_{ap^s}$
+exists and
+\begin{equation}\label{eq:Btil}
+  \Btil_a=h_p(a)\,\Atil_a
+   +\sum_{(i,j)}\sum_{(i',j')}\ (-1)^{j'-1}\,
+     \frac{u(i,j)\,p^{3i'}}{2\,j'^{\,3}\,c_p(ap^{i'},j')\,c_p(ap^{i'}+j',j')},
+\end{equation}
+the inner sum being restricted to the pairs with $j'p^{-i'}\le jp^{-i}$, with
+the $((i,j),(i',j'))$ block of valuation $\ge2i+i'-2\kappa+2$, with
+$\kappa=\kappa(a,p)$ as in Lemma~\ref{lem:kummer}, and both series convergent.  In particular, if
+$\Atil_a\ne0$ then
+\begin{equation}\label{eq:Lamblocks}
+  \Lambda_a=\frac{\Btil_a}{\Atil_a}=h_p(a)+\frac{1}{\Atil_a}\sum_{(i,j),(i',j')}(\cdots)
+  \ \in\ \Lalg .
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Ap\'ery's formula \cite{Apery1979,Fischler2003} reads
+$b_n=\sum_kA(n,k)\bigl[H_3(n)+T(n,k)\bigr]$ with $H_3(n)=\sum_{k\le n}k^{-3}$
+and $T(n,k)=\sum_{m\le k}(-1)^{m-1}\bigl(2m^3\bin nm\bin{n+m}m\bigr)^{-1}$.
+Hence
+\[
+  p^{3s}b_{ap^s}=\bigl(p^{3s}H_3(ap^s)\bigr)\,a_{ap^s}
+   +\sum_k A(ap^s,k)\sum_{m\le k}\frac{(-1)^{m-1}\,p^{3s}}
+     {2m^3\bin{ap^s}{m}\bin{ap^s+m}{m}} .
+\]
+The first summand converges to $h_p(a)\Atil_a$ by \cite[Thm.~6.1]{PaperC} and
+Theorem~\ref{thm:Atil}.  For the second, index $k=jp^{s-i}$ and $m=j'p^{s-i'}$
+as before.  Then $\vp(m^3)=3(s-i')$ and, by Lemma~\ref{lem:kummer}(ii)--(iii),
+$\vp\bin{ap^s}{m}=\vp\bin{ap^{i'}}{j'}\le i'+\kappa-1$ and likewise
+$\vp\bin{ap^s+m}{m}=\vp\bin{ap^{i'}+j'}{j'}\le i'+\kappa-1$, so the inner term
+\[
+  w_s(i',j'):=\frac{p^{3s}}{2\,m^3\bin{ap^s}{m}\bin{ap^s+m}{m}}
+  \qquad\text{has}\qquad \vp\bigl(w_s(i',j')\bigr)\ \ge\ i'-2\kappa+2,
+\]
+uniformly in $s$, and by Theorem~\ref{thm:closed}
+$w_s(i',j')\to p^{3i'}\bigl(2j'^{\,3}c_p(ap^{i'},j')c_p(ap^{i'}+j',j')\bigr)^{-1}$.
+Together with \eqref{eq:unifbd} the $((i,j),(i',j'))$ block has valuation
+$\ge2i+i'-2\kappa+2$, which tends to $\infty$ jointly in $(i,i')$; the same
+three-estimate argument as in Theorem~\ref{thm:Atil}, now with a double
+truncation, gives \eqref{eq:Btil}.  Finally every ingredient of
+\eqref{eq:Btil} lies in $\Kalg[h_p(a)]$ and the series converges in $\Qp$, so
+$\Btil_a$ and, when $\Atil_a\ne0$, $\Lambda_a$ lie in $\Lalg$.
+\end{proof}
+
+\begin{remark}[on $\Atil_a\ne0$]\label{rem:Atilnonzero}
+$\Lambda_a$ exists unconditionally by \cite[Thm.~2.4]{PaperC}, so
+$\Lambda_a\Atil_a=\Btil_a$ holds whenever $\Atil_a\ne0$, and $\Atil_a\ne0$ as
+soon as $\vp(\Atil_a)<\infty$.  \VER{$p\in\{5,7\}$, $a\in\{1,2\}$:
+$\vp(\Atil_a)\in\{0,1\}$; and $\vp(\Atil_1)\le1$ at $p=5,7,11,13$
+\cite[Tab.~16]{PaperC}}, so the hypothesis is harmless in the computed range;
+we do not know it in general.  This is the only conditional step in
+\eqref{eq:Lamblocks}.
+\end{remark}
+
+\begin{corollary}\label{cor:inL}
+\PROVED.  Let $p\ge5$, $p\nmid a$, and assume $\Atil_a\ne0$ \textup{(}see
+Remark~\textup{\ref{rem:Atilnonzero}}: this is not known in general, and is
+\VER{} only on the cells listed there\textup{)}.  Then, for the classical
+Ap\'ery pair, $\Lambda_a\in\Lalg$.
+\end{corollary}
+
+\begin{finding}\label{find:blocks}
+\VER{$p\in\{5,7\}$; $a=1,2$; $12$ certified digits; $\Atil_a$ computed
+independently from the exact integer double sum at $n=ap^s$, $s\le4$ resp.\ $3$}
+Truncating \eqref{eq:Atilblocks} at $i\le I$ leaves a residual of valuation
+$3$--$4$ for $I=0$ and $6$--$7$ for $I=1$, against the guaranteed $2(I+1)$; every
+predicted block is confirmed and the residual moves to the next block.  Paper~C
+records the case $a=1$; the case $a=2$ is new here and is the numerical
+companion to the general-$a$ statement of Theorem~\ref{thm:Atil}.
+\end{finding}
+
+\subsection{Why no finite set of tower Betas suffices}
+
+\begin{proposition}\label{prop:infinite}
+\PROVED, under Hypothesis~\ref{hyp:ind}.  For every $N\ge2$ the group generated
+by $\{\bet(B,D):B+D\le N\}$ is free abelian of rank exactly $N-1$, and the
+lattice of relations among the images of the $\binom N2$ symbols of $\Pset_N$
+has rank $\binom{N-1}{2}$.  Consequently no finitely generated subgroup of $1+p\Zp$
+contains all the tower Betas.
+\end{proposition}
+\begin{proof}
+The generators are indexed by $\Pset_N$, and by \eqref{eq:key} the group is the
+image of $\ZZ[\Pset_N]$ under $\exp\circ\widehat G\circ\delta$.  Under
+Hypothesis~\ref{hyp:ind} the kernel of that map is $\ker\delta_N$, so the group
+is isomorphic to $\im\delta_N$, of rank $N-1$ by
+Proposition~\ref{prop:image}; the relation lattice then has rank
+$\binom N2-(N-1)=\binom{N-1}2$.  The ranks are unbounded in $N$, so no finitely
+generated subgroup contains all the $\bet$.
+\end{proof}
+
+\begin{remark}
+We do \emph{not} deduce that $\Kalg$ is not a finitely generated $\QQ$-algebra:
+a finitely generated algebra can perfectly well contain a multiplicative group
+of infinite rank (as $\QQ$ does).  The correct statement is the one about
+groups, and it is the one the asymmetry of \S\ref{sec:mirror} uses.
+\end{remark}
+
+The decomposition \eqref{eq:Atilblocks} uses $c_p(ap^i,j)$ for all $i$, hence
+tower Betas at unboundedly large arguments.  Under
+Hypothesis~\ref{hyp:ind} these are independent, so the $p$-adic Ap\'ery limit is
+not merely \emph{an} infinite sum: it is an infinite sum over a basis.  This is
+the precise sense in which the one-generator hypothesis refuted numerically in
+\cite[\S6.6]{PaperC} fails structurally.
+
+% =====================================================================
+\section{The mirror}\label{sec:mirror}
+% =====================================================================
+
+\subsection{What the two completions share}
+
+\begin{theorem}[Transfer Principle; Paper~D \cite{PaperD}]\label{thm:transfer}
+\IMPORTED.  Let $R\in\QQ(t)$ have poles only at non-positive integers and
+$\deg R\le-2$, with partial fractions $R(t)=\sum_{i,k}r_{i,k}(t+k)^{-i}$; set
+$\rho_i=\sum_kr_{i,k}$ and
+$\rho_{0,\theta}=-\sum_{i,k}r_{i,k}\sum_{\nu=0}^{k-1}(\nu+\theta)^{-i}$.  Then
+\[
+  \sum_{m\ge0}R(m+\theta)=\rho_{0,\theta}+\sum_{i\ge2}\rho_i\,\zeta(i,\theta),
+  \qquad
+  -\int_{\Zp}\widetilde R(t+\theta)\,dt
+   =\rho_{0,\theta}+\sum_{i\ge2}\rho_i\,\omega(\theta)^{1-i}\zeta_p(i,\theta),
+\]
+with the \emph{same} rational numbers $\rho$, $\widetilde R$ a primitive of $R$.
+Consequently every transfer identity and every integrality lemma of
+Rhin--Viola type, being a statement about the $\rho$'s, holds verbatim in both
+completions.
+\end{theorem}
+
+The Transfer Principle says that the \emph{rational skeleton} of an Ap\'ery-type
+construction --- which linear form in which zeta values, with which coefficients
+--- is completion-independent.  Nothing in the construction knows which
+completion it is in until the values $\zeta(i,\theta)$ or $\zeta_p(i,\theta)$ are
+attached.
+
+\subsection{What they do not share}
+
+Against that shared skeleton, the constants produced are of wholly different
+kinds.
+
+\begin{proposition}[archimedean tameness]\label{prop:tame}
+\IMPORTED.  For each of the twelve sporadic pairs whose characteristic roots have
+distinct moduli, the archimedean Ap\'ery limit $\lim_nB(n)/A(n)$ exists and is a
+rational multiple of $\zeta(w)$ or of $L(\chi_D,w)$ with $w\in\{2,3\}$
+\cite{Zagier2009,ASvSZ2008,ChamberlandStraub,PaperA}.  In particular each spans a
+one-dimensional $\QQ$-vector space, and the $\QQ$-span of all twelve is
+contained in the five-dimensional space
+$\QQ\zeta(2)+\QQ\zeta(3)+\QQ L(\chi_{-3},2)+\QQ L(\chi_{-4},2)+\QQ L(\chi_{-3},3)$.
+(That the five are $\QQ$-linearly independent is of course not known; five is an
+upper bound for the dimension, which is all we use.)
+\end{proposition}
+
+\begin{theorem}[the asymmetry]\label{thm:asym}
+\PROVED, under Hypothesis~\ref{hyp:ind}, for the classical Ap\'ery pair.
+Fix $p\ge5$ and $p\nmid a$.  The block decomposition \eqref{eq:Lamblocks} of the
+single constant $\Lambda_a$ involves the tower Betas $\bet(j,ap^i-j)$ and
+$\bet(j,ap^i)$ for every $i\ge0$ and every $j\le ap^i$ prime to $p$.  The group
+$\Gamma_a$ they generate inside $1+p\Zp$ is free abelian of infinite rank.
+\end{theorem}
+
+\begin{proof}
+Theorem~\ref{thm:Lam} exhibits the blocks.  By \eqref{eq:key} and
+Hypothesis~\ref{hyp:ind}, $\Gamma_a$ is isomorphic to the image under $\delta$
+of the free abelian group on those pairs; that image contains
+$\mu_i:=\delta(ap^i,1)=[ap^i]-[1]-[ap^i-1]$ for every $i\ge0$.  The largest
+symbol occurring in $\mu_i$ is $[ap^i]$, with coefficient $+1$, and the $ap^i$
+are strictly increasing; so in any non-trivial finite $\ZZ$-combination
+$\sum n_i\mu_i$ the symbol $[ap^{i_{\max}}]$ with $i_{\max}$ the largest index
+with $n_{i}\ne0$ survives with coefficient $n_{i_{\max}}\ne0$.  Hence the $\mu_i$
+are $\ZZ$-independent and the image has infinite rank
+(Proposition~\ref{prop:image}, Corollary~\ref{cor:free}).
+\end{proof}
+
+The contrast is therefore not a matter of how hard the two sides are to compute.
+The archimedean limit is a value of one period at one singular point; the
+$p$-adic limit is a sum over the whole $p$-adic tower tree, and it collects the
+generating function $G$ at \emph{every} level.  A one-dimensional space on one
+side, an infinite-rank one on the other, with the rational skeleton identical.
+Only the values attached differ, and $\zeta_p$ is attached infinitely often
+where $\zeta$ is attached once.
+
+\begin{remark}[the limitless trio]
+Three of the fifteen families --- $B$, $(\delta)$, $(\eta)$ --- have
+characteristic roots that are complex conjugates of equal modulus and hence
+\emph{no} archimedean Ap\'ery limit at all, yet all three have $p$-adic tower
+limits: $(\delta)$ outright, $B$ and $(\eta)$ after the $\chi(p)^{-s}$ twist
+\cite[\S7]{PaperC}, the sole exception being $(\eta)$ at the ramified prime
+$p=5$.  Proposition~\ref{prop:tame} is thus vacuous for them while
+Theorem~\ref{thm:asym}'s $p$-adic side is not: on those three families the
+asymmetry is total.  (The observation that the $p$-adic limit exists where the
+archimedean one does not is due to \cite[\S8.2]{PaperA}; what is added here is
+the algebra it lives in.)
+\end{remark}
+
+% =====================================================================
+\section{The exclusion ledger}\label{sec:ledger}
+% =====================================================================
+
+Everything conditional above rests on Hypothesis~\ref{hyp:ind}.  We cannot prove
+it; we can and do report what a search finds.
+
+\subsection{Instrument and convention}
+
+Reference values $\zeta_p(m)$, for all odd $m$ up to a cutoff a few beyond the
+target precision (the $m$-th term of $\gh$ has valuation $\ge\varepsilon_m+m$ by
+\eqref{eq:eps}), come from the Kubota--Leopoldt
+implementation of \cite[App.~A]{PaperC}, built from a Volkenborn series and
+validated on $980$ independent interpolation identities, on independence of the
+auxiliary modulus, and against the limit characterisation of
+\cite{LSZ2025,BV2025}.  The search instrument is an exact-\texttt{Fraction} LLL
+with the residue column weighted by $p^{A}$, so that only exact relations modulo
+$p^A$ survive.  For an $m$-term relation certified to $A$ digits the heuristic
+noise floor is $p^{A/m}$: a lattice of that determinant contains vectors of that
+size for accidental reasons.  LLL does not \emph{exclude} relations: it fails to
+find them, with an approximation guarantee.  What we therefore report is: no
+vector below the floor was returned, and LLL returns a vector within a factor
+$2^{(n-1)/2}$ of the shortest, so a genuine relation substantially below the
+floor would have been returned.  The decisive test is the second one:
+\emph{a genuine relation's height does not move when $A$ increases}, whereas
+noise tracks the floor.  All of this is evidence, not exclusion.
+
+\begin{finding}\label{find:instrument}
+\VER{$p\in\{5,7,11,13\}$; at the same precision as the searches below}  Adjoin
+to the basis the number $y:=3\gh(1)-7\gh(2)$, computed from the same data.  The
+finder recovers the planted relation $3\gh(1)-7\gh(2)-y=0$, of height $7$, at
+every prime tested.
+\end{finding}
+
+\subsection{The search}
+
+\begin{finding}[nothing below the floor]\label{find:ind}
+\VER{$p\in\{5,7,11,13\}$; $x=1,\dots,8$; at $A=26$ and again at $A=38$ certified
+$p$-adic digits}  No $\QQ$-linear relation among $\gh(1),\dots,\gh(N)$, and no
+$\QQ$-affine one (i.e.\ with $1$ adjoined), was found below the noise floor, for
+any $N\le8$.  Every best height sits at the floor and \emph{scales with the
+precision}, which is the signature of noise.  Table~\ref{tab:ind} records the
+two-precision comparison at $p=5$ and $p=7$; the other two primes behave
+identically.
+\end{finding}
+
+\begin{table}[h]
+\centering\small
+\caption{$(\mathrm{IND}_p)$: best LLL height found against the noise floor
+$p^{A/m}$, at two certified precisions.  A genuine relation would have a height
+that does not move between the two columns.}
+\label{tab:ind}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+& \multicolumn{2}{c}{$p=5$} & \multicolumn{2}{c}{$p=7$}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+basis & $A=26$ & $A=38$ & $A=26$ & $A=38$\\
+      & height / floor & height / floor & height / floor & height / floor\\
+\midrule
+$\gh(1),\gh(2)$          & 8.6e8 / 1.2e9 & 1.9e13 / 1.9e13 & 7.4e10 / 9.7e10 & 1.0e15 / 1.1e16\\
+$\gh(1..3)$              & 3.1e5 / 1.1e6 & 3.8e8 / 7.1e8   & 8.1e6 / 2.1e7   & 2.2e10 / 5.1e10\\
+$\gh(1..4)$              & 1.1e4 / 3.5e4 & 2.3e6 / 4.4e6   & 1.6e5 / 3.1e5   & 7.4e7 / 1.1e8\\
+$\gh(1..6)$              & 4.5e2 / 1.1e3 & 1.5e4 / 2.7e4   & 2.7e3 / 4.6e3   & 8.9e4 / 2.3e5\\
+$\gh(1..8)$              & 95 / 1.9e2    & 9.2e2 / 2.1e3   & 2.5e2 / 5.6e2   & 4.0e3 / 1.0e4\\
+\midrule
+$1,\gh(1)$               & 8.1e8 / 1.2e9 & 1.2e13 / 1.9e13 & 7.2e10 / 9.7e10 & 1.0e16 / 1.1e16\\
+$1,\gh(1..3)$            & 7.9e3 / 3.5e4 & 2.2e6 / 4.4e6   & 1.1e5 / 3.1e5   & 3.3e7 / 1.1e8\\
+$1,\gh(1..8)$            & 58 / 1.1e2    & 3.6e2 / 8.9e2   & 1.5e2 / 2.8e2   & 1.7e3 / 3.7e3\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[what the ledger does and does not reach]
+It reaches heights up to roughly $10^{13}$ at $p=5$ and $10^{15}$ at $p=7$ in the
+two-term case, degrading to a few hundred for eight terms, at $x\le8$; no
+relation was returned below the floor anywhere.  It says nothing about
+relations of larger height, relations
+involving $\gh$ at larger arguments, or --- crucially --- relations that are not
+of the form $\widehat G(\mu)=0$ for $\mu$ of small support.  Under
+Theorem~\ref{thm:rigid} the relations that matter for the Kazandzidis algebra are
+exactly those with $\mu\in\im\delta=\ker m_1$, so the ledger is a search in the
+right place; it is not a proof of anything.
+\end{remark}
+
+\subsection{What is imported}
+
+Paper~C's exclusion theorem \cite[\S5]{PaperC} is the companion negative and we
+do not repeat its tables: no $\QQ$-affine relation of height $\lesssim10^4$
+between $\Lambda_a$ (or the Brown--Zudilin analogues) and $\zeta_p(3)$ or
+$\zeta_p(5)$, at $p=5,7,11,13$, to $12$--$27$ certified digits; the same for
+$\log_p2$, $\log_p3$, the unit root of $\eta(2z)^4\eta(4z)^4$, and for
+algebraicity of degree $\le3$; and, across families, no pairwise $\QQ$-linear
+relation among the $\Lambda_1$'s (at $p=7$, $12$--$21$ certified digits).
+
+Theorem~\ref{thm:rigid} does \emph{not} apply to $\Lambda_a$, which is an
+infinite assembly of blocks rather than a finite monomial in tower Betas, and we
+claim no implication.  What the present paper adds to those exclusions is a
+heuristic, and we label it as one: by Theorems~\ref{thm:closed} and
+\ref{thm:Lam} the ingredients of $\Lambda_a$ are exponentials of infinite
+$\QQ$-combinations of \emph{all} the odd $\zeta_p(m)$ with $p$-power-weighted
+coefficients, so a finite low-height relation between $\Lambda_a$ and a single
+$\zeta_p(m)$ would be a coincidence of the same species as the ones
+Hypothesis~\ref{hyp:ind} forbids --- but it is not one of them, and nothing here
+proves it cannot happen.
+
+% =====================================================================
+\section{The programme}\label{sec:programme}
+% =====================================================================
+
+The $\Lambda$-algebra is a class of constants with closed forms and no theory.
+Here are the questions we can now state precisely, in the order we would attack
+them.
+
+\begin{problem}[the presentation]\label{prob:present}
+Prove Problem~\ref{prob:gen}: $\ker\delta$ is generated by the symmetry and
+trinomial-revision relations.  This is a finite-type statement about the free
+abelian group $\ker m_1$ and is independent of $p$; Finding~\ref{find:lattice}
+confirms it to $N=11$.  With it, Theorem~\ref{thm:rigid} becomes a complete
+determination of the multiplicative relations among the tower Betas, conditional
+only on $(\mathrm{IND}_p)$.  (For the caveat about $\El$ itself, see
+Remark~\ref{rem:notclaimed}.)
+\end{problem}
+
+\begin{problem}[$(\mathrm{IND}_p)$ in weakened form]\label{prob:indweak}
+Hypothesis~\ref{hyp:ind} in full is at least as hard as the irrationality of a
+single $\zeta_p(2k+1)$ for $p\ge5$.  Two weakenings look accessible:
+\emph{(a)} prove $\gh(1)\notin\QQ$ for some $p$ --- equivalently, that
+$\sum_{m\ \mathrm{odd}\ge3}\zeta_p(m)p^m/(m(1-p^m))$ is irrational;
+\emph{(b)} prove that $\gh(1),\dots,\gh(N)$ span a $\QQ$-space of dimension
+$\ge2$ for some explicit $N$ and $p$.  Both are $p$-adic Ap\'ery-type questions
+about a \emph{single} very rapidly convergent series, and (b) is the natural
+target for a $p$-adic Ball--Rivoal argument \cite{LaiSprang2023,FSZ2018}.
+\end{problem}
+
+\begin{problem}[the $\Lambda$-module across bases]\label{prob:bases}
+Determine the $\QQ$-vector space spanned by $\{\Lambda_a\}_{p\nmid a}$ inside
+$\Lalg$.  Paper~C excludes low-height relations; Theorem~\ref{thm:Lam} shows the
+$a$-dependence enters through $h_p(a)$, through $\Atil_a$ and through the block
+index set $\{j\le ap^i\}$.  The tractable sub-question: is
+$\Lambda_a-h_p(a)$ determined by $\Lambda_1-h_p(1)$ and finitely many
+$\Gp$-values?  The block structure says no, and a proof would be the first
+unconditional non-relation in this subject.
+\end{problem}
+
+\begin{problem}[the other fourteen families]\label{prob:families}
+Theorems~\ref{thm:Atil} and \ref{thm:Lam} are proved for the classical Ap\'ery
+$\zeta(3)$ pair, using Ap\'ery's explicit harmonic formula for $b_n$.  Every
+sporadic $B$ has a harmonic-monomial closed form of weight $w$
+\cite[\S6]{PaperA}; carry the same two estimates through it and one gets
+$\Lambda_a\in\Lalg$ for all fifteen families, with $\El$ enlarged by the
+character values.  What is the correct twisted analogue of $h^{(w)}_p$, and does
+$\chi$ enter the blocks or only the normalisation?
+\end{problem}
+
+\begin{problem}[a weight filtration]\label{prob:weight}
+Is there a filtration on $\Lalg$ under which $h^{(w)}_p(a)$ has weight $w$,
+$\bet(B,D)$ has weight $0$, and $\Lambda_a$ has weight $w$?  The obstruction is
+that $\bet$ is an exponential of a series mixing all odd weights; a filtration
+would have to be by the \emph{order of vanishing} of $\gh$ at $x=0$, which is
+$3$ --- the same for every tower Beta, so the filtration would be trivial.  A graded object, if one exists, is the right home for a
+motivic statement.
+\end{problem}
+
+\begin{problem}[what a period statement would mean]\label{prob:period}
+The archimedean Ap\'ery limits are periods.  Their $p$-adic counterparts are
+values of $\prod_{k\ge1}G(xp^k)$ with $G=\Gp e^{-\Gp'(0)x}$, the same generating
+function whose Taylor coefficients are the Beukers--Vlasenko Frobenius structure
+constants \cite{BV2025}; archimedeanly the analogous generating function is the
+one of Bloch--Vlasenko \cite{BlochVlasenko}.  Is there a category in which
+$\prod_{k\ge1}G(xp^k)$ is the period of an object, and in which the divisor map
+$\delta$ of Definition~\ref{def:delta} is the shadow of a coproduct?  The
+relations \eqref{eq:relS}, \eqref{eq:relT} are exactly those of a
+$\ZZ$-valued ``divisor of a binomial'', which is suggestive.
+\end{problem}
+
+\begin{problem}[falsifiable next computations]\label{prob:next}
+Three, in increasing cost.
+\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\item Extend Finding~\ref{find:lattice} to $N=20$; a failure there would refute
+  Problem~\ref{prob:present} outright.  Cost: exact Smith normal forms of
+  matrices of size $\binom{20}{2}=190$.
+\item Extend Finding~\ref{find:ind} to $x\le16$ and $A=60$ certified digits.
+  $\gh$ costs only $\zeta_p(m)$ for $m\le A+6$, so this is cheap; the
+  discriminating quantity is whether any height fails to scale with $A$.
+\item Compute $\Lambda_a$ for the twisted families to $18$ digits and test
+  $\Lambda^{(\mathrm{fam}_1)}_1/\Lambda^{(\mathrm{fam}_2)}_1$ against
+  $\El$-monomials rather than against $\QQ$ --- Paper~C tested the latter only,
+  and Theorem~\ref{thm:rigid} says $\El$ is the right group to quotient by.
+\end{enumerate}
+\end{problem}
+
+% =====================================================================
+\appendix
+\section{Reproduction}\label{app:repro}
+% =====================================================================
+
+All computations use exact integer or rational arithmetic; no floating point
+occurs at any stage.  The programs accompanying this paper are:
+
+\begin{itemize}[leftmargin=1.5em]
+\item \texttt{lam.py} --- the $p$-adic number class with an honest precision
+  bound carried through every operation; $\gh$, $\bet$ and $E_p$ from the
+  Kubota--Leopoldt values $\zeta_p(m)$; the direct Kazandzidis limits
+  $c_p(A,B)$ from exact binomial residues by Legendre/Morita splitting (one
+  linear pass per prime, recording only the needed factorial-unit indices); the
+  verification of \eqref{eq:closed} (Finding~\ref{find:closedver}); the three
+  relation sweeps (Finding~\ref{find:rels}); the $(\mathrm{IND}_p)$ hunt with the
+  planted-relation validation (Findings~\ref{find:instrument},
+  \ref{find:ind}); and the exact integer linear algebra for
+  Finding~\ref{find:lattice}, including the assertion that every proposed
+  generator really lies in $\ker\delta$; and the tower-harmonic constants
+  $h^{(w)}_p(a)$, with the distribution relation and the relation hunt of
+  Finding~\ref{find:hp} (the index $i$ ranging over all integers with
+  $ap^i\ge1$, cf.\ Remark~\ref{rem:index}).
+\item \texttt{atil.py} --- the block-by-block check of Theorem~\ref{thm:Atil}
+  for $a=1,2$ (Finding~\ref{find:blocks}), with $a_{ap^s}$ built independently as
+  an exact integer from the defining double sum.
+\end{itemize}
+
+The $\zeta_p(m)$ implementation, its validation record and the exact LLL are
+those of \cite[App.~A]{PaperC} and are re-used unchanged; the certified
+precision of every reported digit is carried by the number class rather than
+asserted.
+
+\subsection*{Acknowledgements}
+
+[TO BE SUPPLIED]
+
+% =====================================================================
+\begin{thebibliography}{99}
+% =====================================================================
+
+% --- Entries marked (BV) were resolved against a fetched source in the
+%     verification memo work/BIBLIO_VERIFY.md of the companion series; the
+%     remainder were fetched for this paper.
+
+\bibitem{PaperA}
+[AUTHOR],
+\emph{$\chi$-twisted Lucas congruences for the second solutions of Ap\'ery-like
+recurrences}.
+Companion paper (Paper~A of this series); in preparation.
+
+\bibitem{PaperB}
+[AUTHOR],
+\emph{Frobenius constants, Stokes ratios, and the middle-root obstruction for
+cellular approximations to $\zeta(5)$}.
+Companion paper (Paper~B of this series); in preparation.
+
+\bibitem{PaperC}
+[AUTHOR],
+\emph{$p$-adic Ap\'ery limits: rate laws, valuation strata, and closed forms via
+the $p$-adic Gamma function}.
+Companion paper (Paper~C of this series); in preparation.
+
+\bibitem{PaperD}
+[AUTHOR],
+\emph{Rhin--Viola groups are $p$-adic: the transfer principle, the margin map,
+and the optimality of the known $p$-adic irrationality measures}.
+Companion paper (Paper~D of this series); in preparation.
+
+\bibitem{Apery1979}
+R.~Ap\'ery,
+\emph{Irrationalit\'e de $\zeta(2)$ et $\zeta(3)$},
+in: Journ\'ees Arithm\'etiques (Luminy, 1978),
+Ast\'erisque \textbf{61} (1979), 11--13.
+
+\bibitem{ASvSZ2008}
+G.~Almkvist, D.~van Straten and W.~Zudilin,
+\emph{Ap\'ery limits of differential equations of order $4$ and $5$},
+in: Modular Forms and String Duality, Fields Inst.\ Commun.\ \textbf{54},
+Amer.\ Math.\ Soc., Providence, RI, 2008, pp.~105--123.
+
+\bibitem{BlochVlasenko}
+S.~Bloch and M.~Vlasenko,
+\emph{Gamma functions, monodromy and Frobenius constants},
+Commun.\ Number Theory Phys.\ \textbf{15} (2021), no.~1, 91--147;
+arXiv:1908.07501.
+
+\bibitem{BV2025}
+F.~Beukers and M.~Vlasenko,
+\emph{Frobenius structure and $p$-adic zeta values},
+Adv.\ Math.\ \textbf{480} (2025), Paper No.~110512; arXiv:2302.09603.
+(Equation~(2) there is $\log\Gp(x)=\Gp'(0)x-\sum_{m\ge2}\zeta_p(m)x^m/m$, read
+verbatim from the fetched arXiv text.  The evaluation of the Frobenius structure
+constants as Taylor coefficients of $\Gp(x)e^{-\Gp'(0)x}$ is Theorem~1.4 in that
+text and is cited as Theorem~1.5 in \cite{PaperC}; we therefore cite it without
+an internal number.)
+
+\bibitem{Calegari2005}
+F.~Calegari,
+\emph{Irrationality of certain $p$-adic periods for small $p$},
+Int.\ Math.\ Res.\ Not.\ (2005), no.~20, 1235--1249.
+
+\bibitem{ChamberlandStraub}
+M.~Chamberland and A.~Straub,
+\emph{Ap\'ery limits: experiments and proofs},
+Amer.\ Math.\ Monthly \textbf{128} (2021), no.~9, 811--824;
+arXiv:2011.03400.
+
+\bibitem{Cooper2012}
+S.~Cooper,
+\emph{Sporadic sequences, modular forms and new series for $1/\pi$},
+Ramanujan J.\ \textbf{29} (2012), no.~1--3, 163--183.
+(The three additional sporadic solutions $s_7$, $s_{10}$, $s_{18}$ are
+attributed to this paper by \cite[\S2]{MalikStraub}.)
+
+\bibitem{Fischler2003}
+S.~Fischler,
+\emph{Irrationalit\'e de valeurs de z\^eta (d'apr\`es Ap\'ery, Rivoal, \dots)},
+S\'eminaire Bourbaki exp.\ 910, Ast\'erisque \textbf{294} (2004), 27--62;
+arXiv:math/0303066.
+
+\bibitem{FSZ2018}
+S.~Fischler, J.~Sprang and W.~Zudilin,
+\emph{Many odd zeta values are irrational},
+Compositio Math.\ \textbf{155} (2019), no.~5, 938--952; arXiv:1803.08905.
+
+\bibitem{Granville1997}
+A.~Granville,
+\emph{Arithmetic properties of binomial coefficients.\ I.\ Binomial coefficients
+modulo prime powers},
+in: Organic Mathematics (Burnaby, BC, 1995), CMS Conf.\ Proc.\ \textbf{20},
+Amer.\ Math.\ Soc., Providence, RI, 1997, pp.~253--276.
+
+\bibitem{GrossKoblitz1979}
+B.~H.~Gross and N.~Koblitz,
+\emph{Gauss sums and the $p$-adic $\Gamma$-function},
+Ann.\ of Math.\ (2) \textbf{109} (1979), no.~3, 569--581.
+
+\bibitem{JacobsthalKazandzidis}
+V.~Brun, J.~O.~Stubban, J.~E.~Fjeldstad, R.~Tambs Lyche, K.~E.~Aubert,
+W.~Ljunggren and E.~Jacobsthal,
+\emph{On the divisibility of the difference between two binomial coefficients},
+Den 11te Skandinaviske Matematikerkongress (Trondheim, 1949),
+Johan Grundt Tanums Forlag, Oslo, 1952, pp.~42--54;
+G.~S.~Kazandzidis,
+\emph{Congruences on the binomial coefficients},
+Bull.\ Soc.\ Math.\ Gr\`ece (N.S.) \textbf{9} (fasc.~1) (1968), 1--12.
+
+\bibitem{LaiSprang2023}
+L.~Lai and J.~Sprang,
+\emph{Many $p$-adic odd zeta values are irrational},
+arXiv:2306.10393.
+
+\bibitem{LSZ2025}
+L.~Lai, J.~Sprang and W.~Zudilin,
+\emph{A note on the irrationality of $\zeta_2(5)$},
+arXiv:2505.05005.
+(Definition~8 there fixes the normalisation $\zeta_p(s)=L_p(s,\omega^{1-s})$
+used here.)
+
+\bibitem{MalikStraub}
+A.~Malik and A.~Straub,
+\emph{Divisibility properties of sporadic Ap\'ery-like numbers},
+arXiv:1508.00297.
+
+\bibitem{Mestrovic}
+R.~Me\v{s}trovi\'c,
+\emph{Wolstenholme's theorem: its generalizations and extensions in the last
+hundred and fifty years (1862--2012)},
+arXiv:1111.3057.
+(A survey; \S3 states the Jacobsthal--Kazandzidis congruence
+$\bin{np}{mp}\equiv\bin nm\pmod{p^{t}}$, $t=\vp\bigl(p^3nm(n-m)\bigr)$, and its
+iterate, which is the classical source of the convergence in \eqref{eq:cp}.)
+
+\bibitem{Morita1975}
+Y.~Morita,
+\emph{A $p$-adic analogue of the $\Gamma$-function},
+J.\ Fac.\ Sci.\ Univ.\ Tokyo Sect.\ IA Math.\ \textbf{22} (1975), no.~2,
+255--266.
+(The product form in \eqref{eq:morita-int} is the iterate of Morita's relation
+$\Gp(n+1)=(-1)^{n+1}n!/(p^{\floor{n/p}}\floor{n/p}!)$.)
+
+\bibitem{Robert2000}
+A.~M.~Robert,
+\emph{A Course in $p$-adic Analysis},
+Graduate Texts in Mathematics \textbf{198}, Springer-Verlag, New York, 2000,
+xv$+$437 pp.
+(A standard reference for Morita's $\Gp$, its Lipschitz continuity and the
+relation $\Gp(x+1)=-\Gp(x)$ on $p\Zp$; these are also in \cite{Morita1975}.)
+
+\bibitem{Straub2023}
+A.~Straub,
+\emph{Gessel--Lucas congruences for sporadic sequences},
+Monatsh.\ Math.\ (2023); arXiv:2301.12248.
+
+\bibitem{Supercong}
+F.~Beukers,
+\emph{Some congruences for the Ap\'ery numbers},
+J.\ Number Theory \textbf{21} (1985), no.~2, 141--155;
+M.~J.~Coster,
+\emph{Supercongruences},
+Ph.D.\ thesis, Universiteit Leiden, 1988;
+T.~Ishikawa,
+\emph{Super congruence for the Ap\'ery numbers},
+Nagoya Math.\ J.\ \textbf{118} (1990), 195--202.
+
+\bibitem{Zagier2009}
+D.~Zagier,
+\emph{Integral solutions of Ap\'ery-like recurrence equations},
+in: J.~Harnad and P.~Winternitz (eds.), Groups and Symmetries:
+From Neolithic Scots to John McKay,
+CRM Proc.\ Lecture Notes \textbf{47}, Amer.\ Math.\ Soc., 2009, pp.~349--366.
+
+\end{thebibliography}
+
+\end{document}

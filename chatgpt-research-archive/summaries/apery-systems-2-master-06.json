@@ -1,0 +1,27 @@
+{
+  "family": "apery-systems-2::MASTER 06",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-2/master-06-6a82b4d0.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-2/master-06-6a82b4d0.json",
+  "title_human": "Beauville Weight-Two Classification",
+  "claims": [
+    {
+      "statement": "Host D unique",
+      "object": "Beauville",
+      "status": "proved",
+      "source_file": "master-06-6a82b4d0.json",
+      "notes": ""
+    }
+  ],
+  "connections_to_literature": [
+    "Beauville",
+    "Zagier"
+  ],
+  "open_threads_or_handoffs": [],
+  "in_ledger": "partially",
+  "ledger_notes": "",
+  "flags": [
+    "NO-GO THEOREM"
+  ]
+}

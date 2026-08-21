@@ -1,0 +1,61 @@
+{
+  "family": "apery-systems-4::Continue Modular Proof",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-4/continue-modular-proof-6a86a8fb.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-4/continue-modular-proof-6a86a8fb.md",
+  "title_human": "\u03b6(7) irrationality program with obstruction analysis",
+  "claims": [
+    {
+      "statement": "Level-60 purified source space is exactly 3-dimensional; p=5 completion has coordinates (13/3, -52/3, 1); B_0 is unique depth-3 line; invariant sextic is irreducible genus-two curve",
+      "object": "\u03b6(7) level-60 geometry",
+      "status": "proved",
+      "source_file": "continue-modular-proof-6a86a8fb.md",
+      "notes": "All supplied certificates reproduce successfully"
+    },
+    {
+      "statement": "K_3=Q(-1,-380,33), K_4=Q(14723,-112676,8349), K_5=Q(13,-52,3) are Atkin\u2013Lehner eigenvectors with W_3 K_3=-K_3, W_4 K_4=K_4, W_5 K_5=-K_5",
+      "object": "\u03b6(7) obstruction lines",
+      "status": "proved",
+      "source_file": "continue-modular-proof-6a86a8fb.md",
+      "notes": "K_5=3C_5 (p=5 identification exact)"
+    },
+    {
+      "statement": "\u03b4(B_0)=3/7, \u03b4(B_1)=2/7, \u03b4(B_2)=7 are exact asymptotics (moving-prime argument)",
+      "object": "\u03b6(7) entropy bounds",
+      "status": "proved",
+      "source_file": "continue-modular-proof-6a86a8fb.md",
+      "notes": "All scalar cusp-eigenvectors pay full entropy 7"
+    },
+    {
+      "statement": "Filtered lattice D^(-7)B_0, D^(-2)T_1, D^(-1)T_2 has entropy \u03b4_filt = 6/19 \u2248 0.315789... (sharp); analytic radius R=31.941928... gives log R \u2248 3.463919...",
+      "object": "\u03b6(7) filtered denominator",
+      "status": "proved",
+      "source_file": "continue-modular-proof-6a86a8fb.md",
+      "notes": "Exact candidate lattice fixed"
+    },
+    {
+      "statement": "Depth m=2 admits required minimal exterior lift, but depth m=1 has no source-carrying depth-1 \u039b^6 filtered lift (obstruction visible in nilpotent leading symbol)",
+      "object": "\u03b6(7) exterior obstruction",
+      "status": "obstruction",
+      "source_file": "continue-modular-proof-6a86a8fb.md",
+      "notes": "Rules out (7,2,1) construction"
+    }
+  ],
+  "connections_to_literature": [
+    "Related to zeta(7) irrationality efforts"
+  ],
+  "open_threads_or_handoffs": [
+    "Coupled-boundary option",
+    "Larger exterior/Koszul complex",
+    "Third independent realization",
+    "Better denominator theorem",
+    "Different modular row"
+  ],
+  "in_ledger": "no",
+  "ledger_notes": "\u03b6(7) irrationality program not directly in current ledger",
+  "flags": [
+    "No \u03b6(7) irrationality theorem reached at this stage",
+    "Exact obstruction identified"
+  ]
+}

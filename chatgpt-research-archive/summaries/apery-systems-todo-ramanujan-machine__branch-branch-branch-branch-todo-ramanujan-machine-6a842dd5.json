@@ -1,0 +1,87 @@
+{
+  "family": "apery-systems::TODO: Ramanujan machine",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-todo-ramanujan-machine-6a83f5d1.json",
+    "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems/branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.json",
+  "title_human": "CDT L(2,chi_-3) reconstruction, Franke Layer-B completion, and L(3,chi_5) six-sheet no-go",
+  "claims": [
+    {
+      "statement": "The CDT reconstruction of L(2,chi_-3) (V9 integration patch) recovers a filtration collapse 14 -> 3 -> 1 with tau_F = 191/49, tau_hor = 27/80, and tau_ad = 16603/3920, built on top of the exact source identification D^2 B_CDT = (1-8V^2) E_{3,chi_-3,1} and D^2 C_CDT = (1-V^2) E_{3,1,chi_-3}.",
+      "object": "L(2,chi_-3) arithmetic-holonomy reconstruction, adelic Layer C",
+      "status": "conjectural",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.md",
+      "notes": "Framed as reproducing the 'fine arithmetic cost' of CDT's known successful irrationality proof, but presented as a modeling/reconstruction exercise, not an independently verified new theorem; depends on trunk's still-open adelic Layer C formalism (see trunk)."
+    },
+    {
+      "statement": "The 'boundary-completed Franke/Layer-B' theorem is claimed complete: the Franke critical kernel, orientation resolution, and full cusp-boundary kernel are now treated as successive exact linear stages, resolving the open sequence 0 -> K_full -> E_(Crit,Res) -> C_crit (+) C_partial -> ... that the trunk had flagged as the single most important remaining classification theorem.",
+      "object": "Layer-B / Franke boundary classification theorem",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.md",
+      "notes": "Status 'proved' is the thread's own framing ('done', 'no longer left as a conjectural programme item'); no independent verification found here. See trunk for the original open problem statement this resolves."
+    },
+    {
+      "statement": "For the L(3,chi_5) genus-one/six-sheet programme, the source calculation reduces the viable level-20 realization to the unique line G* = S + 4V^2 S - 32V^4 S on X_0(20) \\ {Q,3Q,4Q}, with base 2Q; the three cusps Q,3Q,4Q cannot be removed because the relevant boundary matrix has determinant 289/32 =/= 0.",
+      "object": "L(3,chi_5) level-20 six-sheet construction",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.md",
+      "notes": "Cited as already established in an uploaded source document (L3_CHI5_SIX_SHEET_COMPLETION_ATTEMPT); not independently re-derived in this message."
+    },
+    {
+      "statement": "For the level-20 curve E: Y^2 = m(m^2-2m+5), j(E) = 21296/25 and E(C) ~= C/(Z + tau_E Z) with tau_E = 1/2 + 0.620969651446173011114040998188...i; under this uniformization Q <-> 1/6, 2Q <-> 1/3, 3Q <-> 1/2, 4Q <-> 2/3.",
+      "object": "L(3,chi_5) level-20 elliptic curve uniformization",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.md",
+      "notes": "Explicit uniformization computed in this message as a 'useful simplification.'"
+    },
+    {
+      "statement": "The level-10 realization of the L(3,chi_5) six-sheet route fails the CDT entry condition unconditionally via an elementary one-term theta estimate: after normalizing to z_0 = 1/2 - i, tau_0 = i K(z_0)/K(1-z_0) satisfies -0.533 < Re(tau_0) < -0.532, 0.846 < Im(tau_0) < 0.847, giving |theta_3(tau_0)| < 0.9958, hence r_u < (pi/2)(0.847)(0.9958)^4 < 1.309 < e^{117/400}, so log r_u < 117/400.",
+      "object": "L(3,chi_5) level-10 six-sheet route",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.md",
+      "notes": "Presented as a rigorous elementary no-go, stronger than the earlier numerical conformal-radius estimate from the same thread (log r_x ~ 0.26736 computed earlier, also below the 117/400=0.2925 threshold)."
+    },
+    {
+      "statement": "The level-20 route is closed by a computer-assisted monotone-submetric certificate: an explicit metric sigma = exp(u_s + v_20 - 3/40)|dz| (u_s an exact two-cusp theta model, v_20 a degree-20 Fourier correction) gives sigma(1/3) = 4.2677223281830188268..., while the most favorable arithmetic threshold is Omega_1 e^{-117/400} = 4.2162003523116518836..., a margin of 0.05152197587..., establishing log r_x < 117/400 with explicit error budgets |delta v|,|delta u_s| <= 10^-7.",
+      "object": "L(3,chi_5) level-20 six-sheet route",
+      "status": "experimental/numerical",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.md",
+      "notes": "Thread explicitly states this is a 'robust computer-assisted certificate' but not yet publication-grade: 'the only remaining publication-level computational refinement is a directed-rounding Arb/MPFI-style rerun; the present implementation uses very conservative explicit error budgets rather than a true outward-rounded interval library.'"
+    },
+    {
+      "statement": "General monotone entry obstruction theorem: if X is the actual continuation surface, X subset Y, and sigma is any curvature-<=-1 conformal pseudometric on Y, then rho_X(z_0) >= rho_Y(z_0) >= sigma(z_0), so r_x(X,z_0) <= 2|x'(z_0)|/sigma(z_0), and sigma(z_0) <= e^{tau_ad}/(2|x'(z_0)|) already constitutes a complete no-go for arithmetic holonomy without needing the exact hyperbolic metric or full CDT energy.",
+      "object": "General arithmetic-holonomy no-go criterion (adelic Layer C)",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.md",
+      "notes": "Derived from Ahlfors-Schwarz-type monotonicity of hyperbolic metrics under domain inclusion; presented as a new general theorem of the theory, distilled from the level-10/level-20 computations."
+    },
+    {
+      "statement": "Finite-place mixed invariant theorem: if the local extension matrix is Phi_E = (Phi_V, 0; kappa_p, 1), changing the splitting by v sends kappa_p -> kappa_p + (Phi_V - 1)v, so the canonical object is not kappa_p itself but its class [kappa_p] in coker(Phi_V - 1), and this class satisfies the Hecke-equivariance identity [kappa_p(C nu)] = C[kappa_p(nu)], giving q_p[kappa_p(C nu)] = lambda_C q_p[kappa_p(nu)] on a one-dimensional eigenquotient q_p where C acts by lambda_C.",
+      "object": "Finite-place Hecke-Eisenstein functoriality (adelic Layer C, p-adic extension theory)",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.md",
+      "notes": "Builds on Sprang's syntomic elliptic polylogarithm and Bannai-Kings' ordinary-locus p-adic Eisenstein description (external literature, cited via arXiv). The remaining open piece is explicitly flagged: constructing the canonical Dirichlet regulator quotient q_{p,r,chi} and proving V_d -> d^{-r} there together with q_{p,r,chi}[kappa_p(nu_{r,chi})] = E_p(r,chi) L_p(r,chi)."
+    },
+    {
+      "statement": "Summary status at end of chain: the L(3,chi_5) six-sheet programme is closed at both natural levels (level 10 via elementary theta no-go, level 20 via monotone submetric no-go), i.e. 'perfect Layer-B purification does not imply Layer-C Diophantine viability' for this construction.",
+      "object": "L(3,chi_5) six-sheet programme, overall conclusion",
+      "status": "proved",
+      "source_file": "branch-branch-branch-branch-todo-ramanujan-machine-6a842dd5.md",
+      "notes": "This is the thread's own summary framing of the two preceding no-go results, not an independent additional claim."
+    }
+  ],
+  "connections_to_literature": [
+    "CDT (Calegari-Dimitrov-Tang or similar) arithmetic holonomy theorem for L(2,chi_-3), used as the reconstruction target",
+    "Sprang's syntomic elliptic polylogarithm (filtered overconvergent F-isocrystals) and Bannai-Kings' p-adic Eisenstein-Kronecker ordinary-locus description, cited for the finite-place theory (see also trunk)",
+    "Franke's theory of critical-value kernels for Eisenstein series, whose boundary-completion is claimed finished in this chain"
+  ],
+  "open_threads_or_handoffs": [
+    "Construct a verified FEM/interval enclosure or explicit Ahlfors-Schwarz subsolution rigorously proving rho(1/3) > 4.21621 to make the level-20 six-sheet no-go fully rigorous (currently only a numerical/computer-assisted certificate with explicit but not interval-verified error budgets)",
+    "Rerun the level-20 certificate with a directed-rounding Arb/MPFI-style interval library instead of the current conservative explicit error budgets",
+    "Construct the canonical Dirichlet regulator quotient q_{p,r,chi}, prove V_d -> d^{-r} on it, and prove q_{p,r,chi}[kappa_p(nu_{r,chi})] = E_p(r,chi) L_p(r,chi) — described as 'the sharp next target' and 'the cleanest genuinely structural open theorem in the project' at the end of this chain"
+  ],
+  "in_ledger": "partially",
+  "ledger_notes": "The ledger (Ledger + Do Not Overstate sheets) contains entries E06/E07 for the level-12 zeta(5)/Domb source construction discussed in the trunk, but no entries matching this chain's specific L(3,chi_5) level-10/level-20 six-sheet no-go results, the CDT L(2,chi_-3) reconstruction numbers (tau_F, tau_ad), the Franke boundary-completion claim, or the finite-place kappa_p Hecke functoriality theorem — these appear to be from a separate/later 'V9-V11' paper draft not yet reflected in this ledger snapshot.",
+  "flags": []
+}

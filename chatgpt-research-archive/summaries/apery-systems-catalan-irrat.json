@@ -1,0 +1,30 @@
+{
+  "family": "apery-systems::catalan irrat",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems/catalan-irrat-6a8599d8.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems/catalan-irrat-6a8599d8.json",
+  "title_human": "Catalan irrationality research",
+  "claims": [
+    {
+      "statement": "L(G,5) = 144/25 \u03b6(5)",
+      "object": "level-12 \u03b6(5)",
+      "status": "proved",
+      "source_file": "catalan-irrat-6a8599d8.json",
+      "notes": "Strongest result"
+    }
+  ],
+  "connections_to_literature": [
+    "CDT",
+    "Zudilin"
+  ],
+  "open_threads_or_handoffs": [
+    "Complete W_12 \u03b6(5) theorem"
+  ],
+  "in_ledger": "partially",
+  "ledger_notes": "\u03b6(5) irrationality work",
+  "flags": [
+    "CONJECTURAL APPROACH",
+    "NUMERICAL FAILURE"
+  ]
+}

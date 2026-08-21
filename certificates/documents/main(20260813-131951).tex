@@ -1,0 +1,934 @@
+% !TeX program = pdflatex
+%
+% "Eisenstein sources of the sporadic Apery companions"
+% Working paper of River's odd-zeta programme.
+%
+% Provenance: work/PHI_SOURCE_LEDGER.md (main content),
+% work/SPORADIC_MODULAR_DICTIONARY.md (the (t,F) identifications),
+% work/CUSPIDAL_COMPANION.md (Sturm arithmetic, fold-lemma sketch),
+% work/z5eps/eps60_phi_source.py, eps60b_phi_holdouts.py,
+% eps61_eichler_limits.py, eps61b_complex_limits.py (+ JSON results).
+% Companion paper (the proved base): papers_out/modular_anchors.
+%
+% Evidence labels are load-bearing and are never silently upgraded.
+%
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{verification}[theorem]{Computer-assisted finite verification}
+\newtheorem{problem}[theorem]{Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\thq}{\theta_q}
+\newcommand{\tht}{\theta_t}
+\newcommand{\chim}[1]{\chi_{-#1}}
+
+% evidence-class markers
+\newcommand{\Thm}{\textup{\textsf{[THM]}}}
+\newcommand{\Proved}{\textup{\textsf{[PROVED]}}}
+\newcommand{\VerifiedR}[1]{\textup{\textsf{[VERIFIED: #1]}}}
+\newcommand{\ExcludedR}[1]{\textup{\textsf{[EXCLUDED: #1]}}}
+\newcommand{\Open}{\textup{\textsf{[OPEN]}}}
+
+\begin{document}
+
+\title[Eisenstein sources of the sporadic companions]
+      {Eisenstein sources of the sporadic Ap\'ery companions:\\
+       what the second solution is made of,\\
+       and where its limit comes from}
+
+\author{[author]}
+\date{\today}
+
+\begin{abstract}
+For each of the fifteen sporadic Ap\'ery-like recurrences the second
+(``companion'') solution is given by a proved uniform formula
+$B=F\,\thq^{-r}\Phi$ with source $\Phi=t\sigma^{r}/(P F)$, where $t(q)$ is
+the nome coordinate and $F(q)$ the parametrizing form. This paper answers
+the question --- posed to the programme by the collaborator Sol --- of what
+modular object $\Phi$ actually \emph{is}. Twelve of the fifteen sources are
+pure Eisenstein series of weight $r+1$, with explicit divisor-sum
+coefficient laws $c(m)$, and no cuspidal component anywhere
+\VerifiedR{exact $\Q$, coefficientwise to $q^{60}$, with the fits found at
+$q^{26}$ and a held-out band $q^{27}$--$q^{60}$}. Cooper's three families
+admit no such fit in the present coordinate \ExcludedR{stated bases}. We
+then state and prove the local \emph{fold connection lemma}
+$\xi=\Theta(q_c)+F(q_c)\Theta'(q_c)/F'(q_c)$ and verify numerically that
+all nine known Ap\'ery limits are recovered from the identified source
+alone (Ap\'ery's $\zeta(3)/6$ to $6.6\cdot10^{-15}$). The three
+``no-limit'' families are exactly those with a complex-conjugate fold; we
+record their canonical complex Eichler values to $15$, $39$ and $33$
+digits, apparently new constants (PSLQ-negative over natural $L$-value
+bases). Structurally: the sporadic class is Eisenstein-sourced, which
+explains why its limit column consists of zeta and Dirichlet $L$-values,
+and which says that a genuinely new elliptic Ap\'ery limit must come from a
+cuspidal source. Every claim carries its evidence label; the Eisenstein
+identifications are finite computations, never presented as proofs.
+\end{abstract}
+
+\maketitle
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+%======================================================================
+\section{Introduction, for someone who has not met these objects}
+\label{sec:intro}
+
+\subsection{Ap\'ery-like recurrences}
+In 1978 Ap\'ery proved $\zeta(3)\notin\Q$ by exhibiting two solutions of
+one three-term recurrence,
+\begin{equation}\label{eq:apery}
+(n+1)^3A_{n+1}=(2n+1)(17n^2+17n+5)A_n-n^3A_{n-1},
+\end{equation}
+namely the integer sequence $A_n=\sum_k\binom nk^2\binom{n+k}k^2$ started
+from $A_0=1,A_1=5$, and a second solution $B_n$ of the \emph{same}
+recurrence started from $B_0=0,B_1=6$, whose entries are rationals with
+controlled denominators. The ratio $B_n/A_n$ converges, very fast, to
+$\zeta(3)/6$; the speed of the convergence against the size of the
+denominators is the irrationality proof.
+
+A recurrence of the shape
+\begin{align}
+\text{(R2)}\qquad (n+1)^2A_{n+1}&=(an^2+an+b)A_n-c\,n^2A_{n-1},
+\label{eq:R2}\\
+\text{(R3)}\qquad (n+1)^3A_{n+1}&=(2n+1)(an^2+an+b)A_n-n(cn^2+d)A_{n-1}
+\label{eq:R3}
+\end{align}
+is called \emph{Ap\'ery-like} when the solution with $A_0=1$ is an integer
+sequence. This is a very restrictive demand. Beukers, Zagier, Almkvist--van
+Straten and Cooper searched the parameter space; what turned up is a short
+list of \emph{sporadic} solutions --- six of type (R2) (labelled here
+$\mathbf A$ (Franel), $\mathbf B$, $\mathbf C$, $\mathbf D$, $\mathbf E$,
+$\mathbf F$), six of type (R3) with $d=0$ ($\alpha$ (Domb), $\gamma$
+(Ap\'ery's own, \eqref{eq:apery}), $\delta$, $\varepsilon$, $\zeta$,
+$\eta$), and three further (R3) rows with $d\neq0$ found by Cooper
+($s_7,s_{10},s_{18}$), which are of \emph{operator order two} despite the
+cubic-looking recurrence. Fifteen pairs in all. Each one either has a known
+limit $\lim B_n/A_n$ --- always a zeta value or a Dirichlet $L$-value, e.g.
+$\zeta(2)/4$, $\zeta(3)/6$, $L(\chim3,2)/2$, Catalan's $G/2$ --- or is
+listed in the tables as having ``no limit''.
+
+Throughout, $r\in\{2,3\}$ denotes the order of the \emph{operator}, so
+$r=2$ for the six (R2) families \emph{and} for Cooper's three, and $r=3$
+for the six order-three families.
+
+\subsection{The companion problem and its solution}
+Given a sporadic recurrence, the \emph{companion problem} asks for a closed
+formula for the second solution $B_n$. The programme's companion paper
+\cite{anchors} solves it uniformly. Write
+\[
+y_0(t)=\sum_{n\ge0}A_nt^n,\qquad
+L=\text{the generating operator in }\tht=t\,d/dt,\qquad L(y_0)=0,
+\]
+let $q=t\exp(g/y_0)$ be the \emph{nome} built from the Frobenius companion
+$y_1=y_0\log t+g$, let $t(q)$ be its inverse and $F(q)=y_0(t(q))$ the
+\emph{parametrizing form}. Let $P(t)=1-at+ct^2$ for (R2) and
+$P(t)=1-2at+ct^2$ for (R3) be the characteristic polynomial appearing as the
+leading symbol, and let $\sigma=q\,dt/dq\cdot t^{-1}$ (so $\sigma=\thq t/t$).
+Then \cite[Thm.~2.4, Thm.~3.3, Thm.~3.5]{anchors}:
+
+\begin{theorem}[uniform companion formula; \cite{anchors}]\label{thm:companion}
+\Thm\ For every one of the fifteen sporadic pairs and all $n\ge0$,
+\[
+B_n=[t^n]\;F\cdot\thq^{-r}\Phi,\qquad
+\boxed{\ \Phi=\frac{t\,\sigma^{r}}{P(t)\,F}\ }
+\]
+where $\thq^{-1}$ is the constant-free antiderivative
+$\sum b_mq^m\mapsto\sum (b_m/m)q^m$.
+\end{theorem}
+
+We do not reprove this here; the proof is two lemmas (a boundary-defect
+computation $L(y_B)=t$, and a uniqueness statement for log-free solutions)
+plus the fact that all fifteen operators are \emph{exactly rectified},
+$L=C(t)F\thq^{r}F^{-1}$, which for $r=3$ is the symmetric-square theorem of
+\cite{anchors}. The reader should simply take Theorem~\ref{thm:companion}
+as given: \emph{the companion is an $r$-fold $q$-antiderivative of one
+$q$-series $\Phi$, times $F$}. In the classical language, $B$ is an
+\emph{Eichler integral} of $\Phi$.
+
+\subsection{The question of this paper}
+Theorem~\ref{thm:companion} turns the companion problem into a question
+about a single generating function. The source $\Phi$ is manufactured from
+$t$, $F$ and $P$; by the general Beukers picture one expects it to be
+modular of weight $r+1$ on the level of the family. Sol's question, which
+organizes this paper, is the sharp version:
+
+\begin{quote}
+\emph{Which modular form is $\Phi$? Given its coefficients, can the Ap\'ery
+limit be read off as modular-transformation data of the source?}
+\end{quote}
+
+The answers, in order: (i) twelve of fifteen sources are \emph{pure
+Eisenstein} of weight $r+1$, with a closed divisor-sum coefficient law
+(\S\ref{sec:sources}); (ii) yes --- the limit is the value at the fold of
+the Eichler integral, by an explicit connection formula
+(\S\ref{sec:fold}), and this reproduces all nine known limits from the
+source alone; (iii) the three families with ``no limit'' are exactly the
+three whose fold is at a complex point, and their connection values are
+computable, apparently new constants (\S\ref{sec:complex}).
+
+\subsection{Evidence discipline}
+This programme labels every statement. \Thm\ and \Proved\ mean a proof
+exists. \VerifiedR{\dots} means an exact but finite computation over the
+stated range; \textbf{a finite verification is never stated as a proof},
+and prose about it never becomes stronger than the label. \ExcludedR{\dots}
+is a proved (or exhaustively searched) negative within the stated search
+space. \Open\ is open. Section~\ref{sec:status} lists every claim of this
+paper with its label; \S\ref{sec:gap} states precisely what is missing
+between the verifications and theorems.
+
+The identifications below are exact rational computations
+(\texttt{Fraction} arithmetic throughout, no floating point) carried to
+$q^{60}$, with the fits determined by the coefficients up to $q^{26}$ and
+the remaining $34$ coefficients held out as a blind test. That is strong
+evidence and not a proof. What separates it from a proof is spelled out in
+\S\ref{sec:gap}, and it is not much: Sturm bounds in the relevant spaces
+are all $\le18$.
+
+\subsection{Credit}
+The programme of identifying $\Phi$ as a modular object and deriving the
+limits from it was proposed by the collaborator Sol; steps 1, 2 and 4 of
+that proposal are what this paper executes. The base theorem is
+\cite{anchors}. The $(t,F)$ identifications used as coordinates are from
+the programme's modular dictionary \cite{dict}. Source scripts and ledger:
+\texttt{work/PHI\_SOURCE\_LEDGER.md},
+\texttt{work/z5eps/eps60\_phi\_source.py},
+\texttt{eps60b\_phi\_holdouts.py},
+\texttt{eps61\_eichler\_limits.py},
+\texttt{eps61b\_complex\_limits.py}.
+
+%======================================================================
+\section{Coordinates: the nome, the form, and the source}
+\label{sec:coords}
+
+Everything below happens in the $q$-coordinate. Two facts from \cite{dict}
+set the stage.
+
+\begin{verification}[the dictionary]\label{ver:dict}
+\VerifiedR{exact $\Q$, $q^{25}$, zero-tail-checked; \cite{dict}}
+All fifteen nomes are integral at scale $\mu=1$ (that is, $t(q)\in q\Z[[q]]$
+with no rescaling $q\mapsto\mu q$ needed), and twelve of the fifteen pairs
+$(t,F)$ are exactly identified as (generalized) eta quotients on an explicit
+level, $F$ of weight $1$ for the (R2) six and weight $2$ for the order-three
+six. For instance
+\[
+\gamma:\quad t=q\Bigl(\frac{\eta_1\eta_6}{\eta_2\eta_3}\Bigr)^{12},\qquad
+F=\frac{(\eta_2\eta_3)^7}{(\eta_1\eta_6)^5}\quad(\text{level }6),
+\]
+which is Beukers' classical parametrization of Ap\'ery's $\zeta(3)$ case,
+here re-derived from the recurrence. Cooper's three ($s_7,s_{10},s_{18}$)
+have integral but \emph{aperiodic} $t$ and $F$ in this coordinate: not eta
+quotients as normalized here.
+\end{verification}
+
+Since $F$ has weight $1$ (resp.\ $2$) and $\sigma=\thq t/t$ has weight $2$
+as a logarithmic derivative of a hauptmodul, the shape
+$\Phi=t\sigma^{r}/(PF)$ has, formally, weight $2r-\operatorname{wt}F=r+1$
+in both cases: weight $3$ for the (R2) six, weight $4$ for the order-three
+six. That is the prediction. What is not predicted, and is the content of
+\S\ref{sec:sources}, is that $\Phi$ lies in the \emph{Eisenstein} part.
+
+\begin{remark}
+Note the normalization $\Phi=q+O(q^2)$: the constant term is $0$ and the
+$q$-coefficient is $1$, forced by $t=q+O(q^2)$, $F=1+O(q)$, $P=1+O(t)$.
+Any identification of $\Phi$ as a linear combination of Eisenstein series
+must therefore have its constant terms cancel identically. They do, in every
+family --- a nontrivial internal check, since the constant terms are not
+part of the fitted data.
+\end{remark}
+
+\subsection{Divisor sums, and the two positions of the character}
+We fix notation once. For a Dirichlet character $\chi$ and $k\ge0$,
+\[
+\sigma_\chi^{(k)}(m)=\sum_{d\mid m}\chi(m/d)\,d^{k}
+\quad(\text{``inner'' or mode 2}),\qquad
+\widetilde\sigma_\chi^{(k)}(m)=\sum_{d\mid m}\chi(d)\,d^{k}
+\quad(\text{``outer'' or mode 1}),
+\]
+and $\sigma_3(m)=\sum_{d\mid m}d^3$ for the trivial character. These are
+the $q$-expansion coefficients of the standard Eisenstein series
+$E_{k+1}^{\chi,\psi}(q)=\text{const}+\sum_m\bigl(\sum_{d\mid
+m}\psi(d)\chi(m/d)d^{k}\bigr)q^m$ of weight $k+1$, nebentypus $\chi\psi$; a
+level-$N$ Eisenstein space is spanned by such series together with their
+$q\mapsto q^{\ell}$ scalings, $\ell\mid N$. We write $\sigma(m/k):=0$ unless
+$k\mid m$, so that ``$\sigma_3(m/2)$'' \emph{is} the coefficient of the
+scaled series $E_4(q^2)$.
+
+Two characters need names: $\chim3,\chim4$ are the quadratic characters of
+conductor $3,4$; $\chi_5$ the quadratic character mod $5$; and
+$\psi_1,\psi_2$ are the real and imaginary parts of the odd character mod
+$5$ normalized by $\chi(2)=i$, so $\psi_1$ is supported on $\pm1$ and
+$\psi_2$ on $\pm2$ modulo $5$.
+
+%======================================================================
+\section{The main result: twelve Eisenstein sources}
+\label{sec:sources}
+
+\subsection{The table}
+
+\begin{verification}[Eisenstein identification of the sources]
+\label{ver:main}
+\VerifiedR{exact $\Q$, coefficientwise to $q^{60}$; fits determined at
+$q^{26}$, held-out band $q^{27}$--$q^{60}$ (34 coefficients);
+\texttt{eps60}, \texttt{eps60b}}
+For each of the twelve families listed in Table~\ref{tab:main}, the
+companion source $\Phi=\sum_{m\ge1}c(m)q^m$ of
+Theorem~\ref{thm:companion} has the stated divisor-sum coefficients
+$c(m)$, exactly, for every $m\le60$; equivalently $\Phi$ is the
+displayed rational combination of weight-$(r+1)$ Eisenstein series on the
+stated level, \textbf{with no cuspidal component}. No rescaling is needed
+($\mu=1$): $\Phi$ is already integral in the canonical nome.
+\end{verification}
+
+\begin{table}[t]
+\caption{The twelve identified companion sources
+$\Phi=\sum_{m\ge1}c(m)q^m$. Weight is $r+1$; $\sigma(m/k):=0$ unless
+$k\mid m$. \VerifiedR{$q^{60}$, held-out $q^{27}$--$q^{60}$}}
+\label{tab:main}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}c c c >{\raggedright\arraybackslash}p{7.6cm} c@{}}
+\toprule
+fam & $r$ & wt & $c(m)$ & level\\
+\midrule
+$\mathbf A$ & 2 & 3 &
+$\widetilde\sigma_{\chim3}^{(2)}(m)-\widetilde\sigma_{\chim3}^{(2)}(m/2)$ & 6\\
+$\mathbf B$ & 2 & 3 &
+$\sigma_{\chim3}^{(2)}(m)-6\sigma_{\chim3}^{(2)}(m/2)
+-8\sigma_{\chim3}^{(2)}(m/4)$ & 36\\
+$\mathbf C$ & 2 & 3 &
+$\sigma_{\chim3}^{(2)}(m)-8\sigma_{\chim3}^{(2)}(m/2)$ & 6\\
+$\mathbf D$ & 2 & 3 &
+$\sum_{d\mid m}\bigl(\psi_1(d)-2\psi_2(d)\bigr)d^2$,\quad
+$\psi_1,\psi_2=\operatorname{Re},\operatorname{Im}$ of the odd character
+mod $5$ with $\chi(2)=i$ & 5\\
+$\mathbf E$ & 2 & 3 &
+$\sigma_{\chim4}^{(2)}(m)-8\sigma_{\chim4}^{(2)}(m/2)$ & 8\\
+$\mathbf F$ & 2 & 3 &
+$\sigma_{\chim3}^{(2)}(m)-7\sigma_{\chim3}^{(2)}(m/2)
+-8\sigma_{\chim3}^{(2)}(m/4)$ & 12\\[2pt]
+$\alpha$ & 3 & 4 &
+$\sigma_3(m)-17\sigma_3(m/2)-9\sigma_3(m/3)+16\sigma_3(m/4)
++153\sigma_3(m/6)-144\sigma_3(m/12)$ & 12\\
+$\gamma$ & 3 & 4 &
+$\sigma_3(m)-28\sigma_3(m/2)+63\sigma_3(m/3)-36\sigma_3(m/6)$ & 6\\
+$\delta$ & 3 & 4 &
+$\sigma_3(m)-14\sigma_3(m/2)-\sigma_3(m/3)+16\sigma_3(m/4)
++14\sigma_3(m/6)-16\sigma_3(m/12)$ & 12\\
+$\varepsilon$ & 3 & 4 &
+$\sigma_3(m)-21\sigma_3(m/2)+84\sigma_3(m/4)-64\sigma_3(m/8)$ & 8\\
+$\zeta$ & 3 & 4 &
+$\displaystyle\sum_{d\mid m}\chim3(d)\,\chim3(m/d)\,d^3$
+\quad(coefficient exactly $1$) & 9\\
+$\eta$ & 3 & 4 &
+$\sigma_{\chi_5}^{(3)}(m)-14\sigma_{\chi_5}^{(3)}(m/2)
+-16\sigma_{\chi_5}^{(3)}(m/4)$ & 20\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Some orientation on Table~\ref{tab:main}, for a reader meeting it cold.
+
+\begin{itemize}[leftmargin=1.4em]
+\item \textbf{Read a row as a form.} The row for $\gamma$ says
+\[
+\Phi_\gamma=\tfrac1{240}\bigl(-E_4(q)+28E_4(q^2)-63E_4(q^3)+36E_4(q^6)\bigr)
+\]
+up to the normalization that makes the constant terms cancel and
+$\Phi=q+\cdots$; the combination has $240\cdot$ the raw fitted coefficients,
+and the constant terms cancel identically, as they must. This is exactly
+Beukers' weight-$4$ level-$6$ Eisenstein series for Ap\'ery's $\zeta(3)$.
+That we arrive at it \emph{from the recurrence alone}, with no classical
+input, is the control that validates the method.
+\item \textbf{$\mathbf D$ likewise reproduces} the $\Gamma_1(5)$
+weight-$3$ picture for $\zeta(2)$ --- the second classical control.
+\item \textbf{$\zeta$ is the cleanest object in the table:} the primitive
+$(\chim3,\chim3)$-Eisenstein series of weight $4$ and level $9$, with
+coefficient exactly $1$ and nothing else. A single Eisenstein newform, on
+the nose.
+\item \textbf{Nothing cuspidal is ever used.} The fitting bases offered to
+the search included cusp forms at each level: $\eta_1^4\eta_5^4$ (level 5,
+weight 4), $(\eta_1\eta_2\eta_3\eta_6)^2$ (level 6), $(\eta_2\eta_4)^4$
+(level 8), $\eta_3^8$ (level 9), and their $q\mapsto q^\ell$ embeddings.
+\emph{No fit ever took a cusp form.} The cuspidal coefficient came out
+$0$ in every family, exactly, at every order.
+\end{itemize}
+
+\subsection{Why ``held-out'' matters}
+The fits are linear algebra over $\Q$: a basis of the weight-$(r+1)$ space
+on the level, and $\Phi$'s first $26$ coefficients. With bases of dimension
+$\le6$, a fit through $26$ coefficients is already overdetermined by a lot.
+But the programme's discipline is to state the evidence as it was actually
+obtained, so the fits were frozen at $q^{26}$ and then tested against the
+$34$ coefficients $q^{27},\dots,q^{60}$, computed afterwards and not used in
+the fit. All twelve pass with zero residual. This is the same protocol used
+for the programme's prime tests.
+
+\subsection{Cooper's three}
+\begin{verification}[Cooper's three do not fit here]\label{ver:cooper}
+\ExcludedR{stated bases; \Open\ in general}
+For $s_7,s_{10},s_{18}$ no fit exists at weight $3$ or weight $4$ in the
+Eisenstein spaces of levels $\{7,10,18\}$ and their divisors with the
+natural characters ($\chim7$, the mod-$5$ pair, $\chim3$).
+\end{verification}
+
+These are precisely the three families whose $t$ and $F$ were already
+aperiodic in the canonical nome (Verification~\ref{ver:dict}). Their $\Phi$
+\emph{is} integral ($\mu=1$), so the obstruction is not integrality: it is
+the \emph{coordinate}. What is presumably needed is an Atkin--Lehner
+normalization or a different hauptmodul --- the same missing ingredient as
+in the dictionary. It would be wrong to say ``Cooper's three are not
+Eisenstein''; the honest statement is the one labelled above.
+
+\begin{problem}[$\Phi$-2]\label{prob:cooper}
+\Open\ Find the coordinate (hauptmodul / Atkin--Lehner normalization) in
+which $t_{s_7},F_{s_7}$ are eta-type, and identify $\Phi_{s_7}$ there.
+Same for $s_{10},s_{18}$.
+\end{problem}
+
+%======================================================================
+\section{From source to limit: the fold connection formula}
+\label{sec:fold}
+
+We now do Sol's step 4: read the Ap\'ery limit off the source.
+
+\subsection{The geometry}
+Let $t_c$ be the singularity of the family, i.e.\ the root of $P(t)$ of
+smallest modulus. The generating functions $y_0(t)=\sum A_nt^n$ and
+$y_B(t)=\sum B_nt^n$ have radius of convergence $|t_c|$, and
+\[
+\lim_{n\to\infty}\frac{B_n}{A_n}
+\]
+exists (when $t_c$ is real positive) and equals the ratio of the leading
+\emph{singular} parts of $y_B$ and $y_0$ at $t_c$, because the coefficient
+asymptotics of a function are governed by its dominant singularity, and the
+non-singular parts contribute exponentially less.
+
+The key structural fact is that in the $q$-coordinate the map $q\mapsto
+t(q)$ \emph{folds} at $q_c:=$ the nome of $t_c$: one has $dt/dq=0$ there,
+and $t-t_c\simeq \kappa\,(q-q_c)^2$ with $\kappa\neq0$ --- a simple fold.
+This is the modular reason a square-root singularity appears in $t$: the
+two sheets of $\sqrt{t-t_c}$ are the two branches of $q$ around the fold,
+exchanged by the local involution.
+
+\begin{lemma}[fold connection lemma]\label{lem:fold}
+\Proved\
+Let $y_0(t),y_B(t)$ be the two solutions above, let $t(q)$ be analytic near
+$q_c$ with a simple fold at $q_c$, and suppose $y_0(t(q))$ and $y_B(t(q))$
+are analytic at $q_c$ (which they are: $y_0(t(q))=F(q)$ and
+$y_B(t(q))=F\thq^{-r}\Phi$ by Theorem~\ref{thm:companion}, both $q$-analytic
+wherever $\Phi$ is). Then the singular parts of $y_0,y_B$ at $t_c$ are
+proportional to the \emph{odd} parts of $F$, $F\thq^{-r}\Phi$ under the
+local fold involution, and consequently
+\[
+\xi:=\lim_{n\to\infty}\frac{B_n}{A_n}
+=\frac{\frac{d}{dq}\bigl(y_B\circ t\bigr)(q_c)}{\frac{d}{dq}\bigl(y_0\circ
+t\bigr)(q_c)}
+=\Theta(q_c)+\frac{F(q_c)\,\Theta'(q_c)}{F'(q_c)},
+\qquad \Theta:=\thq^{-r}\Phi=\sum_{m\ge1}\frac{c(m)}{m^{r}}q^m .
+\]
+\end{lemma}
+
+\begin{proof}
+Work locally at $q_c$; write $u=q-q_c$. Since the fold is simple, the local
+involution $\iota$ with $t(\iota q)=t(q)$ is an analytic involution fixing
+$q_c$ with $\iota(u)=-u+O(u^2)$; after an analytic change of coordinate
+$u\mapsto v$ (Koenigs' linearization of an analytic involution, elementary
+in this setting) we may take $\iota(v)=-v$ and $t-t_c=\kappa v^2$ with
+$\kappa\neq0$. Then $s:=\sqrt{(t-t_c)/\kappa}=v$ is a local coordinate on
+each sheet, and a function $h$ analytic at $q_c$ decomposes uniquely as
+\[
+h=h^{\mathrm{ev}}+h^{\mathrm{odd}},\qquad
+h^{\mathrm{ev}}(v)=\tfrac12(h(v)+h(-v)),\quad
+h^{\mathrm{odd}}(v)=\tfrac12(h(v)-h(-v)).
+\]
+The even part is an analytic function of $v^2$, hence of $t$: it is the
+part of $h$ that is regular at $t_c$. The odd part is $v$ times an analytic
+function of $v^2$, i.e.\ $\sqrt{t-t_c}$ times an analytic function of $t$:
+it is exactly the square-root singular part. Since $y_0\circ t$ and
+$y_B\circ t$ are analytic in $q$ at $q_c$, both decompose this way, and
+their singular parts at $t_c$ are their odd parts.
+
+Now the coefficient asymptotics. If $y(t)=g(t)+\sqrt{1-t/t_c}\,h(t)$ near
+$t_c$ with $g,h$ analytic, then by singularity analysis
+$[t^n]y\sim -h(t_c)\,t_c^{-n}n^{-3/2}/(2\sqrt\pi)$ (times $1+O(1/n)$),
+provided $h(t_c)\neq0$; the analytic part $g$ contributes
+$O(\rho^{-n})$ with $\rho>|t_c|$. The same $n^{-3/2}t_c^{-n}$ prefactor
+occurs for $y_0$ and $y_B$, hence
+\[
+\xi=\lim\frac{B_n}{A_n}
+=\frac{h_B(t_c)}{h_0(t_c)}
+=\frac{(y_B\circ t)^{\mathrm{odd}}{}'(q_c)}{(y_0\circ
+t)^{\mathrm{odd}}{}'(q_c)}
+=\frac{(y_B\circ t)'(q_c)}{(y_0\circ t)'(q_c)},
+\]
+the last step because the even parts have vanishing $v$-derivative at $v=0$,
+so the full $q$-derivative at $q_c$ equals the odd part's; and $dv/dq$ is a
+nonzero constant at $q_c$, cancelling in the ratio.
+
+Finally substitute $y_0\circ t=F$ and $y_B\circ t=F\Theta$ from
+Theorem~\ref{thm:companion}:
+\[
+\xi=\frac{(F\Theta)'(q_c)}{F'(q_c)}
+=\frac{F'(q_c)\Theta(q_c)+F(q_c)\Theta'(q_c)}{F'(q_c)}
+=\Theta(q_c)+\frac{F(q_c)\Theta'(q_c)}{F'(q_c)}.\qedhere
+\]
+\end{proof}
+
+\begin{remark}
+Two hypotheses are doing work and should be flagged. First, $h_0(t_c)\neq0$
+--- i.e.\ $F$ genuinely has an odd part, equivalently $F'(q_c)\neq0$; this
+is checked numerically in every family and is visible from the eta
+formulas. Second, $\Theta$ must extend analytically to $q_c$; for
+$|q_c|<1$ this is automatic from convergence of $\sum c(m)m^{-r}q^m$, since
+$c(m)=O(m^{r+\epsilon})$ makes the series converge absolutely on $|q|<1$.
+Both are satisfied in every case below. The lemma is the ``$\xi$ is a ratio
+of $q$-derivatives at the fold'' statement recorded in the programme's
+ledgers; this is its written-out proof.
+\end{remark}
+
+\begin{remark}[what the formula \emph{is}]
+$\Theta=\thq^{-r}\Phi$ is the Eichler integral of the weight-$(r+1)$
+Eisenstein series $\Phi$: its $(r-1)$-fold antiderivative in the classical
+normalization, $\sum c(m)m^{-r}q^m$. Evaluating an Eichler integral of an
+Eisenstein series at a CM-like or cuspidal point is exactly the operation
+that produces $L$-values of the associated characters --- $\sum
+\sigma_{k}(m)m^{-r}q^m$ at $q\to$ a cusp degenerates into
+$\zeta(r)\zeta(r-k)$-type products. That is the conceptual answer to ``why
+are the sporadic limits zeta and Dirichlet $L$-values'': \emph{because the
+sources are Eisenstein}. See \S\ref{sec:structure}.
+\end{remark}
+
+\subsection{The numerical verification}
+With $c(m)$ known in closed form for \emph{all} $m$ --- which is the whole
+point of Table~\ref{tab:main}, since it makes $\Theta(q_c)$ a computable
+number rather than a truncated experiment --- and with $q_c$ solved by
+Newton's method from the exact $26$-term series $t(q)$ (so the error in
+$q_c$ is tracked as $O(|q_c|^{26})$), Lemma~\ref{lem:fold} can be evaluated.
+
+\begin{verification}[all nine limits from the source]\label{ver:limits}
+\VerifiedR{numeric, series order $N=26$, error tracked as $|q_c|^{N}$;
+\texttt{eps61}}
+For each of the nine families with a known real limit, the value $\xi$
+computed from Table~\ref{tab:main} and Lemma~\ref{lem:fold} agrees with the
+known limit to the accuracy in Table~\ref{tab:limits}.
+\end{verification}
+
+\begin{table}[t]
+\caption{The Ap\'ery limits recomputed from the identified Eisenstein
+source alone. Starred rows have larger $|q_c|$, where the discrepancy is
+consistent with the $|q_c|^{26}$ truncation of the series for $q_c$ and
+$F$; the four sharp rows are the strong test.
+\VerifiedR{numeric, tracked truncation}}
+\label{tab:limits}
+\begin{tabular}{@{}c c c@{}}
+\toprule
+fam & known limit & $|\xi(\text{from }\Phi)-\text{known}|$\\
+\midrule
+$\gamma$ & $\zeta(3)/6$ & $6.6\cdot10^{-15}$\\
+$\varepsilon$ & $7\zeta(3)/32$ & $8.8\cdot10^{-13}$\\
+$\alpha$ & $7\zeta(3)/24$ & $8.3\cdot10^{-8}$\\
+$\mathbf D$ & $\zeta(2)/5$ & $3.7\cdot10^{-7}$\\
+$\zeta$ & $L(\chim3,3)/3$ & $4.7\cdot10^{-4}$\,*\\
+$\mathbf A$ & $\zeta(2)/4$ & $4.4\cdot10^{-3}$\,*\\
+$\mathbf C$ & $L(\chim3,2)/2$ & $4.4\cdot10^{-3}$\,*\\
+$\mathbf E$ & $G/2$ (Catalan) & $5.8\cdot10^{-3}$\,*\\
+$\mathbf F$ & $5L(\chim3,2)/8$ & $3.6\cdot10^{-2}$\,*\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The right column is not a measure of the theory's accuracy; it is a measure
+of how far $|q_c|$ is from $0$ at series order $26$. For $\gamma$, where
+$t_c=17-12\sqrt2\approx0.0294$ is tiny, the agreement is $15$
+digits and is a genuinely sharp test. For $\mathbf F$, $|q_c|$ is large
+enough that $|q_c|^{26}$ is itself of order $10^{-2}$, and the row confirms
+the mechanism rather than the digits. The honest summary is the one stated
+in the verification label: \emph{all nine limit families reproduce their
+limits from the identified Eisenstein source}, at the precision each
+family's geometry allows at this series order. Sol's step 4 holds across the
+board.
+
+%======================================================================
+\section{The three complex folds: $\mathbf B$, $\delta$, $\eta$}
+\label{sec:complex}
+
+\subsection{Why there is ``no limit''}
+Three sporadic families are listed in the classical tables as having no
+limit: $\mathbf B$, $\delta$, $\eta$. Table~\ref{tab:main} identifies their
+sources perfectly well, so nothing has failed; the explanation is
+elementary and geometric.
+
+\begin{observation}\label{obs:complex}
+\Proved\ (immediate from the parameters)
+$\mathbf B,\delta,\eta$ are exactly the sporadic families whose $P(t)$ has
+a complex-conjugate pair of roots:
+\[
+\mathbf B:\ P=1-9t+27t^2,\ \operatorname{disc}=-27;\qquad
+\delta:\ P=1-14t+81t^2,\ \operatorname{disc}=-128;\qquad
+\eta:\ P=1-22t+125t^2,\ \operatorname{disc}=-16 ,
+\]
+with splitting fields $\Q(\sqrt{-3}),\Q(\sqrt{-2}),\Q(i)$ respectively.
+\end{observation}
+
+With two dominant singularities of equal modulus and non-real ratio, the
+coefficient asymptotics of $y_B$ and $y_0$ acquire an oscillating phase and
+$B_n/A_n$ does not converge --- it spirals. That is all ``no limit'' means.
+The \emph{connection value} at either singularity is perfectly
+well-defined: Lemma~\ref{lem:fold}'s formula
+$\xi=\Theta(q_c)+F\Theta'/F'$ makes sense verbatim with $q_c\in\C$, and
+gives a canonical complex number attached to the family (the two roots give
+complex-conjugate values; we take the one with $\operatorname{Im}t_c<0$).
+
+\begin{verification}[complex Eichler values]\label{ver:complex}
+\VerifiedR{numeric, series order $N=60$, \texttt{mpmath} dps $80$, errors
+as stated; \texttt{eps61b}}
+With the sources of Table~\ref{tab:main},
+\begin{align*}
+\xi_\delta &= 0.289384069279185217328721946648602157671732873\\
+           &\quad -0.382793539263049809183571589860583184140094533\,i
+           &&(\text{err}\le3\cdot10^{-39}),\\[2pt]
+\xi_\eta   &= 0.427412384177931213153568843953539910126963519\\
+           &\quad -0.221862855742218924237675923183991402052217749\,i
+           &&(\text{err}\le2\cdot10^{-33}),\\[2pt]
+\xi_{\mathbf B} &= 0.39151062416206523-0.42193463325508115\,i
+           &&(\text{err}\le8\cdot10^{-15}).
+\end{align*}
+($\mathbf B$ is the hard one: $|q_c|\approx0.58$, so the series truncation
+at $N=60$ costs most of the precision. $\delta$ and $\eta$ are good to $39$
+and $33$ digits respectively.)
+\end{verification}
+
+\subsection{These appear to be new constants}
+\begin{verification}[PSLQ negative]\label{ver:pslq}
+\ExcludedR{PSLQ over the stated bases, max coefficient $10^{6}$--$10^{7}$}
+No rational relation was found for
+$\operatorname{Re}\xi,\operatorname{Im}\xi$ (nor for the CM-twisted variants
+$\sqrt2\operatorname{Re}\xi_\delta$, $\sqrt5\operatorname{Re}\xi_\eta$,
+etc.) over the basis
+\[
+\{1,\ \zeta(3),\ \pi^3,\ \pi^3/\sqrt2,\ \pi^3/\sqrt5,\ L(\chi_{-8},3),\
+L(\chim4,3),\ L(\chi_5,3),\ \pi^2\log2,\dots\}.
+\]
+All apparent hits were degenerate. (Caution for anyone repeating this:
+$L(\chim4,3)=\pi^3/32$, so it must not appear alongside $\pi^3$ in a
+basis, or PSLQ returns spurious relations.)
+\end{verification}
+
+So, to current knowledge, these are new constants: \emph{Eichler values of
+explicit Eisenstein series at complex-multiplication-adjacent points}. Their
+plausible home is not the Dirichlet $L$-value world but periods of Hecke
+characters --- Chowla--Selberg / CM $\Gamma$-value territory, where
+$\Q(\sqrt{-3}),\Q(\sqrt{-2}),\Q(i)$ contribute $\Gamma$-quotients rather
+than $L(\chi,s)$. That is a guess, not a result. The sharpest open form:
+
+\begin{problem}[$\Phi$-1]\label{prob:phi1}
+\Open\ Recognize $\xi_\delta$ (39 digits in Verification~\ref{ver:complex})
+in closed form. The source is the explicit level-$12$ weight-$4$ Eisenstein
+combination
+$\sigma_3(m)-14\sigma_3(m/2)-\sigma_3(m/3)+16\sigma_3(m/4)
++14\sigma_3(m/6)-16\sigma_3(m/12)$
+of Table~\ref{tab:main}; $q_c$ is the nome of the fold over
+$t_c=(7-\sqrt{-32})/81$.
+\end{problem}
+
+$\delta$ is the right target of the three: the most digits, the cleanest
+field ($\Q(\sqrt{-2})$), trivial character, and an identified level-$12$
+eta parametrization for both $t$ and $F$.
+
+%======================================================================
+\section{Structural consequences}
+\label{sec:structure}
+
+\subsection{The sporadic class is Eisenstein-sourced}
+Combining Theorem~\ref{thm:companion} with Verification~\ref{ver:main}, the
+whole chain
+\[
+\text{recurrence}\ \longrightarrow\ \text{operator }L\
+\longrightarrow\ (t,F)\ \longrightarrow\ \Phi\ \longrightarrow\ \xi
+\]
+is now explicit for twelve of the fifteen families, and \emph{Eisenstein at
+every link}: $F$ is an Eisenstein eta quotient of weight $1$ or $2$, $t$ is
+a hauptmodul, $\Phi$ is a pure Eisenstein series of weight $r+1$, and $\xi$
+is the value of its Eichler integral at the fold. The sporadic table is not
+fifteen coincidences; it is one mechanism run on twelve levels.
+
+\subsection{Why the limits are zeta and Dirichlet $L$-values}
+This is now a structural statement rather than an observation about a
+table. $\Theta=\sum c(m)m^{-r}q^m$ with $c(m)$ a divisor sum
+$\sum_{d\mid m}\chi_1(d)\chi_2(m/d)d^{k}$, $k=r-1$. Formally at $q\to1$
+(that is, at the cusp, which is where the fold sits after the modular
+transformation to the local coordinate),
+\[
+\sum_m\Bigl(\sum_{d\mid m}\chi_1(d)\chi_2(m/d)d^{k}\Bigr)m^{-r}q^m
+\ \longrightarrow\ \text{a product }L(\chi_1,r-k)\,L(\chi_2,r)
+\]
+by Dirichlet-series factorization of the divisor convolution. The Eichler
+integral of an Eisenstein series has, by the classical Eichler--Shimura
+mechanism, a period polynomial whose coefficients are exactly critical
+$L$-values of the constituent characters; the fold value is a specialization
+of that data. Hence $\zeta(3)$ for the trivial-character weight-$4$
+families ($\gamma,\alpha,\varepsilon$), $\zeta(2)$ for the trivial-character
+weight-$3$ ones ($\mathbf A,\mathbf D$), $L(\chim3,2)$ and $L(\chim3,3)$
+for the $\chim3$-twisted ones ($\mathbf C,\mathbf F,\zeta$), and Catalan's
+$G=L(\chim4,2)$ for $\mathbf E$. Every entry of the limit column of the
+sporadic table is the character data of its source, read off.
+
+We state this as an explanation, not a theorem: the precise
+Eichler--Shimura evaluation at the fold, including the rational prefactor
+($1/6$, $7/32$, $5/8$, \dots) and the second-kind (quasiperiod)
+contribution, is exactly the calculation that the programme's cuspidal
+companion work \cite{cusp} shows is subtler than it looks --- there, the
+fold value is a period-polynomial part \emph{plus} a quasiperiod times a
+second-kind part, and for Eisenstein sources the second part is elementary
+and cancels. Writing the general law is open.
+
+\subsection{The reverse factory has a sharp target}
+Sol's ``reverse factory'' asks: can one \emph{build} recurrences whose
+limits are new, interesting constants --- $L$-values of elliptic curves, in
+particular? Verification~\ref{ver:main} answers a preliminary question
+precisely: \textbf{not from the sporadic table}. A cuspidal source is
+required for an elliptic $L$-value, and the sporadic class, at $q^{60}$,
+provably-at-that-range contains no cuspidal component whatsoever.
+
+The construction direction is therefore forced: choose a level with
+$S_{r+1}\neq0$, pick a cusp form $f$ there, set $B:=F\thq^{-r}f$, and derive
+the recurrence it satisfies (which will be inhomogeneous). The
+discriminating question then becomes the \emph{integrality/denominator}
+behaviour of that object, not its limit. The programme's cuspidal-companion
+experiments \cite{cusp} do exactly this on Ap\'ery's own curve and on
+Domb's, and find that cuspidality costs nothing in denominators --- but
+that the convergence rate ($4^{-n}$) is too slow for irrationality. The
+present ledger's contribution is negative but clarifying: the sporadic
+table will not answer the denominator question, because it contains no
+cuspidal example to learn from.
+
+\subsection{A denominator program}
+The explicit $c(m)$ laws make one more thing attackable that was not
+before. Since $B_n=[t^n]F\Theta$ with $\Theta=\sum c(m)m^{-r}q^m$, the
+$p$-adic valuation $v_p(\text{den}\,B_n)$ should be readable from the
+$p$-parts of $c(m)/m^{r}$ --- the Bernoulli/Eisenstein constants of the
+source. This is Sol's step 4 of the flagship in the denominator direction.
+\Open; not attempted.
+
+%======================================================================
+\section{The gap between $q^{60}$ and a theorem}
+\label{sec:gap}
+
+The programme never presents a finite computation as a proof, so it owes a
+precise account of what a proof would need. For Verification~\ref{ver:main}
+it is short, and worth stating exactly, because it is a bookkeeping task
+rather than a mathematical obstacle.
+
+\subsection{Sturm bounds}
+If two forms in $M_k(\Gamma_0(N),\chi)$ agree in $q$-expansion up to the
+Sturm bound $\frac{k}{12}[\mathrm{SL}_2(\Z):\Gamma_0(N)]$, they are equal.
+The bounds for the twelve identifications are \emph{recorded} as follows.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}l cccccc c cccccc@{}}
+\toprule
+fam & $\mathbf A$&$\mathbf B$&$\mathbf C$&$\mathbf D$&$\mathbf E$&$\mathbf F$
+& & $\alpha$&$\gamma$&$\delta$&$\varepsilon$&$\zeta$&$\eta$\\
+weight & 3&3&3&3&3&3 & & 4&4&4&4&4&4\\
+level & 6&36&6&5&8&12 & & 12&6&12&8&9&20\\
+Sturm bound & 3&18&3&1.5&3&6 & & 8&4&8&4&4&12\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Every bound is $\le18$, against a verification to $q^{60}$ --- a margin of
+more than a factor of three even in the worst case ($\mathbf B$, level
+$36$).
+
+\subsection{What is therefore missing}
+Each identification in Table~\ref{tab:main} is a theorem \emph{conditional
+on}:
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item the certification that the eta / generalized-eta expressions of
+\cite{dict} for $t$ and $F$ are modular of the stated weight, level and
+character, and that $F=y_0(t)$ (i.e.\ that both sides satisfy the family's
+ODE); and
+\item the certification that the stated divisor-sum combination lies in the
+corresponding Eisenstein space --- classical, via the standard basis of
+$E_k^{\chi,\psi}(q^\ell)$.
+\end{enumerate}
+Item (ii) is textbook. Item (i) is the standard eta-quotient
+order-at-cusps bookkeeping, and it is \textbf{done only for $\zeta$ (level
+9)} so far; the other eleven are routine and undone. That is the entire
+gap.
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{\centering
+\textbf{Status of Table~\ref{tab:main}: \VerifiedR{$q^{60}$} for twelve
+families; \Thm\ for none. Only the $\zeta$ family's parametrization has its
+eta certification (i) in hand, and even there the identification is
+promoted only when (ii) is written out. The claim ``the sporadic sources
+are Eisenstein'' is a verification, not a theorem.}}}
+\end{center}
+
+Promotion is a per-family finite bookkeeping campaign, requiring no new
+mathematics. It is the natural next piece of work.
+
+\subsection{And the rest}
+Lemma~\ref{lem:fold} is proved here. Verifications~\ref{ver:limits} and
+\ref{ver:complex} are floating-point with tracked truncation, not exact;
+they confirm the mechanism and, in the four sharp rows of
+Table~\ref{tab:limits}, confirm it to $8$--$15$ digits.
+Verification~\ref{ver:pslq} is a bounded search, so it excludes relations
+within its basis and coefficient cap and \emph{nothing more} ---
+``apparently new constants'' means exactly that. Verification~\ref{ver:cooper}
+excludes fits in the stated bases only, and specifically does \emph{not}
+say Cooper's three are non-Eisenstein.
+
+%======================================================================
+\section{Evidence status: every claim of this paper}
+\label{sec:status}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{9.1cm} l@{}}
+\toprule
+Claim & Label\\
+\midrule
+$B=F\thq^{-r}\Phi$, $\Phi=t\sigma^r/(PF)$, all fifteen families, all $n$
+(Thm~\ref{thm:companion}, \emph{proved in} \cite{anchors}, not here)
+& \Thm\\
+Fifteen nomes integral at $\mu=1$; twelve $(t,F)$ pairs are eta-type on the
+stated levels (Ver.~\ref{ver:dict}, from \cite{dict})
+& \VerifiedR{$q^{25}$}\\
+The twelve coefficient laws $c(m)$ of Table~\ref{tab:main}
+& \VerifiedR{$q^{60}$, held-out $q^{27}$--$q^{60}$}\\
+No cuspidal component in any of the twelve sources
+& \VerifiedR{$q^{60}$, stated cusp bases}\\
+Constant terms cancel identically in each Eisenstein combination
+& \Proved\ (forced by $\Phi=q+O(q^2)$)\\
+$\gamma$ reproduces Beukers' level-6 weight-4 series; $\mathbf D$
+reproduces the $\Gamma_1(5)$ weight-3 picture
+& \VerifiedR{$q^{60}$} (controls)\\
+$\zeta$'s source is the primitive $(\chim3,\chim3)$ weight-4 level-9
+Eisenstein series with coefficient $1$
+& \VerifiedR{$q^{60}$}\\
+No weight-3 or weight-4 fit for $s_7,s_{10},s_{18}$ in the levels
+$\{7,10,18\}$ and divisors, natural characters
+& \ExcludedR{stated bases}\\
+$\Phi$ integral ($\mu=1$) for Cooper's three; the obstruction is the
+coordinate, not integrality
+& \VerifiedR{$q^{26}$} + \Open\\
+Identification of $\Phi_{s_7},\Phi_{s_{10}},\Phi_{s_{18}}$ (Prob.~\ref{prob:cooper})
+& \Open\\
+Fold connection lemma $\xi=\Theta(q_c)+F\Theta'/F'$ (Lem.~\ref{lem:fold})
+& \Proved\\
+Nine known Ap\'ery limits recovered from the sources
+(Table~\ref{tab:limits}; $\gamma$ to $6.6\cdot10^{-15}$)
+& \VerifiedR{numeric, $N=26$, tracked}\\
+$\mathbf B,\delta,\eta$ are exactly the complex-root families, disc
+$-27,-128,-16$ (Obs.~\ref{obs:complex})
+& \Proved\\
+Complex Eichler values $\xi_{\mathbf B},\xi_\delta,\xi_\eta$ to
+$15/39/33$ digits (Ver.~\ref{ver:complex})
+& \VerifiedR{numeric, $N=60$, dps 80}\\
+No rational relation for those values over the stated $L$-value bases
+(Ver.~\ref{ver:pslq})
+& \ExcludedR{basis, maxcoeff $10^{6\text{--}7}$}\\
+Closed form for $\xi_\delta$ (Prob.~\ref{prob:phi1})
+& \Open\\
+Sturm bounds $\le18$ for the twelve spaces (\S\ref{sec:gap})
+& recorded, \Proved\ (standard bound)\\
+Eta certification (i) of \S\ref{sec:gap} for the eleven non-$\zeta$
+families
+& \Open\ (routine, undone)\\
+``The sporadic limits are $\zeta$/Dirichlet $L$-values \emph{because} the
+sources are Eisenstein'' (\S\ref{sec:structure})
+& explanation; general law \Open\\
+$v_p(\mathrm{den}\,B_n)$ readable from $p$-parts of $c(m)/m^r$
+& \Open, not attempted\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Nothing above is claimed beyond its label. In particular the headline of
+this paper --- ``twelve of the fifteen sporadic companion sources are pure
+Eisenstein series'' --- is a \VerifiedR{$q^{60}$} statement and is not a
+theorem, and no sentence in this paper should be read as saying otherwise.
+
+%======================================================================
+\section*{Acknowledgements}
+The programme of identifying the companion source as a modular object and
+deriving the Ap\'ery limits from it was proposed by the collaborator Sol.
+
+\begin{thebibliography}{9}
+
+\bibitem{anchors}
+[author], \emph{Modular anchors for Ap\'ery-like companions: second
+solutions as Eichler integrals, with the symmetric-square theorem for the
+sporadic operators}. Companion paper of this programme,
+\texttt{papers\_out/modular\_anchors}.
+
+\bibitem{dict}
+\texttt{work/SPORADIC\_MODULAR\_DICTIONARY.md} --- the fifteen pairs, their
+$(t,F)$ parametrizations, and the ASD sweep. Scripts
+\texttt{work/z5eps/eps51\_dictionary.py}, \texttt{eps51\_refine.py}.
+
+\bibitem{ledger}
+\texttt{work/PHI\_SOURCE\_LEDGER.md} --- the companion sources $\Phi(q)$ of
+the fifteen sporadic pairs. Scripts \texttt{work/z5eps/eps60\_phi\_source.py},
+\texttt{eps60b\_phi\_holdouts.py}, \texttt{eps61\_eichler\_limits.py},
+\texttt{eps61b\_complex\_limits.py}.
+
+\bibitem{cusp}
+\texttt{work/CUSPIDAL\_COMPANION.md} --- the first deliberately cuspidal
+companion, Sturm arithmetic for the twelve identifications, and the fold
+lemma as originally recorded. Scripts \texttt{work/z5eps/eps62*}.
+
+\bibitem{apery}
+R.~Ap\'ery, \emph{Irrationalit\'e de $\zeta(2)$ et $\zeta(3)$},
+Ast\'erisque \textbf{61} (1979), 11--13.
+
+\bibitem{beukers}
+F.~Beukers, \emph{Irrationality proofs using modular forms},
+Ast\'erisque \textbf{147--148} (1987), 271--283.
+
+\bibitem{zagier}
+D.~Zagier, \emph{Integral solutions of Ap\'ery-like recurrence equations},
+in: Groups and Symmetries, CRM Proc.\ Lecture Notes \textbf{47} (2009),
+349--366.
+
+\bibitem{cooper}
+S.~Cooper, \emph{Sporadic sequences, modular forms and new series for
+$1/\pi$}, Ramanujan J.\ \textbf{29} (2012), 163--183.
+
+\bibitem{avs}
+G.~Almkvist and W.~Zudilin, \emph{Differential equations, mirror maps and
+zeta values}, in: Mirror Symmetry V, AMS/IP Stud.\ Adv.\ Math.\
+\textbf{38} (2006), 481--515.
+
+\end{thebibliography}
+
+\end{document}

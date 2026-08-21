@@ -1,0 +1,16 @@
+papers/
+packages/
+chats/
+# LaTeX build artefacts
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+paper/main.log
+book/v8/
+book/v11/
+__pycache__/

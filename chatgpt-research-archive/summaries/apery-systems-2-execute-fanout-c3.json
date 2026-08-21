@@ -1,0 +1,28 @@
+{
+  "family": "apery-systems-2::Execute Fanout C3",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-2/execute-fanout-c3-6a87009b.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-2/execute-fanout-c3-6a87009b.json",
+  "title_human": "Execute Fanout C3",
+  "claims": [
+    {
+      "statement": "Degree-8 direct image carrier",
+      "object": "level-144",
+      "status": "proved",
+      "source_file": "execute-fanout-c3-6a87009b.json",
+      "notes": ""
+    }
+  ],
+  "connections_to_literature": [
+    "Frobenius"
+  ],
+  "open_threads_or_handoffs": [
+    "\u0393_NF construction"
+  ],
+  "in_ledger": "no",
+  "ledger_notes": "",
+  "flags": [
+    "INCOMPLETE"
+  ]
+}

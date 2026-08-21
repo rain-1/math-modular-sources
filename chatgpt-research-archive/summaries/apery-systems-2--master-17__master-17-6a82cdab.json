@@ -1,0 +1,58 @@
+{
+  "family": "apery-systems-2::MASTER 17",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-2/master-17-6a82cdab.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-2/master-17-6a82cdab.md",
+  "title_human": "Level-2 p-adic Ap\u00e9ry system for \u03b6(5)",
+  "claims": [
+    {
+      "statement": "L_5 = Sym^4(L_2) where L_2=\u03b8\u00b2+4t(4\u03b8+1)\u00b2 and L_5 = \u03b8\u2075+8t(2\u03b8+1)(8\u03b8\u2074+16\u03b8\u00b3+17\u03b8\u00b2+9\u03b8+2)+4096t\u00b2(\u03b8+1)\u2075",
+      "object": "level-2 hypergeometric fifth-order operator",
+      "status": "proved",
+      "source_file": "master-17-6a82cdab.md",
+      "notes": "Exact symmetric-power calculation"
+    },
+    {
+      "statement": "\u03a6(\u03c4) = E_6(\u03c4) - E_6(2\u03c4) = A\u00b7D_t (exact modular identity)",
+      "object": "level-2 source-collapse",
+      "status": "proved",
+      "source_file": "master-17-6a82cdab.md",
+      "notes": "Source-first period pattern"
+    },
+    {
+      "statement": "\u03b7_2 = (1/2)\u03b6_2(5) is the exact p-adic connection value for the level-2 Ap\u00e9ry system",
+      "object": "level-2 p-adic \u03b6(5)",
+      "status": "proved",
+      "source_file": "master-17-6a82cdab.md",
+      "notes": "\u03b6_2(5) itself is irrational (Lai\u2013Sprang\u2013Zudilin)"
+    },
+    {
+      "statement": "d_n^5 B_n^* \u2208 Z for n\u22650, but d_3^4 B_3^* \u2209 Z, so arithmetic denominator weight five is sharp",
+      "object": "denominator sharpness",
+      "status": "proved",
+      "source_file": "master-17-6a82cdab.md",
+      "notes": "B_3^* = -4052032/3^5"
+    },
+    {
+      "statement": "For level-12 anti-Fricke system with weight-6 source of complex target (11/144)\u03b6(5), p-adic connection value is -(11/144)\u03b6_p(5)",
+      "object": "level-12 p-adic projection",
+      "status": "proved-route",
+      "source_file": "master-17-6a82cdab.md",
+      "notes": "Requires independent certification of level-12 coefficient vector"
+    }
+  ],
+  "connections_to_literature": [
+    "Calegari overconvergent Eisenstein; Lai\u2013Sprang\u2013Zudilin"
+  ],
+  "open_threads_or_handoffs": [
+    "Lambda-algebra/tower-beta formalism not provided",
+    "Actual level-12 coefficient vector not supplied"
+  ],
+  "in_ledger": "no",
+  "ledger_notes": "Represents exact computation specific to this research direction",
+  "flags": [
+    "\u03b6_2(5) irrationality already known",
+    "Do not claim irrationality of \u03b6(5)"
+  ]
+}

@@ -1,0 +1,1154 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={A literal-window construction-quality exponent for Catalan's constant},
+  pdfauthor={Working paper},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{A literal-window construction-quality exponent for Catalan's
+constant}
+\author{Working paper}
+\date{12 August 2026}
+
+\begin{document}
+\maketitle
+
+\hypertarget{paper-theorem-and-proof-ledger-for-the-literal-windows}{%
+\section{Paper theorem and proof ledger for the literal
+windows}\label{paper-theorem-and-proof-ledger-for-the-literal-windows}}
+
+\textbf{Status (12 August 2026).} This document gives a paper-level
+proof, using the literal prime windows only, that an explicitly selected
+sequence of integer combinations of the Zudilin and Nesterenko rows has
+construction quality at least
+
+\[
+  0.581983473693357\ldots
+\]
+
+The new ingredient is the unconditional two-minimum selection theorem in
+Section 6. It supplies a lower bound for the actual height and an upper
+bound for the linear-form value relative to that height. No conditional
+Lean theorem, finite certificate, numerical scan, or unproved common-gcd
+estimate is used.
+
+\hypertarget{quality-of-a-constructed-sequence}{%
+\subsection{1. Quality of a constructed
+sequence}\label{quality-of-a-constructed-sequence}}
+
+Put
+
+\[
+ G=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k+1)^2}.
+\]
+
+An \textbf{admissible approximation sequence} to \(G\), indexed by an
+infinite set \(I\subseteq\mathbb N\), is a sequence
+\((q_n,p_n)\in\mathbb Z^2\), \(n\in I\), such that
+
+\[
+ q_n\ne0,\qquad q_nG-p_n\ne0,\qquad |q_n|\longrightarrow\infty.
+\]
+
+Its \textbf{construction quality} is
+
+\[
+ \delta_I(q,p)
+ :=\liminf_{\substack{n\to\infty\\n\in I}}
+ \frac{-\log|G-p_n/q_n|}{\log|q_n|}.
+ \tag{1.1}
+\]
+
+When \(I\) is the set of all sufficiently large integers, we abbreviate
+this quantity to \(\delta(q,p)\); changing finitely many terms has no
+effect.
+
+This is a property of the displayed family, not the classical
+irrationality exponent of \(G\) (whose irrationality is unknown). If
+
+\[
+ \log|q_n|=An+o(n),\qquad
+ \log|q_nG-p_n|=En+o(n),\qquad A>0,
+ \tag{1.2}
+\]
+
+then
+
+\[
+ \delta_I(q,p)=1-\frac EA.
+ \tag{1.3}
+\]
+
+More generally, a lower height estimate \(\log|q_n|\ge (A-o(1))n\),
+together with the corresponding upper estimates, is indispensable when
+\(E>0\). Upper bounds for both quantities do not imply (1.3). In this
+normalization the irrationality threshold is \(\delta>1\), not merely
+\(\delta>0\).
+
+\hypertarget{the-two-rational-rows-and-explicit-integer-clearings}{%
+\subsection{2. The two rational rows and explicit integer
+clearings}\label{the-two-rational-rows-and-explicit-integer-clearings}}
+
+Write \(D_m=\operatorname{lcm}(1,\ldots,m)\), and put
+\(\varphi(t)=20t^2-8t+1\). Let \(Q_m,P_m\in\mathbb Q\) be the two
+solutions of
+
+\[
+ \begin{split}
+ &(2m+1)^2(2m+2)^2\varphi(m)z_{m+1}\\
+ &\quad=(3520m^6+5632m^5+2064m^4-384m^3-156m^2+16m+7)z_m\\
+ &\qquad +(2m-1)^2(2m)^2\varphi(m+1)z_{m-1}\qquad(m\ge1),
+ \end{split}
+ \tag{2.1}
+\]
+
+with
+
+\[
+ (Q_0,Q_1)=(1,7/4),\qquad(P_0,P_1)=(0,13/8).
+ \tag{2.2}
+\]
+
+Set \(\Lambda_m^Z=Q_mG-P_m\). For \(m\ge1\), define the completely
+explicit exponent
+
+\[
+ e_m=\min\{6m,\,4m+3+\lfloor\log_2(2m-1)\rfloor\}
+ \tag{2.3}
+\]
+
+and, at \(m=3n\), define
+
+\[
+ X_n=2^{e_{3n}}D_{6n-1}^2Q_{3n},\qquad
+ Y_n=2^{e_{3n}}D_{6n-1}^2P_{3n}.
+ \tag{2.4}
+\]
+
+These are integers. Indeed, Zudilin's 2003 theorem gives
+
+\[
+ 2^{4m+3}D_mQ_m\in\mathbb Z,qquad
+ 2^{4m+3}D_{2m-1}^3P_m\in\mathbb Z,
+ \tag{2.5}
+\]
+
+whereas the partial-fraction argument in his second 2002 paper gives
+
+\[
+ 2^{6m}Q_m\in\mathbb Z,qquad
+ 2^{6m}D_{2m-1}^2P_m\in\mathbb Z.
+ \tag{2.6}
+\]
+
+If a rational number \(r\) is cleared both by \(2^a\) and by \(2^bM\),
+then it is cleared by \(2^{\min(a,b+v_2(M))}\): the first hypothesis
+says that the reduced denominator of \(r\) is a power of two, and the
+second bounds its exponent by \(b+v_2(M)\). Apply this first to
+\(r=D_{2m-1}^2P_m\), with \(a=6m\), \(b=4m+3\), and \(M=D_{2m-1}\). This
+proves that \(2^{e_m}D_{2m-1}^2P_m\) is integral. For \(Q_m\), the same
+argument with \(M=D_m\) gives the (possibly smaller) exponent \[
+ \min\{6m,\,4m+3+\lfloor\log_2m\rfloor\}\le e_m;
+\] multiplication by the remaining power of two proves that
+\(2^{e_m}Q_m\) is integral. This gives (2.3)--(2.4). Equivalently,
+
+\[
+ 2^{e_m}=2^{4m}s_m,qquad
+ s_m=2^{\min\{2m,\,3+\lfloor\log_2(2m-1)\rfloor\}},
+ \quad \log s_m=O(\log m).
+ \tag{2.7}
+\]
+
+Thus the formerly implicit \(2^{o(m)}\) is the explicit factor \(s_m\).
+
+For the Nesterenko row, let \((a)_j=a(a+1)\cdots(a+j-1)\). For \(n\ge1\)
+define
+
+\[
+ \mathcal R_n(t)=
+ \frac{(3n)!(3/2)_{3n-1}}{(4n)!}
+ \frac{t(t-1)\cdots(t-4n+1)}
+      {\prod_{r=0}^{3n}(t+r+1/2)^2}.
+ \tag{2.8}
+\]
+
+The rational numbers \(A_{1,n,j},A_{2,n,j}\) are defined uniquely by the
+partial-fraction identity
+
+\[
+ \mathcal R_n(t)=\sum_{j=0}^{3n}
+ \frac{(t+1)\cdots(t+j)}{(t+1/2)_{j+1}}
+ \left(A_{1,n,j}+\frac{A_{2,n,j}}{t+j+1/2}\right).
+ \tag{2.9}
+\]
+
+In particular, taking the double-pole coefficient gives the explicit
+positive formula
+
+\[
+ A_{2,n,j}=2^{-14n+2j+1}
+ \frac{(8n+2j)!\,j!\,(6n)!}
+ {(4n)!\,(4n+j)!\,(3n-j)!^2\,(2j)!^2}
+ \quad(0\le j\le3n).
+ \tag{2.9a}
+\]
+
+(An empty numerator product is \(1\).) Define
+
+\[
+ B_n=\sum_{j=0}^{3n}A_{2,n,j},
+ \tag{2.10}
+\]
+
+\[
+ C_n=\sum_{j=1}^{3n}\sum_{\nu=0}^{j-1}
+ \frac{\nu!}{(3/2)_\nu}
+ \left(A_{1,n,j}+\frac{A_{2,n,j}}{\nu+1/2}\right),
+ \tag{2.11}
+\]
+
+and
+
+\[
+ J_n=\int_0^1\!\int_0^1
+ \frac{x^{4n-1/2}(1-x)^{3n}y^{4n}(1-y)^{3n-1/2}}
+ {(1-xy)^{4n+1}}\,dx\,dy.
+ \tag{2.12}
+\]
+
+Nesterenko's partial-fraction theorem gives the exact identity
+
+\[
+ J_n=4B_nG-C_n.
+ \tag{2.13}
+\]
+
+The correct integer row in this normalization is
+
+\[
+ V_n=4^{7n+1}D_{6n}^2B_n,qquad
+ U_n=4^{7n}D_{6n}^2C_n,
+ \tag{2.14}
+\]
+
+and
+
+\[
+ \Lambda_n^N=V_nG-U_n=4^{7n}D_{6n}^2J_n.
+ \tag{2.15}
+\]
+
+Both \(V_n\) and \(U_n\) are integers. This is the conservative,
+unconditional denominator theorem on page 171 of Nesterenko's paper; it
+is not the later \(D_{8n}D_{6n}/(\Delta_n\Delta_{1,n})\) normalization
+whose second coordinate is conjectural. The extra factor \(4\) in
+\(V_n\) is forced by (2.13). It is missing from the displayed \(q_n\) in
+the printed equation (4.4), but it reappears correctly in the paper's
+(v\_n) on page 175.
+
+\hypertarget{two-sided-asymptotics-in-these-normalizations}{%
+\subsection{3. Two-sided asymptotics in these
+normalizations}\label{two-sided-asymptotics-in-these-normalizations}}
+
+Let
+
+\[
+ \phi=\frac{1+\sqrt5}{2},\qquad
+ T=\frac{3303+437\sqrt{57}}{144},\qquad
+ T^- =\frac{3303-437\sqrt{57}}{144}.
+ \tag{3.1}
+\]
+
+Then
+
+\[
+ \begin{aligned}
+ A_1&=12\log2+12+15\log\phi
+       =27.535943542613395425\ldots,\\
+ E_1&=12\log2+12-15\log\phi
+       =13.099588790825292001\ldots,\\
+ A_2&=14\log2+12+2\log T
+       =29.354773862079159628\ldots,\\
+ E_2&=14\log2+12+2\log T^-
+       =14.393145267190103982\ldots.
+ \end{aligned}
+ \tag{3.2}
+\]
+
+In the exact normalizations (2.4) and (2.14), the primary-source limit
+statements read, before clearing,
+
+\[
+\begin{array}{ll}
+ n^{-1}\log Q_{3n}\to15\log\phi,&
+ n^{-1}\log|Q_{3n}G-P_{3n}|\to-15\log\phi,\\
+ n^{-1}\log B_n\to2\log T,&
+ n^{-1}\log J_n\to2\log T^-.
+\end{array}
+\]
+
+Moreover, (2.7) gives \(e_{3n}\log2=12n\log2+O(\log n)\), while
+\(2\log D_{6n-1}=12n+o(n)\) and \(2\log D_{6n}=12n+o(n)\). Combining
+these identities gives
+
+\[
+ \begin{array}{ll}
+ \log X_n=A_1n+o(n),&\log Y_n=A_1n+o(n),\\
+ \log V_n=A_2n+o(n),&\log U_n=A_2n+o(n),\\
+ \log|\Lambda_n^Z|=E_1n+o(n),&
+ \log|\Lambda_n^N|=E_2n+o(n).
+ \end{array}
+ \tag{3.3}
+\]
+
+Here all four coordinates are eventually positive. For the two second
+coordinates this follows from \(P_m/Q_m\to G>0\) and
+\(C_n/(4B_nG)\to1\), respectively; the latter limit follows from (2.13)
+and \(T^-<T\). Thus (3.3) is two-sided, not just a collection of upper
+estimates.
+
+\hypertarget{literal-window-divisor-and-the-exact-congruence-lattice}{%
+\subsection{4. Literal-window divisor and the exact congruence
+lattice}\label{literal-window-divisor-and-the-exact-congruence-lattice}}
+
+Define
+
+\[
+ S_n=\prod_{\substack{4n<\ell<6n\\ \ell\ \mathrm{prime}}}\ell^2
+     \prod_{\substack{2n<\ell<3n\\ \ell\ \mathrm{prime}}}\ell^2.
+ \tag{4.1}
+\]
+
+The two intervals are disjoint, and every prime in them occurs in both
+\(D_{6n-1}\) and \(D_{6n}\). Hence
+
+\[
+ S_n\mid X_n,qquad S_n\mid V_n.
+ \tag{4.2}
+\]
+
+The prime number theorem in the form \(\vartheta(x)=x+o(x)\) gives
+
+\[
+ \log S_n
+ =2(\vartheta(6n)-\vartheta(4n))
+  +2(\vartheta(3n)-\vartheta(2n))=6n+o(n).
+ \tag{4.3}
+\]
+
+Put
+
+\[
+ L_n=\{(c_1,c_2)\in\mathbb Z^2:
+        c_1Y_n+c_2U_n\equiv0\pmod{S_n}\}.
+ \tag{4.4}
+\]
+
+Let
+
+\[
+ g_n=\gcd(S_n,Y_n,U_n),\qquad d_n=S_n/g_n.
+ \tag{4.5}
+\]
+
+The homomorphism
+
+\[
+ (c_1,c_2)\longmapsto c_1Y_n+c_2U_n\pmod{S_n}
+\]
+
+has image the subgroup generated by \(g_n\pmod {S_n}\), of order
+\(S_n/g_n\). Therefore
+
+\[
+ [\mathbb Z^2:L_n]=d_n=\frac{S_n}{\gcd(S_n,Y_n,U_n)}\le S_n.
+ \tag{4.6}
+\]
+
+For every \(c=(c_1,c_2)\in L_n\),
+
+\[
+ q_n(c)=\frac{c_1X_n+c_2V_n}{S_n},\qquad
+ p_n(c)=\frac{c_1Y_n+c_2U_n}{S_n}
+ \tag{4.7}
+\]
+
+are integers and
+
+\[
+ q_n(c)G-p_n(c)=
+ \frac{c_1\Lambda_n^Z+c_2\Lambda_n^N}{S_n}.
+ \tag{4.8}
+\]
+
+\begin{quote}
+\textbf{Main theorem.} Let \(G\), \(D_m\), \(Q_m\), \(P_m\), \(e_m\),
+\(X_n\), \(Y_n\), \(\mathcal R_n\), \(A_{1,n,j}\), \(A_{2,n,j}\),
+\(B_n\), \(C_n\), \(J_n\), \(V_n\), \(U_n\), \(S_n\), \(L_n\),
+\(q_n(c)\), and \(p_n(c)\) be exactly the sequences defined in
+(1.1)--(4.8). For every sufficiently large \(n\) there is a vector
+\(c_n\in L_n\) such that the integer sequence \((q_n(c_n),p_n(c_n))\) is
+admissible and has construction quality
+
+\[
+\delta(q,p)\ge0.5819834736933570952\ldots .          \tag{4.9}
+\]
+
+More exactly, the right side is
+
+\[
+1-\frac{E_{\rm eff}}{A_{\rm eff}},\qquad
+A_{\rm eff}=A_2-\frac{6+E_2-E_1}{2},\quad
+E_{\rm eff}=E_2-\frac{6+E_2-E_1}{2},               \tag{4.10}
+\]
+
+with \(A_i,E_i\) as in (3.2). This is a construction-quality statement;
+it is not a claim that \(G\) is irrational.
+\end{quote}
+
+The rest of the paper proves this theorem. The selection of \(c_n\) is
+given in Theorem 6.2 and includes the required lower height bound.
+
+\hypertarget{eventual-independence-from-crossed-rates}{%
+\subsection{5. Eventual independence from crossed
+rates}\label{eventual-independence-from-crossed-rates}}
+
+Let
+
+\[
+ \mathcal D_n=X_nU_n-V_nY_n.
+ \tag{5.1}
+\]
+
+Using the two linear forms,
+
+\[
+ \mathcal D_n=V_n\Lambda_n^Z-X_n\Lambda_n^N.
+ \tag{5.2}
+\]
+
+The two terms have rates \(A_2+E_1\) and \(A_1+E_2\), and
+
+\[
+ \gamma=(A_2+E_1)-(A_1+E_2)
+ =0.52527384310095222099\ldots>0.
+ \tag{5.3}
+\]
+
+It follows from the reverse triangle inequality and (3.3) that
+
+\[
+ \log|\mathcal D_n|=(A_2+E_1)n+o(n),
+ \tag{5.4}
+\]
+
+so \(\mathcal D_n\ne0\) for all sufficiently large \(n\). This proves
+eventual row independence; no finite determinant scan is being used.
+
+\hypertarget{selection-theorem-and-construction-quality-bound}{%
+\subsection{6. Selection theorem and construction-quality
+bound}\label{selection-theorem-and-construction-quality-bound}}
+
+Put \(K=6\) and
+
+\[
+ x_* =\frac{K+E_2-E_1}{2}
+      =3.6467782381824059906\ldots.
+ \tag{6.1}
+\]
+
+For an integer \(m\), write \(\log^+|m|=\log\max\{1,|m|\}\).
+
+The following annular statement was the first sufficient formulation of
+the selection problem. It is recorded to explain the rate ledger, but it
+is not an assumption of the final theorem.
+
+\begin{quote}
+\textbf{Annular selection statement (AS).} There are numbers
+\(x_n<x_*\), with \(x_n\to x_*\), and vectors
+\(c_n=(c_{1,n},c_{2,n})\in L_n\), such that \[
+\log^+|c_{1,n}|\le x_nn+o(n),\qquad
+\log|c_{2,n}|=(K-x_n)n+o(n),                 \tag{6.2}
+\] where the remainders in (3.3), (4.3), and (6.2) are
+\(o((x_*-x_n)n)\). In particular \(c_{2,n}\ne0\).
+\end{quote}
+
+The separation condition is a standard diagonal formulation: it merely
+says that \(x_n\uparrow x_*\) slowly enough for exponential dominance to
+remain visible.
+
+\begin{quote}
+\textbf{Reduction theorem.} If (AS) holds for the explicitly defined
+lattices (4.4), then the pairs \((q_n(c_n),p_n(c_n))\) are eventually
+admissible and have \[
+\begin{aligned}
+\log|q_n(c_n)|&=A_{\rm eff}n+o(n),\\
+\log|q_n(c_n)G-p_n(c_n)|&=E_{\rm eff}n+o(n),
+\end{aligned}                                      \tag{6.3}
+\] where \[
+\begin{aligned}
+A_{\rm eff}&=A_2-x_*=25.707995623896753637\ldots,\\
+E_{\rm eff}&=E_2-x_*=10.746367029007697991\ldots.
+\end{aligned}                                      \tag{6.4}
+\] Consequently their construction quality is \[
+\boxed{\delta_*=1-\frac{E_{\rm eff}}{A_{\rm eff}}
+=0.5819834736933570952\ldots.}                     \tag{6.5}
+\] In fact the quotient in (1.1) has a limit, so its liminf and limsup
+are both equal to \(\delta_*\).
+\end{quote}
+
+\textbf{Proof of the reduction.} Before division by \(S_n\), the two
+terms in the first coordinate have rates at most \(x_*+A_1\) and exactly
+\(K-x_*+A_2\). Their difference is \(\gamma>0\), by (5.3), so the
+Nesterenko term dominates even if the signs oppose. This proves the
+first line of (6.3), including its lower bound. In the linear-form
+value, the corresponding limiting rates are equal because of (6.1).
+Taking \(x_n<x_*\) makes the Nesterenko term exponentially dominant by
+\(2(x_*-x_n)n\), which proves the second, two-sided line of (6.3) and
+also nonvanishing. Subtract (4.3) in both cases and apply (1.3).
+\(\square\)
+
+This reduction shows why a one-vector box argument, without a lower
+height bound, does not prove (6.5). The unconditional argument below
+obtains the height bound from two vectors instead.
+
+\hypertarget{a-determinant-selection-theorem-requiring-no-annular-coordinate}{%
+\subsubsection{A determinant selection theorem requiring no annular
+coordinate}\label{a-determinant-selection-theorem-requiring-no-annular-coordinate}}
+
+As an intermediate step, the following balanced-minima condition
+isolates how two independent short vectors and the crossed determinant
+produce the required lower height.
+
+Let
+
+\[
+ \mathcal B_n=\{(s,t)\in\mathbb R^2:
+ |s|\le e^{x_*n},\ |t|\le e^{(K-x_*)n}\},
+ \tag{6.6}
+\]
+
+and let \(\lambda_{1,n}\le\lambda_{2,n}\) be the successive minima of
+\(L_n\) with respect to \(\mathcal B_n\). Consider the two assertions
+
+\[
+ \log d_n=Kn+o(n),\qquad \log\lambda_{1,n}=o(n).
+ \tag{BM}
+\]
+
+The first says that the extra common divisor \(g_n\) in (4.5) is
+subexponential. The second excludes an exponentially exceptional first
+minimum; its upper-bound half is automatic from Minkowski, while its
+lower bound is new arithmetic information about the HNF residue (7.2).
+
+\begin{quote}
+\textbf{Balanced-minima selection theorem.} Assume (BM). Then there are
+vectors \(c_n\in L_n\) for which the integer pairs in (4.7) satisfy \[
+\log|q_n(c_n)|=A_{\rm eff}n+o(n),\qquad
+0<|q_n(c_n)G-p_n(c_n)|\le e^{E_{\rm eff}n+o(n)}.       \tag{6.7}
+\] Consequently \[
+\delta(q,p)\ge\delta_*=0.5819834736933570952\ldots .  \tag{6.8}
+\]
+\end{quote}
+
+\textbf{Proof.} The area of \(\mathcal B_n\) is \(4e^{Kn}\). Minkowski's
+second theorem and (BM) imply
+
+\[
+ \log\lambda_{2,n}=o(n).
+\]
+
+Thus there are independent \(c_n^{(1)},c_n^{(2)}\in L_n\) such that, for
+\(i=1,2\),
+
+\[
+ |c_{1,n}^{(i)}|\le e^{x_*n+o(n)},\qquad
+ |c_{2,n}^{(i)}|\le e^{(K-x_*)n+o(n)}.                \tag{6.9}
+\]
+
+Their determinant is a nonzero multiple of \(d_n\), while (6.9) bounds
+it above by \(e^{Kn+o(n)}\). Hence
+
+\[
+ \log|\det(c_n^{(1)},c_n^{(2)})|=Kn+o(n).             \tag{6.10}
+\]
+
+Write \(q_i=q_n(c_n^{(i)})\), \(p_i=p_n(c_n^{(i)})\), and
+\(\ell_i=q_iG-p_i\). Equations (3.3), (4.3), and (6.9), together with
+the strict coefficient gap (5.3), give
+
+\[
+ |q_i|\le e^{A_{\rm eff}n+o(n)},\qquad
+ |\ell_i|\le e^{E_{\rm eff}n+o(n)}.                  \tag{6.11}
+\]
+
+On the other hand, (5.4) and (6.10) give the exact determinant rate
+
+\[
+ \begin{aligned}
+ \log|q_1p_2-q_2p_1|
+ &=\log\left|
+ \frac{\det(c_n^{(1)},c_n^{(2)})\mathcal D_n}{S_n^2}
+ \right|\\
+ &=(A_2+E_1-K)n+o(n)\\
+ &=(A_{\rm eff}+E_{\rm eff})n+o(n).
+ \end{aligned}                                      \tag{6.12}
+\]
+
+Since
+
+\[
+ q_1p_2-q_2p_1=q_2\ell_1-q_1\ell_2,
+\]
+
+(6.11)--(6.12) force
+
+\[
+ \max(|q_1|,|q_2|)\ge e^{A_{\rm eff}n-o(n)}.         \tag{6.13}
+\]
+
+Choose an index \(i\) realizing (6.13). If \(\ell_i\ne0\), take
+\(c_n=c_n^{(i)}\). If \(\ell_i=0\), independence of the two coefficient
+vectors implies that the other linear form is nonzero; choose a sign
+\(\varepsilon\in\{-1,1\}\) for which
+
+\[
+ |q_i+\varepsilon q_{3-i}|\ge |q_i|
+\]
+
+and take \(c_n=c_n^{(i)}+\varepsilon c_n^{(3-i)}\). This changes every
+upper bound only by a constant factor and makes the linear form nonzero.
+Together with (6.11) and (6.13), this proves (6.7), including the lower
+height bound. Formula (1.1) now gives (6.8). \(\square\)
+
+Unlike the one-vector Minkowski argument, this lemma survives accidental
+cancellation in either source coordinate. The next theorem removes (BM)
+entirely by treating an exponentially short first minimum as a useful
+reduction direction.
+
+\hypertarget{unconditional-reduction-in-the-linear-form-coordinate}{%
+\subsubsection{Unconditional reduction in the linear-form
+coordinate}\label{unconditional-reduction-in-the-linear-form-coordinate}}
+
+The preceding conditional formulation is useful for orientation but is
+not needed. When the first minimum is exponentially short, one can
+reduce the second vector modulo the first in the \textbf{linear-form
+value}, and the crossed determinant then forces the required height.
+This closes the selection step for every possible shape of (L\_n).
+
+Put
+
+\[
+ s_n=\frac{\log S_n}{n},\qquad
+ \kappa_n=\frac{\log d_n}{n},\qquad
+ x_n=\frac{\kappa_n+E_2-E_1}{2},                    \tag{6.14}
+\]
+
+and
+
+\[
+ H_n=\kappa_n-x_n+A_2-s_n,qquad
+ F_n=x_n+E_1-s_n.                                   \tag{6.15}
+\]
+
+Thus \(s_n\to K=6\), \(0\le\kappa_n\le s_n\), and
+
+\[
+ H_n-F_n=A_2-E_2,qquad
+ H_n+F_n=\kappa_n+A_2+E_1-2s_n.                    \tag{6.16}
+\]
+
+Both \(H_n\) and \(F_n\) are bounded away from zero. Since
+\(\kappa_n\le s_n\),
+
+\[
+ \limsup_{n\to\infty}H_n\le A_{\rm eff},\qquad
+ \limsup_{n\to\infty}F_n\le E_{\rm eff}.           \tag{6.17}
+\]
+
+Let
+
+\[
+ \mathcal C_n=\{(u,v)\in\mathbb R^2:
+ |u|\le e^{x_nn},\ |v|\le e^{(\kappa_n-x_n)n}\}.
+ \tag{6.18}
+\]
+
+Its area is \(4d_n\). If \(\mu_{1,n}\le\mu_{2,n}\) are the successive
+minima of \(L_n\) with respect to \(\mathcal C_n\), Minkowski's second
+theorem gives
+
+\[
+ \mu_{1,n}\mu_{2,n}\le1.                           \tag{6.19}
+\]
+
+Choose independent vectors \(b_n^{(1)},b_n^{(2)}\in L_n\) at these
+successive minima. Their determinant is a nonzero multiple of \(d_n\),
+whereas (6.19) bounds its absolute value by \(2d_n\). Hence
+
+\[
+ \log|\det(b_n^{(1)},b_n^{(2)})|=\log d_n+O(1).      \tag{6.20}
+\]
+
+Write
+
+\[
+ q_i=q_n(b_n^{(i)}),\quad p_i=p_n(b_n^{(i)}),
+ \quad \ell_i=q_iG-p_i.                              \tag{6.21}
+\]
+
+\begin{quote}
+\textbf{Theorem 6.2 (unconditional two-minimum selection).} For every
+sufficiently large \(n\) one can select \(c_n\in L_n\) so that, on
+writing \(q_n=q_n(c_n)\), \(p_n=p_n(c_n)\), and \(\ell_n=q_nG-p_n\),
+
+\[
+q_n\ne0,\qquad \ell_n\ne0,\qquad
+\log|q_n|\ge H_nn-o(n),                            \tag{6.22}
+\]
+
+and
+
+\[
+\frac{\log|\ell_n|}{\log|q_n|}
+\le \frac{F_n}{H_n}+o(1).                         \tag{6.23}
+\]
+
+Consequently \(|q_n|\to\infty\) and \[
+\liminf_{n\to\infty}
+\frac{-\log|G-p_n/q_n|}{\log|q_n|}
+\ge\frac{A_2-E_2}{A_{\rm eff}}.                   \tag{6.24}
+\]
+\end{quote}
+
+\textbf{Proof.} Choose \(\epsilon_n>0\), \(\epsilon_n\to0\), dominating
+all normalized remainders in (3.3), (4.3), (5.4), and (6.20). Enlarging
+it if necessary, assume also that \(n\sqrt{\epsilon_n}\to\infty\). Since
+\(\mu_{1,n}\le1\) by (6.19), put
+
+\[
+ r_n=-\frac{\log\mu_{1,n}}n\ge0.
+\]
+
+By (6.19), the two vectors have the respective bounds obtained from
+\(\mathcal C_n\) by common factors \(e^{-r_nn}\) and \(e^{r_nn}\).
+Moreover, \(r_n=O(1)\): every nonzero integer vector has a nonzero
+integral coordinate, while \(x_n\) and \(\kappa_n-x_n\) are bounded. The
+definition of \(x_n\) balances the value terms, while the Nesterenko
+coefficient term exceeds the Zudilin coefficient term by the fixed gap
+\(\gamma\) in (5.3). Therefore
+
+\[
+ \begin{array}{ll}
+ |q_1|\le e^{(H_n-r_n+O(\epsilon_n))n},&
+ |\ell_1|\le e^{(F_n-r_n+O(\epsilon_n))n},\\
+ |q_2|\le e^{(H_n+r_n+O(\epsilon_n))n},&
+ |\ell_2|\le e^{(F_n+r_n+O(\epsilon_n))n}.
+ \end{array}                                         \tag{6.25}
+\]
+
+The exact determinant identity is
+
+\[
+ \begin{aligned}
+ \Delta_n'&:=q_1p_2-q_2p_1=q_2\ell_1-q_1\ell_2\\
+ &=\frac{\det(b_n^{(1)},b_n^{(2)})\mathcal D_n}{S_n^2}.
+ \end{aligned}                                       \tag{6.26}
+\]
+
+Equations (5.4), (6.16), and (6.20) imply
+
+\[
+ \log|\Delta_n'|=(H_n+F_n)n+O(\epsilon_nn).          \tag{6.27}
+\]
+
+If \(r_n\le\sqrt{\epsilon_n}\), (6.25)--(6.27) force
+
+\[
+ \max(|q_1|,|q_2|)\ge e^{(H_n-O(\sqrt{\epsilon_n}))n}.
+\]
+
+Choose the vector with the larger first coordinate. If its linear form
+is zero, add or subtract the other vector, choosing the sign so that the
+first coordinates do not cancel. The two independent vectors cannot both
+have zero linear form. This gives a nonzero form and
+
+\[
+ \log|q_n(c_n)|=H_nn+o(n),\qquad
+ \log|q_n(c_n)G-p_n(c_n)|\le F_nn+o(n).              \tag{6.28}
+\]
+
+Suppose \(r_n>\sqrt{\epsilon_n}\) and first that \(\ell_1\ne0\). Choose
+an integer \(m_n\) satisfying
+
+\[
+ 0<|\ell_2-m_n\ell_1|\le\frac32|\ell_1|;             \tag{6.29}
+\]
+
+a nearest integer to \(\ell_2/\ell_1\) works unless its remainder is
+zero, in which case an adjacent integer works. Set
+
+\[
+ c_n=b_n^{(2)}-m_nb_n^{(1)},\quad
+ q'=q_2-m_nq_1,\quad \ell'=\ell_2-m_n\ell_1.
+\]
+
+From (6.26),
+
+\[
+ q'=\frac{\Delta_n'}{\ell_1}
+     +q_1\frac{\ell'}{\ell_1}.                       \tag{6.30}
+\]
+
+The first term has size at least \(e^{(H_n+r_n-O(\epsilon_n))n}\), while
+the second is at most \(e^{(H_n-r_n+O(\epsilon_n))n}\). Since
+\(r_n>\sqrt{\epsilon_n}\) and \(n\sqrt{\epsilon_n}\to\infty\), the first
+term dominates by a factor tending to infinity. If
+\(a_n=n^{-1}\log|\ell_1|\), then
+
+\[
+ \frac{-\log|G-(p_2-m_np_1)/(q_2-m_nq_1)|}
+ {\log|q_2-m_nq_1|}
+ \ge
+ 1-\frac{F_n-r_n+O(\epsilon_n)}
+          {H_n+r_n-O(\epsilon_n)}.                  \tag{6.31}
+\]
+
+Indeed, (6.30) gives \(n^{-1}\log|q'|=H_n+F_n-a_n+O(\epsilon_n)\), and
+the right side is worst when \(a_n=F_n-r_n+O(\epsilon_n)\); a smaller
+\(\ell_1\) only improves the quotient. It also gives
+\(\log|q'|\ge(H_n+r_n-O(\epsilon_n))n\). Finally,
+
+\[
+ \frac{F_n-r_n}{H_n+r_n}\le\frac{F_n}{H_n}
+\]
+
+because \(H_n,F_n>0\) and \(r_n\ge0\). Thus this branch satisfies both
+(6.22) and (6.23).
+
+If \(\ell_1=0\), then (6.26) implies \(q_1\ne0\) and \(\ell_2\ne0\).
+This case also admits a completely fixed shear. For all sufficiently
+large \(n\), \(5<s_n<7\); the closed forms (3.2) give \(1<E_2-E_1<2\),
+\(13<E_1<14\), and \(29<A_2<30\). Consequently
+
+\[
+ \begin{aligned}
+ \tfrac12&<x_n<\tfrac92,& -1&<\kappa_n-x_n<3,&
+ r_n&<\tfrac92,\\
+ H_n&<28,& F_n&<\tfrac{27}{2},&
+ \frac{F_n}{H_n}&>\frac{13}{56}.
+ \end{aligned}                                      \tag{6.32a}
+\]
+
+Here the bound for \(r_n\) follows because a nonzero integral vector has
+a coordinate of absolute value at least one. Equation (6.25) now gives
+\(\log^+|q_2|<34n\) and \(\log|\ell_2|<19n\) eventually. Take the fixed
+shear
+
+\[
+ c_n=b_n^{(2)}+\lceil e^{100n}\rceil b_n^{(1)}.
+\]
+
+Since the nonzero integer \(q_1\) has absolute value at least one, this
+gives \(\log|q_n(c_n)|\ge100n-o(n)\) and leaves the nonzero form equal
+to \(\ell_2\). Thus its relative value ratio is at most
+\(19/100+o(1)<13/56<F_n/H_n\). Notice that this exceptional case implies
+\(G=p_1/q_1\in\mathbb Q\); it must be covered because the irrationality
+of \(G\) is not known.
+
+All three cases give the height bound (6.22), the relative value bound
+(6.23), and hence
+
+\[
+ \frac{-\log|G-p_n(c_n)/q_n(c_n)|}{\log|q_n(c_n)|}
+ \ge1-\frac{F_n}{H_n}-o(1)
+ =\frac{A_2-E_2}{H_n}-o(1).                         \tag{6.32}
+\]
+
+Because \(H_n\) is bounded away from zero, the selected heights tend to
+infinity. Equation (6.17) now proves (6.24). \(\square\)
+
+The selection can be made canonical in classical exact-real arithmetic.
+To make it a literal sequence rather than an existence choice, order
+\(\mathbb Z^2\) by \((|u|+|v|,u,v)\), use the first vector attaining
+each successive minimum (subject to independence for the second), break
+all sign and nearest-integer ties by the same order, and apply the three
+cases in the proof. The zero-form branch is retained explicitly because
+deciding it algorithmically would amount to resolving a rationality
+question about \(G\).
+
+With
+
+\[
+ x_* =\frac{K+E_2-E_1}{2}
+      =3.6467782381824059906\ldots,
+\]
+
+we have
+
+\[
+ \begin{aligned}
+ A_{\rm eff}&=A_2-x_*=25.707995623896753637\ldots,\\
+ E_{\rm eff}&=E_2-x_*=10.746367029007697991\ldots.
+ \end{aligned}                                      \tag{6.33}
+\]
+
+Since \(A_2-E_2=A_{\rm eff}-E_{\rm eff}\), Theorem 6.2 and the
+elementary identity \(\liminf(1-z_n)=1-\limsup z_n\) prove
+
+\[
+ \boxed{\delta(q,p)\ge
+ 1-\frac{E_{\rm eff}}{A_{\rm eff}}
+ =0.5819834736933570952\ldots.}                     \tag{6.34}
+\]
+
+Explicitly, the final liminf/limsup passage is
+
+\[
+ \begin{aligned}
+ \delta(q,p)
+ &=1-\limsup_{n\to\infty}
+       \frac{\log|q_nG-p_n|}{\log|q_n|}\\
+ &\ge1-\limsup_{n\to\infty}\frac{F_n}{H_n}
+ \ge1-\frac{E_{\rm eff}}{A_{\rm eff}}.
+ \end{aligned}                                      \tag{6.35}
+\]
+
+The last inequality does not come from comparing separate limsups. It
+uses the exact relation
+
+\[
+ \frac{F_n}{H_n}=1-\frac{A_2-E_2}{H_n},
+\]
+
+which is increasing as a function of \(H_n>0\), together with
+\(\limsup H_n\le A_{\rm eff}\) from (6.17).
+
+This conclusion is unconditional. No annular-coordinate assertion,
+common gcd estimate, balanced-minimum hypothesis, or numerical
+certificate is used.
+
+\hypertarget{hnf-interpretation-of-the-superseded-one-vector-approach}{%
+\subsection{7. HNF interpretation of the superseded one-vector
+approach}\label{hnf-interpretation-of-the-superseded-one-vector-approach}}
+
+For comparison, the earlier one-vector obstruction can be stated without
+geometry-of-numbers jargon. Divide \(Y_n,U_n,S_n\) by \(g_n\), and write
+
+\[
+ Y'_n=Y_n/g_n,\quad U'_n=U_n/g_n,\quad d_n=S_n/g_n.
+\]
+
+Put
+
+\[
+ v_n^{\rm H}=\gcd(d_n,Y'_n),\qquad
+ h_n^{\rm H}=d_n/v_n^{\rm H}.
+ \tag{7.1}
+\]
+
+There is a unique \(a_n\), \(0\le a_n<h_n^{\rm H}\), satisfying
+
+\[
+ (Y'_n/v_n^{\rm H})a_n+U'_n\equiv0
+       \pmod {h_n^{\rm H}}.
+ \tag{7.2}
+\]
+
+Then
+
+\[
+ L_n=\mathbb Z(h_n^{\rm H},0)+
+     \mathbb Z(a_n,v_n^{\rm H}),qquad
+ h_n^{\rm H}v_n^{\rm H}=d_n.                       \tag{7.3}
+\]
+
+Consequently (AS) is equivalent to finding integers \(k_n,m_n\) with
+
+\[
+ c_{2,n}=k_nv_n^{\rm H},\qquad
+ c_{1,n}=k_na_n-m_nh_n^{\rm H},                    \tag{7.4}
+\]
+
+such that (6.2) holds. This is an annular modular-approximation theorem
+for the \textbf{specific} residues \(a_n/h_n^{\rm H}\).
+
+The first minimum in (BM) has the equally explicit formula
+
+\[
+ \lambda_{1,n}=\min_{(k,m)\ne(0,0)}
+ \max\left\{
+   |ka_n-mh_n^{\rm H}|e^{-x_*n},
+   |k|v_n^{\rm H}e^{-(K-x_*)n}
+ \right\}.                                           \tag{7.5}
+\]
+
+Thus the lower half of the intermediate condition (BM) says that the
+minimum in (7.5) is not \(e^{-\eta n}\) for any fixed \(\eta>0\),
+eventually. It is a precise modular-approximation assertion, not a
+consequence of the lattice index.
+
+The index estimate (4.6) alone cannot prove it. For example,
+
+\[
+ L(S)=\{(c_1,c_2)\in\mathbb Z^2:c_2\equiv0\pmod S\}
+\]
+
+has index \(S\), but contains no vector with \(0<|c_2|<S\). Hence any
+valid proof of (AS) must use additional arithmetic of \(Y_n,U_n\), or a
+genuinely stronger selection theorem whose conclusion allows a
+compensating alternative and still proves a lower height bound. Neither
+ordinary Minkowski nor the existing Lean \texttt{ExponentPair} predicate
+does this.
+
+Row independence alone does not repair the defect. For example, the two
+integer rows \((M,0)\) and \((M+1,1)\) have determinant \(M\ne0\), while
+the short combination \((1,-1)\) has first coordinate \(-1\) although
+its two summands have size comparable with \(M\). Thus a proposed
+lower-height lemma must also survive nearly proportional rows; nonzero
+determinant plus coefficient upper bounds is not enough.
+
+\hypertarget{like-for-like-benchmarks}{%
+\subsection{8. Like-for-like
+benchmarks}\label{like-for-like-benchmarks}}
+
+The decimal comparisons below can be certified without floating-point
+assumptions. For completeness, bracket each square root by rationals
+whose squares bracket the radicand, rescale every positive logarithm
+argument to \(y\in[1,2)\), and use
+
+\[
+ \log y=2\sum_{j=0}^{N}\frac{z^{2j+1}}{2j+1}+R_N,qquad
+ z=\frac{y-1}{y+1},qquad
+ 0<R_N<\frac{2z^{2N+3}}{(2N+3)(1-z^2)}.             \tag{8.1}
+\]
+
+For example, the exact integer square comparisons give
+
+\[
+ \begin{aligned}
+ \frac{2236067977499789}{10^{15}}&<\sqrt5<
+ \frac{2236067977499790}{10^{15}},\\
+ \frac{7549834435270749}{10^{15}}&<\sqrt{57}<
+ \frac{7549834435270750}{10^{15}}.
+ \end{aligned}
+\]
+
+Taking \(N=40\) and rational arithmetic gives the outward-rounded
+intervals
+
+\[
+\begin{array}{rcl}
+27.53594&<&A_1<27.53595,\\
+13.09958&<&E_1<13.09960,\\
+29.35477&<&A_2<29.35478,\\
+14.39314&<&E_2<14.39315,\\
+0.58198347&<&1-E_{\rm eff}/A_{\rm eff}<0.58198348,\\
+0.52427310&<&1-E_1/A_1<0.52427312,\\
+0.50968297&<&1-E_2/A_2<0.50968299.
+\end{array}                                          \tag{8.2}
+\]
+
+Thus the displayed comparisons have a purely rational interval
+certificate; the many-digit decimals are not being used as proof.
+
+In the same definition (1.1):
+
+\begin{itemize}
+\tightlist
+\item
+  Zudilin's asymptotic square-cleared row has \[
+  1-E_1/A_1=0.5242731097791163788\ldots.
+  \]
+\item
+  The unconditional conservative Nesterenko row (2.14) has quality \[
+  1-E_2/A_2=0.5096829791700988894\ldots.
+  \]
+\item
+  Under the unproved integrality of Nesterenko's sharper numerator, his
+  sharper normalization has limiting log-ratio
+  \(0.4455574797507435\ldots\), hence limiting construction quality
+  \(0.5544425202492564\ldots\). The paper states the safe conditional
+  inequality with exponent \(11/20=0.55\), not \(0.5545\).
+\end{itemize}
+
+The unconditional bound (6.34) exceeds all three comparison values. The
+comparison is like for like: every number is a construction quality in
+the sense of (1.1), rather than a classical irrationality exponent for
+\(G\).
+
+\hypertarget{primary-sources}{%
+\subsection{9. Primary sources}\label{primary-sources}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  W. Zudilin, \emph{An Apéry-like difference equation for Catalan's
+  constant}, \textbf{Electronic Journal of Combinatorics} 10 (2003),
+  Research Paper 14;
+  \href{https://arxiv.org/abs/math/0201024}{arXiv:math/0201024}.
+\item
+  W. Zudilin, \emph{A few remarks on linear forms involving Catalan's
+  constant}, \textbf{Chebyshevskii Sbornik} 3:2 (2002), 60--70;
+  \href{https://arxiv.org/abs/math/0210423}{arXiv:math/0210423}.
+\item
+  Yu. V. Nesterenko, \emph{On Catalan's constant}, \textbf{Proceedings
+  of the Steklov Institute of Mathematics} 292 (2016), 153--170,
+  \href{https://doi.org/10.1134/S0081543816010107}{doi:10.1134/S0081543816010107}.
+\end{enumerate}
+
+Exact page and equation references, including the two printed
+normalization/sign issues in the third source, are recorded in
+\texttt{PRIMARY\_SOURCE\_AUDIT.md}.
+
+\end{document}

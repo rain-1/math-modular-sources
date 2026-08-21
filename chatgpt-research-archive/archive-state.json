@@ -1,0 +1,779 @@
+{
+  "schemaVersion": 1,
+  "projects": [
+    {
+      "title": "apery systems",
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/project",
+      "discoveredAt": "2026-08-20T16:30:39.868Z",
+      "chatCount": 20
+    },
+    {
+      "title": "apery systems 4",
+      "url": "https://chatgpt.com/g/g-p-6a869e8cb0808191877658a38862861b-apery-systems-4/project",
+      "discoveredAt": "2026-08-20T16:30:42.799Z",
+      "chatCount": 9
+    },
+    {
+      "title": "apery systems 2",
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/project",
+      "discoveredAt": "2026-08-20T16:30:45.711Z",
+      "chatCount": 23
+    },
+    {
+      "title": "apery systems p=3",
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/project",
+      "discoveredAt": "2026-08-20T16:30:48.605Z",
+      "chatCount": 15
+    },
+    {
+      "title": "zeta",
+      "url": "https://chatgpt.com/g/g-p-6a801f369f748191955b34c90b30d548-zeta/project",
+      "discoveredAt": "2026-08-20T16:30:51.548Z",
+      "chatCount": 7
+    }
+  ],
+  "conversations": [
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a83fcce-9514-83ed-8d0b-236ff23419b3",
+      "title": "free integrations",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 2,
+      "capturedAt": "2026-08-20T16:32:35.125Z",
+      "messageCount": 9
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a82a28c-9eb4-83ed-8077-bd1680ed3122",
+      "title": "TODO: Ramanujan machine",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:32:57.903Z",
+      "messageCount": 8
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a8353d9-10f8-83eb-b249-4129f39fc2c7",
+      "title": "zeta7 legti",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:35:29.275Z",
+      "messageCount": 9
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a843595-7954-83eb-8c4d-69247a7506d8",
+      "title": "MAIN ROOT?",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 3,
+      "capturedAt": "2026-08-20T17:07:05.428Z",
+      "messageCount": 16
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a8599d8-5fa4-83eb-9d44-94847f3cae61",
+      "title": "catalan irrat",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:39:10.369Z",
+      "messageCount": 8
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a82c82c-ec78-83eb-8789-76ebf9b613d1",
+      "title": "isogeny eisenstein cobundary theorem",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:41:45.047Z",
+      "messageCount": 8
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a82b10f-21bc-83ed-8f7f-0eb7932910aa",
+      "title": "catalan irrat handoff",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:43:35.689Z",
+      "messageCount": 9
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a82b12f-c98c-83eb-8242-3e0ca75dcf9d",
+      "title": "Branch · TODO: Ramanujan machine",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:46:13.578Z",
+      "messageCount": 8
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a82d9de-ba9c-83ed-b570-9a4dd1850fc2",
+      "title": "Branch · TODO: Ramanujan machine",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:48:50.236Z",
+      "messageCount": 9
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a840a13-0ed4-83ed-8cc7-9de8f349d23a",
+      "title": "lit review research fanout",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:50:35.760Z",
+      "messageCount": 10
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a840f7c-a530-83ed-88a4-2eb375ecffd3",
+      "title": "Branch · lit review research fanout",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:52:41.086Z",
+      "messageCount": 10
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a842e33-0ae8-83eb-a547-92ce29c5aa3a",
+      "title": "Branch · Branch · Branch · Branch · TODO: Ramanujan machine",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:54:31.320Z",
+      "messageCount": 16
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a842ce2-e028-83eb-b61f-5204a72940fa",
+      "title": "Branch · Branch · Branch · Branch · TODO: Ramanujan machine",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:57:37.995Z",
+      "messageCount": 16
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a840e97-c600-83eb-85f7-85d257047534",
+      "title": "Branch · lit review research fanout",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T16:59:48.290Z",
+      "messageCount": 13
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a842dd5-4fc8-83ed-8d9e-ce02a10eae0f",
+      "title": "Branch · Branch · Branch · Branch · TODO: Ramanujan machine",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:01:42.141Z",
+      "messageCount": 18
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a84ac2a-31f0-83ed-9a56-1238ecbbd973",
+      "title": "L2-3, lattice matchup",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:03:44.804Z",
+      "messageCount": 19
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a83fc40-dcf4-83eb-997e-4e60befa0761",
+      "title": "pie in the sky approach 3-adic interference root",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:07:20.910Z",
+      "messageCount": 9
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a840251-f294-83eb-9a34-111f0c016633",
+      "title": "Branch · Branch · Branch · Branch · TODO: Ramanujan machine",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:08:53.522Z",
+      "messageCount": 9
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a83f5d1-e174-83ed-ae21-dcb52546cbb6",
+      "title": "Branch · Branch · Branch · TODO: Ramanujan machine",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:10:53.471Z",
+      "messageCount": 15
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a829c86de1081919010a9c156a218cf-apery-systems/c/6a83fb88-2508-83eb-a0b5-96be07fc0620",
+      "title": "Branch · Branch · Branch · Branch · TODO: Ramanujan machine",
+      "project": "apery systems",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:39.868Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:12:25.513Z",
+      "messageCount": 10
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a869e8cb0808191877658a38862861b-apery-systems-4/c/6a86b51f-bd94-83eb-8411-c5ee6b7d25db",
+      "title": "Branch · Zaggy Sporadic Sequences Analysis",
+      "project": "apery systems 4",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:42.798Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:23:48.363Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a869e8cb0808191877658a38862861b-apery-systems-4/c/6a86a8fb-bef0-83eb-a5c8-7c8c43585575",
+      "title": "Continue Modular Proof",
+      "project": "apery systems 4",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:42.798Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:25:34.774Z",
+      "messageCount": 8
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a869e8cb0808191877658a38862861b-apery-systems-4/c/6a86f625-a1f4-83ed-af35-3d4e39815614",
+      "title": "Branch · Zaggy Sporadic Sequences Analysis",
+      "project": "apery systems 4",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:42.798Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:26:59.300Z",
+      "messageCount": 8
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a869e8cb0808191877658a38862861b-apery-systems-4/c/6a86a9d2-9da0-83eb-a719-fd268a4a933f",
+      "title": "03 COMPLETE",
+      "project": "apery systems 4",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:42.798Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:28:43.461Z",
+      "messageCount": 4
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a869e8cb0808191877658a38862861b-apery-systems-4/c/6a86a983-1fb4-83eb-b787-ad0c54ab61c2",
+      "title": "05 COMPLETE",
+      "project": "apery systems 4",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:42.798Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:30:45.027Z",
+      "messageCount": 4
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a869e8cb0808191877658a38862861b-apery-systems-4/c/6a86ac2d-a410-83eb-a8cb-e5eb69725898",
+      "title": "Zaggy Sporadic Sequences Analysis",
+      "project": "apery systems 4",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:42.798Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:32:39.502Z",
+      "messageCount": 8
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a869e8cb0808191877658a38862861b-apery-systems-4/c/6a86a95e-6de4-83eb-a27b-14c02846c255",
+      "title": "01 DONE",
+      "project": "apery systems 4",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:42.798Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:34:29.343Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a869e8cb0808191877658a38862861b-apery-systems-4/c/6a86a965-dc38-83ed-93ac-f04eeeb2b45a",
+      "title": "04 DONE",
+      "project": "apery systems 4",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:42.798Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:35:41.419Z",
+      "messageCount": 4
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a869e8cb0808191877658a38862861b-apery-systems-4/c/6a86a960-f354-83ed-b1ad-d463a1a49b21",
+      "title": "02 DONE",
+      "project": "apery systems 4",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:42.798Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:36:53.250Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a820b72-6a00-83eb-99fc-0968a0dadfa4",
+      "title": "001 PRIMARY MASTER RESEARCH",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:38:36.251Z",
+      "messageCount": 12
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a87008b-4f28-83eb-943b-ff013bd72137",
+      "title": "Fanout C-2 Go",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:39:59.995Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a870069-9e4c-83eb-8674-8be3ab057c40",
+      "title": "Execute fanout C1",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:41:19.418Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a87009b-bac0-83eb-a23b-1de0df75a2bb",
+      "title": "Execute Fanout C3",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:43:15.096Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82bfe3-f7e4-83eb-a296-e3aaa2b05ef1",
+      "title": "MASTER 11",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:44:35.036Z",
+      "messageCount": 10
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82cdab-9584-83ed-8e83-59616d97b0fa",
+      "title": "MASTER 17",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:46:09.670Z",
+      "messageCount": 4
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82cda7-c8b4-83eb-abdc-290e01143670",
+      "title": "MASTER 15",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T17:48:08.305Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82cd89-6598-83ed-88bc-cd50d4cea8d8",
+      "title": "MASTER 14",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 2,
+      "capturedAt": "2026-08-20T18:40:14.594Z",
+      "messageCount": 4
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82cdaa-565c-83eb-a8a0-bc8df09128c2",
+      "title": "MASTER 16",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T18:44:52.094Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82c525-9074-83eb-bace-58635abf0f3b",
+      "title": "MASTER 11",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T18:49:30.494Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82bb4f-8ac0-83eb-b90a-674b5a928963",
+      "title": "MASTER 07",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 2,
+      "capturedAt": "2026-08-20T20:15:45.290Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82bb52-2fd0-83eb-b998-ef5a2c588518",
+      "title": "MASTER 8",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T20:23:09.706Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82bfc9-d268-83ed-9763-1efebcceeedd",
+      "title": "MASTER 10",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T20:29:01.154Z",
+      "messageCount": 4
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82bfc6-b870-83eb-8bfb-248e631af468",
+      "title": "MASTER 09",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T20:36:09.002Z",
+      "messageCount": 4
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82c51d-7150-83eb-a8cd-6de7f9901298",
+      "title": "MASTER 12",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T20:43:14.140Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82c527-8aa4-83eb-8fb6-0ddaeccbd183",
+      "title": "MASTER 13",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T20:49:25.878Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82b17f-2a6c-83ed-9173-c1128129c5ad",
+      "title": "MASTER 02",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T20:54:55.835Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82bb53-50dc-83eb-9e30-9940456cbab2",
+      "title": "MASTER 9",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T21:01:19.882Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82b1e8-b8f8-83eb-adf9-6e47875f3cea",
+      "title": "MASTER 04",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T21:06:44.711Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82b1b5-c904-83eb-b110-90949c2939eb",
+      "title": "MASTER 03",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T21:14:46.122Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82b4d0-e298-83eb-94f8-aaa96bd99209",
+      "title": "MASTER 06",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T21:19:59.737Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82b4ca-20b0-83eb-a587-ca24be0ce59f",
+      "title": "MASTER 05",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 2,
+      "capturedAt": "2026-08-20T22:47:24.225Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a82b0e7d91081918a3f6b61be2a9443-apery-systems-2/c/6a82b170-7f70-83eb-a183-a7a33970498f",
+      "title": "MASTER 01",
+      "project": "apery systems 2",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:45.711Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T21:34:38.810Z",
+      "messageCount": 4
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a85e49b-d404-83eb-bb1c-ef3273cf4c05",
+      "title": "[ charts!] · SMITH FROBENIUS CELIING!",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T21:41:56.406Z",
+      "messageCount": 21
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a869441-1888-83eb-bbe7-41ce8a6bb6f6",
+      "title": "Branch · SMITH FROBENIUS CELIING!",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 2,
+      "capturedAt": "2026-08-20T22:53:16.507Z",
+      "messageCount": 10
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a854474-7ff8-83eb-883d-7a262d108f2b",
+      "title": "3/5 ceiling law Branch · Branch · p=3",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T22:58:41.438Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a84c6aa-1690-83ed-8f6c-aecf149085d4",
+      "title": "big v_2 plucker search",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T23:05:42.869Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a84b4ef-25d4-83eb-af8f-30e29c58587f",
+      "title": "SMITH FROBENIUS CELIING!",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T23:11:00.725Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a84c0be-4ed0-83eb-946a-beed29d8373e",
+      "title": "3-adic apery writeup",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T23:16:36.222Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a8540a5-2ee4-83ed-a808-30fc5cb32873",
+      "title": "(WORKING p=3?! new bound!) Branch · Branch · p=3 - UNSURE IF GOOD",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T23:24:21.650Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a857bba-b1ec-83eb-a7bf-81f4f440caf9",
+      "title": "Branch · SMITH FROBENIUS CELIING!",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T23:31:44.173Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a8549a4-df78-83eb-957a-84eb6efa3e7d",
+      "title": "failed p=3 attempt I think Branch · Branch · Branch · p=3 (deadend)",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T23:39:54.097Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a85695d-2f38-83eb-8e66-9f0392d8e505",
+      "title": "(dead) Branch · airthmetic structure of (1) - RAN O UT!",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T23:48:03.223Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a857dcb-806c-83eb-8c66-9ed5730e4443",
+      "title": "Branch · Branch · SMITH FROBENIUS CELIING!",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-20T23:54:51.358Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a856bcf-a804-83eb-a04c-d7b9c7a65408",
+      "title": "YOU CAN HELP!",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-21T00:01:38.869Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a856e7c-ee5c-83eb-8f31-3a888edf6483",
+      "title": "Branch · YOU CAN HELP!",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-21T00:09:29.876Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a8456b0-bd50-83ed-9a8c-e848eba201e0",
+      "title": "airthmetic structure of (1) - RAN O UT!",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-21T00:14:46.987Z",
+      "messageCount": 8
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a854b0b2a7081918bd6e18e8d13516e-apery-systems-p-3/c/6a84c2b8-26fc-83ed-b8a9-8936f1e7d511",
+      "title": "p=3",
+      "project": "apery systems p=3",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:48.605Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-21T00:21:07.310Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a801f369f748191955b34c90b30d548-zeta/c/6a7ebc17-43a8-83ed-a4ca-f8bb8936b236",
+      "title": "New chat",
+      "project": "zeta",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:51.548Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-21T00:26:17.605Z",
+      "messageCount": 2
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a801f369f748191955b34c90b30d548-zeta/c/6a801514-1bd0-83eb-abbf-296c5a5feb60",
+      "title": "Mathematics Completion Explanation",
+      "project": "zeta",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:51.548Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-21T00:31:49.258Z",
+      "messageCount": 9
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a801f369f748191955b34c90b30d548-zeta/c/6a801f54-0c4c-83ed-992b-43043e4efac7",
+      "title": "Mathematical Dimension Calculations",
+      "project": "zeta",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:51.548Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-21T00:38:24.909Z",
+      "messageCount": 15
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a801f369f748191955b34c90b30d548-zeta/c/6a801f4d-6e48-83eb-bb20-4bd757fb587b",
+      "title": "Mathematical Certificate Calculation",
+      "project": "zeta",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:51.548Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-21T00:45:05.049Z",
+      "messageCount": 18
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a801f369f748191955b34c90b30d548-zeta/c/6a801f58-97f0-83eb-adfb-883e27a30854",
+      "title": "Mathematical Certification Discussion",
+      "project": "zeta",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:51.548Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-21T00:50:20.697Z",
+      "messageCount": 7
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a801f369f748191955b34c90b30d548-zeta/c/6a801f52-04d0-83eb-91a7-55cb121ea300",
+      "title": "Mathematical Programme Analysis",
+      "project": "zeta",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:51.548Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-21T00:55:54.426Z",
+      "messageCount": 17
+    },
+    {
+      "url": "https://chatgpt.com/g/g-p-6a801f369f748191955b34c90b30d548-zeta/c/6a801f56-5ad4-83eb-8695-dd21f0b63251",
+      "title": "Mathematical Calculation Explanation",
+      "project": "zeta",
+      "status": "done",
+      "addedAt": "2026-08-20T16:30:51.548Z",
+      "attempts": 1,
+      "capturedAt": "2026-08-21T01:03:23.327Z",
+      "messageCount": 20
+    }
+  ],
+  "createdAt": "2026-08-20T16:30:37.125Z",
+  "updatedAt": "2026-08-21T01:11:16.441Z"
+}

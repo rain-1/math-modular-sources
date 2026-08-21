@@ -1,0 +1,1976 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+%% ------------------------------------------------------------------
+%%  Theorem environments
+%% ------------------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{observation}[theorem]{Observation}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{trap}[theorem]{Trap}
+
+%% ------------------------------------------------------------------
+%%  Evidence-class markers.  Every displayed assertion in this paper
+%%  carries exactly one of these.
+%% ------------------------------------------------------------------
+\newcommand{\PROVED}{{\normalfont\sffamily\bfseries[PROVED]}}
+\newcommand{\VER}[1]{{\normalfont\sffamily\bfseries[VERIFIED: #1]}}
+\newcommand{\EXCL}[1]{{\normalfont\sffamily\bfseries[EXCLUDED: #1]}}
+\newcommand{\OPEN}{{\normalfont\sffamily\bfseries[OPEN]}}
+\newcommand{\QUOTEDMARK}{{\normalfont\sffamily\bfseries[QUOTED]}}
+\newcommand{\QUOTED}[1]{\QUOTEDMARK\,#1}
+
+%% ------------------------------------------------------------------
+%%  Notation
+%% ------------------------------------------------------------------
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dps}{\mathrm{dps}}
+\DeclareMathOperator{\Ord}{ord}
+\DeclareMathOperator{\Disc}{disc}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Image}{Image}
+\DeclareMathOperator{\Sol}{Sol}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\den}{den}
+\newcommand{\Ihat}{\widehat{I}}
+\newcommand{\Phat}{\widehat{P}}
+\newcommand{\Ltilde}{\widetilde{L}}
+
+\begin{document}
+
+\title[Frobenius constants and the middle-root obstruction]
+      {Frobenius constants, Stokes ratios, and the\\ middle-root obstruction for cellular
+       approximations to $\zeta(5)$}
+
+\author{[Author placeholder]}
+\address{[Address placeholder]}
+\email{[email placeholder]}
+
+\date{\today}
+
+\subjclass[2020]{Primary 11J72; Secondary 11M06, 33C20, 34M35, 14D07}
+\keywords{Frobenius constants, gamma conjecture, Ap\'ery-like operators, cellular integrals,
+odd zeta values, Stokes constants, irrationality}
+
+\begin{abstract}
+We compute the Frobenius constants, in the sense of Bloch--Vlasenko, of the order-nine
+Picard--Fuchs operator attached to the Brown--Zudilin family of cellular approximations to
+$\zeta(5)$, and we use them to describe an obstruction intrinsic to that family. Three
+things are new. First, an instrument: for an Ap\'ery-like operator the Frobenius deformation
+series $\kappa(\eps)$ equals the ratio $S(\eps)/S(0)$ of Stokes constants of the dominant
+Birkhoff normal solution, the connection point and the growth rate cancelling identically.
+This replaces a limit converging like $1/n$ by one converging beyond all orders, and delivers
+$434$ digits of $\kappa$ in seconds. Reproducing the published Golyshev--Zagier and
+Bloch--Vlasenko tables to $219$ digits, we settle two misprints in the latter, stating both the
+printed and the corrected values. Second, the $\kappa$-vector of the Brown--Zudilin operator at
+its nearest conifold: the identifications $\kappa_2=-4\zeta(2)$, $\kappa_3=\tfrac{550}{87}\zeta(3)$,
+$\kappa_4=\tfrac{365}{29}\zeta(4)$,
+$\kappa_5=\tfrac{514}{87}\zeta(5)-\tfrac{2200}{87}\zeta(2)\zeta(3)$ --- read off by
+integer-relation detection and verified to $434$ digits, not proved --- make the primitive part
+of the first higher Frobenius constant the pure value $\lambda_5=\tfrac{514}{87}\zeta(5)$, with
+the $\zeta(2)\zeta(3)$ impurity exactly the decomposable term $\lambda_2\lambda_3$; the passage
+from the $\kappa_j$ to the $\lambda_j$ is proved, the closed forms themselves are numerical.
+Third, an
+identification of the family's purity defect as the Tate class $c=-3/\pi^{2}=12/(2\pi i)^{2}$,
+certified to $441$ digits, together with closed forms for the connection constants
+($A_QA_{I'}A_I=-\pi^{5/2}/(12\sqrt{37})$, each factor a square root in an $S_3$ cubic field
+times a half-integer power of $\pi$, with $\Gamma(r/s)$ excluded for every $s$ searched, namely
+$s\in\{3,4,5,6,8,12,24\}$). We formulate a
+falsifiable conservation law $r=1+\lfloor m/2\rfloor$ relating the recurrence order to the
+multiplicity of the exponent $0$, verified on four families including a prediction at weight
+$7$; and we apply the resulting picture to show that the weight-$7$ cellular family admits no
+pair-worthiness --- under the one standing hypothesis $s,\Phat\in\Sol(L)$, which we state but do
+not prove --- its primitive linear form riding the middle characteristic root by a margin of
+$4.635$ nats.
+\end{abstract}
+
+\maketitle
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+%% ==================================================================
+\section{Introduction}
+%% ==================================================================
+
+\subsection{Frobenius constants}
+Let $L$ be a linear differential operator with regular singular point at the origin, and let
+$\Phi(s,z)=\sum_{n\ge 0}a_n(s)z^{n+s}$ be its Frobenius deformation, normalised by $a_0=1$.
+Golyshev and Zagier \cite{GZ1} discovered, in the course of proving the gamma conjecture for
+Fano threefolds of Picard rank one, that the Taylor coefficients of a suitably renormalised
+limit of $\Phi$ are zeta values: for the Ap\'ery operator attached to $\zeta(3)$ they found
+\begin{equation}\label{eq:apery3}
+  \kappa_0=1,\qquad \kappa_1=0,\qquad \kappa_2=-2\zeta(2),\qquad \kappa_3=\tfrac{17}{6}\zeta(3).
+\end{equation}
+Bloch and Vlasenko \cite{BV} gave the invariant definition. If $c\ne 0,\infty$ is a
+\emph{special reflection point} of $L$ --- a regular singular point at which $\sigma_c-1$ has
+rank-one image on solutions, and at which all $\sigma_c$-invariant solutions of $L^\vee$ are
+analytic --- and $\gamma$ is a path from $0$ to $c$ through regular points, then the
+\emph{Frobenius constants} $\kappa_{\rho,n}$ are defined by continuing the Frobenius functions
+$\varphi_{\rho,n}=\tfrac{1}{n!}\partial_s^n\Phi|_{s=\rho}$ along $\gamma$ and setting
+\begin{equation}\label{eq:BVdef}
+  (\sigma_c-1)\,\varphi_{\rho,n}(t) \;=\; \kappa_{\rho,n}\,\delta(t),
+\end{equation}
+where $\delta$ spans the one-dimensional image of $\sigma_c-1$ \QUOTED{\cite[Def.~22]{BV}}. The
+normalisation is $\kappa_0=1$; there is no $2\pi i$ and no $\Gamma$-factor in it. Bloch and
+Vlasenko prove that these constants are the expansion coefficients of a \emph{gamma function}
+attached to $L^\vee$, and that for $L$ of Picard--Fuchs type they lie in the algebra of periods
+with $2\pi i$ inverted \QUOTED{\cite[Thm.~30, Cor.~31]{BV}}. Kerr \cite{Kerr} recasts the
+construction in terms of unipotent extensions; Roy and Vlasenko \cite{RV} compute it for
+families of elliptic curves, where the higher $\kappa$'s become iterated integrals of modular
+forms; Golyshev, Kerr and Sasaki \cite{GKS} relate the adjacent notion of Ap\'ery limits to
+extension classes. The relation with Golyshev's \emph{Ap\'ery constants} \cite{Gol} is one of
+family resemblance only: those are limits $\lim b_n/a_n$, a different invariant, and we shall
+keep the two apart.
+
+A structural feature of \eqref{eq:BVdef} governs everything below. If $m=m(\rho)$ is the
+multiplicity of $\rho$ as a root of the indicial polynomial, then $\varphi_{\rho,0},\dots,
+\varphi_{\rho,m-1}$ are honest solutions of $L$, while $\varphi_{\rho,k}$ for $k\ge m$ solves an
+inhomogeneous equation. Bloch and Vlasenko put it as follows \QUOTED{\cite[p.~21]{BV}}:
+
+\begin{quote}
+``\dots the Frobenius constants corresponding to actual solutions of $L$ (with $k<m(\rho)$) are
+periods of the limiting Hodge structure at $t=0$. However, there is no reason to expect that
+the operators $(D-\rho)^jL$ with $j>0$ are geometric. From this point of view, it is surprising
+that the higher Frobenius constants in the above examples are periods.''
+\end{quote}
+
+The constants $\kappa_0,\dots,\kappa_{m-1}$ are therefore \emph{geometric}, and $\kappa_m$ is
+the first \emph{higher} one. For the Ap\'ery $\zeta(3)$ operator $m=3$ and the first higher
+constant is $\kappa_3=\tfrac{17}{6}\zeta(3)$ --- a pure rational multiple of $\zeta(3)$, of
+weight exactly $3$.
+
+\subsection{What was not known beyond rank two}
+All the operators for which Frobenius constants have been tabulated in the literature are of
+order $2$, $3$ or $4$ with a maximally unipotent monodromy point at the origin: the Ap\'ery
+operators, Beauville's six stable elliptic families \cite{RV}, the $17$ rank-one Fano families
+\cite{GZ1}, and the hypergeometric Calabi--Yau operators, for which $\kappa$ has a closed form
+in $\Gamma$-quotients \QUOTED{\cite[Prop.~26]{BV}}. In every tabulated case the multiplicity of
+the exponent $0$ is at most $4$, so the first higher constant has weight at most $4$, and the
+values $\zeta(5),\zeta(7),\dots$ appear only in the tail, as \emph{higher} constants of a
+low-weight operator: for instance $\kappa_5=\tfrac{7}{3}\zeta(5)-\tfrac{17}{3}\zeta(2)\zeta(3)$
+for the Ap\'ery $\zeta(3)$ operator, and $\kappa_5=\zeta(5)-3\zeta(2)\zeta(3)$ for the Ap\'ery
+$\zeta(2)$ one. In both, $\zeta(5)$ arrives mixed with $\zeta(2)\zeta(3)$.
+
+Two questions were consequently open.
+
+\begin{enumerate}[label=(\alph*),leftmargin=2.2em]
+\item \emph{Is there an operator whose \textup{first} higher Frobenius constant is a pure
+rational multiple of $\zeta(5)$?} A search of the literature turned up none; the slot appeared
+to be empty.
+\item \emph{Do the Frobenius constants say anything about irrationality constructions?} The
+$\kappa$'s are attached to a differential operator, whereas irrationality proofs are driven by
+the arithmetic of a recurrence. The two are the same datum viewed twice; but the dictionary had
+not been used in this direction.
+\end{enumerate}
+
+The second question is worth stating against the background of what is known. Ap\'ery's proof
+that $\zeta(3)$ is irrational \cite{Ap79,Be79}, presented in \cite{Fi04}, remains the only such
+result for an odd zeta value; nothing is known about any single $\zeta(2k+1)$ with $k\ge2$.
+Infinitely many odd zeta values are irrational \cite{Riv,BR01}, at least
+$2^{(1-\epsilon)\log s/\log\log s}$ among $\zeta(3),\dots,\zeta(s)$ \cite{FSZ}; at least one of
+$\zeta(5),\zeta(7),\zeta(9),\zeta(11)$ is irrational \cite{Zu02a,Zu04}, at least two of
+$\zeta(5),\dots,\zeta(35)$ \cite{LZ}, and one of $\zeta(5),\dots,\zeta(25)$ by elementary means
+\cite{Zu18}. Structural reformulations have come from Siegel's lemma \cite{Fi21}, from
+transfinite diameter \cite{Br26}, and from the motivic viewpoint \cite{Br16}. What all the
+constructive proofs share is a recurrence and a saddle; the results below concern which saddle a
+\emph{pure} linear form is allowed to occupy.
+
+The natural test object for both questions is the Brown--Zudilin family. Brown \cite{Br16} interpreted
+Ap\'ery-type irrationality proofs as period computations on moduli spaces $\mathcal M_{0,n}$;
+Brown and Zudilin \cite{BZ} constructed from cellular integrals on $\mathcal M_{0,8}$ an
+effective sequence of rational approximations to $\zeta(5)$ with $|\zeta(5)-p/q|<q^{-0.86}$,
+the best effective exponent known. Their integrals decompose as
+\begin{equation}\label{eq:BZdeco}
+\begin{gathered}
+  I \;=\; Q\cdot\bigl(2\zeta(5)+4\zeta(3)\zeta(2)\bigr)-4\Phat\cdot\zeta(2)-2P
+  \;=\; 2I'+4\,I''\zeta(2),\\
+  I'=Q\zeta(5)-P,\qquad I''=Q\zeta(3)-\Phat ,
+\end{gathered}
+\end{equation}
+and $Q,P,\Phat$ satisfy a third-order Ap\'ery-like recurrence with characteristic polynomial
+$4\lambda^3-2368\lambda^2-188\lambda+1$ \QUOTED{\cite[\S2]{BZ}}. The whole difficulty of the
+family is visible in \eqref{eq:BZdeco}: the \emph{pure} linear forms $I'$ and $I''$ ride the
+middle root $\lambda_2$, while the smallest root $\lambda_1$ --- the one that would give
+worthiness exceeding $1$, hence irrationality --- is monopolised by the \emph{impure}
+combination $I$, whose leading period $\zeta(5)+2\zeta(2)\zeta(3)$ has depth $2$. We call this
+the \emph{middle-root obstruction}. The purpose of this paper is to compute the Frobenius data
+of the operator behind \eqref{eq:BZdeco}, to identify the constant that measures the
+obstruction, and to test whether the obstruction is a feature of the particular family or of
+its weight.
+
+\subsection{Results}
+\begin{enumerate}[label=\textbf{(\arabic*)},leftmargin=2.6em]
+
+\item \textbf{The instrument} (\S\ref{sec:instrument}). We prove (Theorem \ref{thm:stokes})
+that for an Ap\'ery-like operator with a strictly dominant simple characteristic root
+$\lambda$, and with $c=1/\lambda$ the nearest singularity,
+\[
+  \kappa(\eps)\;=\;\frac{S(\eps)}{S(0)},\qquad
+  S(\eps):=\lim_{n\to\infty}\frac{a_n(\rho+\eps)}{A(n+\eps)},
+\]
+where $A$ is the dominant Birkhoff normal solution. The factors $c^{\eps}$ and $\lambda^{\eps}$
+of \cite[Lemma 24]{BV} cancel identically. The resulting algorithm converges beyond all orders
+and gives $434$ digits where the direct implementation of \cite[Lemma 24]{BV} gives nine.
+
+\item \textbf{Validation and two errata} (\S\ref{sec:validate}). We reproduce the published
+$\kappa$- and $\lambda$-tables of \cite{GZ1,GZ2,BV,RV} at $219$ digits and record two misprints
+in \cite{BV}, quoting the printed and the corrected value in each case, and give new values
+$\kappa_8,\kappa_9,\lambda_8,\lambda_9$ for the Ap\'ery $\zeta(2)$ operator.
+
+\item \textbf{The $\kappa$-vector of the Brown--Zudilin operator, and a pure $\lambda_5$}
+(\S\S\ref{sec:BZop}--\ref{sec:kappavec}). The operator has order $9$, with the exponent $0$
+occurring with multiplicity $m=5$ at the origin, and all three finite singularities are
+conifolds with exponent set $\{0,\dots,7\}\cup\{3/2\}$. At the nearest conifold,
+\VER{$434$ digits}
+\[
+  \kappa_2=-4\zeta(2),\quad \kappa_3=\tfrac{550}{87}\zeta(3),\quad
+  \kappa_4=\tfrac{365}{29}\zeta(4),\quad
+  \kappa_5=\tfrac{514}{87}\zeta(5)-\tfrac{2200}{87}\zeta(2)\zeta(3),
+\]
+whence, \PROVED\ given those identifications, $\lambda_5=\tfrac{514}{87}\zeta(5)$, filling the
+slot (a). The impurity of $\kappa_5$ is precisely the decomposable term $\lambda_2\lambda_3$.
+
+\item \textbf{The purity defect is Tate} (\S\ref{sec:defect}). The constant $c$ that rotates the
+middle-ray pair $(I',I'')$ onto the minimal ray is
+$c=-1/(2\zeta(2))=-3/\pi^2=12/(2\pi i)^2$, proved from \eqref{eq:BZdeco} and certified against
+exact ladders to $441$ digits.
+
+\item \textbf{A conservation law} (\S\ref{sec:rpc}). We conjecture that for Ap\'ery-like
+families the order $r$ of the recurrence and the multiplicity $m$ of the exponent $0$ satisfy
+$r=1+\lfloor m/2\rfloor$, the rays being indexed by the depth of the period they carry, and we
+verify it on four families, the fourth (weight $7$, $m=7$, $r=4$) being a prediction made before
+the computation of $m$.
+
+\item \textbf{Connection constants are $\Gamma(1/2)$-monomials} (\S\ref{sec:conn}). We identify
+all four Brown--Zudilin connection constants:
+$A_QA_{I'}A_I=-\pi^{5/2}/(12\sqrt{37})$, with each factor a square root in the $S_3$ cubic field
+of the singular locus times a half-integer power of $\pi$, and with $\Gamma(r/s)$ excluded for
+every denominator searched, $s\in\{3,4,5,6,8,12,24\}$.
+
+\item \textbf{No pair-worthiness at weight $7$} (\S\ref{sec:weight7}). For the weight-$7$
+cellular family the primitive form $I'$ satisfies $I'=I+\zeta(2)|I''|$ termwise, a sum of two
+positive quantities; hence --- given Theorem \ref{thm:sector}'s standing hypothesis
+$s,\Phat\in\Sol(L)$, which \S\ref{sec:residual} does not prove --- it cannot decay faster than
+$I''$, and the fast sector is excluded without any cancellation argument. The measured denominator budget is $\kappa=7$, tight, so
+$\gamma_{5,7}\le 0.3379$ and the shortfall is $4.635$ nats, a factor $103$ per step.
+
+\end{enumerate}
+
+\subsection{Evidence classes and conventions}\label{sec:conventions}
+Because a substantial part of what follows is high-precision computation, every assertion in
+this paper carries exactly one of the following markers.
+
+\begin{itemize}[leftmargin=2.2em]
+\item \PROVED\ --- a complete derivation is given, or the statement is an exact symbolic
+identity verified in exact arithmetic (integers, rationals, or polynomial algebra).
+\item \VER{$d$ digits}\ --- a high-precision computation agreeing with the stated closed form to
+$d$ decimal digits. For an integer-relation identification we state in addition the detection
+tolerance and the coefficient bound within which the relation was searched.
+\item \EXCL{tol, bound} --- an integer-relation search returned no relation at the stated
+tolerance and coefficient bound. An exclusion is a statement about a finite search box and
+nothing more.
+\item \QUOTEDMARK\ --- a statement copied from a source, with the location; we have re-read the
+source at that location.
+\item \OPEN\ --- not settled here.
+\end{itemize}
+
+Numerical agreement is never presented as proof. Where a quantity is quoted to $d$ digits, $d$
+is the observed self-agreement between two independent runs (differing in the number of terms
+$n$, in the truncation order, or in the working precision), not the working precision itself.
+
+We write $\theta=z\,\dd/\dd z$, and an Ap\'ery-like operator in the form
+$L=\sum_{j=0}^{d}z^{j}q_j(\theta)$ with $q_j\in\QQ[x]$; the indicial polynomial at $z=0$ is
+$I(s)=q_0(s)$, and the Frobenius recursion reads
+$\sum_{j=0}^{n}q_j(n+s-j)\,a_{n-j}(s)=0$ with $a_0=1$. We write $\zeta_2=\zeta(2)$ where space
+demands. Following \cite{BZ} we write $I''$ for the $\zeta(3)$-form; the notation $\Ihat$ is
+used interchangeably.
+
+\begin{remark}[Methodology; flagged]\label{rem:method}
+The computations reported here were carried out with substantial machine assistance, including
+automated search over candidate closed forms. Every identification quoted below was re-derived
+and re-checked independently of the search that proposed it, and the precision, tolerance and
+coefficient bound of each check are stated at the point of use; the exclusions in
+\S\ref{sec:exclusions} and \S\ref{sec:conn} record searches that returned nothing, and are
+reported with the same care as the positive findings. Appendix \ref{app:record} lists the
+computational record.
+\end{remark}
+
+%% ==================================================================
+\section{The instrument: \texorpdfstring{$\kappa$}{kappa} as a ratio of Stokes constants}
+\label{sec:instrument}
+%% ==================================================================
+
+\subsection{The computational form of the definition}
+We recall the recipe of \cite[Lemma 24]{BV}, in the form in which we shall use it
+\QUOTED{\cite[Lemma 24]{BV}}: suppose the special reflection point $t=c$ is the singularity
+nearest $0$, that $c\in\RR_{>0}$, that $|\varphi_{\rho,0}(t)|\to\infty$ as $t\to c^-$, that
+$a_n(\rho)$ is eventually of one sign, and that
+$\lambda_k:=\lim_n a_n^{(k)}(\rho)/(k!\,a_n(\rho))$ exists. Then $\kappa_{\rho,0}\ne 0$ and
+\begin{equation}\label{eq:BVlemma24}
+  \frac{\kappa_{\rho,k}}{\kappa_{\rho,0}}\;=\;\sum_{j=0}^{k}\frac{(\log c)^j}{j!}\,\lambda_{k-j}.
+\end{equation}
+Equivalently, with $\Lambda(\eps):=\lim_{n\to\infty}a_n(\rho+\eps)/a_n(\rho)$,
+\begin{equation}\label{eq:kappaLambda}
+  \kappa(\eps)\;=\;\sum_{k\ge 0}\kappa_{\rho,k}\eps^k\;=\;c^{\eps}\,\Lambda(\eps).
+\end{equation}
+This is also, verbatim, the recipe of \cite[\S9]{GZ1}, there written
+$\kappa_0(\eps)=C^{-\eps}\lim_n A_n(\eps)/A_n$ with $C=1/c$ the exponential growth rate.
+
+Taken literally, \eqref{eq:kappaLambda} is a poor algorithm: $a_n(\rho+\eps)/a_n(\rho)$
+converges like $1/n$, and Richardson extrapolation on it reaches about nine digits before the
+conditioning of the extrapolation defeats the gain. Golyshev and Zagier already observed
+\QUOTED{\cite[\S9]{GZ1}} that dividing instead by the Birkhoff--Trjitzinsky asymptotic
+$A(n+\eps)$, rather than by $a_n(\rho)$, converges faster than any power of $n$, and reported
+$300$ digits from $n=100$ in the Ap\'ery case. Theorem \ref{thm:stokes} explains why, and shows
+that the correction is not a numerical trick but an identity: the two exponential factors in
+\eqref{eq:kappaLambda} cancel exactly, leaving $\kappa$ as a pure ratio of Stokes constants.
+
+\subsection{The Birkhoff normal solution}\label{sec:birkhoff}
+Fix an operator $L=\sum_{j}z^{j}q_j(\theta)$ of order $r$ and degree $d$ in $z$, and put
+$D=\max_j\deg q_j$. The characteristic polynomial of the associated recurrence is
+\[
+  \chi(\lambda)=\lambda^{d}\sum_{j}\lambda^{-j}\,[x^{D}]q_j(x),
+\]
+whose roots are the reciprocals of the finite singularities of $L$. Assume one root $\lambda$ is
+simple and strictly dominant in absolute value.
+
+\begin{proposition}[Birkhoff normal solution]\label{prop:birkhoff} \PROVED\
+There is a unique formal expression
+\begin{equation}\label{eq:Aform}
+  A(x)\;=\;\lambda^{x}\,x^{\alpha}\,F(1/x),\qquad F(u)=\sum_{k\ge 0}c_ku^{k},\quad c_0=1,
+\end{equation}
+satisfying $\sum_{j}q_j(x-j)A(x-j)=0$ as a formal series in $u=1/x$. Writing
+$Q_j(u):=u^{D}q_j(1/u-j)\in\QQ[u]$ and
+\[
+  \beta:=\sum_j\lambda^{-j}Q_j'(0),\qquad
+  \gamma:=\sum_j\lambda^{-j}\,j\,Q_j(0),\qquad
+  H_k(u):=\sum_j\lambda^{-j}Q_j(u)(1-ju)^{\alpha-k},
+\]
+one has $\sum_j\lambda^{-j}Q_j(0)=0$ (the characteristic equation),
+\begin{equation}\label{eq:alpha}
+  \alpha=\beta/\gamma,\qquad\text{and}\qquad
+  c_m=-\frac{1}{\gamma m}\sum_{k<m}c_k\,h_{k,\,m+1-k},\qquad h_{k,i}:=[u^{i}]H_k(u).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Substituting \eqref{eq:Aform} into $\sum_jq_j(x-j)A(x-j)=0$, dividing by $\lambda^{x}x^{\alpha}$
+and multiplying by $u^{D}$ with $u=1/x$ turns the equation into
+$\sum_{j}\lambda^{-j}Q_j(u)(1-ju)^{\alpha}F\bigl(u/(1-ju)\bigr)=0$, since
+$q_j(x-j)=u^{-D}Q_j(u)$ and $1/(x-j)=u/(1-ju)$. Expanding
+$F(u/(1-ju))=\sum_k c_ku^{k}(1-ju)^{-k}$ gives
+$\sum_{k\ge0}c_k\,u^{k}H_k(u)=0$. The coefficient of $u^{0}$ is $c_0H_0(0)$, and
+$H_k(0)=\sum_j\lambda^{-j}Q_j(0)$ is independent of $k$; so this coefficient vanishes precisely
+when $\lambda$ solves the characteristic equation, and then $h_{k,0}=0$ for all $k$. The
+coefficient of $u^{1}$ is therefore $c_0h_{0,1}=\beta-\alpha\gamma$, which forces
+$\alpha=\beta/\gamma$. For $m\ge 1$ the coefficient of $u^{m+1}$ is
+$\sum_{k\le m}c_kh_{k,m+1-k}$, whose top term is
+$c_mh_{m,1}=c_m(\beta-(\alpha-m)\gamma)=c_m\,m\gamma$; solving for $c_m$ gives \eqref{eq:alpha}.
+Simplicity of $\lambda$ gives $\gamma\ne0$, so the recursion determines all $c_m$ uniquely.
+\end{proof}
+
+\begin{remark}\label{rem:alphacheck}
+The exponent $\alpha$ comes out an \emph{exact rational} and is a strong self-check on the
+implementation: $\alpha=-1$ for the Ap\'ery $\zeta(2)$ operator, $\alpha=-3/2$ for the Ap\'ery
+$\zeta(3)$ operator, $\alpha=-5/2$ for the Brown--Zudilin operator. In each case
+$\alpha=-\rho-1$ with $\rho$ the non-integer local exponent at the conifold, i.e.\ $\rho=0$,
+$1/2$, $3/2$ respectively. \PROVED\ (exact rational arithmetic; for the Brown--Zudilin case the
+value $\rho=3/2$ is proved independently in Proposition \ref{prop:conifold}).
+\end{remark}
+
+\subsection{The Stokes-ratio identity}
+
+\begin{theorem}[Stokes-ratio form of $\kappa$]\label{thm:stokes} \PROVED\
+Let $L$ be as above, with $\lambda$ a simple strictly dominant characteristic root and $A$ the
+Birkhoff normal solution of Proposition \ref{prop:birkhoff}. Let $\rho$ be a local exponent at
+$z=0$ for which the limit
+\[
+  S(\eps)\;:=\;\lim_{n\to\infty}\frac{a_n(\rho+\eps)}{A(n+\eps)}
+\]
+exists and is non-zero for $\eps$ in a neighbourhood of $0$. Let $c=1/\lambda$ be the nearest
+singularity, assumed a special reflection point, and suppose $\kappa(\eps)=c^{\eps}\Lambda(\eps)$
+as in \eqref{eq:kappaLambda}. Then
+\begin{equation}\label{eq:stokes}
+  \boxed{\;\kappa(\eps)\;=\;\frac{S(\eps)}{S(0)}\;}
+\end{equation}
+identically as formal power series in $\eps$.
+\end{theorem}
+
+\begin{proof}
+The Frobenius deformation acts on the recursion by the substitution $n\mapsto n+s$: the sequence
+$\bigl(a_n(\rho+\eps)\bigr)_n$ satisfies $\sum_j q_j\bigl((n+\eps)-j\bigr)a_{n-j}(\rho+\eps)=0$
+when $\rho=0$, and in general the same equation with $n+\rho+\eps$ in place of $n+\eps$. Hence
+the \emph{same} formal solution $A$ of Proposition \ref{prop:birkhoff}, evaluated at the shifted
+argument $x=n+\rho+\eps$, governs its asymptotics; absorbing $\rho$ into the normalisation we
+write $A(n+\eps)$. Therefore
+\[
+  \Lambda(\eps)=\lim_{n\to\infty}\frac{a_n(\rho+\eps)}{a_n(\rho)}
+  =\frac{S(\eps)}{S(0)}\cdot\lim_{n\to\infty}\frac{A(n+\eps)}{A(n)} .
+\]
+By \eqref{eq:Aform},
+$A(n+\eps)/A(n)=\lambda^{\eps}\,(1+\eps/n)^{\alpha}\,F(1/(n+\eps))/F(1/n)\to\lambda^{\eps}$.
+Thus $\Lambda(\eps)=\lambda^{\eps}S(\eps)/S(0)$ and
+$\kappa(\eps)=c^{\eps}\Lambda(\eps)=\lambda^{-\eps}\lambda^{\eps}S(\eps)/S(0)=S(\eps)/S(0)$.
+\end{proof}
+
+\begin{remark}[Why this is fast]\label{rem:fast}
+The error in $a_n(\eps)/A(n+\eps)-S(\eps)$ has two parts: the contribution of the subdominant
+solutions, of size $O\bigl((\lambda_{\mathrm{next}}/\lambda)^{n}\bigr)$, and the truncation of
+the divergent series $F$ after $M$ terms, of size $\approx M!/(\mathcal S n)^{M}$ with
+$\mathcal S=\log|\lambda/\lambda_{\mathrm{next}}|$. Both are governed by the same $\mathcal S$,
+and optimal truncation $M\approx \mathcal S n$ gives error $e^{-\mathcal S n}$: the convergence
+is beyond all orders. For the Ap\'ery $\zeta(3)$ operator
+$\mathcal S=2\log(17+12\sqrt2)=7.05099\ldots$, so $n=100$ yields
+$7.05099\cdot 100/\log 10=306.2$ digits --- reproducing exactly the ``$300$ digits from
+$n=100$'' of \cite[\S9]{GZ1}. \PROVED\ (as an asymptotic count; the observed precisions in
+\S\ref{sec:validate} and \S\ref{sec:kappavec} agree with the model, see Table \ref{tab:precision}.)
+\end{remark}
+
+\begin{table}[t]
+\centering
+\caption{The truncation model of Remark \ref{rem:fast} against observed self-agreement.
+$\mathcal S=\log|\lambda/\lambda_{\mathrm{next}}|$; predicted $\log_{10}$ error is
+$\log_{10}\bigl(M!/(\mathcal S n)^{M}\bigr)$. \VER{$208$--$434$ digits, as tabulated}}
+\label{tab:precision}
+\begin{tabular}{lccccr}
+\toprule
+operator & $\mathcal S$ & $n$ & $M$ & predicted digits & observed \\
+\midrule
+Ap\'ery $\zeta(3)$ & $7.0510$ & $300$ & $130$ & $212$ & $208$--$210$ \\
+Ap\'ery $\zeta(3)$ & $7.0510$ & $400$ & $130$ & $229$ & (capped by $\dps=220$) \\
+Brown--Zudilin     & $8.8560$ & $700$ & $260$ & $469$ & $434$ \\
+Brown--Zudilin     & $8.8560$ & $800$ & $260$ & $485$ & (capped by $\dps=520$) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Relation to the $p$-adic side, stated without overreach}\label{sec:padic}
+There is a $p$-adic story running parallel to this one, and it is easy to overstate the
+parallel. On the $p$-adic side, the limits of Frobenius towers attached to the same families
+are \emph{values} of $G(x)=\Gamma_p(x)e^{-\Gamma_p'(0)x}=\exp\bigl(-\sum_{m\ge2}\zeta_p(m)x^m/m\bigr)$
+at $p$-power arguments, whereas the Frobenius \emph{structure} constants of
+\cite{BeVl25} are the Taylor coefficients of the same $G$ at $0$. What is
+verified here, and all that we assert, is:
+\begin{enumerate}[label=(\alph*),leftmargin=2.2em]
+\item the archimedean series $\log\kappa(\eps)=\sum_j\lambda_j\eps^{j}$ has
+$\lambda_j\in\QQ\cdot\zeta(j)$ for $j\le5$ on the Brown--Zudilin and Ap\'ery $\zeta(3)$
+operators, and for $j\le4$ on the Ap\'ery $\zeta(2)$ operator --- an initial segment of exactly
+the shape $\exp\bigl(-\sum_m r_m\zeta(m)x^m\bigr)$, $r_m\in\QQ$;
+\item the archimedean connection constants are $\Gamma(1/2)$-monomials times algebraic numbers
+(\S\ref{sec:conn}).
+\end{enumerate}
+We did \emph{not} find, and do not claim, a literal identity between the two $\Gamma$'s. The
+honest statement is that both sides are expansion data of a $\Gamma$-type generating function
+attached to the operator --- $\Gamma_p$ on one side, the $\Gamma_{\xi_0}$ of
+\QUOTED{\cite[Thm.~30]{BV}} on the other --- and that in both cases the coefficients are
+(multiple) zeta values.
+
+%% ==================================================================
+\section{Validation, and two errata}\label{sec:validate}
+%% ==================================================================
+
+Reproducing the published values is the credibility of everything that follows, and we report it
+in full.
+
+\subsection{Controls}
+Run parameters: working precision $\dps=220$, $\eps$-truncation $K=13$, Birkhoff truncation
+$M=130$, $n\in\{300,400\}$; self-agreement across $n$ is $208$--$210$ digits, in agreement with
+the model of Remark \ref{rem:fast} (Table \ref{tab:precision}).
+
+\begin{table}[t]
+\centering
+\caption{Instrument validation. All residuals are the difference between the computed value and
+the published closed form; each source location was re-read \QUOTEDMARK. \VER{219 digits}}
+\label{tab:validate}
+\begin{tabular}{@{}p{0.30\textwidth}p{0.16\textwidth}p{0.46\textwidth}@{}}
+\toprule
+control & source & result \\
+\midrule
+Ap\'ery $\zeta(3)$: exponent $\alpha$ & --- &
+  $-3/2$, exact rational \\[3pt]
+Ap\'ery $\zeta(3)$: Stokes constant $S(0)$ & classical &
+  $0.2200437671126430378506897598\ldots$, equal to
+  $(1+\sqrt2)^2\bigl/\bigl(2^{9/4}\pi^{3/2}\bigr)$ to all digits computed \\[3pt]
+%% FIXED [MINOR]: "the two exceptions" sat on the Apery-zeta(2) row, but Erratum
+%% FIXED \ref{obs:err1} belongs to the Apery-zeta(3) row (BV Ex.~29) and Erratum \ref{obs:err2}
+%% FIXED to the zeta(2) row (BV Ex.~28). One each.
+Ap\'ery $\zeta(3)$: $\kappa_2,\kappa_3,\kappa_4$ & \cite[Ex.~29]{BV} &
+  residuals $<10^{-219}$ against $-2\zeta(2)$, $\tfrac{17}{6}\zeta(3)$, $2\zeta(4)$; for
+  $\kappa_5$ see Erratum \ref{obs:err1} \\[3pt]
+Ap\'ery $\zeta(3)$: $\kappa_6,\dots,\kappa_{10}$ & \cite[(47)]{GZ2} &
+  residuals $<10^{-219}$ \\[3pt]
+Ap\'ery $\zeta(3)$: $\lambda_2,\dots,\lambda_{10}$ & \cite[\S9]{GZ1} &
+  all reproduced; the two published packagings are mutually consistent, see Remark
+  \ref{rem:packaging} \\[3pt]
+Ap\'ery $\zeta(2)$: $\kappa_2,\dots,\kappa_7$ &
+  \cite[Ex.~28]{BV}, \cite[Tab.~2 D]{RV} & residuals $<10^{-219}$, with the one
+  exception recorded in Erratum \ref{obs:err2} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[The two published packagings agree]\label{rem:packaging} \VER{60 digits}
+The tables of \cite{GZ1} and \cite{GZ2} present the same data twice: \cite[(47)]{GZ2} lists
+$\kappa_j$ for $j\le11$, \cite[\S9]{GZ1} lists $\lambda_j=[\eps^j]\log\kappa(\eps)$ for the same
+range. Exponentiating the $\lambda$-list reproduces the $\kappa$-list, and vice versa, to $60$
+digits --- the limit here being the number of digits carried by the printed rational
+coefficients, not the computation. Two re-packagings we record because they are convenient and
+are not printed in that form: $\lambda_6=-\tfrac{2}{3}\zeta(6)-\tfrac{1}{72}\zeta(3)^2
+=-\tfrac{16}{105}\zeta(2)^3-\tfrac{1}{72}\zeta(3)^2$ and
+$\lambda_8=\tfrac{29}{12}\zeta(8)-\tfrac{11}{18}\zeta(3)\zeta(5)
+=\tfrac{58}{175}\zeta(2)^4-\tfrac{11}{18}\zeta(3)\zeta(5)$. \PROVED\ (exact rational identities
+$\zeta(6)=\tfrac{8}{35}\zeta(2)^3$, $\zeta(8)=\tfrac{24}{175}\zeta(2)^4$.)
+\end{remark}
+
+\subsection{Two errata in \texorpdfstring{\cite{BV}}{[BV]}}\label{sec:errata}
+Both printed forms below were read verbatim from the published text before the computation was
+run; both corrections agree with \cite[(47)]{GZ2} and \cite[Table 2]{RV} respectively. We state
+them plainly and with no implication beyond a typesetting slip.
+
+\begin{observation}[Erratum 1]\label{obs:err1} \VER{219 digits}
+\cite[Example 29]{BV} prints, for the Ap\'ery $\zeta(3)$ operator,
+\[
+  \kappa_5=\tfrac{7}{5}\zeta(5)-\tfrac{17}{3}\zeta(2)\zeta(3)
+  \qquad\text{\QUOTED{\cite[Ex.~29]{BV}}}.
+\]
+The computed value is
+\[
+  \kappa_5=-8.78522655635014817501029803334929851633233616556963\ldots
+\]
+The form $\tfrac{7}{3}\zeta(5)-\tfrac{17}{3}\zeta(2)\zeta(3)$ agrees with it to
+$4.6\times10^{-219}$; the printed form differs by $0.9678$. The correct value is therefore
+\[
+  \kappa_5=\tfrac{7}{3}\zeta(5)-\tfrac{17}{3}\zeta(2)\zeta(3),
+\]
+in agreement with $\kappa_5=-\tfrac{17}{18}\pi^2\zeta(3)+\tfrac{7}{3}\zeta(5)$ of
+\QUOTED{\cite[(47)]{GZ2}}. The erratum concerns the coefficient of $\zeta(5)$ only; the term
+$-\tfrac{17}{3}\zeta(2)\zeta(3)$ stands as printed. All other values listed in
+\cite[Ex.~29]{BV} check out.
+\end{observation}
+
+\begin{observation}[Erratum 2]\label{obs:err2} \VER{219 digits}
+\cite[Example 28]{BV} prints, for the Ap\'ery $\zeta(2)$ operator,
+\[
+  \kappa_6=\tfrac{87}{16}\zeta(6)-\tfrac{5}{2}\zeta(3)^2
+  \qquad\text{\QUOTED{\cite[Ex.~28]{BV}}}.
+\]
+The computed value is
+\[
+  \kappa_6=9.14415489562452778198190394025559993842547\ldots
+\]
+The form with $+\tfrac{5}{2}\zeta(3)^2$ agrees to $5.3\times10^{-220}$; the printed form differs
+by $7.2247$. The correct value is
+\[
+  \kappa_6=\tfrac{87}{16}\zeta(6)+\tfrac{5}{2}\zeta(3)^2,
+\]
+in agreement with \QUOTED{\cite[Table 2, case D]{RV}}. The remaining entries
+$\kappa_2,\kappa_3,\kappa_4,\kappa_5,\kappa_7$ of \cite[Ex.~28]{BV} check out.
+\end{observation}
+
+\subsection{New values for the Ap\'ery \texorpdfstring{$\zeta(2)$}{zeta(2)} operator}
+The published tables for this operator stop at $\kappa_7$. We add
+\begin{align}
+  \kappa_8 &= \tfrac{8627}{4200}\zeta(2)^4-\tfrac{7}{2}\zeta(2)\zeta(3)^2
+              +\tfrac{15}{2}\zeta(3)\zeta(5),\notag\\
+  \kappa_9 &= \tfrac{29}{21}\zeta(2)^3\zeta(3)+\tfrac{5}{3}\zeta(3)^3
+              -\tfrac{19}{4}\zeta(2)^2\zeta(5)+\tfrac{115}{16}\zeta(2)\zeta(7)
+              -\tfrac{2011}{72}\zeta(9),\label{eq:apery2new}\\
+  \lambda_8 &= \tfrac{336593}{105000}\zeta(2)^4+\tfrac{2}{5}\zeta(2)\zeta(3)^2
+              +\tfrac{11}{2}\zeta(3)\zeta(5),\notag\\
+  \lambda_9 &= -\tfrac{14263}{5250}\zeta(2)^3\zeta(3)-\tfrac{2}{3}\zeta(3)^3
+              -\tfrac{649}{100}\zeta(2)^2\zeta(5)-\tfrac{39}{16}\zeta(2)\zeta(7)
+              -\tfrac{2011}{72}\zeta(9).\notag
+\end{align}
+\VER{219 digits}. As an internal check, the $\lambda$-values were re-derived from the
+$\kappa$-values by exponentiation --- an exact algebraic consequence of the
+$\kappa$-identifications \PROVED\ --- and agree numerically to the full precision of the printed
+rational data ($60$ digits). In the same
+spirit, $\lambda_4=-\tfrac{39}{20}\zeta(4)$ and
+$\lambda_5=\zeta(5)-\tfrac{1}{5}\zeta(2)\zeta(3)$ for this operator, both exact consequences of
+$\kappa_2=-\tfrac75\zeta(2)$, $\kappa_3=2\zeta(3)$, $\kappa_4=\tfrac12\zeta(4)$,
+$\kappa_5=\zeta(5)-3\zeta(2)\zeta(3)$ \PROVED. We did not attempt $\kappa_{10}$, which requires
+$\zeta(3,7)$ and $\zeta(2)\zeta(3,5)$ and hence a validated high-precision multiple-zeta-value
+routine \OPEN.
+
+%% ==================================================================
+\section{The Brown--Zudilin operator}\label{sec:BZop}
+%% ==================================================================
+
+\subsection{From the recurrence to the operator}
+Brown and Zudilin give the order-three recurrence satisfied by $I_n$, hence by $Q_n$, $P_n$,
+$\Phat_n$, obtained by creative telescoping from the cellular integrals evaluated with
+%% FIXED [MINOR]: bibitem \cite{Zu02} was uncited; it is Zudilin's third-order Apery-like
+%% FIXED recursion for zeta(5), i.e. the precursor of \eqref{eq:BZrec}, and is cited here.
+\cite{Pa15} and \cite{Ko10} \QUOTED{\cite[\S2]{BZ}}; a third-order Ap\'ery-like recursion for
+$\zeta(5)$ of this shape goes back to \cite{Zu02}:
+\begin{equation}\label{eq:BZrec}
+  A(n)u_{n+1}+B(n)u_n+C(n)u_{n-1}+D(n)u_{n-2}=0,
+\end{equation}
+with
+\begin{align*}
+  A(n)&=2(2n+1)(41218n^3-48459n^2+20010n-2871)(n+1)^5,\\
+  B(n)&=-\bigl(97604224n^9+178061760n^8+72005308n^7-48634688n^6-39076836n^5\\
+      &\qquad +2622730n^4+7581006n^3+920112n^2-543402n-120582\bigr),\\
+  C(n)&=-2n\bigl(3874492n^8-2617900n^7-3144314n^6+2947148n^5+647130n^4\\
+      &\qquad -1182926n^3+115771n^2+170716n-44541\bigr),\\
+  D(n)&=n(41218n^3+75195n^2+46746n+9898)(n-1)^5 .
+\end{align*}
+With $\theta=z\,\dd/\dd z$ and $Y(z)=\sum_nu_nz^n$ this transports to
+\begin{equation}\label{eq:BZop}
+  L\;=\;A(\theta-1)+z\,B(\theta)+z^2\,C(\theta+1)+z^3\,D(\theta+2),
+\end{equation}
+of order $9$ in $\theta$ and degree $3$ in $z$. \PROVED\ (exact symbolic computation). The
+residual of \eqref{eq:BZrec} is exactly $0$ for $u\in\{Q,P,\Phat\}$ at every $n=2,\dots,359$
+($1074$ exact rational checks), with anchors matching the printed values
+$Q=1,21,2989$; $P=0,\tfrac{87}{4},\tfrac{1190161}{384}$;
+$\Phat=0,\tfrac{101}{4},\tfrac{344923}{96}$ of \QUOTED{\cite[\S2]{BZ}}.
+\VER{exact rational arithmetic, $1074$ checks; no digits are at issue}. It also
+holds at $n=1$ for $Q$ and $\Phat$ but not for $P$, which carries an inhomogeneity there.
+
+\subsection{Local data}
+
+\begin{proposition}\label{prop:local} \PROVED\ (exact symbolic computation.)
+For the operator \eqref{eq:BZop}:
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item the coefficient of $\theta^{9}$ is $41218\,(z^3-188z^2-2368z+4)$, the reciprocal of the
+characteristic polynomial $4\lambda^3-2368\lambda^2-188\lambda+1$; the finite nonzero
+singularities are $z_i=1/\lambda_i$;
+\item the indicial polynomial at $z=0$ is
+\[
+  I(s)=q_0(s)=2\,s^{5}(2s-1)\bigl(41218s^3-172113s^2+240582s-112558\bigr),
+\]
+so the exponent $0$ has multiplicity $m=5$, and the other exponents are $1/2$ and the three
+roots of an irreducible cubic;
+\item the $z^3$ part is $(\theta+1)^5(\theta+2)(41218\theta^3+322503\theta^2+842142\theta+733914)$,
+the same fivefold structure at $z=\infty$;
+\item $\Disc(z^3-188z^2-2368z+4)=2^4\cdot 37^3\cdot 557^2$, not a square, so the cubic field
+$\QQ(\lambda_3)$ has Galois group $S_3$; note $41218=2\cdot37\cdot557$.
+\end{enumerate}
+\end{proposition}
+
+The point $z=0$ is thus \emph{not} a MUM point for the order-$9$ operator --- that would require
+multiplicity $9$ --- but it carries a rank-$5$ maximally unipotent sub-block, with local
+logarithmic depth up to $\log^4z$. The multiplicity equals the motivic weight,
+$m=5$. This resolves an apparent tension in the literature-adjacent folklore: the
+\emph{recurrence} \eqref{eq:BZrec} has order $3$, and one might infer a local log-depth of at
+most $2$, too little room for weight $5$; but the \emph{operator} has a rank-$5$ unipotent block,
+which is exactly enough.
+
+\begin{proposition}[All three finite singularities are conifolds]\label{prop:conifold} \PROVED\
+Let $c_9,c_8$ be the coefficients of $\theta^9,\theta^8$ in \eqref{eq:BZop}. At a simple root
+$z_0$ of $c_9$ the local exponents of an order-$9$ operator are
+$\{0,1,\dots,7\}\cup\{\rho\}$ with $\rho=8-c_8(z_0)/\bigl(z_0c_9'(z_0)\bigr)$. Here
+\[
+  \rho(z)=\frac{-679z^3+106784z^2+1082176z-1384}{74z(-3z^2+376z+2368)},
+\]
+and $\rho(z)-\tfrac32$ has numerator $-173\,(z^3-188z^2-2368z+4)$, a nonzero rational multiple
+of the singular cubic. Hence $\rho\equiv\tfrac32$ identically on the singular locus:
+\[
+  \text{all three singularities }z_1,z_2,z_3\text{ are conifold points with exponents }
+  \{0,1,\dots,7\}\cup\{3/2\}.
+\]
+\end{proposition}
+
+This is an exact algebraic identity, not a numerical fit, and it has a structural payoff:
+exactly one non-integer exponent at each singular point means that $\sigma_c-1$ has rank-one
+image there, so the first condition of \QUOTED{\cite[Def.~21]{BV}} holds at all three
+singularities. It also confirms $\alpha=-\rho-1=-5/2$ for every ray, matching the measured
+value of Remark \ref{rem:alphacheck}.
+
+\subsection{Applicability of \texorpdfstring{\cite[Def.~22]{BV}}{[BV, Def. 22]}, and one
+hypothesis that fails}\label{sec:applic}
+We record precisely what holds and what does not.
+
+\begin{itemize}[leftmargin=1.6em]
+\item \emph{Reflection point, first condition:} this holds at all three of the singularities,
+by Proposition \ref{prop:conifold}. \PROVED
+\item \emph{Reflection point, second condition,} namely analyticity at $c$ of the
+$\sigma_c$-invariant solutions of $L^\vee$: not verified here. \OPEN
+\item \emph{Nearest singularity real and positive:} one has
+$z_3=1/\lambda_3=0.0016889627\ldots$, so the frame of \eqref{eq:BVlemma24} applies. \PROVED
+\item \emph{$a_n(0)$ of one sign:} $a_n(0)=Q_n=1,21,2989,714549,\dots$, verified exactly from the
+Frobenius recursion --- which is simultaneously the check that the $q_j$ are correct.
+\VER{exact, $n\le359$}
+\item \emph{Hypothesis $|\varphi_{\rho,0}(t)|\to\infty$ as $t\to c^-$: fails.} With
+$\alpha=-5/2$ one has $\sum_nQ_nz_3^{\,n}\asymp\sum n^{-5/2}<\infty$. It \emph{also} fails for
+the Ap\'ery $\zeta(3)$ operator ($\alpha=-3/2$), for which \cite{BV} nonetheless quote the
+conclusion and for which we verify it to $219$ digits in \S\ref{sec:validate}.
+\end{itemize}
+
+\begin{observation}\label{obs:sufficient} \VER{219 digits at $\alpha=-3/2$; consistency checks
+at $\alpha=-5/2$, see \S\ref{sec:kappavec}}
+Empirically, hypothesis $|\varphi_{\rho,0}(t)|\to\infty$ of \cite[Lemma~24]{BV} is
+\emph{sufficient but not necessary}: the conclusion $\kappa(\eps)=c^{\eps}\Lambda(\eps)$ holds at
+$\alpha=-3/2$ and at $\alpha=-5/2$. This is the licence under which we run the machinery on the
+Brown--Zudilin operator. It is an empirical licence, and we flag it as such.
+\end{observation}
+
+Finally, the rank-$5$ block is a feature and not an obstruction. Definition 22 of \cite{BV}
+never requires MUM at $z=0$; it requires a reflection point. What $m(0)=5$ does is decide
+\emph{which} $\kappa_j$ is the first higher one: $\kappa_0,\dots,\kappa_4$ are periods of the
+limiting mixed Hodge structure, and $\kappa_5$ is the first non-geometric constant --- of weight
+$5$. That is exactly why this operator is the right place to look for the $\zeta(5)$-analogue of
+$\kappa_3=\tfrac{17}{6}\zeta(3)$.
+
+%% ==================================================================
+\section{The \texorpdfstring{$\kappa$}{kappa}-vector, and a pure primitive
+\texorpdfstring{$\lambda_5$}{lambda 5}}\label{sec:kappavec}
+%% ==================================================================
+
+\subsection{The computation}
+Run parameters: $\dps=520$, $\eps$-truncation $K=16$, Birkhoff truncation $M=260$,
+$n\in\{700,800\}$; self-agreement across $n$ is $434$ digits, consistent with the truncation
+model (Table \ref{tab:precision}) and capped by the working precision. As a cross-check of the
+entire pipeline, the Stokes constant
+\[
+  S(0)=0.066676425727156767841653340639345444469628745592456\ldots
+\]
+reproduces the connection constant $A_Q$ of \S\ref{sec:conn}, computed by Neville extrapolation
+in an entirely separate implementation, in every digit of the latter's $158$-digit stability
+window. \VER{158 digits, independent implementations}
+
+\begin{theorem}[The Brown--Zudilin $\kappa$-vector]\label{thm:kappavec}
+%% FIXED [MINOR x2]: (a) the quoted residuals 1e-440..1e-451 are NOT reproducible from the
+%% FIXED archived data -- work/gamma/t3e_high.py:88 writes kappas_hi.json at nstr(x,420), so any
+%% FIXED recheck floors at ~1e-419 (referee's and my own reruns both land at ~2e-419). The tag now
+%% FIXED says where the deeper residuals live. (b) the printed digit strings are truncated to 48
+%% FIXED decimals WITH the last digit rounded (kappa_4,5,7,8 round up), so a bare \ldots was
+%% FIXED misleading; stated. (c) \small was being issued inside math mode; moved outside.
+\VER{434 digits; integer-relation detection at tolerance $10^{-380}$ with coefficient bound
+$10^{14}$; residuals $10^{-440}$ to $10^{-451}$ in the working session, which the archived
+$420$-digit dump cannot reproduce below $\approx10^{-419}$}
+At the nearest conifold $z_3=1/\lambda_3$, with $\kappa_0=1$ and $\kappa_1=0$
+($|\kappa_1|<10^{-440}$), the computed values are, to $48$ decimals with the final digit
+rounded,
+{\small
+\[
+\begin{aligned}
+  \kappa_2 &= \phantom{-00}{-6.579736267392905745889660666584100756875799604827}\ldots,\\
+  \kappa_3 &= \phantom{-000}{7.599210307330768470917884929095373504836120238934}\ldots,\\
+  \kappa_4 &= \phantom{-00}{13.622344148433291031149701697845733948716693015529}\ldots,\\
+  \kappa_5 &= \phantom{-0}{-43.874582810463900205738690933659318347119467057797}\ldots,\\
+  \kappa_6 &= \phantom{-00}{34.702212286332465372786749212708512062179423906148}\ldots,\\
+  \kappa_7 &= \phantom{-00}{51.859399033579894576098101769427996696229062468954}\ldots,\\
+  \kappa_8 &= {-193.486228134049501553393657261757187130330010383354}\ldots,\\
+  \kappa_9 &= \phantom{-}{328.247447939140704375272593880584060942588691516576}\ldots,
+\end{aligned}
+\]}
+and the first four are identified as
+\[
+  \kappa_2=-4\zeta(2),\qquad
+  \kappa_3=\tfrac{550}{87}\zeta(3),\qquad
+  \kappa_4=\tfrac{146}{29}\zeta(2)^2=\tfrac{365}{29}\zeta(4),\qquad
+  \kappa_5=\tfrac{514}{87}\zeta(5)-\tfrac{2200}{87}\zeta(2)\zeta(3).
+\]
+\end{theorem}
+
+The weight-$j$ basis used for the identification is
+$\{\zeta(2)^a\prod\zeta(\text{odd})\}$, checked for internal relations \emph{before} any
+relation was read off; see Trap \ref{trap:basis}.
+
+\subsection{The primitive normalisation}
+Write $\lambda(\eps)=\log\kappa(\eps)=\sum_{j\ge2}\lambda_j\eps^{j}$; we call the $\lambda_j$ the
+\emph{primitive} Frobenius constants. This is the packaging used in \cite[\S9]{GZ1}.
+
+%% FIXED [CRITICAL]: the \PROVED tag was unsound. Only the RELATION lambda_5 = kappa_5 -
+%% FIXED kappa_2 kappa_3 is proved; the closed forms are inherited from Theorem
+%% FIXED \ref{thm:kappavec}, which is \VER{434 digits} (PSLQ) and itself runs under the empirical
+%% FIXED licence of Observation \ref{obs:sufficient}. The licensing hypothesis is now IN the
+%% FIXED statement ("Assume the identifications of Theorem \ref{thm:kappavec}"), and the marker
+%% FIXED is split between the two halves. Same repair applied at Observations
+%% FIXED \ref{obs:purityatm}, \ref{obs:cheapplane}, \ref{obs:primitive}, in the abstract and in
+%% FIXED Results item (3). The identity itself was re-verified independently from
+%% FIXED work/gamma/kappas_hi.json at mp.dps=460: kappa_5 - kappa_2 kappa_3 - (514/87)zeta(5)
+%% FIXED = 2.34e-419, i.e. zero to the archive's precision floor. The mathematics is right.
+\begin{corollary}[A pure $\zeta(5)$]\label{cor:pure}
+\PROVED\ (the relations); \VER{$434$ digits} (the closed forms).
+\emph{Assume the identifications of Theorem \textup{\ref{thm:kappavec}}.} Then,
+for the Brown--Zudilin operator,
+\[
+  \lambda_2=-4\zeta(2),\qquad \lambda_3=\tfrac{550}{87}\zeta(3),\qquad
+  \lambda_4=-\tfrac{86}{29}\zeta(2)^2=-\tfrac{215}{29}\zeta(4),\qquad
+  \boxed{\;\lambda_5=\tfrac{514}{87}\zeta(5)\;}
+\]
+a pure rational multiple of $\zeta(5)$. Moreover $\kappa_5=\lambda_5+\lambda_2\lambda_3$
+identically, i.e.\ the entire $\zeta(2)\zeta(3)$ impurity of $\kappa_5$ is the
+\emph{decomposable} term
+$\lambda_2\lambda_3=(-4\zeta(2))\bigl(\tfrac{550}{87}\zeta(3)\bigr)
+=-\tfrac{2200}{87}\zeta(2)\zeta(3)$.
+\end{corollary}
+
+\begin{proof}
+$\lambda_2=\kappa_2$, $\lambda_3=\kappa_3$, $\lambda_4=\kappa_4-\tfrac12\kappa_2^2$ and
+$\lambda_5=\kappa_5-\kappa_2\kappa_3$ from $\log(1+\sum_{j\ge2}\kappa_j\eps^j)$. Substituting
+the values of Theorem \ref{thm:kappavec}, $\lambda_4=\tfrac{146}{29}\zeta(2)^2-\tfrac12\cdot
+16\zeta(2)^2=-\tfrac{86}{29}\zeta(2)^2$, and
+$\lambda_5=\tfrac{514}{87}\zeta(5)-\tfrac{2200}{87}\zeta(2)\zeta(3)
++4\cdot\tfrac{550}{87}\zeta(2)\zeta(3)=\tfrac{514}{87}\zeta(5)$.
+\end{proof}
+
+Since $m=5$ for this operator, $\lambda_5$ is the primitive part of the \emph{first higher}
+Frobenius constant. This is the promised occupant of the empty slot (a) of the introduction: no
+operator in the literature had its first higher Frobenius constant with a pure
+$\QQ\cdot\zeta(5)$ primitive part.
+
+%% FIXED [CRITICAL, same defect]: inherits Theorem \ref{thm:kappavec}'s \VER class.
+\begin{observation}[Purity at $j=m$]\label{obs:purityatm}
+\PROVED\ from the published values, given the identifications of Theorem \ref{thm:kappavec}
+(\VER{$434$ digits}).
+For all three operators considered, $\lambda_m\in\QQ\cdot\zeta(m)$ at $j=m$:
+\[
+  \lambda_2=-\tfrac{7}{5}\zeta(2)\ (m=2),\qquad
+  \lambda_3=\tfrac{17}{6}\zeta(3)\ (m=3),\qquad
+  \lambda_5=\tfrac{514}{87}\zeta(5)\ (m=5).
+\]
+Beyond $j=m$ purity breaks: for the Ap\'ery $\zeta(2)$ operator, where $j=5$ is three steps past
+$m=2$, $\lambda_5=\zeta(5)-\tfrac15\zeta(2)\zeta(3)$.
+\end{observation}
+
+\subsection{Beyond \texorpdfstring{$j=5$}{j=5}: weight inhomogeneity}\label{sec:inhomog}
+From $j=6$ on, the Brown--Zudilin $\kappa$-series stops being weight-homogeneous but stays in the
+ring of multiple zeta values. This is a positive finding: the Ap\'ery operators, run as controls
+with the same code, do \emph{not} do it, their $\kappa_j$ being homogeneous of weight $j$
+throughout the published range.
+
+\begin{proposition}\label{prop:lambdahigh}
+\VER{434 digits; tolerance $10^{-380}$, coefficient bound $10^{14}$}
+\begin{align*}
+  \lambda_6 &= \tfrac{38416}{249777}\zeta(3)+\tfrac{272}{3045}\zeta(2)^3
+               -\tfrac{392}{7569}\zeta(3)^2,\\
+  \lambda_7 &= \tfrac{8835680}{8242641}\zeta(3)-\tfrac{38416}{83259}\zeta(2)^2
+               +\tfrac{784}{2523}\zeta(2)^2\zeta(3)-\tfrac{1070}{87}\zeta(7),\\
+  \lambda_8 &= \tfrac{1326081904}{272007153}\zeta(3)-\tfrac{8835680}{2747547}\zeta(2)^2
+               +\tfrac{1319080}{249777}\zeta(5)+\tfrac{74324}{29435}\zeta(2)^4
+               -\tfrac{26920}{7569}\zeta(3)\zeta(5),\\
+  \lambda_9 &= \tfrac{4709901251104}{260310845421}\zeta(3)
+               -\tfrac{1326081904}{90669051}\zeta(2)^2
+               +\tfrac{303388400}{8242641}\zeta(5)-\tfrac{341600}{83259}\zeta(2)^3\\
+            &\qquad -\tfrac{1716176}{1975509}\zeta(3)^2
+               +\tfrac{48800}{17661}\zeta(2)^3\zeta(3)
+               +\tfrac{385264}{1975509}\zeta(3)^3+\tfrac{26920}{2523}\zeta(2)^2\zeta(5)
+               +\tfrac{590}{87}\zeta(9).
+\end{align*}
+\end{proposition}
+
+The mixing pattern is sharp and reproducible:
+
+%% FIXED [CRITICAL]: the "$-3$ recursion" was stated on the MOVING top off-diagonal and is
+%% FIXED false on the data of Proposition \ref{prop:lambdahigh} printed immediately above. Exact
+%% FIXED rational recheck: c_{j-3}(lam_j)/c_{j-4}(lam_{j-1}) = -3 at j=7, but -3365/294 at j=8
+%% FIXED and -3660/4711 (resp. -48158/292755) at j=9. The true law is at FIXED weights:
+%% FIXED c_4(lam_j) = -3 c_3(lam_{j-1}) for j=7,8,9, all exactly -3, and
+%% FIXED c_5(lam_j) = (-3365/294) c_4(lam_{j-1}) for j=8,9, both exactly -3365/294.
+%% FIXED Inherited from work/GAMMA_UNIFICATION.md l.250 and repeated in \S\ref{sec:discussion};
+%% FIXED both sites corrected. The weight support, the absent weights and the smoothness claim
+%% FIXED were re-checked and are correct as printed.
+\begin{observation}[Weight pattern]\label{obs:weights} \VER{$j\le9$}
+$\lambda_j$ contains exactly the weights $j$ and $3,4,\dots,j-3$. The weights $j-1$, $j-2$ and
+$0,1,2$ never occur. The low-weight coefficients propagate along \emph{fixed} weights with
+constant ratios: writing $c_w(\lambda_j)$ for the weight-$w$ coefficient,
+\[
+  c_4(\lambda_j)=-3\,c_3(\lambda_{j-1})\quad(j=7,8,9),\qquad
+  c_5(\lambda_j)=-\tfrac{3365}{294}\,c_4(\lambda_{j-1})\quad(j=8,9),
+\]
+both exactly. The ratio is \emph{not} constant along the moving top off-diagonal
+$c_{j-3}(\lambda_j)/c_{j-4}(\lambda_{j-1})$, which is $-3$ at $j=7$ but $-3365/294$ at $j=8$;
+the two statements coincide only at $j=7$. All denominators are
+$\{3,5,7,11,29\}$-smooth, with $29$ and $87=3\cdot29$ ubiquitous.
+\end{observation}
+
+The mechanism producing this inhomogeneity is \OPEN\ and is, in our judgement, the sharpest
+remaining question raised by this computation. It probably requires the polynomial $R(T)$ of
+\QUOTED{\cite[Thm.~30]{BV}} for a non-cyclic $\sigma_0$; \cite[Cor.~33]{BV} assumes a single
+indicial root, which is not the situation here.
+
+%% ==================================================================
+\section{What the \texorpdfstring{$\kappa$}{kappa}-vector is not}\label{sec:exclusions}
+%% ==================================================================
+
+Exclusions are reported with the same care as identifications. Every entry below is a statement
+about a finite search box.
+
+\subsection{Structural hypotheses}
+\EXCL{tolerance $10^{-195}$, coefficient bound $10^{12}$} The following natural shapes for
+$\kappa$, for the Brown--Zudilin operator:
+\begin{enumerate}[label=(\alph*),leftmargin=2.2em]
+\item $\kappa=N\cdot G$ with $N(s)=I(s)/(I_5s^5)$ the rational indicial factor and $G$ weight-graded
+--- the natural shape suggested by \cite[Thm.~30]{BV}. The refutation has a clean reason:
+$\lambda_2,\dots,\lambda_5$ carry no rational part, whereas $N$ has a nonzero linear coefficient.
+\item $\log\kappa$ involving Hurwitz values $\zeta(k,\rho)$ at the other local exponents at
+$z=0$ (the hypergeometric shape of \cite[Prop.~26]{BV}).
+\item powers of $\log c$.
+\end{enumerate}
+\EXCL{tolerance $10^{-380}$, coefficient bound $10^{14}$} $\kappa_j$ and $\lambda_j$ in the
+\emph{graded} weight-$j$ basis, for $j=6,\dots,16$.
+
+\subsection{The gamma-deformation test}\label{sec:gammadef}
+It is natural to ask whether the Brown--Zudilin operator is a gamma-class deformation of a known
+Ap\'ery operator, given that their $\kappa_5$'s all lie in the two-dimensional space
+$\langle\zeta(5),\zeta(2)\zeta(3)\rangle$. The answer is no, and the reason is instructive.
+
+%% FIXED [CRITICAL, same defect]: the BZ coordinate is Theorem \ref{thm:kappavec}'s, which is
+%% FIXED \VER{434 digits}; only the linear algebra is proved.
+\begin{observation}\label{obs:cheapplane}
+\PROVED\ (the linear algebra), given the identification of $\kappa_5(\mathrm{BZ})$ in
+Theorem \ref{thm:kappavec} (\VER{$434$ digits}).
+The identity
+\[
+  174\,\kappa_5(\mathrm{BZ})+987\,\kappa_5(\mathrm{Ap\acute ery}\ \zeta_3)
+  -3331\,\kappa_5(\mathrm{Ap\acute ery}\ \zeta_2)=0
+\]
+holds exactly: in coordinates, $174\cdot\tfrac{514}{87}+987\cdot\tfrac73-3331=0$ and
+$174\cdot\bigl(-\tfrac{2200}{87}\bigr)+987\cdot\bigl(-\tfrac{17}{3}\bigr)+3331\cdot 3=0$. It is
+also \emph{cheap}: three vectors in a two-dimensional space are always dependent. We record it
+because such an identity, found numerically and reported without this remark, would look like a
+discovery.
+\end{observation}
+
+The content is in the individual identifications, whose $\zeta(2)\zeta(3):\zeta(5)$ ratios are
+\[
+  -\tfrac{1100}{257}\ (\mathrm{BZ}),\qquad -\tfrac{17}{7}\ (\text{Ap\'ery }\zeta_3),\qquad
+  -3\ (\text{Ap\'ery }\zeta_2),
+\]
+against $+2$ for Brown--Zudilin's top period $2[\zeta(5)+2\zeta(2)\zeta(3)]$.
+
+%% FIXED [MINOR]: \EXCL polarity. Everywhere else the marker is followed by the POSITIVE
+%% FIXED proposition that the search excluded; this one was stated as a negation.
+\EXCL{tolerance $10^{-193}$, coefficient bound $10^{14}$} A two-term rational relation
+between $\kappa_j(\mathrm{BZ})$ and $\kappa_j(\text{Ap\'ery }\zeta_3)$, for $j=5,\dots,13$. (The
+hits at $j=2,3,4$ --- $\kappa_2(\mathrm{BZ})=2\kappa_2$, $493\kappa_3(\mathrm{BZ})=1100\kappa_3$,
+$58\kappa_4(\mathrm{BZ})=365\kappa_4$ --- are forced, each weight-$j$ space being one-dimensional
+for $j\le4$.) The three operators are \emph{not} gamma-deformations of one another in any
+two-term sense.
+
+%% FIXED [CRITICAL, same defect]: the BZ row is Theorem \ref{thm:kappavec}'s \VER data.
+\begin{observation}[The right statement is the primitive one]\label{obs:primitive}
+\PROVED\ (the decomposition $\kappa_5=\lambda_5+\lambda_2\lambda_3$, valid for any log-series);
+the BZ row given the identifications of Theorem \ref{thm:kappavec} (\VER{$434$ digits}), the
+other two from the published values.
+In every case $\kappa_5=\lambda_5+\lambda_2\lambda_3$, with
+\[
+  (\lambda_2,\lambda_3)=\bigl(-4\zeta_2,\tfrac{550}{87}\zeta_3\bigr),\quad
+  \bigl(-2\zeta_2,\tfrac{17}{6}\zeta_3\bigr),\quad
+  \bigl(-\tfrac75\zeta_2,2\zeta_3\bigr)
+\]
+for BZ, Ap\'ery $\zeta(3)$, Ap\'ery $\zeta(2)$ respectively. The space
+$\langle\zeta(5),\zeta(2)\zeta(3)\rangle$ is a plane of $(\lambda_5,\lambda_2\lambda_3)$
+coordinates, not a plane of new periods.
+\end{observation}
+
+\subsection{Reciprocal periods}
+\EXCL{tolerance $10^{-193}$, coefficient bound $10^{10}$}
+$\kappa_j(\mathrm{BZ})\in\Span_\QQ\{\pi^{-2k}:0\le k\le4\}$ for $j=2,\dots,8$. The lesson of
+\S\ref{sec:defect} --- always adjoin $\pi^{-2k}$ to a weight-zero basis --- was applied here and
+returned nothing. This is consistent: the reciprocal period lives in the connection-constant
+\emph{ratio} $c$, not in $\kappa$, matching \cite[Cor.~31]{BV}, which is a statement about
+ratios.
+
+%% ==================================================================
+\section{The purity defect \texorpdfstring{$c=-3/\pi^2$}{c = -3/pi^2}}\label{sec:defect}
+%% ==================================================================
+
+\subsection{Statement and proof}
+The three characteristic rays of \eqref{eq:BZrec} carry, respectively, $Q_n$ (growth
+$\lambda_3^n$), the pair $I',I''$ (decay $|\lambda_2|^n$), and the combination $I$ (decay
+$\lambda_1^n$). The last is the fastest, and it is the one an irrationality proof would want; but
+it is occupied by an impure period. The constant that measures the exile is
+\[
+  c\;=\;\lim_{n\to\infty}\frac{I''_n}{I'_n},
+\]
+equivalently the unique scalar for which $\Ihat-cI'$ lands on the minimal ray.
+
+\begin{theorem}\label{thm:defect} \PROVED
+\[
+  c\;=\;-\frac{1}{2\zeta(2)}\;=\;-\frac{3}{\pi^2}\;=\;
+  -0.30396355092701331433163838962918291671307632401674\ldots,
+\]
+and the minimal-ray class it defines is, up to the factor $4\zeta(2)$, the cellular integral
+itself:
+\[
+  M_n:=\Ihat_n-c\,I'_n=\frac{I_n}{4\zeta(2)} .
+\]
+\end{theorem}
+
+\begin{proof}
+Brown and Zudilin prove, for the whole admissible eight-parameter family and not merely at the
+symmetric point, the decomposition $I(\boldsymbol a\cdot n)=2I'(\boldsymbol a\cdot n)+
+4\zeta(2)I''(\boldsymbol a\cdot n)$ \QUOTED{\cite[\S2 and \S7]{BZ}}, together with
+$|\lambda_1(\boldsymbol a)|<|\lambda_2(\boldsymbol a)|$, checkable at each admissible
+$\boldsymbol a$ \QUOTED{\cite[Remark 2]{BZ}}. Let
+$V_1=\{u:\limsup_n\log|u_n|/n\le\log|\lambda_1|\}$ be the minimal-ray space; $\dim V_1=1$, and
+$I\in V_1$ while $I',\Ihat\notin V_1$. Rewriting the decomposition,
+\[
+  I_n=4\zeta(2)\Bigl(\Ihat_n+\frac{I'_n}{2\zeta(2)}\Bigr)\in V_1,
+\]
+so $\Ihat+I'/(2\zeta(2))\in V_1$ already. If also $\Ihat-cI'\in V_1$, subtracting gives
+$\bigl(c+1/(2\zeta(2))\bigr)I'\in V_1$; since $I'\notin V_1$ this forces
+$c=-1/(2\zeta(2))$. The limit form follows because $\Ihat_n-cI'_n=O(\lambda_1^n\,\mathrm{poly}\,n)$
+while $I'_n\asymp\lambda_2^n$ and $|\lambda_1|<|\lambda_2|$.
+\end{proof}
+
+\begin{corollary}\label{cor:cone} \PROVED
+$c(\boldsymbol a)=-3/\pi^2$ for \emph{every} admissible cone point $\boldsymbol a$. The proof uses
+only the family-wide decomposition and $|\lambda_1|<|\lambda_2|$. In particular $c$ carries no
+information about $\boldsymbol a$: purity is not deformable within the family.
+\end{corollary}
+
+\subsection{The certificate}
+Independently of the proof, from the exact ladders ($n\le 360$, exact rational arithmetic) at
+$\dps=2600$, with $c^*:=-3/\pi^2$ taken exactly:
+
+\begin{table}[h]
+\centering
+\caption{Convergence of $\Ihat_n/I'_n$ to $-3/\pi^2$. \VER{441 digits at $n=360$}}
+\label{tab:cert}
+\begin{tabular}{rrrrrrrr}
+\toprule
+$n$ & $50$ & $100$ & $150$ & $200$ & $250$ & $300$ & $360$\\
+$-\log_{10}\bigl|\Ihat_n/I'_n-c^*\bigr|$ & $61.367$ & $122.713$ & $184.060$ & $245.408$
+  & $306.756$ & $368.104$ & $\mathbf{441.722}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%% FIXED [MINOR]: 1.22701 and 1.226963 agree to 4 digits, not exactly.
+Agreement grows linearly at slope $1.22701$ digits per $n$. The predicted slope is
+$\log_{10}(\lambda_2/\lambda_1)=\log_{10}(16.86411)=1.226963\ldots$, and the two agree to
+$4$ digits, so the convergence rate is the predicted $(\lambda_1/\lambda_2)^n$.
+This is not a numerical coincidence at $441$
+digits; it is the theorem's own error term. \PROVED\ (the slope), \VER{441 digits} (the value).
+A third-ray check with $c^*$ exact gives $\log|M_n|/n\to\log|\lambda_1|=-5.29756$ from below with
+the standard $n^{\alpha}$ correction, and $I_n=4\zeta(2)M_n$ to full working precision (relative
+difference $\sim10^{-2160}$ at $n=360$).
+
+\subsection{Why a 600-digit search missed it}\label{sec:reciprocal}
+Earlier exclusions for $c$ --- over a fourteen-term weight-graded basis through weight $8$, over
+$\{1,\log2,\text{Catalan},\pi,\pi^2\}$, and others --- were all correct. The basis was simply
+missing the inverse period. The constant $c$ has weight $-2$, and an integer-relation search over
+a $\QQ$-basis of periods can never see a reciprocal period: $1/\zeta(2)$ lies in the $\QQ$-span
+neither of
+\[
+  \{1,\zeta_2,\zeta_3,\zeta_2^2,\zeta_5,\zeta_2\zeta_3\}
+  \qquad\text{nor of the weight-zero ratios}\qquad
+  \{1,\tfrac{\zeta_3}{\zeta_5},\tfrac{\zeta_2\zeta_3}{\zeta_5},\tfrac{\zeta_2^2}{\zeta_5},
+    \tfrac{\zeta_7}{\zeta_2\zeta_5}\}.
+\]
+The one test that would have found it, a two-term relation between $c\,\zeta(2)$ and $1$, was
+never run.
+
+\begin{remark}[Methodological lesson]\label{rem:lesson}
+Adjoin $1/\zeta(2)=6/\pi^2$, and more generally $\pi^{-2k}$, to any weight-zero integer-relation
+basis. We state this because it cost a substantial computation, and because it generalises: the
+constants attached to \emph{ratios} of connection data are exactly the place where
+\cite[Cor.~31]{BV}'s ``periods with $2\pi i$ inverted'' becomes operative.
+\end{remark}
+
+\subsection{The Tate reading}
+Since $4\zeta(2)=-(2\pi i)^2/6$,
+\begin{equation}\label{eq:tate}
+  c\;=\;\frac{12}{(2\pi i)^2},
+\end{equation}
+\PROVED\ (exact). This is precisely the shape predicted by \QUOTED{\cite[Cor.~31]{BV}} for
+connection constants of a Picard--Fuchs operator: a period with $2\pi i$ inverted. The defect is
+a rational multiple of a negative Tate twist --- weight $-2$, depth $0$, the most degenerate
+possible answer. It carries no motivic information beyond the Tate line, and the search for an
+exotic new period was searching for something that was never there. The graded picture is:
+
+\begin{table}[h]
+\centering
+\caption{The three rays of the Brown--Zudilin recurrence. \PROVED}
+\label{tab:rays}
+\begin{tabular}{llll}
+\toprule
+ray & eigenvalue & class & period carried \\
+\midrule
+top $(\lambda_3)$     & $592.079\ldots^{\,n}$   & $Q_n$ & $\QQ(0)$ \\
+%% FIXED [MINOR]: the middle eigenvalue is NEGATIVE (roots of 4L^3-2368L^2-188L+1 are
+%% FIXED 592.079..., -0.0843843..., 0.00500378...); the minus sign was dropped.
+middle $(\lambda_2)$  & $(-0.0843843\ldots)^{\,n}$ & $I',\Ihat$ (span) & $\zeta(5)$ and $\zeta(3)$ separately \\
+minimal $(\lambda_1)$ & $0.00500378\ldots^{\,n}$& $I=2I'+4\zeta(2)\Ihat$ & $2\zeta(5)+4\zeta(2)\zeta(3)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The class exiled from the minimal ray is exiled \emph{by $\zeta(2)$}. This is the same object
+responsible for the failure of a weight-$5$ harmonic-monomial decomposition of $P_n$: Brown and
+Zudilin's top period $\zeta(5)+2\zeta(2)\zeta(3)$ has depth $2$, and its impurity is what blocks
+the elementary decomposition. The rotation $c$ is the $\zeta(2)$-twist and nothing more.
+
+%% ==================================================================
+\section{Rate--purity conservation}\label{sec:rpc}
+%% ==================================================================
+
+\subsection{The exact gap}
+From the exact roots of $4\lambda^3-2368\lambda^2-188\lambda+1$:
+\[
+\begin{aligned}
+  \text{rate of the minimal ray} &= -\log|\lambda_1| = 5.2975613530090625810891422832466528\ldots\\
+  \text{rate of the middle ray}  &= -\log|\lambda_2| = 2.4723737227466399605499538672117115\ldots\\
+  \text{\emph{purity cost}}\quad \Delta &= \log|\lambda_2/\lambda_1|
+    = 2.8251876302624226205391884160349413\ldots
+\end{aligned}
+\]
+\VER{35 digits}. Note $\Delta=\log 16.86411\ldots$ and $\Delta/\log10=1.226963\ldots$, which is
+exactly the digits-per-$n$ slope of the $441$-digit certificate of Table \ref{tab:cert}: the
+same number, now to $34$ digits. $\Delta$ is the number of nats one must pay to move a linear
+form from the middle ray to the minimal ray.
+
+\subsection{The law}
+We state the following as a conjecture with explicit falsification conditions, because that is
+what it is: a pattern read off three families and then successfully predicted on a fourth.
+
+\begin{conjecture}[Rate--Purity Conservation, (RPC)]\label{conj:rpc}
+Let $L$ be an Ap\'ery-like operator, $m$ the multiplicity of the local exponent $0$ in the
+indicial polynomial at $z=0$, and $r$ the order of the associated recurrence.
+\begin{enumerate}[label=\textup{(RPC-\arabic*)},leftmargin=3.4em]
+\item The characteristic rays are indexed by the \emph{depth} $d=0,1,\dots,\lfloor m/2\rfloor$ of
+the period they carry; consequently
+\[
+  \boxed{\;r=1+\lfloor m/2\rfloor\;}
+\]
+\item Depth and rate are anti-correlated: $|\lambda_{(d)}|$ is strictly decreasing in $d$, and
+the price of purifying from depth $d$ to depth $d-1$ is
+$\Delta_d=\log\bigl|\lambda_{(d-1)}/\lambda_{(d)}\bigr|>0$.
+\item The constant effecting the depth-$1$ to depth-$2$ raise is the middle-ray connection ratio
+$c=A_{\Ihat}/A_{I'}$, a Tate class $12/(2\pi i)^2$ of weight $-2$, constant on the whole
+admissible cone. Hence purity is not deformable while $\Delta$ is: no motion in the cone converts
+rate into purity.
+%% FIXED [MAJOR, circular evidence]: the counting half of (RPC-4) is a TAUTOLOGY given (RPC-1)
+%% FIXED -- for ANY log-series the depth-<=2 part of [eps^m] exp(sum lambda_j eps^j) has exactly
+%% FIXED 1 + #{(a,b): 2<=a<=b, a+b=m} = floor(m/2) monomials, with no computation. So it is
+%% FIXED literally (RPC-1) re-expressed. (RPC-4) now retains only its substantive half,
+%% FIXED lambda_m in QQ.zeta(m); the counting is demoted to a remark, Table \ref{tab:rpc}'s last
+%% FIXED two columns are marked as re-expressions rather than independent checks, and (F2) in
+%% FIXED \S\ref{sec:falsify} has been withdrawn as a falsification route.
+\item \emph{(Frobenius witness.)} At the nearest conifold, $\lambda_m\in\QQ\cdot\zeta(m)$: the
+primitive part of the Frobenius constant at $j=m$ is a rational multiple of $\zeta(m)$, so that
+$\kappa_m=\lambda_m+\sum_{a+b=m}\lambda_a\lambda_b+(\text{depth}\ge3)$ has all of its impurity
+in the decomposable terms.
+\end{enumerate}
+\end{conjecture}
+
+\begin{remark}[what (RPC-4) does \emph{not} say]\label{rem:rpc4}
+It is tempting to add to (RPC-4) that the number of depth-$\le2$ monomials of $\kappa_m$ equals
+$r-1$. That would carry no content beyond (RPC-1). For \emph{any} series
+$\log\kappa=\sum_{j\ge2}\lambda_j\eps^j$ whatever, the depth-$\le2$ part of
+$[\eps^m]\exp\bigl(\sum_j\lambda_j\eps^j\bigr)$ consists of the single monomial $\lambda_m$
+together with the pairs $\lambda_a\lambda_b$, $2\le a\le b$, $a+b=m$, of which there are
+$\lfloor m/2\rfloor-1$; so the count is $\lfloor m/2\rfloor$ identically, for every operator and
+with no computation. Asserting that it equals $r-1$ is therefore exactly the assertion
+$r=1+\lfloor m/2\rfloor$, i.e.\ (RPC-1) again. We record the monomials in
+Table \ref{tab:rpc} because they are the concrete shape of the witness, not because they are a
+second test.
+\end{remark}
+
+Part (RPC-3) is \PROVED\ for the Brown--Zudilin family (Theorem \ref{thm:defect} and Corollary
+\ref{cor:cone}). Parts (RPC-1), (RPC-2), (RPC-4) are the conjectural content.
+
+\subsection{Verification}
+
+\begin{table}[t]
+\centering
+\caption{(RPC) on four Ap\'ery-like families. All multiplicities are exact symbolic
+computations. \PROVED\ for each row's $m$ and $r$; the law itself is Conjecture
+\ref{conj:rpc}. The last two columns are columns $2$ and $3$ re-expressed
+(Remark \ref{rem:rpc4}), not independent checks; the substantive content of (RPC-4) is
+$\lambda_m\in\QQ\cdot\zeta(m)$, which is Observation \ref{obs:purityatm}.}
+\label{tab:rpc}
+\footnotesize
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+family & $m$ & $1+\lfloor m/2\rfloor$ & actual $r$ & depth-$\le2$ monomials of $\kappa_m$ & $r-1$\\
+\midrule
+Ap\'ery $\zeta(2)$ & $2$ & $2$ & $2$ \checkmark
+  & $\lambda_2\ \to\ 1$ & $1$ \checkmark\\
+Ap\'ery $\zeta(3)$ & $3$ & $2$ & $2$ \checkmark
+  & $\lambda_3\ \to\ 1$ & $1$ \checkmark\\
+Brown--Zudilin $\zeta(5)$, order $9$ & $\mathbf 5$ & $3$ & $\mathbf 3$ \checkmark
+  & $\lambda_5+\lambda_2\lambda_3\ \to\ 2$ & $2$ \checkmark\\
+weight-$7$ cellular, order-$4$ rec. & $\mathbf 7$ & $4$
+  & $\mathbf 4$ \checkmark & $\lambda_7+\lambda_2\lambda_5+\lambda_3\lambda_4\ \to\ 3$
+  & $3$ \checkmark\\
+\bottomrule
+\end{tabular}
+\smallskip
+
+\footnotesize
+Row 1: $D^2-t(11D^2+11D+3)-t^2(D+1)^2$. \quad
+Row 2: $D^3-t(34D^3+51D^2+27D+5)+t^2(D+1)^3$. \quad
+Row 4: degree $19$.
+\end{table}
+
+The fourth row is a genuine prediction. The law was read off $m=2,3,5$; the multiplicity $m$ for
+the weight-$7$ operator was then computed for the first time, from the certified order-$4$,
+degree-$19$ recurrence of the weight-$7$ family, via $q_j(x)=c_{4-j}(x+j-4)$. Its indicial
+polynomial factors exactly as
+\begin{multline}\label{eq:z7indicial}
+  I(s)=s^{7}\,(s-1)^{3}\,(2s-5)\,\bigl(3690864s^{8}-59053824s^{7}+409061716s^{6}
+      -1601726448s^{5}\\
+      +3876913912s^{4}-5940014784s^{3}+5627137052s^{2}-3014681200s+699679047\bigr),
+\end{multline}
+\PROVED\ (exact factorisation over $\QQ$). Hence $m=7$ --- the multiplicity of the exponent $0$
+equals the weight, as for $m=2,3,5$ --- and $1+\lfloor7/2\rfloor=4=r$. \checkmark
+
+\begin{observation}[$m$ equals the motivic weight]\label{obs:mweight} \PROVED\ (on four
+families.)
+In every family examined, the multiplicity of the exponent $0$ at $z=0$ equals the motivic weight
+of the family: $m=2,3,5,7$ for weights $2,3,5,7$.
+\end{observation}
+
+\subsection{How to falsify}\label{sec:falsify}
+A fifth Ap\'ery-like family of weight $w$ falsifies (RPC) if any of the following occurs.
+\begin{enumerate}[label=(F\arabic*),leftmargin=2.6em]
+\item Its recurrence order satisfies $r\ne 1+\lfloor w/2\rfloor$ (falsifies RPC-1).
+\item The $\lambda_w$ of its nearest conifold is not in $\QQ\cdot\zeta(w)$ (falsifies RPC-4).
+\item Its middle-ray connection ratio is a non-Tate period (falsifies RPC-3).
+\item Its characteristic moduli fail to be strictly ordered by depth (falsifies RPC-2).
+\end{enumerate}
+By Remark \ref{rem:rpc4} there is no fifth route through the monomial count: that count is a
+formal identity and can never fire independently of (F1).
+Concrete open predictions: a weight-$4$ family must have $r=3$; a weight-$6$ family $r=4$; a
+weight-$9$ family $r=5$ together with $\lambda_9\in\QQ\cdot\zeta(9)$ --- note that the shape
+$\kappa_9=\lambda_9+\lambda_2\lambda_7+\lambda_3\lambda_6+\lambda_4\lambda_5+(\text{deeper})$
+is itself formal and predicts nothing.
+Each of these is a finite computation on any family for which a recurrence is available.
+
+\subsection{Why this is a rate-plus-purity law}
+The reason $\zeta(5)$ is out of reach by the Brown--Zudilin family becomes a counting statement.
+Weight $5$ admits $\lfloor5/2\rfloor=2$ depths, so the recurrence must have $3$ rays; the pure
+forms $I',\Ihat$ are forced onto the depth-$1$ ray, and the depth-$2$ combination
+$I=2I'+4\zeta(2)\Ihat$ monopolises the minimal ray. The coefficient $4\zeta(2)$ is
+$-(2\pi i)^2/6$, and its inverse $c=12/(2\pi i)^2$ is the cone-constant defect of
+\S\ref{sec:defect}. The rate one would need lives on the ray whose period is impure \emph{by
+construction of the depth filtration}, and $\Delta=2.8252\ldots$ is the exact toll.
+
+%% ==================================================================
+\section{Connection constants}\label{sec:conn}
+%% ==================================================================
+
+\subsection{High-precision values}
+Exact rational ladders $Q_n,P_n,\Phat_n$ were propagated to $n=520$ from \eqref{eq:BZrec} with
+the anchors of \cite{BZ}; the linear forms $I'=Q\zeta(5)-P$, $\Ihat=Q\zeta(3)-\Phat$,
+$I=2I'+4\zeta(2)\Ihat$ were formed at $\dps=3200$ (the cancellation in $I$ is
+$(\lambda_3/|\lambda_2|)^n=10^{1999}$ at $n=520$, which is why so much working precision is
+needed); the Birkhoff--Stokes limit was then taken on each ray at $\dps=400$, $M=200$. All four
+exponents came out $\alpha=-5/2$ automatically, as Proposition \ref{prop:conifold} requires.
+
+\begin{table}[h]
+\centering
+\caption{Connection (Stokes) constants of the Brown--Zudilin family, $u_n\sim A\lambda^n
+n^{-5/2}$.}
+\label{tab:conn}
+\small
+\begin{tabular}{@{}llr@{}}
+\toprule
+constant & value & agreement across $n$\\
+\midrule
+$A_Q$      & $\phantom{-}0.06667642572715676784165334063934544446962874559\ldots$ & $322$ digits\\
+$A_{I'}$   & $-0.75135587647498929950939202170801814994076813034\ldots$          & $288$ digits\\
+$A_{\Ihat}$& $\phantom{-}0.22838480022321613498452097882537506442071493158\ldots$ & $288$ digits\\
+$A_I$      & $\phantom{-}4.78381719294327891215233374724085460054978566494\ldots$ & $287$ digits\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As an independent confirmation of Theorem \ref{thm:defect},
+$A_{\Ihat}/A_{I'}+3/\pi^2=5.7\times10^{-381}$: the purity defect reconfirmed to $381$ digits by a
+method sharing no code with the certificate of Table \ref{tab:cert}. \VER{381 digits}
+
+At the \emph{first} singularity $z_3=1/\lambda_3$ one has $A_P/A_Q=\zeta(5)$ and
+$A_{\Phat}/A_Q=\zeta(3)$ \VER{3878 digits}. We flag these as formally trivial --- they say
+$\lim P_n/Q_n=\zeta(5)$, which holds because $I'_n\to0$ --- and record them only as a very strong
+consistency check on the extrapolation machinery, not as a theorem. Reading the singularities
+outward from $z=0$, the connection ratios are
+\[
+  z_3:\ \zeta(5),\ \zeta(3);\qquad z_2:\ 1/(2\zeta(2));\qquad z_1:\ \text{---},
+\]
+the weights descending $5$, $3$, and then \emph{inverting} to $-2$. That inversion is the defect.
+
+\subsection{The identifications}
+The relation finder was validated first on $\Gamma(1/3)\Gamma(2/3)=2\pi/\sqrt3$, on the
+$\Gamma(1/6)$ duplication formula, and on the Ap\'ery $\zeta(3)$ Stokes constant
+$S(0)=(1+\sqrt2)^2/(2^{9/4}\pi^{3/2})$, before being applied to unknown targets. Basis hygiene is
+discussed in Trap \ref{trap:basis}.
+
+\begin{theorem}[The Stokes determinant]\label{thm:det}
+\VER{260 digits; relative difference $1.1\times10^{-260}$}
+\[
+  A_Q\cdot A_{I'}\cdot A_I \;=\; -\frac{\pi^{5/2}}{12\sqrt{37}},
+  \qquad\text{equivalently}\qquad
+  \bigl(A_QA_{I'}A_I\bigr)^2=\frac{\pi^{5}}{5328},\quad 5328=2^4\cdot3^2\cdot37 .
+\]
+Using $c=-3/\pi^2$ this gives, independently verified,
+$A_Q\cdot A_{\Ihat}\cdot A_I=\sqrt{\pi}/(4\sqrt{37})$.
+\end{theorem}
+
+\begin{theorem}[The individual constants]\label{thm:individual}
+Let $\lambda_3=592.0793805346115628\ldots$ be the dominant characteristic root. Then
+\begin{equation}\label{eq:AQ}
+  64\,\bigl(A_Q\,\pi^{5/2}\bigr)^2=u,\qquad
+  37u^3-3219u^2-229u-1=0,\qquad
+  u=\frac{-700\lambda_3^2+526604\lambda_3-6199}{762533},
+\end{equation}
+with $762533=37^2\cdot557$; that is, $A_Q=\sqrt{u}\,/\,(8\pi^{5/2})$ with $u\in\QQ(\lambda_3)$
+explicitly. \VER{261 digits} Moreover, writing $t$ for the indicated square,
+\[
+\begin{aligned}
+  t=\bigl(A_{I'}\pi^{-5/2}\bigr)^2&:\quad 1726272\,t^3+4171824\,t^2-8244\,t+1=0,\\
+  t=\bigl(A_{I}\pi^{-5/2}\bigr)^2&:\quad 37\,t^3+51504\,t^2-58624\,t+4096=0,\\
+  t=\bigl(A_{\Ihat}\pi^{-1/2}\bigr)^2&:\quad 2368\,t^3+51504\,t^2-916\,t+1=0 .
+\end{aligned}
+\]
+\VER{all at tolerance $10^{-230}$, coefficient bound $10^{16}$}
+\end{theorem}
+
+Internal consistency, which is a genuine check and not a restatement:
+\begin{itemize}[leftmargin=1.6em]
+\item The $A_{I'}$ cubic is the $A_{\Ihat}$ cubic under $t\mapsto t/9$ --- forced by
+$A_{I'}=A_{\Ihat}/c=-(\pi^2/3)A_{\Ihat}$. \PROVED\ (exact polynomial identity).
+%% FIXED [MINOR]: -5/2+5/2+5/2+1/2 = 3, not 5/2. It is the THREE powers of the determinant
+%% FIXED triple that sum to 5/2; A_Ihat belongs to the other triple, which sums to 1/2.
+\item The three $\pi$-powers $-\tfrac52,+\tfrac52,+\tfrac52$ of $A_Q,A_{I'},A_I$ sum to
+$\tfrac52$, matching Theorem \ref{thm:det}; the other triple $A_Q,A_{\Ihat},A_I$ has powers
+$-\tfrac52,+\tfrac12,+\tfrac52$ summing to $\tfrac12$, matching $\sqrt\pi/(4\sqrt{37})$.
+\PROVED
+\item The leading coefficient $2368$ of the $A_{\Ihat}$ cubic is the middle coefficient of the
+characteristic polynomial $4\lambda^3-2368\lambda^2-188\lambda+1$; the primes $37$ and $557$ are
+those of $41218=2\cdot37\cdot557$; the singular cubic has discriminant $2^4\cdot37^3\cdot557^2$
+and $\Disc(37u^3-3219u^2-229u-1)=2^4\cdot37\cdot26357^2$ --- the \emph{same square class} $37$,
+i.e.\ the same quadratic resolvent $\QQ(\sqrt{37})$, and indeed $u\in\QQ(\lambda_3)$ explicitly.
+\PROVED
+\end{itemize}
+
+\subsection{The $\Gamma$-content}
+\EXCL{tolerance $10^{-240}$, coefficient bound $10^{6}$} The quantity $\log|A_Q|$ lies in the
+$\QQ$-span of
+\[
+  \{\log\Gamma(k/s)\}\ \cup\
+  \{\log\pi,\ \log2,\ \log3,\ \log37,\ \log557,\ \log|z_1|,\ \log|z_2|\},
+\]
+for $s\in\{3,4,5,6,8,12,24\}$ and combinations thereof.
+
+\EXCL{coefficient bound $10^{20}$} $A_Q\pi^{e}\in\QQ(\lambda_3)$ --- as opposed to its quadratic
+extension --- for $e\in\{-3/2,-1/2,0,1/2,3/2\}$.
+
+%% FIXED [MAJOR-4]: the Observation carried no evidence marker, and "no Gamma(r/s) with s>2"
+%% FIXED overstated the \EXCL box above, which tested only s in {3,4,5,6,8,12,24} at tolerance
+%% FIXED 1e-240, coefficient bound 1e6. The source (GAMMA_UNIFICATION.md l.53-54) keeps the
+%% FIXED restriction. Fixed here, in the abstract and in Results item (6).
+\begin{observation}[Verdict]\label{obs:gammaverdict}
+\EXCL{tolerance $10^{-240}$, coefficient bound $10^{6}$, $s\in\{3,4,5,6,8,12,24\}$}
+The only $\Gamma$-value found in the Brown--Zudilin connection constants is
+$\Gamma(1/2)=\sqrt{\pi}$. The half-integer power is $\pi^{\rho+1}$ with $\rho=3/2$ the conifold
+exponent --- the classical transfer factor $1/\Gamma(-\rho)$, $\Gamma(-3/2)=4\sqrt{\pi}/3$ --- and
+the algebraic part is a square root in the $S_3$ cubic field $\QQ(\lambda_3)$ of the singular
+locus. Within that box: no $\Gamma(r/s)$ with $s>2$, no cubic-field regulator, no new
+transcendental. As Remark \ref{rem:underranged} insists, this is a statement about a box; the
+denominators $s\notin\{3,4,5,6,8,12,24\}$ were not searched.
+\end{observation}
+
+\begin{remark}[An earlier negative, corrected]\label{rem:underranged}
+A previous search reported that $A_Q,A_{I'},A_I$ are ``not algebraic times $\pi^k$'', on the
+strength of tests of $A\pi^{e}$ for $e\in\{-\tfrac12,0,\tfrac12,1,\tfrac32,2,\tfrac52,3\}$ with
+minimal polynomials of degree $\le12$ and coefficient bound $10^5$. Those exclusions were
+correct as stated and simply under-ranged in two ways: the exponents $e=-5/2$ and $e=-1/2$ ---
+the right ones for $A_{I'},A_I,A_{\Ihat}$ --- were never tested, and for $A_Q$ the correct
+exponent $e=+5/2$ \emph{was} tested, but the minimal polynomial \eqref{eq:AQ} has coefficients up
+to $1.3\times10^{7}$, some $130$ times the bound used. We record this because it is the standard
+failure mode of exclusion results and is worth stating explicitly: an exclusion is a statement
+about a box.
+\end{remark}
+
+%% ==================================================================
+\section{Application: no pair-worthiness at weight 7}\label{sec:weight7}
+%% ==================================================================
+
+We now apply the picture to the question it was built for. Zudilin's theorem that one of
+$\zeta(5),\zeta(7),\zeta(9),\zeta(11)$ is irrational \cite{Zu02a,Zu04} remains the narrowest
+window containing $\zeta(5)$; a construction producing a small linear form in $1,\zeta(5),\zeta(7)$
+alone would narrow it to a pair. The weight-$7$ analogue of the Brown--Zudilin family is the
+natural candidate. We show it does not deliver.
+
+\subsection{Setup}
+The weight-$7$ family has a certified order-$4$, degree-$19$ recurrence $L$ with palindromic
+characteristic polynomial
+\[
+  7381728\,x^4-46800155520\,x^3+501765579072\,x^2-46800155520\,x+7381728,
+\]
+whose roots come in reciprocal pairs \PROVED:
+\[
+  \{6329.2605150\ldots,\ 10.6453896153\ldots,\ 0.0939373791041\ldots,\ 1.5799634059\times10^{-4}\},
+\]
+with $\log$-rates $\pm8.75293868604055$ and $\pm2.36512689845195$. The ladder consists of
+$q_n$, $s_n$, $\Phat_n$ and (unavailable beyond small $n$) $P_n$; the linear forms are
+$I''_n=-9q_n\zeta(5)+2s_n\zeta(3)-\Phat_n$ and the primitive form $I'_n$. Write
+\[
+  \text{sector A}:\ \rho_A=1.5799634\times10^{-4},\qquad
+  \text{sector B}:\ \rho_B=0.0939373791041 .
+\]
+Sector A lies below $e^{-7}=9.1188\times10^{-4}$ and would pass the irrationality criterion;
+sector B does not.
+
+\subsection{The sector theorem}
+The earlier argument for this family required two facts: that $I''$ rides sector B, and that $I$
+rides sector A, so that the sector-B coefficient of $I'=I-\zeta_2 I''$ is nonzero. The second is
+a delicate assertion that a cancellation is exact. It is not needed.
+
+\begin{theorem}[Sector exclusion by positivity]\label{thm:sector}
+Given that $s,\Phat\in\Sol(L)$ (see \S\ref{sec:residual}), the primitive weight-$7$ form
+satisfies
+\[
+  I'_n \;=\; I_n-\zeta_2 I''_n \;=\; I_n+\zeta_2|I''_n|,\qquad\text{hence}\qquad
+  |I'_n|\ \ge\ \zeta_2\,|I''_n| ,
+\]
+so that $\limsup_n|I'_n|^{1/n}\ \ge\ \rho_B=0.0939374\ldots\ \gg\ \rho_A$. Sector A is
+\emph{excluded}, not merely disfavoured.
+\end{theorem}
+
+\begin{proof}
+$I'$ is a sum of two positive quantities. The two inputs are:
+$I''_n<0$ for all $n=0,\dots,140$, verified in exact rational arithmetic \VER{exact, $141$
+indices}; and $I_n>0$ for all $n$, which is rigorous, $I$ being an all-positive fourfold series.
+Given $s,\Phat\in\Sol(L)$, $|I''_n|^{1/n}$ converges to one of the four discrete values above,
+and \S\ref{sec:sectormeas} identifies the limit as $\rho_B$. No conspiracy of coefficients can
+make $I'$ decay faster than $I''$.
+\end{proof}
+
+The improvement over the cancellation argument is that the verdict is now independent of
+everything about $I_n$'s own decay rate, of the denominator of $P_3$, and of any grid hypothesis.
+The sole remaining dependency is $s,\Phat\in\Sol(L)$, discussed in \S\ref{sec:residual}.
+
+\subsection{Measuring the sector}\label{sec:sectormeas}
+$I''_n$ was evaluated from exact rationals at $\dps=4.9n+100$, so there is no
+forward-propagation instability. The statistic is $-\log|I''_{n+1}/I''_n|$; the model
+$I''_n\sim C\rho^n n^{\beta}$ gives the raw estimator a $-\beta/n$ bias, killed by Richardson
+extrapolation.
+
+\begin{table}[h]
+\centering
+\caption{Rate of $I''$. Target $-\log\rho_B=2.36512689845$. \VER{5 digits}}
+\label{tab:sector}
+\begin{tabular}{rrrr}
+\toprule
+$n$ & raw & Richardson-1 $(n,2n)$ & Richardson-2\\
+\midrule
+$10$ & $2.6796806457$ & $2.3818974599$ & $2.3655899615$\\
+$20$ & $2.5307890528$ & $2.3696668361$ & $2.3651904833$\\
+$30$ & $2.4775676766$ & $2.3672005606$ & $\mathbf{2.3651463543}$\\
+$40$ & $2.4502279445$ & $2.3663095715$ & ---\\
+$50$ & $2.4335830363$ & $2.3658901534$ & ---\\
+$60$ & $2.4223841186$ & $2.3656599059$ & ---\\
+$69$ & $2.4150358618$ & $\mathbf{2.3655314035}$ & ---\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This is a \emph{discrete identification, not a continuous fit}: given $s,\Phat\in\Sol(L)$, the only
+admissible answers are $\{-8.752939,-2.365127,+2.365127,+8.752939\}$. The Richardson-2 value is
+within $2\times10^{-5}$ of one of them and $4.7$ away from the nearest alternative. Two disjoint
+windows agree. \textbf{Sector B.}
+
+\subsection{The honest denominator exponent}\label{sec:kappa7}
+Whether the true denominator budget is below $7$ is the one remaining lever, and it is not
+available. Measured directly on the $361$ exact weight-$5$ ladder terms --- the only family where
+the true $P$ is known:
+\[
+  \den(P_n)\mid 12\,d_n^{5}\ \text{ for } 361/361;\qquad
+  \den(P_n)\mid d_n^{5}\ \text{ for } 1/361;\qquad
+  \den(P_n)\mid 6\,d_n^{5}\ \text{ for } 1/361,
+\]
+\VER{exact, $n\le360$}, so the constant $12$ is sharp and the exponent is exactly the weight.
+The approach to the exponent is
+\[
+  \frac{\log\den(P_n)/n}{\log(d_n^5)/n}=0.9953,\ 0.9928,\ 0.9947,\ 0.9936
+  \quad\text{at } n=80,200,320,355,
+\]
+converging to $1$. The weight-$7$ descent ladder behaves identically:
+$\log\den(\Phat_n)/n$ divided by $5\log d_n/n$ is $0.9856$ at $n=140$, i.e.\ the descent exponent
+$5$ is tight.
+
+\begin{observation}\label{obs:kappa7} \VER{as tabulated}
+$\kappa=7$ is the honest denominator budget for the weight-$7$ primitive form, not a placeholder.
+There is no $d_n^2d_{2n}$-type structure lowering it: the analogue that can be measured is tight
+at its nominal value. (The slack members are $\den(s_n)\sim d_n^{1.95}$ and weight-$5$
+$\den(\Phat_n)\sim d_n^{3.95}$, but the binding constraint on a linear form is its constant term,
+and that is tight.)
+\end{observation}
+
+To pass at sector B one would need $\kappa<2.365$, i.e.\ $\den(P_n)\lesssim d_n^{2.365}$. The
+shortfall is $d_n^{4.635}\approx103^{\,n}$.
+
+\subsection{The worthiness numbers}\label{sec:gamma}
+With $C_1=\log\lambda_{\max}$, $C_0=\log\rho(I')$, $C_2=\kappa$, the two standard measures are
+\[
+  \gamma^{\mathrm{ratio}}=\frac{-C_0}{C_2},\qquad
+  \gamma^{\mathrm{worth}}=\frac{C_1-C_0}{C_1+C_2},
+\]
+which exceed $1$ simultaneously, both conditions being equivalent to $-C_0>C_2$. \PROVED. At
+weight $5$ the second reproduces Brown--Zudilin's printed symmetric-point worthiness
+$\gamma=0.777959763\ldots$ \QUOTED{\cite[\S2]{BZ}} \VER{8 digits}. At weight $7$:
+
+\begin{table}[h]
+\centering
+\caption{Weight-$7$ worthiness. $C_1=8.75293868604$, $C_2=\kappa=7$. \VER{12 digits}}
+\label{tab:gamma}
+\begin{tabular}{lrrr}
+\toprule
+ & $-C_0$ & $\gamma^{\mathrm{ratio}}$ & $\gamma^{\mathrm{worth}}$\\
+\midrule
+sector B (actual) & $2.36512689845$ & $0.337875271$ & $0.705777240$\\
+sector A (hypothetical) & $8.75293868604$ & $1.250419812$ & $1.111276932$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The exponent gap is $\kappa-(-C_0)=4.634873$ nats, a factor $e^{4.634873}=103.01$ per step. The
+margin is not close.
+
+\subsection{Rhin--Viola leverage, quantified}\label{sec:rv}
+The dimensionless invariant that a Rhin--Viola group \cite{RV96,RV01} moves is $(-C_0)/\kappa$.
+Measured at weight $5$ over the entire known orbit:
+\[
+\begin{aligned}
+  \text{symmetric point } \boldsymbol a=(1,\dots,1):\quad
+    &\frac{-C_0}{\kappa}=\frac{2.47237372}{5}=0.494475,\\[2pt]
+  \text{record point } \boldsymbol a=(8,16,10,15,12,16,18,13):\quad
+    &\frac{-C_0}{\kappa}=\frac{31.55296935}{49.60574813}=0.636075,
+\end{aligned}
+\]
+\VER{6 digits}, a maximal leverage factor of $1.286364$ ($+28.6\%$). Applying the same relative
+leverage to weight $7$ from sector B gives
+\[
+  \gamma_{5,7}\ \approx\ 0.337875\times1.286364\ =\ 0.434631,
+\]
+still less than half of $1$. Reaching $\gamma_{5,7}=1$ requires a factor $2.9597$ ($+196\%$).
+%% FIXED [MINOR rider]: the factor 6.84 is normalisation-dependent --- on the paper's other
+%% FIXED measure gamma^worth the same comparison reads 3.68x. Stated, since the conclusion does
+%% FIXED not depend on which measure is used.
+In additive terms, the group would buy $0.6773$ nats where $4.6349$ are needed --- a factor
+$6.84$ on the $\gamma^{\mathrm{ratio}}$ normalisation, or $3.68$ on $\gamma^{\mathrm{worth}}$;
+either way several times the total leverage the Rhin--Viola group is empirically worth
+at weight $5$. \VER{$12$ digits}
+
+\begin{corollary}\label{cor:norv}
+Asymmetric-orbit optimisation cannot close a sector-B gap. It is worth running only if a
+different sector is in play.
+\end{corollary}
+
+\subsection{Residual dependency, stated plainly}\label{sec:residual}
+Everything in this section is unconditional except the hypothesis $s,\Phat\in\Sol(L)$, which rests
+on two things.
+
+\emph{(i) $L$ is the true operator for $q_n$}: empirically certified on $74$ exact terms
+($70/70$ relations exactly zero) but not proved --- no creative-telescoping certificate exists.
+\VER{exact, 70 relations} \OPEN\ as a proof.
+
+\emph{(ii) An arithmetic certificate.} Propagating $s,\Phat,P,q$ exactly in $\QQ$ gives the
+denominator ledger
+\[
+  \den(s_n)\mid d_n^{5}\ \text{ for } 141/141,\qquad
+  \den(\Phat_n)\mid d_n^{5}\ \text{ for } 141/141,\qquad n=0,\dots,140 .
+\]
+The control experiment propagates three generic rational initial conditions through the same $L$:
+
+\begin{table}[h]
+\centering
+\caption{Denominator ledger versus generic solutions ($\log_{10}$ of denominators).
+\VER{exact}}
+\label{tab:ledger}
+\begin{tabular}{rrrrrrr}
+\toprule
+$n$ & $\den(s_n)$ & $\den(\Phat_n)$ & generic-1 & generic-2 & generic-3 & $d_n^5$\\
+\midrule
+$20$ & $14.5$ & $37.6$ & $63.3$ & $64.5$ & $64.1$ & $41.8$\\
+$40$ & $29.0$ & $74.2$ & $116.3$ & $117.6$ & $117.1$ & $78.6$\\
+$60$ & $47.2$ & $122.3$ & $180.1$ & $181.4$ & $180.9$ & $124.9$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The divisibility $\den\mid d_n^5$ holds $61/61$ for the true ladder and $4/61$ for every generic
+solution, the four being trivial small-$n$ cases. A degree-$19$ operator divides by $c_4(n)$ at
+every step, so a generic solution drags in the prime factors of $c_4(n)$ for all $n$ and its
+denominator overshoots $d_n^5$ by some $55$ digits at $n=60$. That the true $(s,\Phat)$ remain
+$d_n^5$-smooth for $141$ consecutive $n$ is evidence for $s,\Phat\in\Sol(L)$ of a strength we
+regard as decisive given (i), though it is evidence and not proof.
+
+The same test separates $P$: the $L$-propagated $P$ satisfies $\den(P_n)\nmid d_n^{7}$ for $101$
+of the $138$ indices $n=3,\dots,140$, the excess taking only the values $\{1,107,321=3\cdot107\}$,
+with $\den(P_n)\mid 321\,d_n^{7}$ for $141/141$. So the $L$-propagated $P$ is arithmetically
+clean but wrong: it obeys a bounded-constant $d_n^7$ law, yet the persistent prime $107$ ---
+absent from $q,s,\Phat$, which are strictly $d_n^5$-clean --- marks it as a different solution
+branch. The exclusion of $P$ from $\Sol(L)$ does not rest on the $107$: the propagated value
+$I'_3=43.71$ contradicts $I'_3=I_3+\zeta_2|I''_3|=3.5675\times10^{-5}$ to four significant
+figures, the latter following from a rigorous majorant $0<I_3\le3.0903\times10^{-9}$.
+\PROVED\ (given the ladder).
+
+\begin{remark}
+If $L$ itself were wrong, the entire characteristic-polynomial framework would collapse, sector A
+included; so no route to a sector-A pass runs through doubting $L$. We found no evidence
+whatsoever pointing toward sector A, and one new structural argument (Theorem \ref{thm:sector})
+ruling it out given the ladder.
+\end{remark}
+
+%% ==================================================================
+\section{Discussion: what the middle-root obstruction means}\label{sec:discussion}
+%% ==================================================================
+
+We state what we take the results to establish, and, separately, what they do not.
+
+\subsection{What is established}
+\begin{enumerate}[label=(\arabic*),leftmargin=2.4em]
+\item \emph{The Brown--Zudilin operator has a well-defined and computable $\kappa$-vector, and
+its first higher Frobenius constant has a pure $\zeta(5)$ primitive part.} The dictionary between
+irrationality constructions and the gamma-conjecture circle is therefore usable in both
+directions at weight $5$, and not only at weights $2$ and $3$.
+
+\item \emph{The purity defect of the family is Tate.} There is no unnamed constant in the middle
+of this construction. Theorem \ref{thm:defect} identifies the obstruction's magnitude
+($c=12/(2\pi i)^2$) and Corollary \ref{cor:cone} shows it is constant on the entire admissible
+cone. This closes a line of search rather than opening one, and we regard closing it as the more
+useful outcome: the eight-parameter family cannot be tuned to remove the impurity, because the
+impurity does not depend on the parameters.
+
+\item \emph{The obstruction is a counting phenomenon, conjecturally.} If (RPC) holds, then the
+number of rays is $1+\lfloor m/2\rfloor$ and the assignment of periods to rays is by depth. In
+that case a cellular family of weight $w\ge4$ \emph{must} place its purest forms off the minimal
+ray, and the toll $\Delta$ is not a defect of the construction but a structural feature of the
+depth filtration. The four-family verification (Table \ref{tab:rpc}) is evidence; the
+falsification conditions (F1)--(F4) are the way to test it, and each is a finite computation.
+
+\item \emph{At weight $7$ the same thing happens, and the margin is large.} Theorem
+\ref{thm:sector} excludes the fast sector by a positivity argument that needs no cancellation
+hypothesis. The measured gap is $4.635$ nats against a Rhin--Viola leverage empirically worth
+$0.677$ nats at the same normalisation. The weight-$7$ sector-B verdict is the \emph{generic}
+outcome of this construction, not bad luck: weight $5$ shows the identical dichotomy, and there
+too the smallest saddle would have proved irrationality while the primitive form provably does not
+ride it.
+\end{enumerate}
+
+\subsection{What is not established}
+The results say nothing about whether $\zeta(5)$ or $\zeta(7)$ is irrational, and nothing about
+whether \emph{some other} construction rides the minimal ray with a pure form. (RPC) as stated
+constrains cellular and Ap\'ery-like families with a single recurrence and a depth-graded period
+assignment; it does not preclude a construction outside that class. Nor do we claim the middle-root
+phenomenon is unavoidable in principle: what we claim is that it is stable across the two weights
+where it can currently be measured, and that within the eight-parameter cone it cannot be moved.
+
+\subsection{Where the leverage would have to come from}
+The measured numbers say where it would not. Orbit optimisation on $\mathcal M_{0,10}$ operates
+on $(-C_0)/\kappa$, and at weight $5$ the whole group is worth a factor $1.286$ on that invariant;
+weight $7$ needs $2.960$. The productive redirection is therefore not orbit search but a
+construction whose \emph{primitive} form rides the small saddle --- that is, an attack on the
+phenomenon $C_0=\log|\lambda_{\text{middle}}|$ rather than $\log|\lambda_{\min}|$ itself. Three
+concrete handles emerge from the computation.
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item \emph{The inhomogeneity of $\lambda_j(\mathrm{BZ})$ for $j\ge6$}
+(Observation \ref{obs:weights}). Its mechanism is \OPEN, and every natural structural hypothesis
+we could formulate is excluded (\S\ref{sec:exclusions}). Whatever explains the weight pattern
+%% FIXED [CRITICAL knock-on]: the "$-3$ recursion between successive off-diagonal coefficients"
+%% FIXED is the false form of Observation \ref{obs:weights}; restated at fixed weight.
+$\{j\}\cup\{3,\dots,j-3\}$ and the fixed-weight propagation constants $-3$ and $-3365/294$ is
+a genuine feature of a non-MUM Frobenius point and is not present in the rank-$2$ literature.
+\item \emph{The second condition of \cite[Def.~21]{BV}} for the Brown--Zudilin operator ---
+analyticity at $c$ of the $\sigma_c$-invariant solutions of $L^\vee$ --- is \OPEN, and its
+verification would put \S\ref{sec:kappavec} on a fully rigorous footing rather than the empirical
+licence of Observation \ref{obs:sufficient}.
+\item \emph{A primitive operator} $\Ltilde$ annihilating $I'$ at weight $7$ remains unhuntable by
+data fitting: there is no $P$ or $I'$ data to fit beyond $n=3$, and the residue and
+high-precision routes are both walled. The one $\Ltilde$-adjacent fact now available is that the
+$L$-propagated $P$ satisfies $\den(P_n)/d_n^7\in\{107,321\}$ constantly, so any $\Ltilde$ must
+differ from $L$ in a way that changes the constant-term arithmetic without changing $q,s,\Phat$.
+\end{enumerate}
+
+\subsection{A remark on evidence}
+Three of the findings above began as reported negatives that turned out to be under-ranged or
+mis-based: the ``not algebraic times $\pi^k$'' verdict on the connection constants (Remark
+\ref{rem:underranged}), the exclusion of $c$ from every period basis tried (\S\ref{sec:reciprocal}),
+and a spurious integer relation produced by a degenerate basis (Trap \ref{trap:basis}). In each
+case the earlier statement was true of the box that was searched. We have therefore attached to
+every exclusion in this paper the tolerance and the coefficient bound, and to every identification
+the digit count, and we recommend the practice.
+
+%% ==================================================================
+\appendix
+
+\section{Two traps}\label{app:traps}
+%% ==================================================================
+
+Both cost real time, and both generalise.
+
+\begin{trap}[Degenerate bases in integer-relation search]\label{trap:basis}
+An integer-relation algorithm returns a relation among the vectors it is given. If the basis has
+an internal relation, the algorithm will find \emph{that}, with coefficient zero on the target,
+and the output looks like a discovery.
+
+Two instances occurred here.
+\begin{enumerate}[label=(\alph*),leftmargin=2.2em]
+\item \emph{Zeta-value bases.} A weight-$\le8$ basis containing both $\zeta(8)$ and $\zeta(2)^4$
+returned the relation $175\zeta(8)=24\zeta(2)^4$ with coefficient $0$ on the target. \PROVED\
+(exact: $\zeta(8)=\tfrac{24}{175}\zeta(2)^4$.)
+\item \emph{Logarithm bases.} For the Brown--Zudilin singular cubic
+$z^3-188z^2-2368z+4$, the product of the roots is $-4$, so
+\[
+  \log|z_1|+\log|z_2|+\log|z_3|=\log 4
+\]
+\PROVED\ (exact). Including all three logarithms in a search basis alongside $\log 2$ is therefore
+degenerate, and it produced a spurious zero-on-target hit until $\log|z_3|$ was dropped.
+\end{enumerate}
+
+\emph{Rule.} Run the relation finder on the basis alone, first. If it returns anything, the basis
+is degenerate and any subsequent hit must be re-read.
+\end{trap}
+
+\begin{trap}[Resonant Frobenius normalisation]\label{trap:resonance}
+The weight-$7$ operator has indicial polynomial \eqref{eq:z7indicial}, which contains the factor
+$s^{7}(s-1)^{3}$: the exponents $0$ and $1$ are both present and \emph{resonant}. Consequently
+$a_n(s)$ has a triple pole at $s=0$, and the Frobenius deformation is not defined by the naive
+normalisation $a_0=1$.
+
+%% FIXED [MINOR]: "not quoted anywhere in this paper" appeared three lines after quoting two of
+%% FIXED them. Restated as: not used anywhere, and quoted only here, as the illustration.
+Clearing the pole with $a_0(s)=s^3$ produces clean-looking values
+$\lambda_2=-\tfrac{292}{55}\zeta(2)$ and $\lambda_3=\tfrac{432}{55}\zeta(3)$, and then
+contaminated values from $\lambda_4$ onward: the base point has slid to the exponent-$1$
+solution. \emph{The weight-$7$ $\kappa$-values are therefore quarantined: the two displayed in
+the previous sentence are quoted here as the illustration of the trap and nowhere else, and no
+result of this paper uses any of them.} The (RPC) test on the weight-$7$ family (Table \ref{tab:rpc}, row 4)
+rests only on the exact symbolic facts $m=7$ and $r=4$, both of which are independent of the
+normalisation. Handling the resonance correctly requires the resonant Frobenius basis and is
+\OPEN.
+\end{trap}
+
+%% ==================================================================
+\section{Computational record}\label{app:record}
+%% ==================================================================
+
+All computations were performed in exact rational arithmetic where the statement is exact
+(Python \texttt{fractions}, \texttt{sympy}) and in arbitrary-precision floating point otherwise
+(\texttt{mpmath} with the \texttt{gmpy2} backend). The following table summarises the run
+parameters behind each numerical claim.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.30\textwidth}p{0.62\textwidth}}
+\toprule
+claim & parameters \\
+\midrule
+Instrument validation, \S\ref{sec:validate} &
+  $\dps=220$, $K=13$, $M=130$, $n\in\{300,400\}$; self-agreement $208$--$210$ digits;
+  residuals $<10^{-219}$ \\
+Errata, Observations \ref{obs:err1}--\ref{obs:err2} &
+  as above; discrepancies $4.6\times10^{-219}$ and $5.3\times10^{-220}$ against the corrected
+  forms \\
+$\kappa$-vector, Theorem \ref{thm:kappavec} &
+  $\dps=520$, $K=16$, $M=260$, $n\in\{700,800\}$; self-agreement $434$ digits; relation
+  tolerance $10^{-380}$, coefficient bound $10^{14}$; residuals $10^{-440}$--$10^{-451}$
+  in-session. The archived \texttt{kappas\_hi.json} is written at $420$ digits, so a recheck
+  from the archive alone floors at $\approx10^{-419}$ \\
+Structural exclusions, \S\ref{sec:exclusions} &
+  tolerance $10^{-195}$, bound $10^{12}$ (shapes); tolerance $10^{-380}$, bound $10^{14}$
+  (graded bases, $j\le16$) \\
+Gamma-deformation exclusion, \S\ref{sec:gammadef} &
+  tolerance $10^{-193}$, bound $10^{14}$, $j=5,\dots,13$ \\
+Reciprocal-period exclusion &
+  tolerance $10^{-193}$, bound $10^{10}$, $j=2,\dots,8$ \\
+Defect certificate, Table \ref{tab:cert} &
+  exact ladders $n\le360$, $\dps=2600$; $441$ digits at $n=360$; slope $1.22701$ digits per $n$ \\
+Connection constants, Table \ref{tab:conn} &
+  exact ladders $n\le520$; $I$ formed at $\dps=3200$; Stokes limit at $\dps=400$, $M=200$;
+  $287$--$322$ digits \\
+Connection identifications, \S\ref{sec:conn} &
+  Theorem \ref{thm:det} at relative difference $1.1\times10^{-260}$; \eqref{eq:AQ} at $261$
+  digits; cubics at tolerance $10^{-230}$, bound $10^{16}$ \\
+$\Gamma$ exclusions, Observation \ref{obs:gammaverdict} &
+  $s\in\{3,4,5,6,8,12,24\}$, tolerance $10^{-240}$, bound $10^{6}$; and bound $10^{20}$ for
+  $A_Q\pi^{e}\in\QQ(\lambda_3)$ \\
+Weight-$7$ ladder, \S\ref{sec:weight7} &
+  exact $\QQ$ propagation $n=0,\dots,140$; $I''$ evaluated at $\dps=4.9n+100$; weight-$5$
+  denominators on $361$ exact terms \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%% ==================================================================
+\section{Citation discipline}\label{app:cites}
+%% ==================================================================
+
+Every reference below was checked against a copy of the source: the bibliographic data were read
+from the published text or preprint, and where a value or a statement is attributed to a specific
+location in a source, that location was re-read. Three references were added late, and the
+following remarks record how they are used:
+\begin{itemize}[leftmargin=1.6em]
+\item \cite{BeVl25} --- cited only in \S\ref{sec:padic}, for orientation; nothing in this paper
+depends on it. The statement attributed to it there is its Theorem 1.4 together with its
+equation (2), $\log\Gamma_p(x)=\Gamma_p'(0)x-\sum_{m\ge2}\zeta_p(m)x^m/m$.
+\item \cite{BT33} --- for the classical theory of formal solutions at an irregular
+singular point of a difference equation. The construction we use is derived from scratch in
+Proposition \ref{prop:birkhoff}, so the citation is attributional only.
+\item \cite{FBA99} --- for the integer-relation algorithm. All identifications reported
+here were re-verified against their closed forms after detection, at the stated precisions, so no
+claim depends on the algorithm's provenance.
+\end{itemize}
+
+%% ==================================================================
+\begin{thebibliography}{99}
+
+\bibitem{Ap79}
+R.~Ap\'ery, \emph{Irrationalit\'e de $\zeta(2)$ et $\zeta(3)$},
+Ast\'erisque \textbf{61} (1979), 11--13.
+
+\bibitem{Be79}
+F.~Beukers, \emph{A note on the irrationality of $\zeta(2)$ and $\zeta(3)$},
+Bull. London Math. Soc. \textbf{11} (1979), 268--272.
+
+\bibitem{BV}
+S.~Bloch and M.~Vlasenko, \emph{Gamma functions, monodromy and Frobenius constants},
+Comm. Number Theory Phys. \textbf{15} (2021), no.~1, 91--147;
+\texttt{arXiv:1908.07501}. DOI \texttt{10.4310/CNTP.2021.v15.n1.a3}.
+
+\bibitem{Br16}
+F.~Brown, \emph{Irrationality proofs for zeta values, moduli spaces and dinner parties},
+Mosc. J. Comb. Number Theory \textbf{6} (2016), no.~2-3, 102--165;
+\texttt{arXiv:1412.6508}.
+
+\bibitem{Br26}
+F.~Brown, \emph{Mellin transforms, transfinite diameter and rational approximations of
+integrals}, preprint (2026); \texttt{arXiv:2604.20741}.
+
+\bibitem{BZ}
+F.~Brown and W.~Zudilin, \emph{On cellular rational approximations to $\zeta(5)$},
+preprint (2022); \texttt{arXiv:2210.03391}.
+
+\bibitem{Fi04}
+S.~Fischler, \emph{Irrationalit\'e de valeurs de z\^eta (d'apr\`es Ap\'ery, Rivoal, \dots)},
+S\'eminaire Bourbaki 910, Ast\'erisque \textbf{294} (2004), 27--62;
+\texttt{arXiv:math/0303066}.
+
+\bibitem{Fi21}
+S.~Fischler, \emph{Linear independence of odd zeta values using Siegel's lemma},
+preprint (2021); \texttt{arXiv:2109.10136}.
+
+\bibitem{FSZ}
+S.~Fischler, J.~Sprang and W.~Zudilin, \emph{Many odd zeta values are irrational},
+Compos. Math. \textbf{155} (2019), no.~5, 938--952; \texttt{arXiv:1803.08905}.
+
+\bibitem{Gol}
+V.~Golyshev, \emph{Deresonating a Tate period}, preprint (2009);
+\texttt{arXiv:0908.1458}.
+
+\bibitem{GKS}
+V.~Golyshev, M.~Kerr and T.~Sasaki, \emph{Ap\'ery extensions},
+J. London Math. Soc. \textbf{109} (2024), e12825; \texttt{arXiv:2009.14762}.
+
+\bibitem{GZ1}
+V.~Golyshev and D.~Zagier, \emph{Proof of the gamma conjecture for Fano $3$-folds of Picard
+rank one}, Izv. Math. \textbf{80} (2016), 24--49. DOI \texttt{10.1070/IM8343}.
+
+\bibitem{GZ2}
+V.~Golyshev and D.~Zagier, \emph{Interpolated Ap\'ery numbers, quasiperiods of modular forms,
+and motivic gamma functions}, in: Integrability, Quantization, and Geometry II,
+Proc. Sympos. Pure Math. \textbf{103.2}, Amer. Math. Soc. (2021), 281--301.
+
+\bibitem{Kerr}
+M.~Kerr, \emph{Unipotent extensions and differential equations (after Bloch--Vlasenko)},
+preprint (2020); \texttt{arXiv:2008.03618}.
+
+\bibitem{Ko10}
+C.~Koutschan, \emph{HolonomicFunctions (user's guide)}, RISC Report 10-01 (2010).
+
+\bibitem{LZ}
+L.~Lai and P.~Zhou, \emph{At least two of $\zeta(5),\zeta(7),\dots,\zeta(35)$ are irrational},
+preprint (2021); \texttt{arXiv:2103.00904}.
+
+\bibitem{Pa15}
+E.~Panzer, \emph{Algorithms for the symbolic integration of hyperlogarithms with applications
+to Feynman integrals}, Comput. Phys. Comm. \textbf{188} (2015), 148--166.
+
+\bibitem{RV96}
+G.~Rhin and C.~Viola, \emph{On a permutation group related to $\zeta(2)$},
+Acta Arith. \textbf{77} (1996), no.~1, 23--56.
+
+\bibitem{RV01}
+G.~Rhin and C.~Viola, \emph{The group structure for $\zeta(3)$},
+Acta Arith. \textbf{97} (2001), no.~3, 269--293.
+
+\bibitem{Riv}
+T.~Rivoal, \emph{La fonction z\^eta de Riemann prend une infinit\'e de valeurs irrationnelles
+aux entiers impairs}, C. R. Acad. Sci. Paris \textbf{331} (2000);
+\texttt{arXiv:math/0008051}.
+
+\bibitem{BR01}
+K.~Ball and T.~Rivoal, \emph{Irrationalit\'e d'une infinit\'e de valeurs de la fonction z\^eta
+aux entiers impairs}, Invent. Math. \textbf{146} (2001), no.~1, 193--207.
+
+\bibitem{RV}
+B.~Roy and M.~Vlasenko, \emph{Frobenius constants for families of elliptic curves},
+Q. J. Math. \textbf{74} (2023), no.~4, 1571--; \texttt{arXiv:2206.15181}.
+
+\bibitem{Zu02}
+W.~Zudilin, \emph{A third-order Ap\'ery-like recursion for $\zeta(5)$},
+Mat. Zametki \textbf{72} (2002), no.~5, 796--800;
+English transl., Math. Notes \textbf{72} (2002), no.~5-6, 733--737.
+
+\bibitem{Zu02a}
+W.~Zudilin, \emph{Irrationality of values of the Riemann zeta function},
+Izv. Ross. Akad. Nauk Ser. Mat. \textbf{66} (2002), no.~3, 49--102;
+English transl., Izv. Math. \textbf{66} (2002), no.~3, 489--542;
+\texttt{arXiv:math/0104249}.
+
+\bibitem{Zu04}
+W.~Zudilin, \emph{Arithmetic of linear forms involving odd zeta values},
+J. Th\'eor. Nombres Bordeaux \textbf{16} (2004), 251--291;
+\texttt{arXiv:math/0206176}.
+
+\bibitem{Zu18}
+W.~Zudilin, \emph{One of the odd zeta values from $\zeta(5)$ to $\zeta(25)$ is irrational.
+By elementary means}, SIGMA \textbf{14} (2018), Art.~028, 8~pp.;
+\texttt{arXiv:1801.09895}.
+
+\bibitem{BeVl25}
+F.~Beukers and M.~Vlasenko, \emph{Frobenius structure and $p$-adic zeta values},
+Adv. Math. \textbf{480} (2025), Part~C, Paper No.~110512;
+\texttt{arXiv:2302.09603}. DOI \texttt{10.1016/j.aim.2025.110512}.
+
+\bibitem{BT33}
+G.~D.~Birkhoff and W.~J.~Trjitzinsky, \emph{Analytic theory of singular difference equations},
+Acta Math. \textbf{60} (1933), 1--89.
+\emph{Cited attributionally only --- the construction used here is derived in Proposition
+\ref{prop:birkhoff}.}
+
+\bibitem{FBA99}
+H.~R.~P.~Ferguson, D.~H.~Bailey and S.~Arno, \emph{Analysis of PSLQ, an integer relation
+finding algorithm}, Math. Comp. \textbf{68} (1999), no.~225, 351--369; the algorithm was
+introduced in H.~R.~P.~Ferguson and D.~H.~Bailey, \emph{A polynomial time, numerically stable
+integer relation algorithm}, RNR Technical Report RNR-91-032, NASA Ames (1992).
+
+\end{thebibliography}
+
+\end{document}

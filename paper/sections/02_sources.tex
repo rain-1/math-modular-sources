@@ -1,0 +1,792 @@
+\section{Modular Ap\'ery systems and their sources}\label{sec:sources}
+
+This section fixes the objects, states the Source Theorem (Theorem~A) and the
+limit theorem (Theorem~B), and records the Hecke linear algebra that produces
+new sources on demand.  Every statement carries its evidence class:
+\Proved{} means a proof exists and is cited to the place where it is written
+out; \VerifiedR{range} means an exact or high-precision finite computation
+over the stated range, which is never presented as a proof; \Open{} is open.
+
+\subsection{Definitions}\label{sec:defs}
+
+Write $\tht=t\,d/dt$ and $\thq=q\,d/dq$, and let $d_n=\lcm(1,\dots,n)$.
+
+\begin{definition}[Ap\'ery-like recurrence, sporadic families]\label{def:sporadic}
+A recurrence of the shape
+\begin{align}
+\text{(R2)}\qquad (n+1)^2A_{n+1}&=(an^2+an+b)A_n-c\,n^2A_{n-1},
+\label{eq:R2}\\
+\text{(R3)}\qquad (n+1)^3A_{n+1}&=(2n+1)(an^2+an+b)A_n-n(cn^2+d)A_{n-1}
+\label{eq:R3}
+\end{align}
+is \emph{Ap\'ery-like} when the solution with $A_0=1$, $A_1=b$ is an integer
+sequence.  The known solutions form the \emph{sporadic} list: six of type
+(R2) (Zagier's $\mathbf A,\dots,\mathbf F$), six of type (R3) with $d=0$
+(Almkvist--Zudilin's $\alpha$ (Domb), $\gamma$ (Ap\'ery's own), $\delta$,
+$\varepsilon$, $\zeta$, $\eta$), and Cooper's three further (R3) rows with
+$d\neq0$ ($s_7,s_{10},s_{18}$), which are of \emph{operator} order two despite
+the cubic-looking recurrence \cite{Zagier2009,AlmkvistZudilin2006,Cooper2012}.
+Throughout, $r\in\{2,3\}$ denotes the order of the generating operator $L$
+(so $r=2$ for the nine second-order families, $r=3$ for the six third-order
+ones), and $w=r-1$ is the weight of the parametrizing form.
+\end{definition}
+
+\begin{definition}[nome, parametrizing form, rectification]\label{def:nome}
+Let $L$ be an order-$r$ operator in $\tht$ over $\Q(t)$ with Frobenius basis
+$y_0=1+O(t)$, $y_1=y_0\log t+g$, \dots\ at $t=0$.  The \emph{nome} is
+$q=t\exp(g/y_0)$, so that $\log q=y_1/y_0$; write $t(q)$ for its inverse and
+$F(q)=y_0(t(q))$ for the \emph{parametrizing form}.  Say $L$ is
+\emph{exactly rectified} if
+\begin{equation}\label{eq:rect}
+L=C(t)\cdot F\cdot\thq^{\,r}\cdot F^{-1}
+\end{equation}
+for a rational function $C$; equivalently the kernel of $L$ is
+$\operatorname{span}\{F,F\log q,\dots,F(\log q)^{r-1}/(r-1)!\}$.  For $r\ge3$
+this is strictly stronger than maximal unipotent monodromy
+\cite[\S1]{ProjAnchors}.
+\end{definition}
+
+A \emph{modular Ap\'ery system} is a triple $(\Gamma,t,F)$ in which $t$ is a
+modular function on $\Gamma$ with $t=q+O(q^2)$, $F$ a holomorphic modular form
+of weight $w$ with $F=1+O(q)$, and $A_n$ is defined by $F=\sum_nA_nt^n$.  Since
+$t\in q\Z[[q]]$ with leading coefficient $1$, triangular peeling against the
+powers of $t$ makes $A_n\in\Z$ automatic; integrality is therefore \emph{not}
+the discriminating condition in this family, the recurrence is
+\cite[\S1]{ProjSporadicSearch}.
+
+\begin{definition}[companion, source]\label{def:companion}
+The \emph{normalized companion} is the unique log-free power series $y_B$ with
+$y_B(0)=0$ and $L(y_B)=t$; equivalently $B_n=[t^n]y_B$ is the solution of the
+recurrence with $B_0=0$, $B_1=1$.  The \emph{companion source} is
+\begin{equation}\label{eq:sourcedef}
+\Phi:=\frac{t}{C(t)F}=\frac{t\,\sigma^{r}}{P_r(t)\,F},
+\qquad \sigma:=\frac{\thq t}{t},
+\end{equation}
+where $P_2(t)=1-at+ct^2$ and $P_3(t)=1-2at+ct^2$ are the leading symbols.
+\end{definition}
+
+\begin{theorem}[companion inversion; {\cite[Thm.~2.4]{ProjAnchors}}]
+\label{thm:inversion}
+\Proved{} If $L$ is exactly rectified as in \eqref{eq:rect} then
+\[
+y_B=F\cdot\thq^{-r}\Bigl(\frac{t}{C(t)F}\Bigr)=F\,\thq^{-r}\Phi ,
+\]
+where $\thq^{-1}$ is the constant-free antiderivative
+$\sum b_mq^m\mapsto\sum(b_m/m)q^m$.  Consequently
+$B_n=[t^n]\,F\,\thq^{-r}\Phi$ for all $n\ge0$.
+\end{theorem}
+
+\begin{proof}[Proof {\rm(\cite[\S2]{ProjAnchors})}]
+The displayed series is log-free and vanishes at $t=0$, and
+$L(\cdot)=CF\thq^r(F^{-1}\cdot)=CF\cdot t/(CF)=t$ by \eqref{eq:rect}.  Two
+lemmas identify it with $y_B$: a boundary-defect computation shows
+$L(y_B)=t$ exactly (the coefficients of $t^m$, $m\neq1$, are instances of the
+recurrence, and the coefficient of $t$ is $1^rB_1-(\cdots)B_0=1$), and a
+uniqueness statement shows that a log-free $y$ with $y(0)=0$ and $L(y)=t$ is
+unique, since two such differ by a log-free kernel element vanishing at $0$
+while the log-free kernel is $\Q y_0$ with $y_0(0)=1$.
+\end{proof}
+
+\begin{theorem}[rectification for the fifteen; {\cite[Thm.~3.3, Thm.~3.5]{ProjAnchors}}]
+\label{thm:rect15}
+\Proved{} Every one of the fifteen sporadic operators is exactly rectified,
+with $C=P_r/\sigma^r$.  For $r=2$ this is Frobenius theory.  For $r=3$ each of
+the six operators equals $t^3P_3(t)$ times the symmetric square of the explicit
+second-order operator
+\[
+\widetilde D=\tht^2-t\Bigl(2a\tht^2+a\tht+\tfrac b2\Bigr)
++c\,t^2\Bigl(\tht+\tfrac12\Bigr)^2 ,
+\]
+by exact operator identities in $\Q(t)$; if $u_0,u_1$ is a Frobenius basis of
+$\widetilde D$ then $F=u_0^2$, $u_1/u_0=\log q$, and the kernel of $L$ is
+$\{u_0^2,u_0u_1,u_1^2/2\}=\{F,F\log q,\tfrac12F\log^2q\}$.
+\end{theorem}
+
+Combining Theorems~\ref{thm:inversion} and \ref{thm:rect15} gives, for all
+fifteen families and all $n\ge0$,
+\begin{equation}\label{eq:uniformcompanion}
+B_n=[t^n]\;F\cdot\thq^{-r}\Phi,\qquad \Phi=\frac{t\sigma^r}{P_rF}.
+\end{equation}
+In classical language, $B$ is an \emph{Eichler integral} of $\Phi$: with
+$\Phi=\sum_{m\ge1}c(m)q^m$,
+\begin{equation}\label{eq:Theta}
+\Theta:=\thq^{-r}\Phi=\sum_{m\ge1}\frac{c(m)}{m^{r}}\,q^m,
+\qquad y_B(t(q))=F(q)\Theta(q).
+\end{equation}
+The \emph{denominator exponent} of the row is the least $k$ with
+$d_n^kB_n\in\Z$ for all $n$; the $r$ nominal integrations of
+\eqref{eq:uniformcompanion} give $k\le r$, and free integrations can lower it
+(\S\ref{sec:free}).
+
+\subsection{Theorem A: the Source Theorem}\label{sec:thmA}
+
+The quotient \eqref{eq:sourcedef} looks opaque.  It is not: it collapses.
+
+\begin{proposition}[collapse of the source; {\cite[Prop.~2.1]{ProjEisenstein}}]
+\label{prop:collapse}
+\Proved{} For both operator families, in the canonical coordinate,
+\begin{equation}\label{eq:collapse}
+\boxed{\ \Phi=F\,\thq t.\ }
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Write $K=\thq\log t=\sigma$.  For $L_2$, the Wronskian of $F$ and $F\log q$ is
+$F^2\,d\log q/dt=1/(tP_2(t))$, with the normalization fixed at $t=0$; hence
+$K=P_2F^2$ and
+$\Phi=t(P_2F^2)^2/(P_2F)=tP_2F^3=tKF=F\,\thq t$.  For $L_3$, the Wronskian of
+the two solutions of $\widetilde D$ is $1/(t\sqrt{P_3})$; since $F=u_0^2$ this
+gives $K=F\sqrt{P_3}$, i.e.\ $K^2=P_3F^2$, and
+$\Phi=tK^3/(P_3F)=tKF=F\,\thq t$.
+\end{proof}
+
+Since $\thq t$ is a meromorphic modular form of weight $2$ and $F$ has weight
+$w=r-1$, \eqref{eq:collapse} predicts $\wt\Phi=r+1$.  What is not predicted is
+the following.
+
+\begin{namedthm}[Source Theorem]\label{thm:A}
+\Proved{} \cite{ProjEisenstein}.  For each of the twelve modularly
+identifiable sporadic families
+\[
+\mathbf A,\mathbf B,\mathbf C,\mathbf D,\mathbf E,\mathbf F,\quad
+\alpha,\gamma,\delta,\varepsilon,\zeta,\eta,
+\]
+the companion source is $\Phi=F\,\thq t$, and it is exactly the holomorphic
+Eisenstein series of weight $r+1$ on the level of the family listed in
+Table~\ref{tab:sources}.  In particular the cuspidal projection of every one of
+these twelve sources is zero.
+\end{namedthm}
+
+\begin{proof}[Structure of the proof {\rm(\cite{ProjEisenstein})}]
+Proposition~\ref{prop:collapse} identifies the source.  For the eleven
+families whose $(t,F)$ are ordinary eta quotients, Ligozat's criterion supplies
+the weight, character and cusp orders, and in particular the pole cancellation
+$\ord_{1/c}F=-\ord_{1/c}t$ at every cusp, so that $F\thq t=tFK$ is holomorphic
+everywhere.  That the displayed eta quotients are the \emph{canonical}
+parametrization --- rather than forms whose first coefficients happen to agree
+--- is proved by two small holomorphic identities, a normalized Wronskian
+identity ($K=P_2F^2$, resp.\ $K^2=P_3F^2$) and a Rankin--Cohen form
+$H_2=H_3=0$ of the differential equation, each verified by exact rational
+Fourier arithmetic through its Sturm bound (bounds $\le36$; the largest are
+$\mathbf B$ and $\eta$).  The source identity $F\thq t=E$ is then a third
+Sturm check in $M_{r+1}(\Gamma_0(N),\chi_F)$ (bounds $\le18$).  The remaining
+family $\mathbf D$ is treated on $\Gamma_1(5)$ using Zagier's Rogers--Ramanujan
+parametrization \cite{Zagier2009}: there $\Phi^2=t\,\eta_1^9\eta_5^3$ is a
+holomorphic weight-six form, $E_{\mathbf D}^2$ lies in the same space, and the
+weight-six Sturm bound $12$ on $\Gamma_1(5)$ converts a finite coefficient
+check into the identity $\Phi^2=E_{\mathbf D}^2$; both series begin with $q$,
+so $\Phi=E_{\mathbf D}$.
+\end{proof}
+
+\begin{table}[t]
+\caption{The twelve companion sources $\Phi=\sum_{m\ge1}c(m)q^m$, and the
+Dirichlet series of the associated $L$-function.  Here
+$\sigma_\chi^{(k)}(m)=\sum_{d\mid m}\chi(m/d)d^k$ (inner placement),
+$\widetilde\sigma_\chi^{(k)}(m)=\sum_{d\mid m}\chi(d)d^k$ (outer),
+$\sigma_3(m)=\sum_{d\mid m}d^3$, and $\sigma(m/k):=0$ unless $k\mid m$;
+$\psi_1,\psi_2$ are the real and imaginary parts of the quartic character
+mod $5$ normalized by $\chi(2)=i$.  Weight is $r+1$.  \Proved{}
+(Theorem~\ref{thm:A}).}
+\label{tab:sources}
+\renewcommand{\arraystretch}{1.25}
+\small
+\begin{tabular}{@{}c c c >{\raggedright\arraybackslash}p{6.6cm} c@{}}
+\toprule
+fam & $r$ & $N$ & $c(m)$ & $L(\Phi,s)$\\
+\midrule
+$\mathbf A$ & 2 & 6 &
+$\widetilde\sigma_{\chim3}^{(2)}(m)-\widetilde\sigma_{\chim3}^{(2)}(m/2)$
+& $(1-2^{-s})\zeta(s)L(\chim3,s-2)$\\
+$\mathbf B$ & 2 & 36 &
+$\sigma_{\chim3}^{(2)}(m)-6\sigma_{\chim3}^{(2)}(m/2)-8\sigma_{\chim3}^{(2)}(m/4)$
+& $(1-6\cdot2^{-s}-8\cdot4^{-s})L(\chim3,s)\zeta(s-2)$\\
+$\mathbf C$ & 2 & 6 &
+$\sigma_{\chim3}^{(2)}(m)-8\sigma_{\chim3}^{(2)}(m/2)$
+& $(1-8\cdot2^{-s})L(\chim3,s)\zeta(s-2)$\\
+$\mathbf D$ & 2 & 5 &
+$\sum_{d\mid m}(\psi_1(d)-2\psi_2(d))d^2$
+& $(\tfrac12+i)\zeta(s)L(\chi,s-2)+\text{c.c.}$\\
+$\mathbf E$ & 2 & 8 &
+$\sigma_{\chim4}^{(2)}(m)-8\sigma_{\chim4}^{(2)}(m/2)$
+& $(1-8\cdot2^{-s})\beta(s)\zeta(s-2)$\\
+$\mathbf F$ & 2 & 12 &
+$\sigma_{\chim3}^{(2)}(m)-7\sigma_{\chim3}^{(2)}(m/2)-8\sigma_{\chim3}^{(2)}(m/4)$
+& $(1-7\cdot2^{-s}-8\cdot4^{-s})L(\chim3,s)\zeta(s-2)$\\[2pt]
+$\alpha$ & 3 & 12 &
+$\sigma_3(m)-17\sigma_3(m/2)-9\sigma_3(m/3)+16\sigma_3(m/4)+153\sigma_3(m/6)
+-144\sigma_3(m/12)$
+& $P_\alpha(s)\,\zeta(s)\zeta(s-3)$\\
+$\gamma$ & 3 & 6 &
+$\sigma_3(m)-28\sigma_3(m/2)+63\sigma_3(m/3)-36\sigma_3(m/6)$
+& $(1-28\cdot2^{-s}+63\cdot3^{-s}-36\cdot6^{-s})\zeta(s)\zeta(s-3)$\\
+$\delta$ & 3 & 12 &
+$\sigma_3(m)-14\sigma_3(m/2)-\sigma_3(m/3)+16\sigma_3(m/4)+14\sigma_3(m/6)
+-16\sigma_3(m/12)$
+& $P_\delta(s)\,\zeta(s)\zeta(s-3)$\\
+$\varepsilon$ & 3 & 8 &
+$\sigma_3(m)-21\sigma_3(m/2)+84\sigma_3(m/4)-64\sigma_3(m/8)$
+& $(1-2^{-s})(1-4\cdot2^{-s})(1-16\cdot2^{-s})\zeta(s)\zeta(s-3)$\\
+$\zeta$ & 3 & 9 &
+$\sum_{d\mid m}\chim3(d)\chim3(m/d)d^3$
+& $L(\chim3,s)L(\chim3,s-3)$\\
+$\eta$ & 3 & 20 &
+$\sigma_{\chi_5}^{(3)}(m)-14\sigma_{\chi_5}^{(3)}(m/2)-16\sigma_{\chi_5}^{(3)}(m/4)$
+& $(1-14\cdot2^{-s}-16\cdot4^{-s})L(\chi_5,s)\zeta(s-3)$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three remarks on Table~\ref{tab:sources}.  First, the normalization
+$\Phi=q+O(q^2)$ is forced by $t=q+O(q^2)$, $F=1+O(q)$, $P=1+O(t)$; the constant
+terms of the Eisenstein combinations therefore cancel identically, which they
+do in every family, a check not part of the fitted data.  Second, the $\gamma$
+row is, up to normalization,
+$\tfrac1{240}(-E_4(q)+28E_4(q^2)-63E_4(q^3)+36E_4(q^6))$, exactly Beukers'
+weight-four level-six series for Ap\'ery's $\zeta(3)$ case \cite{Beukers1987},
+here re-derived from the recurrence with no classical input; $\mathbf D$
+likewise reproduces the $\Gamma_1(5)$ weight-three picture for $\zeta(2)$.
+These two are controls.  Third, $\zeta$ is the cleanest object in the table:
+the primitive $(\chim3,\chim3)$-Eisenstein newform of weight $4$ and level $9$,
+with coefficient exactly $1$.
+
+\begin{remark}[the $L$-column]
+The right-hand column of Table~\ref{tab:sources} is the Dirichlet-series
+factorization of a divisor convolution: if
+$c(m)=\sum_{d\mid m}\chi_1(d)\chi_2(m/d)d^{k}$ then
+$\sum_mc(m)m^{-s}=L(\chi_1,s-k)L(\chi_2,s)$, and the oldform coefficients
+contribute the finite Euler-type factor $P_C(s)=\sum_dc_dd^{-s}$
+(\S\ref{sec:hecke}).  For $\alpha$ and $\delta$ the finite factors are
+$P_\alpha(s)=1-17\cdot2^{-s}-9\cdot3^{-s}+16\cdot4^{-s}+153\cdot6^{-s}
+-144\cdot12^{-s}$ and $P_\delta(s)=1-14\cdot2^{-s}-3^{-s}+16\cdot4^{-s}
++14\cdot6^{-s}-16\cdot12^{-s}$.  This is the conceptual answer to why the
+sporadic limit column consists of zeta and Dirichlet $L$-values: because the
+sources are Eisenstein.
+\end{remark}
+
+\begin{remark}[Cooper's three; scope]\label{rem:cooper}
+Theorem~\ref{thm:A} asserts nothing about $s_7,s_{10},s_{18}$.  Their canonical
+nomes are integral ($t\in q\Z[[q]]$, no rescaling), but their $(t,F)$ are not
+eta quotients in that normalization, and no weight-$3$ or weight-$4$
+Eisenstein fit exists at levels $\{7,10,18\}$ and their divisors with the
+natural characters \ExcludedR{stated bases}.  The obstruction is the
+coordinate, not integrality; it would be wrong to say Cooper's three are not
+Eisenstein.  Finding the Atkin--Lehner normalization or hauptmodul in which
+they are eta-type is \Open{} \cite[Prob.~$\Phi$-2]{ProjSources}.
+\end{remark}
+
+\begin{remark}[novelty scope]\label{rem:novelty}
+The second-order side overlaps substantially with Zagier's period analysis:
+weight-three Eisenstein series and their Eichler integrals already occur
+explicitly there for the six (R2) rows \cite{Zagier2009}, and the $\gamma$ row
+is Beukers' \cite{Beukers1987}.  No discovery of Eisenstein behaviour is
+claimed for those individual families.  What is new in \cite{ProjEisenstein} is
+the uniform identification of the canonical companion source as $F\thq t$, the
+twelve-family source table in one normalization, and a single finite
+certification that simultaneously proves canonicality of the eta
+parametrizations.
+\end{remark}
+
+\subsection{Theorem B: the Ap\'ery limit is a critical value}\label{sec:thmB}
+
+Let $t_c$ be the root of $P_r$ of smallest modulus and $q_c$ its nome.  In the
+$q$-coordinate the map $q\mapsto t(q)$ \emph{folds} at $q_c$: $dt/dq=0$ there
+and $t-t_c\simeq\kappa(q-q_c)^2$ with $\kappa\neq0$.  This is the modular
+reason for the square-root singularity of $t$.
+
+\begin{lemma}[fold connection lemma; {\cite[Lem.~4.1]{ProjSources}}]\label{lem:fold}
+\Proved{} Let $t(q)$ be analytic near $q_c$ with a simple fold there, and let
+$y_0\circ t=F$ and $y_B\circ t=F\Theta$ be analytic at $q_c$.  Then the
+singular parts of $y_0,y_B$ at $t_c$ are their odd parts under the local fold
+involution, and, provided $F'(q_c)\neq0$,
+\begin{equation}\label{eq:fold}
+\xi:=\lim_{n\to\infty}\frac{B_n}{A_n}
+=\frac{(y_B\circ t)'(q_c)}{(y_0\circ t)'(q_c)}
+=\Theta(q_c)+\frac{F(q_c)\,\Theta'(q_c)}{F'(q_c)} .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Locally at $q_c$ put $u=q-q_c$.  The involution $\iota$ with
+$t(\iota q)=t(q)$ is analytic, fixes $q_c$, and satisfies
+$\iota(u)=-u+O(u^2)$; linearizing it (Koenigs) we may take $\iota(v)=-v$ and
+$t-t_c=\kappa v^2$.  A function $h$ analytic at $q_c$ splits as
+$h^{\rm ev}+h^{\rm odd}$ with $h^{\rm ev}$ an analytic function of $v^2$,
+hence of $t$ --- the part regular at $t_c$ --- and $h^{\rm odd}$ equal to
+$\sqrt{t-t_c}$ times an analytic function of $t$ --- the square-root singular
+part.  If $y=g+\sqrt{1-t/t_c}\,h$ near $t_c$ with $g,h$ analytic and
+$h(t_c)\neq0$, singularity analysis gives
+$[t^n]y\sim-h(t_c)t_c^{-n}n^{-3/2}/(2\sqrt\pi)$, the analytic part
+contributing $O(\rho^{-n})$ with $\rho>|t_c|$.  The same prefactor occurs for
+$y_0$ and $y_B$, so $\xi=h_B(t_c)/h_0(t_c)$, which equals the ratio of full
+$q$-derivatives at $q_c$ because the even parts have vanishing $v$-derivative
+there and $dv/dq$ cancels.  Substituting $y_0\circ t=F$, $y_B\circ t=F\Theta$
+gives \eqref{eq:fold}.
+\end{proof}
+
+Two hypotheses do work here and are flagged: $F'(q_c)\neq0$ (visible from the
+eta formulas in every family), and analyticity of $\Theta$ at $q_c$, which for
+$|q_c|<1$ follows from $c(m)=O(m^{r+\epsilon})$.
+
+\begin{namedthm}[Ap\'ery limit $=$ critical value]\label{thm:B}
+Let a modular Ap\'ery system be exactly rectified with source $\Phi$ of weight
+$r+1$ and a simple fold at a real $q_c$ with $F'(q_c)\neq0$.  Then the limit
+$\xi=\lim B_n/A_n$ exists and is given by \eqref{eq:fold}.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.4em]
+\item \emph{Eisenstein source.}  For the twelve families of
+Theorem~\ref{thm:A}, $\Theta$ is the Eichler integral of an Eisenstein series
+whose Dirichlet series factors as in Table~\ref{tab:sources}, and $\xi$ is a
+rational multiple of a critical value of that factorization: $\zeta(3)$ for the
+trivial-character weight-four rows $\gamma,\alpha,\varepsilon$; $\zeta(2)$ for
+the trivial-character weight-three rows $\mathbf A,\mathbf D$;
+$L(\chim3,2)$ and $L(\chim3,3)$ for the $\chim3$-twisted rows
+$\mathbf C,\mathbf F,\zeta$; Catalan's $G=L(\chim4,2)$ for $\mathbf E$.
+\item \emph{Cuspidal source.}  For a source lying in $S_{r+1}$ and odd for the
+Fricke involution whose fixed point is the fold, $\xi$ is a rational multiple
+of $L(f,r)$, with no quasiperiod contribution.
+\end{enumerate}
+\end{namedthm}
+
+Part (i) is proved for the nine families with a real fold in the strong sense
+that both the source (Theorem~\ref{thm:A}) and the connection formula
+(Lemma~\ref{lem:fold}) are proved; what is \emph{not} written in general is
+the closed evaluation of \eqref{eq:fold} producing the rational prefactor
+($1/6$, $7/32$, $5/8$, \dots) uniformly.  The nine limits have been recomputed
+from the identified source alone
+\VerifiedR{numeric, series order $N=26$ with truncation tracked as
+$|q_c|^{N}$}: $\gamma\to\zeta(3)/6$ to $6.6\cdot10^{-15}$,
+$\varepsilon\to7\zeta(3)/32$ to $8.8\cdot10^{-13}$,
+$\alpha\to7\zeta(3)/24$ to $8.3\cdot10^{-8}$, $\mathbf D\to\zeta(2)/5$ to
+$3.7\cdot10^{-7}$, and $\zeta,\mathbf A,\mathbf C,\mathbf E,\mathbf F$ to
+between $4.7\cdot10^{-4}$ and $3.6\cdot10^{-2}$, the last five having $|q_c|$
+large enough that $|q_c|^{26}$ is itself of that order
+\cite[Tab.~2]{ProjSources}.  The right-hand column measures the geometry at
+that series order, not the theory.
+
+\begin{remark}[the three complex folds]\label{rem:complexfold}
+\Proved{} $\mathbf B,\delta,\eta$ are exactly the sporadic families whose
+$P(t)$ has a complex-conjugate pair of roots, with
+$\operatorname{disc}=-27,-128,-16$ and splitting fields
+$\Q(\sqrt{-3}),\Q(\sqrt{-2}),\Q(i)$.  Two dominant singularities of equal
+modulus and non-real ratio make $B_n/A_n$ spiral; that is all ``no limit''
+means.  The connection value \eqref{eq:fold} is still defined at complex
+$q_c$, and the resulting canonical constants are recorded to $15$, $39$ and
+$33$ digits \VerifiedR{numeric, $N=60$, dps $80$}; no rational relation was
+found for them over natural $L$-value bases
+\ExcludedR{stated basis, max coefficient $10^{6}$--$10^{7}$}.  Recognizing
+$\xi_\delta$ in closed form is \Open{} \cite[Prob.~$\Phi$-1]{ProjSources}.
+\end{remark}
+
+\subsubsection*{The cuspidal case: the Domb apparatus}
+
+Part (ii) of Theorem~\ref{thm:B} is not vacuous: it is realized, on Domb's
+curve, by a deliberately manufactured cuspidal source \cite{ProjDomb}.
+
+\begin{proposition}[the fold is the Fricke point; {\cite[Prop.~5.1]{ProjDomb}}]
+\label{prop:dombfold}
+\Proved{} For the family $\alpha$ (Domb), $P_\alpha(t)=1-20t+64t^2=(1-4t)(1-16t)$,
+level $12$, the dominant fold is $\tau_{12}=i/\sqrt{12}$, with
+$t_c=1/16$ and conjugate root $t_c'=1/4$.
+\end{proposition}
+
+Since $\dim S_4(\Gamma_0(12))=2$ with no newform, the space is the oldspace of
+the level-$6$ newform $f_6=(\eta_1\eta_2\eta_3\eta_6)^2$, and the Fricke
+involution splits it.
+
+\begin{theorem}[oldspace swap and vanishing; {\cite[Thm.~5.3]{ProjDomb}}]
+\label{thm:oldspace}
+\Proved{} $f_6|_4W_6=f_6$ (directly from
+$\eta(-1/\tau)=\sqrt{-i\tau}\,\eta(\tau)$), and on
+$S_4(\Gamma_0(12))=\operatorname{span}\{f_6(q),f_6(q^2)\}$ the involution
+$W_{12}$ acts by $f_6(q)\mapsto4f_6(q^2)$, $f_6(q^2)\mapsto\tfrac14f_6(q)$.
+Hence the eigenvectors are $f_6\mp4f_6(q^2)$, and the odd one
+\[
+f^*:=f_6(q)-4f_6(q^2)=q-6q^2-3q^3+12q^4+6q^5+\cdots
+\]
+satisfies $f^*|_4W_{12}=-f^*$ and $f^*(\tau_{12})=0$.
+\end{theorem}
+
+\begin{proof}
+The level-$12$ slash is
+$(f_6|_4W_{12})(\tau)=f_6(-1/(6\cdot2\tau))(\sqrt{12}\tau)^{-4}
+=(\sqrt6\cdot2\tau)^4f_6(2\tau)(\sqrt{12}\tau)^{-4}=4f_6(2\tau)$, using
+$\varepsilon(f_6,W_6)=+1$ and $(24/12)^2=4$; the second formula follows since
+$W_{12}$ is an involution.  At the fixed point $-1/(12\tau_{12})=\tau_{12}$
+the weight-four automorphy factor is $(\sqrt{12}\tau_{12})^4=i^4=1$, so
+$f^*(\tau_{12})=-f^*(\tau_{12})$.
+\end{proof}
+
+More generally: if $g\in M_k(\Gamma_0(N))$ with $g|_kW_N=-g$ and
+$k\equiv0\pmod4$, then $g$ vanishes at $i/\sqrt N$.  The mechanism now runs on
+one parity, through two independent channels.
+
+\begin{theorem}[the level-$12$ apparatus; {\cite[\S5--\S6]{ProjDomb}}]
+\label{thm:dombapp}
+\Proved{} With the branch $\sqrt{1-4t}=1+O(q)$ one has the exact identity
+$f^*\sqrt{1-4t}=\Phi_\alpha$, hence
+$R^*(t)=t f^*/\Phi_\alpha=t/\sqrt{1-4t}=\sum_{m\ge1}\binom{2m-2}{m-1}t^m$.
+Consequently the $f^*$-companion $B^*$ is defined over $\Z$ by
+\[
+m^3B^*_m=(2m-1)\bigl(10(m-1)^2+10(m-1)+4\bigr)B^*_{m-1}-64(m-1)^3B^*_{m-2}
++\binom{2m-2}{m-1},\quad B^*_0=0,\ B^*_1=1,
+\]
+and satisfies $d_n^3B^*_n\in\Z$ for every $n$,
+$\limsup_n|B^*_n/A_n-\xi^*|^{1/n}\le t_c/t_c'=\tfrac14$, and
+\[
+\boxed{\ \xi^*=\lim_{n\to\infty}\frac{B^*_n}{A_n}=L(f^*,3)=\frac12L(f_6,3).\ }
+\]
+\end{theorem}
+
+The two channels are worth naming.  \emph{Fold regularization}: $R^*$ is
+analytic on $|t|<1/4$, so the inhomogeneity's singularity has moved off the
+fold onto the conjugate root and the error ratio becomes the root ratio
+$t_c/t_c'$.  \emph{Period parity}: with
+$\Lambda_*(s)=12^{s/2}(2\pi)^{-s}\Gamma(s)L(f^*,s)$ one has
+$\Lambda_*(s)=-\Lambda_*(4-s)$, so $L(f^*,2)=0$ and only the odd critical
+datum survives; the rational factor $\tfrac12$ then comes from
+$L(f^*,s)=(1-4\cdot2^{-s})L(f_6,s)$ and from differentiating the exact Eichler
+cocycle at $\tau_{12}$.  By contrast, on Ap\'ery's own curve at level $6$ the
+Fricke sign is $+1$, $f_6(\tau_c)\neq0$, and the fold value is contaminated:
+$\Theta(\tau_c)=L(f_6,3)-\tfrac{\pi}{\sqrt6}L(f_6,2)$.  Fricke-oddness is thus
+the single operative hypothesis, and a classification corollary in
+\cite{ProjDomb} shows $\alpha$ is the unique order-three sporadic family
+admitting the construction.
+
+\subsubsection*{A weight-three cuspidal row}
+
+The same phenomenon occurs one weight lower, and there it is cheaper.  A
+mechanical scan of eta-quotient pairs $(t,F)$ over all fourteen genus-zero
+levels ($520\,005$ candidates) reproduces all six third-order and five of the
+six second-order sporadic rows and produces, over the Domb parameter
+$t=-(\eta_2\eta_6/\eta_1\eta_3)^6$ with the \emph{weight-one} form
+$F=\eta_1^2\eta_3^2/(\eta_2\eta_6)$ (so that $F^2$ is the Domb weight-two
+form: this row is the $\Sym^1$ to Domb's $\Sym^2$), the sequence
+$a_n=1,2,12,104,1078,12348,\dots$ satisfying
+\begin{equation}\label{eq:cusprow}
+(n+1)^2a_{n+1}=(20n^2+10n+2)\,a_n-16(2n-1)^2\,a_{n-1}
+\end{equation}
+\VerifiedR{$q$-expansion, every $n\le208$} \cite{ProjSporadicSearch}.  This is
+not a sixteenth sporadic row: \eqref{eq:cusprow} is outside Zagier's
+symmetric normalization, since $p_1$ is not symmetric under $n\mapsto-n-1$ and
+$p_0=16(2n-1)^2\neq cn^2$.  Its companion has $d_n^2b_n\in\Z$
+\VerifiedR{$n\le200$}, i.e.\ $k=2$, and
+\begin{equation}\label{eq:cusplimit}
+\lim_{n\to\infty}\frac{b_n}{a_n}=L(f,2),\qquad
+f=\eta(2\tau)^3\eta(6\tau)^3\in S_3(\Gamma_0(12),\chim3),
+\end{equation}
+the weight-three CM newform of level $12$, $f=q-3q^3+2q^7+9q^9-22q^{13}+\cdots$
+\VerifiedR{$60$ digits; \texttt{lindep} relation exactly $[-1,0,1]$, so the
+limit is $L(f,2)$ on the nose with no rational factor, and the eigenform was
+produced independently as \texttt{mfinit([12,3,-3],0)} and as
+\texttt{mffrometaquo([2,3;6,3])}}.  Its characteristic roots are $16$ and $4$,
+as Domb's, so the rate is again $4^{-n}$, but the denominator exponent is $2$
+rather than $3$.  The comparison is the point:
+
+\begin{center}
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+row & source weight & limit & $k$ & $\log\Lambda-k$\\
+\midrule
+Domb apparatus (Thm.~\ref{thm:dombapp}) & $4$ ($f_6$, level $6$) & $L(f_6,3)/2$ & $3$ & $-0.2274$\\
+weight-three row \eqref{eq:cusprow} & $3$ ($f$, level $12$, $\chim3$) & $L(f,2)$ & $2$ & $+0.7726$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+That single unit of denominator flips the sign of the budget of
+\S\ref{sec:designrule}, and $+0.7726$ is the largest in the census.  It is a
+ceiling, not an achievement: this row has $|\lambda_2|=4>1$, so its own linear
+form grows and it proves nothing alone.  Its use is as an \emph{engine}
+(\S\ref{sec:worked}).  \todo{The identification \eqref{eq:cusplimit} is
+\VerifiedR{$60$ digits} only; the analogue of Theorem~\ref{thm:dombapp} ---
+a proved source identity $F\thq t=$ (explicit form) and a Fricke-parity
+argument at weight three --- has not been written.  It should be, since the
+weight-three CM setting is if anything simpler than the level-$12$ weight-four
+one.}
+
+\subsection{Period annihilation as Hecke linear algebra}\label{sec:hecke}
+
+Theorem~\ref{thm:A} explains the existing table; the following linear algebra
+manufactures new rows.  For $d\ge1$ write $(V_df)(\tau)=f(d\tau)$.  A finite
+oldform correspondence $C=\sum_{d\in\mathcal D}c_dV_d$ has Mellin eigenvalue
+$P_C(s)=\sum_dc_dd^{-s}$, whence
+\begin{equation}\label{eq:mellin}
+L(C\Phi,s)=P_C(s)\,L(\Phi,s):
+\end{equation}
+\emph{zeros of $P_C$ annihilate selected critical and endpoint components.}
+This is the finite shadow of the extension-class data; Franke's exact theory of
+Eisenstein spaces with prescribed vanishing critical $L$-values in a
+nonprincipal-character sector is substantially broader, and the projectors
+below are Hecke-generated spectral slices of Franke-type critical fibres
+\cite{Franke2024}.
+
+\begin{theorem}[barycentric period interpolation]\label{thm:barycentric}
+\Proved{} Let $d_1,\dots,d_m$ be distinct positive rationals, $P(s)=\sum_ic_id_i^{-s}$,
+and fix $\alpha\in\Z$, $q\ge1$.  Impose $P(\alpha+2j)=0$ for
+$j=0,\dots,q-1$.  Put $x_i=d_i^{-2}$ and $Q(x)=\prod_i(x-x_i)$.  Then the
+complete solution space is
+\[
+\boxed{\ c_i=d_i^{\alpha}\frac{R(x_i)}{Q'(x_i)},\qquad \deg R\le m-q-1,\ }
+\]
+so the nullspace has dimension $m-q$ when $m\ge q+1$.
+\end{theorem}
+
+\begin{proof}
+Writing $w_i=c_id_i^{-\alpha}$ the conditions become $\sum_iw_ix_i^j=0$ for
+$0\le j<q$.  For $\deg H\le m-2$ the partial-fraction identity
+$\sum_iH(x_i)/Q'(x_i)=0$ holds; apply it with $H(x)=R(x)x^j$.  The dimension
+count agrees with the Vandermonde nullity, so the family is exhaustive.
+\end{proof}
+
+\begin{proposition}[Mellin-degree shift]\label{prop:mellinshift}
+\Proved{} Since $DV_d=dV_dD$ for $D=\thq$, one has $D^aV_dD^{-a}=d^aV_d$
+wherever defined on the zero-constant sector, hence
+$D^aCD^{-a}=\sum_dc_dd^aV_d$ and $P_{D^aCD^{-a}}(s)=P_C(s-a)$: differential
+conjugation shifts every prescribed Mellin zero by $a$.  On the depth-$r$
+Eichler primitive the same relation gives $D^{-r}V_d=d^{-r}V_dD^{-r}$, so one
+operation has three compatible realizations --- source $\sum c_dV_d$, normal
+function $\sum c_dd^{-r}V_d$, target regulator $P_C(r)$.
+\end{proposition}
+
+For a target $L(r,\chi)$ of opposite parity the lower inner-orientation
+nuisance slots are $J_r=\{j:1\le j<r,\ r-j\ \text{odd}\}$, so the minimal
+critical projector at one prime $p$ is
+$C^{\rm crit}_{r,p}=\prod_{j\in J_r}(1-p^jV_p)$.  For trivial character and
+odd $r=2m+1$ the two orientations coincide, and full endpoint/critical
+purification gives
+\begin{equation}\label{eq:fullproj}
+C^{\rm full}_{r,p}=\prod_{a=0}^{m+1}\bigl(1-p^{2a}V_p\bigr)
+=\sum_{j=0}^{m+2}(-1)^jp^{j(j-1)}{m+2\brack j}_{p^2}V_p^{\,j}
+\end{equation}
+by the $q$-binomial theorem, so the coefficients are Gaussian binomials.
+
+\begin{example}[$\zeta(3)$ and $\zeta(5)$]\label{ex:proj}
+For $r=3$, $p=2$: $C^{\rm full}_{3,2}=(1-V_2)(1-4V_2)(1-16V_2)
+=1-21V_2+84V_4-64V_8$, which is exactly the level-$8$ $\varepsilon$ source of
+Table~\ref{tab:sources}.  For $r=5$, $p=2$:
+$C^{\rm full}_{5,2}=1-85V_2+1428V_4-5440V_8+4096V_{16}$, the level-$16$
+purified weight-six $\zeta(5)$ source found independently in the project
+calculations.  Thus $\zeta(5)$ is the first odd-zeta case whose raw critical
+completion is generically at least two-dimensional.
+\end{example}
+
+For trivial character and even weight $k$ the reflected positions $s$ and
+$k-s$ are exchanged by Fricke, so in a fixed eigenspace only one condition per
+reflected pair survives.
+
+\begin{theorem}[sign-refined Fricke count]\label{thm:frickecount}
+\Proved{} Let $k$ be even, $\epsilon=\pm1$.  The number of independent
+even-period conditions in the $W_N$-eigenspace of sign $\epsilon$ is
+\[
+q_\epsilon(k)=
+\begin{cases}
+(k+2)/4,&k\equiv2\!\!\pmod4,\\
+k/4+1,&k\equiv0\!\!\pmod4,\ \epsilon=+1,\\
+k/4,&k\equiv0\!\!\pmod4,\ \epsilon=-1,
+\end{cases}
+\]
+and if $h_\epsilon(N)$ is the dimension of the divisor-oldform Fricke
+eigenspace, the purified source dimension is
+$\max\{0,h_\epsilon(N)-q_\epsilon(k)\}$.
+\end{theorem}
+
+\begin{proof}[Proof sketch {\rm(\cite[\S5]{ProjBook})}]
+Fricke symmetry relates $P(s)$ and $P(k-s)$, so reflected conditions are
+equivalent; when $k\equiv0\pmod4$ the central point $s=k/2$ is forced to
+vanish in the anti-Fricke sector.  Pairing divisors $d$ and $N/d$ and setting
+$z_d=d^2/N+N/d^2$ reduces the remaining matrix, after nonzero scalings, to a
+Chebyshev/Vandermonde evaluation matrix in distinct $z_d$.
+\end{proof}
+
+\begin{proposition}[paired-character count, $r=4$, $\chi=\chim4$]
+\label{prop:beta4count}
+\Proved{} In the divisor-oldform sector at level $4D$ paired by $W_{4D}$, each
+$\pm i$ Fricke eigenspace of fully purified $\beta(4)$ sources has dimension
+$\max\{0,\tau(D)-3\}$.
+\end{proposition}
+
+\begin{proof}
+After Fricke pairing the three inner conditions are evaluations at the
+arithmetic progression $1,3,5$; Theorem~\ref{thm:barycentric} gives rank $3$
+on distinct divisor nodes, hence nullity $\tau(D)-3$ when nonnegative.
+\end{proof}
+
+\subsubsection*{Four examples}
+
+\emph{(a) Level-$16$ $\zeta(5)$.}  Example~\ref{ex:proj}: the minimal
+same-prime full projector \eqref{eq:fullproj} at $r=5$, $p=2$ is Fricke-even,
+while the successful level-$12$ scalar $\zeta(5)$ construction lies in the
+anti-Fricke sector and uses an independent weight-four companion.
+Theorem~\ref{thm:frickecount} predicts the uniqueness of that source in its
+divisor-oldform eigenspace.
+
+\emph{(b) The hidden $\zeta(7)$ parent, level $12$.}  The sign-refined
+classification exposes a fully purified anti-Fricke level-$12$ weight-eight
+source
+\[
+\Phi_{12}^{-}=\tfrac1{480}\bigl(E_8-572E_8(2\tau)+11583E_8(3\tau)
+-36608E_8(4\tau)+46332E_8(6\tau)-20736E_8(12\tau)\bigr),
+\qquad L(\Phi_{12}^{-},7)=\frac{209}{1728}\,\zeta(7).
+\]
+Its $p=2$ completion $(1-16V_2)\Phi_{12}^{-}$ recovers the previously known
+level-$24$ source, and its $p=3$ completion gives a level-$36$ scalar system
+with target $\tfrac{2717}{23328}\zeta(7)$.  The classification thus found a
+hidden parent and explained an existing higher-level object as an isogeny
+completion.
+
+\emph{(c) $\beta(4)$ at level $24$.}  Take $r=4$, $\chi=\chim4$, with the
+orientation doublet $S=E_{5,\chim4,1}$, $T=E_{5,1,\chim4}$,
+$L(S,s)=\beta(s)\zeta(s-4)$, $L(T,s)=\zeta(s)\beta(s-4)$.  On divisor support
+$(1,2,3,6)$ put
+\[
+\Phi_{\rm in}=S-56S(2\tau)+189S(3\tau)-216S(6\tau),\qquad
+\Phi_{\rm out}=T-28T(2\tau)+63T(3\tau)-36T(6\tau).
+\]
+Then $P_{\rm in}(1)=P_{\rm in}(3)=P_{\rm in}(5)=0$,
+$P_{\rm out}(0)=P_{\rm out}(2)=P_{\rm out}(4)=0$, and $P_{\rm in}(4)=-\tfrac13$;
+since $\zeta(0)=-\tfrac12$,
+\begin{equation}\label{eq:beta4target}
+L(\Phi_{\rm in},4)=\tfrac16\beta(4).
+\end{equation}
+By Proposition~\ref{prop:beta4count}, at level $16$ ($D=4$) the obstruction
+determinant is $\det\bigl(\begin{smallmatrix}1&1/2&1/4\\1&1/8&1/64\\
+1&1/32&1/1024\end{smallmatrix}\bigr)=-\tfrac{135}{8192}\neq0$, so no fully
+purified Fricke eigensource exists; at level $24$ ($D=6$) the eigenspace is
+one-dimensional with normalized inner vector $(1,-56,189,-216)$.  Level $24$
+is therefore the first divisor-oldform Fricke realization in this sector.  The
+outer vector is exactly the Beukers annihilator
+$C_B=1-28V_2+63V_3-36V_6$ and the inner one is its differential conjugate
+$DC_BD^{-1}$ (Proposition~\ref{prop:mellinshift}): the two character
+orientations are adjacent Mellin-degree realizations of one Hecke
+correspondence.  The realization has $A_n\in\Z$, $4d_n^4b_n\in\Z$ and
+$b_n/a_n\to\beta(4)/6$; the rational trace coordinate forgets a degree-four
+modular cover, so the natural rational Picard--Fuchs module has rank
+$4\cdot4=16$, which is what forces the direct-image refinement of Layer~A.
+
+\emph{(d) $L(4,\chim3)$.}  The canonical source of Shvets's level-three
+signature-three symmetric cube is $E_{5,\chim3,1}$ with
+$L(E_{5,\chim3,1},4)=-\tfrac12L(4,\chim3)$ \cite{Shvets2026cube}.  The
+classification manufactures a fully purified level-$24$ $\pm i$ Fricke doublet
+with target $\tfrac7{32}L(4,\chim3)$ and a rational Galois-trace Ap\'ery pair
+with $A_n\in\Z$, $d_n^4B_n\in\Z$, $B_n/A_n\to\tfrac7{32}L(4,\chim3)$.
+
+\emph{(e) $L(2,\chim3)$ and CDT.}  Calegari--Dimitrov--Tang prove the
+$\Q$-linear independence of $1,\zeta(2),L(2,\chim3)$ by arithmetic holonomy
+\cite{CDT2024}.  Their two weight-three source forms are exactly the inner and
+outer orientations predicted here, $(1-8V_2)E_{3,\chim3,1}$ and
+$(1-V_2)E_{3,1,\chim3}$; the hidden fully purified source is
+$(1-2V_2)(1-8V_2)E_{3,\chim3,1}=3\Phi_{\mathbf C}-2\Phi_{\mathbf F}$.  Their
+argument deliberately retains both a non-Tate and a Tate period coordinate,
+which is a realization-level lesson: full purification is not universally
+optimal.
+
+\subsection{Isogeny, CM values, and a Lambert identity}\label{sec:cm}
+
+Isogeny acts on the rank-two local system and functorially on symmetric
+powers, so it transports the homogeneous skeleton without determining the
+extension class.  Concretely, a level-$6$ parent $\zeta(3)$ source admits prime
+completions $\Phi_p=(1-p^2V_p)\Phi_{\rm parent}$; for $p=5,7,11$ these land on
+genus-zero elliptic Ap\'ery systems with exact targets
+$\tfrac7{20}\zeta(3)$, $\tfrac38\zeta(3)$, $\tfrac{35}{88}\zeta(3)$.
+
+When the fold sits at an Atkin--Lehner fixed point the Eichler cocycle
+collapses to a pure CM evaluation.  For $\beta(4)$ at level $24$, with the
+Fourier normalizations of (c) above,
+$\Phi_{\rm in}|W_{24}=\tfrac{i\sqrt6}{16}\Phi_{\rm out}$ and
+$\Phi_{\rm out}|W_{24}=\tfrac{8i\sqrt6}{3}\Phi_{\rm in}$, whose exchange
+constants multiply to $-1$; hence
+$\Phi_\pm=\Phi_{\rm in}\pm\tfrac{\sqrt6}{16}\Phi_{\rm out}$ satisfy
+$\Phi_\pm|W_{24}=\pm i\Phi_\pm$.  With $\Theta_+=D^{-4}\Phi_+$ and
+$C_4=\tfrac16\beta(4)$, the six unwanted slots having been killed, the
+transformation collapses to
+$\Theta_+(W_{24}\tau)-C_4=i(\sqrt{24}\tau)^{-3}(\Theta_+(\tau)-C_4)$, whose
+multiplier at $\tau_*=i/\sqrt{24}$ is $-1$; therefore
+\begin{equation}\label{eq:beta4CM}
+\Theta_+(\tau_*)=\tfrac16\beta(4),
+\end{equation}
+with no separate $\pi^4$ correction.  Expanding \eqref{eq:beta4CM} in Lambert
+series gives, with $y=\pi/\sqrt6$,
+\[
+J_4(y)=\sum_{n\ge1}\frac{\chim4(n)}{n^4(e^{ny}-1)},\qquad
+K_4(y)=\sum_{n\ge1}\frac1{n^4\cosh(ny)},
+\]
+the identity
+\begin{equation}\label{eq:lambert}
+\beta(4)=6J_4(y)-21J_4(2y)+14J_4(3y)-J_4(6y)
++\frac{3\sqrt6}{16}K_4(y)-\frac{21\sqrt6}{64}K_4(2y)
++\frac{7\sqrt6}{48}K_4(3y)-\frac{\sqrt6}{192}K_4(6y).
+\end{equation}
+The derivation above is the proof route; independently,
+\eqref{eq:lambert} holds \VerifiedR{$40$ digits, \texttt{verify/beta4\_lambert.py},
+$\text{error}<10^{-35}$ at \texttt{mp.dps}$=40$}.
+\todo{\cite{ProjBook} labels the $\beta(4)$ package as ``formal or exact
+consequences of the displayed formulas'', while the degree-four elimination and
+the full rank-$16$ cyclicity are exact-computational certificates whose
+modular-function/divisor upgrade remains to be written.  \eqref{eq:beta4CM}
+and \eqref{eq:lambert} are stated here at the strength of the displayed
+Eichler computation; the eta-transformation input
+$F(W_{24}\tau)=-12i\tau F(6\tau)$, $F=\eta(2\tau)^{10}/(\eta(\tau)^4\eta(4\tau)^4)$,
+is proved, but the exchange constants
+$\tfrac{i\sqrt6}{16}$, $\tfrac{8i\sqrt6}{3}$ are cited from the dossier
+calculation and should be re-derived in the paper.}
+
+\subsection{Free integrations and the denominator exponent}\label{sec:free}
+
+The nominal cost of \eqref{eq:uniformcompanion} is $d_n^r$.  It can be less.
+For each Cooper cubic $s_7,s_{10},s_{18}$ the project proves $(n+1)\mid A_n$,
+so the first nominal Eichler primitive is arithmetically free and
+$d_n^2B_n\in\Z$ rather than $d_n^3B_n\in\Z$: in the scalar case exactly a
+one-unit reduction of the CDT denominator penalty, $\tau_F:3\mapsto2$.  The
+weight-three cuspidal row \eqref{eq:cusprow} has $k=2$ for the structural
+reason that its source has weight $3$, not $4$.  Since $k$ enters the design
+rule of \S\ref{sec:designrule} linearly and $\log\Lambda$ only
+logarithmically, a unit of $k$ is worth more than any plausible gain in
+$\Lambda$; this is why \S\ref{sec:free} is not a footnote.  A general
+exactness criterion for Cooper-type free integrations is \Open{}.
+
+\subsection{Evidence summary for this section}\label{sec:sec2status}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{9.4cm} l@{}}
+\toprule
+Claim & Class\\
+\midrule
+$B_n=[t^n]F\thq^{-r}\Phi$, $\Phi=t\sigma^r/(P_rF)$, all fifteen, all $n$
+(Thms.~\ref{thm:inversion}, \ref{thm:rect15}) & \Proved{} \cite{ProjAnchors}\\
+$\Phi=F\thq t$ (Prop.~\ref{prop:collapse}) & \Proved{}\\
+Table~\ref{tab:sources}; zero cuspidal projection (Thm.~\ref{thm:A})
+& \Proved{} \cite{ProjEisenstein}\\
+Same identifications, independent finite check to $q^{60}$ with the fit frozen
+at $q^{26}$ & \VerifiedR{$q^{60}$, held-out $q^{27}$--$q^{60}$}\\
+No weight-$3$/weight-$4$ fit for $s_7,s_{10},s_{18}$ at levels
+$\{7,10,18\}$ and divisors & \ExcludedR{stated bases}\\
+Fold connection lemma (Lem.~\ref{lem:fold}) & \Proved{}\\
+Nine known limits recovered from the identified source
+& \VerifiedR{numeric, $N=26$, tracked}\\
+Uniform closed evaluation of \eqref{eq:fold} giving the rational prefactor
+& \Open{}\\
+$\mathbf B,\delta,\eta$ are exactly the complex-root families
+& \Proved{}\\
+Complex Eichler values to $15/39/33$ digits; no relation over the stated bases
+& \VerifiedR{$N=60$, dps $80$} / \ExcludedR{basis}\\
+Domb apparatus: $f^*(\tau_{12})=0$, $f^*\sqrt{1-4t}=\Phi_\alpha$,
+$d_n^3B^*_n\in\Z$, $\xi^*=\tfrac12L(f_6,3)$ (Thms.~\ref{thm:oldspace},
+\ref{thm:dombapp}) & \Proved{} \cite{ProjDomb}\\
+Weight-three row \eqref{eq:cusprow}: recurrence, $k=2$, limit $L(f,2)$
+& \VerifiedR{$n\le208$; $n\le200$; $60$ digits}\\
+Theorems~\ref{thm:barycentric}, \ref{thm:frickecount},
+Props.~\ref{prop:mellinshift}, \ref{prop:beta4count} & \Proved{}\\
+$\beta(4)$ CM value \eqref{eq:beta4CM} and Lambert identity \eqref{eq:lambert}
+& \Proved{} route; \VerifiedR{$40$ digits}\\
+$(n+1)\mid A_n$ for Cooper's three, hence $d_n^2B_n\in\Z$ & \Proved{}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+Nothing above is claimed beyond its class.  In particular the twelve-family
+source table is a theorem \cite{ProjEisenstein}; the $q^{60}$ computation
+\cite{ProjSources} is an independent check of the same statement and is
+reported as such, not as its justification.

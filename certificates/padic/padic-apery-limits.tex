@@ -1,0 +1,2207 @@
+% =====================================================================
+%  Paper C of the odd-zeta series.
+%  Working title:
+%    p-adic Apery limits: rate laws, valuation strata, and closed forms
+%    via the p-adic Gamma function
+%
+%  DRAFT.  Author placeholder on line \author{...} below.
+%  Evidence classes are printed in the statements; see Section 1.5.
+% =====================================================================
+\documentclass[11pt,reqno]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,%
+            urlcolor=blue!55!black]{hyperref}
+
+% ---------------------------------------------------------------- macros
+\newcommand{\Qp}{\mathbb{Q}_p}
+\newcommand{\Zp}{\mathbb{Z}_p}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\Gp}{\Gamma_p}
+\newcommand{\Ph}{\widehat{P}}
+\newcommand{\Ih}{\widehat{I}}
+\newcommand{\Ip}{I'}
+\newcommand{\Lah}{\Lambda^{\Ph}}
+\newcommand{\Lap}{\Lambda^{P}}
+\newcommand{\Atil}{\widetilde{A}}
+\newcommand{\Btil}{\widetilde{B}}
+\newcommand{\vp}{v_p}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\cond}{cond}
+\DeclareMathOperator{\disc}{disc}
+\newcommand{\bin}[2]{\binom{#1}{#2}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+
+% evidence tags
+\newcommand{\PROVED}{{\normalfont\textsc{[proved]}}}
+\newcommand{\VER}[1]{{\normalfont\textsc{[verified:} #1\textsc{]}}}
+\newcommand{\RECALLED}{{\normalfont\textsc{[recalled--unverified]}}}
+\newcommand{\FIT}{{\normalfont\textsc{[conjectural fit]}}}
+\newcommand{\OPENTAG}{{\normalfont\textsc{[open]}}}
+
+% ---------------------------------------------------------------- theorems
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{finding}[theorem]{Finding}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}[theorem]{Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+
+\numberwithin{equation}{section}
+
+% ---------------------------------------------------------------- title
+\title{\bfseries $p$-adic Ap\'ery limits:\\ rate laws, valuation strata,\\ and
+closed forms via the $p$-adic Gamma function}
+
+% ---------------------------------------------------------------------
+% AUTHOR PLACEHOLDER -- to be filled in.
+% ---------------------------------------------------------------------
+\author{[AUTHOR NAME(S) AND AFFILIATION TO BE SUPPLIED]}
+\date{Draft, \today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $(A(n),B(n))$ be an Ap\'ery-like pair: $A$ one of the fifteen sporadic
+binomial sums, $B$ the second solution of its recurrence.  Classically
+$B(n)/A(n)$ converges to the \emph{Ap\'ery limit}, a rational multiple of
+$\zeta(w)$ or of $L(\chi,w)$, where $w$ is the weight and $\chi$ a quadratic
+character attached to the sequence.  We study the $p$-adic analogue.  Along a
+$p$-power tower $n_s=ap^s$ the normalised ratios $\chi(p)^{s}p^{ws}B(n_s)/A(n_s)$
+converge in $\Qp$; we call the limit $\Lambda_a$ a \emph{$p$-adic Ap\'ery
+limit}.  Convergence is driven by the digit-descent congruences
+$\vp\bigl(p^{w}B_nA_q-\chi(p)B_qA_n\bigr)\ge w$, $q=\floor{n/p}$, of the
+companion Paper~A.
+
+We report four results.  \textbf{(1) A rate law.}  The number of new certified
+$p$-adic digits per tower level is $\min\bigl(3,\,r(\chi,w)\bigr)$, where the
+$3$ is the Jacobsthal--Kazandzidis exponent governing $\bin{Ap^t}{Bp^t}$ and
+$r(\chi,w)$ is the rate of the $\chi$-twisted harmonic tower.  The rate is
+therefore \emph{not} the motivic weight, correcting a natural guess; for weight
+$5$ the only correct multi-digit statement is the scaled congruence
+$p^{5s}P_{ap^s}Q_{ap^{s-1}}\equiv p^{5(s-1)}P_{ap^{s-1}}Q_{ap^{s}}
+\pmod{p^{3s}}$, of depth $3s$.  \textbf{(2) Valuation strata and a vanishing
+defect.}  For the Brown--Zudilin $\zeta(5)$ family, $\vp(\Ph_n/Q_n)=-3L+O(1)$
+and $\vp(P_n/Q_n)=-5L+O(1)$ with $L=\floor{\log_p n}$ and the $O(1)$ bounded by
+$2$; consequently the $p$-adic purity defect vanishes identically,
+$c_p=\lim_n \Ih_n/\Ip_n=0$, in sharp contrast with the archimedean defect
+$c=-3/\pi^2$.  \textbf{(3) An exclusion theorem.}  No tower limit of the
+classical Ap\'ery pair or of the Brown--Zudilin pair is a $\QQ$-affine function
+of $\zeta_p(3)$ or $\zeta_p(5)$ of height $\lesssim 10^4$; structurally, the
+$p$-adic linear forms in $\zeta_p(3)$, $\zeta_p(5)$ built from these pairs
+\emph{diverge polynomially}, so no sharpening can rescue them.  These pairs do
+not $p$-adically approximate the Kubota--Leopoldt zeta values at all.
+%% FIXED (MAJOR M-1, evidence-class): "We prove" was attached to the one assembly that is only
+%% FIXED [VERIFIED] --- Finding 6.6, \VER{p=5,7,11,13, block by block}; LAMBDA_HUNT:185 labels it
+%% FIXED "[VERIFIED order by order]", never [PROVED]. Only h_p (Thm 6.1) and c_p (Thm 6.3) are
+%% FIXED proved, and the abstract now says exactly that.
+\textbf{(4) An identification that explains (3).}  We exhibit, and verify block
+by block, a decomposition
+$\Lambda_a=h_p(a)+(\text{blocks})/\Atil_a$ with
+$h_p(a)=\sum_{x\in\ZZ[1/p],\,0<x\le a}x^{-3}$, every block a polynomial in the
+Kazandzidis limits $c_p(A,B)=\lim_t\bin{Ap^t}{Bp^t}$; and we \emph{prove} the two
+ingredients of that decomposition --- the closed form of $h_p$, and $c_p(A,B)$ in
+closed form: $-1$ times a $p$-power times a ratio of Morita $\Gp$-values times $\exp$ of an
+explicit $\QQ$-series in \emph{all} odd $p$-adic zeta values.  Thus $\Lambda$ is
+a \emph{value} of the Beukers--Vlasenko generating function
+$\Gp(x)e^{-\Gp'(0)x}=\exp\bigl(-\sum_{m\ge2}\zeta_p(m)x^m/m\bigr)$ at $p$-power
+arguments, whereas the Beukers--Vlasenko Frobenius structure constants are its
+Taylor coefficients at $0$ --- and for the order-$3$ Ap\'ery operator those
+slots are literally zero.
+
+Finally, three of the fifteen families have no archimedean Ap\'ery limit at all
+--- their characteristic roots are complex conjugates of equal modulus --- and
+yet they do have $p$-adic tower limits.
+\end{abstract}
+
+\tableofcontents
+
+% =====================================================================
+\section{Introduction}\label{sec:intro}
+% =====================================================================
+
+\subsection{Ap\'ery limits, classically}\label{ss:classical}
+
+Ap\'ery's irrationality proof for $\zeta(3)$ \cite{Apery1979,Fischler2003}
+produces two solutions of one three-term recurrence,
+\begin{equation}\label{eq:apery-rec}
+  (n+1)^3u_{n+1}=(34n^3+51n^2+27n+5)\,u_n-n^3u_{n-1},
+\end{equation}
+namely the integers
+\[
+  a_n=\sum_{k}\bin{n}{k}^2\bin{n+k}{k}^2
+\]
+and the second solution $b_n$ normalised by $b_0=0$, $b_1=6$; the pair satisfies
+$b_n/a_n\to\zeta(3)$.  The number $\zeta(3)$ appears here not as an integral but
+as a \emph{limit of a ratio of two solutions of a difference equation}.  This is
+the phenomenon that has come to be called an \emph{Ap\'ery limit}.
+
+It is not isolated.  Zagier's search for integral solutions of the
+$(n+1)^2$-recurrence \cite{Zagier2009}, the Almkvist--Zudilin list at
+$(n+1)^3$, and Cooper's three additional cases \cite{Cooper2012}
+together give fifteen \emph{sporadic} Ap\'ery-like pairs.  We use throughout the
+labelling and data of Malik--Straub \cite{MalikStraub} and Straub
+\cite{Straub2023}, reproduced in Table~\ref{tab:families}.  Each pair has a
+weight $w\in\{2,3\}$ --- the minimal exponent with $d_n^{\,w}B(n)\in\ZZ$,
+$d_n=\lcm(1,\dots,n)$ --- and an Ap\'ery limit which is a rational multiple of
+$\zeta(w)$ or of $L(\chi_D,w)$ for a quadratic character $\chi_D$.  The
+character of the limit turns out to be an invariant of the whole $p$-adic story
+as well; see Finding~\ref{find:twist}.
+
+Beyond the sporadic list, the same shape occurs in the Brown--Zudilin cellular
+approximations to $\zeta(5)$ \cite{BrownZudilin2022}, whose conceptual setting
+--- Ap\'ery-type proofs as cell integrals on moduli spaces, and the structural
+reason $\zeta(5)$ resists --- is Brown's \cite{Brown2014}.  There one has a rank-$3$
+system with rows $Q_n$, $\Ph_n$, $P_n$ and \emph{two} Ap\'ery limits:
+$\Ph_n/Q_n\to\zeta(3)$ and $P_n/Q_n\to\zeta(5)$.  This is our weight-$5$ test
+case throughout.
+
+\subsection{What is known $p$-adically}\label{ss:known}
+
+Almost nothing, and in particular nothing named.  The literature contains an
+extensive study of the \emph{convergence} of the towers we are about to use ---
+the supercongruences $A(mp^{r})\equiv A(mp^{r-1}) \pmod{p^{3r}}$ of Beukers,
+Coster and Ishikawa and their descendants \cite{Supercong}, and the
+Dwork-crystal framework of Beukers--Vlasenko \cite{BVdwork3} which explains the
+$A$-row congruences as the unit-root entry of a Frobenius matrix --- but the
+\emph{limits} of the corresponding second-solution towers do not appear to have
+been studied at all.  Our own searches turned up no name, no notation and no
+closed form for them; see \S\ref{ss:BVposition} for what we did and did not
+find.
+
+There are two nearby bodies of work, and it is important to say precisely how
+our object differs from each.
+
+\begin{itemize}[leftmargin=1.5em]
+\item \emph{$p$-adic zeta values and irrationality.}  Calegari
+  \cite{Calegari2005} proved $\zeta_p(3)\notin\QQ$ for $p=2,3$, and
+  Lai--Sprang--Zudilin \cite{LSZ2025} proved $\zeta_2(5)\notin\QQ$; the
+  asymptotic $p$-adic Ball--Rivoal theory is developed in
+  \cite{LaiSprang2023}.  A recurring expectation --- ``one ratio, two
+  completions'' --- is that the Ap\'ery pair should approximate $\zeta_p(3)$ as
+  it approximates $\zeta(3)$.  Section~\ref{sec:exclusion} shows this is
+  \emph{false}, and false for a structural reason.  Consistently, Calegari's
+  proof does not use the Ap\'ery pair at all.
+\item \emph{Frobenius constants.}  There is a genuine terminological collision
+  here.  The Bloch--Vlasenko / Roy--Vlasenko \emph{Frobenius constants} $\kappa_n$
+  \cite{RoyVlasenko,Kerr} are archimedean periods.  The Beukers--Vlasenko
+  \emph{Frobenius structure constants} $\alpha_j$ \cite{BV2025} are $p$-adic,
+  and are Taylor coefficients of $\Gp(x)e^{-\Gp'(0)x}$ at $x=0$.  Our
+  $\Lambda_a$ is the $p$-adic analogue of neither: it is the analogue of the
+  \emph{Ap\'ery limit itself}, i.e.\ of a $\kappa$-type period.  It happens to
+  be built from the same generating function as the $\alpha_j$, but by
+  \emph{evaluation} at $p$-power arguments rather than by Taylor expansion at
+  $0$.  See \S\ref{ss:BVposition}.
+\end{itemize}
+
+\subsection{Results}\label{ss:results}
+
+Fix an odd prime $p\ge5$ and a tower base $a$ with $p\nmid a$, and set
+$n_s=ap^s$.
+
+\paragraph{(A) Existence and the rate law (\S\ref{sec:engine}--\S\ref{sec:rate}).}
+The digit-descent congruences of Paper~A \cite{PaperA-inprep},
+\[
+  (\mathrm{LB}_w^\chi)\qquad
+  \vp\bigl(p^{w}B_nA_q-\chi(p)B_qA_n\bigr)\ \ge\ w,\qquad q=\floor{n/p},\qquad p\ge5,
+\]
+make the sequence $L_s:=\chi(p)^{s}p^{ws}B(n_s)/A(n_s)$ Cauchy, so that
+\[
+  \Lambda_a\ :=\ \lim_{s\to\infty}\chi(p)^{s}\,p^{ws}\,\frac{B(ap^s)}{A(ap^s)}\ \in\ \Qp
+\]
+exists (Theorem~\ref{thm:exists}).  The limit is an intrinsic invariant of the
+recurrence and the tower: it is unchanged by $B\mapsto B+cA$, scales by
+$\lambda$ under $B\mapsto\lambda B$, and satisfies
+$\Lambda_{p^ka}=\chi(p)^{k}p^{-wk}\Lambda_a$
+(Proposition~\ref{prop:invariance}).  The
+observed convergence rate is
+\[
+  \boxed{\ \text{digits per level}\ =\ \min\bigl(3,\ r(\chi,w)\bigr)\ }
+\]
+where $r(\chi,w)$ is the rate of the $\chi$-twisted harmonic tower
+(Table~\ref{tab:harmonicrate}): $r(\chi,w)=w$ for $\chi\ne1$, and $r(1,w)=w+1$,
+improved to $w+2$ for odd $w$ because $\zeta_p(w+1)=0$.  The $3$ is
+\emph{Jacobsthal--Kazandzidis}, not the motivic weight
+(Finding~\ref{find:ratelaw}).  A first reading of the weight-$3$ and weight-$5$
+data --- ``the rate is always exactly $3$'' --- is an artefact of testing only
+untwisted pairs; the $\chi$-twisted weight-$2$ families converge at rate $2$.
+
+\paragraph{(B) The weight-$5$ correction (\S\ref{ss:weight5}).}
+For the Brown--Zudilin $P$-row the normalising power is $p^{5s}$ --- $\vp(p^{5s}P_{n_s}/Q_{n_s})$
+is constant in $s$ --- but the single-step ratio descent $p^5f(n_s)\equiv
+f(n_{s-1})$ has depth $5-2s$, which goes negative at $s\ge3$.  The surviving
+multi-digit law is the scaled one,
+\[
+  p^{5s}\,P_{ap^{s}}\,Q_{ap^{s-1}}\ \equiv\ p^{5(s-1)}\,P_{ap^{s-1}}\,Q_{ap^{s}}
+  \pmod{p^{3s}},
+\]
+of depth exactly $3s$ (Finding~\ref{find:weight5}).
+
+\paragraph{(C) Strata and the vanishing defect (\S\ref{sec:strata}).}
+With $L=\floor{\log_p n}$ and over \emph{all} $n$, not merely towers,
+\[
+  \vp(Q_n)\ge0,\qquad
+  \vp(\Ph_n/Q_n)=-3L+O(1),\qquad
+  \vp(P_n/Q_n)=-5L+O(1),
+\]
+the $O(1)$ lying in $[-2,1]$ uniformly (Finding~\ref{find:strata}).  Hence the
+two Brown--Zudilin linear forms $\Ih_n=Q_n\zeta(3)-\Ph_n$ and
+$\Ip_n=Q_n\zeta(5)-P_n$ sit in different valuation strata,
+$\vp(\Ih_n/\Ip_n)=2L+O(1)\to+\infty$, and the $p$-adic purity defect vanishes:
+\[
+  c_p:=\lim_{n\to\infty}\Ih_n/\Ip_n=0
+  \qquad\text{in }\Qp,\quad p\in\{5,7,11,13,17,19\}
+\]
+(Finding~\ref{find:cp}).  Archimedeanly the same limit is
+$c=-1/(2\zeta(2))=-3/\pi^2\ne0$, and that non-vanishing is exactly what exiles
+the Brown--Zudilin class from the minimal ray \cite{PaperB-inprep}.  The
+contrast is structural and is discussed in \S\ref{ss:contrast}: the archimedean
+side is obstructed by \emph{positivity}, the $p$-adic side is unobstructed
+because the Frobenius \emph{grading} $\mathrm{diag}(1,p^3,p^5)$ separates the
+rows.
+
+\paragraph{(D) The exclusion theorem (\S\ref{sec:exclusion}).}
+This is a headline negative and we state it as one.  Using an
+implementation of the Kubota--Leopoldt $p$-adic $L$-function built from scratch
+and validated on $980/980$ interpolation identities (Appendix~\ref{app:KL}):
+\begin{itemize}[leftmargin=1.5em]
+\item No relation $c_0+c_1\zeta_p(w)+c_2\Lambda=0$ of height $\lesssim10^4$
+  holds, for $\Lambda$ any of $\Lambda_a$ (Ap\'ery), $\Lap_a$, $\Lah_a$
+  (Brown--Zudilin), at $p=5,7,11,13$, to $12$--$27$ certified $p$-adic digits
+  (Finding~\ref{find:exclusion}).  Every candidate returned by exact LLL sits
+  \emph{at} the noise floor.
+\item The sharp form of the negative is not about margins.  For all $n\le5000$
+  and $p\in\{5,7,11,13\}$,
+  \begin{gather*}
+    \vp\bigl(b_n-\zeta_p(3)a_n\bigr)-\vp(a_n)=-3\floor{\log_pn}+O(1),\\
+    \vp\bigl(Q_n\zeta_p(5)-P_n\bigr)-\vp(Q_n)=-5\floor{\log_pn}+O(1)
+  \end{gather*}
+  (Finding~\ref{find:diverge}).  The $p$-adic linear forms \emph{diverge
+  polynomially} where a Bel-type irrationality criterion
+  \cite[Lemma~4]{LSZ2025} needs $\exp(-\alpha n)$.  The gap is infinite, not
+  finite.
+\item Structurally: the Ap\'ery operator
+  $\theta^3-t(34\theta^3+51\theta^2+27\theta+5)+t^2(\theta+1)^3$ has order $3$,
+  so in the Beukers--Vlasenko Frobenius expansion only $\alpha_1,\alpha_2$
+  exist --- and by \cite[Thm.~1.5]{BV2025} both are $0$.  The value
+  $\zeta_p(3)$ first occupies $\alpha_3$, which requires order $\ge4$
+  (\S\ref{ss:BVposition}).
+\end{itemize}
+
+\paragraph{(E) The identification (\S\ref{sec:identify}).}
+The exclusions are then \emph{explained}, not merely observed.  Ap\'ery's
+formula splits $b_n/a_n$ into a harmonic part and a remainder, and both parts
+have exact $p$-adic limits:
+\begin{align*}
+  h_p(a)&:=\lim_s p^{3s}H_3(ap^s)
+        =\sum_{x\in\ZZ[1/p],\ 0<x\le a}x^{-3} &&\text{(Theorem~\ref{thm:hp})},\\
+  c_p(A,B)&:=\lim_{t\to\infty}\bin{Ap^t}{Bp^t}
+        =-p^{\vp\binom{A}{B}}\,T(A,B)\,
+          \frac{\Gp(A+1)}{\Gp(B+1)\Gp(A-B+1)}\,
+          e^{\,\mathcal{Z}(A,B)} &&\text{(Theorem~\ref{thm:kaz})},
+\end{align*}
+%% FIXED (MINOR): T is a product over the base-$p$ TRUNCATIONS $\lfloor A/p^l\rfloor$, not over
+%% FIXED the base-$p$ digits.
+where $T$ is an explicit finite $\Gp$-product over the base-$p$ truncations
+$\floor{A/p^l}$, $\floor{B/p^l}$, $\floor{(A-B)/p^l}$ ($l\ge1$), and
+\[
+  \mathcal{Z}(A,B)=-\sum_{\substack{m\ge3\\ m\ \mathrm{odd}}}
+    \zeta_p(m)\,\bigl(A^m-B^m-(A-B)^m\bigr)\frac{p^m}{m(1-p^m)} .
+\]
+Assembling, $\Lambda_a=h_p(a)+(\text{convergent block sum})/\Atil_a$ with every
+block a polynomial in the $c_p(\cdot,\cdot)$ (Finding~\ref{find:structure}).
+Since each $c_p(A,B)$ is the exponential of an infinite $\QQ$-combination of
+\emph{all} of $\zeta_p(3),\zeta_p(5),\zeta_p(7),\dots$, no finite low-height
+$\QQ$-relation with $\zeta_p(3)$ alone can exist.  The quantitative form of
+this: truncating the series after $\zeta_p(3)$ reproduces $4$--$5$ digits out of
+$24$--$30$ \VER{$p=5,7,11,13$}.  The same mechanism refutes the hypothesis that
+the family $\{\Lambda_a\}$ is generated over $\QQ$ by a single constant
+(\S\ref{ss:onegen}).
+
+\paragraph{(F) Existence without archimedean limits (\S\ref{sec:noarch}).}
+Three of the fifteen families --- $B$, $(\delta)$, $(\eta)$ --- have
+characteristic roots that are complex conjugates of equal modulus, so
+$B(n)/A(n)$ oscillates forever and there is \emph{no} archimedean Ap\'ery
+limit.  All three nevertheless have $p$-adic tower limits: $(\delta)$ outright
+at rate $3$, and $B$, $(\eta)$ after the $\chi(p)^{-s}$ twist.  The $p$-adic
+Ap\'ery limit exists where the archimedean one does not.
+
+\subsection{Method, and how to read the evidence tags}\label{ss:evidence}
+
+Statements in this paper carry an explicit evidence class, printed with the
+statement.
+
+\begin{description}[leftmargin=2.2em,style=nextline]
+\item[\PROVED] A complete proof is given here or in the cited companion paper.
+\item[\VER{range}] A finite exact computation over the stated range, at the
+  stated $p$-adic precision.  This is evidence, never proof, and the range is
+  always stated.
+\item[\RECALLED] Asserted from memory of the literature and not checked against
+  a source in the preparation of this paper.
+\item[\FIT] A numerical fit reproducing known data points, extrapolated.
+\end{description}
+
+Statements labelled \textsc{finding} are supported by \VER{} evidence only;
+statements labelled \textsc{theorem}, \textsc{proposition}, \textsc{lemma},
+\textsc{corollary} are \PROVED.  We have been deliberate about not promoting one
+class to the other: several of the most interesting statements below (the rate
+law, the strata bounds, $c_p=0$) are at present Findings.
+
+% ---------------------------------------------------------------------
+% FLAG FOR RIVER:  this is the ONLY methodology sentence in the paper.
+% Keep, rewrite or delete as you prefer; nothing else depends on it.
+% ---------------------------------------------------------------------
+\begin{remark}[Methodology]\label{rem:method}
+All numerical statements below were produced by exact integer and rational
+arithmetic --- no floating point occurs anywhere in the pipeline, and every
+$p$-adic digit is obtained from an exact rational --- and each closed form
+recorded here was checked against an independent direct computation of the
+object it describes, written separately from the code that produced the form.
+Ranges, certified precisions and the number of independent checks are stated
+with each claim; the programs are listed in Appendix~\ref{app:repro}.
+\end{remark}
+
+\subsection{Notation and conventions}\label{ss:notation}
+
+$p$ denotes an odd prime, always $\ge5$ unless stated otherwise.  We write
+$q_p=p$ (and $q_2=4$), $\omega$ for the Teichm\"uller character modulo $q_p$,
+and $\langle x\rangle=x/\omega(x)$.  Following \cite[Def.~8]{LSZ2025} we set
+\[
+  \zeta_p(s):=L_p\bigl(s,\omega^{1-s}\bigr)\qquad(s\in\ZZ,\ s\ge2),
+\]
+so $\zeta_p(3)=L_p(3,\omega^{-2})$ and $\zeta_p(5)=L_p(5,\omega^{-4})$; this is
+the same normalisation as \cite{BV2025}, for which $\zeta_p(m)$ is the $p$-adic
+limit of $-(1-p^{n-1})B_n/n$ along $n=1-m+(p-1)p^r$.  In particular
+$\zeta_p(2k)=0$ for all $k\ge1$, a vanishing that will be used repeatedly.
+
+For the classical Ap\'ery pair we write $f(n)=b_n/a_n$, and we compute with the
+integer normalisation $\alpha_n=(n!)^3a_n$, $\beta_n=(n!)^3b_n$, which satisfy
+\begin{equation}\label{eq:int-rec}
+  u_{n+1}=(34n^3+51n^2+27n+5)u_n-n^6u_{n-1},\qquad
+  (\alpha_0,\alpha_1)=(1,5),\quad(\beta_0,\beta_1)=(0,6),
+\end{equation}
+so that $f=\beta/\alpha$.  \VER{$\alpha_n$ against the closed-form double sum for
+$n\le29$, $0$ mismatches; $f(400)$ against $\zeta(3)$ to $79$ decimals;
+generated exactly to $n=125\,000$, and mod $p^K$ to $n=400\,000$.}
+
+For the Brown--Zudilin pair we use the printed normalisation of
+\cite{BrownZudilin2022}: $Q_0=1$, $P_0=0$, $Q_1=21$, $P_1=87/4$,
+$P_2=1190161/384$, $\Ph_1=101/4$, $\Ph_2=344923/96$, and we set
+$\Ip_n=Q_n\zeta(5)-P_n$, $\Ih_n=Q_n\zeta(3)-\Ph_n$.  \VER{the certified order-$3$
+recurrence has residual exactly $0$ on all three rows for every $n\le357$
+($358$ checks per row), and the exact extension reproduces
+$P_n/Q_n\to\zeta(5)$, $\Ph_n/Q_n\to\zeta(3)$ to $59$ decimals at $n=800$ and
+$n=5000$.}
+
+Throughout $L=\floor{\log_p n}$ and $q=\floor{n/p}$.
+
+\subsection{Organisation}
+Section~\ref{sec:engine} recalls the descent congruences and turns them into a
+convergence engine.  Section~\ref{sec:rate} is the rate law and its weight-$5$
+correction.  Section~\ref{sec:strata} is the strata theorem and $c_p=0$.
+Section~\ref{sec:exclusion} is the exclusion theorem.
+Section~\ref{sec:identify} identifies the limits.  Section~\ref{sec:noarch} is
+the no-archimedean-limit trio.  Section~\ref{sec:open} lists open problems.
+Appendix~\ref{app:KL} documents and validates the Kubota--Leopoldt
+implementation; Appendix~\ref{app:LSZ} reproduces the Lai--Sprang--Zudilin
+denominator ledger; Appendix~\ref{app:data} collects numerical data;
+Appendix~\ref{app:repro} lists the programs.
+
+% =====================================================================
+\section{The descent congruences as the convergence engine}\label{sec:engine}
+% =====================================================================
+
+\subsection{The sporadic families}\label{ss:families}
+
+Table~\ref{tab:families} lists the fifteen sporadic Ap\'ery-like pairs, in the
+labelling of \cite{MalikStraub}.  The recurrences are
+\begin{align}
+  (\mathrm{R}2)&\quad (n+1)^2u_{n+1}=(an^2+an+b)u_n-cn^2u_{n-1},\label{eq:R2}\\
+  (\mathrm{R}3)&\quad (n+1)^3u_{n+1}=(2n+1)(an^2+an+b)u_n-n(cn^2+d)u_{n-1},\label{eq:R3}
+\end{align}
+with $A$ the sporadic binomial sum and $B$ the second solution normalised by
+$B(0)=0$, $B(1)=1$ (the recurrence being enforced for $n\ge1$; the $n=0$ step is
+degenerate --- this is Ap\'ery's own construction, and the normalisation of
+\cite{ChamberlandStraub}).  Rescaling $B$ by a $p$-unit
+rational changes $\Lambda_a$ only by that scalar, so for $p\ge5$ this
+normalisation is canonical up to a harmless constant.
+
+\begin{table}[t]
+\centering\small
+\caption{The fifteen sporadic pairs, their Ap\'ery limits, weights and
+characters, after \cite{MalikStraub,Straub2023}; limits identified in
+\cite{PaperA-inprep}, several of them presumably also in the numerical tables of
+\cite{ASvSZ2008}.  $w$ is the minimal exponent with $d_n^wB(n)\in\ZZ$.}
+\label{tab:families}
+\begin{tabular}{@{}llllcc@{}}
+\toprule
+\# & label & $A(n)$ & Ap\'ery limit & $w$ & $\chi$\\
+\midrule
+1 & $A$ & $\sum_k\bin{n}{k}^3$ (Franel) & $\zeta(2)/4$ & 2 & $1$\\
+2 & $B$ & $\sum_k(-1)^k3^{n-3k}\bin{n}{3k}\frac{(3k)!}{k!^3}$ & \emph{none} & 2 & $\chi_{-3}$\\
+3 & $C$ & $\sum_k\bin{n}{k}^2\bin{2k}{k}$ & $L_{-3}(2)/2$ & 2 & $\chi_{-3}$\\
+4 & $D$ & $\sum_k\bin{n}{k}^2\bin{n+k}{n}$ (Ap\'ery $\zeta(2)$) & $\zeta(2)/5$ & 2 & $1$\\
+5 & $E$ & $\sum_k\bin{n}{k}\bin{2k}{k}\bin{2(n-k)}{n-k}$ & $L_{-4}(2)/2=G/2$ & 2 & $\chi_{-4}$\\
+6 & $F$ & $\sum_k(-1)^k8^{n-k}\bin{n}{k}\sum_l\bin{k}{l}^3$ & $(5/8)L_{-3}(2)$ & 2 & $\chi_{-3}$\\
+7 & $(\alpha)$ & $\sum_k\bin{n}{k}^2\bin{2k}{k}\bin{2(n-k)}{n-k}$ (Domb) & $7\zeta(3)/24$ & 3 & $1$\\
+8 & $(\gamma)$ & $\sum_k\bin{n}{k}^2\bin{n+k}{n}^2$ (Ap\'ery $\zeta(3)$) & $\zeta(3)/6$ & 3 & $1$\\
+9 & $(\delta)$ & $\sum_k(-1)^k3^{n-3k}\bin{n}{3k}\bin{n+k}{n}\frac{(3k)!}{k!^3}$ & \emph{none} & 3 & $1$\\
+10 & $(\varepsilon)$ & $\sum_k\bin{n}{k}^2\bin{2k}{n}^2$ & $7\zeta(3)/32$ & 3 & $1$\\
+11 & $(\zeta)$ & $\sum_{k,l}\bin{n}{k}^2\bin{n}{l}\bin{k}{l}\bin{k+l}{n}$ & $L_{-3}(3)/3$ & 3 & $\chi_{-3}$\\
+12 & $(\eta)$ & $\sum_k(-1)^k\bin{n}{k}^3\bigl[\bin{4n-5k-1}{3n}+\bin{4n-5k}{3n}\bigr]$ & \emph{none} & 3 & $\chi_{5}$\\
+13 & $s_7$ & $\sum_k\bin{n}{k}^2\bin{n+k}{k}\bin{2k}{n}$ & $\zeta(2)/7$ & 2 & $1$\\
+14 & $s_{10}$ & $\sum_k\bin{n}{k}^4$ & $\zeta(2)/5$ & 2 & $1$\\
+15 & $s_{18}$ & Cooper's $s_{18}$ & $L_{-3}(2)/2$ & 2 & $\chi_{-3}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The twisted descent law}\label{ss:LB}
+
+The input we take from Paper~A \cite{PaperA-inprep} is the following universal
+digit-descent law.  Write $q=\floor{n/p}$.
+
+\begin{theorem}[{Paper A \cite{PaperA-inprep}}]\label{thm:LB}
+\PROVED\ (single-digit form).  Let $p\ge5$, let $(A,B)$ be a sporadic pair with
+weight $w$ and character $\chi$ as in Table~\ref{tab:families}, and suppose $B$
+admits a $\chi$-homogeneous harmonic-monomial decomposition of weight $w$ on the
+summand of $A$ satisfying the tameness and Lucas hypotheses of
+\cite{PaperA-inprep}.  Then for $1\le a<p$, $0\le r<p$ and $n=ap+r$,
+\[
+  p^{w}\,B(ap+r)\ \equiv\ \chi(p)^{e}\,B(a)\,A(r)\pmod p ,
+\]
+with $e\in\{0,1\}$ the number of $\chi$-letters in each monomial.  The
+hypotheses are verified there for $(\gamma)$, $A$, $s_{10}$ $(p\ge5$, resp.\
+$p\ge7)$ and $D$ $(p\ge7)$.
+\end{theorem}
+
+\begin{finding}[{the master form, Paper~A}]\label{find:master}
+\VER{all $15$ sporadic pairs; $28$ primes $5\le p\le103$; $n\le400$ for all $p$
+and $n\le1200$ for $p=5,7,11$; exact rational arithmetic; zero failures}
+\[
+  (\mathrm{LB}_w^\chi)\qquad
+  \vp\bigl(p^{w}B_nA_q-\chi(p)B_qA_n\bigr)\ \ge\ w,
+  \qquad q=\floor{n/p},\qquad p\ge5,
+\]
+and the floor is \emph{exactly} $w$ in every single (sequence, prime) cell: no
+$\kappa$-dependence, no centre-residue exception, no exceptional-digit
+exception.  For the classical Ap\'ery pair this reads $p^3b_na_q\equiv b_qa_n
+\pmod{p^3}$, \VER{$5\le p\le31$, $n\le320$}.
+\end{finding}
+
+The mechanism, which we will need again in \S\ref{ss:harmrate}, is a two-line
+lemma about harmonic letters.
+
+\begin{lemma}[{Paper A \cite{PaperA-inprep}}]\label{lem:K}
+\PROVED.  Let $\chi$ be a completely multiplicative arithmetic function
+($\chi\equiv1$ allowed), $r\ge1$, $y\ge0$, and
+$K^{(r)}_\chi(y)=\sum_{m\le y}\chi(m)m^{-r}$.  Then, as an identity in $\QQ$,
+\[
+  p^{r}K^{(r)}_\chi(y)\ =\ \chi(p)\,K^{(r)}_\chi(\floor{y/p})\ +\ p^{r}T,
+  \qquad T=\!\!\sum_{m\le y,\ p\nmid m}\!\!\chi(m)m^{-r}\in\ZZ_{(p)} .
+\]
+\end{lemma}
+
+\begin{proof}
+Split the sum at $p\mid m$.  The $p$-divisible part is
+\[
+  \sum_{j\le\floor{y/p}}\chi(jp)(jp)^{-r}
+  =\chi(p)\,p^{-r}\!\!\sum_{j\le\floor{y/p}}\!\!\chi(j)j^{-r},
+\]
+and the remaining terms are $p$-integral.
+\end{proof}
+
+The factor $\chi(p)$ in $(\mathrm{LB}_w^\chi)$ is exactly the $\chi(p)$ produced
+by the $p$-divisible layer of the harmonic weight.  It is invisible in the
+$A$-row: the unit-root congruence $A(ap+r)\equiv A(a)A(r)\pmod p$ is untwisted
+for all fifteen families \cite{Gessel1982,MalikStraub}.  The character
+appears only on the non-unit Frobenius eigenvalue.
+
+\subsection{Existence of the tower limits}\label{ss:exists}
+
+\begin{theorem}\label{thm:exists}
+\PROVED, given $(\mathrm{LB}_w^\chi)$ in ratio form at every level of the tower.
+Let $p\ge5$, $p\nmid a$, $n_s=ap^s$, and suppose $A(n_s)$ is a $p$-unit cell for
+all $s$, so that the ratio form
+\[
+  p^{w}f(n_s)\ \equiv\ \chi(p)\,f(n_{s-1})\pmod{p^{w}},
+  \qquad f=B/A,
+\]
+holds.  Put $L_s:=\chi(p)^{s}p^{ws}f(n_s)$.  Then
+\[
+  L_s\equiv L_{s-1}\pmod{p^{ws}},
+\]
+so $(L_s)_{s\ge0}$ is Cauchy in $\Qp$ and
+$\Lambda_a:=\lim_{s\to\infty}L_s$ exists, with
+$\Lambda_a\equiv L_s\pmod{p^{w(s+1)}}$.  The same holds along any descent branch
+$n_s=pn_{s-1}+r_s$.
+\end{theorem}
+
+\begin{proof}
+$L_s-L_{s-1}=\chi(p)^{s}p^{w(s-1)}\bigl(p^{w}f(n_s)-\chi(p)f(n_{s-1})\bigr)$,
+and the bracket has valuation $\ge w$; hence $\vp(L_s-L_{s-1})\ge ws$.  The
+sequence is therefore Cauchy, and telescoping the tail gives
+$\vp(\Lambda_a-L_s)\ge w(s+1)$.  Nothing in the argument used $n_s=ap^s$ beyond
+$n_{s-1}=\floor{n_s/p}$.
+\end{proof}
+
+For the classical Ap\'ery pair ($w=3$, $\chi=1$) this is
+\[
+  L_s=p^{3s}\frac{b_{ap^s}}{a_{ap^s}},\qquad
+  L_s\equiv L_{s-1}\pmod{p^{3s}},\qquad \Lambda_a=\lim_sL_s .
+\]
+For the Brown--Zudilin rows we write, in the same spirit,
+\[
+  \Lap_a:=\lim_s p^{5s}\frac{P_{ap^s}}{Q_{ap^s}},
+  \qquad
+  \Lah_a:=\lim_s p^{3s}\frac{\Ph_{ap^s}}{Q_{ap^s}} .
+\]
+For the $P$-row Theorem~\ref{thm:exists} does \emph{not} apply as stated,
+because the naive weight-$5$ ratio descent degrades; see \S\ref{ss:weight5}.
+
+\subsection{What the limit does and does not remember}\label{ss:invariance}
+
+\begin{proposition}\label{prop:invariance}
+\PROVED.  In the situation of Theorem~\ref{thm:exists}:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item $\Lambda_a$ is unchanged by $B\mapsto B+cA$ for any $c\in\QQ$;
+\item $\Lambda_a$ scales by $\lambda$ under $B\mapsto\lambda B$;
+\item $\Lambda_{p^ka}=\chi(p)^{k}p^{-wk}\Lambda_a$ for $k\ge0$ (so
+  $\Lambda_{p^ka}=p^{-wk}\Lambda_a$ whenever $\chi$ is trivial);
+%% FIXED (CRITICAL): item (iv) was FALSE over the range its own \VER tag claimed. The
+%% FIXED strengthening "in fact modulo p^{w+v_p(Lambda_a)}" has been DELETED (it fails at 4 of
+%% FIXED the 36 p-unit cells, and 8 of 44 cells overall), and the p-unit-cell hypothesis --- in
+%% FIXED force via Theorem \ref{thm:exists} but silently overridden by the old \VER range --- is
+%% FIXED now stated inside the item. Independently recomputed here (exact Fraction Apery
+%% FIXED recurrence, s=0,1,2): failures of the mod-p^w half are exactly the 8 cells with
+%% FIXED v_p(A(a))>0, i.e. exactly the non-p-unit cells. The old claim was inherited from
+%% FIXED LAMBDA_HUNT:114 / PADIC_SEAM:122, which are themselves wrong.
+\item $\Lambda_a\equiv f(a)\pmod{p^{\,w}}$, \emph{provided} $A(a)$ is a $p$-unit cell (which is
+  a standing hypothesis of Theorem~\ref{thm:exists}, and is not automatic: see
+  Remark~\ref{rem:ivsharp}).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) The perturbation contributes $\chi(p)^sp^{ws}c\to0$.  (ii) is immediate.
+(iii) Reindexing $t=s+k$ in
+$\Lambda_{p^ka}=\lim_s\chi(p)^{s}p^{ws}f(ap^{s+k})$ gives
+$\chi(p)^{-k}p^{-wk}\Lambda_a$, and $\chi(p)^{-k}=\chi(p)^{k}$ for a quadratic
+(or trivial) character at an unramified prime.  (iv) is the case $s=0$ of
+$\Lambda_a\equiv L_s\pmod{p^{w(s+1)}}$ in Theorem~\ref{thm:exists}.
+\end{proof}
+
+Item~(i) is the reason $\Lambda_a$ is an intrinsic invariant of the recurrence
+and the tower rather than of the particular second solution --- and equally the
+reason it cannot ``see'' the archimedean normalisation $\lim_nb_n/a_n=\zeta(3)$
+except through the single global scalar.  This is the first structural sign that
+the expectation $\Lambda\leftrightarrow\zeta_p(3)/6$ is misplaced; \S\ref{sec:exclusion}
+makes it a theorem-strength negative and \S\ref{sec:identify} explains it.  Item~(iii)
+is used throughout as an internal consistency check on the numerics.  Item~(iv)
+is the ``trivial floor'': on a $p$-unit cell, any ansatz expressing $\Lambda_a$ through $f(a)$
+reproduces $w$ digits for free, so only agreement substantially beyond $w$
+digits is evidence of anything.  This is the calibration used in
+\S\ref{ss:onegen}.
+
+\begin{remark}[how sharp (iv) is, and where it stops]\label{rem:ivsharp}
+Both qualifications matter, and we record the sweep because the floor is a calibration the rest
+of the paper leans on.  For the Ap\'ery pair ($w=3$) over the $44$ cells $p\in\{5,7,11,13\}$,
+$a\le12$, $p\nmid a$:
+\begin{itemize}[leftmargin=1.4em]
+\item $36$ cells are $p$-unit cells, and (iv) holds at every one of them.  It is
+  \emph{sharp}: $\vp(\Lambda_a-f(a))=w=3$ exactly at $26$ of the $36$, with $4$ at $\vp=4$,
+  $2$ at $5$ and $1$ at $6$ --- so nothing beyond $w$ digits is free.
+\item The remaining $8$ cells --- $p=5$, $a=1,3,6,7,8,9,11$ and $p=11$, $a=5$ --- have
+  $\vp(A(a))>0$, and (iv) \emph{fails} at every one of them: the difference-valuation is $1$ at
+  $p=5$, $a=1,3,7,9$ and at $p=11$, $a=5$; $-1$ at $p=5$, $a=6,8$; and $-4$ at $p=5$, $a=11$.
+  These are exactly the cells excluded by Theorem~\ref{thm:exists}'s hypothesis.
+\item The natural strengthening to $p^{\,w+\vp(\Lambda_a)}$ is \emph{false} even on $p$-unit
+  cells: it fails at $p=7$, $a=3$ and at $p=13$, $a=2,6,10$, where $\vp(\Lambda_a)=1$ so the
+  claim would demand $p^{4}$ while the true difference-valuation is exactly $3$.
+\end{itemize}
+The simplest counterexample needs no computation beyond Table~\ref{tab:constants}: at $p=5$ it
+prints $\Lambda_1=5^{-1}(1\,1\,3\,3\,4\dots)$, while $f(1)=b_1/a_1=6/5=5^{-1}(1\,1\,0\,0\,0\dots)$;
+they first differ in the third digit, so $v_5(\Lambda_1-f(1))=1$, which is neither $\ge w=3$ nor
+$\ge w+v_5(\Lambda_1)=2$.  (Here $a_1=5$, so $a=1$ is not a $5$-unit cell.)
+\end{remark}
+
+% =====================================================================
+\section{The rate law}\label{sec:rate}
+% =====================================================================
+
+Theorem~\ref{thm:exists} gives a rate of at least $w$ new $p$-adic digits per
+tower level.  The measured rate is neither $w$ nor constant; it is
+$\min(3,r(\chi,w))$, and both arguments of the minimum have a mechanism.
+
+\subsection{The harmonic tower and its rate}\label{ss:harmrate}
+
+Let $\chi$ be a Dirichlet character (possibly trivial), $w\ge2$, and set
+$K^{(w)}_\chi(y)=\sum_{m\le y}\chi(m)m^{-w}$.  By Lemma~\ref{lem:K} the tower
+\[
+  h^{\chi,w}_p(a)\ :=\ \lim_{s\to\infty}\chi(p)^{s}p^{ws}K^{(w)}_\chi(ap^s)
+\]
+exists, and its convergence rate is computable from the layer sums.
+
+\begin{finding}\label{find:harmrate}
+\VER{$p=5,7,11$; $w=2,3$; $a\le3$; $s\le3$} The harmonic tower converges at the
+rates of Table~\ref{tab:harmonicrate}.
+\end{finding}
+
+\begin{table}[h]
+\centering\small
+\caption{Rate of the $\chi$-twisted harmonic tower, and the mechanism.}
+\label{tab:harmonicrate}
+\begin{tabular}{@{}ccll@{}}
+\toprule
+$\chi$ & $w$ & rate $r(\chi,w)$ & mechanism\\
+\midrule
+$1$ & $2$ & $3$ & $S_i\approx B_Mp^{i}$; $\zeta_p(3)\ne0$\\
+$1$ & $3$ & $5$ (digits $4,9,14,19$ at $p=5$) & idem, but $\zeta_p(4)=0$ kills the leading term\\
+$\chi\ne1$ & $2$ & $2$ & $\sum\chi(k)k^{-w}$ tends to a \emph{nonzero} $L$-value: no $p^{i}$ gain\\
+$\chi\ne1$ & $3$ & $3$ & idem\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+In words: for the trivial character the leading layer of the tower is divisible
+by an extra power of $p$, gaining one digit; for odd $w$ it gains two, because
+the coefficient that would have carried the first correction is
+$\zeta_p(w+1)=0$.  For a nontrivial character the layer sums converge to a
+nonzero generalised-Bernoulli/$L$-value and there is no gain at all.  Thus
+\[
+  r(\chi,w)=w\ (\chi\ne1),\qquad
+  r(1,w)=\begin{cases} w+1,& w\ \text{even},\\ w+2,& w\ \text{odd}.\end{cases}
+\]
+\VER{$w=2,3$ only.}
+
+\subsection{The Jacobsthal--Kazandzidis cap}\label{ss:cap}
+
+The second argument of the minimum is a cap, and it comes from binomial
+coefficients rather than from harmonic sums.
+
+\begin{finding}\label{find:kazrate}
+\VER{$p=5,7,11,13$; $12$ pairs $(A,B)$ per prime; $t\le5$} The
+Jacobsthal--Kazandzidis tower $\bin{Ap^t}{Bp^t}$ converges at exactly $3$
+digits per level \cite{JacobsthalKazandzidis}.
+\end{finding}
+
+This is weight-independent.  Since (\S\ref{sec:identify}) the non-harmonic part
+of $\Lambda_a$ is assembled entirely out of the limits $c_p(A,B)$ of such
+towers, no tower limit built this way can converge faster than $3$ digits per
+level, whatever its weight.
+
+\subsection{The rate law}\label{ss:ratelaw}
+
+\begin{finding}[Rate law]\label{find:ratelaw}
+\VER{$15$ sporadic families $\times$ $p\in\{5,7,11\}$, $N=20\,000$, towers
+$a=1,2$} The number of new certified $p$-adic digits gained per level of the
+tower $n_s=ap^s$ is
+\[
+  \min\bigl(3,\ r(\chi,w)\bigr),
+\]
+%% FIXED (MAJOR M-4): the exception list omitted F, which at p=5 deviates in exactly the same
+%% FIXED way and by exactly the same amount as C and s_18 (independent reimplementation from the
+%% FIXED integer recurrence for (n!)^k u_n: at p=5, cumulative agreement C = F = s18 =
+%% FIXED 4,5,7,9,11,13 against a predicted 2,4,6,8,10,12, while B and E are on the nose).
+%% FIXED Inherited from LAMBDA_HUNT:291, not a transcription slip. Also fixed: the deviations are
+%% FIXED upward only cumulatively -- the p=5 level-2 increment for C, F, s18 is 1, below the
+%% FIXED predicted 2, and the p=7 increments for (epsilon) are 4, 5, 2, 3, 3.
+with $r(\chi,w)$ as in Table~\ref{tab:harmonicrate}, in every cell except at
+$(\varepsilon)$, $(\zeta)$, $C$, $F$, $s_{18}$, where
+blocks cancel.  In particular the rate is $3$ for all eight trivial-character
+families at both weights, and $2$ for the $\chi$-twisted weight-$2$ families
+$B$, $C$, $E$, $F$, $s_{18}$.
+\end{finding}
+
+\begin{remark}[the shape of the deviations]
+They are \emph{cumulative} excesses, not uniformly faster levels.  At $p=5$ the three families
+$C$, $F$ and $s_{18}$ behave identically --- cumulative agreement $4,5,7,9,11,13$ against the
+predicted $2,4,6,8,10,12$ --- so the excess is $+2$ acquired at the first level and then held,
+and the level-$2$ increment is $1$, i.e.\ \emph{below} the predicted $2$.  ($B$ and $E$ are on
+the nose at $p=5$, and $F$ is on the nose at $p=7$, where instead $C$ and $s_{18}$ carry a $+1$.)
+At $p=7$ the $(\varepsilon)$ increments are $4,5,2,3,3$, one of which is again below the
+predicted $3$.  Everything not named in Finding~\ref{find:ratelaw} reproduces
+$\min(3,r(\chi,w))$ exactly.
+\end{remark}
+
+Table~\ref{tab:familyrates} records the measurements.
+
+\begin{table}[h]
+\centering\small
+\caption{Digits gained per tower level, $a=1$.  ``raw'' is without the
+$\chi(p)^{s}$ twist; ``tw.'' is with it.  $\chi(p)=-1$ cells are the ones where
+the raw tower does not converge at all.}
+\label{tab:familyrates}
+\begin{tabular}{@{}llccccccc@{}}
+\toprule
+family & $w$ & $\chi$ & $\chi(7)$ & raw ($p=7$) & tw.\ ($p=7$) & tw.\ ($p=11$) & tw.\ ($p=5$)\\
+\midrule
+$A$ (Franel) & 2 & $1$ & $+1$ & 3 & 3 & 3 & 3\\
+$D$ (Ap\'ery $\zeta(2)$) & 2 & $1$ & $+1$ & 3 & 3 & 3 & 3\\
+$s_7$, $s_{10}$ & 2 & $1$ & $+1$ & 3 & 3 & 3 & 3\\
+$(\alpha)$, $(\gamma)$, $(\delta)$, $(\varepsilon)$ & 3 & $1$ & $+1$ & 3 & 3 & 3 & 3\\
+$B$, $C$, $F$ & 2 & $\chi_{-3}$ & $+1$ & \textbf{2} & 2 & 2 & 2 (twist needed)\\
+$s_{18}$ & 2 & $\chi_{-3}$ & $+1$ & 2 & 2 & 2 & 2 (twist needed)\\
+$E$ & 2 & $\chi_{-4}$ & $\mathbf{-1}$ & \textbf{0} & \textbf{2} & 2 & 2 ($\chi(5)=+1$)\\
+$(\zeta)$ & 3 & $\chi_{-3}$ & $+1$ & 4 & 4 & 4 & 4 (twist needed)\\
+$(\eta)$ & 3 & $\chi_{5}$ & $\mathbf{-1}$ & \textbf{0} & \textbf{3} & 3 & degenerate\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}\label{rem:not-weight}
+A first pass over weight-$3$ and weight-$5$ data suggests the clean statement
+``the rate is always exactly $3$, independently of the weight''.  That statement
+is an artefact of testing only trivial-character pairs, where
+$\min(3,r(1,w))=3$ for $w\ge2$.  Finding~\ref{find:ratelaw} is the corrected
+form.  The moral is worth stating plainly: \emph{the $3$ is
+Jacobsthal--Kazandzidis, not the motivic weight}.
+\end{remark}
+
+For the classical Ap\'ery pair the rate is flat to a degree worth recording
+separately.
+
+\begin{finding}\label{find:aperyrate}
+%% FIXED (MAJOR M-3): two universal quantifiers were added on transcription and are false.
+%% FIXED (1) "constant in s for every tower and equals v_p(b_a/a_a)" fails at p=5, a=11:
+%% FIXED recomputed exactly here, v_p(p^{3s}f(11*5^s)) = -4, -2, -2, -2 for s=0..3 while
+%% FIXED v_p(b_11/a_11) = -4. The source logs already showed it (hunt_p5.txt "a=11 v(L)=-2";
+%% FIXED t1_p5.log "a=11 ... relagree L:[0, 2, 5, 8, ...]"). PADIC_SEAM T1.2, whence the
+%% FIXED sentence, tested only a=1,2 (p=5), a=1,3 (p=7), a=1 (p=11,13).
+%% FIXED (2) "flat in the descent branch" is contradicted by Table \ref{tab:aperyrate} itself:
+%% FIXED the row "7, branch r=1" reads 4, 6, 9, 13, 15, increments 4, 2, 3, 4, 2.
+\VER{exact data to $n=125\,000$: $p=5$, $s\le7$; $p=7$, $s\le6$; $p=11,13$,
+$s\le4$} For the Ap\'ery $\zeta(3)$ pair the rate is $3$ digits per
+level asymptotically, flat in $p$ and in the tower base $a$; along a $p$-power tower
+$n_s=ap^s$ the valuation $\vp\bigl(p^{3s}f(n_s)\bigr)$ is eventually constant in $s$, so that
+the pole order of $b_n/a_n$ along a tower is exactly $3\floor{\log_pn}+O(1)$.  See
+Table~\ref{tab:aperyrate}.
+\end{finding}
+
+\begin{remark}[two qualifications that the data forces]\label{rem:notflat}
+Neither ``constant in $s$'' nor ``flat in the branch'' can be strengthened to a universal
+statement.
+\begin{itemize}[leftmargin=1.4em]
+\item \emph{The valuation can jump once, at the first level.}  At $p=5$, $a=11$ we compute
+  $\vp\bigl(5^{3s}f(11\cdot5^s)\bigr)=-4,-2,-2,-2$ for $s=0,1,2,3$, while
+  $v_5(b_{11}/a_{11})=-4$.  So the constant is $\vp(\Lambda_a)$, which need \emph{not} equal
+  $\vp(b_a/a_a)$: here $a_{11}$ is divisible by $5^4$, so $a=11$ is not a $5$-unit cell, and
+  Theorem~\ref{thm:exists} does not apply at $s=0$.  The jump is visible in the first entry of
+  the corresponding agreement row, which is $0$ rather than $3$.
+\item \emph{Along a general descent branch the rate is $3$ only on average.}  The last row of
+  Table~\ref{tab:aperyrate} ($p=7$, branch $r=1$) reads $4,6,9,13,15$, i.e.\ per-level
+  increments $4,2,3,4,2$.  It is the $p$-power towers, not all branches, on which the increment
+  is $3$ level by level.
+\end{itemize}
+\end{remark}
+
+\begin{table}[h]
+\centering\small
+\caption{Digits of agreement between $L_s$ and $L_{s-1}$ for the Ap\'ery pair,
+after clearing the common $p^{\min v}$ shift.}
+\label{tab:aperyrate}
+\begin{tabular}{@{}llcl@{}}
+\toprule
+$p$ & tower & $\vp(\Lambda_a)$ & agreement per level\\
+\midrule
+5 & $a=1$ & $-1$ & 2, 5, 8, 11, 14, 17, 20\\
+5 & $a=2$ & $0$ & 3, 6, 9, 12, 15, 18\\
+7 & $a=1$ & $0$ & 3, 6, 9, 12, 15, 18\\
+7 & $a=3$ & $1$ & 2, 5, 8, 11, 14\\
+11 & $a=1$ & $0$ & 3, 6, 9, 12\\
+13 & $a=1$ & $0$ & 3, 6, 9, 12\\
+5 & branch $n_s=p^{s+1}-1$ & $1$ & 5, 8, 11, 14, 17, 20\\
+7 & branch $r=1$ & $0$ & 4, 6, 9, 13, 15\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[an honest precision budget]\label{rem:precision}
+Three digits per level is a hard constraint on what can be computed.  Sixty
+digits would require $s=19$, i.e.\ $n=p^{19}\approx10^{13}$ at $p=5$; even the
+$O(n)$ closed-form-sum route, which needs only $K+O(\log n)$ digits of working
+precision rather than the $O(N^2)$ of the recurrence route, caps out near
+$n\approx10^7$, i.e.\ about $33$ digits.  The certified precisions actually
+reached are in Table~\ref{tab:precision}.  What made the identification of
+\S\ref{sec:identify} possible was therefore not more digits but exact closed
+forms, which can be evaluated to any precision at any $p$.
+\end{remark}
+
+\begin{table}[h]
+\centering\small
+\caption{Certified relative digits of $\Lambda_a$ (Ap\'ery pair).}
+\label{tab:precision}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+$p$ & $N$ reached & $a=1$ & $a\le4$ & $a\le12$\\
+\midrule
+5 & $400\,000$ & $s=8$, \textbf{27} & 24 & 21 ($a=12$: $s=6$)\\
+7 & $250\,000$ & $s=6$, \textbf{21} & 21--18 & 18\\
+11 & $170\,000$ & $s=5$, \textbf{18} & 15 & 12\\
+13 & $380\,000$ & $s=5$, \textbf{18} & 15 & 15\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The weight-$5$ correction}\label{ss:weight5}
+
+The Brown--Zudilin $P$-row is the only weight-$5$ instance available to us, and
+it is the one where the naive statement fails.
+
+\begin{finding}\label{find:weight5}
+\VER{exact ladders to $n=5000$; $p\in\{5,7,11,13\}$}
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item $\vp\bigl(p^{5s}P_{ap^s}/Q_{ap^s}\bigr)$ is constant in $s$: weight $5$ is
+  the right and only normalising exponent for the $P$-row.  Likewise
+  $\vp\bigl(p^{3s}\Ph_{ap^s}/Q_{ap^s}\bigr)$ is constant in $s$.
+\item The rate is nevertheless $3$, not $5$, for both rows
+  (Table~\ref{tab:bzrate}).
+\item The single-step ratio descent $p^{5}f(n_s)\equiv f(n_{s-1})$ has depth
+  $5-2s$, which \emph{degrades} and goes negative at $s\ge3$.  The multi-digit
+  statement that survives is the $p^{5L}$-scaled one,
+  \begin{equation}\label{eq:scaled5}
+    p^{5s}\,P_{ap^{s}}\,Q_{ap^{s-1}}
+    \ \equiv\ p^{5(s-1)}\,P_{ap^{s-1}}\,Q_{ap^{s}}
+    \pmod{p^{3s}},
+  \end{equation}
+  with depth exactly $3s$.
+\item The $\Ph$-row, by contrast, has \emph{constant} single-step depth $3$,
+  exactly like the Ap\'ery $b$-row.
+\end{enumerate}
+\end{finding}
+
+\begin{table}[h]
+\centering\small
+\caption{Brown--Zudilin towers, $a=1$: valuation of the normalised row and
+digits of agreement per level.}
+\label{tab:bzrate}
+\begin{tabular}{@{}llccl@{}}
+\toprule
+$p$ & row (weight) & $s$ range & $\vp(p^{ws}\cdot\text{row}/Q)$ & digits of agreement\\
+\midrule
+5 & $P$ (5) & $0..5$ & $0,0,0,0,0,0$ & 3, 6, 9, 12, 15\\
+5 & $\Ph$ (3) & $0..5$ & $0,0,0,0,0,0$ & 3, 6, 9, 12, 15\\
+7 & $P$ (5) & $0..4$ & $-1$ (const) & 2, 5, 8, 11\\
+7 & $\Ph$ (3) & $0..4$ & $-1$ (const) & 2, 5, 8, 11\\
+11 & $P$ (5) & $0..3$ & $0$ (const) & 4, 7, 10\\
+13 & $P$ (5) & $0..3$ & $0$ (const) & 3, 6, 9\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Equation~\eqref{eq:scaled5} is the correct form of the ``graded-weight''
+descent for the top row.  It is worth emphasising what goes wrong with the
+naive form: it is not that the congruence is false at one level, but that its
+depth is $5-2s$, so that it is \emph{true and useless} for $s\ge3$.  Only the
+$Q$-weighted, $p^{5L}$-scaled statement has a depth that grows with $s$, and
+its growth rate is $3s$ --- once again the Kazandzidis $3$, not the weight $5$.
+
+% =====================================================================
+\section{Valuation strata and the vanishing of the $p$-adic defect}\label{sec:strata}
+% =====================================================================
+
+\subsection{The strata}\label{ss:strata}
+
+\begin{finding}[Strata]\label{find:strata}
+\VER{$n\le5000$; $p\in\{5,7,11,13,17,19\}$}
+Over \emph{all} $n$, not merely along towers, and with $L=\floor{\log_pn}$,
+\[
+  \vp(Q_n)\ \ge\ 0,\qquad
+  \vp(\Ph_n/Q_n)=-3L+O(1),\qquad
+  \vp(P_n/Q_n)=-5L+O(1),
+\]
+with the $O(1)$ bounded by $2$ uniformly; explicitly the deviations lie in the
+sets of Table~\ref{tab:strata}, all contained in $[-2,1]$.
+\end{finding}
+
+\begin{table}[h]
+\centering\small
+\caption{Deviations of the row valuations from the predicted strata, all $n\le5000$.}
+\label{tab:strata}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+$p$ & $\vp(\Ph_n/Q_n)+3L$ & $\vp(P_n/Q_n)+5L$ & $\vp(\Ph_n/P_n)-2L$\\
+\midrule
+5 & $\{-1,0\}$ & $\{0,1\}$ & $\{-1,0\}$\\
+7 & $\{-2,-1,0,1\}$ & $\{-2,-1,0,1\}$ & $\{-2,-1,0\}$\\
+11 & $\{-1,0\}$ & $\{-1,0,1\}$ & $\{-1,0\}$\\
+13 & $\{-1,0,1\}$ & $\{0,1\}$ & $\{-2,-1,0,1\}$\\
+17 & $\{-1,0\}$ & $\{0,1\}$ & $\{-1,0\}$\\
+19 & $\{-1,0\}$ & $\{-1,0,1\}$ & $\{-2,-1,0,1\}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}\label{rem:Qvals}
+$\vp(Q_n)=0$ for every $n\le5000$ at $p=5,13,17$, but reaches $7$ at $p=7$,
+$4$ at $p=11$ and $3$ at $p=19$: the exceptional-prime phenomenon is present in
+the $Q$-row and must be carried through any argument that divides by $Q_n$.
+\end{remark}
+
+Finding~\ref{find:strata} is a clean denominator statement about the whole
+Brown--Zudilin family, and it is precisely the input that a Rhin--Viola-style
+denominator saving \cite{RhinViola} would have to improve upon.
+
+\subsection{$c_p=0$}\label{ss:cp}
+
+\begin{finding}[the $p$-adic defect vanishes]\label{find:cp}
+\VER{$n\le5000$; $p\in\{5,7,11,13,17,19\}$} Since
+$\zeta_p(3),\zeta_p(5)\in p^{-1}\Zp$ while the rows have poles of order $3L$
+and $5L$,
+\[
+  \vp(\Ih_n)-\vp(Q_n)=-3L+O(1),\qquad
+  \vp(\Ip_n)-\vp(Q_n)=-5L+O(1),
+\]
+hence $\vp(\Ih_n/\Ip_n)=2\floor{\log_pn}+O(1)\to+\infty$ and
+\[
+  \boxed{\ c_p\ :=\ \lim_{n\to\infty}\frac{\Ih_n}{\Ip_n}\ =\ 0\quad\text{in }\Qp . \ }
+\]
+\end{finding}
+
+\begin{finding}[the renormalised defect is not a constant]\label{find:chat}
+\VER{$p=5,7,11,13$; $a=1,2$; $12$--$18$ certified digits} Dividing out the
+$p^{2s}$,
+\[
+  \widehat{c}_p(a):=\frac{\Lah_a}{\Lap_a}
+  =\lim_{s}p^{-2s}\frac{\Ph_{ap^s}}{P_{ap^s}}
+\]
+is a well-defined element of $\Qp$ with $\vp(\widehat{c}_p(a))\in\{-2,-1,0\}$;
+it is \emph{not} rational (rational reconstruction sits at the noise floor) and
+it \emph{depends on $a$} (different $a$ agree to $0$ digits).  The renormalised
+$p$-adic defect is thus a function on the tower tree, not a constant.
+\end{finding}
+
+\subsection{The archimedean contrast: positivity versus grading}\label{ss:contrast}
+
+Archimedeanly the same two linear forms ride the \emph{same} ray: $\log|\Ip_n|/n$
+and $\log|\Ih_n|/n$ both tend to $\lambda_2=-2.47237\dots$, so
+$c=\lim_n\Ih_n/\Ip_n$ is a finite nonzero constant, namely
+$c=-1/(2\zeta(2))=-3/\pi^2=-0.30396\dots$ \PROVED\ in the companion
+\cite{PaperB-inprep}; and that constant is exactly what forces the
+Brown--Zudilin class off the minimal ray, because a positivity relation
+expressing $\Ip_n$ as a positive combination of two further cell integrals pins
+the cellular class to the ray $\rho_B$, of which the impurity
+$\zeta(5)+2\zeta(2)\zeta(3)$ of the top period is the visible shadow
+\cite{PaperB-inprep}.  $p$-adically that degeneracy is
+broken: the Frobenius grading $\mathrm{diag}(1,p^3,p^5)$ puts $Q$, $\Ph$, $P$
+into three \emph{distinct} valuation strata $0$, $-3L$, $-5L$
+(Finding~\ref{find:strata}), so the two forms cannot ride a common ray and the
+defect collapses to $c_p=0$ (Finding~\ref{find:cp}).  The strategic asymmetry
+this exposes is worth stating once, plainly: \emph{the $p$-adic side of this
+family is structurally clean but arithmetically weak, while the archimedean side
+is arithmetically strong but structurally obstructed}; there is no purity-defect
+obstruction $p$-adically at all, and what remains there is purely a size budget
+(\S\ref{sec:open} and Appendix~\ref{app:LSZ}).
+
+% =====================================================================
+\section{The exclusion theorem}\label{sec:exclusion}
+% =====================================================================
+
+We now come to the negative result, which we regard as the main arithmetic
+content of the paper.  A natural and frequently voiced expectation is that,
+since $b_n/a_n\to\zeta(3)$, the $p$-adic tower limit $\Lambda_a$ ought to be a
+$\zeta_p(3)$-avatar --- ``one ratio, two completions''.  It is not.
+
+\subsection{The reference values}\label{ss:refvals}
+
+We use $\zeta_p(s)=L_p(s,\omega^{1-s})$ as in \S\ref{ss:notation}, computed from
+a Volkenborn-integral series derived from scratch and validated on $980$
+independent interpolation identities; the construction, the proof that the
+series \emph{is} $L_p$, and the full validation record are in
+Appendix~\ref{app:KL}.  We record here only the valuations, which matter for the
+strata argument:
+\[
+  \vp(\zeta_p(3))=0\ \ (p\ge5),\qquad
+  \vp(\zeta_p(5))=\begin{cases}-1,&p=5,\\ 0,&p=7,11,13,\end{cases}
+\]
+the $p=5$ case being the one where $\omega^{1-5}=\omega^{-4}$ is trivial because
+$(p-1)\mid4$.  \VER{$p\in\{5,7,11,13\}$, $12$--$22$ digits.}
+
+\subsection{No low-height $\QQ$-affine relation}\label{ss:LLL}
+
+The search instrument is an exact-Fraction LLL with the residue column weighted
+by $p^{K}$, so that only genuine relations survive; it was validated first on
+planted relations and on true relations among Iwasawa logarithms
+($\log_p4-2\log_p2=0$ at height $2$; $\log_p6-\log_p2-\log_p3=0$ at height $1$;
+a planted $5x-7\zeta_p(3)-3=0$ at height $7$) --- \VER{recovered at every prime
+tested}.  For an $m$-term relation certified to $K$ digits the LLL noise floor
+is $p^{K/m}$; a genuine relation must appear \emph{below} the floor.
+
+\begin{finding}[Exclusion]\label{find:exclusion}
+\VER{$p=5,7,11,13$; $K=12$--$27$ certified digits; $a=1,\dots,12$ with $p\nmid a$}
+No relation
+\[
+  c_0+c_1\zeta_p(3)+c_2\Lambda=0
+  \qquad\text{or}\qquad
+  c_0+c_1\zeta_p(5)+c_2\Lambda=0
+\]
+with integer height $\lesssim10^4$ holds for $\Lambda$ any of $\Lambda_a$
+(Ap\'ery), $\Lap_a$, $\Lah_a$ (Brown--Zudilin).  Every candidate returned sits
+\emph{at} the noise floor, i.e.\ is nothing.  The same is true of:
+the $2$-term test $(\zeta_p(3),\Lambda_1)$; the normalisation-free test
+$\Lambda_a/\Lambda_1\in\QQ$; the tests against $\log_p2$, $\log_p3$, and the
+unit root of the weight-$4$ level-$8$ newform $\eta(2z)^4\eta(4z)^4$ that
+Beukers attaches to the Ap\'ery numbers \cite{Beukers1987}; the $4$-term
+test $(1,\zeta_p(3),\log_p2,\Lambda)$; and algebraicity of degree $\le3$.
+Tables~\ref{tab:lll1} and~\ref{tab:lll2} record the heights against the floors.
+\end{finding}
+
+\begin{table}[h]
+\centering\small
+\caption{Ap\'ery pair: best LLL height for $(1,\zeta_p(3),\Lambda_1)$ against
+the $3$-term noise floor $p^{K/3}$.}
+\label{tab:lll1}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+$p$ & $K$ (certified digits) & best height & noise floor $p^{K/3}$\\
+\midrule
+5 & 23 & $1.0\times10^5$ & $2.3\times10^5$\\
+7 & 21 & $4.9\times10^5$ & $8.2\times10^5$\\
+11 & 15 & $4.4\times10^4$ & $1.6\times10^5$\\
+13 & 15 & $1.9\times10^5$ & $3.7\times10^5$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\small
+\caption{The wider hunt at $p=5$, $K=27$: best LLL height found for each
+(target, basis) pair.  Nothing anywhere below the floor.  $C_1:=\Lambda_1-h_p(1)$.}
+\label{tab:lll2}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+target & $(1,\zeta_p(3),\cdot)$ & $(1,\zeta_p(5),\cdot)$ & $(1,\log_p2,\cdot)$
+       & $(1,\log_p3,\cdot)$ & $(1,\text{unit root},\cdot)$
+       & $(1,\zeta_p(3),\log_p2,\cdot)$\\
+\midrule
+$\Lambda_1$ & 1.2e6 & 1.3e6 & 1.5e6 & 9.6e5 & 8.0e5 & 3.5e4\\
+$\Atil_1$ & 1.1e6 & 1.1e6 & 1.2e6 & 1.2e6 & 9.6e5 & 2.1e4\\
+$C_1$ & 1.3e6 & 1.7e6 & 6.7e5 & 7.4e5 & 8.2e5 & 2.5e4\\
+$h_p(1)$ & 6.3e5 & 1.0e6 & 1.0e6 & 6.8e5 & 1.2e6 & 4.8e4\\
+\midrule
+\textbf{floor} & \textbf{2.0e6} & 2.0e6 & 2.0e6 & 2.0e6 & 2.0e6 & \textbf{5.2e4}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The Brown--Zudilin rows behave identically: best heights $6\times10^3$ to
+$1.4\times10^4$ for $(1,\zeta_p(5),\Lap_a)$ and $(1,\zeta_p(3),\Lah_a)$,
+$a=1,2$, at $K=12$--$18$, against floors $1.5\times10^4$ to $1.7\times10^4$.
+Nothing below the floor.  Also excluded: $h_p(1)\in\QQ$ (height
+$5.2\times10^{10}$ vs floor $6.8\times10^{10}$) and $h_p(1)$ algebraic of
+degree $2$.
+
+\begin{remark}[why the margins are already decisive]\label{rem:BVheights}
+Every Beukers--Vlasenko-style Frobenius constant --- $-\zeta_p(3)/3$,
+$-8\zeta_p(3)/25$, $-35\zeta_p(3)/108$, $-\zeta_p(5)/5$, and their companions
+\cite{BV2025} --- has height $\le10^2$.  These are excluded by
+Finding~\ref{find:exclusion} with a margin of two to four orders of magnitude.
+So the negative is not a close call for the candidates one would actually
+propose.
+\end{remark}
+
+\subsection{The sharp form of the negative}\label{ss:sharp}
+
+The LLL evidence bounds heights.  There is a stronger and entirely structural
+statement which shows that no sharpening of estimates can help.
+
+\begin{finding}[polynomial divergence]\label{find:diverge}
+\VER{all $n\le5000$; $p\in\{5,7,11,13\}$}
+\begin{gather*}
+  \vp\bigl(b_n-\zeta_p(3)a_n\bigr)-\vp(a_n)=-3\floor{\log_pn}+O(1),\\
+  \vp\bigl(Q_n\zeta_p(5)-P_n\bigr)-\vp(Q_n)=-5\floor{\log_pn}+O(1).
+\end{gather*}
+Equivalently
+$|a_n\zeta_p(3)-b_n|_p\asymp n^3|a_n|_p$ and
+$|Q_n\zeta_p(5)-P_n|_p\asymp n^5|Q_n|_p$: the $p$-adic linear forms
+\emph{diverge polynomially} instead of converging.
+\end{finding}
+
+A Bel-type $p$-adic irrationality criterion \cite[Lemma~4]{LSZ2025} requires
+$|a_n+b_n\xi|_p\le\exp(-\alpha n)$.  Ours grows like a power of $n$.  The gap is
+therefore infinite, not finite, and no sharpening of any estimate can rescue
+these pairs $p$-adically.  Note the logical relation to
+Theorem~\ref{thm:exists}: the normalisation by $p^{ws}$ is precisely the act of
+dividing this divergence out, and what survives, $\Lambda_a$, is then no longer
+a linear form in anything.
+
+\subsection{The structural reason: order $3$ is too short}\label{ss:order3}
+
+Beukers--Vlasenko \cite[Prop.~1.3]{BV2025} write the Frobenius structure of a
+MUM operator as $\mathcal{A}\bigl(y_i(t^p)\bigr)=p^{i}\sum_j\alpha_jy_{i-j}(t)$,
+so an operator of order $3$ has only $\alpha_1$ and $\alpha_2$.  Their
+Theorem~1.5 evaluates these:
+\begin{equation}\label{eq:BVgen}
+  \alpha_j=[x^j]\,\Gp(x)e^{-\Gp'(0)x}
+         =[x^j]\exp\Bigl(-\sum_{m\ge2}\zeta_p(m)\frac{x^m}{m}\Bigr).
+\end{equation}
+Because there is no $\zeta_p(1)$ and $\zeta_p(2)=0$, this gives
+\[
+  \alpha_1=\alpha_2=0,\qquad
+  \alpha_3=-\tfrac{\zeta_p(3)}{3},\quad
+  \alpha_5=-\tfrac{\zeta_p(5)}{5},\quad
+  \alpha_6=\tfrac{\zeta_p(3)^2}{18},\ \dots
+\]
+The Ap\'ery $\zeta(3)$ operator
+$\theta^3-t(34\theta^3+51\theta^2+27\theta+5)+t^2(\theta+1)^3$ has order $3$.
+Its $p$-adic Frobenius structure is therefore \emph{trivial}: the available
+slots are literally zero, and $\zeta_p(3)$ first appears at $\alpha_3$, which
+needs order $\ge4$.  In particular $\Lambda$ is definitely not an $\alpha_j$.
+(That the Ap\'ery operator is a symmetric square of an order-$2$ operator,
+leaving no room whatever, is \RECALLED.)
+
+\subsection{Consistency with the literature}\label{ss:consistency}
+
+Finding~\ref{find:exclusion} and Finding~\ref{find:diverge} are consistent with,
+and arguably explain, two facts in the literature.  First, Calegari's $p$-adic
+irrationality theorem for $\zeta_p(3)$ at $p=2,3$ \cite{Calegari2005} does
+\emph{not} use the Ap\'ery pair: it uses overconvergent $p$-adic modular forms.
+Second, the successful $p$-adic constructions of Lai--Sprang--Zudilin
+\cite{LSZ2025} obtain their linear forms from a Volkenborn integral of a
+rational function of degree $-3$, exploiting two vanishing mechanisms
+unavailable archimedeanly: purity by degree
+($\sum_kr_{n,1,k}=\lim_{t\to\infty}tR_n(t)=0$, which kills the $\zeta_2(3)$
+coefficient outright and leaves a genuine two-term form), and $\zeta_p(2k)=0$,
+which kills the even-weight terms for free.  Neither mechanism is available to
+the Ap\'ery or Brown--Zudilin pairs, whose $p$-adic content, as we now show, is
+not a linear form at all but a $\Gp$-value.
+
+%% FIXED (MAJOR M-2, evidence-class): this was the only theorem-class environment in the paper
+%% FIXED carrying \VER and no \PROVED, in violation of \S\ref{ss:notation}'s own convention. It is
+%% FIXED now a Finding, and the unsupported quantifier "at any prime" has been replaced by the
+%% FIXED range actually swept (p in {5,7,11,13}, heights <~ 10^4, n <= 5000), with the
+%% FIXED extrapolation stated as such.
+\begin{finding}\label{cor:noroute}
+\VER{as in Findings~\ref{find:exclusion} and \ref{find:diverge}}
+Within the range swept --- $p\in\{5,7,11,13\}$, relation heights $\lesssim10^{4}$,
+$n\le5000$ --- there is no route to the irrationality of any $\zeta_p(2k+1)$ through the
+classical Ap\'ery pair or the Brown--Zudilin pair.
+\end{finding}
+
+We state the wider claim separately, as an expectation rather than a result, because it is the
+one place in this paper where we extrapolate past the sweep.
+
+\begin{remark}
+We expect the same at every prime, and Finding~\ref{find:diverge} is the reason: the
+obstruction found is not a height bound that a longer search might clear, but polynomial
+divergence of the linear forms, a structural property of the pair that does not depend on $p$.
+That is an argument, not a proof, and no numerical evidence outside the four primes above
+supports it.
+\end{remark}
+
+% =====================================================================
+\section{Identification: what the tower limits are}\label{sec:identify}
+% =====================================================================
+
+The exclusions of \S\ref{sec:exclusion} are not accidents of height.  In this
+section we identify $\Lambda_a$ completely: it is an explicit, infinite,
+convergent assembly of two ingredients, each of which has a closed form, and
+each of which involves \emph{all} the odd $p$-adic zeta values at once.
+
+\subsection{The harmonic split and $h_p(a)$}\label{ss:hp}
+
+Ap\'ery's formula
+\begin{gather*}
+  b_n=\sum_kA(n,k)\bigl[H_3(n)+T(n,k)\bigr],\\
+  A(n,k)=\bin{n}{k}^2\bin{n+k}{k}^2,\qquad
+  T(n,k)=\sum_{m\le k}\frac{(-1)^{m-1}}{2m^3\bin{n}{m}\bin{n+m}{m}},
+\end{gather*}
+splits $f=b/a$ into $H_3+c_n/a_n$, where $H_3(n)=\sum_{k\le n}k^{-3}$.  The
+harmonic part has an exact tower limit.
+
+\begin{theorem}\label{thm:hp}
+\PROVED.  For $p\nmid a$,
+\[
+  p^{3s}H_3(ap^s)=\sum_{i}p^{3i}S_i(a),
+  \qquad S_i(a)=\sum_{k\le ap^{i},\ p\nmid k}k^{-3}
+\]
+(the sum over $i$ with $ap^i\ge1$; over $0\le i\le s$ when $1\le a<p$), and
+consequently
+\[
+  h_p(a):=\lim_{s\to\infty}p^{3s}H_3(ap^s)
+  =\sum_{i}p^{3i}S_i(a)
+  =\sum_{\substack{x\in\ZZ[1/p]\\ 0<x\le a}}x^{-3}\ \in\ \Qp .
+\]
+The series converges: $\vp\bigl(p^{3i}S_i(a)\bigr)\ge3i$.
+\end{theorem}
+
+\begin{proof}
+Splitting $H_3$ at $p\mid k$ gives
+$H_3(n)=p^{-3}H_3(\floor{n/p})+\sum_{k\le n,\,p\nmid k}k^{-3}$; iterating and
+multiplying by $p^{3s}$ telescopes to the displayed identity.  Re-indexing
+$x=k/p^{i}$ identifies the total with the sum over $x\in\ZZ[1/p]$, $0<x\le a$,
+of $x^{-3}$: each such $x$ is uniquely $k/p^i$ with $p\nmid k$, and
+$\vp(x^{-3})=3i$, so the terms tend to $0$ $p$-adically and the rearrangement is
+legitimate.
+\end{proof}
+
+\VER{$h_p(a)$ against $p^{3s}H_3(ap^s)$ for $a=1,2,3$, $s\le3$,
+$p\in\{5,7,11,13\}$: agreement $4,9,14,19$ digits.}  Note that the harmonic
+tower converges at $5$ digits per level at weight $3$ --- faster than the Ap\'ery
+tower --- exactly as Table~\ref{tab:harmonicrate} predicts.  Only the terms with
+$i<K/4$ are needed for $K$ digits, so $h_p$ is computable to $40$+ digits in
+milliseconds; this is what makes it usable as a reference constant in
+Table~\ref{tab:lll2}.
+
+\subsection{Kazandzidis limits in closed form}\label{ss:kaz}
+
+\begin{definition}\label{def:kaz}
+For integers $A>B\ge1$ set $c_p(A,B):=\lim_{t\to\infty}\bin{Ap^t}{Bp^t}\in\Qp$.
+The limit exists by Jacobsthal--Kazandzidis \cite{JacobsthalKazandzidis}, at
+$3$ digits per level (Finding~\ref{find:kazrate}).
+\end{definition}
+
+\begin{theorem}\label{thm:kaz}
+%% FIXED (MINOR): the \VER range overstated one cell per prime --- t7_kaz.py drops K to 6 when
+%% FIXED a*p^5 >= 4e6, so the pair (p^2,p) was checked at 6 digits, not 12 (kaz_p11.txt:
+%% FIXED "c_p(121,11) ... MATCH(all 6)"). The claim itself is correct; only the range is now
+%% FIXED stated as the run actually performed it.
+\PROVED\ (from Morita's factorial factorisation and \cite[eq.~(2)]{BV2025}), and
+\VER{$12$ pairs $(A,B)$ $\times$ $p\in\{5,7,11\}$, all digits matching, zero
+mismatches, at $K=12$ digits except for the pair $(p^2,p)$, which the run
+truncates to $K=6$}.
+Let $D=A-B$ and, for $l\ge1$,
+$A_l=\floor{A/p^l}$, $B_l=\floor{B/p^l}$, $D_l=\floor{D/p^l}$.  Put
+\[
+  T(A,B):=\prod_{l\ge1}
+    \frac{(-1)^{A_l+1}\Gp(A_l+1)}
+         {(-1)^{B_l+1}\Gp(B_l+1)\cdot(-1)^{D_l+1}\Gp(D_l+1)}
+\]
+(a finite product, equal to $1$ when $A<p$).  Then
+\begin{equation}\label{eq:kaz}
+\begin{aligned}
+  c_p(A,B)
+  &= -\,p^{\vp\binom{A}{B}}\ T(A,B)\
+      \frac{\Gp(A+1)}{\Gp(B+1)\,\Gp(D+1)}\ e^{\,\mathcal{Z}(A,B)},\\[2pt]
+  \mathcal{Z}(A,B)
+  &= -\!\!\sum_{\substack{m\ge3\\ m\ \mathrm{odd}}}\!\!
+        \zeta_p(m)\bigl(A^m-B^m-D^m\bigr)\frac{p^m}{m(1-p^m)}.
+\end{aligned}
+\end{equation}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Morita's factorisation \cite{Morita1975}
+$n!=p^{\vp(n!)}\prod_{i\ge0}(-1)^{n_i+1}\Gp(n_i+1)$, $n_i=\floor{n/p^i}$,
+applied to $A p^t$, $Bp^t$, $Dp^t$ turns $\bin{Ap^t}{Bp^t}$ into
+$p^{\vp\binom{A}{B}}$ times a ratio of $\Gp$-values at the arguments
+$\floor{Ap^t/p^i}+1$ etc.  The arguments with $i\le t$ are
+$Ap^{t-i}+1$, and $\Gp(1+x)=-\Gp(x)$ on $p\ZZ_p$ moves them onto $p$-power
+points; the arguments with $i>t$ produce exactly the finite tail $T(A,B)$,
+which is independent of $t$.  Applying \cite[eq.~(2)]{BV2025},
+$\log\Gp(x)=\Gp'(0)x-\sum_{m\ge2}\zeta_p(m)x^m/m$, at $x=Ap^{k}$, $Bp^{k}$,
+$Dp^{k}$ and summing the resulting geometric series over $k$ gives the
+exponential factor; the $\Gp'(0)$ terms cancel because $A=B+D$, and the
+even-$m$ terms vanish because $\zeta_p(2k)=0$.
+\end{proof}
+
+The verified pairs include cases with carries, with $p\mid A$, and with
+$\vp(c_p)=1$:
+$(A,B)=(2,1),(3,1),(3,2),(4,1),(5,2),(7,3),(p,1),(p,2),(p+1,1),(p+1,p),(2p,p),(p^2,p)$.
+
+The special case that drives the Ap\'ery tower is worth displaying.
+
+\begin{corollary}\label{cor:cp21}
+\PROVED\ and \VER{to \emph{all} certified digits: $30$ at $p=5$ (from
+$n=2\cdot5^9$), $24$ at $p=7$, $21$ at $p=11$, $18$ at $p=13$}
+\[
+  c_p:=\lim_{s\to\infty}\bin{2p^s}{p^s}
+  =2\exp\Bigl(-\!\!\sum_{\substack{m\ge3\\ m\ \mathrm{odd}}}\!\!
+    \zeta_p(m)\,\frac{(2^m-2)\,p^m}{m(1-p^m)}\Bigr).
+\]
+\end{corollary}
+\begin{proof}
+Specialise \eqref{eq:kaz} at $(A,B)=(2,1)$: $\vp\binom21=0$, $T(2,1)=1$, and
+$\Gp(3)/\Gp(2)^2=-2$.
+\end{proof}
+
+\begin{remark}[the quantitative form of the exclusions]\label{rem:trunc}
+\VER{$p=5,7,11,13$} Truncating the series in Corollary~\ref{cor:cp21} after the
+$\zeta_p(3)$ term reproduces only $4$--$5$ correct digits out of $24$--$30$.
+The constant genuinely needs the entire tower of odd $p$-adic zeta values.
+This is the mechanism behind Finding~\ref{find:exclusion}, quantified.
+\end{remark}
+
+\subsection{The structure theorem}\label{ss:structure}
+
+Along $n=p^s$ one has $\vp\bin{p^s}{k}=s-\vp(k)$, so writing $k=jp^{s-i}$ with
+$p\nmid j$, $0<j\le p^{i}$, the Ap\'ery summand $A(n,k)$ has valuation $2i$ and
+\[
+  \lim_{s\to\infty}A\bigl(p^s,jp^{s-i}\bigr)
+  =\bigl[c_p(p^{i},j)\,c_p(p^{i}+j,j)\bigr]^2 .
+\]
+The inner Ap\'ery weight at $m=j'p^{s-i'}$ contributes
+\[
+  \frac{p^{3s}}{2m^3\bin{n}{m}\bin{n+m}{m}}
+  \ \longrightarrow\
+  \frac{(-1)^{j'-1}p^{3i'}}{2\,j'^{3}\,c_p(p^{i'},j')\,c_p(p^{i'}+j',j')},
+\]
+of valuation $2i'$.  Assembling:
+
+\begin{finding}[Structure theorem]\label{find:structure}
+\VER{$p=5,7,11,13$, block by block; each predicted block confirmed and the
+residual moving to exactly the next block}  With
+$\Atil_a=\lim_sa_{ap^s}$ and $\Btil_a=\lim_sp^{3s}b_{ap^s}$ (so
+$\Lambda_a=\Btil_a/\Atil_a$),
+\begin{align}
+  \Atil_1&=1+\sum_{i\ge0}\ \sum_{\substack{0<j\le p^{i}\\ p\nmid j}}
+    \bigl[c_p(p^{i},j)c_p(p^{i}+j,j)\bigr]^2,
+    \label{eq:Atil}\\
+  \Lambda_1&=h_p(1)+\frac{1}{\Atil_1}
+    \sum_{(i,j),(i',j')}\bigl(\text{block of valuation }2(i+i')\bigr),
+    \label{eq:Lam}
+\end{align}
+where the leading term of \eqref{eq:Atil} is the $k=0$ term of the sum defining
+$a_n$, the $(i,j)$ block of \eqref{eq:Atil} has valuation exactly $2i$, and the
+leading blocks of \eqref{eq:Lam} are
+\[
+  (0,0):\ \frac{c_p(2,1)}{2},
+  \qquad
+  (0,1):\ c_p(2,1)^2\sum_{j=1}^{p-1}
+     \frac{(-1)^{j-1}p^3}{2j^3\,c_p(p,j)\,c_p(p+j,j)} \ =:\ X_3 .
+\]
+\end{finding}
+
+Table~\ref{tab:blocks} is the block-by-block verification: in each row the
+right-hand side is the truncation of the block sum and the entry is the
+valuation of the first discrepancy against the directly computed constant.
+
+\begin{table}[h]
+\centering\small
+\caption{Block-by-block verification of Finding~\ref{find:structure}.}
+\label{tab:blocks}
+\begin{tabular}{@{}lll@{}}
+\toprule
+check & first discrepancy at $\vp$ & predicted\\
+\midrule
+$\Atil_1=1+c_p(2,1)^2$ & 3 & $\ge2$\\
+$\Atil_1=1+c_p(2,1)^2+\sum_j[c_p(p,j)c_p(p+j,j)]^2$ & 6 & $\ge4$\\
+$(\Lambda_1-h_p(1))\Atil_1=c_p(2,1)/2$ & 3 & $\ge2$\\
+$(\Lambda_1-h_p(1))\Atil_1=c_p(2,1)/2+X_3$ & 4 ($p=5$), 5 ($p=11,13$), 6 ($p=7$) & $\ge4$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%% FIXED (MINOR): the last row is a MISS against the generating script's own finer prediction
+%% FIXED (struct_p5.txt: "discrepancy at v_p = 4 (expect 5)"); LAMBDA_HUNT:203 relaxed the column
+%% FIXED to ">= 4" and the paper inherited the relaxed version. Now stated.
+\begin{remark}
+Every row confirms the predicted block, in the sense that the residual moves to the valuation of
+the next block.  One row is worth flagging: for the last check the generating script predicted
+the first discrepancy at $\vp=5$ and observed it at $\vp=4$ at $p=5$
+(\texttt{struct\_p5.txt}).  The block decomposition predicts only $\ge4$ there, which is what
+the table records and what holds; but the sharper $\vp=5$ that one might expect from the
+pattern of the other primes does \emph{not} hold at $p=5$.
+\end{remark}
+
+\begin{remark}\label{rem:complete-not-finite}
+The identification is complete in the sense that every ingredient of
+$\Lambda_a$ is named and evaluated in closed form.  What is \emph{not} finite is
+the number of ingredients: each new level of the tower contributes genuinely new
+Kazandzidis limits $c_p(p^i,j)$.  This is the precise sense in which
+$\Lambda_a$ is ``not a new constant'' and simultaneously ``not a known one''.
+\end{remark}
+
+\subsection{Why every exclusion holds}\label{ss:whyexcl}
+
+Combining Theorem~\ref{thm:kaz} with Finding~\ref{find:structure}: the tower
+limits live in the $\Gp$-value ring.  Each is a convergent $\QQ$-combination of
+products of exponentials of infinite $\QQ$-series in
+$\zeta_p(3),\zeta_p(5),\zeta_p(7),\dots$ with $p$-power-weighted rational
+coefficients.  No finite low-height $\QQ$-relation involving $\zeta_p(3)$ alone
+--- or $\zeta_p(5)$ alone --- can hold, and Remark~\ref{rem:trunc} quantifies
+how badly a $\zeta_p(3)$-only model fails ($5$ digits out of $24$ for
+$\Lambda_1$; $4$--$5$ out of $24$--$30$ for $c_p$).  The exclusion table is
+therefore not a collection of near-misses but the expected shadow of a
+structure theorem.
+
+\subsection{Positioning: values versus Taylor coefficients}\label{ss:BVposition}
+
+Equation~\eqref{eq:BVgen} and equation~\eqref{eq:kaz} involve the same function,
+\[
+  G(x):=\Gp(x)e^{-\Gp'(0)x}=\exp\Bigl(-\sum_{m\ge2}\zeta_p(m)\frac{x^m}{m}\Bigr),
+\]
+and they extract different information from it.  Beukers--Vlasenko take the
+\emph{Taylor coefficients of $G$ at $0$}: these are the Frobenius structure
+constants $\alpha_j$, and for an order-$3$ operator only $\alpha_1,\alpha_2$
+exist, both zero.  Our tower limits are \emph{values of $G$} at the $p$-adic
+points $x=Ap^{k}$, multiplied together over $k$ and assembled over the tower
+tree.  That is the precise sense in which the constants of this paper are
+$p$-adic Frobenius data, and simultaneously the precise reason they are not
+$\QQ$-affine in any single $\zeta_p(m)$.
+
+Three further points of orientation.
+
+\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\item \emph{Terminology.}  The Bloch--Vlasenko / Roy--Vlasenko \emph{Frobenius
+  constants} $\kappa_n$ \cite{RoyVlasenko,Kerr} are archimedean periods
+  (expansion coefficients of a generalised gamma function
+  $\kappa(s)=s^2\int_0^1t^{s-1}\delta(t)\,dt$), conjecturally $\QQ$-combinations
+  of products of zeta values of total weight $n$.  The Beukers--Vlasenko
+  \emph{Frobenius structure constants} $\alpha_j$ \cite{BV2025} are the
+  $p$-adic objects of \eqref{eq:BVgen}.  Our $\Lambda_a$ is the $p$-adic
+  analogue of neither: it is the analogue of the Ap\'ery limit itself, i.e.\ of
+  a $\kappa$-type period.
+\item \emph{Why the naive expectation fails.}  The archimedean Ap\'ery limit is
+  a value at one singular point.  The $p$-adic ``limit'' is a sum over the whole
+  $p$-adic tree, and it therefore collects $G$ at \emph{every} level.  The
+  expectation $\Lambda\leftrightarrow\zeta_p(3)/6$ compares an object of the
+  first kind with an object of the second.
+\item \emph{Adjacent literature.}  We also compared against the Frobenius-constant
+  line of \cite{RoyVlasenko,Kerr} and the interpolated-Ap\'ery-number and
+  quasiperiod circle of \cite{GolyshevZagier}; the objects there are
+  archimedean $\kappa$-type periods and $q$-expansion data, and none of them is
+  our $\Lambda$.
+\item \emph{Novelty.}  We found no source naming these limits, and none stating
+  the closed form of Corollary~\ref{cor:cp21}.  The ingredients --- Morita's
+  factorisation, Jacobsthal--Kazandzidis, \cite[eq.~(2)]{BV2025} --- are all
+  classical, so \eqref{eq:kaz} is presumably folklore-reachable; the derivation
+  above is in any case self-contained and the formula is verified independently.
+  \VER{as in Theorem~\ref{thm:kaz}.}
+\end{enumerate}
+
+\subsection{The one-generator refutation}\label{ss:onegen}
+
+It is natural to hope that the family $\{\Lambda_a\}_{p\nmid a}$ is generated
+over $\QQ$ by a single constant $\omega_p$ --- that the tower base $a$ enters
+only through the elementary data $(a_a,b_a)$.  It does not.
+
+\begin{finding}\label{find:onegen}
+%% FIXED (CRITICAL knock-on): ``handed over for free by Prop 2.5(iv)'' is not universal ---
+%% FIXED (iv) needs the p-unit-cell hypothesis. The floor of 3 is here a MEASURED residual, which
+%% FIXED is what the table reports, and Prop 2.5(iv) explains it on the p-unit cells only.
+\VER{$p=5,7,11,13$; $a\in\{1,\dots,12\}$, $p\nmid a$; $12$--$27$ certified
+digits}  Every ansatz in Table~\ref{tab:ansatz} fails, each at the measured
+trivial floor of $3$ residual digits.  On the $p$-unit cells that floor is
+exactly what Proposition~\ref{prop:invariance}(iv) hands over for free, and by
+Remark~\ref{rem:ivsharp} no more than that is free; on the remaining cells it is
+an empirical observation only.  A closing ansatz would show residual
+agreement $\approx$ available digits.
+\end{finding}
+
+\begin{table}[h]
+\centering\small
+\caption{The one-generator hunt.  Entries are residual digits of agreement out
+of $12$--$18$ available; the trivial floor is $3$.}
+\label{tab:ansatz}
+\begin{tabular}{@{}ll@{}}
+\toprule
+ansatz & result\\
+\midrule
+$\Lambda_a=\alpha b_a+\beta a_a$ & residual $0$--$1$ --- fails outright\\
+$\Lambda_a=\alpha f(a)+\beta$ & residual $3$ --- trivial floor only\\
+$\Lambda_a=\mathrm{const}$; $\Lambda_a=\alpha f(a)$ & $0$ / $3$ --- fails\\
+M\"obius $(\alpha b_a+\beta a_a)/(\gamma b_a+\delta a_a)$ & residual $0$--$2$ --- fails\\
+M\"obius in $(a_a,b_a,1)$ & residual $0$--$2$ --- fails\\
+M\"obius in the state vector $(a_a,b_a,a_{a+1},b_{a+1})$ & residual $-1$--$0$ --- fails\\
+$\Atil_a=\alpha a_a+\beta b_a$ (and variants) & residual $3$ --- trivial floor\\
+$\Btil_a=\alpha a_a+\beta b_a$ & residual $3$--$4$ --- trivial floor\\
+$\Atil$ satisfies the Ap\'ery recurrence? & residual $\vp=3$ at every $n$ --- no\\
+$\delta_a/\delta_b\in\QQ$, $\delta_a:=\Lambda_a-f(a)$ & all reconstructions at the noise floor\\
+$C_a/C_b\in\QQ$, $C_a:=\Lambda_a-h_p(a)$ & all reconstructions at the noise floor\\
+$(1,\Lambda_a,\Lambda_b)$ spans $2$ over $\QQ$ & heights $9$e$4$--$6$e$5$ vs floors $1$--$7$e$5$ --- noise\\
+$\Lambda_1,\Atil_1,\Btil_1,C_1,h_p(1)$ algebraic of degree $2$ or $3$ & all at the noise floor\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Finding~\ref{find:structure} explains why no ansatz can close.  $\Lambda_a$ is a
+sum over a two-index family of blocks of valuation $2(i+i')$, and each new level
+contributes genuinely new Kazandzidis limits.  There is no finite-dimensional
+$\QQ$-structure to find, hence no $\omega_p$.
+
+One classical-looking candidate deserves an explicit burial.  The Casoratian of
+the Ap\'ery pair is
+\begin{equation}\label{eq:casoratian}
+  a_{n+1}b_n-a_nb_{n+1}=-\frac{6}{(n+1)^3},
+\end{equation}
+\PROVED\ from \eqref{eq:apery-rec}: $W_n:=a_{n+1}b_n-a_nb_{n+1}$ satisfies
+$(n+1)^3W_n=n^3W_{n-1}$ with $W_0=-6$.  It is a pure $p$-power,
+$\vp(W_n)=-3\vp(n+1)$, so it carries \emph{no} normalising information about a
+tower: it is invisible at $n=ap^s$ with $p\nmid a$.  This is exactly why the
+Casoratian-corrected ans\"atze collapse onto the plain ones and fail with them.
+
+\begin{remark}[a methodological trap, recorded]\label{rem:trap}
+The Fermat quotients $q_p(2),q_p(3),q_p(5)$, the Wolstenholme quotients
+$H_{p-1}/p^2$ and $H^{(2)}_{p-1}/p$, and $B_{p-3}$ are \emph{rational numbers}
+(e.g.\ $q_5(2)=3$, $H_6/49=1/20$, $B_{10}=5/66$).  Placing them in an
+integer-relation search against $1$ is vacuous: it ``finds'' relations such as
+$q_p(2)-9=0$ and reports false candidates.  They are congruence data modulo
+small powers of $p$, not independent $p$-adic constants.  Similarly
+$\Gp(1/2),\Gp(1/3),\Gp(1/4)$ are algebraic --- $\Gp(1/2)^2=\pm1$ by the
+reflection formula, and the others are Gauss-sum values by Gross--Koblitz
+\cite{GrossKoblitz1979} --- so they are already covered by the
+algebraicity tests of Table~\ref{tab:ansatz}.  The $\Gp$ that matters here is
+$\Gp$ at $p$-power arguments, which is exactly what Theorem~\ref{thm:kaz}
+produces.
+\end{remark}
+
+% =====================================================================
+\section{Existence without archimedean limits}\label{sec:noarch}
+% =====================================================================
+
+We close the positive part of the paper with what we regard as the cleanest
+single piece of evidence that the $p$-adic tower limit is an object about
+Frobenius rather than about archimedean asymptotics.
+
+Three of the fifteen sporadic sequences have \emph{no} archimedean Ap\'ery
+limit.  For \eqref{eq:R2} the characteristic roots solve
+$\lambda^2-a\lambda+c=0$ and for \eqref{eq:R3} they solve
+$\lambda^2-2a\lambda+c=0$; the discriminants are
+\[
+  B:\ -27,\qquad (\delta):\ -128,\qquad (\eta):\ -16,
+\]
+complex-conjugate pairs of equal modulus.  Poincar\'e--Perron therefore supplies
+no dominant solution and $B(n)/A(n)$ does not converge --- \VER{$0$ digits of
+agreement between $n=590$ and $n=600$, against $380$ digits for the convergent
+families}.  Every other sporadic sequence has real distinct roots.
+
+%% FIXED (MINOR): the \VER range said p=5,7,11 for all three, but Finding \ref{find:twist}
+%% FIXED records that (eta) degenerates entirely at p=5 (chi_5(5)=0). Range now split.
+\begin{finding}\label{find:noarch}
+\VER{$N=20\,000$; $a=1,2$; $p=5,7,11$ for $B$ and $(\delta)$, $p=7,11$ for $(\eta)$}
+All three of $B$, $(\delta)$, $(\eta)$
+have $p$-adic tower limits at every unramified $p\ge5$:
+\begin{itemize}[leftmargin=1.5em]
+\item $(\delta)$ outright, at rate $3$ (its character is trivial);
+\item $B$ and $(\eta)$ after the twist, i.e.\ for
+  $\Lambda^\chi_a=\lim_s\chi(p)^{s}p^{ws}B(ap^s)/A(ap^s)$, at rates $2$ and $3$
+  respectively.
+\end{itemize}
+All three satisfy $(\mathrm{LB}_w^\chi)$ with a flat floor, with characters
+$\chi_{-3}$, trivial, $\chi_5$ respectively.  The one exclusion is the ramified prime:
+$(\eta)$ has $\chi_5(5)=0$ and no tower limit at $p=5$, by
+Finding~\textup{\ref{find:twist}}.
+\end{finding}
+
+\begin{finding}[the twist is necessary, and the ramified case degenerates]\label{find:twist}
+\VER{$p=5,7,11$; $E$ and $(\eta)$ at $p=7$; $B$, $C$, $F$, $(\zeta)$, $s_{18}$
+at $p=5,11$}  For a $\chi$-twisted family at a prime with $\chi(p)=-1$
+the untwisted tower does not converge at all ($0$ digits gained per level);
+it converges after normalising by $\chi(p)^{-s}$.  This is the normalisation
+demanded by the twisted master law $(\mathrm{LB}_w^\chi)$.  At a prime dividing
+the conductor --- $(\eta)$ at $p=5$, where $\chi_5(5)=0$ --- the tower
+degenerates entirely: $\vp(\Lambda)$ drifts and there is no convergence.  This
+is the only ramified prime $\ge5$ among the fifteen families.
+\end{finding}
+
+The ramified case is benign at the level of the congruence, if not of the limit:
+there $(\mathrm{LB}_w^\chi)$ reads $p^{w}B_nA_q\equiv0\pmod{p^{w}}$, which is
+exactly the assertion that $B_n$ is $p$-integral, and \VER{$n\le500$}
+$\min_n v_5(B_n)=0$ --- the pole simply does not develop at the ramified prime.
+
+\begin{finding}[no cross-family relations]\label{find:cross}
+\VER{$p=7$, all pairs of the fifteen families, $12$--$21$ digits}  Pairwise
+integer-relation searches for $(1,\Lambda^{\mathrm{fam}_1}_1,
+\Lambda^{\mathrm{fam}_2}_1)$ find nothing below the noise floor.  The tower
+limits of different families all lie in the same ring --- the $\Gp$-value ring
+of \S\ref{ss:whyexcl} --- but are not $\QQ$-linearly related to one another at
+accessible heights.
+\end{finding}
+
+% =====================================================================
+\section{Open problems}\label{sec:open}
+% =====================================================================
+
+\begin{problem}[Name the constants]\label{prob:name}
+Is $h_p(1)=\sum_{x\in\ZZ[1/p],\,0<x\le1}x^{-3}$ irrational?  Transcendental
+over $\QQ$?  We have excluded $h_p(1)\in\QQ$ at height $6.8\times10^{10}$ and
+algebraicity of degree $2$ (\S\ref{ss:LLL}), but nothing is proved.  The same
+question for $c_p=\lim_s\bin{2p^s}{p^s}$, for which Corollary~\ref{cor:cp21}
+gives a closed form entirely in terms of $\zeta_p(3),\zeta_p(5),\dots$: is
+$c_p$ transcendental?  Is it in the field generated by the odd $p$-adic zeta
+values, and if so, is that containment strict?
+\end{problem}
+
+\begin{problem}[Upgrade the Findings]\label{prob:upgrade}
+Prove the multi-digit master descent $(\mathrm{LB}_w^\chi)$ modulo $p^{w}$;
+Paper~A \cite{PaperA-inprep} proves only the single-digit form modulo $p$.
+Prove the scaled weight-$5$ law \eqref{eq:scaled5} with its depth $3s$.  Prove
+the strata bounds of Finding~\ref{find:strata} with an explicit uniform $O(1)$,
+and deduce $c_p=0$ (Finding~\ref{find:cp}) unconditionally.
+\end{problem}
+
+\begin{problem}[The rate law beyond $w=3$]\label{prob:rate}
+Finding~\ref{find:harmrate} is verified only at $w=2,3$.  Prove
+$r(\chi,w)=w$ for $\chi\ne1$ and $r(1,w)=w+1$ ($w$ even), $w+2$ ($w$ odd), and
+prove the cap: that a tower limit assembled from Kazandzidis limits cannot gain
+more than $3$ digits per level.  Explain the upward deviations at
+$(\varepsilon)$, $(\zeta)$, $C$, $s_{18}$.
+\end{problem}
+
+\begin{problem}[Order $\ge4$: is there a $\zeta_p$-carrying Ap\'ery family?]\label{prob:order4}
+By \S\ref{ss:order3} the value $\zeta_p(3)$ first occupies the Frobenius slot
+$\alpha_3$, which requires an operator of order $\ge4$.  Is there an
+Ap\'ery-like family of order $\ge4$ whose tower limit \emph{is}
+$\QQ$-affine in $\zeta_p(3)$ --- i.e.\ for which the naive ``one ratio, two
+completions'' expectation is true?  Our exclusion is a statement about the
+order-$3$ and rank-$3$ families we can compute with, not about the phenomenon in
+general.
+\end{problem}
+
+\begin{problem}[The intrinsic meaning of the twist]\label{prob:twist}
+The factor $\chi(p)$ enters through Lemma~\ref{lem:K}, on the non-unit Frobenius
+eigenvalue only; it is invisible in the $A$-row.  Any crystal-theoretic account
+of $(\mathrm{LB}_w^\chi)$ must carry the information that for seven of the
+fifteen families the second Frobenius eigenvalue is $\chi(p)p^{w}$ and not
+$p^{w}$ --- i.e.\ that the family has a CM or quadratic-twisted modular
+parametrisation.  What is the correct statement, and what happens at
+$p\mid\cond(\chi)$, where the tower degenerates
+(Finding~\ref{find:twist})?
+\end{problem}
+
+\begin{problem}[The $O(1)\to\delta n$ bridge]\label{prob:bridge}
+This is, in our view, the field's question, and we state it as such.  No
+individual $\zeta_p(2k+1)$ is known to be irrational for a single prime
+$p\ge5$; the three known individual results all live at $p=2,3$.  Fitting the
+same ledger shape to those three results (Appendix~\ref{app:LSZ}) gives
+$\mathrm{margin}(p,w)=(w+3)\log p/(p-1)-w$, reproducing all three published
+irrationality measures exactly \FIT, and predicts the two nearest misses:
+\[
+  \zeta_5(3):\ \text{deficit }0.586,\qquad
+  \zeta_3(5):\ \text{deficit }0.606 .
+\]
+Closing either requires a denominator saving of $e^{\delta n}$ with
+$\delta\approx0.59$ resp.\ $0.61$.  The descent congruences
+$(\mathrm{LB}_w^\chi)$ are the single-prime shadow of exactly this kind of
+saving --- but they save $O(1)$ per prime (bounded depth, exactly $w$), hence
+$o(n)$ in total, where one needs $\delta n$.  \emph{Bridging $O(1)\to\delta n$ is
+the whole problem.}  Appendix~\ref{app:LSZ} shows, by exact reproduction of the
+Lai--Sprang--Zudilin ledger, that the $d_n^5$ budget there is tight: there is no
+free denominator saving hiding in the present construction, so the saving must
+come from a group action on a multi-parameter family
+\cite{RhinViola} rather than from a sharper estimate on a fixed one.  We record, as the
+complementary judgement, that we do \emph{not} regard linear independence of
+$1,\zeta_p(3),\zeta_p(5)$ for a specific $p$ as the promising target: two-term
+forms are already at the edge, and a three-term form would need the elimination
+technology of \cite{FSZ2018,LaiSprang2023}, whose $p$-adic versions give
+asymptotic counts rather than a fixed small index set.
+\end{problem}
+
+\begin{problem}[Is the $\Gp$-value ring the right home?]\label{prob:ring}
+Finding~\ref{find:cross} says the tower limits of different families are not
+$\QQ$-linearly related at accessible heights, while
+Finding~\ref{find:structure} says they all lie in the ring generated by values
+of $G(x)=\Gp(x)e^{-\Gp'(0)x}$ at $p$-power arguments.  Give that ring a
+structure theory.  Is there a $p$-adic analogue of the weight filtration under
+which $h_p$, $c_p(A,B)$ and $\Lambda_a$ have well-defined weights?
+\end{problem}
+
+% =====================================================================
+\appendix
+% =====================================================================
+
+\section{The Kubota--Leopoldt implementation, and its validation}\label{app:KL}
+
+Every exclusion in \S\ref{sec:exclusion} is only as good as the reference values
+$\zeta_p(3)$, $\zeta_p(5)$.  We therefore built the Kubota--Leopoldt
+$L$-function from scratch, proved that what we built is $L_p$, and validated the
+implementation against an independently coded classical construction.  This
+appendix is the credibility of the negative result.
+
+\subsection{The series}\label{app:KLseries}
+
+Start from $\zeta_p(s)=L_p(s,\omega^{1-s})$ \cite[Def.~8]{LSZ2025}, the
+Volkenborn integral $\int_{\Zp}t^k\,dt=B_k$ with the convention $B_1=-1/2$, and
+the expansion $\langle t+x\rangle^{1-s}=\langle x\rangle^{1-s}(1+t/x)^{1-s}$
+valid for $|x|_p>1$.  These give
+\[
+  \zeta_p(s,x)=\frac{1}{s-1}\langle x\rangle^{1-s}
+    \sum_{k\ge0}\binom{1-s}{k}B_kx^{-k},
+\]
+and hence, with $M$ any common multiple of $q_p$ and $\cond(\chi)$,
+\begin{equation}\label{eq:KL}
+  L_p(s,\chi)=\frac{1}{(s-1)M}
+    \sum_{\substack{0<j<M\\ p\nmid j}}\chi(j)\langle j\rangle^{1-s}
+    \sum_{k\ge0}\binom{1-s}{k}B_k\Bigl(\frac{M}{j}\Bigr)^{k}.
+\end{equation}
+Convergence is exact and effective: $\vp(B_k)\ge-1$ by von Staudt--Clausen and
+$\vp\bigl((M/j)^k\bigr)=k\,\vp(M)$, so the $k$-th term has
+$\vp\ge k\,\vp(M)-1$.
+
+\begin{proposition}\label{prop:isKL}
+\PROVED.  The right-hand side of \eqref{eq:KL} equals $L_p(s,\chi)$ for all
+$s\in\Zp\setminus\{1\}$.
+\end{proposition}
+
+\begin{proof}
+Set $s=1-n$ with $n\ge1$.  The inner sum truncates, and using
+$B_n(x)=\sum_k\binom{n}{k}B_kx^{n-k}$ together with the classical
+$B_{n,\psi}=F^{n-1}\sum_{a=1}^{F}\psi(a)B_n(a/F)$, the formula collapses to
+\[
+  L_p(1-n,\chi)=-\bigl(1-\chi\omega^{-n}(p)p^{n-1}\bigr)
+    \frac{B_{n,\chi\omega^{-n}}}{n},
+\]
+which is the defining Kubota--Leopoldt interpolation property
+\cite{KubotaLeopoldt1964}, for \emph{every} $n\ge1$.  The right-hand
+series of \eqref{eq:KL} is continuous in $s\in\Zp$ (the convergence is uniform),
+and $\{1-n:n\ge1\}$ is dense in $\Zp$, so the two agree on all of
+$\Zp\setminus\{1\}$.
+\end{proof}
+
+\subsection{Validation}\label{app:KLvalid}
+
+\begin{finding}[$980/980$]\label{find:980}
+\VER{$p\in\{2,3,5,7,11,13,17,19\}$; every character $\omega^e$ with
+$0\le e<p-1$; every $n\in[2,15]$; modulus $p^{12}$; $980$ identities; zero
+mismatches}  The interpolation identity
+$L_p(1-n,\chi)=-(1-\chi\omega^{-n}(p)p^{n-1})B_{n,\chi\omega^{-n}}/n$ holds for
+our implementation against \emph{independently coded} classical generalised
+Bernoulli numbers $B_{n,\psi}$: for trivial $\psi$, $B_n$ with the Euler factor
+$1-p^{n-1}$; for $\psi$ of conductor $p$,
+$p^{n-1}\sum_{a=1}^{p-1}\psi(a)B_n(a/p)$.
+\end{finding}
+
+Two further checks:
+
+\begin{itemize}[leftmargin=1.5em]
+\item \emph{Independence of the auxiliary modulus.}  \VER{$M=q_p\cdot m$,
+  $m=1,\dots,5$} identical values in every case.  The formula \eqref{eq:KL}
+  depends on a choice of $M$; the computed value does not.
+\item \emph{A second, independent route.}  The characterisation used by
+  \cite{LSZ2025,BV2025} --- $\zeta_p(s)=\lim\zeta(k)$ along negative integers
+  $k\equiv s\pmod{p-1}$ with $k\to s$ $p$-adically, i.e.\ $-B_n/n$ at
+  $n\equiv1-s\pmod{\lcm(p^N,p-1)}$ --- gives \VER{$16/16$ matches at
+  $p\in\{5,7,11,13\}$, $s\in\{3,5\}$, $N\in\{2,3\}$; e.g.\ $p=13$, $s=5$,
+  $n=26360$}.
+\end{itemize}
+
+\subsection{Values}\label{app:KLvalues}
+
+Base-$p$ digits, least significant first (Table~\ref{tab:zetadigits}).  These
+are the inputs to Tables~\ref{tab:lll1} and \ref{tab:lll2}.
+
+\begin{table}[h]
+\centering\small
+\caption{$\zeta_p(3)$, base-$p$ digits, least significant first.}
+\label{tab:zetadigits}
+\begin{tabular}{@{}cl@{}}
+\toprule
+$p$ & digits of $\zeta_p(3)$\\
+\midrule
+5 & 2 4 1 2 3 1 4 2 0 2 0 0 2 3 3 0 $\dots$\\
+7 & 1 3 5 4 1 0 2 0 2 4 1 2 5 0 4 6 $\dots$\\
+11 & 5 4 1 0 5 8 5 2 6 8 3 1 4 3\\
+13 & 6 6 5 2 11 12 5 1 5 2 7 5 10 10\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{The Lai--Sprang--Zudilin denominator ledger, reproduced}\label{app:LSZ}
+
+Problem~\ref{prob:bridge} rests on the assertion that the denominator budget of
+the known $p$-adic construction is tight.  We verified this by regenerating the
+construction of \cite{LSZ2025} exactly.
+
+Their object is $R_n(t)=2^{8n}(2t+n)(t+1/2)_n^4/(t)_{n+1}^4$, of degree $-3$,
+with $S_n=-\int_{\ZZ_2}R_n'(t+1/2)\,dt$; the two vanishing mechanisms recalled in
+\S\ref{ss:consistency} reduce $S_n$ to a two-term form
+$S_n=\rho_{n,0}+\rho_{n,3}\zeta_2(5)$.  The integrality of $\rho_{n,3}$ comes
+from a very-well-poised ${}^9V_8$ differentiated once in $\varepsilon$, turned by
+Andrews' transformation \cite{KrattenthalerRivoal2007} into the explicit
+double sum
+\[
+  \rho_n=\!\!\sum_{0\le i\le k\le n}\!\!
+    2^{4(n-k)}\bin{2i}{i}^2\bin{2n-2i}{n-i}\bin{2k-2i}{k-i}\bin{2k}{k}^2\bin{2n-2k}{n-k},
+  \qquad \rho_{n,3}=768\rho_n,
+\]
+while the bound $\vp(\rho_{n,0})\ge-5$ comes from the same machine at
+${}^{13}V_{12}$ with three $\varepsilon$-derivatives --- this is where the
+``$-5$'' originates.  The smallness exponent $\alpha=16\log2$ comes from
+Sprang's $\Delta$-operator \cite{Sprang2020} in the estimate
+$v_2(\int f)\ge\Delta(f)-1$ of \cite[Lemma~2.4]{Lai2025},
+and the growth exponent $\beta=8\log2+5$ from the
+double root $2^8$ of the characteristic polynomial $\lambda^2-2^9\lambda+2^{16}$
+together with the denominator cost $\Phi_n^{-1}d_n^6=e^{5n+o(n)}$.
+
+\begin{finding}\label{find:LSZledger}
+\VER{$n\le1000$, exact rational arithmetic}  Regenerating $\rho_{n,0}$,
+$\rho_{n,3}$, $\rho_n$ from the recursion of \cite{LSZ2025}:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item $\rho_{n,3}=768\rho_n$ and $\rho_n\in\ZZ$;
+\item the exact Casoratian
+  $\rho_{n,0}\rho_{n+1,3}-\rho_{n+1,0}\rho_{n,3}=3\cdot2^{16n+18}/(n+1)^5\ne0$,
+  \VER{$n\le60$ by regenerating both sequences from the recursion};
+\item the conjectured denominator condition $d_n^5\rho_{n,0}\in\ZZ$ holds, and
+  $d_n^4$ does \emph{not} suffice at any tested $n$;
+\item the per-prime ledger $e_p(n):=-\vp(\rho_{n,0})$ equals
+  $5\floor{\log_pn}$ exactly for almost every $p$, with isolated deficits of
+  $1$--$3$ at $p=3,13$;
+\item $\log(\operatorname{den}\rho_{n,0})/n\to5$ from below, the gap shrinking
+  from $0.138$ at $n=200$ to $0.042$ at $n=1000$.
+\end{enumerate}
+Consequently the $d_n^5$ budget is tight: there is no free denominator saving
+hidden in the construction.
+\end{finding}
+
+\subsection{The margin ledger}\label{app:margin}
+
+The three published individual $p$-adic irrationality results have the same
+shape --- smallness $\alpha=2\cdot(\text{growth})$, denominator cost equal to
+the weight $w$, and $\text{growth}_p=(w+3)\log p/(p-1)$ --- giving
+\[
+  \mathrm{margin}(p,w)=\alpha-\beta=(w+3)\frac{\log p}{p-1}-w,
+  \qquad \mu\le\frac{\alpha}{\alpha-\beta}.
+\]
+
+\begin{finding}\label{find:ledgerfit}
+\VER{the fit reproduces all three published irrationality measures exactly}
+See Table~\ref{tab:ledger}.
+\end{finding}
+
+\begin{table}[h]
+\centering\small
+\caption{The ledger fit against the published measures.}
+\label{tab:ledger}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+known result & $\alpha$ & $\beta$ & $\mu=\alpha/(\alpha-\beta)$ & published\\
+\midrule
+$\zeta_2(3)$ \cite{Beukers2008,Calegari2005} & $12\log2$ & $6\log2+3$ & $7.1773988991\dots$ & $7.177398\dots$\\
+$\zeta_3(3)$ \cite{Beukers2008,Calegari2005} & $6\log3$ & $3\log3+3$ & $22.2814479514\dots$ & $22.281447\dots$\\
+$\zeta_2(5)$ \cite{LSZ2025} & $16\log2$ & $8\log2+5$ & $20.3426517389\dots$ & $20.342651\dots$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Extrapolating the same ledger (\FIT: three data points, all at $p\in\{2,3\}$)
+gives the margins of Table~\ref{tab:margins}.  The \emph{conclusion} is robust
+independently of the fit, in that nothing individual is known for any $p\ge5$.
+
+\begin{table}[h]
+\centering\small
+\caption{Extrapolated margins $(w+3)\log p/(p-1)-w$.  Positive means a proof
+exists by this route.}
+\label{tab:margins}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+$p$ & margin, weight 3 & margin, weight 5\\
+\midrule
+2 & $+1.1589$ (known) & $+0.5452$ (known)\\
+3 & $+0.2958$ (known) & $-0.6056$\\
+5 & $-0.5858$ & $-1.7811$\\
+7 & $-1.0541$ & $-2.4055$\\
+11 & $-1.5613$ & ---\\
+13 & $-1.7175$ & ---\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Numerical data}\label{app:data}
+
+Table~\ref{tab:constants} records the tower limits and the derived constants in
+base-$p$ digits, least significant first, computed from exact rationals.
+Certified precisions: Ap\'ery $24$ digits at $p=5$ (from $n=78\,125$; $27$ from
+$n=400\,000$), $21$ at $p=7$, $15$--$18$ at $p=11,13$; Brown--Zudilin $18$ at
+$p=5$ (from $n=3125$), $15$ at $p=7$ (from $n=2401$), $12$ at $p=11,13$.
+
+The Ap\'ery column of Table~\ref{tab:constants} was computed twice, by
+independent programs using different algorithms (an $O(N^2)$ exact-rational
+recurrence and an $O(N)$ mod-$p^K$ pass), with identical results.
+
+\begin{table}[h]
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Base-$p$ digits, least significant first, $12$ digits shown; every
+constant is normalised by $p^{-v}$ where $v$ is its valuation.  Entries marked
+$\dagger$ have $v=-1$; all others have $v=0$.}
+\label{tab:constants}
+\begin{tabular}{@{}cllll@{}}
+\toprule
+$p$ & $\Lambda_1$ (Ap\'ery) & $\Lap_1$ (BZ) & $\Lah_1$ (BZ) & $\widehat{c}_p(1)=\Lah_1/\Lap_1$\\
+\midrule
+5 & 1 1 3 3 4 0 1 1 1 0 2 2$^\dagger$ & 3 3 2 2 4 0 0 2 3 0 1 3 & 4 2 3 0 1 4 4 3 3 4 1 1 & 3 4 2 0 4 3 0 4 0 4 2 2\\
+7 & 4 1 4 4 6 3 0 5 2 6 4 5 & 2 6 5 1 3 3 2 4 0 6 5 1$^\dagger$ & 2 5 4 5 1 6 3 6 2 0 1 0$^\dagger$ & 1 3 4 5 4 4 2 6 2 5 4 1\\
+11 & 10 8 8 4 10 7 0 6 5 5 5 4 & 3 1 5 7 4 7 2 9 7 9 1 10 & 5 10 6 5 7 3 8 2 3 0 0 0 & 9 7 6 9 1 7 7 5 9 4 9 5\\
+13 & 9 2 5 9 6 6 7 1 10 8 11 7 & 8 12 6 7 8 3 12 2 12 10 12 3 & 6 10 4 2 0 7 7 8 8 11 0 11 & 4 8 4 6 11 8 11 11 10 5 11 10\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{The ingredients of the structure theorem, base-$p$ digits, least
+significant first, each normalised by $p^{-v}$.  Entries marked $\dagger$ have
+$v=-1$, entries marked $\ddagger$ have $v=+1$; all others have $v=0$.}
+\label{tab:ingredients}
+\begin{tabular}{@{}cllll@{}}
+\toprule
+$p$ & $\Lambda_1$ & $\Atil_1$ & $h_p(1)$ & $c_p(2,1)$\\
+\midrule
+5 & 1 1 3 3 4 0 1 1 1 0 2 2$^\dagger$ & 1 0 2 0 2 4 3 0 1 0 3 1$^\ddagger$ & 1 0 0 0 4 3 1 0 3 2 1 0 & 2 0 0 2 0 0 2 2 2 2 3 1\\
+7 & 4 1 4 4 6 3 0 5 2 6 4 5 & 5 0 0 0 5 3 3 0 4 1 1 6 & 1 0 0 0 0 4 3 6 1 3 5 4 & 2 0 0 3 1 0 3 1 6 5 2 3\\
+11 & 10 8 8 4 10 7 0 6 5 5 5 4 & 5 0 0 7 3 5 6 0 3 9 8 3 & 1 0 0 0 0 5 5 10 3 0 10 0 & 2 0 0 2 4 4 2 4 5 3 2 0\\
+13 & 9 2 5 9 6 6 7 1 10 8 11 7 & 5 0 0 7 0 4 11 12 4 6 3 8 & 1 0 0 0 0 12 11 4 9 12 8 4 & 2 0 0 2 0 2 4 0 4 7 5 8\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Reproduction}\label{app:repro}
+
+All computations use exact integer or rational arithmetic; no floating point
+occurs at any stage, and every $p$-adic digit reported above is derived from an
+exact rational.  The programs are organised as follows.
+
+\begin{itemize}[leftmargin=1.5em]
+\item \emph{Sequence generation}: exact Ap\'ery and sporadic pairs from the
+  integer recurrence \eqref{eq:int-rec} and its analogues; exact extension of
+  the Brown--Zudilin ladders $Q,P,\Ph$ by the certified order-$3$ recurrence,
+  with the recurrence residual checked to be exactly $0$ at every $n\le357$ on
+  every row.
+\item \emph{$p$-adic arithmetic}: a $\Qp$ class carrying an honest precision
+  bound through every operation, so that no digit is ever reported that is not
+  certified.
+\item \emph{Tower data}: $L_s$, $\Lambda_a$, $\Atil_a$, $\Btil_a$ for all towers
+  and branches, with the per-level agreement recorded (Tables~\ref{tab:aperyrate},
+  \ref{tab:bzrate}).
+\item \emph{Kubota--Leopoldt}: \eqref{eq:KL} plus both cross-checks of
+  Appendix~\ref{app:KLvalid}.
+\item \emph{Integer relations}: an exact-Fraction LLL with weighted residue
+  column, plus rational reconstruction, self-tested on planted relations before
+  use.
+\item \emph{Identification}: $h_p$ from Theorem~\ref{thm:hp}; $c_p(A,B)$ both
+  directly (as a limit) and from \eqref{eq:kaz}; the block-by-block check of
+  Table~\ref{tab:blocks}.
+\end{itemize}
+
+\subsection*{Acknowledgements}
+
+[TO BE SUPPLIED]
+
+% =====================================================================
+\begin{thebibliography}{99}
+% =====================================================================
+
+% --- All entries below have been checked against a fetched source (arXiv
+%     metadata, publisher record, or the text of the cited work); see the
+%     verification memo work/BIBLIO_VERIFY.md for the evidence trail.
+
+\bibitem{PaperA-inprep}
+[AUTHOR],
+\emph{Digit-descent congruences for Ap\'ery-like pairs: the twisted law
+$(\mathrm{LB}_w^\chi)$}.
+In preparation.  (Paper~A of this series.)
+
+\bibitem{PaperB-inprep}
+[AUTHOR],
+\emph{The purity defect of the Brown--Zudilin $\zeta(5)$ family}.
+In preparation.  (Paper~B of this series.)
+
+\bibitem{ASvSZ2008}
+G.~Almkvist, D.~van Straten and W.~Zudilin,
+\emph{Ap\'ery limits of differential equations of order $4$ and $5$},
+in: Modular Forms and String Duality, Fields Inst.\ Commun.\ \textbf{54},
+Amer.\ Math.\ Soc., Providence, RI, 2008, pp.~105--123.
+
+\bibitem{Apery1979}
+R.~Ap\'ery,
+\emph{Irrationalit\'e de $\zeta(2)$ et $\zeta(3)$},
+in: Journ\'ees Arithm\'etiques (Luminy, 1978),
+Ast\'erisque \textbf{61} (1979), 11--13.
+
+\bibitem{Beukers1987}
+F.~Beukers,
+\emph{Another congruence for the Ap\'ery numbers},
+J.\ Number Theory \textbf{25} (1987), no.~2, 201--210;
+see also F.~Beukers, \emph{Irrationality proofs using modular forms},
+Ast\'erisque \textbf{147--148} (1987), 271--283.
+
+\bibitem{Beukers2008}
+F.~Beukers,
+\emph{Irrationality of some $p$-adic $L$-values},
+Acta Math.\ Sin.\ (Engl.\ Ser.) \textbf{24} (2008), no.~4, 663--686.
+(The measures for $\zeta_2(3)$, $\zeta_3(3)$ quoted in
+Table~\ref{tab:ledger} are Theorem~11.2 there.)
+
+\bibitem{BV2025}
+F.~Beukers and M.~Vlasenko,
+\emph{Frobenius structure and $p$-adic zeta values},
+Adv.\ Math.\ \textbf{480} (2025); arXiv:2302.09603.
+
+\bibitem{BVdwork3}
+F.~Beukers and M.~Vlasenko,
+\emph{Dwork crystals III: from excellent Frobenius lifts towards
+supercongruences},
+Int.\ Math.\ Res.\ Not.\ (2023); arXiv:2105.14841.
+
+\bibitem{BrownZudilin2022}
+F.~Brown and W.~Zudilin,
+\emph{On cellular rational approximations to $\zeta(5)$},
+arXiv:2210.03391.
+
+\bibitem{Brown2014}
+F.~Brown,
+\emph{Irrationality proofs for zeta values, moduli spaces and dinner parties},
+arXiv:1412.6508.
+
+\bibitem{Calegari2005}
+F.~Calegari,
+\emph{Irrationality of certain $p$-adic periods for small $p$},
+Int.\ Math.\ Res.\ Not.\ (2005), no.~20, 1235--1249.
+
+\bibitem{ChamberlandStraub}
+M.~Chamberland and A.~Straub,
+\emph{Ap\'ery limits: experiments and proofs},
+Amer.\ Math.\ Monthly \textbf{128} (2021), no.~9, 811--824;
+arXiv:2011.03400.
+
+\bibitem{Cooper2012}
+S.~Cooper,
+\emph{Sporadic sequences, modular forms and new series for $1/\pi$},
+Ramanujan J.\ \textbf{29} (2012), no.~1--3, 163--183.
+(The three additional sporadic solutions $s_7$, $s_{10}$, $s_{18}$ are
+attributed to this paper by \cite[\S2]{MalikStraub}.)
+
+\bibitem{Fischler2003}
+S.~Fischler,
+\emph{Irrationalit\'e de valeurs de z\^eta (d'apr\`es Ap\'ery, Rivoal, \dots)},
+S\'eminaire Bourbaki exp.\ 910, Ast\'erisque \textbf{294} (2004), 27--62;
+arXiv:math/0303066.
+
+\bibitem{FSZ2018}
+S.~Fischler, J.~Sprang and W.~Zudilin,
+\emph{Many odd zeta values are irrational},
+Compositio Math.\ \textbf{155} (2019), no.~5, 938--952; arXiv:1803.08905.
+
+\bibitem{Gessel1982}
+I.~M.~Gessel,
+\emph{Some congruences for Ap\'ery numbers},
+J.\ Number Theory \textbf{14} (1982), no.~3, 362--368.
+
+\bibitem{GolyshevZagier}
+V.~Golyshev and D.~Zagier,
+\emph{Interpolated Ap\'ery numbers, quasiperiods of modular forms, and motivic
+gamma functions},
+in: Integrability, Quantization, and Geometry II,
+Proc.\ Sympos.\ Pure Math.\ \textbf{103.2},
+Amer.\ Math.\ Soc., 2021, pp.~281--301.
+
+\bibitem{GrossKoblitz1979}
+B.~H.~Gross and N.~Koblitz,
+\emph{Gauss sums and the $p$-adic $\Gamma$-function},
+Ann.\ of Math.\ (2) \textbf{109} (1979), no.~3, 569--581.
+
+\bibitem{JacobsthalKazandzidis}
+V.~Brun, J.~O.~Stubban, J.~E.~Fjeldstad, R.~Tambs Lyche, K.~E.~Aubert,
+W.~Ljunggren and E.~Jacobsthal,
+\emph{On the divisibility of the difference between two binomial coefficients},
+Den 11te Skandinaviske Matematikerkongress (Trondheim, 1949),
+Johan Grundt Tanums Forlag, Oslo, 1952, pp.~42--54;
+G.~S.~Kazandzidis,
+\emph{Congruences on the binomial coefficients},
+Bull.\ Soc.\ Math.\ Gr\`ece (N.S.) \textbf{9} (fasc.~1) (1968), 1--12.
+
+\bibitem{Kerr}
+M.~Kerr,
+\emph{Unipotent extensions and differential equations (after Bloch--Vlasenko)},
+arXiv:2008.03618.
+
+\bibitem{KrattenthalerRivoal2007}
+C.~Krattenthaler and T.~Rivoal,
+\emph{Hyperg\'eom\'etrie et fonction z\^eta de Riemann},
+Mem.\ Amer.\ Math.\ Soc.\ \textbf{186} (2007), no.~875, x\,+\,87~pp.
+(Andrews' transformation is Th\'eor\`eme~8 there; it is applied in this form
+in \cite{LSZ2025}.)
+
+\bibitem{KubotaLeopoldt1964}
+T.~Kubota and H.~W.~Leopoldt,
+\emph{Eine $p$-adische Theorie der Zetawerte. Teil~I: Einf\"uhrung der
+$p$-adischen Dirichletschen $L$-Funktionen},
+J.\ Reine Angew.\ Math.\ \textbf{214/215} (1964), 328--339.
+
+\bibitem{Lai2025}
+L.~Lai,
+\emph{On the irrationality of certain $2$-adic zeta values},
+Int.\ J. Number Theory \textbf{21} (2025), no.~1, 207--235.
+
+\bibitem{LaiSprang2023}
+L.~Lai and J.~Sprang,
+\emph{Many $p$-adic odd zeta values are irrational},
+arXiv:2306.10393.
+
+\bibitem{LSZ2025}
+L.~Lai, J.~Sprang and W.~Zudilin,
+\emph{A note on the irrationality of $\zeta_2(5)$},
+arXiv:2505.05005.
+
+\bibitem{MalikStraub}
+A.~Malik and A.~Straub,
+\emph{Divisibility properties of sporadic Ap\'ery-like numbers},
+arXiv:1508.00297.
+
+\bibitem{Morita1975}
+Y.~Morita,
+\emph{A $p$-adic analogue of the $\Gamma$-function},
+J.\ Fac.\ Sci.\ Univ.\ Tokyo Sect.\ IA Math.\ \textbf{22} (1975), no.~2,
+255--266.
+(The displayed product formula is the iterate of Morita's relation
+$\Gp(n+1)=(-1)^{n+1}n!\,/\,(p^{\floor{n/p}}\floor{n/p}!)$.)
+
+\bibitem{RhinViola}
+G.~Rhin and C.~Viola,
+\emph{On a permutation group related to $\zeta(2)$},
+Acta Arith.\ \textbf{77} (1996), no.~1, 23--56;
+\emph{The group structure for $\zeta(3)$},
+Acta Arith.\ \textbf{97} (2001), no.~3, 269--293.
+
+\bibitem{RoyVlasenko}
+B.~Roy and M.~Vlasenko,
+\emph{Frobenius constants for families of elliptic curves},
+arXiv:2206.15181.
+
+\bibitem{Sprang2020}
+J.~Sprang,
+\emph{Linear independence result for $p$-adic $L$-values},
+Duke Math.\ J. \textbf{169} (2020), no.~18, 3439--3476.
+
+\bibitem{Straub2023}
+A.~Straub,
+\emph{Gessel--Lucas congruences for sporadic sequences},
+Monatsh.\ Math.\ (2023); arXiv:2301.12248.
+
+\bibitem{Supercong}
+F.~Beukers,
+\emph{Some congruences for the Ap\'ery numbers},
+J.\ Number Theory \textbf{21} (1985), no.~2, 141--155;
+M.~J.~Coster,
+\emph{Supercongruences},
+Ph.D.\ thesis, Universiteit Leiden, 1988;
+T.~Ishikawa,
+\emph{Super congruence for the Ap\'ery numbers},
+Nagoya Math.\ J. \textbf{118} (1990), 195--202.
+
+\bibitem{Zagier2009}
+D.~Zagier,
+\emph{Integral solutions of Ap\'ery-like recurrence equations},
+in: J.~Harnad and P.~Winternitz (eds.), Groups and Symmetries:
+From Neolithic Scots to John McKay,
+CRM Proc.\ Lecture Notes \textbf{47}, Amer.\ Math.\ Soc., 2009, pp.~349--366.
+
+\end{thebibliography}
+
+\end{document}

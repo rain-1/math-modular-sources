@@ -1,0 +1,52 @@
+{
+  "family": "apery-systems-2::Fanout C-2 Go",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-2/fanout-c-2-go-6a87008b.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-2/fanout-c-2-go-6a87008b.md",
+  "title_human": "\u0393\u2081(7) Pl\u00fccker obstruction theorem",
+  "claims": [
+    {
+      "statement": "The weight-4 \u0393\u2081(7) Manin module has dimension 12 (144 generators, relation matrix rank 132)",
+      "object": "\u0393\u2081(7) modular symbol space",
+      "status": "proved",
+      "source_file": "fanout-c-2-go-6a87008b.md",
+      "notes": "Exact computational result using standard Manin relations"
+    },
+    {
+      "statement": "\u03b1 := \u03c0\u00b2L(f,1)/L(f,3) = 3871/(1103-47\u221a(-3)). N_Q(s)/Q(\u03b1) = 49/4, exactly the modulus forced by the level-7 functional equation",
+      "object": "Level-7 L-value ratio",
+      "status": "proved",
+      "source_file": "fanout-c-2-go-6a87008b.md",
+      "notes": "Exact modular-symbol certificate"
+    },
+    {
+      "statement": "The Pl\u00fccker minors satisfy R_13=0, R_12=0, R_23=0 (derived from modular-symbol star lines)",
+      "object": "\u0393\u2081(7) Pl\u00fccker regulator class",
+      "status": "proved",
+      "source_file": "fanout-c-2-go-6a87008b.md",
+      "notes": "All three minors verified exactly zero"
+    },
+    {
+      "statement": "\u03a9_g = 0 for the cusp regulator class (monodromy contains genuine quadratic n\u00b2 term with no finite character able to remove it)",
+      "object": "canonical scalar descent obstruction",
+      "status": "obstruction",
+      "source_file": "fanout-c-2-go-6a87008b.md",
+      "notes": "Exact obstruction theorem"
+    }
+  ],
+  "connections_to_literature": [
+    "LMFDB orbit 7.4.c.a (weight 4, level 7, dimension 2, cubic character)"
+  ],
+  "open_threads_or_handoffs": [
+    "Syntomic K_p remains unresolved",
+    "Vector arithmetic-holonomy continuation"
+  ],
+  "in_ledger": "no",
+  "ledger_notes": "Not directly in current ledger; represents new \u0393\u2081(7) computation specific to this fanout branch",
+  "flags": [
+    "Do not claim K_p has been computed",
+    "Do not claim global arithmetic width D_ar equals 5",
+    "Do not claim irrationality follows from this branch"
+  ]
+}

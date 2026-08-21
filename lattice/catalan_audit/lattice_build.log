@@ -1,0 +1,24 @@
+  n    S_n    d_n  idx_chk  v2(h)   log|q|/n  log|qG-p|/n      gcd
+  1    win idx=25 logS/n=3.219 kappa=3.219 log|q|/n=  23.4957 log|qG-p|/n=   8.6621 gcd=512
+  1    lcm idx=225 logS/n=8.189 kappa=5.416 log|q|/n=  17.9907 log|qG-p|/n=   3.2118 gcd=128
+  2    win idx=3025 logS/n=4.007 kappa=4.007 log|q|/n=  23.9234 log|qG-p|/n=   9.6449 gcd=8192
+  2    lcm idx=12006225 logS/n=10.230 kappa=8.150 log|q|/n=  20.0628 log|qG-p|/n=   6.1412 gcd=512
+  3    win idx=2393209 logS/n=4.896 kappa=4.896 log|q|/n=  24.6890 log|qG-p|/n=  10.6003 gcd=147456
+  3    lcm idx=586396035225 logS/n=10.881 kappa=9.032 log|q|/n=  20.6214 log|qG-p|/n=   6.4543 gcd=128
+  4    win idx=6677994961 logS/n=5.656 kappa=5.656 log|q|/n=  24.2860 log|qG-p|/n=   9.9454 gcd=262144
+  4    lcm idx=111983464450883025 logS/n=11.201 kappa=9.814 log|q|/n=  21.1471 log|qG-p|/n=   6.7362 gcd=64
+  5    win idx=699810397 logS/n=4.586 kappa=4.073 log|q|/n=  24.7286 log|qG-p|/n=  10.1322 gcd=12845056
+  5    lcm idx=232857923744157586875 logS/n=11.391 kappa=9.379 log|q|/n=  20.5925 log|qG-p|/n=   6.5123 gcd=256
+  6    win idx=3036411157 logS/n=4.066 kappa=3.639 log|q|/n=  24.7934 log|qG-p|/n=  10.5050 gcd=65536
+  6    lcm idx=1566435253026948086908125 logS/n=10.868 kappa=9.285 log|q|/n=  20.9448 log|qG-p|/n=   6.4293 gcd=576
+  7    win idx=194041931832644281 logS/n=5.687 kappa=5.687 log|q|/n=  24.2111 log|qG-p|/n=  10.3482 gcd=40632320
+  7    lcm idx=46862662821040720367645256950625 logS/n=11.408 kappa=10.418 log|q|/n=  21.5040 log|qG-p|/n=   7.0648 gcd=256
+  8    win idx=518757639360785232409 logS/n=5.962 kappa=5.962 log|q|/n=  25.2953 log|qG-p|/n=  10.7346 gcd=720896
+  8    lcm idx=17400707399584943721740487358606156875 logS/n=11.885 kappa=10.719 log|q|/n=  21.6004 log|qG-p|/n=   7.1831 gcd=544
+  9    win idx=5042180653856213556529 logS/n=5.552 kappa=5.552 log|q|/n=  25.5367 log|qG-p|/n=  10.4536 gcd=2082209792
+  9    lcm idx=2026581418388383355911146663521923878673125 logS/n=11.879 kappa=10.824 log|q|/n=  21.7992 log|qG-p|/n=   7.2193 gcd=15360
+ 10    win idx=29868111972784381035601 logS/n=5.175 kappa=5.175 log|q|/n=  24.7912 log|qG-p|/n=  10.7043 gcd=44302336
+ 10    lcm idx=7054529917409962461926701535719817021661148125 logS/n=11.507 kappa=10.557 log|q|/n=  21.6680 log|qG-p|/n=   7.0341 gcd=3840
+Traceback (most recent call last):
+  File "<stdin>", line 28, in <module>
+KeyError: 11

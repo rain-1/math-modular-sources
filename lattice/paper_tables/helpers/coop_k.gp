@@ -1,0 +1,21 @@
+default(realprecision,60);
+f10(n,u1,u0)=2*(2*n+1)*(3*n^2+3*n+1)*u1 + 4*n*(16*n^2-1)*u0;
+f7(n,u1,u0)=(2*n+1)*(13*n^2+13*n+4)*u1 + 3*n*(9*n^2-1)*u0;
+f18(n,u1,u0)=2*(2*n+1)*(7*n^2+7*n+3)*u1 - 12*n*(16*n^2-1)*u0;
+rowsC(fn,b,N)={my(A=vector(N+1),B=vector(N+1));A[1]=1;A[2]=b;B[1]=0;B[2]=1;
+ for(n=1,N-1,A[n+2]=fn(n,A[n+1],A[n])/(n+1)^3;
+             B[n+2]=fn(n,B[n+1],B[n])/(n+1)^3);[A,B]};
+kcheck(B,Nk,kmax)={my(k=-1);
+ for(kk=1,kmax,my(ok=1,dn=1);
+   for(n=1,Nk, dn=lcm(dn,n); my(v=dn^kk*B[n+1]); if(v!=round(v), ok=0; break));
+   if(ok, k=kk; break));
+ my(sharp=1);
+ if(k>=1, my(dn2=1,failed=0);
+   for(n=1,Nk, dn2=lcm(dn2,n); my(v=dn2^(k-1)*B[n+1]); if(v!=round(v), failed=1; break));
+   sharp=failed);
+ [k,sharp]};
+R7=rowsC(f7,4,200); R10=rowsC(f10,2,200); R18=rowsC(f18,6,200);
+print("s7 k,sharp: ", kcheck(R7[2],200,5));
+print("s10 k,sharp: ", kcheck(R10[2],200,5));
+print("s18 k,sharp: ", kcheck(R18[2],200,5));
+\q

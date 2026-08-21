@@ -1,0 +1,48 @@
+{
+  "family": "apery-systems::free integrations",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems/free-integrations-6a83fcce.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems/free-integrations-6a83fcce.md",
+  "title_human": "Research integration and paper planning",
+  "claims": [
+    {
+      "statement": "the level-12 source-first \u03b6(5) construction has an exact weight-6 source with L(G,5)=(144/25)\u03b6(5), an integral first row related algebraically to the square of the Domb period, a genuine two-index binomial formula, an exact companion B=FD^(-5)G, all-n integrality A_n \u2208 Z, and d_n^5 B_n \u2208 Z",
+      "object": "\u03b6(5)",
+      "status": "experimental/numerical",
+      "source_file": "free-integrations-6a83fcce.md",
+      "notes": "Identified as strongest result in the project. Requires proof of W_12 Eichler/Fricke transformation before submission."
+    },
+    {
+      "statement": "For even weight k, the number of independent annihilation conditions is q(k)=1+\u230ak/4\u230b, and if h_\u03b5(N) is the appropriate Fricke eigenspace dimension, the annihilation matrix has maximal rank min(q(k),h_\u03b5(N)), giving dimA_N,k^\u03b5 = max(0,h_\u03b5(N)\u2212q(k))",
+      "object": "period annihilation theory",
+      "status": "proved",
+      "source_file": "free-integrations-6a83fcce.md",
+      "notes": "Core theorem in classification theory; should become theorem-and-classification paper"
+    },
+    {
+      "statement": "For three meromorphic Cooper cases s_7, s_10, s_18: (n+1)|A_n for every n, which makes the first Eichler integration arithmetically free and gives d_n^2 B_n \u2208 Z instead of d_n^3",
+      "object": "Cooper cubics",
+      "status": "proved",
+      "source_file": "free-integrations-6a83fcce.md",
+      "notes": "Connects congruence/divisibility theory directly to effective weight of Ap\u00e9ry construction"
+    }
+  ],
+  "connections_to_literature": [
+    "Recent 2026 work on Domb/\u03b6(3) Ap\u00e9ry limits and level-8 Eichler constructions"
+  ],
+  "open_threads_or_handoffs": [
+    "Complete W_12 \u03b6(5) connection theorem",
+    "Audit true arithmetic weight of level-12 \u03b6(5) companion",
+    "Complete level-36 modular deck-group census",
+    "Level-12 full W_4-closed trace experiment for Catalan",
+    "Brown\u2013Zudilin p-adic denominator obstruction arithmetic"
+  ],
+  "in_ledger": "partially",
+  "ledger_notes": "E07 (Domb source identity), E08 (manufactured recurrence), and other related IDs. Period annihilation theory maps to multiple entries including E01-E05 (Eisenstein sources).",
+  "flags": [
+    "Do not publish level-30 as principal \u03b6(5) paper",
+    "Catalan irrationality remains unproven",
+    "Emphasize W_12 connection theorem as non-negotiable before submission"
+  ]
+}

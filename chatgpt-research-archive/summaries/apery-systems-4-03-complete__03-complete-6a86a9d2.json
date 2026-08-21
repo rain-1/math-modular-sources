@@ -1,0 +1,449 @@
+{
+  "family": "apery-systems-4::03 COMPLETE",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+  "title_human": "03 COMPLETE",
+  "claims": [
+    {
+      "statement": "MASTER_FANOUT_MANUAL(20260820-071443).txt\nDocument\n03_GAMMA1_7_ACTUAL_EXTENSION_WEDGE_DESCENT(1).txt\nDocument\nHECKE_EISENSTEIN_APERY_THEORY_V8_TEX(2).zip\nZip Archive\nplease complete this mathematical research task",
+      "object": "Ap\u00e9ry-like sequence",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "I completed the part of Fan-Out 03 that can be closed rigorously from the supplied material. The result is substantially stronger on the geometric/monodromy side, but I would not mark the entire branch [PROVED]: the mission itself still requires the actual extension vector, cusp translations, determinant period, integral presentation/SNF, and filtered Frobenius data.",
+      "object": "Frobenius",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "03_GAMMA1_7_ACTUAL_EXTENSION_WE\u2026",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "MASTER_FANOUT_MANUAL",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The main new exact certificate is the complete level-7 S\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "s=\nt(t\u22121)\nt\n3\n\u22123t+1\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": ",h=s\u22128=\nt(t\u22121)\nt\n3\n\u22128t\n2\n+5t+1\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(7) coordinate and h=(\u03b7(\u03c4)/\u03b7(7\u03c4))\n4\n is the X\n0\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(7) Hauptmodul, Fricke acts by h\u21a649/h. The degree-three X\n1\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "(7) formula is classical, and the level-7 Hauptmodul/Fricke normalization is independently documented. \nPaperzz\n+1",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Q(t)=\nt(t\u22121)(t\n3\n\u22128t\n2\n+5t+1)\nt\n6\n\u221232t\n5\n+267t\n4\n\u2212384t\n3\n+122t\n2\n+26t+1\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The degree-six equation of t over Q(Q) is",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "t\n6\n\u2212(Q+32)t\n5\n+(9Q+267)t\n4\n\u2212(13Q+384)t\n3\n+(4Q+122)t\n2\n+(Q+26)t+1=0,",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "7\n4\n(Q+2)\n3\n(Q+29)\n4\n(Q+30)\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "ramification\n3\u00d7e=2\n2\u00d7e=3\n3\u00d7e=2\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The ramification total is 3+4+3=10=2\u22c56\u22122, so nothing is missing. All six cusps lie over Q=\u221e: t=0,1,\u221e and the three roots of",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "with R\n3\n=S\n2\n=1,\u00a0SRS=R\n\u22121\n, and det\u03c1(g)=sgn(g).",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "For the remaining puncture monodromy I obtained the exact obstruction formula. For",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "There is an important simplification: the six cusps constitute one regular S\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "That is now the decisive remaining complex certificate.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "is holomorphic in Q. At Q=\u221229, the order-three action fixes W, so W=w(z\n3\n), again giving a holomorphic descended function. Therefore the finite branch points",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "This matters analytically. With the natural cusp coordinate x=1/Q, the naive sheet singularities are",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "but they should not be inherited as genuine continuation barriers after the sign descent. The real complex obstruction is the residual affine cusp monodromy, not finite S\n3\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "On the arithmetic side I could also prove that the quotient itself introduces no new asymptotic denominator layer. At t=\u221e, u=1/t,",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Q=u\n\u22121\n\u221223+47u+342u\n2\n+2498u\n3\n+\u22ef,",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=u+23u\n2\n+482u\n3\n+9663u\n4\n+189231u\n5\n+\u22ef.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "descent, and coefficient-field/sign descent has zero asymptotic height. But the supplied evidence rules explicitly forbid identifying a formal descent with a denominator improvement.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "MASTER_FANOUT_MANUAL",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "So the branch is now reduced to four project-specific certificates rather than an open-ended descent problem: the actual V or its exact q-series/operator; one cusp translation p; one integral extension presentation for the determinant/SNF computation; and one good-prime filtered Frobenius matrix. Period identification and the minimal descended operator then become finite computations from those inputs. I have not fabricated them from the abstract V8 theory.",
+      "object": "Frobenius",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The full research report and exact SymPy certificate are here:",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "\u0393\u2081(7) wedge-descent completion report",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Exact quotient/branch certificate code",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "geometry and canonical sign descent [PROVED]; full Fan-Out 03 [PROVED-ROUTE], reduced to one complex cusp certificate plus the actual integral/Frobenius data.",
+      "object": "Frobenius",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "GAMMA1_7_WEDGE_DESCENT_COMPLETION_REPORT_20260820.txt\nDocument\ngamma1_7_exact_quotient_certificate.py\nCode\nSources",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Completed the four-certificate push as far as the mathematics currently allows. The supplied mission explicitly asks for the actual extension vector, puncture monodromy, integral/SNF audit, and filtered Frobenius computation.",
+      "object": "Frobenius",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "03_GAMMA1_7_ACTUAL_EXTENSION_WE\u2026",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "First, one correction: my previous report used a different normalization of the level-7 Hauptmodul and incorrectly put the order-three branch at Q=\u221229. For the actual Li\u2013Walker project coordinate,",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Certificate\tFinal status\tResult\nActual extension vector/operator\t[PROVED]\tExplicit rational 2-vector and rank-five differential extension\nCusp translations / \u03a9\t[PROVED-ROUTE]\tExact period-polynomial and Pl\u00fccker obstruction obtained; vanishing not justified by existing data\nIntegral determinant/SNF\t[PROVED] substantial closure\tWedge weight improves from \u22646 to \n\u22645\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "; exact prime-local theorem\nFiltered Frobenius\t[PROVED] graded structure / [OPEN] extension block\tExact Frobenius shape determined; syntomic off-diagonal block is genuinely absent from supplied data",
+      "object": "Frobenius",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "t)\n2\nt(t+1)(t\n3\n+8t\n2\n+5t\u22121)\nP(t)\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "t=\u2212a(t)A(t)\n2\n,a=t(t+1)(t\n3\n+8t\n2\n+5t\u22121).",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "For puncture monodromy, there is an important structural correction to the earlier simplified treatment: weight-four Eichler translations are not constant vectors. They are quadratic period polynomials. For a source f,",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "L(f,1),L(f,2),L(f,3).",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "gives the mission's exact obstruction",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "=L(f,r)L(f\n\u03c3\n,s)\u2212L(f\n\u03c3\n,r)L(f,s),1\u2264r<s\u22643.\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "03_GAMMA1_7_ACTUAL_EXTENSION_WE\u2026",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "So this certificate has been reduced to a precise finite period determinant rather than guessed.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "i\n3\nj\n3\n(j\u2212i)det(a\ni\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "MASTER_FANOUT_MANUAL",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "There is also an exact local sharpness theorem. For the level-7 weight-four eigenform over Q(\n\u22123\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "), write its coefficient a\np\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": ". Then for every good odd prime p\n\ue020\n=7,",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "because 29\n2\n\u2223N(a\n29\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "). The coefficient field and exact Hecke data are independently recorded for newform orbit 7.4.c.a. \nLMFDB\n+1",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The exterior-square quotient satisfies",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "MASTER_FANOUT_MANUAL",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "determinant\u00a0period\u00a0=\u00a0explicit\u00a0critical-L\u00a0regulator\n\t\u200b",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "while the two genuinely irreducible remaining certificates are",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Exact symbolic certificate",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Certificate execution output",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The certificate terminates with ALL EXACT ASSERTIONS PASSED.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "GAMMA1_7_FANOUT03_EXECUTION_REPORT_20260820.md\nDocument\ngamma1_7_fanout03_certificate.py\nCode\ngamma1_7_fanout03_certificate_output.txt\nDocument\nSources",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-4/03-complete-6a86a9d2.json",
+      "notes": "extracted from research notes"
+    }
+  ],
+  "connections_to_literature": [],
+  "open_threads_or_handoffs": [],
+  "in_ledger": "no",
+  "ledger_notes": "",
+  "flags": []
+}

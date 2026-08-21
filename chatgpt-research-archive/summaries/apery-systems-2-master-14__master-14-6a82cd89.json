@@ -1,0 +1,267 @@
+{
+  "family": "apery-systems-2::MASTER 14",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+  "title_human": "MASTER 14",
+  "claims": [
+    {
+      "statement": "MASTER_RESEARCH_FIELD_MANUAL(20260817-085954).txt\nDocument\n14_X0PLUS169_ZETA5_DIRECT_IMAGE_TRACE.txt\nDocument",
+      "object": "zeta function",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "MASTER_RESEARCH_FIELD_MANUAL",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "and the dedicated X\u2080\u207a(169) completion prompt, whose mission is to decide the full seven-sheet trace-log cancellation problem.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "14_X0PLUS169_ZETA5_DIRECT_IMAGE\u2026",
+      "object": "zeta function",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "14_X0PLUS169_ZETA5_DIRECT_IMAGE\u2026",
+      "object": "zeta function",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "MASTER_RESEARCH_FIELD_MANUAL(20\u2026",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Edit\nX\u2080\u207a(169) Seven-Sheet Direct-Image Trace\nExecutive status",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "[EXACT-COMPUTATIONAL] I independently reconstructed a valid exact degree-7 cusp coordinate\n[\nT=C_0/C_1\n]\non the Baran plane quartic for (X_0^+(169)\\cong X_s(13)).",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The external geometric starting point is secure: the literature identifies (X_s(13)\\cong X_0^+(169)) as a genus-3 plane quartic and gives the explicit Baran equation. The associated exact computational notebook constructs all seven cusps, with one rational cusp and the other six conjugate over the real cyclotomic subfield.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Using\n[\n\\begin{aligned}\nC_0={}&-X^3-X^2Y+2XY^2+3X^2Z-2XYZ\\\n&-Y^2Z+YZ^2-Z^3,\n\\end{aligned}\n]\nI found the residual-divisor denominator\n[\nC_1=X(3X^2+XY-8XZ-Y^2+4Z^2).\n]",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Thus\n[\nT=\\frac{C_0}{C_1}.\n]",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "In the affine coordinate\n[\nz=\\frac{X}{X+Y+Z},\n]\nexact elimination produces\n[\nK=\\mathbf Q(T)[z]/(P(z,T)),\n\\qquad \\deg_zP=7.\n]",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Its cusp fibre is\n[\nP(z,0)\n=(2z-1)\n(13z^6+91z^5-195z^4+78z^3+26z^2-13z+1).\n]",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "3^6,5^4,13^5,79^2,103^2\\neq0.\n]",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "[EXACT-COMPUTATIONAL]\n[\nT=0\n]\nis an \u00e9tale seven-sheet fibre in this normalization.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "\\frac{\n1443338z^6+10602813z^5-17719693z^4\n+4555684z^3+2574380z^2-1130939z+75491\n}{122055}\n\\pmod {P(z,0)}.\n]",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "At the rational cusp (z=1/2),\n[\n\\left.\\frac{dz}{dT}\\right|_{z=1/2}=-\\frac14.\n]",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The complete (7\\times7) matrix of (d/dT) on\n[\n1,z,\\ldots,z^6\n]\nhas also been computed exactly.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Decisive obstruction",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "[OBSTRUCTION \u2014 CURRENT HANDOFF DATA]",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The required dependency is\n[\nc_4,\\partial T\n\\longrightarrow\n\\nabla_{\\mathrm{rank},2}\n\\longrightarrow\n\\text{local Frobenius transport}\n\\longrightarrow\n(a_c)_{c=1}^7\n\\longrightarrow\n\\operatorname{Tr}(\\text{complete log germ}).\n]",
+      "object": "Frobenius",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The supplied Completion Prompt names\n[\nc_4\n]\nbut supplies no formula for it.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "It likewise defines\n[\na_c=\n\\left[\n\\frac{T^3G_\\Sigma}{(DT)^3}\n\\right]c\n]\nbut supplies no exact formula, function-field representative, or sufficient expansion for (G\\Sigma).",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "This is a handoff-data obstruction, not a no-go theorem for the level-169 geometry.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "[EXACT-COMPUTATIONAL] seven-sheet \u00e9taleness at (T=0) certified.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "[EXACT-COMPUTATIONAL] exact algebraic (T)-derivation at the cusp fibre computed.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "[OBSTRUCTION] rank-2 connection cannot be recovered from the current files without (c_4) or an equivalent exact projective differential equation.",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "[OBSTRUCTION] the seven resonant source entries cannot be recovered without (G_\\Sigma).",
+      "object": "unknown mathematical object",
+      "status": "abandoned",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Do not treat the (T^{-2}) term as an additional direct resonance.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Do not use the superseded denominator-13 Fricke action (a\\mapsto-a^{-1}).",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Do not claim irrationality of (\\zeta(5)).",
+      "object": "zeta function",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "the project's exact (c_4), (G_\\Sigma), and original (P(z,T))/(T=C_0/C_1) normalization; or",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "an exact rank-2 projective connection/operator equivalent to (c_4), together with an exact function-field expression for (G_\\Sigma).",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "The reconstruction is reproducible: rerunning the script produced byte-for-byte identical certificate output.",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "Exact symbolic certificate",
+      "object": "unknown mathematical object",
+      "status": "proved",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    },
+    {
+      "statement": "X0PLUS169_DIRECT_IMAGE_TRACE_RESEARCH_NOTE.md\nDocument\nx0plus169_reconstruct_T.py\nCode\nx0plus169_reconstruction_certificate.txt\nDocument\nSources",
+      "object": "unknown mathematical object",
+      "status": "experimental/numerical",
+      "source_file": "chatgpt-research-archive/conversations/apery-systems-2/master-14-6a82cd89.json",
+      "notes": "extracted from research notes"
+    }
+  ],
+  "connections_to_literature": [],
+  "open_threads_or_handoffs": [],
+  "in_ledger": "no",
+  "ledger_notes": "",
+  "flags": []
+}

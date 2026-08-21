@@ -1,0 +1,15 @@
+\appendix
+\section{Verification scripts}\label{app:scripts}
+All computations are exact (PARI/GP, rational arithmetic) unless stated; each script prints what it checks. Repository paths are relative to the project root.
+\begin{description}
+\item[\texttt{verify/period\_annihilation.gp}] Dirichlet-polynomial facts of Section~\ref{sec:sources}: Beukers' annihilator; level-$8$ and level-$16$ Gaussian-binomial projectors; the level-$12$ $\zeta(7)$ parent kills $s=0,2,4,6,8$ with target $\tfrac{209}{1728}\zeta(7)$; $\beta(4)$ inner/outer vectors; the $\chi_{-3}$ purified vector. 12 PASS.
+\item[\texttt{verify/beta4\_lambert.py}] The $\beta(4)$ Lambert identity at $\tau=i/\sqrt{24}$ to $40$ digits (mpmath).
+\item[\texttt{lattice/zagier\_padic.gp}, \texttt{zagier\_limits.gp}, \texttt{zagier\_CF.gp}] Zagier A--F: $v_p(a_n)$ bounds, slopes, archimedean limits by \texttt{lindep}, $3$-adic coincidence of B, C, F with factors $\tfrac12,\tfrac12,\tfrac58$.
+\item[\texttt{lattice/third\_order.gp}, \texttt{zeta3\_align.gp}] Third-order sporadics; Domb vs $(12,4,16)$ $2$-adic alignment with factor $\tfrac43$, $n\le400$.
+\item[\texttt{lattice/census/}] Cooper rows (corrected initial conditions), $\eta=(11,5,125)$, $\delta=(7,3,81)$, level-$24$ $\zeta(7)$ ($A_n$, $B_n$, $d_n^7$, limit).
+\item[\texttt{lattice/zeta3\_lattice/}] Integer model of Domb and $(12,4,16)$, exact $2$-adic tails, roof lemma, the master-formula evaluation $\delta=0.9009531687$, LLL harness, the $\Gamma_0(8)$ parametrisation of $(12,4,16)$.
+\item[\texttt{lattice/catalan\_audit/}] Exact Zudilin and Nesterenko $(4,7)$ rows, agreement with the project CSVs, the rational-$G^*$ control experiment, lattice index by explicit basis.
+\item[\texttt{lattice/catalan\_directional/}, \texttt{catalan\_positivity/}, \texttt{catalan\_explicit/}] The absorption, positivity and explicit-moment computations of Section~\ref{sec:threshold}; the one-kernel identity $K^{(n)}_N=K^{(3n)}_Zw^n$ to $57$ digits.
+\item[\texttt{lattice/paper\_tables/}] Generators for Tables~\ref{tab:census} and \ref{tab:budgets}.
+\end{description}
+The Lean formalisation of the $1-\varepsilon$ theorem is the project \texttt{lean-catalan-worthiness}; \texttt{AXIOM\_CHECK.lean} confirms that \texttt{catalan\_worthiness\_one\_sub\_eps\_nesterenko} depends only on \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}.

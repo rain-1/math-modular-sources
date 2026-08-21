@@ -1,0 +1,163 @@
+<title>Modular Apéry Systems</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --paper:#F7F6F2; --ink:#1B1F2A; --ink-2:#4A4F5C; --rule:#D9D7CF; --accent:#1F6F78; --accent-soft:#E3EFF0;
+  --block:#EFEEE8; --proved:#2E7D4F; --verified:#8A6D1F; --conj:#7A3E9D; --lit:#4A5568; --open:#A33B2C;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#161A22; --ink:#E6E4DC; --ink-2:#A8ACB8; --rule:#2E3441; --accent:#6FC1C8; --accent-soft:#1E2E33;
+  --block:#1D222C; --proved:#6FCF97; --verified:#D6B35A; --conj:#C59BE0; --lit:#9AA3B2; --open:#E08A7A;
+}}
+:root[data-theme="dark"]{
+  --paper:#161A22; --ink:#E6E4DC; --ink-2:#A8ACB8; --rule:#2E3441; --accent:#6FC1C8; --accent-soft:#1E2E33;
+  --block:#1D222C; --proved:#6FCF97; --verified:#D6B35A; --conj:#C59BE0; --lit:#9AA3B2; --open:#E08A7A;
+}
+body{background:var(--paper);color:var(--ink);font-family:Spectral,Georgia,'Times New Roman',serif;font-size:17px;line-height:1.55;margin:0;padding:0 1.25rem 5rem;}
+main{max-width:68ch;margin:0 auto;}
+header{padding:3.5rem 0 2rem;border-bottom:1px solid var(--rule);margin-bottom:2.5rem;}
+.eyebrow{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+h1{font-weight:300;font-size:2.6rem;line-height:1.1;margin:.4rem 0 .8rem;text-wrap:balance;letter-spacing:-.01em;}
+.sub{color:var(--ink-2);font-style:italic;font-size:1.05rem;margin:0;}
+h2{font-weight:600;font-size:1.45rem;margin:3rem 0 .9rem;line-height:1.2;text-wrap:balance;}
+h3{font-weight:600;font-size:1.08rem;margin:2rem 0 .5rem;}
+p{margin:0 0 1rem;}
+.math{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.88em;}
+.block{background:var(--block);border-left:3px solid var(--accent);padding:.85rem 1.1rem;margin:1.2rem 0;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.86rem;line-height:1.6;overflow-x:auto;white-space:pre;}
+.claim{border:1px solid var(--rule);border-radius:4px;padding:.9rem 1.1rem;margin:1.3rem 0;background:color-mix(in srgb,var(--block) 55%,transparent);}
+.claim p:last-child{margin-bottom:0;}
+.tag{display:inline-block;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:.1rem .45rem;border-radius:3px;border:1px solid currentColor;vertical-align:middle;margin-right:.4rem;line-height:1.5;}
+.t-lit{color:var(--lit)} .t-proved{color:var(--proved)} .t-verified{color:var(--verified)} .t-conj{color:var(--conj)} .t-open{color:var(--open)}
+table{border-collapse:collapse;width:100%;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.8rem;margin:1rem 0 1.4rem;font-variant-numeric:tabular-nums;}
+.tablewrap{overflow-x:auto;}
+th,td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--rule);vertical-align:top;}
+th{font-weight:600;color:var(--ink-2);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;}
+em{font-style:italic;}
+.legend{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;font-size:.85rem;color:var(--ink-2);margin:1rem 0 0;}
+ol,ul{padding-left:1.3rem;} li{margin-bottom:.45rem;}
+a{color:var(--accent);}
+.aside{font-size:.92rem;color:var(--ink-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.8rem 0;margin:1.5rem 0;}
+footer{margin-top:4rem;padding-top:1rem;border-top:1px solid var(--rule);color:var(--ink-2);font-size:.85rem;}
+</style>
+
+<main>
+<header>
+  <div class="eyebrow">Working theory · draft 1 · 21 Aug 2026</div>
+  <h1>Modular Apéry Systems</h1>
+  <p class="sub">What we actually know, what is generative, and what the true theory probably is.</p>
+  <div class="legend">
+    <span><span class="tag t-lit">lit</span>established literature</span>
+    <span><span class="tag t-proved">proved</span>project result with a written proof or certificate</span>
+    <span><span class="tag t-verified">verified</span>exact or high-precision computation, no all-<em>n</em> proof</span>
+    <span><span class="tag t-conj">conj</span>organising conjecture</span>
+    <span><span class="tag t-open">open</span>the thing to do next</span>
+  </div>
+</header>
+
+<h2>0. The object and the one inequality</h2>
+<p>An <em>Apéry system</em> for a real number ξ is a pair of sequences <span class="math">A<sub>n</sub> ∈ ℤ</span>, <span class="math">B<sub>n</sub> ∈ ℚ</span>, both solutions of one linear recurrence with polynomial coefficients, such that</p>
+<div class="block">A_n ≍ λ₁ⁿ,      |A_n ξ − B_n| ≍ λ₂ⁿ,      d_nᵏ B_n ∈ ℤ   (d_n = lcm(1..n) ≍ eⁿ).</div>
+<p>Everything downstream is governed by one inequality:</p>
+<div class="block">ξ ∉ ℚ   if   λ₂ · eᵏ &lt; 1,     i.e.   score := log(1/λ₂) − k &gt; 0.</div>
+<p>The three quantities are, in the modular picture, controlled by three <em>separate</em> pieces of data — and that separation is the first thing the project got genuinely right. The special value ξ is decided by an Eisenstein (or cusp) form, the exponent λ₂ by the position of singular points of a modular function, and the denominator depth <span class="math">k</span> by how many Eichler integrations are needed minus how many come for free. The "three layers" of the GPT-era book are a dressed-up version of exactly this split; I'll keep the split and drop the dressing.</p>
+
+<div class="tablewrap"><table>
+<tr><th>system</th><th>λ₁</th><th>λ₂</th><th>k</th><th>score</th><th>verdict</th></tr>
+<tr><td>Apéry ζ(2), level 5</td><td>11.09</td><td>0.0902</td><td>2</td><td>+0.41</td><td>irrational</td></tr>
+<tr><td>Apéry ζ(3), level 6</td><td>33.97</td><td>0.0294</td><td>3</td><td>+0.53</td><td>irrational</td></tr>
+<tr><td>Catalan, Zagier E family (level 8)</td><td>8</td><td>4</td><td>2</td><td>−3.39</td><td>ratio converges (2⁻ⁿ), linear form diverges</td></tr>
+<tr><td>ζ(5), level-12 system (25/144·ζ(5))</td><td>—</td><td>≈1/4</td><td>5</td><td>≈ −3.6</td><td>period-pure, Diophantinely hopeless</td></tr>
+</table></div>
+<p>The Catalan row is the important one to stare at. Every scalar modular Catalan system found so far has <span class="math">λ₂ &gt; 1</span>: the <em>ratio</em> <span class="math">B<sub>n</sub>/A<sub>n</sub></span> converges but the linear form grows. That single fact is why the Catalan work had to move to two rows (section 5), and it is a geometric fact about the level-8 curve, not bad luck.</p>
+
+<h2>1. The modular dictionary</h2>
+<p>The dictionary is classical and I regard it as the bedrock. <span class="tag t-lit">lit</span> Beukers (1987), Zagier (2009), Beauville (1982), Almkvist–Zudilin, Cooper.</p>
+<div class="block">Γ ⊂ SL₂(ℝ)  genus-zero (commensurable with SL₂(ℤ) in every case we use)
+t(τ)        Hauptmodul with integral q-expansion     ("mirror map")
+f(τ)        modular form of weight w, integral q-expansion, with
+            Σ A_n t(τ)ⁿ = f(τ)            (A_n ∈ ℤ because t and f are integral)</div>
+<p>The Picard–Fuchs operator <span class="math">L</span> of <span class="math">f</span> in the variable <span class="math">t</span> has order <span class="math">w+1</span> and solutions <span class="math">f·τ<sup>j</sup></span>, <span class="math">0 ≤ j ≤ w</span>. Its singular points are the images under <span class="math">t</span> of the cusps and elliptic points of <span class="math">Γ</span>. Weight 1 gives the second-order (ζ(2)-type) systems; weight 2 gives third order; and the six sporadic third-order operators are exactly the symmetric squares of six second-order ones <span class="tag t-proved">proved</span> (ledger C02), which is the differential-equation shadow of <span class="math">Sym²H</span> of the elliptic Gauss–Manin system. Higher odd zeta values live on <span class="math">Sym^{w}H</span>: ζ(5) needs weight 4 (<span class="math">f = g⁴</span> for a weight-1 <span class="math">g</span>), ζ(7) weight 6.</p>
+<p>Two classification facts anchor the low-order census. <span class="tag t-lit">lit</span> Beauville: there are exactly six semistable rational elliptic surfaces with four singular fibres, and they <em>are</em> Zagier's six sporadic second-order families. <span class="tag t-verified">verified</span> ledger C09: a census of ~5·10⁴ eta/Eisenstein candidates at small level finds no sixteenth sporadic pair in that universe. The honest status of "classification of integral modular Apéry pairs" is therefore: complete for the geometric reason in weight 1, census-level above.</p>
+
+<h2>2. The source theorem: where the special value comes from</h2>
+<p>This is the project's central proved contribution and the one I would lead with in any publication.</p>
+<div class="claim">
+<p><span class="tag t-proved">proved</span> <strong>Companion law</strong> (ledger C01–C04, E01–E02; Eisenstein Source Theorem with a Lean project). For each of the fifteen sporadic pairs the second solution is</p>
+<div class="block">B(t) = f · D^{−(w+1)} Φ,        Φ := f · D t,        D = q d/dq,</div>
+<p>and for the twelve modular families the <em>source</em> <span class="math">Φ</span> is a holomorphic Eisenstein series of weight <span class="math">w+2</span> with zero cuspidal projection. For Cooper's <span class="math">s₇, s₁₀, s₁₈</span> the source is meromorphic (a principal-part correction is needed).</p>
+</div>
+<p>Why this produces L-values: the Eichler integral <span class="math">D^{−(w+1)}Φ</span> of a weight-<span class="math">(w+2)</span> form has a period polynomial whose coefficients are the critical values <span class="math">L(Φ, j)</span>, <span class="math">1 ≤ j ≤ w+1</span>. For an Eisenstein series <span class="math">L(Φ,s)</span> factors as a product of two Dirichlet L-functions times a finite Dirichlet polynomial, so the critical values are Dirichlet L-values and powers of π. The Apéry limit is the value of the Eichler integral at the <em>fold</em> — the point of the modular curve whose image is the first singularity <span class="math">t₁</span> of <span class="math">L</span> — and the fold connection lemma <span class="tag t-proved">proved</span> (E03) expresses it through the period at that point. In the Fricke-symmetric cases the fold is the Fricke fixed point, a CM point, and the limit is the "top" critical value <span class="math">L(Φ, w+1)</span>.</p>
+<p>This gives a clean dichotomy that I think deserves to be stated as the organising principle:</p>
+<div class="claim">
+<p><span class="tag t-conj">conj</span> <strong>Target principle.</strong> For a modular Apéry system with source <span class="math">Φ</span>, the Apéry limit is a rational (or algebraic) combination of the critical values <span class="math">L(Φ, j)</span>. <em>Eisenstein</em> sources give Dirichlet L-values <span class="math">L(r, χ)</span>; <em>cuspidal</em> sources give critical values of cusp forms. The Domb apparatus (S3) is the first cuspidal instance: <span class="math">B*<sub>n</sub>/A<sub>n</sub> → L(f₆, 3)/2</span> with <span class="math">f₆ = (η₁η₂η₃η₆)²</span> <span class="tag t-verified">verified</span> (61 digits), with a phase-0 document claiming the exact factor.</p>
+</div>
+<p>Proved for the fifteen; the principle itself is what the classification programme should be trying to prove in general.</p>
+
+<h3>Period annihilation is finite Hecke linear algebra</h3>
+<p>Apéry's <span class="math">E₄ − 28E₄(2τ) + 63E₄(3τ) − 36E₄(6τ)</span> is not a coincidence. An oldform combination <span class="math">C = Σ c_d V_d</span> multiplies the L-function by <span class="math">P_C(s) = Σ c_d d^{−s}</span>, so killing the unwanted critical values (the powers of π) is solving a Vandermonde system in <span class="math">d^{−2}</span>. <span class="tag t-proved">proved</span> (book §5; verified in <span class="math">verify/period_annihilation.gp</span>): the null space is barycentric, the one-prime projectors are <span class="math">Π(1 − p^{2a}V_p)</span> with Gaussian-binomial coefficients, and Fricke parity halves the conditions. Outputs that are new and checked: the level-16 ζ(5) projector, the level-12 ζ(7) "parent" with target <span class="math">209/1728·ζ(7)</span>, the level-24 β(4) doublet, and the level-24 <span class="math">L(4,χ₋₃)</span> pair from Shvets's symmetric cube. Franke (2024) has the general theory of Eisenstein spaces with prescribed critical vanishing; our projectors are its explicit Hecke-generated slice. This is elementary, it is right, and it is generative — it is the part of the book that produced new systems on demand.</p>
+
+<h2>3. Convergence is geometry; denominators are integrations</h2>
+<p>Now the other two knobs, which are where irrationality is won or lost.</p>
+<p><strong>λ₂ and the singular points.</strong> <span class="math">A_n ≍ t₁^{−n}</span> where <span class="math">t₁</span> is the singularity of <span class="math">L</span> nearest to 0, and <span class="math">B − ξA</span> is precisely the solution that continues analytically past <span class="math">t₁</span>; its growth is <span class="math">t₂^{−n}</span> for the next singularity. So <span class="math">λ₂ = 1/|t₂|</span>. In Apéry's cases a Fricke involution acts on <span class="math">t</span> as <span class="math">t ↦ 1/(c·t)</span>, forcing <span class="math">t₁t₂ = 1/c</span> and hence a palindromic recurrence with <span class="math">λ₂ = 1/λ₁ &lt; 1</span>. When the fold is not Fricke-symmetric (the Catalan E family, singularities at 1/8 and 1/4) there is no such pairing and <span class="math">λ₂ &gt; 1</span>. <strong>This is the geometric statement underlying every "it converges but proves nothing" result in the archive:</strong> a single scalar row can only beat the denominators when the cusp/elliptic-point configuration of <span class="math">(Γ, t)</span> puts the second singular point outside the disc of radius <span class="math">e^{k}</span>.</p>
+<p><strong>k and free integrations.</strong> Each <span class="math">D^{−1}</span> costs at most one factor <span class="math">d_n</span> <span class="tag t-proved">proved</span> (denominator-transfer lemma, phase 0), so generically <span class="math">k = w+1</span>: 2 for ζ(2), 3 for ζ(3), 5 for ζ(5). Cooper's families show the exception: <span class="math">(n+1) | A_n</span> <span class="tag t-proved">proved</span> (Bogner) makes the first integration free and drops <span class="math">k</span> by one. The mechanism is that the source, or its first primitive, is already integral in the <span class="math">t</span>-lattice. Engineering free integrations is the right lever on the denominator side; the project tried it (ζ(7) at level 60: filtered depth 19/6 against log R = 3.464, margin +0.30 <span class="tag t-verified">verified</span>, but the lift that would realise the depth drop is obstructed <span class="tag t-open">open</span>). That near-miss is the single most interesting scalar lead in the archive and deserves an independent audit.</p>
+<div class="claim">
+<p><span class="tag t-conj">conj</span> <strong>Scalar barrier.</strong> For trivial character and <span class="math">Sym^{w}</span>-type systems on genus-zero <span class="math">Γ ⊂ SL₂(ℝ)</span> commensurable with the modular group, <span class="math">log|t₂| − (w+1) &lt; 0</span> for all <span class="math">w ≥ 3</span>; the Apéry level-6 case is the unique positive score at <span class="math">w = 2</span> among integral eta-quotient Hauptmoduls of level ≤ 25 <span class="tag t-verified">verified</span> (E14). The reason is that raising the level crowds the cusps into the unit <span class="math">q</span>-disc and shrinks <span class="math">|t₂|</span> while the weight needed for ζ(2m+1) grows linearly.</p>
+</div>
+<p>Proving a version of this would be a real theorem and would formally justify abandoning scalar searches for ζ(5) — which is what the dead ends in the archive amount to, empirically.</p>
+
+<h2>4. Isogenies, Hecke, CM: the geometric layer that is real</h2>
+<ul>
+<li><span class="tag t-lit">lit</span> Oldform operators <span class="math">V_d</span> are degeneracy maps, i.e. cyclic-isogeny correspondences on the universal elliptic curve; they act on <span class="math">H</span> and so on every <span class="math">Sym^{w}H</span>. Period annihilation therefore has a geometric meaning: the annihilated source is a linear combination of isogeny pullbacks of one Eisenstein class. <span class="tag t-proved">proved</span> the functoriality <span class="math">L(CΦ, s) = P_C(s)L(Φ, s)</span> and its transport to the Eichler primitive, <span class="math">C ↦ Σ c_d d^{−(w+1)}V_d</span>.</li>
+<li><span class="tag t-proved">proved</span> <em>Prime completions</em> <span class="math">(1 − p²V_p)Φ</span> of the level-6 ζ(3) source give new genus-zero systems at <span class="math">p = 5, 7, 11</span>; the sign-refined Fricke count predicted the hidden ζ(7) parent at level 12 whose 2-completion is the known level-24 system. <em>Classification → prediction</em> genuinely happened here.</li>
+<li><span class="tag t-proved">proved</span> The fold is a CM point; evaluating the Eichler integral there gives Ramanujan-type Lambert identities. The β(4) identity at <span class="math">τ = i/√24</span> holds to 40 digits (<span class="math">verify/beta4_lambert.py</span>). One could mass-produce such identities; their interest is that they are the "CM shadow" of the extension class.</li>
+<li><span class="tag t-conj">conj</span> <em>Orientation and vector-valuedness.</em> For nontrivial χ there are two Eisenstein orientations <span class="math">E_{k,χ,1}, E_{k,1,χ}</span> exchanged by Fricke. When the Fricke/translation action on the orientation span has no invariant line (Catalan at level 20: dihedral of order 8) no scalar system exists and one is forced to vector-valued (Hermite–Padé) systems. This is the one place where "Layer B" language earns its keep: it is the statement that the <em>extension class</em>, not the local system, decides scalar vs vector.</li>
+</ul>
+<p>What is <em>not</em> real yet: the "adelic Layer C", free-depth flags, <span class="math">τ_F</span>, syntomic <span class="math">κ_p</span>, and the "global three-layer functoriality theorem" of V10/V11. Those are definitions plus one calibration (reading CDT's numbers 14, 3, 1 back into a formula). I would keep them as a programme appendix, not as theory.</p>
+
+<h2>5. Beyond one row: the routes that can actually cross the line</h2>
+<h3>5a. Two realisations, one period, aligned lattices (the Catalan mechanism)</h3>
+<p>This is the most original idea in the whole corpus and the one closest to a new theorem. Take two Apéry systems for the same ξ from <em>different</em> sources — Zudilin's hypergeometric Catalan row and the level-8 modular row. Neither beats its denominators alone. But both <span class="math">B/A</span> ratios converge <em>2-adically</em> to the same 2-adic period, at explicit different rates, so the 2×2 determinant</p>
+<div class="block">Δ_{m,n} = A_m B'_n − A'_n B_m   has   v₂(Δ_{5n,8n}) ≥ 20n − 1 − 2|s₂(5n) − s₂(n)|</div>
+<p><span class="tag t-verified">verified</span> exactly at <span class="math">n = 100</span> (1993 = predicted). A congruence lattice built from this, plus Minkowski's second theorem on two successive minima <span class="tag t-proved">proved</span> (D02, the genuinely new geometry-of-numbers step), turns two useless rows into a construction of quality 0.6588 (LCM version, Lean-checked) and 0.9025 (2-adic version, one lemma conditional), and River reports a 1−ε version now under Lean audit.</p>
+<div class="claim">
+<p><span class="tag t-conj">conj</span> <strong>p-adic coincidence principle.</strong> Two modular Apéry systems realising the same Eisenstein extension class (same <span class="math">L(r,χ)</span> target, sources differing by an oldform operator <span class="math">C</span> with <span class="math">P_C(r) ≠ 0</span>, or by a hypergeometric/modular change of realisation) have companion ratios converging p-adically to a common p-adic L-value for the primes where both lattices are Frobenius-compatible, with rates computable from their twisted Lucas laws (ledger H03, H09, P01–P03). The resulting determinant valuations are the input to a multi-lattice construction.</p>
+</div>
+<p>This is the theorem I would try to <em>build</em>: it links the source theory (which realisations exist), the p-adic strand (rates, Λ-algebra), and the Diophantine strand (successive minima). It is also exactly what "two representations whose arithmetic lattices line up" means in precise terms. The p=3 attempts in the archive that failed are informative: they show the alignment is a property of the pair of realisations, not something one gets by changing the prime.</p>
+
+<h3>5b. Arithmetic holonomy (Calegari–Dimitrov–Tang)</h3>
+<p><span class="tag t-lit">lit</span> Replace one linear form by a vector of functions with a common analytic continuation to a larger domain; a holonomy-rank bound contradicts functional independence. CDT's proof for <span class="math">1, ζ(2), L(2,χ₋₃)</span> uses exactly the two Eisenstein orientations <span class="math">(1−8V₂)E_{3,χ₋₃,1}</span> and <span class="math">(1−V₂)E_{3,1,χ₋₃}</span> <span class="tag t-proved">proved</span> (book §8a) — i.e. the inner and outer sources of the classification, <em>deliberately not fully purified</em>. The lesson is structural: full period annihilation is optimal for a scalar row and suboptimal for holonomy, because the Tate direction supplies extra independent functions. The Catalan level-144 system was pushed to the CDT entry test and failed it (continuation radius 1.0708 against the needed 1.1506; ≥58 rows required) <span class="tag t-verified">verified</span>; that number is a reusable obstruction.</p>
+
+<h3>5c. Non-symmetric-power motives</h3>
+<p>Brown–Zudilin's ζ(5) approximants are not <span class="math">Sym⁴</span> of an elliptic family; the project's Frobenius/cellular-jet work (F01 Stokes-ratio formula <span class="tag t-proved">proved</span>, purity defect <span class="math">−3/π²</span> <span class="tag t-proved">proved</span>, κ-vector closed forms <span class="tag t-verified">verified</span> to 434 digits) is an honest attempt to understand them. Its bottleneck (B01, the compact top-row formula) is a harmonic-sum identity, not modular. I'd keep this strand separate: it's where ζ(5) will come from if it comes, and the modular theory's contribution is negative (the scalar barrier) plus the Hecke/lattice ideas.</p>
+
+<h2>6. What the dead ends are worth</h2>
+<p>River's instinct is right that most GPT output is "I can't prove it, so let me prove I can't." But as a body it is a <em>no-go census</em>, and censuses are exactly what a classification theory needs. The ones I would keep, as reusable pruning with stated universes:</p>
+<ul>
+<li>No scalar weight-6 source with vanishing constant term at every cusp on <span class="math">X₀⁺(169)</span> (ζ(5) via <span class="math">X_s(13)</span>); exhaustive finite-field certificates <span class="tag t-verified">verified</span>.</li>
+<li>Catalan scalar systems at levels 16 and 32 are rigid and obstructed by a <span class="math">z log²z</span> term; level 64 unexamined.</li>
+<li>Γ₁(7) elliptic family: quotient defined over a real cubic field, Plücker minors nonzero ⇒ scalar wedge descent obstructed.</li>
+<li>The ζ(5) "fusion" of 2- and 3-adic Lucas directions is killed by a defect theorem; all p=3 "slopes" for Catalan were unimodular-coordinate artefacts.</li>
+<li>All 22 Ramanujan-Machine Catalan continued fractions collapse to one rank-2 level-8 module <span class="tag t-verified">verified</span> — a classification result disguised as a dead end.</li>
+</ul>
+
+<h2>7. The true theory, as I currently see it</h2>
+<p>Stripping the formalism, the theory has four statements. Two are proved for the known census, two are conjectural and are the research programme.</p>
+<ol>
+<li><strong>Realisation.</strong> Integral modular Apéry pairs of symmetric-power type are classified by <span class="math">(Γ, t, f)</span> with integral Hauptmodul and integral weight-<span class="math">w</span> form; complete in weight 1 (Beauville), census-level in weight 2, open above. <span class="tag t-lit">lit</span>/<span class="tag t-verified">verified</span></li>
+<li><strong>Source.</strong> The companion is <span class="math">f·D^{−(w+1)}(f·Dt)</span>; the Apéry limit is a critical value of <span class="math">L(f·Dt, s)</span>; Eisenstein sources give Dirichlet L-values, cuspidal sources give cusp-form L-values; period annihilation is Hecke/oldform Vandermonde algebra. <span class="tag t-proved">proved</span> for the fifteen; <span class="tag t-conj">conj</span> in general.</li>
+<li><strong>Score.</strong> <span class="math">score = log|t₂| − (w+1) + (free integrations)</span>, with <span class="math">t₂</span> determined by the cusp/elliptic-point geometry of <span class="math">(Γ,t)</span> and Fricke symmetry, and free integrations by exactness of the source in the integral lattice. Scalar barrier for <span class="math">w ≥ 3</span>. <span class="tag t-conj">conj</span></li>
+<li><strong>Multiplicity.</strong> Irrationality beyond the scalar barrier comes from several realisations of one extension class: p-adically aligned rows (multi-lattice), or a holonomy vector (CDT), and the alignment/independence is decided by the extension class and its Frobenius structure, not by the local system. <span class="tag t-conj">conj</span></li>
+</ol>
+<p>That is a theory a human can hold in their head, an AI can search with, and each line has a concrete proof target attached.</p>
+
+<h2>8. What I propose we do</h2>
+<ol>
+<li><strong>Recover the certificates.</strong> Pull GPT's scripts/certificates from the ChatGPT account (and sandboxes) into <span class="math">verify/</span> so that every <span class="tag t-proved">proved</span>/<span class="tag t-verified">verified</span> tag above points at a runnable file. Not everything — the ledger's P0 items plus the claims cited in this document.</li>
+<li><strong>Write the theory paper</strong> around statements 1–2 (proved) with 3–4 as the stated programme; the ledger's bundles B, C, F, G are its sections. Lean where it is cheap (source identities to Sturm bound; annihilation algebra).</li>
+<li><strong>Prove statement 3 honestly.</strong> A theorem "scalar barrier for trivial character, <span class="math">w ≥ 3</span>, genus-zero commensurable groups" would be new, clean, and would retire half the archive. Audit the level-60 ζ(7) near-miss first, since it is the only claimed counter-pressure.</li>
+<li><strong>Build statement 4</strong> as the p-adic coincidence theorem, starting from Catalan where the answer is known, then asking for which <span class="math">(r, χ)</span> two aligned realisations exist. This is the direction with a real chance at a new irrationality result and it is where the Hecke/isogeny language is genuinely useful.</li>
+<li><strong>Expository test</strong> (plan.txt): run Zudilin's three Catalan papers through the dictionary — identify his recurrence's source and orientation, and ask whether his permutation group is the deck/normaliser action of a cover of the level-8 curve.</li>
+</ol>
+
+<footer>Draft by Claude (Fable 5) for River, 21 Aug 2026. Sources: book V8/V11, Odd-Zeta Master Ledger, phase-0/1 packages, 74 archived conversations. Numbers in §0 re-derived in PARI; period-annihilation and β(4) claims re-verified in <span class="math">verify/</span>.</footer>
+</main>

@@ -1,0 +1,82 @@
+{
+  "family": "apery-systems::TODO: Ramanujan machine",
+  "chain": [
+    "chatgpt-research-archive/conversations/apery-systems/todo-ramanujan-machine-6a82a28c.md",
+    "chatgpt-research-archive/conversations/apery-systems/branch-todo-ramanujan-machine-6a82d9de.md"
+  ],
+  "leaf_path": "chatgpt-research-archive/conversations/apery-systems/branch-todo-ramanujan-machine-6a82d9de.md",
+  "title_human": "Level-12/36/60 zeta(7) construction: scalar denominator obstruction and multi-monodromy irrationality attempt",
+  "claims": [
+    {
+      "statement": "L(G,5) = (144/25) zeta(5) is the exact critical value of the level-12 weight-6 source-first construction; all-n integrality A_n in Z and d_n^5 B_n in Z hold, with the fully normalized global W_12 Eichler/Fricke transformation A_n/B_n -> (144/25) zeta(5) identified as the 'main unfinished theorem'.",
+      "object": "level-12 weight-6 source-first zeta(5) construction",
+      "status": "conjectural",
+      "source_file": "todo-ramanujan-machine-6a82a28c.md",
+      "notes": "Trunk context shared by both leaf chains (see trunk summary); included only as background motivating the same-flavored ζ(7) construction pursued in this branch's tail."
+    },
+    {
+      "statement": "For twelve modular sporadic families A,B,C,D,E,F,alpha,gamma,delta,epsilon,zeta,eta, the canonical companion source Phi = F D_q t is exactly pure Eisenstein, certified through modularity, cusp-order calculations, Wronskian/ODE identities and Sturm bounds; the period-annihilation theory gives, for even weight k, the number of independent annihilation conditions q(k) = 1 + floor(k/4), with annihilation-matrix rank min(q(k), h_epsilon(N)) and dim A^epsilon_{N,k} = max(0, h_epsilon(N) - q(k)).",
+      "object": "twelve-family source theorem and period-annihilation rank formula",
+      "status": "proved",
+      "source_file": "todo-ramanujan-machine-6a82a28c.md",
+      "notes": "Trunk background; the annihilation-rank formula is the general machinery whose weight-7 instance (Sym^6 H^1(E)) underlies this branch's zeta(7) source construction."
+    },
+    {
+      "statement": "A new 'hidden' level-12 system for zeta(7) satisfies A_n in Z, d_n^7 B_n in Z, and A_n/B_n -> C_7 = (1728/209) zeta(7), with the denominator sequence A_n controlled by the branch x_- = 7 - 4 sqrt(3) = 0.0717967697... and the Fricke-corrected linear form W_n = B_n - C_7 A_n passing through that same branch, giving limsup |B_n/A_n - C_7|^{1/n} <= 7 - 4 sqrt(3).",
+      "object": "level-12 zeta(7) construction (hidden system)",
+      "status": "experimental/numerical",
+      "source_file": "branch-todo-ramanujan-machine-6a82d9de.md",
+      "notes": "The assistant explicitly frames this ratio convergence as insufficient for irrationality ('the same trap we encountered for Catalan: ratio convergence is not what proves irrationality')."
+    },
+    {
+      "statement": "For every prime ell not dividing 84, the coefficient B_ell has exact ell-adic denominator exponent 7: writing Phi(q) = sum phi_m q^m and Theta = D^{-7} Phi = sum m^{-7} phi_m q^m, for ell not dividing 12 one has phi_ell = 1 + ell^7 = 1 (mod ell), so ell^7 B_ell = 7 phi_ell = 7 (mod ell) for ell != 7, giving v_ell(B_ell) = -7 exactly; consequently there is no hidden Cooper-style denominator reduction d_n^7 -> d_n^kappa for kappa < 7 for this scalar sequence.",
+      "object": "denominator obstruction for the level-12 zeta(7) construction",
+      "status": "proved",
+      "source_file": "branch-todo-ramanujan-machine-6a82d9de.md",
+      "notes": "Presented by the thread as 'a genuine theorem-level negative result'; framed as ruling out the naive scalar route to a zeta(7) irrationality proof from this construction."
+    },
+    {
+      "statement": "Even under an idealized full cancellation of the x=-1 cusp monodromy in the level-12 zeta(7) construction, the next branch point is x_+ = 7 + 4 sqrt(3) = 13.9282032303..., giving best-case exponential radius R = 7 + 4 sqrt(3); since e^7 = 1096.633158... and (7+4 sqrt(3))/e^7 = 78.7347... > 1, the Apery irrationality inequality fails by close to two orders of magnitude at arithmetic weight 7. Weight 3 would still fail (e^3/R = 1.442... > 1) but weight 2 would succeed (e^2/R = 0.5305... < 1); log(7+4 sqrt(3)) = 2.633915..., so the effective arithmetic denominator weight would need to fall from 7 to at most 2.",
+      "object": "best-case analytic radius vs. denominator weight for the level-12 zeta(7) construction",
+      "status": "proved",
+      "source_file": "branch-todo-ramanujan-machine-6a82d9de.md",
+      "notes": "Conclusion drawn: 'the newly discovered level-12 sequence is not secretly an Apery proof of zeta(7).' The exact ell^7 obstruction (previous claim) is invoked to show this weight reduction cannot occur by finding 'five free integrations' in the same scalar companion, motivating the switch to a vector/multi-monodromy approach below."
+    },
+    {
+      "statement": "Proposed next route: rather than a scalar recurrence, use the affine extension space at level 36 (where the completely purified plus-Fricke source space is two-dimensional, leaving a genuine target-zero affine direction Delta_36 once the zeta(7) target is fixed) to form several simultaneous normal functions nu_0, nu_1, ... with the same zeta(7) target but different local monodromy, then take exterior-power/Hermite-Pade determinants or minors whose arithmetic lattice may have dramatically better divisibility than d_n^7 row-by-row, aiming for integer linear forms L_n = P_n + Q_n zeta(7) with limsup |L_n|^{1/n} < 1 after removing the true common divisor.",
+      "object": "proposed multi-monodromy / Hermite-Pade determinant route to zeta(7)",
+      "status": "conjectural",
+      "source_file": "branch-todo-ramanujan-machine-6a82d9de.md",
+      "notes": "Explicitly framed as a new proof attempt using the project's own theory ('we're trying to come up with a new proof using our theory'), not a completed construction. User confirms awareness that zeta(7) irrationality is not proved in the literature and asks the assistant to pursue this approach regardless."
+    },
+    {
+      "statement": "At level 60, a fully purified W_60-plus source has first Fourier scale 3, dropping the seventh-Eichler denominator entropy from 7 to at most 7/3; numerically (7+4 sqrt(3))/e^{7/3} = 0.7403868... < 1, i.e. the Apery-type inequality becomes favorable if this scale-3 arithmetic can be realized. The problem is then said to reduce to whether the rank-4 Atkin-Lehner/orientation bundle can cancel the three remaining 1/2-cusp modes while preserving the zeta(7) component.",
+      "object": "level-60 W_60-plus zeta(7) source and residual monodromy problem",
+      "status": "experimental/numerical",
+      "source_file": "branch-todo-ramanujan-machine-6a82d9de.md",
+      "notes": "Presented as a promising but explicitly unresolved reduction: 'the irrationality problem has reduced to one finite question' about cancelling the remaining cusp modes, which is not solved within this conversation."
+    },
+    {
+      "statement": "The entire level-60 Eisenstein source is supported only on indices divisible by 3, 4, or 5 (with c_1 = c_2 = 0), so after composition with an integral modular coordinate every prime divisor entering a seventh-Eichler denominator below coefficient n is at most n/3 (up to the fixed primes 2, 3, 5); the resulting denominator entropy of 7/3 is stated to be arithmetically legitimate rather than a bookkeeping artifact, though the monodromy-cancellation question itself remains open.",
+      "object": "arithmetic legitimacy of the 7/3 denominator entropy at level 60",
+      "status": "experimental/numerical",
+      "source_file": "branch-todo-ramanujan-machine-6a82d9de.md",
+      "notes": "The conversation ends mid-computation ('Computing U5 eigenvectors in the compressed space') without resolving whether the required monodromy cancellation actually occurs; no final linear-form construction or irrationality claim is reached."
+    }
+  ],
+  "connections_to_literature": [
+    "Current literature on odd zeta irrationality: no established proof of irrationality of the individual number zeta(7) is known; the strongest classical-type statement remains that at least one of zeta(5), zeta(7), zeta(9), zeta(11) is irrational (cited via Springer/arXiv sources in-thread). User explicitly acknowledges this and asks for a new proof attempt via the project's own modular-source theory rather than a literature check.",
+    "Cooper-style denominator reduction phenomenon (referenced by contrast: 'no hidden Cooper-style reduction d_n^7 -> d_n^kappa'), tying back to the trunk's Cooper cubic free-integration principle ((n+1)|A_n giving d_n^2 B_n in Z instead of d_n^3)."
+  ],
+  "open_threads_or_handoffs": [
+    "Explicit unresolved technical target left at the end of the thread: solve the rank-4 Atkin-Lehner/orientation-bundle linear monodromy problem at level 60 -- cancel the three remaining 1/2-cusp modes while preserving the zeta(7) regulator -- to realize the favorable (7+4 sqrt(3))/e^{7/3} < 1 inequality.",
+    "Broader unresolved pipeline stated as the next serious attempt: take the level-36 (and possibly level-24) affine zeta(7) extension space; compute its complete local monodromy matrix at the early cusps/branches; solve the Hermite-Pade kernel killing those germs; compute the exterior-power integral lattice / Smith factors; test the resulting absolute linear-form exponent against its true denominator entropy. None of these steps were completed in this conversation.",
+    "The conversation is cut off mid-calculation with no final construction, recurrence, or linear form produced -- this branch ends without a resolution, positive or negative, of whether the multi-monodromy approach yields a genuine zeta(7) irrationality argument."
+  ],
+  "in_ledger": "no",
+  "ledger_notes": "Searched the Ledger sheet (74 rows) for any entry referencing zeta(7), the level-12/36/60 constructions, the value 1728/209, or the ell^7-denominator obstruction argument -- none exists. This entire zeta(7) investigation (both the level-12 scalar construction and its negative denominator result, and the level-36/level-60 multi-monodromy attempt) is untracked in the ledger. The general period-annihilation rank formula q(k)=1+floor(k/4) it relies on (trunk background) is not itself flagged in the Do Not Overstate sheet, but the related twelve-family Eisenstein source claim (ledger ID E01) is marked 'NOT YET A THEOREM' (verified only to q^60; eleven modularity certifications remain open), which is relevant caution for any weight-7 source built on the same source-table machinery.",
+  "flags": [
+    "The thread's own conclusion is explicitly negative for the scalar level-12 construction ('No, I cannot currently prove zeta(7) irrational') -- do not let the more optimistic level-60 numerics overshadow this; the level-60 route is an unfinished, unresolved lead, not a result.",
+    "None of this branch's claims (level-12/36/60 zeta(7) sources, the ell^7 obstruction, the 7/3 entropy reduction) appear in the ledger; treat as an unverified, in-progress research thread that ends without resolution."
+  ]
+}

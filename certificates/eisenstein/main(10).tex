@@ -1,0 +1,758 @@
+% !TeX program = pdflatex
+%
+% "Modular anchors for Apery-like companions" -- revised per the hostile
+% referee report of 2026-08-05 (work/SOL_REVIEW_MODULAR_ANCHORS.md, with the
+% point-by-point response appended there). Working paper of River's odd-zeta
+% programme.
+%
+% Provenance: work/MODULAR_COACTION_PROBE.md, work/SPORADIC_MODULAR_DICTIONARY.md,
+% work/Z5_MODULARITY_PROBE.md (incl. 2026-08-05 correction),
+% work/MODULAR_FACTORY.md, work/CURVE_BLINDNESS.md, work/DELTA_MODULAR_THEOREM.md,
+% work/z5eps/eps40--eps57 with logs.  Companion papers:
+% papers_out/variational_anchor, papers_out/expository_apery, papers_out/half_apery.
+%
+% Evidence labels are load-bearing and are never silently upgraded.
+%
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{census}[theorem]{Computer-assisted census}
+\newtheorem{verification}[theorem]{Computer-assisted finite verification}
+\newtheorem{problem}[theorem]{Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\bin}[2]{\binom{#1}{#2}}
+\newcommand{\HH}[2]{H^{(#1)}_{#2}}
+\newcommand{\Lbz}{L_{\mathrm{BZ}}}
+\newcommand{\thq}{\theta_q}
+\newcommand{\tht}{\theta_t}
+
+% evidence-class markers
+\newcommand{\Thm}{\textup{\textsf{[THM]}}}
+\newcommand{\Proved}{\textup{\textsf{[PROVED]}}}
+\newcommand{\Verified}{\textup{\textsf{[VERIFIED]}}}
+\newcommand{\VerifiedR}[1]{\textup{\textsf{[VERIFIED: #1]}}}
+\newcommand{\Excluded}{\textup{\textsf{[EXCLUDED]}}}
+\newcommand{\ExcludedR}[1]{\textup{\textsf{[EXCLUDED: #1]}}}
+\newcommand{\Open}{\textup{\textsf{[OPEN]}}}
+
+\begin{document}
+
+\title[Modular anchors for Ap\'ery-like companions]
+      {Modular anchors for Ap\'ery-like companions:\\
+       second solutions as Eichler integrals,\\
+       with the symmetric-square theorem for the sporadic operators}
+
+\author{}
+\date{\today}
+
+\begin{abstract}
+For an Ap\'ery-like sequence $A(n)$ --- one of the fifteen sporadic pairs, or
+a row of the Brown--Zudilin cellular family for $\zeta(5)$ --- the
+\emph{companion problem} asks for a closed formula for the second solution
+$B(n)$ of its recurrence. We prove an abstract \emph{companion inversion
+theorem}: if the generating operator is exactly rectified by its nome,
+$L=C(t)\,F\,\thq^{r}F^{-1}$, then the normalized companion is the
+Eichler-type integral $y_B=F\,\thq^{-r}\bigl(t/(C F)\bigr)$, for all $n$.
+We then prove the rectification hypothesis for all fifteen sporadic
+families: for the nine second-order families it is Frobenius theory; for
+the six third-order families we prove, by exact operator identities over
+$\Q(t)$, that each is the symmetric square of an explicit second-order
+operator $\widetilde D=\theta^2-t(2a\theta^2+a\theta+\tfrac b2)
++ct^2(\theta+\tfrac12)^2$ --- a uniform closed form. Consequently the
+companion formula holds for all $n$ for all fifteen families, including the
+seven for which we show (computer-assisted, precisely scoped) that no
+companion exists in the complete tame harmonic ansatz of the programme.
+Supporting results: the modular identification
+$F_\zeta=\eta_3^{10}/(\eta_1\eta_9)^3=\tfrac18(9E_2(q^9)-E_2(q))$ is proved
+(Ligozat--Sturm); a first annihilation law for the family $\zeta$'s summand
+is proved by a WZ certificate; a new uniform weight-one congruence
+$A(p)\equiv b_p-b\,\chi_N(p)\pmod p$ survives sixteen held-out primes per
+family; a curve-blindness theorem for the $\zeta(5)$ top row is stated with
+a degree-independent reduction (coupling lemma plus a proved Veronese
+saturation) and finite certified residual computations; and a
+census of $\sim5\times10^4$ modular pairs finds no sixteenth sporadic pair
+in its precisely defined search universe. Mirror-type local and arithmetic
+signatures of the $\zeta(5)$ operator (integral mirror map, integral
+Yukawa-type datum) and a coaction proposal are collected in a clearly
+labelled conjectural section. Every statement carries its evidence label;
+finite computations are never reported as proofs.
+\end{abstract}
+
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+%======================================================================
+\section{Introduction}\label{sec:intro}
+
+\subsection{The companion problem, and what is proved here}
+Ap\'ery's proof of the irrationality of $\zeta(3)$ rests on a pair: the
+integral solution $a_n=\sum_k\bin nk^2\bin{n+k}k^2$ of his recurrence and
+the second solution $b_n$ with $b_n/a_n\to\zeta(3)$. Companion formulas ---
+closed expressions for second solutions --- are the engine of the
+denominator and congruence arithmetic in the surrounding programme. The
+classical shape is a binomial sum against a harmonic weight; for seven of
+the fifteen sporadic Ap\'ery-like families no such formula was known, and
+the programme's searches (\S\ref{sec:negatives}) indicate none exists in
+the natural finite ansatz.
+
+This paper's main line is positive and, in its core, proved:
+
+\begin{enumerate}[leftmargin=2em]
+\item an abstract \emph{companion inversion theorem}
+(Theorem~\ref{thm:inversion}): exact rectification of the operator by its
+nome implies a closed Eichler-integral formula for the companion, valid for
+all $n$;
+\item the \emph{rectification theorem for the fifteen}
+(Theorem~\ref{thm:sym2}): the nine second-order sporadic operators are
+rectified by Frobenius theory, and each of the six third-order operators is
+proved to be the symmetric square of an explicit second-order operator, by
+exact identities in $\Q(t)$;
+\item hence the \emph{uniform companion theorem}
+(Theorem~\ref{thm:companion}): for every one of the fifteen sporadic pairs,
+\[
+B(n)\;=\;[t^n]\;F\cdot\thq^{-r}\!\Bigl(\frac{t}{C(t)\,F}\Bigr)
+\qquad\text{for all }n\ge0 ,
+\]
+with $r$ the operator order, $q$ the nome, $F=y_0(t(q))$, and
+$C=P_r/\sigma^r$ the explicit rectification factor.
+\end{enumerate}
+
+Around this proved core we organise, in separate tiers with separate
+epistemic labels: exact modular results (\S\ref{sec:modular}), precisely
+scoped computer-assisted negatives (\S\ref{sec:negatives}), arithmetic
+congruence laws (\S\ref{sec:cong}), and a conjectural mirror/coaction
+programme for the $\zeta(5)$ family (\S\ref{sec:mirror}).
+
+\subsection{Notational dictionary}\label{sec:dict}
+Throughout, $r$ denotes the \emph{order of the generating differential
+operator} $=$ the order of the three-term recurrence's companion matrix
+$+1$ in the classical normalisation: $r=2$ for the nine ``weight-2''
+sporadic rows, $r=3$ for the six ``weight-3'' rows. For the families with
+\emph{identified} parametrizations the modular weight of $F$ is $r-1$, and
+the congruence weight $w$ of the programme's tables equals $r$; for the
+three unidentified Cooper rows ($r=3$) no modular weight is asserted, and
+statements grouping them by weight refer to the congruence weight $w=r$
+only. We use $r$ exclusively in operator
+statements; earlier drafts' floating ``$w$'' has been retired
+(referee report, \S2). $\theta_x=x\,d/dx$; $t$ is the recurrence variable,
+$q$ the nome; $\sigma:=\tht\log q\in1+t\Q[[t]]$.
+
+\subsection{Evidence discipline}\label{sec:labels}
+\Thm/\Proved: complete proof (human-readable; computer algebra used only
+for exact rational identities, which are finite and displayed or scripted).
+\Verified: exact rational or modular computation over a stated finite
+range. \Excluded: a negative established either by proof or by an exact
+finite computation over a precisely defined search space, with the space
+stated. \Open: open. Two standing rules, adopted at the referee's
+insistence: finite coefficient agreement is never called an identity, and
+finite integrality is never called modularity or arithmeticity
+(\S\ref{sec:modular}, \S\ref{sec:mirror}). A point-by-point response to
+the referee report, and a log guarding against silent evidential
+upgrades in future revisions, is maintained at
+\texttt{work/SOL\_REVIEW\_MODULAR\_ANCHORS.md}.
+
+\begin{lemma}[modular-to-rational transfer]\label{lem:modrat}
+\Proved\
+Let $Mx=v$ be a linear system over $\Q$, $p$ a prime dividing no
+denominator of the entries of $(M,v)$, and suppose the reduction
+$\bar M\bar x=\bar v$ over $\mathbb F_p$ is inconsistent. Then $Mx=v$ is
+inconsistent over $\Q$.
+\end{lemma}
+
+\begin{proof}
+A rational solution $x$ has some denominator $d$; choosing $p\nmid d$
+would reduce it to a solution mod $p$. In general, if $x\in\Q^m$ solves
+the system, then for any prime $p$ not dividing the denominators of
+$M,v,x$, the reduction solves the reduced system. Inconsistency mod $p$
+therefore excludes all rational solutions whose denominators avoid $p$;
+running the computation at two unrelated primes excludes rational
+solutions except those whose denominators are divisible by both, and the
+certificate of inconsistency (a left null vector $u$ with $u^TM=0$,
+$u^Tv\ne0$ over $\mathbb F_p$) lifts: since the entries of $M,v$ are
+$p$-integral, any rational solution reduces mod $p$ after clearing its
+denominator, contradicting $u^T\bar v\neq0$ unless the denominator is
+divisible by $p$. As no rational vector has denominator divisible by
+every good prime, inconsistency at a single good prime already implies
+rational inconsistency; we use two primes as an independent guard against
+implementation error, not as a logical necessity.
+\end{proof}
+
+All \Excluded\ statements below are of this form: the matrices are exact
+reductions of rational systems (integer numerators, denominators coprime
+to the $22$-bit primes $4194301$, $4194247$), so the negatives are
+theorems over $\Q$ about the stated finite ansatz spaces.
+
+%======================================================================
+\section{The companion inversion theorem}\label{sec:core}
+
+\begin{definition}[nome and rectification]\label{def:nome}
+Let $L$ be an order-$r$ operator in $\tht$ over $\Q(t)$ whose solution
+space at $t=0$ has a Frobenius basis $y_0=1+O(t)$,
+$y_1=y_0\log t+g$, \dots. The \emph{nome} is $q=t\exp(g/y_0)$, so
+$\log q=y_1/y_0$; write $t(q)$ for the inverse and $F(q)=y_0(t(q))$. We
+say $L$ is \emph{exactly rectified} if
+\begin{equation}\label{eq:rect}
+L\;=\;C(t)\cdot F\cdot\thq^{\,r}\cdot F^{-1}
+\end{equation}
+for a rational function $C$; equivalently, the kernel of $L$ is
+$\operatorname{span}\{F,F\log q,\dots,F(\log q)^{r-1}/(r-1)!\}$, i.e.\ the
+full Frobenius basis collapses onto powers of the single logarithm
+$\log q$. For $r\ge3$ this is strictly stronger than maximal unipotent
+monodromy (referee report, \S1; see Theorem~\ref{thm:sym2}).
+\end{definition}
+
+\begin{lemma}[boundary defect]\label{lem:defect}
+\Proved\
+Let $L$ come from an R2 or R3 sporadic recurrence and let $y_B=\sum
+B(n)t^n$ with $B(0)=0$, $B(1)=1$ the normalized second solution. Then
+$L(y_B)=t$ exactly: the coefficients of $t^m$, $m\neq1$, vanish because
+they are instances of the recurrence, and the coefficient of $t$ is
+$1^{\,r}B(1)-(\text{lower terms})\cdot B(0)=1$.
+\end{lemma}
+
+\begin{lemma}[uniqueness]\label{lem:unique}
+\Proved\
+A log-free power series $y$ with $y(0)=0$ and $L(y)=t$ is unique: two such
+differ by a log-free kernel element vanishing at $0$; the log-free part of
+the kernel is $\Q\,y_0$ under \eqref{eq:rect} (all other basis elements
+carry logarithms), and $y_0(0)=1\neq0$.
+\end{lemma}
+
+\begin{theorem}[companion inversion]\label{thm:inversion}
+\Thm\
+Suppose $L$ is exactly rectified as in \eqref{eq:rect}. Then
+\[
+y_B\;=\;F\cdot\thq^{-r}\!\Bigl(\frac{t}{C(t)\,F}\Bigr),
+\]
+where $\thq^{-1}$ is the constant-free antiderivative (well defined since
+$t/(CF)\in q\,\Q[[q]]$), and consequently
+$B(n)=[t^n]\,F\,\thq^{-r}(t/(CF))$ for all $n\ge0$.
+\end{theorem}
+
+\begin{proof}
+The displayed series is log-free, vanishes at $t=0$, and satisfies
+$L(\cdot)=C\,F\,\thq^r(F^{-1}\cdot)=C\,F\cdot\bigl(t/(CF)\bigr)/1=t$ by
+\eqref{eq:rect}. Lemmas \ref{lem:defect} and \ref{lem:unique} identify it
+with $y_B$. (Intermediate antiderivative constants alter the result by
+kernel elements with logarithms or by $\lambda F$; both are excluded by
+log-freeness and $y(0)=0$.)
+\end{proof}
+
+%======================================================================
+\section{Rectification for the fifteen: the symmetric-square theorem}
+\label{sec:sym2}
+
+\subsection{Order two}
+\begin{lemma}\label{lem:r2}
+\Proved\
+Every order-$2$ operator with Frobenius basis $y_0$, $y_1=y_0\log t+g$ is
+exactly rectified: in the $q$-coordinate its kernel is
+$\{F,F\log q\}$ by definition of $q$, which is the kernel of
+$F\thq^2F^{-1}$; comparing leading coefficients gives
+\eqref{eq:rect} with $C=P_2/\sigma^2$, $P_2$ the $\tht^2$-coefficient of
+$L$. This covers the nine second-order sporadic families
+($\mathbf A$--$\mathbf F$, $s_7$, $s_{10}$, $s_{18}$), including the
+$d\neq0$ Cooper rows.
+\end{lemma}
+
+\subsection{Order three}
+For an R3 family $(a,b,c)$ (all six have $d=0$) the generating operator is
+\[
+L=\theta^3-t(2\theta+1)(a\theta^2+a\theta+b)+c\,t^2(\theta+1)^3,
+\qquad
+P_3(t)=1-2at+ct^2 .
+\]
+
+\begin{theorem}[the six symmetric squares]\label{thm:sym2}
+\Proved\ (exact identities in $\Q(t)$;
+\texttt{work/z5eps/eps57\_sym2\_all.py})\quad
+For each of the six third-order sporadic families, $L$ equals
+$t^3P_3(t)$ times the symmetric square of the second-order operator
+\[
+\widetilde D\;=\;\theta^2-t\Bigl(2a\theta^2+a\theta+\tfrac b2\Bigr)
++c\,t^2\Bigl(\theta+\tfrac12\Bigr)^2 ,
+\]
+uniformly in the family parameters: writing $L$ in $\partial$-form and
+matching against
+$\mathrm{Sym}^2(\partial^2+p\partial+r_\ast)=\partial^3+3p\partial^2
++(2p^2+p'+4r_\ast)\partial+(4pr_\ast+2r_\ast')$, the forced
+$(p,r_\ast)$ agree with $\widetilde D$'s and the residual
+$A_0/A_3-(4pr_\ast+2r_\ast')$ is \emph{identically zero} in $\Q(t)$, for
+$\alpha, \gamma, \delta, \varepsilon, \zeta, \eta$ separately. For
+example, for $\gamma$ (Ap\'ery $\zeta(3)$),
+$p=(2t^2-51t+1)/\bigl(t(t^2-34t+1)\bigr)$,
+$r_\ast=(t-10)/\bigl(4t(t^2-34t+1)\bigr)$.
+\end{theorem}
+
+\begin{corollary}[rectification for all fifteen]\label{cor:rect15}
+\Proved\
+Each of the fifteen sporadic operators is exactly rectified: for $r=2$ by
+Lemma~\ref{lem:r2}; for $r=3$ because, with $u,v$ a Frobenius basis of
+$\widetilde D$, the kernel of $L$ is $\{u^2,uv,v^2/2\}$ and
+$v/u=\log q$ (the nome of $\widetilde D$ equals the nome of $L$ since
+$y_1/y_0=uv/u^2$), so the kernel is
+$\{F,F\log q,\tfrac12F\log^2q\}$; the leading-coefficient comparison gives
+$C=P_3/\sigma^3$.
+\end{corollary}
+
+\begin{theorem}[uniform companion formula, all $n$]\label{thm:companion}
+\Thm\
+For every one of the fifteen sporadic pairs, with $r$ the operator order,
+\[
+B(n)\;=\;[t^n]\;F\cdot\thq^{-r}\!\Bigl(\frac{t\,\sigma^r}{P_r\,F}\Bigr)
+\qquad\text{for all }n\ge0 .
+\]
+\end{theorem}
+
+\begin{proof}
+Theorem~\ref{thm:inversion} with Corollary~\ref{cor:rect15} and
+$C=P_r/\sigma^r$.
+\end{proof}
+
+\begin{verification}\label{ver:companion}
+\VerifiedR{exact $\Q$, $n\le20$ per family ($n\le22$ for $\zeta$,
+$n\le26$ for $\gamma$); \texttt{eps52}}\ The formula of
+Theorem~\ref{thm:companion} was independently confirmed coefficientwise
+for all fifteen families; with the theorem now proved, these computations
+serve as implementation checks.
+\end{verification}
+
+\begin{remark}
+The referee's structural point stands recorded in
+Definition~\ref{def:nome}: rectification at $r\ge3$ is strictly stronger
+than MUM, and a generic MUM operator retains a Yukawa-type coupling in
+canonical coordinates. What Theorem~\ref{thm:sym2} shows is that the
+sporadic zoo sits entirely in the rectifiable class --- order-appropriate
+in each case (referee report \S6) --- while the $\zeta(5)$ five-block does
+not (\S\ref{sec:mirror}). The half-integral shift $\theta+\tfrac12$ in
+$\widetilde D$ is the source of the ``half-Ap\'ery'' phenomena studied in
+the companion paper \texttt{papers\_out/half\_apery}.
+\end{remark}
+
+%======================================================================
+\section{Exact modular results}\label{sec:modular}
+
+\subsection{The $\zeta$ identification is an identity}
+\begin{proposition}\label{prop:zetaid}
+\Proved\ (Ligozat conditions $+$ Sturm bound; \texttt{eps57}, Part 2)\quad
+The eta quotient $\eta_3^{10}/(\eta_1\eta_9)^3$ is a holomorphic modular
+form of weight $2$, level $9$, trivial character (cusp orders $0,1,0$ at
+the cusps $1,\,1/3,\,\infty$ of $\Gamma_0(9)$; $\prod d^{e_d}=81$ a
+square), and equals $\tfrac18\bigl(9E_2(q^9)-E_2(q)\bigr)$ in
+$M_2(\Gamma_0(9))$: the Sturm bound is $2$ and agreement holds to
+$q^{40}$.
+\end{proposition}
+
+\subsection{The first proved annihilation law for $\zeta$'s letters}
+\begin{proposition}\label{prop:ann}
+\Proved\ (order-$2$ Zeilberger certificate with symbolically verified
+certificate identities, endpoint vanishing, and upward induction;
+\texttt{work/z5eps/eps45\_zeta\_kernel.md}, \texttt{eps45\_verify1.py})\quad
+For the summand $S_\zeta(n,k,l)=\bin nk^2\bin nl\bin kl\bin{k+l}n$ and all
+$0\le k\le n$,
+\[
+\sum_{l}S_\zeta(n,k,l)\,\bigl(\HH1k-2\HH1l+\HH1{n-l}\bigr)\;=\;0 .
+\]
+Order $2$ is minimal for the certificate (order $1$ excluded by
+residual-checked exhaustion). A second, weight-two annihilation law
+remains \VerifiedR{exact $\Q$, all cells $n\le25$} with a documented
+obstruction record (Gosper and joint order-$2$--$4$ solves excluded, also
+over an expanded alphabet at orders $2$--$3$) \Open. Under the inner sum
+the letters $\HH1l$, $\HH1{n-l}$ are therefore provably not free ---
+every previous fit for $\zeta$ was conducted in a degenerate alphabet.
+\end{proposition}
+
+\subsection{Identifications at discovery grade}
+\begin{verification}[the dictionary]\label{ver:dict}
+\VerifiedR{coefficientwise to $q^{25}$ with zero-tail checks;
+\texttt{eps51}; table in \texttt{work/SPORADIC\_MODULAR\_DICTIONARY.md}}\quad
+All fifteen nome expansions are integral at scale one to the stated
+order, and twelve of fifteen $(t,F)$ pairs agree to $q^{25}$ with explicit
+(generalized-)eta quotients --- including
+$\delta$ (level $12$: $t=q\,\eta_1^4\eta_4^4\eta_6^{16}/
+(\eta_2^{16}\eta_3^4\eta_{12}^4)$,
+$F=\eta_2^{12}\eta_3\eta_{12}/(\eta_1^3\eta_4^3\eta_6^4)$), apparently the
+first modular data attached to $\delta$;
+$\eta$ (level $20$); $\mathbf B$ (level $36$, with the half-integral
+$q$-shift anomaly $\sum m\,e_m=132\notin24\Z$ reflecting the $b(-q)$
+twist, and an equivalent untwisted level-$9$ representative found by the
+census of \S\ref{sec:factory}). Cooper's three are integral but not
+eta-type in this coordinate \Open.
+
+Finite integrality and finite agreement are \emph{discovery} statements:
+they do not by themselves assert modular parametrisation (referee report
+\S4). The upgrade path is exact operator verification;
+Proposition~\ref{prop:zetaid} completes the form-identification step for
+$\zeta$, and for $\delta$ the parallel programme is carried out in
+\texttt{work/DELTA\_MODULAR\_THEOREM.md}: Ligozat holomorphy of both
+quotients is unconditional, the eta-side annihilator within the order-$3$
+ansatz is exactly one-dimensional and equals $\delta$'s operator
+coefficientwise, and one hypothesis remains (the degree-one property of
+$t_\delta$ on the correct Atkin--Lehner extension) \Open.
+\end{verification}
+
+%======================================================================
+\section{Computer-assisted negatives, precisely scoped}\label{sec:negatives}
+
+All negatives in this section are of the shape of Lemma~\ref{lem:modrat}:
+rational inconsistency of a fully specified finite linear system,
+certified at two unrelated $22$-bit primes with identical ranks.
+
+\subsection{The tame harmonic ansatz}\label{sec:exhaust}
+\begin{definition}[the ansatz]\label{def:ansatz}
+For a family with summand $S$ and congruence weight $w$, the \emph{complete
+tame degree-$\le3$ ansatz} is the finite $\Q$-vector space of weights
+$\mathfrak w=\sum_jc_jM_j$ where $M_j$ ranges over monomials of total
+harmonic weight exactly $w$, of degree $\le3$ in weight-one letters, in
+the letters $\HH sx$ (and, in the twisted variant, $K^{(s)}_\chi(x)=
+\sum_{j\le x}\chi(j)j^{-s}$ with $\chi$ the conductor-matched character),
+with arguments $x$ ranging over the family's complete tame argument set:
+for $\zeta$: $\{n,k,n{-}k,l,n{-}l,k{-}l,k{+}l{-}n\}$;
+for $\eta$: $\{n,k,2k,3k,4k,5k,n{-}k,n{-}2k,n{-}3k,n{-}4k,n{-}5k\}$;
+for $\mathbf F$: $\{n,k,n{-}k,l,k{-}l,n{-}l,n{-}k{+}l\}$.
+The companion equation is the linear system
+$B(n)=\sum_{\text{cells}}S\,\mathfrak w$ over the stated fitting rows.
+\end{definition}
+
+\begin{theorem}[exhaustion of the ansatz]\label{thm:exhaust}
+\ExcludedR{two primes, identical ranks; excess $90$--$173$;
+\texttt{eps44}}\quad
+For $\mathbf F$, $\zeta$, $\eta$, the system of
+Definition~\ref{def:ansatz} is inconsistent over $\Q$, pure and twisted
+(columns/rank: $35/23$, $119/75$; $140/125$, $770/734$; $418/418$,
+$2530/2530$). Together with the programme's prior exclusions this
+exhausts the complete tame degree-$\le3$ ansatz for all seven conjectural
+families. The positive control (Franel) re-derives its known companion
+exactly in the same harness with held-out validation.
+\end{theorem}
+
+\begin{remark}[scope]
+This excludes exactly the stated ansatz. It does not exclude: higher
+degree in weight-one letters, nested harmonic sums, rational-function
+coefficients $c_j(n,k)$, other hypergeometric representations of the same
+$A(n)$, or telescoping/indefinite-sum extensions (referee report \S3).
+The claim ``no harmonic companion exists'' does not appear in this paper;
+Theorem~\ref{thm:companion} makes the point that matters --- the companion
+\emph{does} exist, in modular letters, for all fifteen --- and
+Proposition~\ref{prop:ann} explains part of the ansatz failure
+(degenerate alphabets).
+\end{remark}
+
+\subsection{Curve-blindness for the $\zeta(5)$ top row}\label{sec:blind}
+\begin{definition}[curve atoms, pinning, boxes]\label{def:atoms}
+Write the Brown--Zudilin cell
+$T=\prod_L(x_L!)^{p_L}$ over the nine letters
+$x_L\in\{n,k,l,n{\pm}k,n{\pm}l,k{+}l,n{+}k{+}l\}$,
+$p_L=(1,-3,-3,1,1,-2,-2,-1,1)$. A \emph{curve atom of degree $D$} is
+$u=(u_1,\dots,u_D)$, $u_i\in\Z^3$, denoting the $\Gamma$-continued cell
+$T(n+\alpha(\varepsilon),k+\beta(\varepsilon),l+\gamma(\varepsilon))$,
+$(\alpha,\beta,\gamma)=\sum_iu_i\varepsilon^i$; per letter the shift is
+$s_L=\sum_id_{i,L}\varepsilon^i$ with $d_{i,L}$ the letter's linear form
+on $u_i$. \emph{Pinning} of a $\Q$-combination means: the
+$\varepsilon^1$ and $\varepsilon^2$ rows vanish and the $\varepsilon^3$
+row lies in $\Q Q\oplus\Q\hat P$, imposed separately in every
+$\zeta$-graded component (variant A adds the analogous $\varepsilon^4$
+condition). The \emph{boxes} are $u_1\in\{-2..2\}^3$,
+$u_2\in\{-1,0,1\}^3$, $u_3\in\{0,\pm e_i\}$.
+\end{definition}
+
+\begin{lemma}[coupling; degree-independent]\label{lem:coupling}
+\Proved\
+For any polynomial curve atom of any degree, the top-graded (harmonic
+weight $=$ $\varepsilon$-order $r$) content of $[\varepsilon^r]$ depends
+only on the first-order direction $u_1$, through the pure powers
+$d_1^{\otimes r}$; all higher curve coefficients feed only lower weights.
+Hence the top-grade question for \emph{all} polynomial curves reduces to
+the span of the degree-$r$ Veronese images of first-order directions.
+\end{lemma}
+
+\begin{lemma}[Veronese saturation]\label{lem:sat}
+\Proved\ (exact rank computation; \texttt{eps57\_heldout.py}, Part B)\quad
+The directions of the box $\{-2..2\}^3$ have degree-$d$ Veronese images of
+full rank $\dim\mathrm{Sym}^d(\Q^3)$ for $d=2,3,4,5$ ($6,10,15,21$). Hence
+the finite computations below certify the top-graded component for
+\emph{every} first-order direction in $\Z^3$, and so, by
+Lemma~\ref{lem:coupling}, for every polynomial curve of every degree.
+\end{lemma}
+
+\begin{theorem}[curve-blindness]\label{thm:blind}
+The top-graded $\varepsilon^5$ content of any pinned $\Q$-combination of
+polynomial-curve atoms (any degree, any directions) has vanishing
+$P_n$-component; and on the boxes of Definition~\ref{def:atoms} the full
+statement holds: the entire $\varepsilon^5$ row of a pinned combination is
+confined to $\Q Q\oplus\Q\hat P$, in the rational part and every
+$\zeta$-graded component
+\ExcludedR{two primes, identical ranks $53/36$ (linear), $88/59$
+(quadratic), $80/54$ (cubic); \texttt{eps41}, \texttt{eps42}}. The
+$\varepsilon^3$ coefficient meanwhile realises $\hat P$ freely. The
+top-grade clause is unconditional by Lemmas
+\ref{lem:coupling}--\ref{lem:sat}; the sub-top clauses are certified on
+the stated boxes, where the pinning constraints (which involve $u_2,u_3$)
+live.
+\end{theorem}
+
+\subsection{The census}\label{sec:factory}
+\begin{definition}[search universe]\label{def:universe}
+The census banks are: hauptmodul candidates
+$t=q\prod_m(1-q^{mk})^{e_m}$ with $\sum e_m=0$, $\sum m\,e_m=24$; form
+candidates $F=\prod_m(1-q^{mk})^{e_m}$ with $\sum e_m=2(r-1)$,
+$\sum m\,e_m=0$, $r-1\in\{1,2\}$; Eisenstein members
+$(d_2E_2(q^{d_2})-d_1E_2(q^{d_1}))/(d_2-d_1)$ and odd-character weight-one
+series $E_1(\chi_{-3}),E_1(\chi_{-4})$ at rescalings; levels
+$\{2,\dots,10,12,13,16,18,20,25\}$; exponent caps $\Sigma|e|\le26$
+(pass~1) and $\le60$ (pass~2) with the stated candidate-count caps; and
+both $(-q)$-twists of every pair. Two hits are \emph{equivalent} if they
+agree under $t\mapsto\lambda t$ and $t\mapsto-t$, detected by the
+invariants $a_k/a_1^k$; hit classes are these equivalence classes.
+\end{definition}
+
+\begin{census}\label{cen:factory}
+\VerifiedR{$\sim5\times10^4$ pairs; all $91$ hit classes re-derived
+exactly at series order $46$; \texttt{eps55}}\quad
+Within the universe of Definition~\ref{def:universe}: the reverse pipeline
+reproduces the exact recurrences of all ten identified families from
+their $(t,F)$ data alone ($10/10$); and every $3$-term hit with integral
+solution is either one of the fifteen or a classical degenerate
+(hypergeometric $c=0$, interleaved/2-step $a=b=0$, or the double-root
+case $a^2-4c=0$). \emph{No sixteenth sporadic pair exists in this
+universe.} The four uncovered directions (generalized-eta/$\Gamma_1$
+banks, Fricke hauptmoduls, order-$4$ territory, levels $>25$) are stated
+in \texttt{work/MODULAR\_FACTORY.md}.
+\end{census}
+
+%======================================================================
+\section{Congruence laws}\label{sec:cong}
+
+\begin{verification}[weight dichotomy]\label{ver:asd}
+\VerifiedR{$p\le23$ per family; \texttt{eps51}}\quad
+For all nine $r=3$-adjacent (modular weight $2$) families,
+$A(p)\equiv b_p\pmod p$ with $b_p=[q^p]F$, at every tested prime ---
+including the unidentified Cooper three and the $\chi$-twisted $\zeta$,
+$\eta$.
+\end{verification}
+
+\begin{proposition}[nebentypus compatibility; a uniform weight-one law]
+\label{prop:wt1}
+\VerifiedR{fitted on $p\le23$; \emph{passes all sixteen held-out primes}
+$29\le p\le97$ for each of the six families below --- the five displayed
+plus $\mathbf D$ with its separate rule; \texttt{eps57\_heldout.py}}\quad
+For the weight-one families,
+\[
+A(p)\;\equiv\;b_p\;-\;b\cdot\chi_N(p)\pmod p
+\qquad(\mathbf A,\mathbf B,\mathbf C,\mathbf E,\mathbf F),
+\]
+with $b$ the recurrence's constant parameter $(2,3,3,4,6)$ and $\chi_N$
+the quadratic character of the \emph{level} ($\chi_{-3}$ for levels
+$6,12,36$ --- including Franel, whose family character is trivial;
+$\chi_{-4}$ for level $8$); and for $\mathbf D$,
+$A(p)-b_p\equiv2(p\bmod5)-5\pmod p$. For $\zeta$, the programme's twisted
+Lucas law holds with twist exponent $e=1$ equal to the nebentypus value
+$\chi_{-3}(p)$ at the discriminating primes.
+\end{proposition}
+
+\begin{conjecture}[ASD mechanism]\label{conj:asd}
+The laws above are the mod-$p$ shadows of Atkin--Swinnerton-Dyer
+congruence structure for the identified forms (unit-root/formal-group
+statements); in particular the weight-one law should follow from the
+Eisenstein structure of the identified weight-one forms. Establishing
+this for $\zeta$ --- where Proposition~\ref{prop:zetaid} supplies the
+form as a theorem --- is the recommended first target.
+\end{conjecture}
+
+%======================================================================
+\section{Conjectural tier: mirror-type signatures of the $\zeta(5)$
+operator, and a coaction proposal}\label{sec:mirror}
+
+Everything in this section is either an exact local computation about the
+Brown--Zudilin operator or an explicitly labelled conjecture; no geometric
+origin, Hodge-theoretic, or motivic claim is made.
+
+\subsection{Local signatures}
+\begin{proposition}\label{prop:sig}
+\Proved\ (exact indicial computation; \texttt{eps50})\quad
+The order-$9$ generating operator of the $\Lbz$ recurrence has $t=0$
+exponents $0^{(5)}$, $\tfrac12$, and the three roots of an irrational
+cubic: a five-dimensional unipotent local block.
+\end{proposition}
+
+\begin{verification}\label{ver:mirrorint}
+\VerifiedR{$q^{26}$ (mirror map), $q^{32}$ (Yukawa datum), scale one;
+\texttt{eps50}, \texttt{eps53}}\quad
+The block's mirror map and structure series are integral:
+$t(q)=q-94q^2-591q^3-\cdots\in\Z[[q]]$ to the stated order;
+$F(q)=1+21q+1015q^2+\cdots\in\Z[[q]]$; and, in the exact $q$-normal form
+of the block (defined below), the Yukawa-type datum
+$K(q)=\thq^2(\hat g_2/F)=87q+33895q^2+\cdots\in\Z[[q]]$, with
+$K_1=87=4P_1$.
+
+\emph{Withdrawn as evidence:} earlier drafts listed the root-integrality
+observations $Q(4t)^{1/2},Q(8t)^{1/4}\in\Z[[t]]$ here. These are
+\emph{universal} for integer series ($\sqrt{f(4t)}\in\Z[[t]]$ for any
+$f\in1+t\Z[[t]]$; see \texttt{papers\_out/half\_apery}, Lemma) and carry
+no arithmetic information about this family; the correction is logged in
+\texttt{work/Z5\_MODULARITY\_PROBE.md}.
+\end{verification}
+
+\begin{definition}[$q$-normal form and the datum $K$]\label{def:normal}
+In the nome coordinate of the block, conjugation by $F$ brings the
+five-dimensional local system to the form
+\[
+\thq^{5}\;+\;K_3(q)\,\thq^{3}\;+\;K_2(q)\,\thq^{2}\;+\;K_1(q)\,\thq
+\;+\;K_0(q),
+\]
+with $\hat g_1\equiv0$ (the mirror-map normalisation, verified exactly)
+and $\hat g_j$ the successive Frobenius tails; $K:=\thq^2(\hat g_2/F)$ is
+the first nontrivial structure series. $K\not\equiv0$ is precisely the
+obstruction to the bare inversion of Theorem~\ref{thm:inversion} at
+$r=5$: the variation-of-parameters inverse then involves $K$ explicitly.
+The full tower $\hat g_3,\hat g_4$ and the invariance of $K$ under the
+remaining gauge freedom are \Open\ (referee report \S10); until they are
+supplied, $K$'s status is: an exactly computed series in a fixed,
+scripted normalisation (\texttt{eps53}).
+\end{definition}
+
+\begin{verification}[sharp negatives]\label{ver:mirrornegs}
+\ExcludedR{as stated; \texttt{eps53}}\quad
+(i) The naive Dwork congruence $F(q)\equiv F_{<p}(q)F(q^p)\bmod p$ fails
+at $p=5,7$ (three Frobenius slopes; the slope-refined form is the open
+target). (ii) The naive elliptic-style row avatars
+$\thq^3(\hat P/Q)$, $\thq^5(P/Q)$ have unboundedly growing denominators
+--- calibrated against the same pipeline recovering Beukers' weight-$4$
+Eisenstein combination $6E^{(1)}-168E^{(2)}+378E^{(3)}-216E^{(6)}$ exactly
+for Ap\'ery ($q^{32}$). (iii) No order-$5$ right factor of $t$-degree
+$\le20$ splits the block off globally (one $22$-bit prime, series order
+$64$).
+\end{verification}
+
+\begin{conjecture}[mirror form of the bridge]\label{conj:mirrorbridge}
+In the block's $q$-normal-form coordinates the companion rows
+$\hat P_n,P_n$ are coefficient sequences of Eichler-type objects built
+from $F$, $K$, and the higher structure series, and the programme's open
+compact-formula identity for $P_n$ is the $t$-shadow of a $q$-side
+identity in those data.
+\end{conjecture}
+
+\subsection{A coaction proposal, in one display}
+\begin{conjecture}\label{conj:coaction}
+For the motivic period $I^{\mathfrak m}$ of a cellular family with
+coaction $\Delta I^{\mathfrak m}=\sum_rI^{\mathrm{dR}}_r\otimes
+I^{\mathfrak m}_r$, the $r$-th $\varepsilon$-jet of the family computes
+$I^{\mathrm{dR}}_r$; in particular companions are first coaction
+components, and the twist behaviour of
+Proposition~\ref{prop:wt1} is the Galois equivariance of $\Delta$.
+\end{conjecture}
+No comparison morphism is constructed here; the conjecture is recorded
+because it correctly anticipated the one-step (unipotent) shape of the
+first-variation anchor equation of the companion paper, and it makes the
+falsifiable prediction that second variations anchor in
+$\operatorname{span}\{Q,\dot Q\}$ only.
+
+%======================================================================
+\section{Open problems}\label{sec:open}
+
+\begin{enumerate}[leftmargin=2em,label=\textbf{P\arabic*.}]
+\item Complete $\delta$'s parametrisation proof (the remaining
+Atkin--Lehner degree-one hypothesis), and prove the remaining eleven
+identifications by the Ligozat--Sturm route of
+Proposition~\ref{prop:zetaid}.
+\item Prove the weight-one law of Proposition~\ref{prop:wt1} from the
+Eisenstein structure of the identified forms; then the ASD mechanism
+(Conjecture~\ref{conj:asd}) for $\zeta$.
+\item Certify the second $\zeta$ annihilation law
+(Proposition~\ref{prop:ann}); mine the quotient alphabet.
+\item Supply the $\hat g_3,\hat g_4$ tower and the gauge-invariance of
+$K$ (Definition~\ref{def:normal}); run the slope-refined Dwork test;
+derive the $K$-corrected inversion at $r=5$ and test
+Conjecture~\ref{conj:mirrorbridge} on the \emph{proved} middle row first.
+\item Extend the census (Definition~\ref{def:universe}) in its four
+uncovered directions; any of them could still contain a sixteenth pair.
+\item Identify Cooper's three parametrizations (Atkin--Lehner
+hauptmoduls).
+\end{enumerate}
+
+%======================================================================
+\section{Provenance and data}\label{sec:provenance}
+
+Scripts in \texttt{work/z5eps/} with logs: \texttt{eps41--eps44}
+(negatives), \texttt{eps45} (the proved annihilation law),
+\texttt{eps48--eps53} (nome instrument, identifications, companions,
+mirror probes), \texttt{eps54} (the discriminating jet experiments),
+\texttt{eps55} (census), \texttt{eps56} (half-Ap\'ery),
+\texttt{eps57\_sym2\_all.py} and \texttt{eps57\_heldout.py} (the
+symmetric-square identities, the $\zeta$ Sturm proof, held-out primes,
+Veronese saturation). Memos as in the header. All exact arithmetic is
+\texttt{Fraction}-based; every modular negative is certified at two
+unrelated primes (Lemma~\ref{lem:modrat}); every positive control is
+stated alongside the negatives it guards. The referee report and the
+point-by-point response --- including a standing log against silent
+evidential upgrades --- are at
+\texttt{work/SOL\_REVIEW\_MODULAR\_ANCHORS.md}.
+
+\begin{thebibliography}{99}
+\bibitem{Ap79} R.~Ap\'ery, \emph{Irrationalit\'e de $\zeta(2)$ et
+$\zeta(3)$}, Ast\'erisque 61 (1979).
+\bibitem{Be87} F.~Beukers, \emph{Irrationality proofs using modular
+forms}, Ast\'erisque 147--148 (1987).
+\bibitem{ASD} A.~O.~L.~Atkin and H.~P.~F.~Swinnerton-Dyer, \emph{Modular
+forms on noncongruence subgroups}, Proc.\ Symp.\ Pure Math.\ 19 (1971).
+\bibitem{Za09} D.~Zagier, \emph{Integral solutions of Ap\'ery-like
+recurrence equations}, CRM Proc.\ Lecture Notes 47 (2009).
+\bibitem{AZ06} G.~Almkvist and W.~Zudilin, \emph{Differential equations,
+mirror maps and zeta values}, AMS/IP Stud.\ Adv.\ Math.\ 38 (2006).
+\bibitem{Co12} S.~Cooper, \emph{Sporadic sequences, modular forms and new
+series for $1/\pi$}, Ramanujan J.\ 29 (2012).
+\bibitem{BB91} J.~M.~Borwein and P.~B.~Borwein, \emph{A cubic counterpart
+of Jacobi's identity and the AGM}, Trans.\ AMS 323 (1991).
+\bibitem{Li75} G.~Ligozat, \emph{Courbes modulaires de genre 1},
+Bull.\ SMF M\'em.\ 43 (1975).
+\bibitem{Stu87} J.~Sturm, \emph{On the congruence of modular forms},
+Springer LNM 1240 (1987).
+\bibitem{BZ22} F.~Brown and W.~Zudilin, \emph{On cellular rational
+approximations to $\zeta(5)$}, 2022--2026.
+\bibitem{Br14} F.~Brown, \emph{Irrationality proofs for zeta values,
+moduli spaces and dinner parties}, Mosc.\ J.\ Comb.\ Number Theory (2016).
+\bibitem{Br26} F.~Brown, \emph{Mellin transforms, the transfinite
+diameter, and rational approximation}, preprint, 2026.
+\bibitem{Gol07} V.~Golyshev, \emph{Classification problems and mirror
+duality}, LMS Lecture Note Ser.\ 338 (2007).
+\bibitem{Gor21} O.~Gorodetsky, \emph{New representations for all sporadic
+Ap\'ery-like sequences, with applications to congruences}, 2021.
+\bibitem{MS16} A.~Malik and A.~Straub, \emph{Divisibility properties of
+sporadic Ap\'ery-like numbers}, Res.\ Number Theory 2 (2016).
+\bibitem{Sporadics} River's programme, \emph{The fifteen sporadic
+Ap\'ery-like pairs}, working paper (\texttt{papers\_out/sporadics}).
+\bibitem{VarAnchor} River's programme, \emph{Variational anchors for
+Ap\'ery-like families}, working paper
+(\texttt{papers\_out/variational\_anchor}).
+\bibitem{HalfAp} River's programme, \emph{The half-Ap\'ery numbers},
+working paper (\texttt{papers\_out/half\_apery}).
+\bibitem{ExpAp} River's programme, \emph{The companion by the nome},
+expository paper (\texttt{papers\_out/expository\_apery}).
+\end{thebibliography}
+
+\end{document}

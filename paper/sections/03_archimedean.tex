@@ -1,0 +1,25 @@
+\section{Archimedean geometry and the single-row score}\label{sec:arch}
+
+\subsection{Singular points and rates}
+Let $L$ be the Picard--Fuchs operator of $f$ in the coordinate $t$ (Section~\ref{sec:sources}). Its singular points in the finite $t$-plane are the images of the cusps and elliptic points of $\Gamma$ together with the zeros and poles of any rational factor in $f$; the latter are apparent. Order the non-apparent singularities by modulus, $0<|t_1|\le|t_2|\le\cdots$. Then $a_n\asymp|t_1|^{-n}$ up to polynomial factors, so $\lambda_1=1/|t_1|$. The companion $b$ solves the inhomogeneous equation and $b-\xi a$, for the Ap\'ery limit $\xi$, is the unique combination continuing analytically past $t_1$; its growth is governed by the next singularity, $\lambda_2=1/|t_2|$. Hence
+\[
+\text{score}:=\log(1/|\lambda_2|)-k,
+\qquad
+\xi\notin\mathbb Q\ \text{ if }\ \text{score}>0,
+\]
+where $k$ is the denominator exponent, $d_n^kb_n\in\mathbb Z$.
+
+When a Fricke involution acts on $t$ by $t\mapsto1/(ct)$ the singular points pair off, $t_1t_2=1/c$, and the recurrence is palindromic: $\lambda_1\lambda_2=c$. For Ap\'ery's two rows $c=\pm1$ and $\lambda_2=1/\lambda_1$; this is the precise sense in which levels $5$ and $6$ are perfect. For Zagier's row E (level $8$, Catalan) the singularities are $t=\tfrac18,\tfrac14$, not reciprocal, and $\lambda_2=4>1$: the ratio $b_n/a_n$ converges ($2^{-n}$) but the linear form diverges. This is the geometric reason every scalar modular Catalan system in the literature fails, and the reason the Catalan work of Section~\ref{sec:tworow} uses two rows.
+
+\subsection{Denominators}\label{sec:denoms}
+Each Eichler integration $D^{-1}$ costs at most one factor $d_n$ \cite{ProjDomb}, so generically $k=w+1$. The exception is a \emph{free integration}: for Cooper's $s_7,s_{10},s_{18}$ one has $(n+1)\mid A_n$ \cite{Bogner2013}, hence $d_n^{2}B_n\in\mathbb Z$ instead of $d_n^3$. Sharpness of $k$ was verified for every row in Table~\ref{tab:census} to $n=200$.
+
+\subsection{The census}
+\input{tables/census}
+
+Table~\ref{tab:census} records, for every row considered in this paper, the period, $c$, $\lambda_{1,2}$, $k$, the slopes and denominator rates of Section~\ref{sec:padic}, the score, and the \emph{budget} $\log\lambda_1-k+\sum_p\kappa_p\log p$ (the score a row would have if all its $p$-adic resource could be harvested; Section~\ref{sec:tworow}). Two rows have positive score: Ap\'ery's. Three have no archimedean limit at all (complex-conjugate roots: Zagier B, Almkvist--Zudilin $(7,3,81)$ and $(11,5,125)$), yet each has a positive $p$-adic slope and, in B's case, a $p$-adic limit shared with C.
+
+\begin{conjecture}[Scalar barrier]\label{conj:barrier}
+For trivial character and $w\ge3$, every integral Hauptmodul system of $\operatorname{Sym}^w$ type on a genus-zero group commensurable with $SL_2(\mathbb Z)$ has negative score.
+\end{conjecture}
+The evidence is the level-$\le25$ eta-quotient census of \cite{ProjectRace}, in which level $6$ is the unique winner for $w=2$, and the absence of any positive-score $\zeta(5)$ or $\zeta(7)$ system among the many constructed in the project (e.g.\ the level-$12$ $\zeta(5)$ system, whose conditional function has a $\log^5$ singularity \emph{on the unit circle}, so that its linear form decays only like $(\log n)^4/n$). Raising the level crowds cusps into the unit $q$-disc and shrinks $|t_2|$ while the required $k=w+1$ grows.
