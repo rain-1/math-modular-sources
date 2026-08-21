@@ -1,0 +1,59 @@
+### target digits TGT=3000   L_p precision PRC=3060
+L_p time 1288 ms
+kappa_3^{w=1} = 1/2 L_3(2,1)     v_3=-1
+kappa_3^{w=2} = 1/2 L_3(3,1)     v_3=-1
+kappa_2^{w=1} = 1/2 L_2(2,1)     v_2=-2
+kappa_2^{w=1,chi12}              v_2=0
+kappa_2^{w=2} = 1/2 L_2(3,1)     v_2=-3
+kappa_5^{w=2} = 1/2 L_5(3,1)     v_5=-1
+3*kappa_3^{w=1} mod 3^40 = 8386265965554334030   (CONJ_D: 8386265965554334030)
+
+=== rows with Eisenstein source and Euler-factor divisibility ===
+A   (7,2,-8)           p=2  N=1014   Q=1         cauchy=3003    v_p(xi_N-pred)=3003    OK
+E   (12,4,32)          p=2  N=608    Q=-1        cauchy=3005    v_p(xi_N-pred)=3026    OK
+F   (17,6,72)          p=2  N=1014   Q=-1        cauchy=3005    v_p(xi_N-pred)=3005    OK
+F   (17,6,72)          p=3  N=1520   Q=-5/4      cauchy=3027    v_p(xi_N-pred)=3025    OK
+B   (9,3,27)           p=3  N=1014   Q=-1        cauchy=3024    v_p(xi_N-pred)=3029    OK
+C   (10,3,9)           p=3  N=1520   Q=-1        cauchy=3027    v_p(xi_N-pred)=3025    OK
+alpha Domb             p=2  N=507    Q=-2/3      cauchy=2992    v_p(xi_N-pred)=2991    OK
+eps (12,4,16)          p=2  N=760    Q=-1/2      cauchy=2986    v_p(xi_N-pred)=3000    OK
+delta (7,3,81)         p=3  N=760    Q=-1/2      cauchy=3029    v_p(xi_N-pred)=3030    OK
+zeta (9,3,-27)         p=3  N=1014   Q=1         cauchy=3019    v_p(xi_N-pred)=3023    OK
+eta (11,5,125)         p=5  N=1014   Q=-1        cauchy=3025    v_p(xi_N-pred)=3027    OK
+
+=== rows outside the twelve-family table ===
+  ***   Warning: increasing stack size to 16000000.
+s18 Cooper             p=3  N=3040   Q=-1        cauchy=3026    v_p(xi_N-pred)=3025    OK
+Zudilin Catalan        p=2  N=380    Q=-2        cauchy=3003    v_p(xi_N-pred)=3015    OK
+=== cuspidal sources: predicted xi_p = 0 ===
+cusp L(f,2) L12        p=2  N=1520   Q=1         cauchy=3016    v_p(xi_N-pred)=3027    OK
+
+=== Kummer-sequence cross-checks of kappa (exact Bernoulli) ===
+  Kummer kappa_3^{w=1}:  [m=1 k=5 v=0]  [m=2 k=17 v=1]  [m=3 k=53 v=2]  [m=4 k=161 v=3]  [m=5 k=485 v=4]  [m=6 k=1457 v=5]
+  Kummer kappa_3^{w=2}:  [m=1 k=4 v=0]  [m=2 k=16 v=1]  [m=3 k=52 v=2]  [m=4 k=160 v=3]  [m=5 k=484 v=4]  [m=6 k=1456 v=5]
+  Kummer kappa_2^{w=1}:  [m=1 k=3 v=0]  [m=2 k=7 v=1]  [m=3 k=15 v=2]  [m=4 k=31 v=3]  [m=5 k=63 v=4]  [m=6 k=127 v=5]  [m=7 k=255 v=6]  [m=8 k=511 v=7]
+  Kummer kappa_2^{w=1,chi12}:  [m=1 k=3 v=4]  [m=2 k=7 v=5]  [m=3 k=15 v=6]  [m=4 k=31 v=7]  [m=5 k=63 v=8]  [m=6 k=127 v=9]  [m=7 k=255 v=10]  [m=8 k=511 v=11]
+  Kummer kappa_2^{w=2}:  [m=1 k=2 v=-2]  [m=2 k=6 v=-1]  [m=3 k=14 v=0]  [m=4 k=30 v=1]  [m=5 k=62 v=2]  [m=6 k=126 v=3]  [m=7 k=254 v=4]  [m=8 k=510 v=5]
+  Kummer kappa_5^{w=2}:  [m=1 k=18 v=0]  [m=2 k=98 v=1]  [m=3 k=498 v=2]  [m=4 k=2498 v=3]
+
+=== criterion FAILS: expect no p-adic convergence ===
+C   (10,3,9)           p=2  v_p(increment), n=120..150 step 6: [-6, -2, -4, -2, -8, -2]
+B   (9,3,27)           p=2  v_p(increment), n=120..150 step 6: [-6, -2, -4, -2, -8, -2]
+gamma Apery            p=2  v_p(increment), n=120..150 step 6: [-9, -3, -6, -3, -12, -3]
+gamma Apery            p=3  v_p(increment), n=120..150 step 6: [-3, -6, -3, -3, -6, -3]
+delta (7,3,81)         p=2  v_p(increment), n=120..150 step 6: [-9, -3, -6, -3, -12, -3]
+alpha Domb             p=3  v_p(increment), n=120..150 step 6: [-3, -6, -3, -3, -6, -3]
+eta (11,5,125)         p=2  v_p(increment), n=120..150 step 6: [-9, -3, -6, -3, -12, -3]
+cusp L(f,2)            p=3  v_p(increment), n=120..150 step 6: [-1, -2, -1, -1, -2, -1]
+Domb* cuspidal         p=2  v_p(increment), n=120..150 step 6: [-15, -15, -8, -6, -11, -11]
+Domb* cuspidal         p=3  v_p(increment), n=120..150 step 6: [-2, -1, 3, 0, -2, 2]
+
+=== P-strand: convergence along towers n = a p^s (criterion fails) ===
+C (10,3,9)       p=2 a=1  v_p(xi_{a p^s}-xi_{a p^{s-1}}): [-2, -4, -6, -8, -10, -12, -14, -16, -18]
+C (10,3,9)       p=2 a=3  v_p(xi_{a p^s}-xi_{a p^{s-1}}): [-4, -6, -8, -10, -12, -14, -16]
+C (10,3,9)       p=2 a=5  v_p(xi_{a p^s}-xi_{a p^{s-1}}): [-6, -8, -10, -12, -14, -16]
+Domb             p=3 a=1  v_p(xi_{a p^s}-xi_{a p^{s-1}}): [-3, -6, -9, -12, -15]
+Domb             p=3 a=2  v_p(xi_{a p^s}-xi_{a p^{s-1}}): [-1, -4, -7, -10, -13]
+Domb             p=3 a=4  v_p(xi_{a p^s}-xi_{a p^{s-1}}): [-6, -9, -12, -15]
+
+TOTAL time 479 ms

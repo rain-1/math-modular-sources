@@ -1,0 +1,240 @@
+\subsection{The Euler-factor criterion: which rows have a $p$-adic limit, and
+what it is}\label{sec:eulercrit}
+
+\S\ref{sec:conjDproof} identified the $3$-adic limits of $\mathbf B,\mathbf C,
+\mathbf F$ under the hypothesis that every $V_d$ occurring in the source is
+prime to $p$ --- automatic at $p=3$ because $\chim3(3)=0$.  This subsection
+removes that hypothesis and replaces it by a criterion that is visible on the
+source table, Table~\ref{tab:sources}, alone.  Full details, the exact
+verification record and the negative results are in
+\texttt{consolidation/EULER\_CRITERION.md}; scripts in
+\texttt{lattice/euler\_criterion/}.
+
+\subsubsection*{The two placements, and the depleted Eisenstein series}
+
+Let the source be $\Phi=P(V)E$ with
+\begin{equation}\label{eq:Epsiphi}
+E=E^{\psi,\varphi}_{w+2}
+=\delta(\psi)L(-w-1,\varphi)+\sum_{n\ge1}\Bigl(\sum_{d\mid n}\psi(n/d)\varphi(d)d^{\,w+1}\Bigr)q^n,
+\qquad L(E,s)=L(\psi,s)L(\varphi,s-w-1),
+\end{equation}
+$\delta(\psi)=1$ iff $\psi=\mathbf 1$, and $P(V)=\sum_dc_dV_d$ with Mellin
+polynomial $P(s)=\sum_dc_dd^{-s}$.  Inner placement
+$\sigma^{(w+1)}_\chi$ in Table~\ref{tab:sources} means $(\psi,\varphi)=(\chi,\mathbf 1)$;
+outer placement $\widetilde\sigma^{(w+1)}_\chi$ means $(\psi,\varphi)=(\mathbf 1,\chi)$.
+Applying $\thq^{-(w+1)}$ transfers the exponent to the complementary divisor:
+\begin{equation}\label{eq:Ecal}
+\mathcal E:=\thq^{-(w+1)}E=\sum_{n\ge1}\Bigl(\sum_{e\mid n}\psi(e)e^{-(w+1)}\varphi(n/e)\Bigr)q^n ,
+\qquad \Theta=\thq^{-(w+1)}\Phi=P\bigl(V_\bullet/\bullet^{\,w+1}\bigr)\mathcal E .
+\end{equation}
+So $\psi$ --- the character of the \emph{unshifted} $L$-factor --- is the one
+carried by the variable with the negative exponent, and it is that variable
+which the $p$-adic theory depletes:
+\begin{equation}\label{eq:depl}
+\mathcal E^{[p]}:=\Bigl(1-\psi(p)p^{-(w+1)}V_p\Bigr)\mathcal E
+=\sum_{n\ge1}\Bigl(\sum_{e\mid n,\ p\nmid e}\psi(e)e^{-(w+1)}\varphi(n/e)\Bigr)q^n .
+\end{equation}
+Write $\mathcal E_p(s):=1-\psi(p)p^{-s}$ for the $p$-Euler factor of $L(\psi,s)$;
+under $p^{-s}\mapsto V_p/p^{w+1}$ it is exactly the operator in \eqref{eq:depl}.
+
+\begin{lemma}[overconvergent avatar, general placement]\label{lem:avatargen}
+\Lit{} Decompose $\psi=\psi^{(p)}\psi_p$ into its prime-to-$p$ and $p$-power
+parts.  Then $\mathcal E^{[p]}$ is the $q$-part of the Coleman--Mazur Eisenstein
+family with tame characters $(\varphi,\psi^{(p)})$ at the weight-character
+$\kappa_0=\psi_p\omega^{-w}\langle\cdot\rangle^{-w}\in\mathcal W^+$, the point
+``classical weight $-w$''; in particular $G^{(p)}:=\kappa_p+\mathcal E^{[p]}$ is
+overconvergent of that weight, with
+\begin{equation}\label{eq:kappa}
+\kappa_p=\begin{cases}\dfrac12\,L_p\bigl(w+1,\ \psi\omega^{-w}\bigr), & \varphi=\mathbf 1,\\[6pt]
+0, & \varphi\neq\mathbf 1 .\end{cases}
+\end{equation}
+\end{lemma}
+\begin{proof}
+$\psi(e)e^{-(w+1)}=\psi^{(p)}(e)\cdot[\psi_p(e)e^{-w}]\cdot e^{-1}$ on
+$e\in\Z_p^\times$ identifies the family and the weight
+\cite{Coleman1997,ColemanMazur1998}.  The constant term of the classical
+member of weight $k$ is $\delta(\varphi)L(1-k,\psi)$, $p$-stabilised to
+$-\tfrac12(1-\psi(p)p^{k-1})B_{k,\psi}/k=\tfrac12L_p(1-k,\psi\omega^k)$
+\cite[Thm.~5.11]{Washington1997}; it vanishes identically in $k$ when
+$\varphi\neq\mathbf 1$, and continuity on $\mathcal W^+$ gives \eqref{eq:kappa}
+at $k=-w$.  When $\varphi=\mathbf 1$ the parity condition
+$\psi\varphi(-1)=(-1)^w$ of \eqref{eq:Epsiphi} forces $\psi\omega^{-w}$ to be
+\emph{even}, so $L_p(\cdot,\psi\omega^{-w})\not\equiv0$.
+\end{proof}
+
+\begin{lemma}[$V_p$ preserves overconvergence]\label{lem:Vp}
+\Lit{} For $0<v<p/(p+1)$ the Frobenius $V_p$ maps $M^\dagger_k(v)$ to
+$M^\dagger_k(v/p)$ \cite{Coleman1996}.  Hence any polynomial in the $V_d$,
+$d$ arbitrary, carries an overconvergent form to an overconvergent form,
+at the cost of a smaller strict neighbourhood of the ordinary locus and a
+level multiplied by a power of $p$.
+\end{lemma}
+
+\subsubsection*{The criterion}
+
+\begin{namedthm}[F: Euler-factor criterion]\label{thm:F}
+Let $(\Gamma,t,F)$ be a modular Ap\'ery row of weight $w$ and level $N$ with
+Eisenstein source $\Phi=P(V)E^{\psi,\varphi}_{w+2}$, and fix a prime $p$.
+Assume
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\mathcal E_p(s)\mid P(s)$ in $\Q[p^{-s}]$, i.e.\ $P$ vanishes at
+$p^{-s}=\psi(p)^{-1}$ \textup{(}vacuous when $p\mid\operatorname{cond}\psi$\textup{)};
+put $Q:=P/\mathcal E_p$;
+\item $t$ is a Hauptmodul of a genus-zero $\Gamma_t\supseteq\Gamma_0(N')$,
+$N'$ the level of $Q(V_\bullet/\bullet^{w+1})G^{(p)}$, and
+$H_{\xi^*}=F(\Theta-\xi^*)$ is $\Gamma_t$-invariant;
+\item $t\,j\in\Z_{(p)}[[t]]$ with unit constant term;
+\item $v_p(a_n)=O(\log n)$ and $\sigma_p>0$.
+\end{enumerate}
+Then $b_n/a_n$ converges in $\Q_p$ and
+\begin{equation}\label{eq:xivalue}
+\boxed{\ \xi_p=-\,Q(w+1)\,\kappa_p\ }
+\end{equation}
+with $\kappa_p$ as in \eqref{eq:kappa}.  If \textup{(a)} fails, no $\xi$ makes
+$H_\xi$ overconvergent.  \Proved{} modulo \textup{(b)}, \textup{(d)} and the
+citations of Lemmas~\ref{lem:avatargen}--\ref{lem:Vp} and
+\cite[4.4.2]{Katz1973}.
+\end{namedthm}
+
+\begin{proof}[Proof sketch]
+By \eqref{eq:Ecal}--\eqref{eq:depl}, (a) says precisely
+$\Theta=Q(V_\bullet/\bullet^{w+1})\mathcal E^{[p]}
+ =Q(V_\bullet/\bullet^{w+1})G^{(p)}-Q(w+1)\kappa_p$, a \emph{finite} oldform
+combination of an overconvergent form (Lemmas~\ref{lem:avatargen},
+\ref{lem:Vp}); note $Q(V_\bullet/\bullet^{w+1})$ acts on constants by
+$Q(w+1)$.  Then $H_{\xi^*}$ with $\xi^*=-Q(w+1)\kappa_p$ is overconvergent of
+weight $0$, hence a rigid function on a strict neighbourhood of $D_\infty$;
+(c) puts $\{|t|_p\le1\}$ inside $D_\infty$ and (b) makes the $t$-expansion
+$B-\xi^*A$ converge on $|t|_p\le\rho$ for some $\rho>1$.  By
+Lemma~\ref{lem:overconv} and (d), $\xi^*=\xi_p$.  Conversely for
+$\xi\ne\xi^*$, $H_\xi-H_{\xi^*}=(\xi^*-\xi)F$ would be overconvergent of both
+weight $0$ and weight $w$, contradicting \cite[4.4.2]{Katz1973}.  If (a)
+fails, $P/\mathcal E_p$ is the infinite series
+$\sum_k\psi(p)^kp^{-k(w+1)}V_p^k$, whose partial sums leave every fixed strict
+neighbourhood of the ordinary locus.
+\end{proof}
+
+\begin{proposition}[cuspidal clause]\label{prop:cusp}
+\Proved{} Let instead $\Phi=P(V)f$ with $f$ a normalised cuspidal eigenform of
+weight $w+2$ and $U_pf=a_pf$, and put $Y=V_p/p^{w+1}$.  If $(1-a_pY)\mid P(Y)$
+\textup{(}automatic when $p^2\mid N$, so $a_p=0$\textup{)}, then
+$\Theta=Q(Y)\thq^{-(w+1)}f^{[p]}$ with $f^{[p]}=f-a_pV_pf$ is overconvergent
+of weight $-w$ \emph{and has no constant term}, by Coleman's
+$\theta^{\,w+1}$-surjectivity onto $U_p$-depleted overconvergent forms
+\cite{Coleman1996}.  Hence, under \textup{(b)}--\textup{(d)},
+\[
+\xi_p=0 :
+\]
+the $p$-adic Ap\'ery limit of a cuspidal row vanishes whenever it exists.
+\end{proposition}
+
+\subsubsection*{Consequence: Conjecture~D, with an Euler correction}
+
+\begin{corollary}[$p$-adic rational factor]\label{cor:rp}
+\Proved{} If $\varphi=\mathbf 1$ then, with $\Lambda:=L(\psi,w+1)$ and
+$\Lambda_p:=L_p(w+1,\psi\omega^{-w})$,
+\[
+\xi_\infty=L(\Phi,w+1)=-\tfrac12P(w+1)\Lambda=:r_\infty\Lambda,\qquad
+\xi_p=-\tfrac12Q(w+1)\Lambda_p=:r_p\Lambda_p,\qquad
+\boxed{\ r_p=\frac{r_\infty}{\mathcal E_p(w+1)}\ }
+\]
+The correction $\mathcal E_p(w+1)=1-\psi(p)p^{-(w+1)}$ depends only on
+$(\psi,p,w)$, not on the row.  Hence any two rows with the same Eisenstein
+series $E$ satisfying \textup{(a)}--\textup{(d)} at $p$ have
+$r\,\xi'_p=r'\,\xi_p$: Conjecture~\ref{conj:D} holds for them, with
+$\Lambda_p$ the $p$-adic avatar of $\Lambda$.  If $\varphi\neq\mathbf 1$ then
+$\xi_p=0$.
+\end{corollary}
+
+\begin{remark}[what the criterion sees on Table~\ref{tab:sources}]
+\VerifiedR{exact, all twelve families, $p=2,3,5$}
+Divisibility (a) holds \emph{exactly} at the primes dividing $c$:
+\[
+P_{\mathbf A}=1-X,\quad P_{\mathbf F}=(1+X)(1-8X),\quad
+P_\alpha=(1-X)(1-16X)(1-9Y),
+\]
+\[
+P_\varepsilon=(1-X)(1-4X)(1-16X),\qquad P_\delta=(1-Y)(1-14X+16X^2),
+\]
+$(X=2^{-s},Y=3^{-s})$, while $P_{\mathbf C},P_{\mathbf B}$ do not vanish at
+$X=-1=\chim3(2)^{-1}$, $P_\eta$ does not vanish at $X=-1=\chi_5(2)^{-1}$, and
+$P_\gamma$ vanishes at neither $X=1$ nor $Y=1$.  Thirty-six tests, no
+exception: \emph{$\mathcal E_p\mid P\iff p\mid c$}.  This is an algebraic
+reading of the slope set of Proposition~\ref{prop:C}.
+\end{remark}
+
+\begin{verification}[the census]\label{ver:eulercensus}
+\VerifiedR{$\ge p^{2991}$ for every row; \texttt{lattice/euler\_criterion/}}
+$\kappa_p$ is computed from Washington's Thm.~5.11 series at integer $s$
+\textup{(}so all binomial coefficients are exact integers\textup{)} to
+precision $p^{3060}$, validated against the interpolation property at
+$n=1,\dots,9$ for each character used, and cross-checked independently by the
+Kummer sequence of exact generalised Bernoulli numbers
+$-(1-\psi(p)p^{k-1})B_{k,\psi}/(2k)$, $k\equiv-w$, whose $p$-adic distance to
+$\kappa_p$ decreases by exactly one power of $p$ per step.  Rows are generated
+exactly over $\Q$ to $N$ with $\sigma_pN\ge3040$.  Every entry below is
+agreement to the full precision available, not a measured discrepancy.
+Here $\zeta_p(s)=L_p(s,\mathbf 1)$; $\zeta_2(2)$ is Calegari's
+$L_2(2,\chim4)$ in Washington's normalisation.
+
+\smallskip
+\begin{center}\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}l c c c c c c c@{}}
+\toprule
+row & $p$ & $(\psi,\varphi)$ & $\mathcal E_p(w{+}1)$ & $Q(w{+}1)$ & $\xi_p$ & $N$ & digits\\
+\midrule
+$\mathbf A$ $(7,2,-8)$    & 2 & $(\mathbf 1,\chim3)$ & $3/4$ & $1$ & $0$ & $1014$ & $3003$\\
+$\mathbf E$ $(12,4,32)$   & 2 & $(\chim4,\mathbf 1)$ & $1$ & $-1$ & $\tfrac12\zeta_2(2)$ & $608$ & $3026$\\
+$\mathbf F$ $(17,6,72)$   & 2 & $(\chim3,\mathbf 1)$ & $5/4$ & $-1$ & $\tfrac12L_2(2,\chi_{12})$ & $1014$ & $3005$\\
+$\mathbf F$ $(17,6,72)$   & 3 & $(\chim3,\mathbf 1)$ & $1$ & $-5/4$ & $\tfrac58\zeta_3(2)$ & $1520$ & $3025$\\
+$\mathbf B$ $(9,3,27)$    & 3 & $(\chim3,\mathbf 1)$ & $1$ & $-1$ & $\tfrac12\zeta_3(2)$ & $1014$ & $3029$\\
+$\mathbf C$ $(10,3,9)$    & 3 & $(\chim3,\mathbf 1)$ & $1$ & $-1$ & $\tfrac12\zeta_3(2)$ & $1520$ & $3025$\\
+$\alpha$ Domb $(10,4,64)$ & 2 & $(\mathbf 1,\mathbf 1)$ & $7/8$ & $-2/3$ & $\tfrac13\zeta_2(3)$ & $507$ & $2991$\\
+$\varepsilon$ $(12,4,16)$ & 2 & $(\mathbf 1,\mathbf 1)$ & $7/8$ & $-1/2$ & $\tfrac14\zeta_2(3)$ & $760$ & $3000$\\
+$\delta$ $(7,3,81)$       & 3 & $(\mathbf 1,\mathbf 1)$ & $26/27$ & $-1/2$ & $\tfrac14\zeta_3(3)$ & $760$ & $3030$\\
+$\zeta$ $(9,3,-27)$       & 3 & $(\chim3,\chim3)$ & $1$ & $1$ & $0$ & $1014$ & $3023$\\
+$\eta$ $(11,5,125)$       & 5 & $(\chi_5,\mathbf 1)$ & $1$ & $-1$ & $\tfrac12\zeta_5(3)$ & $1014$ & $3027$\\
+\midrule
+Cooper $s_{18}$           & 3 & --- & $1$ & $-1$ & $\tfrac12\zeta_3(2)$ & $3040$ & $3025$\\
+Zudilin (Catalan)         & 2 & --- & $1$ & $-2$ & $\zeta_2(2)$ & $380$ & $3015$\\
+cusp row $L(f,2)$, $N{=}12$ & 2 & cuspidal, $a_2{=}0$ & $1$ & $1$ & $0$ & $1520$ & $3027$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\smallskip
+
+Conversely, where (a) fails there is no $p$-adic limit: the increments
+$v_p(b_n/a_n-b_{n-1}/a_{n-1})$ stay bounded and negative for $\mathbf B,
+\mathbf C$ at $p=2$, $\gamma$ at $p=2,3$, $\delta$ and $\eta$ at $p=2$,
+$\alpha$ at $p=3$, the cusp row at $p=3$, and for the Domb cuspidal apparatus
+$\bigl(f_*=f_6-4V_2f_6$, $a_2=-2$, $a_3=-3$, $P=1-4V_2\bigr)$ at both $p=2$
+and $p=3$, where $1-4V_2$ is divisible by neither $1+2Y$ nor $1+3Y$.  Nor do
+$p$-power towers $n=ap^s$ rescue the failed cases: for $\mathbf C$ at $p=2$
+and $\alpha$ at $p=3$ the tower increments \emph{decrease} linearly in $s$.
+\end{verification}
+
+\begin{remark}[reading of the table]
+\begin{enumerate}[leftmargin=1.6em]
+\item $\alpha$ and $\varepsilon$ at $p=2$ carry the same $\Lambda_2=\zeta_2(3)$
+with $r_2=\tfrac13,\tfrac14$, ratio $\tfrac43$ --- the archimedean ratio
+$(7/24)/(7/32)$, both factors divided by the same $\mathcal E_2(3)=\tfrac78$.
+This settles the $p\mid d$ case left open at the end of \S\ref{sec:conjDproof}.
+\item $\mathbf F$ at $p=2$ is the first case in which the Euler factor is
+genuinely cancelled: $\chim3(2)=-1$, $\mathcal E_2=1+X$, and $Q=1-8V_2$ still
+contains $V_p$ --- harmless by Lemma~\ref{lem:Vp}.  The twist by
+$\omega^{-w}=\omega=\chim4$ is visible in the answer, $\chi_{12}=\chim3\chim4$.
+\item Outer placement kills the $p$-adic period: $\mathbf A$ has
+$\xi_\infty=\zeta(2)/4$ but $\xi_2=0$, and $\zeta$ has $\xi_3=0$.  Both are
+$\varphi\neq\mathbf 1$; equivalently $\Lambda_p=L_p(\cdot,\psi\omega^{-w})$ is
+the $L_p$ of an \emph{odd} character, identically zero.
+\item Zudilin's Catalan row is not in Table~\ref{tab:sources} --- it is
+hypergeometric, non-integral ($\kappa_2=4$, $c=1$, $\sigma_2=8$) --- yet the
+value formula applies with $Q(2)=-2$, giving $\xi_2=\zeta_2(2)=2\xi_2^{\mathbf E}$,
+matching the archimedean ratio $G:\tfrac12G$.  This is a new
+Conjecture~\ref{conj:D} pair at $p=2$.
+\item Cooper's $s_{18}$ joins $\mathbf B,\mathbf C,\mathbf F$ on
+$\Lambda_3=\zeta_3(2)$ with $r_3=\tfrac12$, upgrading the ``aligned'' entry of
+the slope census to an identified value.
+\end{enumerate}
+\end{remark}
