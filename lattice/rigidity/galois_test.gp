@@ -1,0 +1,31 @@
+default(timer,0);
+\\ Galois-invariance of the transfer expression on the double cover (3-adic test)
+M = 26; K = 26; PR = 44; NN = 200;
+rows(a,b,c,N)={my(A=vector(N+1),B=vector(N+1));A[1]=1;A[2]=b;B[1]=0;B[2]=1;
+ for(n=1,N-1,A[n+2]=((a*n^2+a*n+b)*A[n+1]-c*n^2*A[n])/(n+1)^2;
+            B[n+2]=((a*n^2+a*n+b)*B[n+1]-c*n^2*B[n])/(n+1)^2);[A,B]};
+RC=rows(10,3,9,NN); RF=rows(17,6,72,NN);
+xiex = RC[2][NN+1]/RC[1][NN+1];
+\\ 3-adic representative of xi to precision 3^(PR+6):  xi = 3^-1 * unit
+e=PR+6; w=valuation(xiex,3); z=xiex/3^w;
+xi = 3^w * lift(Mod(numerator(z),3^e)*Mod(denominator(z),3^e)^-1);
+print("v3(xi)=",w,"  xi mod 3^",e," fixed");
+r = vector(K+1, k, RC[2][k] - xi*RC[1][k]);
+print("v3(r_k), k=0..12: ",vector(13,i,valuation(r[i],3)));
+MO = Mod(1,3^PR);
+X = MO*x + O(x^M);
+U = X; for(it=1,7, my(f=(9*X-1)*U^2+(1-8*X)*U+X*(8*X-1), fp=2*(9*X-1)*U+(1-8*X)); U = U - f/fp);
+Ub = (8*X-1)/(9*X-1) - U;
+V  = (X-U)/(9*X-1);  Vb = (X-Ub)/(9*X-1);
+print("residual quadratic for U: ",(9*X-1)*U^2+(1-8*X)*U+X*(8*X-1));
+print("vbar-(u-1)/(9u-1): ",Vb-(U-1)/(9*U-1));
+print("ubar-(v-1)/(9v-1): ",Ub-(V-1)/(9*V-1));
+print("u=",U+O(x^5)); print("ubar=",Ub+O(x^5));
+Gg=(1+3*V)/(1-3*U); Gb=(1+3*Vb)/(1-3*Ub);
+rr = vector(K+1,k, MO*(3*r[k]));
+Hh = sum(k=0,K, rr[k+1]*(Gg*U^k + Gg^2*V^k/4));
+Hb = sum(k=0,K, rr[k+1]*(Gb*Ub^k + Gb^2*Vb^k/4));
+RFs = sum(n=0,M-1, MO*(3*RF[2][n+1]-15*xi*RF[1][n+1]/4)*x^n) + O(x^M);
+vv(z)=my(l=lift(z)); if(l==0,Str(">=",PR),valuation(l,3));
+print("n :  v3(H_n - RF_n)   v3(Hbar_n - RF_n)   v3(RF_n)");
+for(n=0,M-1, print(n,"   ",vv(polcoeff(Hh,n)-polcoeff(RFs,n)),"   ",vv(polcoeff(Hb,n)-polcoeff(RFs,n)),"   ",vv(polcoeff(RFs,n))));

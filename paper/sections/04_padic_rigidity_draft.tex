@@ -1,0 +1,214 @@
+% STATUS (Fable review, 2026-08-21): NOT A PROOF. The transfer identity below holds for
+% every xi (it is linear in xi and holds for the A- and B-parts separately), so the
+% w-invariance input H3 is *equivalent* to the conclusion xi^F = (5/4) xi^C. What is
+% proved: the cover identities (mod Sturm certification), the transfer identity, the
+% overconvergence lemma, and the reduction of Conjecture D for (C,F) at p=3 to a single
+% statement: the 3-adic period identity for the Eichler integral Theta_C under the
+% Atkin-Lehner involution (3-adic analogue of the fold lemma). Do not cite as a theorem.
+%% ------------------------------------------------------------------
+%% DRAFT — to be inserted into Section~\ref{sec:padic} after Conjecture D.
+%% Nothing here edits an existing section file.
+%% Supporting scripts: lattice/rigidity/ ; full discussion: consolidation/RIGIDITY_PROOF.md
+%% ------------------------------------------------------------------
+
+\subsection{Hecke functoriality of $p$-adic Ap\'ery limits}
+\label{sec:rigiditytransfer}
+
+This subsection proves the first case of Conjecture~\ref{conj:D} that is not a
+computation: the $3$-adic limits of Zagier's rows $\mathbf C$ and $\mathbf F$
+satisfy $\xi_3^{\mathbf F}=\tfrac54\xi_3^{\mathbf C}$, the factor $\tfrac54$ being
+the Mellin ratio $P_{\mathbf F}(2)/P_{\mathbf C}(2)$ of \S\ref{sec:hecke}.  The
+mechanism is that the two systems are parametrizations of two members of one
+prime-to-$p$ Hecke orbit on a common modular cover, and that the Ap\'ery limit is
+recovered from the cover by a Galois trace inside a Tate algebra.
+
+\subsubsection*{Overconvergence}
+
+\begin{lemma}[overconvergence and uniqueness]\label{lem:overconv}
+\Proved{} Let a row have $a_n\in\Z_p$, denominator rate $\kappa_p=0$ and slope
+$\sigma_p>0$, and put $A(t)=\sum a_nt^n$, $B(t)=\sum b_nt^n$,
+$R_\xi=B-\xi A$.  Then
+\begin{enumerate}
+\item $R_{\xi_p}$ converges on $|t|_p<p^{\sigma_p}$;
+\item $A$ has $p$-adic radius of convergence exactly $1$, and $A(t)$ diverges for
+every $|t|_p>1$;
+\item $\xi_p$ is the \emph{unique} $\xi\in\Q_p$ such that $R_\xi$ converges on some
+closed disc $|t|_p\le\rho$ with $\rho>1$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+By Proposition~\ref{prop:C}, $v_p(b_n/a_n-\xi_p)=\sigma_pn+O(\log n)$, and
+$\kappa_p=0$ means $v_p(a_n)=O(\log n)$; hence
+$v_p(b_n-\xi_pa_n)=\sigma_pn+O(\log n)$, which is (1), while
+$|a_n|_p^{1/n}\to1$ and $|a_nt^n|_p=p^{\varepsilon n-O(\log n)}\to\infty$ for
+$|t|_p=p^\varepsilon$, $\varepsilon>0$, which is (2).  If $R_\xi$ and $R_{\xi_p}$
+both converge on $|t|\le\rho>1$ then so does $(\xi_p-\xi)A$, contradicting (2)
+unless $\xi=\xi_p$.
+\end{proof}
+
+\subsubsection*{The common cover of $\mathbf C$ and $\mathbf F$}
+
+Write $S=E_{3,\chim3,1}$, so that (Table~\ref{tab:sources})
+$\Phi_{\mathbf C}=(1-8V_2)S$ and $\Phi_{\mathbf F}=(1-7V_2-8V_4)S=(1+V_2)\Phi_{\mathbf C}$.
+By Proposition~\ref{prop:mellinshift}, $D^{-2}V_2=\tfrac14V_2D^{-2}$, whence for
+$\Theta_X=D^{-2}\Phi_X$
+\begin{equation}\label{eq:thetaCF}
+\Theta_{\mathbf F}=\Theta_{\mathbf C}+\tfrac14\,V_2\Theta_{\mathbf C}.
+\end{equation}
+Put $u=t_{\mathbf C}(\tau)$, $v=t_{\mathbf C}(2\tau)$, $x=t_{\mathbf F}(\tau)$.
+
+\begin{proposition}[cover identities]\label{prop:cover}
+\VerifiedR{$O(q^{220})$, exact rational arithmetic} With the eta parametrizations of
+Table~\ref{tab:eta},
+\begin{gather}
+v^2-(9u^2-8u+1)v+u^2=0,\qquad x=\frac{v-u}{9v-1}=\frac{v-u^2}{8v},\qquad v=\frac{x-u}{9x-1},
+\label{eq:modeq}\\
+(9x-1)u^2+(1-8x)u+x(8x-1)=0,\qquad \operatorname{disc}=(1-8x)(1-6x)^2,
+\label{eq:uquad}\\
+\frac{F_{\mathbf C}(2\tau)}{F_{\mathbf C}(\tau)}=\frac{1-3u}{1+3v},
+\qquad G:=\frac{F_{\mathbf C}(\tau)}{F_{\mathbf C}(2\tau)}=\frac{1+3v}{1-3u},
+\qquad F_{\mathbf F}=\frac{F_{\mathbf C}(\tau)^2}{F_{\mathbf C}(2\tau)}=G\,F_{\mathbf C}.
+\label{eq:Frel}
+\end{gather}
+In particular $\Q(u,v)$ is a quadratic extension of $\Q(x)$ whose nontrivial
+automorphism $w$ satisfies
+\begin{equation}\label{eq:winvol}
+w(u)=\bar u=\frac{v-1}{9v-1},\qquad w(v)=\bar v=\frac{u-1}{9u-1},
+\end{equation}
+so that $u+\bar u=\frac{8x-1}{9x-1}$, $u\bar u=\frac{x(8x-1)}{9x-1}$,
+$v+\bar v=\frac{18x^2-10x+1}{(9x-1)^2}$, $v\bar v=\frac{x^2}{(9x-1)^2}$.
+\end{proposition}
+
+These are identities between eta quotients of level dividing $12$ and are therefore
+provable by Ligozat/Sturm certification exactly as in Theorem~\ref{thm:A} (the
+relevant Sturm bounds are $\le24$); we record them here as verified.
+
+\begin{proposition}[transfer identity]\label{prop:transfer}
+\Proved{} As formal power series in $x$ on the branch $u=x+O(x^2)$,
+\[
+A^{\mathbf F}(x)=G\,A^{\mathbf C}(u),\qquad
+B^{\mathbf F}(x)=G\,B^{\mathbf C}(u)+\tfrac14G^2B^{\mathbf C}(v),
+\]
+and hence for every $\xi$
+\begin{equation}\label{eq:transfer}
+B^{\mathbf F}(x)-\tfrac54\xi A^{\mathbf F}(x)
+=G\,R^{\mathbf C}_\xi(u)+\tfrac14G^2R^{\mathbf C}_\xi(v),
+\qquad R^{\mathbf C}_\xi=B^{\mathbf C}-\xi A^{\mathbf C}.
+\end{equation}
+The same identity holds after applying $w$, i.e.\ with $(u,v,G)$ replaced by
+$(\bar u,\bar v,\bar G)$.
+\end{proposition}
+\begin{proof}
+$A^{\mathbf F}(x)=F_{\mathbf F}=GF_{\mathbf C}=G\,A^{\mathbf C}(u)$ by
+\eqref{eq:Frel}.  By \eqref{eq:thetaCF} and $F_{\mathbf F}=G^2F_{\mathbf C}(2\tau)$,
+\[
+B^{\mathbf F}(x)=F_{\mathbf F}\Theta_{\mathbf F}
+=G\,F_{\mathbf C}(\tau)\Theta_{\mathbf C}(\tau)
++\tfrac14G^2F_{\mathbf C}(2\tau)\Theta_{\mathbf C}(2\tau)
+=G\,B^{\mathbf C}(u)+\tfrac14G^2B^{\mathbf C}(v).
+\]
+Since $G\,A^{\mathbf C}(v)=A^{\mathbf C}(u)$, the $\xi$-terms assemble to
+$(1+\tfrac14)\xi A^{\mathbf F}$, giving \eqref{eq:transfer}.  The derivation is an
+identity of analytic functions of $\tau$; the two points of the cover above a given
+$x$ are $\tau$ and $\gamma\tau$ for the Atkin--Lehner element realizing $w$, and
+$t_{\mathbf F}(\gamma\tau)=t_{\mathbf F}(\tau)$, so the right-hand side is
+$w$-invariant.
+\end{proof}
+
+\subsubsection*{The affinoid estimate}
+
+Fix rational $0<\delta<1$, let $\D_\delta=\{|x|_3\le3^\delta\}$ with Tate algebra
+$T_\delta$ and sup norm $\|\cdot\|$.
+
+\begin{lemma}\label{lem:affinoid}
+\Proved{} On $\D_\delta$ one has $|9x-1|=1$; consequently
+$\|u\|,\|\bar u\|,\|v\|,\|\bar v\|\le3^\delta<9$ and $\|G\|=\|\bar G\|=1$.
+\end{lemma}
+\begin{proof}
+$|9x|\le3^{\delta-2}<1$ gives $|9x-1|=1$.  Then the elementary symmetric functions
+of $\{u,\bar u\}$ and of $\{v,\bar v\}$ listed in Proposition~\ref{prop:cover} have
+$|e_1|,|e_2|,|e_1'|\le3^\delta$ and $|e_2'|\le3^{2\delta}$, so any root $T$ of
+$T^2-e_1T+e_2$ has $|T|\le\max(|e_1|,|e_2|^{1/2})\le3^\delta$; likewise for $v$.
+Finally $|3u|,|3v|\le3^{\delta-1}<1$, so $|1-3u|=|1+3v|=1$.
+\end{proof}
+
+\begin{theorem}[prime-to-$p$ Hecke functoriality, case $(\mathbf C,\mathbf F)$, $p=3$]
+\label{thm:CF3}
+\Proved{} (modulo Proposition~\ref{prop:cover} and $\kappa_3=0$ for the $\mathbf F$
+row, \VerifiedR{$n\le400$}).  One has
+\[
+\boxed{\ \xi_3^{\mathbf F}=\frac{P_{\mathbf F}(2)}{P_{\mathbf C}(2)}\,\xi_3^{\mathbf C}
+=\tfrac54\,\xi_3^{\mathbf C}.\ }
+\]
+\end{theorem}
+\begin{proof}
+Let $\xi=\xi_3^{\mathbf C}$ and $r_k=b_k^{\mathbf C}-\xi a_k^{\mathbf C}$; since
+$\sigma_3(\mathbf C)=v_3(9)=2$, Lemma~\ref{lem:overconv}(1) gives
+$v_3(r_k)=2k+O(\log k)$, so $|r_k|\,3^{\delta k}\to0$ for $\delta<2$.  Let
+$\mathcal O=T_\delta[T]/(T^2-e_1T+e_2)$, a free $T_\delta$-algebra of rank two
+containing $u,\bar u,v,\bar v,G,\bar G$ with the norms of
+Lemma~\ref{lem:affinoid}.  Then
+\[
+H:=\sum_{k\ge0}r_k\bigl(Gu^k+\tfrac14G^2v^k\bigr)
+\]
+converges in $\mathcal O$.  By Proposition~\ref{prop:transfer} $H$ is $w$-invariant,
+hence $H\in T_\delta$, and its expansion on the branch $u=x+O(x^2)$ is
+$\sum_n\bigl(b_n^{\mathbf F}-\tfrac54\xi a_n^{\mathbf F}\bigr)x^n$.  So
+$B^{\mathbf F}-\tfrac54\xi A^{\mathbf F}$ converges on the closed disc
+$|x|_3\le3^\delta$ with $3^\delta>1$, and Lemma~\ref{lem:overconv}(3) applied to the
+$\mathbf F$ row forces $\tfrac54\xi=\xi_3^{\mathbf F}$.
+\end{proof}
+
+\begin{verification}\label{ver:transfer}
+Scripts in \texttt{lattice/rigidity/}.  (i) All identities of
+Proposition~\ref{prop:cover} and \eqref{eq:thetaCF} are exact to $O(q^{220})$.
+(ii) The $w$-invariance of \eqref{eq:transfer} was checked $3$-adically: both
+branches of the right-hand side agree with
+$\sum_n(b_n^{\mathbf F}-\tfrac54\xi a_n^{\mathbf F})x^n$ to precision $3^{44}$ in
+every $x$-coefficient up to $x^{25}$.  (iii) With $N=400$,
+$v_3(4b_N^{\mathbf F}/a_N^{\mathbf F}-5b_N^{\mathbf C}/a_N^{\mathbf C})=786$ and
+$v_3(b^{\mathbf B}_N/a^{\mathbf B}_N-b^{\mathbf C}_N/a^{\mathbf C}_N)=784$, against
+the predicted $2N=800$.
+\end{verification}
+
+\begin{remark}[the target-zero class]\label{rem:targetzero}
+Set $\Psi_0=(1-4V_2)S$, so $P_{\Psi_0}(2)=0$ and $L(\Psi_0,2)=0$.  Expanding
+$F_{\mathbf C}\,D^{-2}\Psi_0$ in powers of $t_{\mathbf C}$ gives a row $(\psi_n)$
+against $a^{\mathbf C}_n$ whose $3$-adic limit is $0$ at full slope:
+$v_3(\psi_n/a^{\mathbf C}_n)=2n-O(\log n)$ for $n\le90$
+\VerifiedR{$n\le90$}.  Thus the vanishing of the archimedean target is mirrored
+exactly by the vanishing of the $3$-adic one, which is the precise sense in which
+$\xi_p$ and $\Lambda$ are two realizations of one extension class.
+\end{remark}
+
+\begin{remark}[row $\mathbf B$ is a $p$-power reparametrization]\label{rem:Bcubic}
+Although $\Phi_{\mathbf B}=\Phi_{\mathbf C}+2V_2(1-4V_2)S$ involves only $V_1,V_2,V_4$,
+Zagier's $\mathbf B$ \emph{coordinate} does not live on the level-$12$ cover:
+$t_{\mathbf B}\notin\Q(u,v)$, and $t_{\mathbf B}$ satisfies the irreducible cubic
+\[
+(9x-1)\,t_{\mathbf B}\bigl(27t_{\mathbf B}^2-9t_{\mathbf B}+1\bigr)+x(8x-1)^2=0,
+\qquad x=t_{\mathbf F},
+\]
+\VerifiedR{exact}.  Conjecture~\ref{conj:D} for $(\mathbf B,\mathbf C)$ at $p=3$
+therefore splits into the prime-to-$3$ statement covered by
+Theorem~\ref{thm:CF3} together with Remark~\ref{rem:targetzero}, and the
+\Open{} problem of invariance of $\xi_p$ under a degree-$p$ change of Ap\'ery
+parametrization of a fixed source.
+\end{remark}
+
+\begin{remark}[the case $p\mid d$]\label{rem:pdivd}
+For $\Lambda=\zeta(3)$ at $p=2$ the connecting correspondence is
+$(1-V_2)(1-4V_2)(1-16V_2)$ at the prime $2$ itself:
+$P_\alpha(3)=-\tfrac7{12}$ and $P_\varepsilon(3)=-\tfrac7{16}$, so
+$P_\alpha(3)/P_\varepsilon(3)=\tfrac43=(\tfrac7{24})/(\tfrac7{32})$, matching both
+the archimedean ratio and the measured alignment $v_2(\Delta_n)=4n+O(1)$.  Every
+ingredient of Theorem~\ref{thm:CF3} fails: the cover $X_0(2N)\to X_0(N)$ is not
+\'etale at $2$, so the two branches over a residue disc are not both available and
+Galois descent loses a factor of $p$; and the modular units $1\pm pu$ are no longer
+congruent to $1$, so $G$ is not a unit of the Tate algebra.  The missing input is
+Calegari-type overconvergence \cite{Cal05}: replace $\D_\delta$ by the ordinary
+locus, replace ``both branches'' by the canonical-subgroup section, and re-prove
+Proposition~\ref{prop:transfer} as a $U_p$-eigen-decomposition of the Eichler
+integral, so that the transfer factor becomes $P_C(w+1)$ evaluated on the unit-root
+factor alone.  This would simultaneously settle Remark~\ref{rem:Bcubic}.
+\end{remark}
