@@ -299,8 +299,10 @@ def apeel(T, Bas, ns, q):
         A[:, n] = v % q
     return A, Pm
 
+PREPDIR = "prep"
+
 def load_prep(M, w, ch):
-    fn = os.path.join(HERE, "prep", f"pr_{M}_{w}_{ch}.txt")
+    fn = os.path.join(HERE, PREPDIR, f"pr_{M}_{w}_{ch}.txt")
     if not os.path.exists(fn): return None
     with open(fn) as f:
         lines = [l.strip() for l in f if l.strip()]
@@ -311,7 +313,7 @@ def load_prep(M, w, ch):
 def space_index():
     """map level -> list of (w, chi) with a prep file"""
     idx = {}
-    d = os.path.join(HERE, "prep")
+    d = os.path.join(HERE, PREPDIR)
     for fn in os.listdir(d):
         if not fn.startswith("pr_"): continue
         try:
@@ -337,7 +339,10 @@ def main():
     ap.add_argument("--kcap", type=int, default=24)
     ap.add_argument("--levcap", type=int, default=6)   # F-level M <= levcap * t-level
     ap.add_argument("--out", type=str, default="hits2")
+    ap.add_argument("--prepdir", type=str, default="prep")
     args = ap.parse_args()
+    global PREPDIR
+    PREPDIR = args.prepdir
 
     tl = json.load(open(os.path.join(HERE, "t_list.json")))
     tl = [(i, x) for i, x in enumerate(tl) if args.degmin <= x["deg"] <= args.degmax]

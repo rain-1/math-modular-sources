@@ -6,7 +6,7 @@ for(i = 1, #LEVELS,
     for(ci = 1, #CL,
       my(m = CL[ci][1], o = CL[ci][2], ph = eulerphi(o));
       if(ph*(sturm+2) + 10 > PREC, next);
-      my(fn = Str("spaces/sp_", N, "_", w, "_", m, ".txt"), t0, g, S, dim);
+      my(fn = Str(SPDIR, "/sp_", N, "_", w, "_", m, ".txt"), t0, g, S, dim);
       if(#externstr(Str("test -f ", fn, " && echo y")) > 0, next);
       t0 = getabstime();
       g = orbgens(N, w, m);

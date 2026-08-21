@@ -1,0 +1,8 @@
+[4s] 50/3752 N=8 solves=330 hits=0
+[35s] 275/3752 N=12 solves=2450 hits=0
+[72s] 500/3752 N=12 solves=4700 hits=0
+[113s] 725/3752 N=12 solves=6950 hits=6
+[159s] 950/3752 N=18 solves=9335 hits=6
+[223s] 1175/3752 N=20 solves=11945 hits=6
+[342s] 1400/3752 N=24 solves=15395 hits=6
+[492s] 1625/3752 N=24 solves=19145 hits=6

@@ -1,0 +1,7 @@
+[0;31m  ***   Warning: new maximum stack size = 6000001024 (5722.047 Mbytes).[0m
+[0;31m  *** matkerint: Warning: increasing stack size to 16000000.[0m
+[0;31m  *** matkerint: Warning: increasing stack size to 32000000.[0m
+[0;31m  *** matkerint: Warning: increasing stack size to 64000000.[0m
+N=5 w=1 chi=2 ord=4 13560ms
+N=5 w=2 chi=1 ord=1 18319ms
+N=5 w=2 chi=4 ord=2 21042ms

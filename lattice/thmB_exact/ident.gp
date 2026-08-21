@@ -1,0 +1,22 @@
+read("common.gp");
+default(realprecision, 90);
+Imd = 0.382793539262960742907115000828412286447225784764013675236352322269214752067477852315638284;
+Imh1= 0.221862855636214119238614390850685773545741331941823016596039535173102168664148408410704509;
+Imh2= 0.443725711272428238477228781701371547091482663883646033192079070346204337328296816821409017;
+print("--- delta ---");
+print("L(Phi,1) = -4/3*zeta'(-2) = ", (4/3)*zeta(3)/(4*Pi^2));
+LD2 = Pmellin("delta",2)*zeta(2)*zeta(-1); print("L(Phi,2) = ",LD2, "   pi^2/54=",Pi^2/54);
+print("Im xi_delta = ",Imd,"   pi^3/81 = ",Pi^3/81,"   diff=",Imd-Pi^3/81);
+print("Im/L2 = ", Imd/LD2, "  2pi/3=",2*Pi/3);
+print("--- eta ---");
+L52 = lfun(5,2); print("L(chi5,2) = ",L52);
+LH2 = Pmellin("eta",2)*L52*zeta(-1); print("L(Phi_eta,2) = ",LH2,"   (7/24)L(chi5,2)=",7*L52/24);
+print("Im xi_eta (fold (1+2i)/10) = ",Imh1);
+print("  ratio to L(Phi,2): ",Imh1/LH2, "   /pi = ",Imh1/LH2/Pi);
+print("  lindep [Im, L(Phi,2)*pi, pi^3, pi^3/sqrt5, zeta(3)]: ",
+   lindep([Imh1, LH2*Pi, Pi^3, Pi^3/sqrt(5), zeta(3)]));
+print("  lindep [Im, pi*L(chi5,2)]: ", lindep([Imh1, Pi*L52]));
+print("  Im/(pi*L(chi5,2)) = ", Imh1/(Pi*L52));
+print("--- delta again: Im/(pi*zeta(2)) etc ---");
+print("  Im_d/(pi*zeta(2)) = ", Imd/(Pi*zeta(2)));
+quit;

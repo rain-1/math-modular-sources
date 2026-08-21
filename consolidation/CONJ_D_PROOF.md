@@ -434,3 +434,18 @@ That remains open.
 * **Assumed (measured):** **H1**, $v_3(a_n)=O(\log n)$ (bounded by $13$ for
   $n\le400$).
 * **Open:** row **B**'s group-theoretic step (§8); the $p\mid d$ case (§9).
+
+---
+
+**Update (see `THEOREM_F_HYPOTHESES.md` §3).**  The row-$\mathbf B$ gap is
+closed.  $\Gamma_{\mathbf B}=\gamma\,\Gamma_0(9)\,\gamma^{-1}$ with
+$\gamma=\bigl(\begin{smallmatrix}1&1/2\\0&1\end{smallmatrix}\bigr)$
+(index $72/12=6$ over $\Gamma_0(36)$, $=\deg t_{\mathbf B}$), equivalently:
+row $\mathbf B$ has a second modular presentation at level $9$,
+$t=\eta_9^3/\eta_1^3$ (a hauptmodul of $\Gamma_0(9)$),
+$F=\eta_1^3/\eta_3$, source $E^{\chi_{-3},\mathbf 1}_3$ *primitive*, in which
+$a_n\mapsto(-1)^na_n$, $b_n\mapsto-(-1)^nb_n$, so
+$\xi^{\mathbf B}_3=-(-\tfrac12\zeta_3(2))=\tfrac12\zeta_3(2)$.  Hypothesis
+(b) is then vacuous ($\deg t=1$).  The $W_4$-computation of §6 is the special
+case $Q=4$ of a general lemma: the Mellin shift $V_d\mapsto d^{-(w+1)}V_d$
+preserves Atkin–Lehner eigenvalues while moving the weight from $w+2$ to $-w$.

@@ -117,13 +117,15 @@ def check_rec(a, c, r, D, nmax):
     return nmax
 
 def charroots(c, r, D):
+    """leading symbol sum_i lead_i x^i; return (roots sorted by |.|, lead list)."""
     lead = [c[i*(D+1)+D] for i in range(r+1)]
     while lead and lead[-1] == 0: lead.pop()
-    if len(lead) < 2: return None
+    while lead and lead[0] == 0: lead.pop(0)   # a factor of x: root 0, drop it
+    if len(lead) < 2: return None, lead
     import numpy as np
     co = [float(x) for x in lead][::-1]
     rts = np.roots(co)
-    return sorted([complex(z) for z in rts], key=lambda z: -abs(z))
+    return sorted([complex(z) for z in rts], key=lambda z: -abs(z)), lead
 
 def vp(x, p):
     if x == 0: return 10**9
@@ -143,6 +145,7 @@ def main():
     ap.add_argument("--start", type=int, default=0)
     ap.add_argument("--nshard", type=int, default=1)
     ap.add_argument("--shard", type=int, default=0)
+    ap.add_argument("--prepdir", type=str, default="prep")
     args = ap.parse_args()
     HERE = os.path.dirname(os.path.abspath(__file__))
     P = args.nv
@@ -166,7 +169,7 @@ def main():
         tt = tl[ti]
         key = (M, w, ch)
         if key not in prep:
-            pf = os.path.join(HERE, "prep", f"pr_{M}_{w}_{ch}.txt")
+            pf = os.path.join(HERE, args.prepdir, f"pr_{M}_{w}_{ch}.txt")
             lines = [l.strip() for l in open(pf) if l.strip()]
             prep[key] = [json.loads(l.replace(" ", "")) for l in lines[1:]]
         vecs = prep[key]
@@ -192,81 +195,97 @@ def main():
         if not best:
             continue
         r, D, c, nsol, nok = best
-        rts = charroots(c, r, D)
-        if rts is None: continue
-        lam1 = abs(rts[0]); lam2 = abs(rts[1]) if len(rts) > 1 else 0.0
-        lead = [c[i*(D+1)+D] for i in range(r+1)]
-        while lead and lead[-1] == 0: lead.pop()
-        cc = float(lead[0]/lead[-1])*((-1)**(len(lead)-1))
-        # companion
+        rts, lead = charroots(c, r, D)
+        if rts is None or len(rts) < 2:
+            if rts:
+                lam1 = abs(rts[0])
+            else:
+                lam1 = float(abs(lead[0]/lead[-1])) if len(lead) >= 2 else 0.0
+            lam2 = None; cc = None; degen = True; rtstr = []
+        else:
+            degen = False
+            lam1 = abs(rts[0]); lam2 = abs(rts[1])
+            cc = float(lead[0]/lead[-1])*((-1)**(len(lead)-1))
+            rtstr = [[float(z.real), float(z.imag)] for z in rts]
+        cplx = (not degen) and abs(abs(rts[0]) - abs(rts[1])) < 1e-9 and abs(rts[0].imag) > 1e-9
+        # ---- companion 1: Eichler integral  B = F * D^{-(w+1)}(F*Dt)
         Dt = [n*T[n] for n in range(P)]
         Phi = smul(F, Dt, P)
         G = Phi[:]
         for _ in range(w+1):
             G = [Fraction(G[n], n) if n else Fraction(0) for n in range(P)]
         Bq = [sum(Fraction(F[i])*G[n-i] for i in range(n+1)) for n in range(P)]
-        b = expand_in_t(Bq, tp, P)
-        # denominator exponent
+        beich = expand_in_t(Bq, tp, P)
         dn = [1]*(P)
         for n in range(1, P): dn[n] = dn[n-1]*n//math.gcd(dn[n-1], n)
-        kk = None
-        for ktry in range(0, 7):
-            ok = all((b[n]*dn[n]**ktry).denominator == 1 for n in range(1, min(P, 201)))
-            if ok: kk = ktry; break
-        # slopes
+        def denexp(seq, nmax):
+            for kt in range(0, 8):
+                if all((Fraction(seq[n])*dn[n]**kt).denominator == 1 for n in range(1, min(len(seq), nmax))):
+                    return kt
+            return None
+        k_eich = denexp(beich, 201)
+        eich_ok = check_rec(beich, c, r, D, min(150, P-r-2)) >= min(150, P-r-2)
+
+        # ---- companion 2 (census convention): second solution of the fitted
+        #      recurrence with b_0=...=b_{r-2}=0, b_{r-1}=1
+        NEXT = 700
+        def pcoef(i, n):
+            v = 1; s2 = Fraction(0)
+            for d in range(D+1):
+                s2 += c[i*(D+1)+d]*v; v *= n
+            return s2
+        def extend(seq, upto):
+            seq = [Fraction(x) for x in seq]
+            n = len(seq) - r
+            while len(seq) < upto:
+                cf = [pcoef(i, n) for i in range(r+1)]
+                if cf[r] == 0: break
+                seq.append(-sum(cf[i]*seq[n+i] for i in range(r))/cf[r])
+                n += 1
+            return seq
+        aa = extend([Fraction(x) for x in a[:r]], NEXT) if r <= len(a) else [Fraction(x) for x in a]
+        if any(aa[i] != a[i] for i in range(min(len(aa), 20))):
+            aa = [Fraction(x) for x in a]        # recurrence not usable from the start
+        b0 = [Fraction(0)]*(r-1) + [Fraction(1)]
+        bb = extend(b0, NEXT)
+        k_rec = denexp(bb, 201)
+        kk = k_rec if k_rec is not None else k_eich
+        # slopes from the Casoratian of (a, b_rec)
         slopes = {}
         for p in (2, 3, 5, 7):
             vals = []
-            for n in (100, 150, 200):
-                if n+1 >= P: continue
-                x = Fraction(a[n])*b[n+1] - Fraction(a[n+1])*b[n]
-                if x == 0: vals.append(None); continue
-                vals.append(vp(x, p))
+            for n in (100, 200, 300):
+                if n+1 >= min(len(aa), len(bb)): vals.append(None); continue
+                x = aa[n]*bb[n+1] - aa[n+1]*bb[n]
+                vals.append(None if x == 0 else vp(x, p))
             if len(vals) >= 2 and all(v is not None for v in vals):
-                slopes[p] = round((vals[-1]-vals[0])/(200-100), 2)
-        # extend a,b by the recurrence and take the limit at high precision
-        lim = None; digits = 0; extend_ok = False
-        nb = check_rec(b, c, r, D, min(150, P-r-2))
-        if nb >= min(150, P-r-2):
-            extend_ok = True
-        NEXT = 700
-        aa = [Fraction(x) for x in a]; bb = [Fraction(x) for x in b]
-        if extend_ok and lam2 > 0 and lam1 > lam2*1.0000001:
-            lead = [c[i*(D+1)+D] for i in range(r+1)]
-            try:
-                for n in range(len(a)-r, NEXT):
-                    # solve for a_{n+r} from equation at index n
-                    def nxt(seq):
-                        cf = []
-                        for i in range(r+1):
-                            v = 1; s2 = Fraction(0)
-                            for d in range(D+1):
-                                s2 += c[i*(D+1)+d]*v; v *= n
-                            cf.append(s2)
-                        if cf[r] == 0: raise ZeroDivisionError
-                        return -sum(cf[i]*seq[n+i] for i in range(r))/cf[r]
-                    aa.append(nxt(aa)); bb.append(nxt(bb))
-                    if len(aa) > n+r: pass
-            except Exception:
-                pass
+                slopes[p] = round((vals[-1]-vals[0])/200.0, 2)
+        # limits
+        lim = None; lim_e = None; digits = 0
         try:
             import mpmath as mp
-            n0 = len(aa)-1
+            n0 = min(len(aa), len(bb)) - 1
             while n0 > 5 and aa[n0] == 0: n0 -= 1
-            digits = int(max(0, (n0)*math.log10(lam1/lam2))) if lam2 > 0 and lam1 > lam2 else 0
-            mp.mp.dps = min(220, max(30, digits))
-            v = mp.mpf(bb[n0].numerator)/mp.mpf(bb[n0].denominator)/(mp.mpf(aa[n0].numerator)/mp.mpf(aa[n0].denominator))
-            lim = mp.nstr(v, min(200, max(20, digits-3)))
+            digits = int(max(0, n0*math.log10(lam1/lam2))) if (lam2 and lam2 > 0 and lam1 > lam2 and not cplx) else 0
+            mp.mp.dps = min(240, max(30, digits + 10))
+            def tof(x): return mp.mpf(x.numerator)/mp.mpf(x.denominator)
+            if digits > 5:
+                lim = mp.nstr(tof(bb[n0])/tof(aa[n0]), min(200, max(20, digits-3)))
+                m0 = min(P-2, 200)
+                if a[m0]:
+                    lim_e = mp.nstr(tof(Fraction(beich[m0]))/mp.mpf(a[m0]), 30)
         except Exception:
-            lim = None
+            pass
+        extend_ok = eich_ok
         out = {"ti": ti, "N": N, "M": M, "chi": ch, "w": w, "m": [x[0] for x in h["m"]],
                "etaq_t": tt["r"], "divs": tt["D"], "tdeg": tt["deg"],
                "r": r, "D": D, "nsol": nsol, "nok": nok,
-               "lam1": lam1, "lam2": lam2, "c": cc, "k": kk,
+               "lam1": lam1, "lam2": lam2, "c": cc, "k": kk, "k_rec": k_rec, "k_eich": k_eich, "eich_ok": eich_ok, "limit_eich": lim_e,
                "slopes": slopes, "a": [str(x) for x in a[:12]],
                "rec": [str(x) for x in c], "limit": lim, "digits": digits, "bsame": extend_ok,
-               "score": (math.log(1/lam2) - kk) if (kk is not None and lam2 > 0) else None,
-               "budget": (math.log(lam1) - kk) if kk is not None else None}
+               "roots": rtstr, "degen": degen, "cplx": cplx,
+               "score": (math.log(1/lam2) - kk) if (kk is not None and lam2 and lam2 > 0 and not cplx) else None,
+               "budget": (math.log(lam1) - kk) if (kk is not None and not degen) else None}
         fout.write(json.dumps(out) + "\n"); fout.flush()
         if idx % 10 == 0: print(f"{idx}/{len(recs)} N={N} w={w} r={r} D={D} lam1={lam1:.4f}", flush=True)
     print("done", flush=True)

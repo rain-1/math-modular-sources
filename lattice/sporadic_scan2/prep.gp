@@ -28,6 +28,7 @@ doprep(fn, out) = { my(R, N, w, ch, dim, M, v, g, HU, U, c, F0, K, KB, T, red, n
   if(c~ * v != 1, write(out, Str(N, " ", w, " ", ch, " ", dim, " -2")); return(0));
   K = matrix(dim, dim-1, i, j, U[i, j]);  \\ remaining columns span the kernel
   d = dim - 1;
+  RED = min(200, max(40, d+8));
   F0 = (c~ * M);
   if(d == 0,
     write(out, Str(N, " ", w, " ", ch, " ", dim, " 0"));

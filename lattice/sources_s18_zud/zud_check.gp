@@ -1,0 +1,17 @@
+read("/home/ubuntu/code/math-modular-sources/lattice/sources_s18_zud/zud_row.gp");
+N=20; r=zudrow(N); u=r[1]; v=r[2];
+print("u_n : ", vector(10,i,u[i]));
+print("v_n : ", vector(8,i,v[i]));
+print("--- moving Pade specialisation x = -n+1/2  <=>  bq(n, n-1/2) ---");
+print("bq(n,n-1/2): ", vector(10,i,bq(i-1,i-1-1/2)));
+print("difference : ", vector(15,i,u[i]-bq(i-1,i-1-1/2)));
+print("--- x = -n  gives Apery zeta(2) numbers ---");
+print("bq(n,n)    : ", vector(9,i,bq(i-1,i-1)));
+print("--- 2-adic valuations v_2(u_n), v_2(v_n) ---");
+print("v2(u): ", vector(15,i,valuation(u[i],2)));
+print("v2(v): ", vector(14,i,valuation(v[i+1],2)));
+print("--- archimedean limit ---");
+default(realprecision,60);
+print("v_N/u_N   = ", v[N+1]/u[N+1]*1.0);
+print("Catalan G = ", Catalan);
+quit;

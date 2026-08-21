@@ -438,3 +438,15 @@ $\sum_k\psi(p)^kp^{-k(w+1)}V_p^k$ diverges in every sense we can measure.
   $s_{18}$ and of Zudilin's row.  In all of these the value is confirmed
   numerically to $\ge p^{2991}$, so a failure could only be a failure of (b),
   not of the formula.
+
+---
+
+**Update (see `THEOREM_F_HYPOTHESES.md`).**  The three items under **Open**
+above are now settled or reduced: $N'=N$ always (the "level $Np$" caveat is
+vacuous); hypothesis (b) is a theorem for eleven of the fourteen rows, via an
+Atkin–Lehner/Mellin-shift lemma plus, for rows $\mathbf B$, $\eta$, $\delta$,
+a level-lowering $q\mapsto-q$ twin in which $t$ becomes a hauptmodul of
+$\Gamma_0(9)$, $\Gamma_0(5)$, $\Gamma_0(6)$ — which in particular identifies
+row $\mathbf B$'s index-six group and completes Conjecture D for $\mathbf B$;
+and (d) is reduced to $v_p(a_n)=o(n)$, needed only for *existence* of the limit,
+the value being forced by (a)–(c) alone whenever a limit exists.

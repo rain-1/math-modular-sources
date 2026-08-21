@@ -24,8 +24,9 @@ sequence.  The known solutions form the \emph{sporadic} list: six of type
 (R2) (Zagier's $\mathbf A,\dots,\mathbf F$), six of type (R3) with $d=0$
 (Almkvist--Zudilin's $\alpha$ (Domb), $\gamma$ (Ap\'ery's own), $\delta$,
 $\varepsilon$, $\zeta$, $\eta$), and Cooper's three further (R3) rows with
-$d\neq0$ ($s_7,s_{10},s_{18}$), which are of \emph{operator} order two despite
-the cubic-looking recurrence \cite{Zagier2009,AlmkvistZudilin2006,Cooper2012}.
+$d\neq0$ ($s_7,s_{10},s_{18}$); for $s_{18}$ the minimal operator is of order
+three (no order-two operator of degree $\le10$ exists), so Cooper's rows are
+genuine (R3) rows \cite{Zagier2009,AlmkvistZudilin2006,Cooper2012}.
 Throughout, $r\in\{2,3\}$ denotes the order of the generating operator $L$
 (so $r=2$ for the nine second-order families, $r=3$ for the six third-order
 ones), and $w=r-1$ is the weight of the parametrizing form.
@@ -264,14 +265,21 @@ sources are Eisenstein.
 \end{remark}
 
 \begin{remark}[Cooper's three; scope]\label{rem:cooper}
-Theorem~\ref{thm:A} asserts nothing about $s_7,s_{10},s_{18}$.  Their canonical
-nomes are integral ($t\in q\Z[[q]]$, no rescaling), but their $(t,F)$ are not
-eta quotients in that normalization, and no weight-$3$ or weight-$4$
-Eisenstein fit exists at levels $\{7,10,18\}$ and their divisors with the
-natural characters \ExcludedR{stated bases}.  The obstruction is the
-coordinate, not integrality; it would be wrong to say Cooper's three are not
-Eisenstein.  Finding the Atkin--Lehner normalization or hauptmodul in which
-they are eta-type is \Open{} \cite[Prob.~$\Phi$-2]{ProjSources}.
+Theorem~\ref{thm:A} asserts nothing about $s_7,s_{10},s_{18}$, and for good
+reason: their sources are \emph{meromorphic}.  For $s_{18}$ one has exactly
+(\texttt{mftobasis}, residual $0$ to $q^{40}$)
+\[
+\Phi=W\cdot\frac{x(x-3)}{(x+3)^3},\qquad
+W=\tfrac13\bigl(4E_4(6\tau)-E_4(3\tau)\bigr)+4\eta(3\tau)^8-16\eta(6\tau)^8\in M_4(\Gamma_0(18)),
+\]
+with $x=x_{18}$ the level-$18$ hauptmodul, $t=1/(x+9/x+6)$; $\Phi$ has a
+triple pole at the CM point $\tau_0=(3+i)/6$ (the $W_9$ fixed point, $x(\tau_0)=-3$,
+discriminant $-36$).  No $L(s,\chi_{-3})$ factor appears, yet the Ap\'ery limit is
+$\tfrac12L(2,\chi_{-3})$ \VerifiedR{numerics} and the $3$-adic limit is
+$\tfrac12\zeta_3(2)$ \VerifiedR{$3^{219}$} --- the values of the \emph{weight-one}
+rows $\mathbf B,\mathbf C$.  This ``weight drop'' is the $L$-value face of
+Cooper's free integration $(n+1)\mid A_n$ (\S\ref{sec:free}); a source theorem for
+exact meromorphic sources with CM poles is \Open{} (Problem~\ref{prob:free}).
 \end{remark}
 
 \begin{remark}[novelty scope]\label{rem:novelty}

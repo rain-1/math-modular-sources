@@ -1,0 +1,8 @@
+[0;31m  ***   Warning: not enough memory, new PARI stack 12000002048[0m
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+   realprecision = 57 significant digits (40 digits displayed)
+[0;31m  *** subst: Warning: increasing stack size to 16000000.[0m
+[0;31m  *** subst: Warning: increasing stack size to 32000000.[0m
+=== level-12 Domb  (terms to n=419)
+[0;31m  *** matker: Warning: increasing stack size to 64000000.[0m
+[0;31m  *** matker: Warning: increasing stack size to 128000000.[0m
