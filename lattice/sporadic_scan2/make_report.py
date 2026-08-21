@@ -17,8 +17,27 @@ def main():
     ap.add_argument("--top", type=int, default=10000)
     a = ap.parse_args()
     rows = json.load(open(os.path.join(HERE, a.table)))
+    # ident.out is indexed against the table that was current when it ran; resolve the
+    # indices through table_prev.json and re-key by the canonical a-sequence so that the
+    # identifications survive a re-run of dedup.py.
+    prev = None
+    pp = os.path.join(HERE, "table_prev.json")
+    if os.path.exists(pp):
+        prev = json.load(open(pp))
+    idt_key = {}
+    ipath = os.path.join(HERE, a.ident)
+    if prev and os.path.exists(ipath):
+        for l in open(ipath):
+            i, _, v = l.partition("|")
+            try: ii = int(i.strip())
+            except ValueError: continue
+            if ii < len(prev):
+                idt_key[tuple(prev[ii]["canon"])] = v.strip()
     idt = {}
-    for fn in (a.ident, "ident_multi.out"):
+    for i, d in enumerate(rows):
+        k = tuple(d.get("canon", []))
+        if k in idt_key: idt[i] = idt_key[k]
+    for fn in ():
         pth = os.path.join(HERE, fn)
         if not os.path.exists(pth): continue
         for l in open(pth):

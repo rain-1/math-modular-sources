@@ -105,3 +105,18 @@ tryrel(x, B, prec) = {
   best;
 }
 
+
+trypair2(x, B1, B2, prec) = { my(best = "", v, s, mx);
+  for(i = 1, #B1, for(j = 1, #B2,
+    if(B1[i][1] == 0 || B2[j][1] == 0, next);
+    v = lindep([1, x, B1[i][1], B2[j][1]]);
+    if(#v != 4 || v[2] == 0, next);
+    mx = vecmax(abs(v));
+    if(mx > 3000, next);
+    s = abs(v[1] + v[2]*x + v[3]*B1[i][1] + v[4]*B2[j][1]);
+    if(s > 10.0^(-prec+10), next);
+    best = Str(best, "  x = (", -v[1], " + ", -v[3], "*", B1[i][2], " + ", -v[4], "*", B2[j][2], ")/", v[2]);
+    if(#best > 300, return(best));
+  ));
+  best;
+}

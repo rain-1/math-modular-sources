@@ -26,7 +26,7 @@ constbasis(prec) = {
 cuspbasis(M, w, prec) = {
   my(key = Str(M, "_", w), res, k, LL, mf, EB, lf);
   if(mapisdefined(CACHE, key, &res), return(res));
-  prec = 160;
+  prec = 110;
   default(realprecision, prec + 20);
   res = List();
   k = w + 2;
@@ -105,13 +105,28 @@ tryrel(x, B, prec) = {
   best;
 }
 
+trypair2(x, B1, B2, prec) = { my(best = "", v, s, mx);
+  for(i = 1, #B1, for(j = 1, #B2,
+    if(B1[i][1] == 0 || B2[j][1] == 0, next);
+    v = lindep([1, x, B1[i][1], B2[j][1]]);
+    if(#v != 4 || v[2] == 0, next);
+    mx = vecmax(abs(v));
+    if(mx > 3000, next);
+    s = abs(v[1] + v[2]*x + v[3]*B1[i][1] + v[4]*B2[j][1]);
+    if(s > 10.0^(-prec+10), next);
+    best = Str(best, "  x = (", -v[1], " + ", -v[3], "*", B1[i][2], " + ", -v[4], "*", B2[j][2], ")/", v[2]);
+    if(#best > 300, return(best));
+  ));
+  best;
+}
+
 {
 my(L = readstr("limits.txt"), out = "ident.out");
 system("rm -f ident.out");
 for(i = 1, #L,
   my(f = strsplit(L[i], " "));
   my(idx = eval(f[1]), M = eval(f[2]), w = eval(f[3]), dg = eval(f[4]));
-  my(prec = min(dg, 140));
+  my(prec = min(dg, 100));
   default(realprecision, prec + 15);
   my(x = eval(f[5]));
   my(B = constbasis(prec + 15));

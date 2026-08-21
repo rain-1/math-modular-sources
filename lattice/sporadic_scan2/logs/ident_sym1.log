@@ -1,0 +1,12 @@
+[0;31m  ***   Warning: new maximum stack size = 6000001024 (5722.047 Mbytes).[0m
+[0;31m  *** lfunmf: Warning: increasing stack size to 16000000.[0m
+[0;31m  *** lfunmf: Warning: increasing stack size to 32000000.[0m
+[0;31m  *** lfunmf: Warning: increasing stack size to 64000000.[0m
+cusp basis size 1792
+Apery-Sym1 | UNIDENTIFIED (17 constants + 1792 cusp L-values at 100 digits)
+T-Sym1 |   x = (0 + -1*L(f8w3c3n1e1,2))/-1
+Domb-Sym1 |   x = (0 + -1*L(f12w3c5n1e1,2))/-1
+AZ(9,3,-27)-Sym1 | UNIDENTIFIED (17 constants + 1792 cusp L-values at 100 digits)
+Cooper-s7-Sym1 |   x = (0 + -1*L(f7w3c6n1e1,2))/-1
+Cooper-s10-Sym1 | UNIDENTIFIED (17 constants + 1792 cusp L-values at 100 digits)
+Cooper-s18-Sym1 | UNIDENTIFIED (17 constants + 1792 cusp L-values at 100 digits)

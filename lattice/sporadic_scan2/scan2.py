@@ -308,7 +308,15 @@ def load_prep(M, w, ch):
         lines = [l.strip() for l in f if l.strip()]
     h = lines[0].split()
     if int(h[4]) < 0: return None
-    return [json.loads(l.replace(" ", "")) for l in lines[1:]]
+    out = []
+    for l in lines[1:]:
+        try:
+            v = json.loads(l.replace(" ", ""))
+        except Exception:
+            break
+        if not isinstance(v, list): break
+        out.append(v)
+    return out or None
 
 def space_index():
     """map level -> list of (w, chi) with a prep file"""

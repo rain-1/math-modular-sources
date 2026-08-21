@@ -171,7 +171,13 @@ def main():
         if key not in prep:
             pf = os.path.join(HERE, args.prepdir, f"pr_{M}_{w}_{ch}.txt")
             lines = [l.strip() for l in open(pf) if l.strip()]
-            prep[key] = [json.loads(l.replace(" ", "")) for l in lines[1:]]
+            _o = []
+            for _l in lines[1:]:
+                try: _v = json.loads(_l.replace(" ", ""))
+                except Exception: break
+                if not isinstance(_v, list): break
+                _o.append(_v)
+            prep[key] = _o
         vecs = prep[key]
         F = [int(x) for x in vecs[0][:P]]
         for j, mv in enumerate(h["m"]):
