@@ -1,4 +1,24 @@
-=== recurrence fit, level-16 zeta(5) A-row, n up to 399 ===
-  NO fit found in the searched range (order<=8, degree<=10)
+=== level-16 zeta(5) A-row recurrence, rows to n=399 ===
+Stage 1: mod-p kernel dimensions (rows = order r, columns = degree D)
+  r=8  D=6:0  D=7:0  D=8:0  D=9:0  D=10:0  D=11:0  D=12:0
+  r=9  D=6:0  D=7:0  D=8:0  D=9:0  D=10:0  D=11:0  D=12:0
+  r=10  D=6:0  D=7:0  D=8:0  D=9:0  D=10:0  D=11:0  D=12:0
+  r=11  D=6:0  D=7:0  D=8:0  D=9:0  D=10:0  D=11:0  D=12:0
+  r=12  D=6:0  D=7:0  D=8:0  D=9:0  D=10:0  D=11:0  D=12:0
+  r=13  D=6:0  D=7:0  D=8:0  D=9:0  D=10:0  D=11:0  D=12:0
+  r=14  D=6:0  D=7:0  D=8:0  D=9:0  D=10:0  D=11:0  D=12:0
+  r=15  D=6:0  D=7:0  D=8:0  D=9:0  D=10:0  D=11:0  D=12:0
+  r=16  D=6:0  D=7:0  D=8:0  D=9:0  D=10:0  D=11:1  D=12:4
+  r=17  D=6:0  D=7:0  D=8:0  D=9:0  D=10:4  D=11:8  D=12:12
+  r=18  D=6:0  D=7:0  D=8:0  D=9:5  D=10:10  D=11:15  D=12:20
+Minimal shape: order 16, degree 11 (kernel dim 1).
+
+Stage 2: exact reconstruction at (r,D) = (17,10) (kernel dim 4: L, SL, S^2L, S^3L)
+  exact kernel dim over Q: 4
+  leading-coefficient characteristic polynomial, FACTORED:
+    [y, 1; y + 2, 5; y + 4, 5; y^2 - 4*y - 28, 2; 2190162982091550382158000701960830226939336098229060707819679464213269006606383030645964498558156682989248363980471386678572529800533272105476607957798560458159675608060013887746520731009*y^2 + 90098972594575707775678490176992046510780558605949645006713266804446899421400788304111414430152984910860140907230730583064344908908883858622315214934977862219514625506811077523873727767486*y + 323608807791623665392379610180675727693186358971859079737558733445285905015377604016431142895832477985534285475943456369322934955662456433136649670312280487069992271868839026129709997991336, 1]
+  -> genuine roots  -4, -2, 2 +- 4*sqrt(2)  (the y and the extra quadratic are
+     artefacts of the 4-dimensional over-parametrisation at this (r,D)).
+  residual of the fitted operator on n=370..399: 0
 
 DONE

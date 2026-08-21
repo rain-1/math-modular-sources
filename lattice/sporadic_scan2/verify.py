@@ -154,7 +154,7 @@ def main():
         for line in open(fn):
             h = json.loads(line)
             if any(x[1] != 1 for x in h["m"]): continue     # F must be integral
-            key = (h["ti"], h["w"], tuple(x[0] for x in h["m"]))
+            key = (h["ti"], h["M"], h["w"], h["chi"], tuple(x[0] for x in h["m"]))
             if key in seen: continue
             seen.add(key)
             recs.append(h)
@@ -162,11 +162,11 @@ def main():
     fout = open(os.path.join(HERE, args.out), "a")
     for idx, h in enumerate(recs):
         if idx % args.nshard != args.shard: continue
-        N, w, ti = h["N"], h["w"], h["ti"]
+        N, w, ti, M, ch = h["N"], h["w"], h["ti"], h["M"], h["chi"]
         tt = tl[ti]
-        key = (N, w)
+        key = (M, w, ch)
         if key not in prep:
-            pf = os.path.join(HERE, "prep", f"pr_{N}_{w}.txt")
+            pf = os.path.join(HERE, "prep", f"pr_{M}_{w}_{ch}.txt")
             lines = [l.strip() for l in open(pf) if l.strip()]
             prep[key] = [json.loads(l.replace(" ", "")) for l in lines[1:]]
         vecs = prep[key]
@@ -224,22 +224,47 @@ def main():
                 vals.append(vp(x, p))
             if len(vals) >= 2 and all(v is not None for v in vals):
                 slopes[p] = round((vals[-1]-vals[0])/(200-100), 2)
-        # apery limit (numeric)
-        lim = None
+        # extend a,b by the recurrence and take the limit at high precision
+        lim = None; digits = 0; extend_ok = False
+        nb = check_rec(b, c, r, D, min(150, P-r-2))
+        if nb >= min(150, P-r-2):
+            extend_ok = True
+        NEXT = 700
+        aa = [Fraction(x) for x in a]; bb = [Fraction(x) for x in b]
+        if extend_ok and lam2 > 0 and lam1 > lam2*1.0000001:
+            lead = [c[i*(D+1)+D] for i in range(r+1)]
+            try:
+                for n in range(len(a)-r, NEXT):
+                    # solve for a_{n+r} from equation at index n
+                    def nxt(seq):
+                        cf = []
+                        for i in range(r+1):
+                            v = 1; s2 = Fraction(0)
+                            for d in range(D+1):
+                                s2 += c[i*(D+1)+d]*v; v *= n
+                            cf.append(s2)
+                        if cf[r] == 0: raise ZeroDivisionError
+                        return -sum(cf[i]*seq[n+i] for i in range(r))/cf[r]
+                    aa.append(nxt(aa)); bb.append(nxt(bb))
+                    if len(aa) > n+r: pass
+            except Exception:
+                pass
         try:
             import mpmath as mp
-            mp.mp.dps = 120
-            n0 = min(P-2, 200)
-            lim = mp.mpf(b[n0].numerator)/mp.mpf(b[n0].denominator)/mp.mpf(a[n0]) if a[n0] else None
-            lim = mp.nstr(lim, 80) if lim is not None else None
-        except Exception as e:
+            n0 = len(aa)-1
+            while n0 > 5 and aa[n0] == 0: n0 -= 1
+            digits = int(max(0, (n0)*math.log10(lam1/lam2))) if lam2 > 0 and lam1 > lam2 else 0
+            mp.mp.dps = min(220, max(30, digits))
+            v = mp.mpf(bb[n0].numerator)/mp.mpf(bb[n0].denominator)/(mp.mpf(aa[n0].numerator)/mp.mpf(aa[n0].denominator))
+            lim = mp.nstr(v, min(200, max(20, digits-3)))
+        except Exception:
             lim = None
-        out = {"ti": ti, "N": N, "w": w, "m": [x[0] for x in h["m"]],
+        out = {"ti": ti, "N": N, "M": M, "chi": ch, "w": w, "m": [x[0] for x in h["m"]],
                "etaq_t": tt["r"], "divs": tt["D"], "tdeg": tt["deg"],
                "r": r, "D": D, "nsol": nsol, "nok": nok,
                "lam1": lam1, "lam2": lam2, "c": cc, "k": kk,
                "slopes": slopes, "a": [str(x) for x in a[:12]],
-               "rec": [str(x) for x in c], "limit": lim,
+               "rec": [str(x) for x in c], "limit": lim, "digits": digits, "bsame": extend_ok,
                "score": (math.log(1/lam2) - kk) if (kk is not None and lam2 > 0) else None,
                "budget": (math.log(lam1) - kk) if kk is not None else None}
         fout.write(json.dumps(out) + "\n"); fout.flush()

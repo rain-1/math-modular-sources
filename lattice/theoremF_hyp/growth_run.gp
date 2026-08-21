@@ -1,3 +1,4 @@
+read("lattice/euler_criterion/rows.gp");
 Nlim = 3000;
 read("lattice/theoremF_hyp/growth.gp");
 {

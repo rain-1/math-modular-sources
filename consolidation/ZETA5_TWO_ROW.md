@@ -21,9 +21,9 @@ arithmetic throughout; every number below is measured, not quoted, unless marked
    level-$16$ row (different host coordinate) has the same archimedean limit and the
    same $2$-adic limit, with cross determinant $v_2(\Delta_{n,m})=\min(n,m)+O(1)$ over
    a full $6\times6$ grid.
-4. **The Brown–Zudilin cellular $\zeta(5)$ row is $2$-adically inert.** $Q_n\in\mathbb Z$
-   and $v_2(Q_n)=0$ for *every* $n\le900$ (so $\kappa_2=0$ exactly, not merely
-   asymptotically); $P_n/Q_n$ has **no** $p$-adic slope at $p=2,3,5,7$; the apparent
+4. **The Brown–Zudilin cellular $\zeta(5)$ row is $2$-adically inert.** $Q_n\in\mathbb Z$,
+   and in fact $Q_n\equiv1\pmod4$ for *every* $n\le520$ (exhaustive), with $v_2(Q_n)=0$
+   at all sampled $n\le899$ — so $\kappa_2=0$ exactly, not merely asymptotically; $P_n/Q_n$ has **no** $p$-adic slope at $p=2,3,5,7$; the apparent
    tower valuations are exactly the $d_n^5$ denominator, $-(5\lfloor\log_2n\rfloor+2)$,
    with no convergence. Structural reason: $4\lambda^3-2368\lambda^2-188\lambda+1$ is
    **irreducible over $\mathbb Q_2$** with all three roots of valuation $-\tfrac23$ —
@@ -56,8 +56,8 @@ arithmetic throughout; every number below is measured, not quoted, unless marked
   $C^{\rm full}_{5,2}=(1-V_2)(1-4V_2)(1-16V_2)(1-64V_2)=1-85V_2+1428V_4-5440V_8+4096V_{16}$
   (book `v8/05_hecke_projectors.tex`, Example "$\zeta(5)$"). Normalised,
   $$\Phi_{16}=q-52q^2+244q^3-320q^4+3126q^5-12688q^6+16808q^7-14336q^8+197641q^9-\cdots$$
-  $L(\Phi_{16},s)=P(2^{-s})\zeta(s)\zeta(s-5)$, $P(X)=(1-X)(1-4X)(1-16X)(1-64X)$,
-  $P(0)=P(2)=P(4)=P(6)=0$, $P(5)=-\tfrac{217}{512}\ne0$, so
+  $L(\Phi_{16},s)=P(2^{-s})\zeta(s)\zeta(s-5)$ with $P(X)=(1-X)(1-4X)(1-16X)(1-64X)$;
+  writing $P(s)$ for $P(2^{-s})$, $P(0)=P(2)=P(4)=P(6)=0$ and $P(5)=-\tfrac{217}{512}\ne0$, so
   $L(\Phi_{16},5)=\tfrac{217}{1024}\zeta(5)$. (Weight $6$, level $16$, trivial character;
   the unique such source — the purified space is $1$-dimensional at $N=16$.)
 * **Host.** $x=\dfrac{\eta(2\tau)\eta(16\tau)^2}{\eta(\tau)^2\eta(8\tau)}=q+2q^2+4q^3+8q^4+14q^5+\cdots$
@@ -445,4 +445,6 @@ Ranked next moves, if anyone returns to this:
 | `align.gp` | the level-16 $\times$ Brown–Zudilin cross-determinant alignment test |
 | `fitrec16.gp` | recurrence fit for the level-16 $A$-row: mod-$p$ order/degree scan + exact reconstruction |
 
-Logs sit beside the scripts (`*.log`); `level16_rows.txt` holds the $400$ exact rows.
+Logs sit beside the scripts (`*.log`). `level16_rows.txt` holds the $400$ exact rows
+$(A_n,B_n)$; `level16_recurrence.txt` holds the exactly reconstructed order-$17$,
+degree-$10$ operator; `level12_rows_D.txt` / `level12_rows_X.txt` the new level-12 rows.

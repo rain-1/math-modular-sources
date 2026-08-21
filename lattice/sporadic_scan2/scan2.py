@@ -299,15 +299,28 @@ def apeel(T, Bas, ns, q):
         A[:, n] = v % q
     return A, Pm
 
-def load_prep(N, w):
-    fn = os.path.join(HERE, "prep", f"pr_{N}_{w}.txt")
+def load_prep(M, w, ch):
+    fn = os.path.join(HERE, "prep", f"pr_{M}_{w}_{ch}.txt")
     if not os.path.exists(fn): return None
     with open(fn) as f:
         lines = [l.strip() for l in f if l.strip()]
     h = lines[0].split()
-    if int(h[3]) < 0: return None
-    vecs = [json.loads(l.replace(" ", "")) for l in lines[1:]]
-    return vecs   # vecs[0] = F0, rest = kernel basis (LLL reduced, by norm)
+    if int(h[4]) < 0: return None
+    return [json.loads(l.replace(" ", "")) for l in lines[1:]]
+
+def space_index():
+    """map level -> list of (w, chi) with a prep file"""
+    idx = {}
+    d = os.path.join(HERE, "prep")
+    for fn in os.listdir(d):
+        if not fn.startswith("pr_"): continue
+        try:
+            _, M, w, ch = fn[:-4].split("_")
+        except ValueError:
+            continue
+        idx.setdefault(int(M), []).append((int(w), int(ch)))
+    for k in idx: idx[k].sort()
+    return idx
 
 SHAPES = {1: [(2,2),(2,3),(3,2),(3,3),(4,3)],
           2: [(2,3),(2,4),(3,3),(3,4),(4,4)],
@@ -322,12 +335,14 @@ def main():
     ap.add_argument("--nshard", type=int, default=1)
     ap.add_argument("--ns", type=int, default=NSDEF)
     ap.add_argument("--kcap", type=int, default=24)
+    ap.add_argument("--levcap", type=int, default=6)   # F-level M <= levcap * t-level
     ap.add_argument("--out", type=str, default="hits2")
     args = ap.parse_args()
 
     tl = json.load(open(os.path.join(HERE, "t_list.json")))
     tl = [(i, x) for i, x in enumerate(tl) if args.degmin <= x["deg"] <= args.degmax]
-    weights = [int(x) for x in args.weights.split(",")]
+    weights = set(int(x) for x in args.weights.split(","))
+    SIDX = space_index()
     fout = open(os.path.join(HERE, f"{args.out}_{args.shard}.jsonl"), "a")
     ns = args.ns
     t0 = time.time(); nsolve = 0; nhit = 0
@@ -335,47 +350,49 @@ def main():
     for cnt, (ti, tt) in enumerate(tl):
         if cnt % args.nshard != args.shard: continue
         N = tt["N"]
-        avail = [w for w in weights if (N, w) in prep_cache or os.path.exists(os.path.join(HERE, "prep", f"pr_{N}_{w}.txt"))]
-        if not avail: continue
+        levels = [M for M in SIDX if M % N == 0 and M <= args.levcap*N]
+        if not levels: continue
         T = tseries(tt["D"], tt["r"], ns)
-        for w in avail:
-            if (N, w) not in prep_cache: prep_cache[(N, w)] = load_prep(N, w)
-            pr = prep_cache[(N, w)]
-            if pr is None: continue
-            Bas = np.array([v[:ns] for v in pr], dtype=object)
-            Bas = np.array([[int(x) % Q for x in row] for row in Bas], dtype=np.int64)
-            A, _ = apeel(T, Bas, ns, Q)
-            found = {}
-            for (r, D) in SHAPES[w]:
-                U0 = (r+1)*(D+1)
-                K1max = (ns - r - 10)//U0
-                K1 = min(A.shape[0], K1max, args.kcap+1)
-                if K1 < 1: continue
-                NEQ = U0*K1 + 6
-                if NEQ + r >= ns: NEQ = ns - r - 1
-                if NEQ < U0*K1: continue
-                nn = np.arange(1, NEQ+1, dtype=np.int64)
-                npow = np.ones((NEQ, D+1), dtype=np.int64)
-                for d in range(1, D+1): npow[:, d] = (npow[:, d-1]*nn) % Q
-                # M[n, ((i*(D+1)+d)*K1 + j)] = n^d * A[j, n+i]
-                sh = np.stack([A[:K1, 1+i:1+i+NEQ] for i in range(r+1)], axis=0)  # (r+1,K1,NEQ)
-                M = np.zeros((NEQ, U0*K1), dtype=np.int64)
-                for i in range(r+1):
-                    for d in range(D+1):
-                        blk = (sh[i].T * npow[:, d:d+1]) % Q       # (NEQ, K1)
-                        M[:, (i*(D+1)+d)*K1:(i*(D+1)+d)*K1+K1] = blk
-                NSb = rref_nullspace(M, Q)
-                nsolve += 1
-                if NSb.shape[0] == 0: continue
-                for m in rank1_points(NSb, U0, K1, Q):
-                    key = m
-                    if key in found: continue
-                    found[key] = (r, D)
-                    fout.write(json.dumps({"ti": ti, "N": N, "rq": tt["r"], "Dq": tt["D"],
-                                           "deg": tt["deg"], "w": w, "r": r, "Dg": D,
-                                           "K1": K1, "m": [[int(x[0]), int(x[1])] for x in m]}) + "\n")
-                    nhit += 1
-                fout.flush()
+        Aq = None
+        for M in sorted(levels):
+            for (w, ch) in SIDX[M]:
+                if w not in weights: continue
+                key = (M, w, ch)
+                if key not in prep_cache: prep_cache[key] = load_prep(M, w, ch)
+                pr = prep_cache[key]
+                if pr is None: continue
+                Bas = np.array([[int(x) % Q for x in row[:ns]] for row in pr], dtype=np.int64)
+                A, _ = apeel(T, Bas, ns, Q)
+                found = {}
+                for (r, D) in SHAPES[w]:
+                    U0 = (r+1)*(D+1)
+                    K1max = (ns - r - 10)//U0
+                    K1 = min(A.shape[0], K1max, args.kcap+1)
+                    if K1 < 1: continue
+                    NEQ = U0*K1 + 6
+                    if NEQ + r >= ns: NEQ = ns - r - 1
+                    if NEQ < U0*K1: continue
+                    nn = np.arange(1, NEQ+1, dtype=np.int64)
+                    npow = np.ones((NEQ, D+1), dtype=np.int64)
+                    for d in range(1, D+1): npow[:, d] = (npow[:, d-1]*nn) % Q
+                    sh = np.stack([A[:K1, 1+i:1+i+NEQ] for i in range(r+1)], axis=0)
+                    Mx = np.zeros((NEQ, U0*K1), dtype=np.int64)
+                    for i in range(r+1):
+                        for d in range(D+1):
+                            blk = (sh[i].T * npow[:, d:d+1]) % Q
+                            Mx[:, (i*(D+1)+d)*K1:(i*(D+1)+d)*K1+K1] = blk
+                    NSb = rref_nullspace(Mx, Q)
+                    nsolve += 1
+                    if NSb.shape[0] == 0: continue
+                    for m in rank1_points(NSb, U0, K1, Q):
+                        if m in found: continue
+                        found[m] = (r, D)
+                        fout.write(json.dumps({"ti": ti, "N": N, "M": M, "chi": ch,
+                                               "rq": tt["r"], "Dq": tt["D"],
+                                               "deg": tt["deg"], "w": w, "r": r, "Dg": D,
+                                               "K1": K1, "m": [[int(x[0]), int(x[1])] for x in m]}) + "\n")
+                        nhit += 1
+                    fout.flush()
         if cnt % 25 == 0:
             print(f"[{time.time()-t0:.0f}s] {cnt}/{len(tl)} N={N} solves={nsolve} hits={nhit}", flush=True)
     print(f"DONE solves={nsolve} hits={nhit} time={time.time()-t0:.0f}s", flush=True)

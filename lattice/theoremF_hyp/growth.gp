@@ -6,9 +6,8 @@
      - comparison with s_p(n) (digit sum) and with v_p(binomial(2n,n))=s_p(n) type laws
    Run:  gp -q -s 4G lattice/theoremF_hyp/growth.gp                              */
 default(parisizemax, 8000000000);
-read("lattice/euler_criterion/rows.gp");
 
-N = if(#Nlim, Nlim, 3000);
+if(type(Nlim)!="t_INT", Nlim=3000); N = Nlim;
 
 sdig(n,p) = my(v=digits(n,p)); vecsum(v);
 
