@@ -57,9 +57,14 @@ This note does five things.
    ($\mathbf B$ at $3$, $\mathbf E$ at $2$) satisfying an **exact digit law**.
 
 5. **A cautionary example** (§6): the level-12 $\zeta(5)$ host, where (a) holds
-   but (b) and (d) both fail — and where (a) and (b) are provably incompatible.
-   It fixes the corrected reading of Theorem F: *(a) is a condition on the
-   source, $\sigma_p>0$ is a condition on the host.*
+   but **(b) fails — provably, since at $N=12$ the unique source satisfying (a)
+   is a non-eigen Fricke mixture** — and where the slope is $0$ because the
+   nearest singularity in the $t$-line is a $2$-adic *unit*.  The growth clause
+   of (d) is fine there.  This forces a sharper reading of (c): "$tj\in\Z_{(p)}[[t]]$"
+   is automatic for any integral monic Hauptmodul and only gives the *open*
+   disc; what the proof needs is that the $p$-adically nearest singularity of
+   the $t$-line Picard–Fuchs operator (cusps, elliptic points, **and folds**)
+   lies strictly outside $|t|_p\le1$.
 
 **Net effect on the census.**  Of the 14 rows of `EULER_CRITERION.md` §4.1,
 **11 now have (b) proved and (c) automatic**, so that the value formula is
@@ -313,7 +318,9 @@ $W_n=-\prod_{j=1}^n j(cj^2+d)/(j+1)^3$, whose $p$-adic slope is
 $v_p(\gcd\text{-free part})$ — for $s_{18}$, $-12n(16n^2-1)$ gives
 $\sigma_3=v_3(12)=1$, the measured value.)
 
-> **Proposition 4.**  If $v_p(a_n)=o(n)$ and $p\mid c$, then $b_n/a_n$ converges
+> **Proposition 4.**  If $v_p(a_n)=o(n)$ and $p\mid c$ (equivalently, by §6,
+> the $p$-adically nearest singularity of the $t$-line operator lies outside
+> $|t|_p\le1$), then $b_n/a_n$ converges
 > in $\Q_p$ and $\sigma_p=v_p(c)$ exactly.  In particular the clause
 > "$\sigma_p>0$" of (d) is *implied by* the growth clause and needs no separate
 > hypothesis.
@@ -451,66 +458,115 @@ is what the $\lambda_p s_p(n)$ bound expresses and is verified to $n=3000$.*
 
 ## 6. The cautionary example: the level-12 $\zeta(5)$ host
 
-*(`ZETA5_TWO_ROW.md` §3.1; scripts `lattice/zeta5_two_row/` and
-`lattice/theoremF_hyp/zeta5_check1..5.gp`, logs alongside.)*
+*(`ZETA5_TWO_ROW.md` §3.1; scripts `lattice/theoremF_hyp/zeta5_check{1,2,3,3b,4,5}.gp`
+with logs beside each.  Exact rational / $2$-adic PARI, rows to $n=419$.)*
 
-There is a level-$12$ weight-$6$ Eisenstein source with oldform vector
-$(1,-113,567,112,-1863,1296)$ on $d=(1,2,3,4,6,12)$ and
-$L(\Phi,5)=\tfrac{31}{192}\zeta(5)$, for which hypothesis **(a) holds** at
-$p=2$ ($\psi=\mathbf 1$, $\mathcal E_2(s)=1-2^{-s}$, $(1-X)\mid P(s)$).  Yet the
-row built on the level-$12$ $\zeta(5)$ host has **no $2$-adic slope** — the
-increments $v_2(b_n/a_n-b_{n-1}/a_{n-1})$ stay pinned between $-1$ and $-3$ —
-whereas the level-$16$ host with a source of the same kind has slope $1$ and
-$\xi_2=\tfrac{7}{32}\zeta_2(5)$ to $372$ digits.  Two hypotheses fail, and the
-first failure is structural.
+The level-$12$ $\zeta(5)$ host carries a weight-six Eisenstein source with
+oldform vector $(1,-113,567,112,-1863,1296)$ on $d=(1,2,3,4,6,12)$ and
+$L(\Phi,5)=\tfrac{31}{192}\zeta(5)$.  Hypothesis **(a) holds** at $p=2$: with
+$X=2^{-s}$, $Z=3^{-s}$,
+$$P=(1296Z+112)X^2-(1863Z+113)X+(567Z+1)=(1-X)\bigl[(567Z+1)-(1296Z+112)X\bigr],$$
+remainder exactly $0$; $Q(5)=-\tfrac13$ and the predicted value is
+$\xi^*=-Q(5)\kappa_2=\tfrac16\zeta_2(5)$ (Conjecture-D consistent with level 16:
+$(1/6)/(31/192)=32/31=(7/32)/(217/1024)$).  Yet $b_n/a_n$ does **not** converge
+$2$-adically, while the level-$16$ host does, with
+$\xi_2=\tfrac7{32}\zeta_2(5)$ to $372$ digits.
+
+**It is not (d)'s growth clause.**  $v_2(a_n)$ was measured to $n=419$ on both
+level-12 coordinates and on level 16: $\max v_2(a_n)/\log_2 n\approx3.16$
+(level 12) and $5.00$ (level 16), $\liminf=\limsup=0$ for $v_2(a_n)/n$ in all
+three; the level-12 values even obey a clean binary-digit law
+($v_2(a_{2^k-1})=2k+1$).  So $A(t)\in\Z_2[[t]]$ has radius exactly $1$ and
+$v_2(a_n)=o(n)$ — H1 is fine.  The decisive measurement is
+$$v_2\bigl(b_n-\xi^*a_n\bigr)=\begin{cases}n-7 & \text{level }16\ \ (\text{exact, }n\le419),\\
+v_2(a_n)-4 & \text{level }12\ \ (\text{flat, }n\le419).\end{cases}$$
+At level 16 $B-\xi^*A$ converges on $|t|_2\le2$; at level 12 its radius is
+exactly $1$.  So $H_{\xi^*}$ is not overconvergent at all there: the failure is
+**upstream** of (d).
 
 **(b) fails, and at $N=12$ it must.**  The purified level-12 span is
-two-dimensional, spanned by the Fricke-even source ($L=\tfrac{25}{144}\zeta(5)$,
-$c=(1,-104,351,832,-2808,1728)$, $W_{12}$-eigenvalue $+1$) and the Fricke-odd
-one ($L=\tfrac{11}{144}\zeta(5)$, $c=(1,-176,2079,-4928,4752,-1728)$,
-eigenvalue $-1$).  Neither passes (a).  The Euler-factor condition cuts out a
-single line on that plane, and it is the **non-eigen** mixture
-$$\Phi_{31/192}=\tfrac18\bigl(7\,\Phi_{\rm even}+\Phi_{\rm odd}\bigr),
-\qquad \tfrac78\cdot\tfrac{25}{144}+\tfrac18\cdot\tfrac{11}{144}=\tfrac{31}{192}.$$
+two-dimensional, spanned by the Fricke-even source
+($L=\tfrac{25}{144}\zeta(5)$, $c=(1,-104,351,832,-2808,1728)$, $W_{12}$-eigenvalue
+$+1$) and the Fricke-odd one ($L=\tfrac{11}{144}\zeta(5)$,
+$c=(1,-176,2079,-4928,4752,-1728)$, eigenvalue $-1$).  **Neither passes (a)**
+(criterion sums $[729,-729]$ and $[-5103,5103]$), and the unique line that does
+is the **non-eigen** mixture
+$$\Phi_{31/192}=\tfrac78\,\Phi^+_{25/144}+\tfrac18\,\Phi^-_{11/144},
+\qquad \tfrac78\cdot\tfrac{25}{144}+\tfrac18\cdot\tfrac{11}{144}=\tfrac{31}{192}
+\quad(\text{verified exactly}).$$
 Applying $W_{12}$ to $(1,-113,567,112,-1863,1296)$ gives
-$(3/4,-69,189/4,1344,-3051,1728)$ — not a multiple.  Numerically at
-$\tau=0.31+0.77i$: $t|W_{12}=t$ to $10^{-58}$ (the Hauptmodul *is*
-Fricke-invariant) but $(\Phi|_6W_{12})/\Phi=0.6864+0.0772\,i$, not $\pm1$.  So
-$H_{\xi^*}$ is not $\Gamma_t$-invariant: **(a) and (b) are mutually exclusive at
-$N=12$.**  (For level $16$ the source $(1,-85,1428,-5440,4096)$ *is* a $W_{16}$
-eigenform with eigenvalue $+1$, $t|W_{16}=t$, and $(\Phi|_6W_{16})/\Phi=+1$ to
-$10^{-54}$: (b) holds.)  This is Theorem 2 read backwards — $t|W_Q=t$ forces
-$\epsilon_\Phi=\epsilon_F$, so a source that is not a $W_Q$-eigenform simply is
-not the canonical source $F\,\thq t$ of that Hauptmodul.
+$\tfrac34(1,-92,63,1792,-4068,2304)$ — not a multiple; numerically at
+$\tau=0.31+0.77i$, $t|W_{12}=t$ to $10^{-58}$ (the Hauptmodul *is*
+Fricke-invariant, $\deg t=2$ on $X_0(12)$ for the $h_{12}$ coordinate, $4$ for
+the Domb one) but $(\Phi|_6W_{12})/\Phi=0.68643+0.07718\,i$, not a constant at
+all.  So $A=\Phi/\thq t$ is a sum of a $W_{12}$-even and a $W_{12}$-odd branch:
+genuinely two-valued in $t$, and $H_{\xi^*}$ does not descend.
+**At $N=12$, (a) is a linear condition and (b) an eigen-condition, and they are
+mutually exclusive.**  At $N=16$ the purified space is one-dimensional and its
+single source $(1,-85,1428,-5440,4096)$ *is* $W_{16}$-even
+($(\Phi|_6W_{16})/\Phi=+1$ to $10^{-54}$), so both hold.
+This is Theorem 2 read backwards: $t|W_Q=t$ forces $\epsilon_\Phi=\epsilon_F$,
+so a source that is not a $W_Q$-eigenform is not the canonical $F\,\thq t$ of
+that Hauptmodul.
 
-**(d) fails too, for a reason one can see in the $t$-plane.**  The level-12
-host is $\mathrm{Sym}^4$ of $\lambda^2-14\lambda+1$, so
-$c=\prod\lambda_i=1$ and $\sigma_2=v_2(c)+2\kappa_2=0$.  Equivalently, and more
-geometrically: the fold of the level-12 host sits at $t=7-4\sqrt3$, a root of
-$x^2-14x+1$, whose Newton polygon over $\Q_2$ is flat — **both roots are
-$2$-adic units**, so the singularity lies *on* the circle $|t|_2=1$ and the
-largest singularity-free disc has $\rho=1$.  For level $16$ the singular
-$t$-values are $-\tfrac14,-\tfrac12$ and the roots of $28t^2+4t-1$ and of a
-quartic and a cubic; the $2$-adically nearest of them has $v_2=-1$, so
-$\rho=2$ and $\sigma_2=\log_2\rho=1$ — exactly the measured slope.  So
+**And (c), as stated, is vacuous.**  $t\,j\in\Z_{(2)}[[t]]$ with unit constant
+term holds for all three hosts — as it does for *any* integral monic Hauptmodul
+($t\in q\Z[[q]]$, $t=q+O(q^2)$ $\Rightarrow$ $q\in t\Z[[t]]$ and
+$tj=(t/q)(qj)\in\Z[[t]]$ with constant term $1$).  It certifies only the
+**open** disc $|t|_p<1$, never $\rho>1$.  What the proof actually needs is
 
-> $\sigma_p=\log_p\rho$, $\rho$ = the $p$-adic radius of the largest disc
-> around $t=0$ free of singularities of the Picard–Fuchs operator.
+> **(c$'$)** $\{|t|_p\le\rho\}$ contains no singular point of the $t$-line
+> Picard–Fuchs operator, for some $\rho>1$; equivalently
+> $$\rho=p^{\sigma_p},\qquad
+> \sigma_p=-\max_{s\in\operatorname{Sing}\setminus\{0\}}v_p(s),$$
+> the maximum over the images of the non-$\infty$ cusps, the elliptic points,
+> **and the folds (branch points) of $X_0(N)\to\mathbb P^1_t$**.
 
-For the Zagier/AZ rows this is $\sigma_p=v_p(c)$, since the singular $t$ are
-the roots of $P_r(t)=1-at+ct^2$ with product $1/c$.
+This is verified on both hosts from the exact operator
+(`zeta5_check4.gp`; level 16 has minimal order $5$, degree $38$, kernel
+dimension $1$, with
+$P_5=t^4(2t+1)^5(4t+1)^5(28t^2+4t-1)^2(2016t^4+1480t^3+396t^2+38t-1)^5$):
 
-**Corrected formulation.**  Nothing above contradicts Theorem F — (b) and (d)
-are hypotheses of it — but it shows sharply that (a) is a condition on the
-*source* while $\sigma_p>0$ is a condition on the *host*, and that they can be
-incompatible:
+| host | singular $t\ne0$ | their $v_2$ | $\rho$ | $\sigma_2$ | measured |
+|---|---|---|---|---|---|
+| level 16 | $-\tfrac14,-\tfrac12$; roots of $28t^2+4t-1$, of a quartic, of a cubic | $-2,-2,-1,-1,-1$ | $2$ | $1$ | $v_2(b_n-\xi^*a_n)=n-7$ ✓ |
+| level 12 | fold $t=7\mp4\sqrt3$, roots of $x^2-14x+1$ | $0,0$ (**units**) | $1$ | $0$ | flat ✓ |
 
-> $$\textbf{(a)}+\textbf{(b)}+\textbf{(c)}+\textbf{(d)}\ \Longrightarrow\
+The level-12 fold is a genuine singularity, not an apparent one:
+$a_n/a_{n+1}=0.0718803$ at $n=418$ against $7-4\sqrt3=0.0717968$, and
+$\log|a_n|/n=2.62423$ against $\log(7+4\sqrt3)=2.63392$.  Its Newton polygon
+over $\Q_2$ is the flat segment $(0,0)$–$(2,0)$: both roots are $2$-adic units,
+so the nearest singularity sits *on* $|t|_2=1$.
+
+**Corrected formulation.**
+
+> * **(a)** is a condition on the *source*: linear in $\Phi$.
+> * **(b)** is an *eigen*-condition on the source: $\Phi$ must be a
+>   $W_Q$-eigenform with eigenvalue matching $F$ for every Atkin–Lehner
+>   involution in $\Gamma_t/\Gamma_0(N)$ (Theorem 2), or the deck
+>   transformation must move $D_\infty$ (Lemma 2).  (a) and (b) can be
+>   incompatible, as at $N=12$.
+> * **(c$'$)** is a condition on the *host*: the $p$-adically nearest
+>   singularity of the $t$-line operator must lie strictly outside the unit
+>   disc.  This is what produces $\rho>1$, hence $\sigma_p>0$; for
+>   (R2)–(R3) the singular $t$ are the roots of $P_r$, of
+>   product $1/c$, giving $\sigma_p=v_p(c)$, and "Apéry-perfect"
+>   ($\prod\lambda_i=1$) means precisely that every singularity is a $p$-adic
+>   unit for every $p$: no $p$-adic resource anywhere.
+> * **(d)** then reduces to H1 alone, $v_p(a_n)=o(n)$, and $\sigma_p>0$ becomes
+>   a *conclusion*.
+>
+> $$\textbf{(a)}+\textbf{(b)}+\textbf{(c}'\textbf{)}+\textbf{(d)}\ \Longrightarrow\
 > \lim_n b_n/a_n=-Q(w+1)\kappa_p ;$$
-> $$\textbf{(a)}+\textbf{(b)}+\textbf{(c)}\ \Longrightarrow\
+> $$\textbf{(a)}+\textbf{(b)}+\textbf{(c}'\textbf{)}\ \Longrightarrow\
 > \text{\emph{if} the limit exists, it is }-Q(w+1)\kappa_p .$$
-> (a) alone never produces a limit; it only *pins the value* of one the host
-> supplies.  Since here (b) fails as well, not even the second line applies:
-> $\xi^*=-Q(5)\kappa_2$ is still the unique constant making $H_{\xi^*}$
-> overconvergent as a $q$-series, but there is no descent to $\mathbb P^1_t$ and
-> hence no statement about $b_n/a_n$ at all.
+> (a) alone never produces a limit; it only *pins the value* of one that the
+> host supplies.  At level 12 both (b) and (c$'$) fail, so not even the second
+> line applies: $\xi^*=\tfrac16\zeta_2(5)$ remains the unique constant making
+> $H_{\xi^*}$ overconvergent as a $q$-series, but there is no descent to
+> $\mathbb P^1_t$ and no statement about $b_n/a_n$.
+
+*Caveat.*  The absence of a Picard–Fuchs operator of order $\le12$ for the
+level-12 rows is a bounded search (degree budget, $\le419$ equations); the
+non-descent itself is proved exactly by the Fricke computation, not by that
+search.

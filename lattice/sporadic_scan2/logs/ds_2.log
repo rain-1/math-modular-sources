@@ -13,3 +13,5 @@ N=13 w=2 chi=3 ord=3 34233ms
 N=13 w=2 chi=4 ord=6 36905ms
 N=13 w=2 chi=12 ord=2 17764ms
 N=13 w=3 chi=2 ord=12 153265ms
+N=13 w=3 chi=5 ord=4 83802ms
+N=21 w=1 chi=2 ord=6 15569ms

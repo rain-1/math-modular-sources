@@ -358,37 +358,53 @@ Proposition~\ref{prop:dsplit}(ii), the value $\xi_p=-Q(w+1)\kappa_p$
 unconditionally on the verified range.
 \end{verification}
 
-\begin{remark}[(a) is a condition on the source, $\sigma_p>0$ on the host]
+\begin{remark}[(a) is on the source, (b) is an eigen-condition, (c) is on the host]
 \label{rem:zeta5caution}
-\VerifiedR{exact; \texttt{lattice/theoremF\_hyp/zeta5\_check*.gp}}
-Hypothesis \textup{(a)} is necessary but not sufficient, and it can even be
-incompatible with \textup{(b)}.  On the level-$12$ $\zeta(5)$ host the purified
-weight-six span is two-dimensional, with a Fricke-even source
+\VerifiedR{exact; \texttt{lattice/theoremF\_hyp/zeta5\_check*.gp}, rows to $n=419$}
+Hypothesis \textup{(a)} is necessary but not sufficient, and it can be
+\emph{incompatible} with \textup{(b)}.  On the level-$12$ $\zeta(5)$ host the
+purified weight-six span is two-dimensional, spanned by a Fricke-even source
 ($L(\Phi,5)=\tfrac{25}{144}\zeta(5)$, $W_{12}$-eigenvalue $+1$) and a
 Fricke-odd one ($\tfrac{11}{144}\zeta(5)$, eigenvalue $-1$); \emph{neither}
 satisfies \textup{(a)}, and the unique line that does is the non-eigen mixture
-$\tfrac18(7\Phi_{\rm even}+\Phi_{\rm odd})$, with oldform vector
-$(1,-113,567,112,-1863,1296)$ on $d=(1,2,3,4,6,12)$ and
-$L(\Phi,5)=\tfrac{31}{192}\zeta(5)$.  Since $t|W_{12}=t$ there, the failure of
-$\Phi$ to be a $W_{12}$-eigenform is exactly the failure of
-Theorem~\ref{thm:descentauto}: $H_{\xi^*}$ does not descend, \textup{(b)}
-fails.  Independently \textup{(d)} fails: that host is $\mathrm{Sym}^4$ of
-$\lambda^2-14\lambda+1$, so $c=\prod\lambda_i=1$ and $\sigma_2=0$ ---
-equivalently its fold $t=7-4\sqrt3$ is a $2$-adic \emph{unit}, so the nearest
-singularity sits on $|t|_2=1$ and $\rho=1$.  Accordingly $b_n/a_n$ does not
-converge $2$-adically (increments pinned between $-1$ and $-3$).  By contrast
-the level-$16$ host has $\Phi=(1,-85,1428,-5440,4096)$ a $W_{16}$-eigenform
-with eigenvalue $+1$ and nearest singular $t$ of valuation $-1$, so $\rho=2$,
-$\sigma_2=\log_2\rho=1$, and $\xi_2=\tfrac7{32}\zeta_2(5)$ to $372$ digits.
-This suggests the general shape of the slope: $\sigma_p=\log_p\rho$ with $\rho$
-the $p$-adic radius of the largest singularity-free disc around $t=0$
-(for \eqref{eq:R2}--\eqref{eq:R3} the singular $t$ are the roots of $P_r$, of
-product $1/c$, giving $\sigma_p=v_p(c)$).  Summarising:
+$\tfrac78\Phi^++\tfrac18\Phi^-$, with oldform vector
+$(1,-113,567,112,-1863,1296)$ on $d=(1,2,3,4,6,12)$,
+$L(\Phi,5)=\tfrac{31}{192}\zeta(5)$, $Q(5)=-\tfrac13$,
+$\xi^*=\tfrac16\zeta_2(5)$.  There $t|W_{12}=t$, so by
+Theorem~\ref{thm:descentauto} a descent would force $\Phi$ to be a
+$W_{12}$-eigenform --- and it is not
+($(\Phi|_6W_{12})/\Phi=0.68643+0.07718\,i$): \textup{(b)} fails.  It is
+\emph{not} the growth clause of \textup{(d)} that fails: $v_2(a_n)\le3.2\log_2n$
+there, and the decisive measurement is
+$v_2(b_n-\xi^*a_n)=v_2(a_n)-4$ (flat), against $n-7$ exactly for the level-$16$
+host, whose single source $(1,-85,1428,-5440,4096)$ \emph{is} $W_{16}$-even and
+which gives $\xi_2=\tfrac7{32}\zeta_2(5)$ to $372$ digits.
+
+The example also sharpens \textup{(c)}.  For any integral monic hauptmodul
+$tj\in\Z_{(p)}[[t]]$ with unit constant term automatically, so \textup{(c)}
+discriminates nothing and certifies only the \emph{open} disc $|t|_p<1$.  What
+the proof needs is $\rho>1$, i.e.
+\[
+\textup{(c}'\textup{)}\qquad
+\rho=p^{\sigma_p},\qquad
+\sigma_p=-\!\!\max_{s\in\operatorname{Sing}\setminus\{0\}}\!\!v_p(s)\ >\ 0,
+\]
+the maximum over the images of the non-$\infty$ cusps, the elliptic points and
+the \emph{folds} of $X_0(N)\to\mathbb P^1_t$.  Level $16$: singular
+$t\in\{-\tfrac14,-\tfrac12\}$ and the roots of $28t^2+4t-1$ and of a quartic
+and a cubic, with $v_2\in\{-2,-2,-1,-1,-1\}$, so $\rho=2$ and $\sigma_2=1$.
+Level $12$: the fold is $t=7\mp4\sqrt3$, a root of $x^2-14x+1$ whose Newton
+polygon over $\Q_2$ is flat --- both roots are $2$-adic \emph{units}, the
+nearest singularity sits on $|t|_2=1$, $\rho=1$, $\sigma_2=0$.  For
+\eqref{eq:R2}--\eqref{eq:R3} the singular $t$ are the roots of $P_r$, of product
+$1/c$, and \textup{(c}$'$\textup{)} reads $\sigma_p=v_p(c)$; ``Ap\'ery-perfect''
+($\prod\lambda_i=1$) says exactly that every singularity is a $p$-adic unit for
+every $p$.  Summarising:
 \[
 \begin{aligned}
-\textup{(a)}+\textup{(b)}+\textup{(c)}+\textup{(d)}\ &\Rightarrow\
+\textup{(a)}+\textup{(b)}+\textup{(c}'\textup{)}+\textup{(d)}\ &\Rightarrow\
 \lim_n b_n/a_n=-Q(w+1)\kappa_p,\\
-\textup{(a)}+\textup{(b)}+\textup{(c)}\ &\Rightarrow\
+\textup{(a)}+\textup{(b)}+\textup{(c}'\textup{)}\ &\Rightarrow\
 \text{\emph{if} the limit exists it is }-Q(w+1)\kappa_p .
 \end{aligned}
 \]

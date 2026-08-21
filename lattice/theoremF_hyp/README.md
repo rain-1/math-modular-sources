@@ -10,5 +10,5 @@ Report: `consolidation/THEOREM_F_HYPOTHESES.md`.
 | `descent.gp`, `descent_run.gp`, `descent_twins_run.gp` | Ligozat divisors, $\deg t$ on $X_0(N)$, Atkin–Lehner scalars $t\vert W_Q/t$ and $F\vert_wW_Q/F$ | `descent.log` |
 | `aleigen.gp`, `aleigen_run.gp` | oldform Atkin–Lehner eigenvalues of $\Phi$ (weight $w+2$) and $\Theta$ (weight $-w$); confirms Lemma 1 | `descent.log` |
 | `exactlaws.gp` | pushes the two exact digit laws ($\mathbf B$ at 3, $\mathbf E$ at 2) to $n\le10000$ | — |
-| `zeta5_check*.gp` | the level-12 $\zeta(5)$ cautionary example: (a) holds, no 2-adic slope | `zeta5_check*.log` |
+| `zeta5_check{1,2,3,3b,4,5}.gp` | the level-12 $\zeta(5)$ cautionary example: (a) holds, (b) fails (non-eigen Fricke mixture), fold is a 2-adic unit so $\rho=1$; level-16 contrast | `zeta5_check*.log` |
 | `twins.gp`, `twins_run.gp` | the level-lowering $q\mapsto-q$ twins of rows B (level 9), $\eta$ (level 5), $\delta$ (level 6) | `twins.log` |

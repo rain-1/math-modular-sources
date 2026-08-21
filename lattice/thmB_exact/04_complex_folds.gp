@@ -36,12 +36,11 @@ for(i=1,#DATA,
 
 print("");
 print("======== row B: the cusp 1/6 of Gamma_0(36) ========");
-{
 default(realprecision,60);
-my(cv = vector(MM, m, cm("B",m)*1.0/m^2));
-G(Y) = my(sig=I*Y, tau=sig/(6*sig+1), q0=exp(2*Pi*I*tau),
-          M=min(MM,ceil(55*log(10)/(-log(abs(q0))))), s=0.);
-        forstep(m=M,1,-1, s=(s+cv[m])*q0); s*(6*sig+1);
+cvB = vector(MM, m, cm("B",m)*1.0/m^2);
+ThB(q0) = my(M=min(MM,ceil(55*log(10)/(-log(abs(q0))))), s=0.); forstep(m=M,1,-1, s=(s+cvB[m])*q0); s;
+G(Y) = my(sig=I*Y, tau=sig/(6*sig+1)); ThB(exp(2*Pi*I*tau))*(6*sig+1);
+{
 my(Y1=18., Y2=23., g1=G(Y1), g2=G(Y2));
 my(c1=(g1-g2)/(I*Y1-I*Y2), xiB=c1/6);
 print("    xi_B = ",xiB);

@@ -18,21 +18,31 @@ def main():
     a = ap.parse_args()
     rows = json.load(open(os.path.join(HERE, a.table)))
     idt = {}
-    if os.path.exists(os.path.join(HERE, a.ident)):
-        for l in open(os.path.join(HERE, a.ident)):
+    for fn in (a.ident, "ident_multi.out"):
+        pth = os.path.join(HERE, fn)
+        if not os.path.exists(pth): continue
+        for l in open(pth):
             i, _, v = l.partition("|")
-            idt[int(i.strip())] = v.strip()
+            try: ii = int(i.strip())
+            except ValueError: continue
+            v = v.strip()
+            if fn.endswith("multi.out"):
+                v = v.split("|", 1)[-1].strip()
+            if v.startswith("UNIDENT") and ii in idt: continue
+            if ii in idt and not idt[ii].startswith("UNIDENT"): continue
+            idt[ii] = v
     out = []
-    out.append("| # | level N (t) | F level M, chi, w | t (eta quotient) | deg t | rec (len,deg) | lambda_1 | lambda_2 | c | k | slopes | score | budget | a_n | period |")
-    out.append("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
+    out.append("| # | $N$ | $M,\\chi,w$ | $t$ | $\\deg t$ | rec | $\\lambda_1$ | $\\lambda_2$ | $\\lambda_{\\min}$ | $c$ | $k$ | $\\sigma_p$ | score | budget | $a_n$ | period |")
+    out.append("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
     for i, d in enumerate(rows[:a.top]):
         per = idt.get(i, "")
         if d["known"]: per = (d["known"] + "; " + per).strip("; ")
         sl = ",".join(f"{p}:{v}" for p, v in sorted(d["slopes"].items()) if abs(v) > 0.05) or "-"
-        out.append("| %d | %d | %d, %d, %d | $%s$ | %d | (%d,%d) | %.4f | %s | %s | %s | %s | %s | %s | %s | %s |" % (
+        out.append("| %d | %d | %d,%d,%d | $%s$ | %d | (%d,%d) | %.4f | %s | %s | %s | %s | %s | %s | %s | %s | %s |" % (
             i, d["N"], d["M"], d["chi"], d["w"], etastr(d["divs"], d["etaq_t"]), d["tdeg"],
             d["r"]+1, d["D"], d["lam1"],
             ("%.4f" % d["lam2"]) if d["lam2"] is not None else "--",
+            ("%.4f" % d["lam_min"]) if d.get("lam_min") is not None else "--",
             ("%.6g" % d["c"]) if d["c"] is not None else "--",
             str(d["k"]), sl,
             ("%.3f" % d["score"]) if d["score"] is not None else "--",
