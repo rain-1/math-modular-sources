@@ -13,7 +13,7 @@ for(i = 1, #LEVELS,
       if(#g == 0,
         write(Str(fn,".part"), Str("N ", N, " w ", w, " CHI ", m, " ORD ", o, " DIM 0 PREC ", PREC));
       ,
-        S = saturate(g);
+        S = if(PREC > 260, saturate_fast(g, 210), saturate(g));
         dim = matsize(S)[2];
         write(Str(fn,".part"), Str("N ", N, " w ", w, " CHI ", m, " ORD ", o, " DIM ", dim, " PREC ", PREC));
         for(c = 1, dim, write(Str(fn,".part"), Vec(S[,c])));

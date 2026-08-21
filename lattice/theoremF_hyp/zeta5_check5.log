@@ -1,0 +1,56 @@
+   realprecision = 57 significant digits (40 digits displayed)
+############ hypothesis (b): is the source a Fricke eigenform? ############
+--- zeta(5) level-16 source  L(Phi,5)=(217/1024)zeta(5)  (N=16)
+    c        = [1, -85, 1428, -5440, 4096]
+    c|W_16  = [1, -85, 1428, -5440, 4096]
+    ==> Phi IS a W_16 eigenform, eigenvalue 1   -> descent onto a W_16-invariant t: OK
+--- zeta(5) level-12 source  L(Phi,5)=(31/192)zeta(5)  [the puzzle]  (N=12)
+    c        = [1, -113, 567, 112, -1863, 1296]
+    c|W_12  = [3/4, -69, 189/4, 1344, -3051, 1728]
+    ==> Phi is NOT a W_12 eigenform  -> HYPOTHESIS (b) FAILS
+--- zeta(5) level-12 archive  (25/144), Domb  (N=12)
+    c        = [1, -104, 351, 832, -2808, 1728]
+    c|W_12  = [1, -104, 351, 832, -2808, 1728]
+    ==> Phi IS a W_12 eigenform, eigenvalue 1   -> descent onto a W_12-invariant t: OK
+--- zeta(5) level-12 archive  (11/144), anti-Fricke  (N=12)
+    c        = [1, -176, 2079, -4928, 4752, -1728]
+    c|W_12  = [-1, 176, -2079, 4928, -4752, 1728]
+    ==> Phi IS a W_12 eigenform, eigenvalue -1   -> descent onto a W_12-invariant t: FAILS (eigenvalue -1)
+
+############ numerical confirmation in the upper half plane ############
+level-12 h_12 host:  h*(h|W_12) = 12.00000000000000000000000000000000000000 - 3.823420586717885465 E-57*I   (=12  =>  t=h/((h+3)(h+4)) is W_12-invariant)
+   t(W_12 tau)/t(tau) = 1.000000000000000000000000000000000000000 - 3.781545618383970388 E-58*I
+   (Phi_12|_6 W_12)/Phi_12 = 0.6864307699148266496675289528084712683754 + 0.07718472571633258173854779090080779690328*I
+      -> not +-1: H_{xi*} is NOT Gamma_t-invariant.  (b) FAILS.
+level-16 host:  8*x*(x|W_16) = 1.000000000000000000000000000000000000000 + 7.965459555662261385 E-59*I   (=1  =>  t=x/(8x^2+2x+1) is W_16-invariant)
+   t(W_16 tau)/t(tau) = 1.000000000000000000000000000000000000000 - 7.740310641513999519 E-59*I
+   (Phi_16|_6 W_16)/Phi_16 = 1.000000000000000000000000000000000000000 + 1.2078898655200719163 E-54*I
+      -> +1 exactly: (b) HOLDS.
+
+############ where the folds (branch points) sit 2-adically ############
+level-12 h_12:  t = h/((h+3)(h+4)) ; dt/dh = 0 at h^2 = 12, i.e. h = +-2sqrt3
+   t(2sqrt3) = 7 - 4*sqrt(3) = 0.07179676972449082589021463397651053222878 ;  t(-2sqrt3) = 7 + 4*sqrt(3)
+   minimal polynomial of 7-4sqrt3 : x^2 - 14x + 1 ;  over Q_2:
+     Mat([(1 + O(2^20))*x^2 + (2 + 2^4 + 2^5 + 2^6 + 2^7 + 2^8 + 2^9 + 2^10 + 2^11 + 2^12 + 2^13 + 2^14 + 2^15 + 2^16 + 2^17 + 2^18 + 2^19 + O(2^20))*x + (1 + O(2^20)), 1])
+     Newton polygon (0,0)-(2,0): BOTH roots are 2-adic UNITS, v_2 = 0, |t|_2 = 1.
+   ==> the fold sits ON the unit circle |t|_2 = 1: rho = 1, sigma_2 = 0.
+
+level-16:  t = w/(1+2w), w = x/(1+8x^2) ; dw/dx = 0 at x = +-1/(2sqrt2)
+   folds t = (-1 +- 2sqrt2)/14 ; minimal polynomial 28t^2 + 4t - 1 ; over Q_2:
+     Mat([(2^2 + O(2^20))*x^2 + (2^2 + 2^3 + 2^4 + 2^6 + 2^7 + 2^9 + 2^10 + 2^12 + 2^13 + 2^15 + 2^16 + 2^18 + 2^19 + O(2^20))*x + (1 + 2^3 + 2^6 + 2^9 + 2^12 + 2^15 + 2^18 + O(2^20)), 1])
+   v_2 of its roots = -1   (Newton polygon (0,0)-(2,2) slope -1)
+   other singular points t = -1/4, -1/2 : v_2 = -2, -1.
+   ==> the 2-adically NEAREST singular t has v_2 = -1 (cusp -1/2 and the folds),
+       so rho = min|s|_2 = 2^1 = 2 and the PREDICTED SLOPE is sigma_2 = log_2 rho = 1.
+
+############ WHY (a) and (b) are incompatible at level 12 ############
+  Fricke-EVEN (25/144): criterion sums = [729, -729]   passes (a)? 0
+  Fricke-ODD  (11/144): criterion sums = [-5103, 5103]   passes (a)? 0
+  the puzzle  (31/192): criterion sums = [0, 0]   passes (a)? 1
+  (7*Phi_even + Phi_odd)/8 = [1, -113, 567, 112, -1863, 1296]   equals the 31/192 source? 1
+  L-values: (7/8)(25/144) + (1/8)(11/144) = 31/192
+  ==> on the 2-dimensional level-12 purified span {Phi_even, Phi_odd}, the Euler-factor
+      criterion (a) is a codimension-2 linear condition whose unique solution line is a
+      NON-EIGEN mixture.  (a) and (b) are mutually exclusive at N=12: any source passing
+      (a) fails to descend to a Fricke-invariant Hauptmodul.
+DONE

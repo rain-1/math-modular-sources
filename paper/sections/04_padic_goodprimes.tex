@@ -1,0 +1,21 @@
+\subsection{Good primes: the tower Frobenius and the splitting of the extension}\label{sec:goodprimes}
+
+At a prime $p$ where the Euler-factor criterion fails (Theorem~F), $b_n/a_n$ does not converge along all $n$, but the project's $p$-adic strand \cite{ProjTheory03} found limits along towers $n=ap^s$. The following census statement explains both facts at once and identifies the mechanism behind Theorem~F.
+
+\begin{observation}[tower Frobenius]\label{obs:tower}
+\VerifiedR{all twelve families, $p\in\{2,3,5,7,11,13\}$, tower bases $a=1,2$: $144$ cells, no exception; \texttt{lattice/good\_prime\_towers/}}
+For a row $(a_n,b_n)$ of weight $w$ with Eisenstein source $P(V)E^{\psi,\varphi}$, put $\rho^X_s=X(ap^{s+1})/X(ap^s)$ for $X\in\{a,b\}$. Then $\rho^a_s\to1$ always \textup{(}with $v_p(\rho^a_s-1)$ growing by $w$ per level\textup{)}, and
+\[
+\rho^b_s\longrightarrow
+\begin{cases}
+\psi(p)\,p^{-w} & p\nmid c \text{ (good prime)},\\
+1 & p\mid c,\ \varphi=\mathbf 1 \text{ (slope prime, inner placement)},\\
+0 & p\mid c,\ \varphi\neq\mathbf 1 \text{ or cuspidal},
+\end{cases}
+\]
+exactly, the unit in the first case being digit for digit the tabulated character value $\psi(p)$.
+\end{observation}
+
+The three cases are the three possible Frobenius structures of the extension $0\to\mathcal V\to\mathcal E\to\mathbb Q(0)\to0$ at the cusp $t=0$, where the fibre is a Tate curve: eigenvalue $1$ on the quotient $\mathbb Q(0)$ and, on the Eisenstein direction, $\psi(p)p^{-w}$. When the two eigenvalues differ, the extension splits $p$-adically along the tower; the tower limit $\Lambda_a=\lim_s\psi(p)^sp^{ws}\,b_{ap^s}/a_{ap^s}$ is the splitting coordinate, an infinite assembly of Morita $\Gamma_p$-values \cite{ProjTheory03} carrying no $L$-value and no relation between rows sharing a period. When the oldform combination cancels the Euler factor at $p$ (the condition of Theorem~F), the Frobenius on the Eisenstein direction becomes unipotent, the extension does not split, and the obstruction to splitting is the invariant of Theorem~F, the Kubota--Leopoldt constant term. The third case is the vanishing of that constant term.
+
+Two cautions. The measured $\rho^a_s\to1$ is Beukers--Coster, not a Dwork unit root: the tower approaches the cusp, not a Teichm\"uller point of an ordinary residue disc (the genuine unit root $\lambda_0(\hat t)$ at Teichm\"uller points is nontrivial and does not govern $\Lambda_a$); and the statement is verified, not proved, for $p=2,3$, which lie outside every quoted theorem. A proof of the three cases from the $p$-adic Eisenstein family is Problem~\ref{prob:rigidity}(iv).

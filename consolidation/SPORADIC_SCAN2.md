@@ -241,3 +241,8 @@ $L(f_8,2)$ and $\sigma_2>0$ to act as engine. The scan produced no such row eith
 $(\text{engine},\text{decayer})$ pair is still incomplete — but the two halves now exist in the
 census for *different* CM periods, which is a sharper statement of the obstruction than
 "no decayer is known".
+
+## 6. The ranked table
+
+(see `lattice/sporadic_scan2/table.md` for the full machine-generated list, and
+`table.json` for the raw record of every row including its exact recurrence)

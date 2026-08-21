@@ -73,6 +73,22 @@ cuspbasis(M, w, prec) = {
   res;
 }
 
+trypair(x, B, prec) = {
+  my(best = "", v, s, mx);
+  for(i = 1, #B, for(j = i+1, #B,
+    if(B[i][1] == 0 || B[j][1] == 0, next);
+    v = lindep([1, x, B[i][1], B[j][1]]);
+    if(#v != 4 || v[2] == 0, next);
+    mx = vecmax(abs(v));
+    if(mx > 3000, next);
+    s = abs(v[1] + v[2]*x + v[3]*B[i][1] + v[4]*B[j][1]);
+    if(s > 10.0^(-prec+10), next);
+    best = Str(best, "  x = (", -v[1], " + ", -v[3], "*", B[i][2], " + ", -v[4], "*", B[j][2], ")/", v[2]);
+    if(#best > 300, return(best));
+  ));
+  best;
+}
+
 tryrel(x, B, prec) = {
   my(best = "", v, s, mx);
   for(i = 1, #B,

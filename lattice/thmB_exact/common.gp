@@ -103,5 +103,23 @@ Ltarget(nm) = {
      nm=="eta",   Pmellin(nm,3)*lfun(5,3)*zeta(0),
      error("unknown row ", nm));
 }
-/* L(nu, 0) for the quartic-character combination of row D (exact = 1/5)   */
-LnuD(s) = 1/5;
+/* L(nu,0) for the quartic-character combination nu = psi_1 - 2 psi_2 of row
+   D.  For f periodic mod N,  L(f,0) = (1/2) sum f(a) - (1/N) sum a f(a).   */
+LnuD(s) = (1/2)*sum(a=1,5,nuD(a)) - (1/5)*sum(a=1,5,a*nuD(a));  \\ = 1/5, only s=0
+
+/* the full Dirichlet series L(Phi,s) = P(s) L(psi,s) L(phi,s-w-1)          */
+LPhi(nm,s) = {
+  if(nm=="A",     Pmellin(nm,s)*zeta(s)*lfun(-3,s-2),
+     nm=="B",     Pmellin(nm,s)*lfun(-3,s)*zeta(s-2),
+     nm=="C",     Pmellin(nm,s)*lfun(-3,s)*zeta(s-2),
+     nm=="E",     Pmellin(nm,s)*lfun(-4,s)*zeta(s-2),
+     nm=="F",     Pmellin(nm,s)*lfun(-3,s)*zeta(s-2),
+     nm=="zeta",  lfun(-3,s)*lfun(-3,s-3),
+     nm=="eta",   Pmellin(nm,s)*lfun(5,s)*zeta(s-3),
+     Pmellin(nm,s)*zeta(s)*zeta(s-3));   /* alpha, gamma, delta, eps */
+}
+
+/* the endpoint (Fricke/cusp-0) criterion:  delta(phi) P(w+2) = 0  <=>
+   Phi vanishes at the cusp 0  <=>  L(Phi,s) is regular at s = w+2.        */
+phiTrivial(nm) = (nm=="B"||nm=="C"||nm=="E"||nm=="F"||nm=="alpha"||nm=="gamma"||nm=="delta"||nm=="eps"||nm=="eta");
+endpoint(nm,r) = if(phiTrivial(nm), Pmellin(nm,r+1), 0);

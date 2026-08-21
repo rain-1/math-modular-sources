@@ -19,7 +19,7 @@ Theorem F assumes
 * **(c)** $t\,j\in\Z_{(p)}[[t]]$ with unit constant term;
 * **(d)** $v_p(a_n)=O(\log n)$ and $\sigma_p>0$.
 
-This note does four things.
+This note does five things.
 
 1. **$N'=N$.**  The level $N'$ occurring in (b) is *always* the level $N$ of the
    row; the "level $Np$" caveat of `EULER_CRITERION.md` §5 is unnecessary (§1).
@@ -56,13 +56,20 @@ This note does four things.
    verified exhaustively for $1\le n\le3000$ for every census row, with two rows
    ($\mathbf B$ at $3$, $\mathbf E$ at $2$) satisfying an **exact digit law**.
 
+5. **A cautionary example** (§6): the level-12 $\zeta(5)$ host, where (a) holds
+   but (b) and (d) both fail — and where (a) and (b) are provably incompatible.
+   It fixes the corrected reading of Theorem F: *(a) is a condition on the
+   source, $\sigma_p>0$ is a condition on the host.*
+
 **Net effect on the census.**  Of the 14 rows of `EULER_CRITERION.md` §4.1,
 **11 now have (b) proved and (c) automatic**, so that the value formula is
 proved modulo the single remaining arithmetic input (d) — for which the
 verified bound covers $n\le3000$ and the *conditional* statement ("if the limit
 exists, it is $-Q(w+1)\kappa_p$") is unconditional.  The three exceptions are
-the rows with no identified modular source: Cooper $s_{18}$, Zudilin's Catalan
-row, and the level-12 weight-3 cusp row (which is not in Zagier normalisation).
+the rows to which Theorem F does not apply at all: Cooper $s_{18}$ (meromorphic
+source, weight drop) and Zudilin's Catalan row (order-four ODE, no modular
+parametrisation) — both settled negatively in `SOURCES_S18_ZUDILIN.md` — and
+the level-12 weight-3 cusp row, which is not in Zagier normalisation.
 
 ---
 
@@ -92,15 +99,16 @@ not the tame level, Lemma "$V_p$ preserves overconvergence".)
 
 Let $E$ be primitive of level $M$, weight $w+2$, nebentypus $\chi=\psi\varphi$,
 let $Q\,\|\,N$ with $\gcd(Q,M)=1$, and
-$W_Q=\bigl(\begin{smallmatrix}Qx&y\\Nz&Qw\end{smallmatrix}\bigr)$, $\det=Q$.
+$W_Q=\bigl(\begin{smallmatrix}Qx&y\\Nz&Qu\end{smallmatrix}\bigr)$, $\det=Q$
+(the letter $u$ avoids a clash with the weight parameter $w$).
 With $Q_1\mid Q$, $Q_2=Q/Q_1$ and
-$\gamma=\bigl(\begin{smallmatrix}Q_1x&y\\Mz&Q_2w\end{smallmatrix}\bigr)$ one has
-$\det\gamma=Qxw-Myz=1$, $\gamma\in\Gamma_0(M)$, and the matrix identity
+$\gamma=\bigl(\begin{smallmatrix}Q_1x&y\\Mz&Q_2u\end{smallmatrix}\bigr)$ one has
+$\det\gamma=Qxu-Myz=1$, $\gamma\in\Gamma_0(M)$, and the matrix identity
 $$\begin{pmatrix}Q_1&0\\0&1\end{pmatrix}W_Q
 =Q_1\cdot\gamma\begin{pmatrix}Q_2&0\\0&1\end{pmatrix},$$
 whence, writing $d=d_1d_2$ with $d_1$ the $Q$-part of $d$, at any weight $k$
 $$V_d\,\big|_k\,W_Q \;=\; \lambda\,\chi(Q/d_1)\,(Q/d_1^2)^{k/2}\,V_{(Q/d_1)d_2},
-\qquad \lambda=\chi(w) . \tag{$\ast$}$$
+\qquad \lambda=\chi(u) . \tag{$\ast$}$$
 Denote by $\mathcal W_{Q,k}$ the induced linear involution on coefficient
 vectors $(c_d)_{d\mid N/M}$ (with $\lambda$ normalised to $1$).
 
@@ -146,8 +154,8 @@ $t\circ W_Q=t$), so $\Phi=F\,\thq t$ has $\epsilon_\Phi(Q)=\epsilon_F(Q)=:\epsil
 By Lemma 1 and Lemma 1$'$, $\Theta-\xi^*=Q(V_\bullet/\bullet^{w+1})G^{(p)}$ has
 $W_Q$-eigenvalue $\epsilon$ at weight $-w$.  Hence
 $H_{\xi^*}=F\cdot(\Theta-\xi^*)$ has weight-zero eigenvalue $\epsilon^2=+1$; the
-global scalars $\lambda=\chi_F(w)$ for $F$ and $\lambda'=\chi_{\mathcal E}(w)
-=\chi_F(w)^{-1}$ for $\Theta-\xi^*$ cancel, so no normalisation ambiguity
+global scalars $\lambda=\chi_F(u)$ for $F$ and $\lambda'=\chi_{\mathcal E}(u)
+=\chi_F(u)^{-1}$ for $\Theta-\xi^*$ cancel, so no normalisation ambiguity
 survives.  $\square$
 
 > **Lemma 2 (geometric descent, $p\mid Q$).**  If $p\mid Q$ then $W_Q$ does not
@@ -199,8 +207,8 @@ each other and to $\epsilon_F$**, confirming Lemma 1 empirically.
 | $\varepsilon$ | 2 | canonical | 8 | $2,4\!:\!-1$; $1,8\!:\!+1$ | 2 | $\langle\Gamma_0(8),W_8\rangle$ | $-1$ | Lemma 2 ($2\mid8$) | **proved** |
 | $\zeta$ | 3 | canonical | 9 | $3\!:\!-1$ (two cusps); $1,9\!:\!+1$ | 2 | $\langle\Gamma_0(9),W_9\rangle$ | $-1$ ($F$ only) | Lemma 2 ($3\mid9$) | **proved** |
 | $\gamma$ Apéry | — | canonical | 6 | $2,3\!:\!-1$; $1,6\!:\!+1$ | 2 | $\langle\Gamma_0(6),W_6\rangle$ | $-1$ | — | (no slope prime) |
-| Cooper $s_{18}$ | 3 | none known | — | — | — | — | — | — | **open** |
-| Zudilin Catalan | 2 | none (hypergeometric) | — | — | — | — | — | — | **open** |
+| Cooper $s_{18}$ | 3 | source meromorphic | — | — | — | — | — | — | **n/a** (see below) |
+| Zudilin Catalan | 2 | not a modular row | — | — | — | — | — | — | **n/a** (see below) |
 | cusp $L(f,2)$, $N{=}12$ | 2 | non-Zagier normalisation | — | — | — | — | — | — | **open** |
 
 Notes.
@@ -213,6 +221,14 @@ Notes.
   rows whose canonical $\deg t$ exceeds the order of the Atkin–Lehner group
   fixing $t$ are exactly $\mathbf B$ ($6$ vs $2$), $\eta$ ($6$ vs $2$) and
   $\delta$ ($4$ vs $2$) — and exactly those three are repaired by the twin.
+* $s_{18}$ and Zudilin's row are settled negatively in `SOURCES_S18_ZUDILIN.md`:
+  $s_{18}$ has a *meromorphic* source with a triple pole at the CM point
+  $\tau_0=(3+i)/6$ (which is supersingular at $3$, hence harmless for
+  rigid-analyticity but fatal for the Eisenstein hypothesis), and it exhibits a
+  weight drop ($w=2$ row with a $w=1$ period); Zudilin's row has a minimal ODE
+  of order $4$ with a violently non-integral canonical coordinate, so there is
+  no $(\Gamma,t,F)$ at all.  Theorem F therefore does not apply to either, and
+  their census entries are numerical identifications, not derivations.
 * The cusp row is not in Zagier normalisation (its recurrence is
   $(n{+}1)^2a_{n+1}=(20n^2{+}10n{+}2)a_n-16(2n{-}1)^2a_{n-1}$, with $(2n-1)^2$
   in place of $cn^2$), so Proposition "collapse" $\Phi=F\thq t$ does not apply
@@ -277,6 +293,12 @@ $\Lambda_3=\zeta_3(2)$ with $r=\tfrac12,\tfrac12,\tfrac58$.
 ## 4. (d) is only needed as $v_p(a_n)=o(n)$, and only for *existence*
 
 ### 4.1 The exact Casoratian
+
+*(This is Proposition C of `paper/sections/04_padic.tex`, restated with the
+constants made exact; the remark there already covers the modified trailing
+coefficient of the cusp row, $Q(n)=(n-\tfrac12)^2$, Casoratian
+$\propto4^n\binom{2n}{n}^2$, $\sigma_2=2$ although $c=64$.  What is new below
+is only the use made of it in Propositions 4--6.)*
 
 For (R2), $W_n:=a_{n+1}b_n-a_nb_{n+1}$ satisfies $(n+1)^2W_n=c\,n^2W_{n-1}$,
 $W_0=-1$, hence **exactly**
@@ -388,7 +410,9 @@ $v_2(a_n)+\kappa_2 n=2s_2(n)=O(\log n)$, which is the correct general shape of
 (d) for non-integral rows:
 $$\textbf{(d)}\qquad v_p(a_n)+\kappa_p\,n=O(\log n),\qquad
 \sigma_p=v_p(c)+2\kappa_p>0 ,$$
-matching Proposition C's $\sigma_2=0+2\cdot4=8$.  Script
+matching Proposition C's $\sigma_2=v_2(c)+2\kappa_2=0+2\cdot4=8$ — and
+Proposition C already states (d) in exactly this form,
+$v_p(a_n)=-\kappa_pn+O(\log n)$.  Script
 `lattice/theoremF_hyp/zudilin_v2.gp`.
 
 **Key qualitative fact (this is what (d′) needs).**  For every row and every
@@ -422,3 +446,71 @@ So the honest statement is: *(d′) $\liminf v_p(a_n)/n=0$ would follow from the
 $p=2,3$ cases of the Apéry-like supercongruence; the full (d) $v_p(a_n)=o(n)$
 is what the $\lambda_p s_p(n)$ bound expresses and is verified to $n=3000$.*
 
+
+---
+
+## 6. The cautionary example: the level-12 $\zeta(5)$ host
+
+*(`ZETA5_TWO_ROW.md` §3.1; scripts `lattice/zeta5_two_row/` and
+`lattice/theoremF_hyp/zeta5_check1..5.gp`, logs alongside.)*
+
+There is a level-$12$ weight-$6$ Eisenstein source with oldform vector
+$(1,-113,567,112,-1863,1296)$ on $d=(1,2,3,4,6,12)$ and
+$L(\Phi,5)=\tfrac{31}{192}\zeta(5)$, for which hypothesis **(a) holds** at
+$p=2$ ($\psi=\mathbf 1$, $\mathcal E_2(s)=1-2^{-s}$, $(1-X)\mid P(s)$).  Yet the
+row built on the level-$12$ $\zeta(5)$ host has **no $2$-adic slope** — the
+increments $v_2(b_n/a_n-b_{n-1}/a_{n-1})$ stay pinned between $-1$ and $-3$ —
+whereas the level-$16$ host with a source of the same kind has slope $1$ and
+$\xi_2=\tfrac{7}{32}\zeta_2(5)$ to $372$ digits.  Two hypotheses fail, and the
+first failure is structural.
+
+**(b) fails, and at $N=12$ it must.**  The purified level-12 span is
+two-dimensional, spanned by the Fricke-even source ($L=\tfrac{25}{144}\zeta(5)$,
+$c=(1,-104,351,832,-2808,1728)$, $W_{12}$-eigenvalue $+1$) and the Fricke-odd
+one ($L=\tfrac{11}{144}\zeta(5)$, $c=(1,-176,2079,-4928,4752,-1728)$,
+eigenvalue $-1$).  Neither passes (a).  The Euler-factor condition cuts out a
+single line on that plane, and it is the **non-eigen** mixture
+$$\Phi_{31/192}=\tfrac18\bigl(7\,\Phi_{\rm even}+\Phi_{\rm odd}\bigr),
+\qquad \tfrac78\cdot\tfrac{25}{144}+\tfrac18\cdot\tfrac{11}{144}=\tfrac{31}{192}.$$
+Applying $W_{12}$ to $(1,-113,567,112,-1863,1296)$ gives
+$(3/4,-69,189/4,1344,-3051,1728)$ — not a multiple.  Numerically at
+$\tau=0.31+0.77i$: $t|W_{12}=t$ to $10^{-58}$ (the Hauptmodul *is*
+Fricke-invariant) but $(\Phi|_6W_{12})/\Phi=0.6864+0.0772\,i$, not $\pm1$.  So
+$H_{\xi^*}$ is not $\Gamma_t$-invariant: **(a) and (b) are mutually exclusive at
+$N=12$.**  (For level $16$ the source $(1,-85,1428,-5440,4096)$ *is* a $W_{16}$
+eigenform with eigenvalue $+1$, $t|W_{16}=t$, and $(\Phi|_6W_{16})/\Phi=+1$ to
+$10^{-54}$: (b) holds.)  This is Theorem 2 read backwards — $t|W_Q=t$ forces
+$\epsilon_\Phi=\epsilon_F$, so a source that is not a $W_Q$-eigenform simply is
+not the canonical source $F\,\thq t$ of that Hauptmodul.
+
+**(d) fails too, for a reason one can see in the $t$-plane.**  The level-12
+host is $\mathrm{Sym}^4$ of $\lambda^2-14\lambda+1$, so
+$c=\prod\lambda_i=1$ and $\sigma_2=v_2(c)+2\kappa_2=0$.  Equivalently, and more
+geometrically: the fold of the level-12 host sits at $t=7-4\sqrt3$, a root of
+$x^2-14x+1$, whose Newton polygon over $\Q_2$ is flat — **both roots are
+$2$-adic units**, so the singularity lies *on* the circle $|t|_2=1$ and the
+largest singularity-free disc has $\rho=1$.  For level $16$ the singular
+$t$-values are $-\tfrac14,-\tfrac12$ and the roots of $28t^2+4t-1$ and of a
+quartic and a cubic; the $2$-adically nearest of them has $v_2=-1$, so
+$\rho=2$ and $\sigma_2=\log_2\rho=1$ — exactly the measured slope.  So
+
+> $\sigma_p=\log_p\rho$, $\rho$ = the $p$-adic radius of the largest disc
+> around $t=0$ free of singularities of the Picard–Fuchs operator.
+
+For the Zagier/AZ rows this is $\sigma_p=v_p(c)$, since the singular $t$ are
+the roots of $P_r(t)=1-at+ct^2$ with product $1/c$.
+
+**Corrected formulation.**  Nothing above contradicts Theorem F — (b) and (d)
+are hypotheses of it — but it shows sharply that (a) is a condition on the
+*source* while $\sigma_p>0$ is a condition on the *host*, and that they can be
+incompatible:
+
+> $$\textbf{(a)}+\textbf{(b)}+\textbf{(c)}+\textbf{(d)}\ \Longrightarrow\
+> \lim_n b_n/a_n=-Q(w+1)\kappa_p ;$$
+> $$\textbf{(a)}+\textbf{(b)}+\textbf{(c)}\ \Longrightarrow\
+> \text{\emph{if} the limit exists, it is }-Q(w+1)\kappa_p .$$
+> (a) alone never produces a limit; it only *pins the value* of one the host
+> supplies.  Since here (b) fails as well, not even the second line applies:
+> $\xi^*=-Q(5)\kappa_2$ is still the unique constant making $H_{\xi^*}$
+> overconvergent as a $q$-series, but there is no descent to $\mathbb P^1_t$ and
+> hence no statement about $b_n/a_n$ at all.

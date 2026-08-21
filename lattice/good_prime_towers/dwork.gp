@@ -28,12 +28,13 @@ dwork(aa,bb,cc,typ, p, smax, K) =
       Ap=An; An=k;
     );
     S[smax+1]=acc; ss[smax+1]=accp;
-    res = vector(smax);
-    for(s=1,smax, res[s] = S[s+1]/ss[s]);
-    print("  t0=",j,":  lambda_0 = ", lift(res[smax])+O(p^8),
-          "   v(lambda_0-1)=", if(lift(res[smax])%p==1,
-              valuation(lift(res[smax])-1+O(p^(K-2)),p), 0),
+    if(lift(ss[smax])%p==0,
+       print("  t0=",j,":  SUPERSINGULAR disc (F(t^p) = 0 mod p) -- no unit root"),
+       my(res=vector(smax));
+       for(s=1,smax, res[s] = S[s+1]/ss[s]);
+       print("  t0=",j,":  lambda_0 = ", lift(res[smax])+O(p^8),
+          "   lambda_0 mod p = ", lift(res[smax])%p,
           "   stab: ", vector(smax-1,i, my(d=lift(res[i+1]-res[i]));
-                              if(d==0,K,valuation(d+O(p^(K-2)),p))));
+                              if(d==0,K,valuation(d+O(p^(K-2)),p)))));
   );
 }

@@ -150,7 +150,6 @@ jcheck(name, T) =
   for(i=1,K, if(cf[i]!=0, v=valuation(cf[i],2); if(v<mn, mn=v)));
   print("   # of first ",K," coefficients not in Z: ", bad, "    min v_2 = ", mn);
   print("   => (c) as literally stated: ", if(bad==0 && valuation(cf[1],2)==0, "HOLDS", "FAILS"));
-};
 }
 jcheck("level-12 Domb", TD);
 jcheck("level-12 h_12", TX);

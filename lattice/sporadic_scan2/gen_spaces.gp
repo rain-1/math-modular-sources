@@ -50,3 +50,22 @@ saturate(gens) = { my(M, H, Y, S);
   if(matsize(Y)[2] == 0, S = matid(matsize(H)[1]), S = matkerint(Y~));
   S;
 }
+
+\\ saturate using only the first SATN+1 coefficients (enough by the Sturm bound),
+\\ then transport the resulting basis to the full PREC+1 coefficients.
+saturate_fast(gens, SATN) = { my(ns, S, Mfull, Msmall, dim, out, x);
+  if(#gens == 0, return([]));
+  ns = min(SATN+1, #gens[1]);
+  S = saturate(vector(#gens, i, vector(ns, j, gens[i][j])));
+  dim = matsize(S)[2];
+  if(dim == 0, return([]));
+  Mfull  = Mat(vector(#gens, i, gens[i]~));
+  Msmall = matrix(ns, #gens, i, j, Mfull[i,j]);
+  out = matrix(#gens[1], dim);
+  for(c = 1, dim,
+    x = matinverseimage(Msmall, S[,c]);
+    if(#x == 0, return(saturate(gens)));
+    out[,c] = Mfull * x;
+  );
+  out;
+}

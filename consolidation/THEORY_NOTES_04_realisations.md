@@ -12,7 +12,7 @@ A modular Apéry row is an **extension** $0\to\mathcal V\to\mathcal E\to\mathbb 
 | slope prime $p$ ($p\mid$ level, Euler factor divides $P$) | $\xi_p=-\tfrac12Q(w+1)\,L_p(w+1,\psi\omega^{-w})$ — the Kubota–Leopoldt value, i.e. the $p$-adic (syntomic) regulator of the same class | Calegari's overconvergence: $\Theta$ is a finite oldform combination of the $p$-adic Eisenstein series; $F(\Theta-\xi)$ overconvergent iff $\xi$ = constant term | Theorem F; 14 identifications to ~3000 digits |
 | cuspidal source, slope prime | $0$ (no constant term) | Coleman's $\theta^{w+1}$ | Prop. (cuspidal clause); verified on the $L(f,2)$ row |
 | outer placement ($\varphi\ne\mathbf 1$), slope prime | $0$ | constant term of $E^{\mathbf 1,\chi}$ at $\infty$ vanishes | verified: A at 2, ζ at 3 |
-| good prime $p\nmid N$ | no limit along all $n$; tower limits $\lim_s b_{ap^s}/a_{ap^s}$ exist | **conjecture:** these are periods of the *pure* system — Dwork unit-root Frobenius data — not of the extension; hence Γ_p-values and no rigidity | under test (GOOD_PRIME_TOWERS) |
+| good prime $p\nmid c$ | no limit along all $n$; tower limits $\Lambda_a=\lim_s\chi(p)^sp^{ws}b_{ap^s}/a_{ap^s}$ exist | Frobenius **at the cusp $t=0$**: $U_p$ has eigenvalues $1$ (on $A$) and $\chi(p)p^{-w}$ (on $B$), *exactly*, so the extension splits and $\Lambda_a=\widetilde B_a/\widetilde A_a$ is the splitting coordinate — a $\Gamma_p$-tower constant, no $L$-value, no rigidity. It is **not** the Dwork unit root of a fibre: $\lim_s a_{ap^{s+1}}/a_{ap^s}=1$ identically | settled: `consolidation/GOOD_PRIME_TOWERS.md`, 144/144 cells |
 
 The archimedean and $p$-adic rational factors differ by exactly the Euler factor at $p$: $r_p=r_\infty/(1-\psi(p)p^{-(w+1)})$ — the standard Euler-factor removal of $p$-adic $L$-functions, now visible in elementary data. Rigidity (Conjecture D) is the statement that two rows with the same $E$ have limits in the same ratio at every place where both have limits; it is a corollary of the table.
 
@@ -28,6 +28,6 @@ $\sigma_p>0$ iff the Euler factor divides $P$ iff (empirically) $p\mid c=\lambda
 1. Uniform archimedean Theorem B (period polynomial at the Fricke point) — agent running.
 2. Hypotheses (b),(d) of Theorem F; row B descent — agent running.
 3. Hypergeometric rows: an Eisenstein-type description at the $p$-adic place (Beukers) — agent running.
-4. Good-prime dichotomy — agent running.
+4. Good-prime dichotomy — **done**, `consolidation/GOOD_PRIME_TOWERS.md`: the dichotomy is really a trichotomy indexed by the second tower Frobenius eigenvalue ($\chi(p)p^{-w}$ / $1$ / $0$), matching (good prime) / (slope prime, inner) / (slope prime, outer or cuspidal). Open: prove the $(1,1)$ and $(1,0)$ cases from Theorem F.
 5. Syntomic interpretation: identify $\xi_p$ with the syntomic regulator of the Beilinson–Kings Eisenstein class (Bannai–Kings for Dirichlet characters); this would make the table a theorem about one motive rather than a coincidence of two computations. [conceptual; literature]
 6. Vector/higher-rank systems (β(4) rank-16 direct image; $L(3,\chi_5)$ Hadamard): Theorem F should extend verbatim (overconvergence is about the source, not the rank); the census of slopes for these systems has not been done.

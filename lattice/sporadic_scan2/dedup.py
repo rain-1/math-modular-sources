@@ -5,6 +5,10 @@ import sys, os, json, math, argparse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
+COOPER = {
+ (1,4,28,268,3004):   "Cooper s_7 (level 7)",
+ (1,2,10,56,346):     "",
+}
 KNOWN = {
  (1,2,10,56,346):      "Zagier A (7,2,-8)  zeta(2)/4",
  (1,3,9,21,9):         "Zagier B (9,3,27)",
@@ -53,6 +57,10 @@ def main():
     for d in rows:
         d["known"] = KNOWN.get(canon(d["a"][:5]), "")
         d["canon"] = list(canon(d["a"][:8]))
+    for d in rows:
+        mods = [abs(complex(z[0], z[1])) for z in d.get("roots", [])]
+        d["lam_min"] = min(mods) if mods else None
+        d["nroots"] = len(mods)
     rows.sort(key=lambda d: -(d["budget"] if d["budget"] is not None else -99))
     json.dump(rows, open(os.path.join(HERE, args.out), "w"), indent=0)
     with open(os.path.join(HERE, "limits.txt"), "w") as f:

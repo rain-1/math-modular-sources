@@ -6,3 +6,16 @@
 === level-12 Domb  (terms to n=419)
 [0;31m  *** matker: Warning: increasing stack size to 64000000.[0m
 [0;31m  *** matker: Warning: increasing stack size to 128000000.[0m
+   no fit with order<=12 in the searched range
+=== level-12 h_12  (terms to n=419)
+   no fit with order<=12 in the searched range
+=== level-16       (terms to n=419)
+   FIT: order 5 degree 38  kernel dim 1  [eqns 295, unknowns 234]
+   FIT: order 6 degree 28  kernel dim 2  [eqns 264, unknowns 203]
+   FIT: order 7 degree 24  kernel dim 1  [eqns 261, unknowns 200]
+   FIT: order 8 degree 23  kernel dim 4  [eqns 277, unknowns 216]
+   FIT: order 9 degree 22  kernel dim 5  [eqns 291, unknowns 230]
+   FIT: order 10 degree 21  kernel dim 4  [eqns 303, unknowns 242]
+   FIT: order 11 degree 20  kernel dim 1  [eqns 313, unknowns 252]
+   FIT: order 12 degree 20  kernel dim 4  [eqns 334, unknowns 273]
+DONE

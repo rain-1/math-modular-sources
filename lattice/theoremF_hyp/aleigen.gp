@@ -4,7 +4,7 @@
    For Q || N with gcd(Q,M)=1 the Atkin-Lehner involution acts on the oldform
    basis at weight k by
         V_d  |-->  lambda * chi(Q/d1) * (Q/d1^2)^{k/2} * V_{(Q/d1) d2},
-   d = d1*d2 with d1 the Q-part of d, lambda = chi(w) a global scalar.
+   d = d1*d2 with d1 the Q-part of d, lambda = chi(u) a global scalar (u = lower-right entry of W_Q divided by Q).
    We set lambda = 1 (it cancels between F and Theta, whose nebentypi are
    inverse).  eigW(cs, ds, N, M, Q, k, chi) returns the eigenvalue, or 0 if the
    vector is not an eigenvector.                                             */

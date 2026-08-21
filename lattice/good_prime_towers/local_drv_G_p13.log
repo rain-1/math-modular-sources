@@ -1,1 +1,9 @@
 [0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+[0;31m[0;31m  ***   at top-level:[0;35m report(towerrun("G",13,[1,2,3],5,60))
+[0;31m[0;31m  ***                 ^-------------------------------------
+[0;31m  ***   in function report: ...[0;35m0;for(s=0,smax,n=a*p^s;V=[0;35mpratio(mapget(recB,n)
+[0;31m[0;31m  ***                                                   ^---------------------
+[0;31m  ***   in function pratio: ...[0;35m=0,return(0));ux=(x/p^vx)[0;35m+O(p^pr);uy=(y/p^vy)+
+[0;31m[0;31m  ***                                                   ^---------------------
+  *** _+_: overflow in precp().[0m
+... skipping file 'drv_G_p13.gp'
