@@ -1,0 +1,182 @@
+\subsection{Conjecture D at $p=3$: the $3$-adic period is
+$\tfrac12\zeta_3(2)$}\label{sec:conjDproof}
+
+This subsection proves Conjecture~\ref{conj:D} at $p=3$ for Zagier's rows
+$\mathbf C$ and $\mathbf F$, and identifies the common $3$-adic period.  The
+argument is Calegari's \cite{Cal05}, adapted to sources that are oldform
+combinations $P(V_2)S$ of a single Eisenstein series.  Full details, the
+numerical record, and the residual gap for row $\mathbf B$ are in
+\texttt{consolidation/CONJ\_D\_PROOF.md}.
+
+\subsubsection*{Notation}
+
+$p=3$, $\chim3$ the quadratic character of conductor $3$; note $\chim3=\omega$,
+the Teichm\"uller character at $p=3$.  Let $S=E_{3,\chim3,1}$ and
+$\Phi_X=P_X(V_2)S$ with
+\[
+P_{\mathbf C}(Y)=1-8Y,\quad P_{\mathbf F}(Y)=(1+Y)(1-8Y),\quad
+P_{\mathbf B}(Y)=1-6Y-8Y^2,
+\]
+so that $P_{\mathbf C}(\tfrac14)=P_{\mathbf B}(\tfrac14)=-1$ and
+$P_{\mathbf F}(\tfrac14)=-\tfrac54$.  Write $\Theta_X=\thq^{-2}\Phi_X$,
+$A^X=F_X$, $B^X=F_X\Theta_X$ as in \eqref{eq:Theta}, and
+$H_\xi:=F_X(\Theta_X-\xi)$, whose $t_X$-expansion is $B^X-\xi A^X$.
+
+\begin{lemma}[uniqueness of the overconvergent constant]\label{lem:overconv}
+\Proved{} Let $a_n\in\Z_p$ with $v_p(a_n)=O(\log n)$ and slope $\sigma_p>0$.  Then
+$A=\sum a_nt^n$ has radius of convergence exactly $1$ and diverges for every
+$|t|_p>1$, while $R_{\xi_p}=B-\xi_pA$ converges on $|t|_p<p^{\sigma_p}$
+\textup{(}Proposition~\ref{prop:C}\textup{)}.  Hence $\xi_p$ is the \emph{unique}
+$\xi\in\Q_p$ for which $B-\xi A$ converges on some disc $|t|_p\le\rho$, $\rho>1$.
+\end{lemma}
+
+\begin{lemma}[Eichler integral of an oldform combination]\label{lem:Dpx}
+\Proved{} Let $\mathcal E:=\thq^{-2}S=\sum_{n\ge1}\bigl(\sum_{e\mid n}\chim3(e)e^{-2}\bigr)q^n$.
+Then $\Theta_X=P_X(V_2/4)\,\mathcal E$; explicitly
+$\Theta_{\mathbf C}=(1-2V_2)\mathcal E$,
+$\Theta_{\mathbf F}=(1-\tfrac74V_2-\tfrac12V_4)\mathcal E$,
+$\Theta_{\mathbf B}=(1-\tfrac32V_2-\tfrac12V_4)\mathcal E$.
+Moreover the divisor sum is automatically $3$-depleted, since $\chim3(3)=0$.
+\end{lemma}
+\begin{proof}
+$\thq^{-2}V_d=d^{-2}V_d\thq^{-2}$ (Proposition~\ref{prop:mellinshift}) gives the
+first claim, and $c(n)/n^2=\sum_{d\mid n}\chim3(n/d)(d/n)^2=\sum_{e\mid n}\chim3(e)e^{-2}$
+identifies $\mathcal E$.
+\end{proof}
+
+\begin{lemma}[overconvergent avatar]\label{lem:avatar}
+\Lit{} Let $\mathcal W^+$ be the even part of $3$-adic weight space and
+$\kappa_0(a):=\omega(a)a^{-1}=\langle a\rangle^{-1}$, a point of $\mathcal W^+$
+(``weight $-1$ with nebentypus $\omega$''), lying on the same component of
+$\mathcal W^+$ as the trivial character because $\chim3=\omega$.  Then, with
+Coleman's Eisenstein family $E_\kappa=\tfrac12\zeta_3(\kappa)+\sum_n\sigma^*_\kappa(n)q^n$
+\textup{\cite{Coleman1997,ColemanMazur1998}} (see \textup{\cite[Thm.~2.3]{Cal05}}),
+one has $\sigma^*_{\kappa_0}(n)=\sum_{e\mid n}\chim3(e)e^{-2}$, so that
+\[
+\mathcal E+\kappa=E_{\kappa_0},\qquad \kappa:=\tfrac12\zeta_3(\kappa_0)=\tfrac12\zeta_3(2),
+\]
+is an overconvergent eigenform of weight $\kappa_0$ and level $\Gamma_0(3)$.
+Here $\zeta_3=L_3(\,\cdot\,,\mathbf 1)$ is the Kubota--Leopoldt $3$-adic zeta
+function, and by \textup{\cite[Thm.~5.11]{Washington1997}} its odd branch
+interpolates $\zeta_3(1-n)=-B_{n,\omega}/n=L(1-n,\chim3)$ for odd $n\ge1$; thus
+$\zeta_3(2)$ is the $3$-adic avatar of $L(2,\chim3)$, and it is \emph{not} the
+identically vanishing $L_3(\,\cdot\,,\omega)$ of \textup{\cite[\S4]{Cal05}}.
+\end{lemma}
+
+\begin{lemma}[characterisation]\label{lem:charoc}
+\Proved{} $H_\xi$ is an overconvergent modular form of weight $0$ if and only if
+$\xi=\xi^*_X:=-P_X(\tfrac14)\,\kappa$.
+\end{lemma}
+\begin{proof}
+For $p\nmid d$ the operator $V_d$ preserves overconvergence
+\cite[\S B]{Coleman1997}, so $P_X(V_2/4)E_{\kappa_0}=\Theta_X+P_X(\tfrac14)\kappa$
+is overconvergent of weight $\kappa_0$.  Multiplying by the classical (hence
+overconvergent) $F_X\in M_1(\Gamma_0(N_X),\chim3)$ gives an overconvergent form
+of weight $1\cdot\kappa_0=0$ and trivial nebentypus, proving ``if''.  If $H_\xi$
+were overconvergent for some other $\xi$, then so would be
+$H_\xi-H_{\xi^*_X}=(\xi^*_X-\xi)F_X$, making the nonzero classical weight-one
+form $F_X$ overconvergent of weight $0$; this contradicts the fact that the
+weight of a $p$-adic modular form is determined by its $q$-expansion
+\cite[4.4]{Katz1973}.
+\end{proof}
+
+\begin{lemma}[the ordinary disc]\label{lem:orddisc}
+\Proved{} Since the cusp $\infty$ of $\Gamma_0(N)$ has width $1$, $j\in q^{-1}\Z[[q]]$
+and $t_X\in q\Z[[q]]$ with $t_X=q+O(q^2)$, one has $t_Xj\in\Z[[t_X]]$ with constant
+term $1$.  Hence every point with $0<|t_X|_3<1$ has $|j|_3=|t_X|_3^{-1}>1$, so lies
+in the residue disc of $\infty$ and is ordinary.  Consequently the connected
+component $D_\infty$ of the ordinary locus containing $\infty$ contains
+$\{|t_X|_3\le1\}$, and any strict neighbourhood of $D_\infty$ contains
+$\{|t_X|_3\le\rho\}$ for some $\rho>1$.
+\end{lemma}
+
+\begin{theorem}[$3$-adic period of the C- and F-rows]\label{thm:conjD3}
+\Proved{} Let $X\in\{\mathbf C,\mathbf F\}$ and suppose the $3$-adic Ap\'ery limit
+$\xi^X_3=\lim_n b^X_n/a^X_n$ exists in $\mathbb Q_3$ \textup{(}by Proposition~C this holds
+whenever $v_3(a^X_n)=O(\log n)$, which is verified for $n\le400$ with $v_3(a^X_n)\le13$;
+without any growth hypothesis the conclusion holds along the subsequence on which
+$v_3(a^X_n)=o(n)$, which exists because $A_X$ has radius exactly $1$\textup{)}.  Then
+\[
+\boxed{\ \xi^{\mathbf C}_3=\tfrac12\zeta_3(2),\qquad
+\xi^{\mathbf F}_3=\tfrac58\zeta_3(2)=\tfrac54\,\xi^{\mathbf C}_3 .\ }
+\]
+In particular Conjecture~\ref{conj:D} holds for the pair $(\mathbf C,\mathbf F)$
+at $p=3$, with $\Lambda_3=\zeta_3(2)$ and the same rational factors
+$r_{\mathbf C}=\tfrac12$, $r_{\mathbf F}=\tfrac58$ as in the archimedean limits
+$\xi_\infty=r\,L(2,\chim3)$.
+\end{theorem}
+
+\begin{proof}
+Write $\xi^*_X=-P_X(\tfrac14)\kappa$, so $\xi^*_{\mathbf C}=\kappa$ and
+$\xi^*_{\mathbf F}=\tfrac54\kappa$.  By Lemma~\ref{lem:charoc}, $H_{\xi^*_X}$ is a
+rigid analytic function on a strict neighbourhood of $D_\infty$.
+
+\emph{Row $\mathbf C$.}  The Ligozat divisor of $t_{\mathbf C}$ on $X_0(6)$ is
+$(\infty)-(\tfrac12)$, so $t_{\mathbf C}$ is a hauptmodul of $\Gamma_0(6)$; and
+$H_{\xi^*}$ has level $6$ because $\Theta_{\mathbf C}-\xi^*=(1-2V_2)E_{\kappa_0}$ has
+level $6$.  Hence $H_{\xi^*}$ descends to $\mathbb P^1_{t_{\mathbf C}}$, and by
+Lemma~\ref{lem:orddisc} its $t_{\mathbf C}$-expansion converges on a disc of radius
+$\rho>1$.
+
+\emph{Row $\mathbf F$.}  Here $t_{\mathbf F}$ has degree $2$ on $X_0(12)$ and is a
+hauptmodul of $\Gamma_{\mathbf F}=\langle\Gamma_0(12),W_4\rangle$.  On the oldform
+basis $\{V_1,V_2,V_4\}$ over level $3$ one computes, for weight $k$,
+\[
+V_1\mapsto 4^{k/2}V_4,\qquad V_2\mapsto\chim3(2)V_2=-V_2,\qquad V_4\mapsto4^{-k/2}V_1
+\]
+under $W_4=\bigl(\begin{smallmatrix}4&1\\12&4\end{smallmatrix}\bigr)$
+(up to the usual global sign coming from the choice of representative in the
+presence of a nebentypus).  At $k=3$ this sends $1-7V_2-8V_4$ to its negative, and
+at $k=-1$ it sends $1-\tfrac74V_2-\tfrac12V_4$ to its negative as well.  Thus
+$\Theta_{\mathbf F}-\xi^*_{\mathbf F}$ and $\Phi_{\mathbf F}$ have the same $W_4$-eigenvalue,
+which coincides with that of $F_{\mathbf F}$; so $H_{\xi^*}$ has $W_4$-eigenvalue
+$(\pm1)^2=+1$ and descends to $\mathbb P^1_{t_{\mathbf F}}$.  Conclude as before.
+
+In both cases $R^X_{\xi^*_X}=B^X-\xi^*_XA^X$ converges on a disc of radius $>1$,
+and by Lemma~\ref{lem:overconv} (uniqueness) $\xi^*_X=\xi^X_3$.
+\end{proof}
+
+\begin{remark}[what this settles]
+The $W_4$-invariance used for $\mathbf F$ is exactly the input \textbf{H3} of
+\texttt{consolidation/RIGIDITY\_PROOF.md}, previously open.  Over $\C$ it is
+\emph{false}: the Eichler integral $\Theta_{\mathbf F}$ has a nonzero period
+polynomial under $W_4$.  Three-adically the obstruction disappears because
+$\Theta_{\mathbf F}-\xi^{\mathbf F}_3$ is not a formal primitive but a genuine
+overconvergent modular form of weight $-1$, on which $W_4$ acts by the oldform
+formula; the constant $\xi^{\mathbf F}_3$ is precisely what converts the
+non-modular primitive into a modular object.
+\end{remark}
+
+\begin{verification}\label{ver:conjD3}
+With $\kappa=\tfrac12L_3(2,\mathbf 1)$ computed to $3$-adic precision $3^{320}$
+from \cite[Thm.~5.11]{Washington1997} (validated to be exactly
+$-(1-3^{n-1})B_n/n$ for $n=2,4,6$ and $-B_{n,\omega}/n$ for $n=3,5,7,9$), and rows
+truncated at $N=300$,
+\[
+v_3\bigl(\xi^{\mathbf C}_3-\kappa\bigr)=
+v_3\bigl(\xi^{\mathbf B}_3-\kappa\bigr)=
+v_3\bigl(\xi^{\mathbf F}_3-\tfrac54\kappa\bigr)=328,
+\]
+which is the full working precision.  Independently, $-B_{n,\chim3}/(2n)$ at
+$n=2\cdot3^m-1$ agrees with $\xi^{\mathbf C}_3$ to $3^{m-1}$ for $m\le6$, the exact
+Kummer rate.  All of $\Phi_X=P_X(V_2)S$, Lemma~\ref{lem:Dpx}, and
+$t_Xj\in\Z[[t_X]]$ were verified exactly to $O(q^{120})$.
+\end{verification}
+
+\begin{remark}[row $\mathbf B$, and $p\mid d$]\label{rem:conjDgaps}
+Everything above applies to $\mathbf B$ except the final descent: $X_0(36)$ has
+genus $1$ and $t_{\mathbf B}$ has degree $6$ on it, so one must identify the
+index-$6$ genus-zero group $\Gamma_{\mathbf B}\supseteq\Gamma_0(36)$ with hauptmodul
+$t_{\mathbf B}$ and check $\Gamma_{\mathbf B}$-invariance of $H_{\xi^*}$; $W_4$
+accounts for only a factor $2$.  Numerically $\xi^{\mathbf B}_3=\tfrac12\zeta_3(2)$
+to $3^{328}$.  \Open{}
+
+More generally the argument proves: if the source is $P(V_{d})E$ with $E$
+Eisenstein whose $p$-adic avatar is a point of the Coleman family, \emph{all $d$
+prime to $p$}, and the descent hypotheses of Lemma~\ref{lem:orddisc} hold, then
+$\xi_p=P(\text{Mellin at }s=w+1)\cdot\Lambda_p$ for a single $\Lambda_p$.  Only
+hypothesis ``$p\nmid d$'' fails for the $\zeta(3)$ pair at $p=2$, where the
+connecting correspondence is $(1-V_2)(1-4V_2)(1-16V_2)$ at $p=2$ itself
+($P_\alpha(3)/P_\varepsilon(3)=\tfrac43$); Calegari's \S4, by contrast, has level
+divisible by $p$ but no $V_p$ in the source, exactly as here.  \Open{}
+\end{remark}

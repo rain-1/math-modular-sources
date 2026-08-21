@@ -73,8 +73,10 @@ Conversely, for rows with different periods the cross determinant has bounded va
 
 Two features deserve emphasis. First, Zagier's row B has complex-conjugate characteristic roots, so $b_n/a_n$ has \emph{no} archimedean limit; yet its $3$-adic limit coincides with that of row C. The $p$-adic limit is an invariant of the extension class that survives when the archimedean Ap\'ery limit does not exist. Second, rigidity is a statement about \emph{slope primes} only: the project's tower limits at unramified primes $p\ge5$ exhibit no relations between rows sharing a period \cite{ProjTheory03}, so the naive ``relations transfer to every realisation'' is false.
 
-The conceptual explanation is that the companion $b$ is the Eichler integral of an Eisenstein class, so $\xi_p$ is the $p$-adic realisation of the same extension class whose archimedean realisation is $\Lambda$---for the Catalan row, Calegari's overconvergent construction identifies it with a $2$-adic $L$-value \cite{Cal05}. Proving Conjecture~D for the Zagier rows by that method is Problem~\ref{prob:rigidity}.
+The conceptual explanation is that the companion $b$ is the Eichler integral of an Eisenstein class, so $\xi_p$ is the $p$-adic realisation of the same extension class whose archimedean realisation is $\Lambda$---for the Catalan row, Calegari's overconvergent construction identifies it with a $2$-adic $L$-value \cite{Cal05}. For the rows $\mathbf C,\mathbf F$ at $p=3$ this is carried out in \S\ref{sec:conjDproof} below, following Calegari's method: the $3$-adic limit is identified as a Kubota--Leopoldt value, $\xi^{\mathbf C}_3=\tfrac12\zeta_3(2)$, $\xi^{\mathbf F}_3=\tfrac58\zeta_3(2)$. The remaining cases are Problem~\ref{prob:rigidity}.
 
 \subsection{Slope-free systems}
 
 Every system obtained by full period annihilation in Section~\ref{sec:sources} is Fricke-symmetric and has $c=\pm1$; such systems have slope $0$ at every prime. This was verified directly for the level-$24$ $\zeta(7)$ system of Section~\ref{sec:sources}: $A_n\in\mathbb Z$, $d_n^7B_n\in\mathbb Z$, $B_n/A_n\to\tfrac{1463}{13824}\zeta(7)$ (all to $n=218$), and no $p$-adic convergence at $p=2,3,5,7$. The rows with $p$-adic slope are precisely the archimedeanly \emph{imperfect} ones. This complementarity is the starting point of Section~\ref{sec:tworow}.
+
+\input{sections/04_padic_conjD_proof}
