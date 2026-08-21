@@ -14,3 +14,5 @@ N=18 w=1 chi=5 ord=6 15837ms
 N=18 w=1 chi=17 ord=2 10275ms
 N=18 w=2 chi=1 ord=1 17127ms
 N=18 w=2 chi=7 ord=3 51206ms
+N=18 w=3 chi=5 ord=6 154936ms
+N=18 w=3 chi=17 ord=2 18847ms

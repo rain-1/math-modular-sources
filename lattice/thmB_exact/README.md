@@ -11,6 +11,7 @@ e.g. `gp -q -s 12000000000 01_limits.gp`.
 | `02_cuspvalue.gp` | `Theta(iy) -> L(Phi,w+1)` as `y -> 0`, all twelve rows; the endpoint criterion table |
 | `03_fricke_fold.gp` | the six third-order rows: Fricke eigenvalues of `Phi`, `F`, invariance of `t`, the fold at `i/sqrt(N)`, and the fold-connection value |
 | `04_complex_folds.gp` | the complex folds of `delta`, `eta` (interior, CM) and of `B` (cusp `1/6`), to 50-90 digits, with the closed forms |
+| `05_periodpoly.gp` | the two period identities forced by Theorem II: `L(Phi,2)=0` and `L(Phi,1) = -N L(Phi,3)/(2 pi^2)` |
 
 `build(r,a,b,c,NT)` returns `[t(q), F(q)]` as exact power series with integer
 coefficients, obtained from the recurrence by

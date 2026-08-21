@@ -20,3 +20,5 @@ N=20 w=2 chi=1 ord=1 19443ms
 N=20 w=2 chi=3 ord=4 51649ms
 N=20 w=2 chi=9 ord=2 16243ms
 N=20 w=3 chi=11 ord=2 66534ms
+N=20 w=3 chi=13 ord=4 40158ms
+N=20 w=3 chi=19 ord=2 60873ms

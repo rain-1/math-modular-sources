@@ -1,0 +1,286 @@
+\subsection{Theorem B, exactly: the limit \emph{is} the critical value}
+\label{sec:thmBexact}
+
+Part (i) of Theorem~\ref{thm:B} says that $\xi$ is \emph{a rational multiple}
+of a critical value, and \S\ref{sec:thmB} records that the multiple
+($\tfrac16$, $\tfrac7{32}$, $\tfrac58$, \dots) has been verified case by case
+and not derived.  This subsection derives it, uniformly, and finds that there
+is no multiple at all: the limit is the critical value of the source on the
+nose.  Details, the exact verification record and the scripts are in
+\texttt{consolidation/THEOREM\_B\_EXACT.md} and
+\texttt{lattice/thmB\_exact/}.
+
+Throughout, $\Phi=P(V)E^{\psi,\varphi}_{w+2}$ as in \S\ref{sec:eulercrit},
+$w=r-1$, $P(s)=\sum_dc_dd^{-s}$, so that
+\begin{equation}\label{eq:LPhifac}
+L(\Phi,s)=P(s)\,L(\psi,s)\,L(\varphi,s-w-1),
+\end{equation}
+and $\Theta=\thq^{-(w+1)}\Phi$.  The Eichler integral has the contour form
+\begin{equation}\label{eq:eichlerint}
+\Theta(\tau)=\frac{(-2\pi i)^{w+1}}{w!}\int_\tau^{i\infty}\Phi(z)(z-\tau)^w\,dz ,
+\end{equation}
+verified termwise from
+$\int_\tau^{i\infty}e^{2\pi imz}(z-\tau)^wdz=q^m\,i^{w+1}w!/(2\pi m)^{w+1}$,
+and the associated \emph{Fricke period polynomial} is
+\begin{equation}\label{eq:periodpoly}
+R(\tau):=\frac{(-2\pi i)^{w+1}}{w!}\int_0^{i\infty}\Phi(u)(u-\tau)^w\,du
+=\sum_{j=0}^w\binom wj\frac{(-2\pi i)^{w+1}i^{\,j+1}}{w!}(-\tau)^{w-j}\Lambda(\Phi,j+1),
+\end{equation}
+$\Lambda(\Phi,s)=(2\pi)^{-s}\Gamma(s)L(\Phi,s)$.  Explicitly
+\begin{equation}\label{eq:Rlowweight}
+w=1:\ R(\tau)=L(\Phi,2)+2\pi i\,L(\Phi,1)\,\tau,\qquad
+w=2:\ R(\tau)=L(\Phi,3)+2\pi i\,L(\Phi,2)\,\tau-2\pi^2L(\Phi,1)\,\tau^2,
+\end{equation}
+so in every weight $R(0)=L(\Phi,w+1)$, and the lower critical values --- the
+quasiperiod data --- occupy the higher coefficients.
+
+\subsubsection*{Two geometries: the fold is a fold only in weight four}
+
+\begin{lemma}[local exponents at $t_c$]\label{lem:exponents}
+\Proved{} Write the sporadic operator as $y''+p_1y'+p_0y=0$ in the coordinate
+$t$.  Then $p_1=\frac{d}{dt}\log(tP_2)$ for $r=2$ and
+$p_1=\frac1t+\frac{P_3'}{2P_3}$ for $r=3$.  Consequently, at a simple root
+$t_c$ of $P_r$ the indicial equation is $\rho^2=0$ for $r=2$ and
+$\rho(\rho-\tfrac12)=0$ for $r=3$: the singularity of $y_0,y_B$ at $t_c$ is
+\emph{logarithmic} for the six second-order rows and a \emph{square root} for
+the six third-order rows.
+\end{lemma}
+
+\begin{proof}
+Expanding $\thq$-form into $d/dt$ gives, for $r=2$, coefficient of $y''$ equal
+to $t^2P_2$ and coefficient of $y'$ equal to $t(1-2at+3ct^2)=t(P_2+tP_2')$;
+for $r=3$ the symmetric-square operator $\widetilde D$ of
+Theorem~\ref{thm:rect15} gives $t^2P_3$ and $t(P_3+\tfrac12tP_3')$.  Divide and
+read off the residue of $p_1$ at $t_c$, which is $1$ resp.\ $\tfrac12$; $p_0$
+has only a simple pole and does not enter the indicial equation.
+\end{proof}
+
+This splits the nine real rows into two families, and Lemma~\ref{lem:fold}
+--- which assumes a square-root fold --- applies to the second family only.
+
+\begin{proposition}[where $t_c$ sits]\label{prop:whereisfold}
+\VerifiedR{exact $q$-expansions to $q^{900}$ built from the recurrence alone;
+\texttt{lattice/thmB\_exact/}}
+For $\mathbf A,\mathbf C,\mathbf D,\mathbf E,\mathbf F$ the map $y\mapsto t(iy)$
+is monotone from $(0,\infty)$ onto $(0,t_c)$ with $t(iy)\to t_c$ as $y\to0^+$:
+the singular point is the \emph{cusp} $0$, $q_c=1$.  For
+$\alpha,\gamma,\varepsilon,\zeta$ one has $dt/d\tau=0$ at the interior point
+$\tau_*=i/\sqrt N$, with $t(\tau_*)=t_c$ and $\Phi(\tau_*)=0$ to
+$10^{-76}$: the singular point is the Fricke fixed point.
+\end{proposition}
+
+\subsubsection*{The endpoint criterion}
+
+\begin{lemma}[endpoint criterion]\label{lem:endpoint}
+\Proved{} $\Lambda(\Phi,\cdot)$ is entire $\iff$ $\Phi$ vanishes at the cusp
+$0$ $\iff$ $\delta(\varphi)P(w+2)=0$.
+\end{lemma}
+
+\begin{proof}
+$\Lambda(\Phi,s)=\int_0^\infty\Phi(iy)y^{s-1}dy$ converges at $y=\infty$ since
+$\Phi=q+O(q^2)$.  At $y\to0$, $\Phi(iy)=a^{(0)}_0(\sqrt Ny)^{-(w+2)}
+\bigl(1+O(e^{-c/y})\bigr)$ with $a^{(0)}_0$ the constant term of $\Phi$ at the
+cusp $0$, so the integral converges there iff $a^{(0)}_0=0$, and otherwise
+$\Lambda$ has a simple pole at $s=w+2$.  By \eqref{eq:LPhifac} the only
+possible pole of $L(\Phi,s)$ at $s=w+2$ comes from $L(\varphi,s-w-1)$ at
+$s-w-1=1$, present iff $\varphi=\mathbf 1$ and $P(w+2)\neq0$.
+\end{proof}
+
+\begin{lemma}[cusp value of the Eichler integral]\label{lem:cuspvalue}
+\Proved{} If $\Lambda(\Phi,\cdot)$ is entire then $\Theta(iy)$ is, up to
+$O(e^{-c/y})$, a polynomial of degree $w$ in $y$ whose coefficient of
+$y^{w-j}$ is a fixed multiple of $L(\Phi,j+1)$; in particular
+\[
+\lim_{y\to0^+}\Theta(iy)=R(0)=L(\Phi,w+1).
+\]
+\end{lemma}
+
+\begin{proof}
+Expand $(z-iy)^w=\sum_j\binom wjz^j(-iy)^{w-j}$ in \eqref{eq:eichlerint}.  Each
+$\int_{iy}^{i\infty}\Phi(z)z^j\,dz$ tends to $i^{\,j+1}\Lambda(\Phi,j+1)$ as
+$y\to0$, the error $\int_0^{iy}$ being $O(e^{-c/y})$ by Lemma~\ref{lem:endpoint}.
+Only $j=w$ survives the limit, and
+$\frac{(-2\pi i)^{w+1}}{w!}i^{w+1}\Lambda(\Phi,w+1)=L(\Phi,w+1)$.
+\end{proof}
+
+\subsubsection*{The theorem}
+
+\begin{namedthm}[B$^{*}$: the exact prefactor]\label{thm:Bexact}
+\Proved{} Let a modular Ap\'ery row have Eisenstein source
+$\Phi=P(V)E^{\psi,\varphi}_{w+2}$ satisfying the endpoint condition
+$\delta(\varphi)P(w+2)=0$.  Then, in either geometry of
+Proposition~\ref{prop:whereisfold},
+\begin{equation}\label{eq:Bexact}
+\boxed{\ \xi_\infty=\lim_{n\to\infty}\frac{B_n}{A_n}=L(\Phi,w+1)
+=P(w+1)\,L(\psi,w+1)\,L(\varphi,0).\ }
+\end{equation}
+Hence $r_\infty=P(w+1)L(\varphi,0)$, which for $\varphi=\mathbf 1$ is
+$-\tfrac12P(w+1)$, matching Corollary~\ref{cor:rp} exactly.
+\end{namedthm}
+
+\begin{proof}[Proof, cusp geometry ($r=2$)]
+By Lemma~\ref{lem:exponents}, $y_0=g_0+h_0\log(1-t/t_c)$ and
+$y_B=g_B+h_B\log(1-t/t_c)$ near $t_c$ with $g_\bullet,h_\bullet$ analytic.
+Singularity analysis gives $[t^n]y=-h(t_c)t_c^{-n}/n+O(\rho^{-n})$,
+$\rho>|t_c|$, so $\xi_\infty=h_B(t_c)/h_0(t_c)$ once $h_0(t_c)\neq0$, and since
+both series diverge logarithmically,
+\[
+\xi_\infty=\lim_{t\to t_c^-}\frac{y_B(t)}{y_0(t)} .
+\]
+Along $\tau=iy$ one has $y_0(t(\tau))=F(\tau)$ and $y_B(t(\tau))=F(\tau)\Theta(\tau)$
+by analytic continuation of the $q$-expansion identity, legitimate because
+$|t(iy)|<|t_c|$ throughout (Proposition~\ref{prop:whereisfold}); so the ratio
+is $\Theta(iy)$ and Lemma~\ref{lem:cuspvalue} gives \eqref{eq:Bexact}.
+Finally $h_0(t_c)\neq0$ because $F$ has weight $w=1>0$ and a nonzero constant
+term at the cusp $0$, so $F(iy)\asymp y^{-1}$, matching
+$\log(1-t/t_c)\asymp\log q_0=-2\pi/(Nhy)$.
+\end{proof}
+
+\begin{proof}[Proof, Fricke geometry ($r=3$)]
+Assume $\Phi|_{w+2}W_N=-\Phi$ and $F|_wW_N=-F$
+(Verification~\ref{ver:thmBexact}).  Then $\thq t=\Phi/F$ has $W_N$-eigenvalue
+$+1$ in weight $2$, i.e.\ $(dt/d\tau)(W_N\tau)\,dW_N\tau/d\tau=dt/d\tau$, so
+$t\circ W_N-t$ is constant; it vanishes at the fixed point $\tau_*=i/\sqrt N$,
+whence $t\circ W_N=t$.  Differentiating that at $\tau_*$, where
+$W_N'(\tau_*)=-1$, gives $t'(\tau_*)=0$, and $\Phi(\tau_*)=F(\tau_*)\thq t(\tau_*)=0$.
+
+Substituting $z=W_Nu$ in \eqref{eq:eichlerint} and using
+$W_N^{-1}(i\infty)=0$ gives the Eichler cocycle
+\begin{equation}\label{eq:cocycleW}
+j(W_N,\tau)^{w}\,\Theta(W_N\tau)=-\bigl(\Theta(\tau)-R(\tau)\bigr),
+\qquad j(W_N,\tau)=\sqrt N\tau .
+\end{equation}
+Since $t\circ W_N=t$ and $W_N$ is a holomorphic involution of $\mathbb H$
+fixing $\tau_*$, $W_N$ \emph{is} the local fold involution of
+Lemma~\ref{lem:fold}; that lemma therefore says that
+$H_{\xi}:=F\,(\Theta-\xi)$ has vanishing odd part at $\tau_*$ exactly for
+$\xi=\xi_\infty$, i.e.\ $H_{\xi_\infty}\circ W_N=H_{\xi_\infty}$ near $\tau_*$
+and hence on all of $\mathbb H$.  Substituting $F(W_N\tau)=-(\sqrt N\tau)^wF(\tau)$
+and \eqref{eq:cocycleW},
+\[
+H_\xi(W_N\tau)=F(\tau)\bigl[\Theta(\tau)-R(\tau)+\xi N\tau^2\bigr]
+\overset{!}{=}F(\tau)\bigl[\Theta(\tau)-\xi\bigr],
+\]
+so that
+\begin{equation}\label{eq:Rmultiple}
+R(\tau)=\xi_\infty\,\bigl(1+N\tau^2\bigr)=\xi_\infty N(\tau-\tau_*)(\tau+\tau_*).
+\end{equation}
+Comparing \eqref{eq:Rmultiple} with \eqref{eq:Rlowweight} the constant term
+gives $\xi_\infty=L(\Phi,3)$, as claimed.
+\end{proof}
+
+\begin{corollary}[forced period annihilation]\label{cor:forced}
+\Proved{} In the Fricke geometry, \eqref{eq:Rmultiple} forces the two
+identities
+\[
+L(\Phi,2)=0,\qquad L(\Phi,1)=-\frac{N}{2\pi^2}\,L(\Phi,3).
+\]
+\end{corollary}
+
+\noindent
+These are exactly the period annihilations that \S\ref{sec:hecke} manufactures
+by hand; here they are consequences of the fold being at an Atkin--Lehner fixed
+point, and both are confirmed to $10^{-58}$ for $\alpha,\gamma,\varepsilon,\zeta$
+(e.g.\ $\gamma$: $L(\Phi_\gamma,1)=2\zeta'(-2)=-\zeta(3)/(2\pi^2)$ and
+$NL(\Phi,3)/(2\pi^2)=6\cdot\tfrac{\zeta(3)}6/(2\pi^2)$).
+Equation~\eqref{eq:Rmultiple} is the general form of the ``pure CM value''
+mechanism of \eqref{eq:beta4CM}: the period polynomial is a multiple of a
+quadratic vanishing at the fixed point, so no $\pi$-power correction reaches
+the fold value.
+
+\begin{remark}[the $L(\Phi,1)$ term at weight three]\label{rem:Lphi1}
+For the second-order rows $L(\Phi,1)$ need \emph{not} vanish --- for $\mathbf F$
+it is $\pi/(8\sqrt3)$, as recorded in \texttt{consolidation/PADIC\_PERIOD.md}
+\S2 --- and it does not have to: by \eqref{eq:Rlowweight} it multiplies $\tau$,
+and the singular point of a second-order row is $\tau=0$.  The quasiperiod is
+present in the cocycle and absent from the limit.
+\end{remark}
+
+\subsubsection*{The criterion on the twelve-row table}
+
+\begin{table}[t]
+\caption{The endpoint criterion $\delta(\varphi)P(w+2)=0$ decides, without
+exception, which rows have a real Ap\'ery limit; $r_\infty=P(w+1)L(\varphi,0)$
+is the prefactor of Theorem~\ref{thm:Bexact}.
+\VerifiedR{exact $\Q$; \texttt{lattice/thmB\_exact/02\_cuspvalue.gp}}}
+\label{tab:thmBexact}
+\renewcommand{\arraystretch}{1.2}
+\small
+\begin{tabular}{@{}c c c c c c c@{}}
+\toprule
+fam & $r$ & $(\psi,\varphi)$ & $\delta(\varphi)P(w{+}2)$ & singular point &
+$r_\infty$ & $\xi_\infty=L(\Phi,w{+}1)$\\
+\midrule
+$\mathbf A$ & 2 & $(\mathbf 1,\chim3)$ & $0$ & cusp $0$ & $\tfrac14$ & $\zeta(2)/4$\\
+$\mathbf C$ & 2 & $(\chim3,\mathbf 1)$ & $0$ & cusp $0$ & $\tfrac12$ & $L(\chim3,2)/2$\\
+$\mathbf D$ & 2 & $(\mathbf 1,\nu)$ & $0$ & cusp $0$ & $\tfrac15$ & $\zeta(2)/5$\\
+$\mathbf E$ & 2 & $(\chim4,\mathbf 1)$ & $0$ & cusp $0$ & $\tfrac12$ & $G/2$\\
+$\mathbf F$ & 2 & $(\chim3,\mathbf 1)$ & $0$ & cusp $0$ & $\tfrac58$ & $5L(\chim3,2)/8$\\
+$\alpha$ & 3 & $(\mathbf 1,\mathbf 1)$ & $0$ & $i/\sqrt{12}$ & $\tfrac7{24}$ & $7\zeta(3)/24$\\
+$\gamma$ & 3 & $(\mathbf 1,\mathbf 1)$ & $0$ & $i/\sqrt6$ & $\tfrac16$ & $\zeta(3)/6$\\
+$\varepsilon$ & 3 & $(\mathbf 1,\mathbf 1)$ & $0$ & $i/\sqrt8$ & $\tfrac7{32}$ & $7\zeta(3)/32$\\
+$\zeta$ & 3 & $(\chim3,\chim3)$ & $0$ & $i/3$ & $\tfrac13$ & $L(\chim3,3)/3$\\[2pt]
+$\mathbf B$ & 2 & $(\chim3,\mathbf 1)$ & $\tfrac18$ & cusp $1/6$ (complex $t_c$) & --- & ---\\
+$\delta$ & 3 & $(\mathbf 1,\mathbf 1)$ & $\tfrac5{27}$ & $(1+i\sqrt2)/6$ & --- & ---\\
+$\eta$ & 3 & $(\chi_5,\mathbf 1)$ & $\tfrac1{16}$ & $(1+2i)/10$ & --- & ---\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{verification}[Theorem~\ref{thm:Bexact} on the nine rows]\label{ver:thmBexact}
+\VerifiedR{$\ge10^{-96}$ from the recurrence; $\ge10^{-60}$ on the modular
+side; \texttt{lattice/thmB\_exact/}}
+\emph{(a)} $A_n,B_n$ generated exactly over $\Q$ to $n=2600$ give
+$\xi_{2600}-L(\Phi,w+1)=0$ to $10^{-96}$ for all nine rows --- nothing modular
+enters the left-hand side.
+\emph{(b)} Direct summation of $\Theta(iy)$ at $y=4\cdot10^{-3},2\cdot10^{-3},
+10^{-3}$ with Richardson extrapolation in $y$ reproduces $L(\Phi,w+1)$ to
+$10^{-70}$ (to $10^{-60}$ for $\mathbf F$, $10^{-62}$ for $\alpha$), and
+\emph{diverges} for $\mathbf B,\delta,\eta$, as Lemma~\ref{lem:endpoint}
+predicts.
+\emph{(c)} For $\alpha,\gamma,\varepsilon,\zeta$: $\Phi|_4W_N=-\Phi$,
+$F|_2W_N=-F$, $t\circ W_N=t$ to $10^{-70}$ at three test points each;
+$t(\tau_*)=t_c$, $t'(q_c)=0$, $\Phi(q_c)=0$ to $10^{-76}$; and
+$\Theta(q_c)+F(q_c)\Theta'(q_c)/F'(q_c)=L(\Phi,3)$ to $10^{-77}$.
+Corollary~\ref{cor:forced} holds to $10^{-58}$.
+The pair $(t,F)$ is constructed from the recurrence alone (Frobenius, nome,
+series reversion), so Theorem~\ref{thm:A} is re-certified coefficientwise to
+$q^{900}$ as a by-product.
+\end{verification}
+
+\subsubsection*{The three complex folds}
+
+The endpoint condition fails for exactly $\mathbf B,\delta,\eta$.  Their folds
+are still CM points, but they lie \emph{on} the Fricke circle
+$|\tau|=1/\sqrt N$ rather than at its centre $i/\sqrt N$, so $W_N$ exchanges
+the two folds over the two conjugate roots of $P_r$ instead of fixing one; that
+is why $L(\Phi,2)\neq0$ there and why \eqref{eq:Rmultiple} is unavailable.
+
+\begin{verification}[the complex connection constants]\label{ver:complexexact}
+\VerifiedR{$10^{-94}$ for $\delta,\eta$; $10^{-55}$ for $\mathbf B$;
+\texttt{lattice/thmB\_exact/04\_complex\_folds.gp}}
+The folds are $\tau_*=(1+i\sqrt2)/6$ for $\delta$ (level $12$, $12\tau^2-4\tau+1=0$,
+disc $-32$), $\tau_*=(1+2i)/10$ for $\eta$ (level $20$, $20\tau^2-4\tau+1=0$,
+disc $-64$), and the cusp $1/6$ of $\Gamma_0(36)$ for $\mathbf B$.  There
+\[
+\xi_\delta=\tfrac{13}{54}\zeta(3)+i\,\tfrac{\pi^3}{81},\qquad
+\xi_\eta=\tfrac12L(\chi_5,3)+i\,\tfrac{\pi}{10}L(\chi_5,2),\qquad
+\xi_{\mathbf B}=\tfrac12L(\chim3,2)+i\,\tfrac{2\pi^2}{27\sqrt3}.
+\]
+\end{verification}
+
+\begin{remark}[what the complex folds say]\label{rem:complexfold2}
+In all three rows $\operatorname{Re}\xi=L(\Phi,w+1)$ \emph{exactly}: the
+archimedean formula $-\tfrac12P(w+1)\Lambda$ of \eqref{eq:Bexact} does predict
+the complex-fold constants, but only their real part, the imaginary part being
+a quasiperiod $\operatorname{Im}\xi\in\pi\Q\cdot L(\psi,w)$
+($\tfrac2{27}\pi\zeta(2)$, $\tfrac1{10}\pi L(\chi_5,2)$,
+$\tfrac29\pi L(\chim3,1)$ respectively).  This supersedes
+Remark~\ref{rem:complexfold}: a rational relation over the natural $L$-value
+basis \emph{does} exist, and Problem~$\Phi$-1 is answered for $\delta$.  The
+earlier report of $39$ and $33$ correct digits was too optimistic --- those
+values agree with the above only to $13$ and $9$ digits --- which is why the
+\texttt{PSLQ} search over an otherwise adequate basis returned nothing.  A
+uniform closed form for the rational factor in $\operatorname{Im}\xi$ is
+\Open{}.
+\end{remark}
