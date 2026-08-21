@@ -14,3 +14,5 @@
 [1346s] 3075/3752 N=36 solves=43130 hits=0
 [1497s] 3300/3752 N=36 solves=47630 hits=0
 [1631s] 3525/3752 N=42 solves=52450 hits=0
+[1684s] 3750/3752 N=100 solves=54725 hits=0
+DONE solves=54725 hits=0 time=1684s

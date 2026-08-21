@@ -55,8 +55,8 @@ of `EULER_CRITERION.md` §4.1.  Scripts: `lattice/sources_s18_zud/`
    claimed in that paper is **invalid as written**: we exhibit the failure explicitly
    ($p_m(\tfrac12-m)/Q_m$ has $v_2$ of successive differences $\equiv4$, i.e. it does
    **not** converge $2$-adically, while $P_m/Q_m$ converges at slope $8$).  §6.4.
-   $\xi_2^{\rm Zud}=\zeta_2(2)=2\,\xi_2^{\mathbf E}$ is re-verified to $2^{398}$, but
-   remains **numerical**. **Open.**
+   $\xi_2^{\rm Zud}=\zeta_2(2)=2\,\xi_2^{\mathbf E}$ is re-verified to $2^{398}$.
+   ~~remains **numerical**. **Open.**~~ **CLOSED — proved in `ZUDILIN_2ADIC.md`** (§6.3–§6.5 below are superseded).
 7. **Normalisation, settled by Beukers himself.**  There is no $p$-adic Catalan
    constant: $L_2(2,\chi_{-4})\equiv0$ (odd character), and Calegari's "$2$-adic
    Catalan constant" *is* $\zeta_2(2)$.  This confirms the convention already used in
@@ -317,6 +317,14 @@ $$q_n(-n)=1,3,19,147,1251,11253,\dots=\text{Apéry }\zeta(2),\qquad
 \boxed{\ q_n(-n+\tfrac12)=Q_n\ }\ (n=0,\dots,10,\ \text{exact}),$$
 $Q_n=1,\tfrac74,\tfrac{649}{64},\tfrac{19471}{256},\dots$.  So the 5:8 paper's
 identification is **true for the denominator sequence**.
+
+
+> **SUPERSEDED (see `ZUDILIN_2ADIC.md`).** $\xi_2^{\rm Zud}=\zeta_2(2)$ is now **proved**.
+> The correction missing below is the exact identity
+> $P_m=\tfrac{(-1)^m}8p_m(\tfrac12-m)+G_mq_m(\tfrac12-m)$, $G_m=\sum_{j\le m}\frac{(-1)^{j-1}}{(2j-1)^2}$;
+> the moving target drifts by exactly $8(-1)^{m+1}G_m$, which $P_m$ already carries.
+> Also proved there: $v_2(Q_m)=-4m+2s_2(m)$ and $v_2(\zeta_2(2)-P_m/Q_m)=8m-1-4s_2(m)$.
+> The verdicts of §1–§5 (no modular source for the Zudilin row, the $s_{18}$ analysis) are unaffected.
 
 ### 6.3 …but not for the numerators
 $P_n\ne p_n(-n+\tfrac12)$: e.g. $p_1=1$ vs $P_1=\tfrac{13}8$; $p_2(-\tfrac32)=\tfrac{35}{16}$ vs
