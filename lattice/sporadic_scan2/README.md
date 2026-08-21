@@ -16,7 +16,7 @@ the report for the exact command sequence.
 | `verify.py` | exact recomputation: $a_n$, minimal $(r,D)$ recurrence over $\mathbf Q$ verified to $n=200$, $\lambda_i$, $c$, both companions (Eichler $B=F D^{-(w+1)}(F\,Dt)$ and the census $b_0{=}0,b_1{=}1$ solution), sharp $k$, slopes $\sigma_p$, Apéry limit to hundreds of digits → `rows*.jsonl` |
 | `dedup.py` | de-duplicates by $a_n$ (up to $(-1)^n$), flags the census rows, ranks → `table.json`, `limits.txt` |
 | `ident.gp`, `identlib.gp` | `lindep` against constants and against $L(f,s)$ for every newform of weight $w+2$ at every level dividing $M$ or $2M,3M,4M$ → `ident.out` |
-| `make_report.py` | → `table.md` |
+| `build_tables.py`, `fmt_period.py` | → `table.md` (all 85 rows) and `top_table.md` (top by budget, $k\ge1$); identifications are re-keyed by the canonical $a_n$ via `table_prev.json`, so they survive a re-run of `dedup.py` |
 | **`sym1.py`** | **Part II**: power-series square root of each order-three sporadic row, minimal integralising scale $\lambda$, refitted recurrence, $k$, score, budget, limit → `sym1.json` |
 | **`family_scan.py`** | **Part II**: independent Zagier-style integrality sweep of the normalisation $(n+1)^2a_{n+1}=(An^2+\tfrac A2n+B)a_n-C(2n-1)^2a_{n-1}$ → `family_hits.json` |
 | `sym1_limits.py`, `ident_sym1.gp` | high-precision limits and identification for the $\operatorname{Sym}^1$ rows |

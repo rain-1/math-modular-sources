@@ -1,0 +1,46 @@
+\section{Square roots of the sporadic rows, and an irrationality theorem}\label{sec:sqrt}
+
+Each third-order sporadic operator is the symmetric square of a second-order operator (Section~\ref{sec:sources}, \cite{ProjAnchors}). The second-order operator has its own Ap\'ery row: if $F=\sum A_nt^n$ is the weight-two form of a third-order family, then $f=\sqrt F$ solves the second-order operator, and its coefficient sequence---after a $2$-power rescaling---is integral.
+
+\begin{theorem}[integrality of square roots]\label{thm:sqrt-int}
+\Proved{} For every $G\in1+x\mathbb Z[[x]]$ one has $4^n[x^n]\sqrt G\in\mathbb Z$. More precisely, if $e=\min_{n\ge1}v_2([x^n]G)$ then $\lambda^n[x^n]\sqrt G\in\mathbb Z$ with $\lambda=\max(1,2^{2-e})$.
+\end{theorem}
+\begin{proof}
+$4^k\binom{1/2}{k}=(-1)^{k-1}\,2\,C_{k-1}$ with $C_j$ the Catalan numbers, so in $\sqrt G=\sum_k\binom{1/2}{k}(G-1)^k$ the coefficient of $x^n$ has $2$-adic denominator at most $4^k$ with $k\le n$. The graded form follows by tracking the $2$-adic valuation of $(G-1)^k$.
+\end{proof}
+
+Applied to the nine third-order families this produces nine integral second-order rows with $\lambda\in\{1,2,4\}$ (\cite{ProjSporadicSearch}; exact for all nine, including Cooper's). They cost $k=2$ instead of $k=3$: this is Cooper's free integration, made general. For Domb, $\varepsilon$ and $s_7$ the weight-one form $f$ is a congruence CM theta series, and the period is $L(g,2)$ for the corresponding weight-three CM newform $g$ \VerifiedR{60 digits}. For Ap\'ery's own row the situation is different and better.
+
+\subsection{The square root of Ap\'ery's row}
+Let $A_n=\sum_k\binom nk^2\binom{n+k}k^2$, $F=\sum A_nt^n=(\eta_2\eta_3)^7/(\eta_1\eta_6)^5$, $t=(\eta_1\eta_6/\eta_2\eta_3)^{12}$, $u=t/4$, and
+\[
+a_n:=4^n[t^n]\sqrt{F}=1,\ 10,\ 534,\ 40900,\ 3672550,\ \dots
+\]
+Since $F$ has odd eta exponents, $f=\sqrt F$ is a weight-one form on a non-congruence index-two subgroup of $\Gamma_0(6)$; its $q$-expansion has unbounded $2$-power denominators, as it must \cite{CDT2024}. The rescaling $u=t/4$ absorbs them exactly.
+
+\begin{proposition}\label{prop:sqrt-rec}
+\Proved{} $f$ satisfies $L_1=\theta^2-u(136\theta^2+68\theta+10)+16u^2(\theta+\tfrac12)^2$, whose symmetric square is Ap\'ery's operator \textup{(}exact symbolic identity over $\mathbb Q(u)$\textup{)}; equivalently
+\[
+(n+1)^2a_{n+1}=(136n^2+68n+10)\,a_n-4(2n-1)^2a_{n-1},
+\]
+with characteristic roots $\lambda_{1,2}=4(17\pm12\sqrt2)=4(1\pm\sqrt2)^4$. Let $b_n$ be the solution with $b_0=0$, $b_1=1$. Then $B(u)=\sum b_nu^n$ is the analytic solution of the \emph{inhomogeneous} equation $L_1B=u$, and
+\[
+b_n=4^n[t^n]\bigl(f\cdot\theta_q^{-2}\Psi\bigr),\qquad \Psi:=f^3\,\frac t4=\frac14\,\frac{(\eta_1\eta_6)^{9/2}}{(\eta_2\eta_3)^{3/2}}\in q\,\mathbb Q[[q]] .
+\]
+\end{proposition}
+\begin{proof}
+The Wronskian of $\{f,f\log q\}$ in $u$ is $1/(u\sqrt{P})$, $P=16u^2-136u+1$, by the classical relation $\theta_qt=tF\sqrt{1-34t+t^2}$; variation of parameters for $L_1Y=u$ gives $Y=f\int_0^uf(u')\,(\log q(u)-\log q(u'))\,du'/\sqrt{P(u')}$, and the change of variable to $q'$ turns this into $f\cdot\theta_q^{-2}(f^3t/4)$; $Y$ is analytic with $Y=u+O(u^2)$, hence $Y=B$. (Verified exactly for $n\le256$.)
+\end{proof}
+
+\begin{theorem}[irrationality of the square-root period]\label{thm:sqrt-irr}
+\Proved{} Let $\xi=\lim_nb_n/a_n=0.10018744922933940616775868213306112163\ldots$ Then $\xi\notin\mathbb Q$, and $\mu(\xi)\le50.66$.
+\end{theorem}
+\begin{proof}
+(i) $a_n\in\mathbb Z$ by Theorem~\ref{thm:sqrt-int}. (ii) $d_n^2b_n\in\mathbb Z$: write $\Psi=\sum\psi(m)q^m$; then $4^m\psi(m)\in\mathbb Z$ (Theorem~\ref{thm:sqrt-int} applied to $f$, and $Ft\in q\mathbb Z[[q]]$); and $e_{n,m}:=4^n[t^n](fq^m)$ is an integer divisible by $4^m$ (since $q\in t\mathbb Z[[t]]$ and $4^i[t^i]f=a_i$). Hence $d_n^2b_n=\sum_{m\le n}(d_n^2/m^2)(4^m\psi(m))(e_{n,m}/4^m)\in\mathbb Z$. (iii) The Casoratian is $a_nb_{n-1}-a_{n-1}b_n=-C_{n-1}^2$ exactly, so $a_n\xi-b_n=a_n\sum_{m\ge n}C_m^2/(a_ma_{m+1})>0$ and, by Poincar\'e's theorem and $a_n\ge10a_{n-1}$, $\limsup|a_n\xi-b_n|^{1/n}\le\lambda_2=4(17-12\sqrt2)$. (iv) $e^2\lambda_2=0.8702<1$, so $d_n^2|a_n\xi-b_n|\to0$ through nonzero values: $\xi\notin\mathbb Q$. The measure follows from $\log\lambda_1=4.8752$ and $\log(1/\lambda_2)-2=0.1392$.
+\end{proof}
+
+\begin{theorem}[the period]\label{thm:sqrt-period}
+$\xi=L(\Psi,2)$, where $L(\Psi,s)=\sum_m\psi(m)m^{-s}$ is the $L$-function of the weight-three eta quotient $\Psi=\tfrac14(\eta_1\eta_6)^{9/2}(\eta_2\eta_3)^{-3/2}$. \Proved{} modulo the transposition of the Fricke-geometry case of Theorem~B$^*$ to this non-congruence form: the functional equation under $W_6$ follows from $\eta(-1/z)=\sqrt{-iz}\,\eta(z)$ applied to $\eta_1\eta_6$ and $\eta_2\eta_3$ \textup{(}proved\textup{)}, the fold is $i/\sqrt6$ with $t(i/\sqrt6)=(\sqrt2-1)^4$, and the folded Mellin integral gives $L(\Psi,2)-\xi=2\cdot10^{-97}$ \VerifiedR{97 digits}.
+\end{theorem}
+
+$\Psi$ has unbounded denominators, so it is a non-congruence form and $\xi$ is not expected to be a classical $L$-value; an extensive search (95 structured constants including CM periods, 260 digits; \texttt{algdep} to degree 10) finds none. Theorem~\ref{thm:sqrt-irr} is, as far as we know, the first irrationality result for a critical value of a non-congruence modular form. Its mechanism is worth stating plainly: Ap\'ery's sequence is the symmetric square of a non-congruence sequence, and the square root has the \emph{same} archimedean geometry ($\lambda_1\lambda_2=16$, fold at the Fricke point) with one integration fewer, $k=2$; the score drops from $+0.525$ to $+0.139$ only because $\lambda_2$ is the square root of Ap\'ery's.

@@ -294,39 +294,42 @@ complex-conjugate leading roots (no archimedean limit).
 
 | # | $N$ | $M,\chi,w$ | $t$ | $\deg t$ | rec | $\lambda_1$ | $\lambda_2$ | $c$ | $k$ | $\sigma_p$ | score | budget | $a_n$ | period |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 4 | 2 | $2,1,2$ | $\eta_{2}^{24}/\eta_{1}^{24}$ | 1 | $(4,3)$ | 64.0003 | 64.0003 | -262144 | 2 | $\sigma_{2}{=}6$ | -- | **2.159** | $1,24,-552,19392,-810024$ | unidentified |
-| 8 | 3 | $3,1,2$ | $\eta_{3}^{12}/\eta_{1}^{12}$ | 1 | $(4,3)$ | 27.0001 | 26.9999 | -19683 | 2 | $\sigma_{3}{=}3$ | -5.296 | **1.296** | $1,12,-108,1524,-25884$ | unidentified |
-| 9 | 8 | $8,3,1$ | $\eta_{1}^{8}\eta_{8}^{8}/\eta_{2}^{8}\eta_{4}^{8}$ | 2 | $(3,2)$ | 23.3137 | 0.6863 | 16 | 2 | -- | -1.624 | **1.149** | $1,2,18,236,3634$ | L(f_8w3c3n1e1,2) |
-| 10 | 6 | $6,5,1$ | $\eta_{2}^{6}\eta_{6}^{6}/\eta_{1}^{6}\eta_{3}^{6}$ | 2 | $(4,2)$ | 16.0000 | 16.0000 | -1024 | 2 | $\sigma_{2}{=}4$ | -- | **0.773** | $1,6,-36,312,-3210$ | unidentified |
-| 11 | 4 | $16,15,1$ | $\eta_{4}^{8}/\eta_{1}^{8}$ | 1 | $(3,2)$ | 16.0000 | 16.0000 | 256 | 2 | $\sigma_{2}{=}2$ | -4.773 | **0.773** | $1,0,-4,64,-924$ | unidentified |
-| 12 | 6 | $12,5,1$ | $\eta_{2}^{6}\eta_{6}^{6}/\eta_{1}^{6}\eta_{3}^{6}$ | 2 | $(3,2)$ | 16.0000 | 4.0000 | 64 | 2 | $\sigma_{2}{=}2$ | -3.386 | **0.773** | $1,-2,12,-104,1078$ | L(f,2) weight-3 cusp row (Domb curve) ; L(f_12w3c5n1e1,2) |
+| 4 | 2 | $2,1,2$ | $\eta_{2}^{24}/\eta_{1}^{24}$ | 1 | $(4,3)$ | 64.0003 | 64.0003 | -262144 | 2 | $\sigma_{2}{=}6$ | -- | **2.159** | $1,24,-552,19392,-810024$ | -- |
+| 8 | 3 | $3,1,2$ | $\eta_{3}^{12}/\eta_{1}^{12}$ | 1 | $(4,3)$ | 27.0001 | 26.9999 | -19683 | 2 | $\sigma_{3}{=}3$ | -5.296 | **1.296** | $1,12,-108,1524,-25884$ | -- |
+| 9 | 8 | $8,3,1$ | $\eta_{1}^{8}\eta_{8}^{8}/\eta_{2}^{8}\eta_{4}^{8}$ | 2 | $(3,2)$ | 23.3137 | 0.6863 | 16 | 2 | -- | -1.624 | **1.149** | $1,2,18,236,3634$ | $L(f_{8,3,\chi_{3}},2)$ |
+| 10 | 6 | $6,5,1$ | $\eta_{2}^{6}\eta_{6}^{6}/\eta_{1}^{6}\eta_{3}^{6}$ | 2 | $(4,2)$ | 16.0000 | 16.0000 | -1024 | 2 | $\sigma_{2}{=}4$ | -- | **0.773** | $1,6,-36,312,-3210$ | -- |
+| 11 | 4 | $16,15,1$ | $\eta_{4}^{8}/\eta_{1}^{8}$ | 1 | $(3,2)$ | 16.0000 | 16.0000 | 256 | 2 | $\sigma_{2}{=}2$ | -4.773 | **0.773** | $1,0,-4,64,-924$ | -- |
+| 12 | 6 | $12,5,1$ | $\eta_{2}^{6}\eta_{6}^{6}/\eta_{1}^{6}\eta_{3}^{6}$ | 2 | $(3,2)$ | 16.0000 | 4.0000 | 64 | 2 | $\sigma_{2}{=}2$ | -3.386 | **0.773** | $1,-2,12,-104,1078$ | **scan-1 $L(f,2)$ row**, $-L(f_{12,3,\chi_{5}},2)$ |
 | 13 | 12 | $12,5,1$ | $\eta_{1}^{5}\eta_{3}^{1}\eta_{4}^{1}\eta_{12}^{5}/\eta_{2}^{6}\eta_{6}^{6}$ | 2 | $(4,2)$ | 14.9282 | 1.0718 | 16 | 2 | $\sigma_{2}{=}1$ | -2.069 | **0.703** | $1,2,10,80,778$ | unidentified |
 | 14 | 12 | $12,5,1$ | $\eta_{2}^{12}\eta_{3}^{4}\eta_{12}^{8}/\eta_{1}^{4}\eta_{4}^{8}\eta_{6}^{12}$ | 2 | $(4,2)$ | 13.9282 | 1.0000 | 1 | 2 | -- | -2.000 | **0.634** | $1,-1,7,-55,511$ | unidentified |
 | 15 | 12 | $12,5,1$ | $\eta_{2}^{12}\eta_{3}^{4}\eta_{12}^{8}/\eta_{1}^{4}\eta_{4}^{8}\eta_{6}^{12}$ | 2 | $(5,2)$ | 13.9282 | 1.0000 | 1 | 2 | -- | -2.000 | **0.634** | $1,-2,8,-62,566$ | unidentified |
-| 16 | 6 | $6,1,2$ | $\eta_{1}^{12}\eta_{6}^{12}/\eta_{2}^{12}\eta_{3}^{12}$ | 2 | $(3,3)$ | 33.9706 | 0.0294 | 1 | 3 | -- | 0.525 | **0.525** | $1,5,73,1445,33001$ | Apery (17,5,1) zeta(3)/6 ; zeta(3))/-6 |
+| 16 | 6 | $6,1,2$ | $\eta_{1}^{12}\eta_{6}^{12}/\eta_{2}^{12}\eta_{3}^{12}$ | 2 | $(3,3)$ | 33.9706 | 0.0294 | 1 | 3 | -- | 0.525 | **0.525** | $1,5,73,1445,33001$ | **Apéry**, $\tfrac{1}{6}\zeta(3)$ |
 | 17 | 16 | $16,15,1$ | $\eta_{1}^{4}\eta_{4}^{4}\eta_{16}^{4}/\eta_{2}^{6}\eta_{8}^{6}$ | 2 | $(4,2)$ | 11.6569 | 2.0000 | 8 | 2 | $\sigma_{2}{=}1$ | -2.693 | 0.456 | $1,2,8,48,356$ | unidentified |
 | 18 | 16 | $16,15,1$ | $\eta_{1}^{4}\eta_{4}^{4}\eta_{16}^{4}/\eta_{2}^{6}\eta_{8}^{6}$ | 2 | $(5,2)$ | 11.6569 | 2.0000 | 16 | 2 | $\sigma_{2}{=}1$ | -2.693 | 0.456 | $1,0,4,32,260$ | unidentified |
 | 19 | 15 | $15,14,1$ | $\eta_{1}^{3}\eta_{15}^{3}/\eta_{3}^{3}\eta_{5}^{3}$ | 2 | $(5,2)$ | 11.0902 | 1.6180 | 1 | 2 | -- | -2.481 | 0.406 | $1,1,5,31,229$ | unidentified |
-| 20 | 10 | $40,39,1$ | $\eta_{2}^{4}\eta_{10}^{4}/\eta_{1}^{4}\eta_{5}^{4}$ | 2 | $(4,2)$ | 10.4721 | 4.0000 | -64 | 2 | -- | -3.386 | 0.349 | $1,-2,8,-44,290$ | unidentified |
+| 20 | 10 | $40,39,1$ | $\eta_{2}^{4}\eta_{10}^{4}/\eta_{1}^{4}\eta_{5}^{4}$ | 2 | $(4,2)$ | 10.4721 | 4.0000 | -64 | 2 | -- | -3.386 | 0.349 | $1,-2,8,-44,290$ | $L(f_{20,3,\chi_{19}},2) - L(f_{20,3,\chi_{19}}^{[2.1]},2)$ |
 | 21 | 10 | $40,39,1$ | $\eta_{2}^{4}\eta_{10}^{4}/\eta_{1}^{4}\eta_{5}^{4}$ | 2 | $(5,2)$ | 10.4721 | 4.0000 | 256 | 2 | -- | -3.386 | 0.349 | $1,0,2,-20,168$ | unidentified |
-| 22 | 3 | $9,1,2$ | $\eta_{3}^{12}/\eta_{1}^{12}$ | 1 | $(4,3)$ | 27.0001 | 26.9999 | -19683 | 3 | $\sigma_{3}{=}2$ | -6.296 | 0.296 | $1,3,-54,1038,-21375$ | unidentified |
-| 23 | 3 | $9,1,2$ | $\eta_{3}^{12}/\eta_{1}^{12}$ | 1 | $(3,3)$ | 27.0000 | 27.0000 | 729 | 3 | $\sigma_{3}{=}2$ | -6.296 | 0.296 | $1,-6,81,-1392,26874$ | unidentified |
+| 22 | 3 | $9,1,2$ | $\eta_{3}^{12}/\eta_{1}^{12}$ | 1 | $(4,3)$ | 27.0001 | 26.9999 | -19683 | 3 | $\sigma_{3}{=}2$ | -6.296 | 0.296 | $1,3,-54,1038,-21375$ | -- |
+| 23 | 3 | $9,1,2$ | $\eta_{3}^{12}/\eta_{1}^{12}$ | 1 | $(3,3)$ | 27.0000 | 27.0000 | 729 | 3 | $\sigma_{3}{=}2$ | -6.296 | 0.296 | $1,-6,81,-1392,26874$ | -- |
 | 24 | 16 | $16,15,1$ | $\eta_{1}^{2}\eta_{2}^{3}\eta_{8}^{3}\eta_{16}^{2}/\eta_{4}^{10}$ | 2 | $(5,2)$ | 9.6569 | 2.0000 | -64 | 2 | $\sigma_{2}{=}1$ | -2.693 | 0.268 | $1,2,4,24,148$ | unidentified |
 | 25 | 16 | $16,15,1$ | $\eta_{2}^{9}\eta_{8}^{3}\eta_{16}^{2}/\eta_{1}^{2}\eta_{4}^{12}$ | 2 | $(4,2)$ | 9.6569 | 2.0000 | -32 | 2 | $\sigma_{2}{=}2$ | -2.693 | 0.268 | $1,0,4,-16,116$ | unidentified |
-| 26 | 6 | $6,5,1$ | $\eta_{2}^{1}\eta_{6}^{5}/\eta_{1}^{5}\eta_{3}^{1}$ | 1 | $(4,2)$ | 9.0000 | 9.0000 | -648 | 2 | $\sigma_{3}{=}2$ | -4.197 | 0.197 | $1,3,-12,66,-414$ | unidentified |
-| 27 | 6 | $24,7,1$ | $\eta_{1}^{4}\eta_{6}^{8}/\eta_{2}^{8}\eta_{3}^{4}$ | 1 | $(5,2)$ | 9.0000 | 9.0000 | 81 | 2 | -- | -4.197 | 0.197 | $1,-4,-12,-56,-316$ | unidentified |
-| 28 | 6 | $6,5,1$ | $\eta_{1}^{4}\eta_{6}^{8}/\eta_{2}^{8}\eta_{3}^{4}$ | 1 | $(4,2)$ | 9.0000 | 9.0000 | 81 | 2 | $\sigma_{3}{=}2$ | -4.197 | 0.197 | $1,-6,-12,-42,-198$ | unidentified |
-| 29 | 6 | $6,5,1$ | $\eta_{2}^{1}\eta_{6}^{5}/\eta_{1}^{5}\eta_{3}^{1}$ | 1 | $(4,2)$ | 9.0000 | 8.0000 | -576 | 2 | $\sigma_{2}{=}3$ | -4.079 | 0.197 | $1,2,-6,24,-102$ | unidentified |
+| 26 | 6 | $6,5,1$ | $\eta_{2}^{1}\eta_{6}^{5}/\eta_{1}^{5}\eta_{3}^{1}$ | 1 | $(4,2)$ | 9.0000 | 9.0000 | -648 | 2 | $\sigma_{3}{=}2$ | -4.197 | 0.197 | $1,3,-12,66,-414$ | -- |
+| 27 | 6 | $24,7,1$ | $\eta_{1}^{4}\eta_{6}^{8}/\eta_{2}^{8}\eta_{3}^{4}$ | 1 | $(5,2)$ | 9.0000 | 9.0000 | 81 | 2 | -- | -4.197 | 0.197 | $1,-4,-12,-56,-316$ | -- |
+| 28 | 6 | $6,5,1$ | $\eta_{1}^{4}\eta_{6}^{8}/\eta_{2}^{8}\eta_{3}^{4}$ | 1 | $(4,2)$ | 9.0000 | 9.0000 | 81 | 2 | $\sigma_{3}{=}2$ | -4.197 | 0.197 | $1,-6,-12,-42,-198$ | -- |
+| 29 | 6 | $6,5,1$ | $\eta_{2}^{1}\eta_{6}^{5}/\eta_{1}^{5}\eta_{3}^{1}$ | 1 | $(4,2)$ | 9.0000 | 8.0000 | -576 | 2 | $\sigma_{2}{=}3$ | -4.079 | 0.197 | $1,2,-6,24,-102$ | $1/2 + \tfrac{3}{4}\zeta(2)$ |
 | 30 | 6 | $24,7,1$ | $\eta_{2}^{1}\eta_{6}^{5}/\eta_{1}^{5}\eta_{3}^{1}$ | 1 | $(4,2)$ | 9.0000 | 8.0000 | -576 | 2 | -- | -4.079 | 0.197 | $1,0,0,-4,60$ | unidentified |
 | 31 | 6 | $24,7,1$ | $\eta_{2}^{1}\eta_{6}^{5}/\eta_{1}^{5}\eta_{3}^{1}$ | 1 | $(4,2)$ | 9.0000 | 8.0000 | -576 | 2 | -- | -4.079 | 0.197 | $1,-4,24,-164,1196$ | unidentified |
-| 32 | 9 | $9,8,1$ | $\eta_{9}^{3}/\eta_{1}^{3}$ | 1 | $(5,2)$ | 9.0000 | 9.0000 | 2187 | 2 | $\sigma_{3}{=}2$ | -- | 0.197 | $1,6,-18,60,-180$ | unidentified |
+| 32 | 9 | $9,8,1$ | $\eta_{9}^{3}/\eta_{1}^{3}$ | 1 | $(5,2)$ | 9.0000 | 9.0000 | 2187 | 2 | $\sigma_{3}{=}2$ | -- | 0.197 | $1,6,-18,60,-180$ | -- |
+| 33 | 6 | $6,5,1$ | $\eta_{1}^{4}\eta_{6}^{8}/\eta_{2}^{8}\eta_{3}^{4}$ | 1 | $(5,2)$ | 9.0000 | 3.0000 | 81 | 2 | $\sigma_{3}{=}1$ | -3.099 | 0.197 | $1,0,6,48,360$ | unidentified |
+| 34 | 6 | $6,5,1$ | $\eta_{1}^{4}\eta_{6}^{8}/\eta_{2}^{8}\eta_{3}^{4}$ | 1 | $(4,2)$ | 9.0000 | 1.0000 | 9 | 2 | -- | -2.000 | 0.197 | $1,2,12,78,546$ | $1/2 - \tfrac{1}{4}\zeta(2)$ |
 
-*Period column status.* `ident.gp` was run on all $35$ rows whose limit is known to
-$\ge20$ significant digits; it completed the top $19$ within the session (the per-level
-cusp-form bases at $M=40$ and above are the slow step) and was still running on the
-remaining low-budget rows when this was written. Re-running `gp -q ident.gp` extends
-`ident.out`; `make_report.py` re-keys identifications by the canonical $a_n$, so the table
-can be regenerated without re-running anything else.
+*Period column.* `ident.gp` ran to completion on all $34$ rows whose limit is known to
+$\ge20$ significant digits: `lindep` against $17$ constants and, per row, against
+$L(f,s)$ for every newform of weight $w+2$ at every level dividing $M$ or equal to
+$2M,3M,4M$ — singly, and in pairs with a constant. "--" means the row has too few reliable
+digits (equal or complex-conjugate leading roots); "unidentified" means the search ran and
+found nothing. `build_tables.py` re-keys identifications by the canonical $a_n$, so the
+table survives a re-run of `dedup.py`.
 
 Reading the table:
 
@@ -337,7 +340,13 @@ Reading the table:
 * **Row 9 is the only row in the whole scan that is simultaneously new, has $k=2$, has
   $|\lambda_2|<1$, and has an identified cusp-form period.** It is §4's object.
 * Rows 13–15, 17–19 (levels $12,15,16$) are weight-one rows over Atkin–Lehner quotients with
-  budgets $0.4$–$0.7$ whose periods `lindep` does not identify.
+  budgets $0.4$–$0.7$ whose periods `lindep` does not identify. Row 20 ($N=10$, $M=40$) is
+  identified as a **difference of two level-$20$ weight-three newform $L$-values**, which is
+  the expected shape when the associated weight-$(w{+}2)$ form is not itself an eigenform —
+  further evidence that the family's periods live in $L(S_{w+2},w{+}1)$.
+* Row 56 of the full table ($N=14$, the Fricke quotient of $X_0(14)$, $w=1$) has period
+  $-\tfrac18-\tfrac9{16}L(f_7,2)$ with $f_7=\eta_1^3\eta_7^3\in S_3(\Gamma_0(7),\chi_{-7})$
+  — the discriminant $-7$ member of the CM family of §7.
 * Every row with an identified period and $k\ge2$ carries either a Dirichlet $L$-value
   ($\zeta(2)/4$, $L(2,\chi_{-3})/2$, $5L(2,\chi_{-3})/8$, $G/2$, $L(3,\chi_{-3})/3$), a
   $\zeta(3)$ value ($\zeta(3)/6$, $7\zeta(3)/24$, $7\zeta(3)/32$) or a weight-three CM
@@ -581,7 +590,7 @@ python3 scan2.py --degmax 2 --levcap 4 --nshard 8 --shard $i --out hitsA
 python3 verify.py --hits 'hitsA_*.jsonl' --out rowsA_$i.jsonl
 python3 dedup.py --rows rowsA_*.jsonl rowsB_*.jsonl rowsC_*.jsonl
 gp -q ident.gp                          # periods -> ident.out
-python3 make_report.py                  # -> table.md
+python3 build_tables.py                 # -> table.md, top_table.md
 python3 sym1.py                         # PART II: the Sym^1 census -> sym1.json
 python3 family_scan.py                  # PART II: independent (A,B,C) sweep
 ```
