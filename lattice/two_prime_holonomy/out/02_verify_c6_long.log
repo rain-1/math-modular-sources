@@ -1,0 +1,4 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+--- c6_a2  generated b<=320 in 151721ms
+   fit used n <= 190;  total failures on n=1..318 = 0
+   failures on FRESH n = 200..318 : 0

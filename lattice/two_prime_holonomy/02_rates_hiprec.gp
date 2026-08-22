@@ -1,0 +1,20 @@
+default(parisizemax, 8000000000);
+default(realprecision, 4000);
+outdir = "/home/ubuntu/code/math-modular-sources/lattice/two_prime_holonomy/out/";
+GG = Catalan;
+LL3 = (zetahurwitz(2,1/3) - zetahurwitz(2,2/3))/9;
+print("L(2,chi_-3) check (0.781302...) = ", LL3*1.0000);
+TH1 = zetahurwitz(2,1/12) - zetahurwitz(2,11/12);
+TH5 = zetahurwitz(2,5/12) - zetahurwitz(2,7/12);
+print("check (TH1+TH5)/160 - Catalan = ", (TH1+TH5)/160 - GG);
+chk(nm, th) = { read(concat(concat(outdir,nm),".seq"));
+  print("--- ", nm);
+  for(k = 0, 4, my(b = 200 - 40*k, e = QV[b+1]*th - PV[b+1]);
+    printf("  b=%3d   (1/b)log|Q| = %12.6f    (1/b)log|Q*th-P| = %12.6f\n",
+           b, log(abs(QV[b+1]*1.0))/b, log(abs(e))/b));
+};
+chk("c6_a2", LL3); chk("c6_a1", LL3);
+chk("c12_a2", GG); chk("c12_a1", GG);
+chk("h12_a2_r1", TH1); chk("h12_a2_r5", TH5);
+chk("h12_a1_r1", TH1); chk("h12_a1_r5", TH5);
+quit;

@@ -1,0 +1,8 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+=== product form: largest prime in den(Q_b), den(P_b) vs 12b+11 ===
+alpha=1/2 b=20: max prime den(Q) = 113, den(P) = 239,  12b+11 = 251  -> LCM-type OK
+alpha=1/1 b=20: max prime den(Q) = 113, den(P) = 239,  12b+11 = 251  -> LCM-type OK
+alpha=1/2 b=40: max prime den(Q) = 241, den(P) = 479,  12b+11 = 491  -> LCM-type OK
+alpha=1/1 b=40: max prime den(Q) = 241, den(P) = 479,  12b+11 = 491  -> LCM-type OK
+alpha=1/2 b=60: max prime den(Q) = 359, den(P) = 719,  12b+11 = 731  -> LCM-type OK
+alpha=1/1 b=60: max prime den(Q) = 359, den(P) = 719,  12b+11 = 731  -> LCM-type OK

@@ -1,0 +1,6 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+=== conductor-12 product form, small alpha; wide window b: 32 -> 64 ===
+alpha   logLam    loglam    kap2    kap3     nu       eta     rho_int = logLam+nu+sum kap_p log p
+1/4   -23.5411  -26.0773   2.000   0.000   29.501   55.975     7.3457
+1/2   -18.7109  -19.9256   4.000   0.000   27.283   54.365    11.3448
+3/4   -13.6766  -14.0070   6.000   1.063   23.790   52.717    15.4396

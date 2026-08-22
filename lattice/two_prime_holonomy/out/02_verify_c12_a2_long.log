@@ -1,0 +1,6 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+[0;31m  *** matker: Warning: increasing stack size to 16000000.[0m
+[0;31m  *** matker: Warning: increasing stack size to 32000000.[0m
+fit used n <= 189 (b <= 192);  verifying exactly on n = 1 .. 337
+total failures over Q = 0
+failures on FRESH n = 200..337 : 0

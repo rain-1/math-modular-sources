@@ -1,0 +1,5 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+c6_a2  done, NMAX=200  time=28932ms  size(Q_last)=1409 digits
+c6_a1  done, NMAX=200  time=24172ms  size(Q_last)=751 digits
+c12_a2  done, NMAX=200  time=79687ms  size(Q_last)=2929 digits
+c12_a1  done, NMAX=200  time=56501ms  size(Q_last)=1745 digits

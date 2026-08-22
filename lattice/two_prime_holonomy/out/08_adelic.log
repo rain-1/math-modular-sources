@@ -1,0 +1,116 @@
+========================================================================================================
+1.  CALIBRATION AND PART (a): CDT's OWN 14 FUNCTIONS, MEASURED SLOPES
+========================================================================================================
+  log|phi'(0)| ceiling = 5.545177, CDT realised = 5.081908, BC = 11.845000
+  gamma=0 (CDT's own numbers), realised contour        m=14 tau= 4.2355 gam=+0.0000 entry= +0.8464 margin=   +0.005
+  MEASURED slopes: all 14 have varsigma_2=varsigma_3=0 m=14 tau= 4.2355 gam=+0.0000 entry= +0.8464 margin=   +0.005
+  same, at the hard ceiling                            m=14 tau= 4.2355 gam=+0.0000 entry= +1.3097 margin=   +6.491
+
+  counterfactual: if u of the 14 realised the host's 3-adic resource
+  (row C has c=9, sigma_3 = v_3(9) = 2 in x, hence varsigma_y = 4) -- NOT REALISABLE,
+  the overconvergent direction B - xi_3 A has 3-adically irrational coefficients:
+      u=1 functions with varsigma_3=4 (counterfactual) m=14 tau= 4.2355 gam=+0.0000 entry= +0.8464 margin=   +0.005
+      u=3 functions with varsigma_3=4 (counterfactual) m=14 tau= 4.2355 gam=+0.0897 entry= +0.9361 margin=   +1.261
+      u=5 functions with varsigma_3=4 (counterfactual) m=14 tau= 4.2355 gam=+0.3587 entry= +1.2052 margin=   +5.028
+      u=7 functions with varsigma_3=4 (counterfactual) m=14 tau= 4.2355 gam=+0.8071 entry= +1.6536 margin=  +11.305
+      u=10 functions with varsigma_3=4 (counterfactual) m=14 tau= 4.2355 gam=+1.8161 entry= +2.6625 margin=  +25.430
+      u=14 functions with varsigma_3=4 (counterfactual) m=14 tau= 4.2355 gam=+4.0806 entry= +4.9270 margin=  +57.133
+
+========================================================================================================
+2.  THE PURE-MODULE MULTI-PRIME IDENTITY
+========================================================================================================
+  pure module Li_j(x/s), s=1/lambda_2:  varsigma_p = v_p(lambda_2), so
+  sum_p varsigma_p log p = log|lambda_2|  exactly, and
+  [archimedean ceiling] + [full multi-prime gain at weight 1] = log(256/|l2|) + log|l2| = log 256.
+  host                          l2     ceil  sum v_p log p    total  gam(u=7,m=14)     entry    margin
+  Apery/CDT/X1(5)                1   5.5452         0.0000   5.5452        +0.0000   +1.3097    +6.491
+  Catalan lvl 8/16               4   4.1589         1.3863   5.5452        +0.2546   +0.1780    -7.966
+  Zagier F                       8   3.4657         2.0794   5.5452        +0.3819   -0.3878   -15.195
+  Domb                           4   4.1589         1.3863   5.5452        +0.2546   +0.1780    -7.966
+  Cooper s_18                   12   3.0603         2.4849   5.5452        +0.4564   -0.7188   -19.423
+  sqrt(s_18)                    24   2.3671         3.1781   5.5452        +0.5837   -1.2846   -26.652
+  sqrt(s_10)                     8   3.4657         2.0794   5.5452        +0.3819   -0.3878   -15.195
+  => the multi-prime total is log 256 = 5.5452 on every host; but the p-adic half enters
+     the entry condition at weight (u-1)^2/m^2 = 0.18367 and the archimedean half at weight 1,
+     so lambda_2 = 1 (the Apery-perfect hosts) is optimal and every prime factor of lambda_2
+     costs (1 - (u-1)^2/m^2) v_p log p = 0.8163 per v_p(lambda_2) log p.
+
+========================================================================================================
+3.  ADMITTING A WELL-POISED DECAYER'S GENERATING FUNCTION
+========================================================================================================
+
+  --- host CDT level 6   (Zagier C, lam2=1),  s=1.0 ---
+  BASELINE m=14 (no extra function)                                        | tau= 4.2355 g2=+0.0000 g3=+0.0000 entryC= +1.3097 marginC=   +6.49 entryR= +0.8464
+  conductor 3,  alpha=2    nu=  0.00 k2=  0.00 k3= 3.00 logN= 6.931 | tau= 4.2269 g2=-1.2631 g3=-0.6006 entryC= -0.5454 marginC=  -20.03 entryR= -1.0086
+  conductor 6,  alpha=1/4  nu=  9.84 k2=  4.41 k3= 0.00 logN= 0.000 | tau= 5.4952 g2=-0.5570 g3=+0.0000 entryC= -0.5070 marginC=  -19.45 entryR= -0.9703
+  conductor 6,  alpha=1/2  nu=  8.34 k2=  4.95 k3= 0.00 logN= 0.000 | tau= 5.3018 g2=-0.6252 g3=+0.0000 entryC= -0.3819 marginC=  -17.57 entryR= -0.8451
+  conductor 6,  alpha=1    nu=  5.48 k2=  5.83 k3= 0.83 logN= 0.000 | tau= 4.9332 g2=-0.7364 g3=-0.1662 entryC= -0.2906 marginC=  -16.20 entryR= -0.7538
+  conductor 6,  alpha=2    nu=  0.66 k2=  7.82 k3= 2.85 logN= 6.931 | tau= 4.3120 g2=-2.2508 g3=-0.5705 entryC= -1.5881 marginC=  -35.67 entryR= -2.0514
+  conductor 12, alpha=1/4  nu= 29.50 k2=  2.00 k3= 0.00 logN= 0.000 | tau= 8.0292 g2=-0.2526 g3=+0.0000 entryC= -2.7367 marginC=  -52.90 entryR= -3.1999
+  conductor 12, alpha=1/2  nu= 27.28 k2=  4.00 k3= 0.00 logN= 0.000 | tau= 7.7434 g2=-0.5052 g3=+0.0000 entryC= -2.7034 marginC=  -52.40 entryR= -3.1667
+  conductor 12, alpha=1    nu= 20.10 k2=  8.00 k3= 1.73 logN= 0.000 | tau= 6.8177 g2=-1.0105 g3=-0.3469 entryC= -2.6299 marginC=  -51.29 entryR= -3.0932
+  conductor 12, alpha=2    nu=  1.90 k2= 16.00 k3= 5.73 logN=13.863 | tau= 4.4713 g2=-4.5470 g3=-1.1477 entryC= -4.6208 marginC=  -81.16 entryR= -5.0841
+
+  --- host Catalan lvl 8 (Zagier E, lam2=4),  s=0.25 ---
+  BASELINE m=14 (no extra function)                                        | tau= 4.2355 g2=+0.2546 g3=+0.0000 entryC= +0.1780 marginC=   -7.97 entryR= -0.2852
+  conductor 3,  alpha=2    nu=  0.00 k2=  0.00 k3= 3.00 logN= 5.545 | tau= 4.2269 g2=-0.7887 g3=-0.6006 entryC= -1.4572 marginC=  -32.32 entryR= -1.9205
+  conductor 6,  alpha=1/4  nu=  9.84 k2=  4.41 k3= 0.00 logN= 0.000 | tau= 5.4952 g2=-0.3352 g3=+0.0000 entryC= -1.6715 marginC=  -35.53 entryR= -2.1347
+  conductor 6,  alpha=1/2  nu=  8.34 k2=  4.95 k3= 0.00 logN= 0.000 | tau= 5.3018 g2=-0.4034 g3=+0.0000 entryC= -1.5464 marginC=  -33.65 entryR= -2.0096
+  conductor 6,  alpha=1    nu=  5.48 k2=  5.83 k3= 0.83 logN= 0.000 | tau= 4.9332 g2=-0.5146 g3=-0.1662 entryC= -1.4550 marginC=  -32.28 entryR= -1.9183
+  conductor 6,  alpha=2    nu=  0.66 k2=  7.82 k3= 2.85 logN= 5.545 | tau= 4.3120 g2=-1.7764 g3=-0.5705 entryC= -2.5000 marginC=  -47.96 entryR= -2.9633
+  conductor 12, alpha=1/4  nu= 29.50 k2=  2.00 k3= 0.00 logN= 0.000 | tau= 8.0292 g2=-0.0308 g3=+0.0000 entryC= -3.9012 marginC=  -68.98 entryR= -4.3644
+  conductor 12, alpha=1/2  nu= 27.28 k2=  4.00 k3= 0.00 logN= 0.000 | tau= 7.7434 g2=-0.2834 g3=+0.0000 entryC= -3.8679 marginC=  -68.48 entryR= -4.3312
+  conductor 12, alpha=1    nu= 20.10 k2=  8.00 k3= 1.73 logN= 0.000 | tau= 6.8177 g2=-0.7886 g3=-0.3469 entryC= -3.7944 marginC=  -67.37 entryR= -4.2576
+  conductor 12, alpha=2    nu=  1.90 k2= 16.00 k3= 5.73 logN=12.477 | tau= 4.4713 g2=-4.0726 g3=-1.1477 entryC= -5.5327 marginC=  -93.45 entryR= -5.9960
+
+  --- level-16 Catalan host (14 CDT functions + the doubly-small function, m=15) ---
+  BASELINE m=15 (level 16)                                        | tau= 4.2269 g2=+0.2619 entryC= +0.1938 marginC=   -7.55 entryR= -0.2694 marginR=  -14.50
+  conductor 3,  alpha=2    nu=  0.00 k2=  0.00 k3= 3.00 logN= 5.545 | tau= 4.2186 g2=-0.7229 g3=-0.5665 entryC= -1.3491 marginC=  -32.04 entryR= -1.8123
+  conductor 6,  alpha=1/4  nu=  9.84 k2=  4.41 k3= 0.00 logN= 0.000 | tau= 5.4101 g2=-0.2952 g3=+0.0000 entryC= -1.5465 marginC=  -35.20 entryR= -2.0097
+  conductor 6,  alpha=1/2  nu=  8.34 k2=  4.95 k3= 0.00 logN= 0.000 | tau= 5.2285 g2=-0.3596 g3=+0.0000 entryC= -1.4292 marginC=  -33.33 entryR= -1.8924
+  conductor 6,  alpha=1    nu=  5.48 k2=  5.83 k3= 0.83 logN= 0.000 | tau= 4.8821 g2=-0.4644 g3=-0.1567 entryC= -1.3444 marginC=  -31.97 entryR= -1.8077
+  conductor 6,  alpha=2    nu=  0.66 k2=  7.82 k3= 2.85 logN= 5.545 | tau= 4.2985 g2=-1.6546 g3=-0.5381 entryC= -2.3323 marginC=  -47.78 entryR= -2.7956
+  conductor 12, alpha=1/4  nu= 29.50 k2=  2.00 k3= 0.00 logN= 0.000 | tau= 7.7909 g2=-0.0081 g3=+0.0000 entryC= -3.6402 marginC=  -68.70 entryR= -4.1035
+  conductor 12, alpha=1/2  nu= 27.28 k2=  4.00 k3= 0.00 logN= 0.000 | tau= 7.5224 g2=-0.2464 g3=+0.0000 entryC= -3.6099 marginC=  -68.22 entryR= -4.0731
+  conductor 12, alpha=1    nu= 20.10 k2=  8.00 k3= 1.73 logN= 0.000 | tau= 6.6527 g2=-0.7229 g3=-0.3272 entryC= -3.5439 marginC=  -67.16 entryR= -4.0072
+  conductor 12, alpha=2    nu=  1.90 k2= 16.00 k3= 5.73 logN=12.477 | tau= 4.4481 g2=-3.8204 g3=-1.0825 entryC= -5.1922 marginC=  -93.53 entryR= -5.6555
+
+========================================================================================================
+4.  CONTOUR COST OF AN EXTRA SINGULAR POINT
+========================================================================================================
+  If the added function is singular at y = q (nontrivial monodromy) then phi factors
+  through the universal cover of P^1 minus the enlarged singular set, which is contained
+  in P^1 \ {0, q, infinity}; hence  |phi'(0)| <= 16|q|  (256|q| if the Z/2 descent is
+  available with q as the outer point).  q = 1/Lambda for the decayer's own variable.
+  family                     |q|=1/Lambda  log(16|q|)  log(256|q|)  CDT tau  shortfall
+  conductor 3,  alpha=2        9.7653e-04     -4.1589      -1.3863   4.2355    -5.6218
+  conductor 6,  alpha=1/4      2.6849e+04     12.9706      15.7432   4.2355    11.5077
+  conductor 6,  alpha=1/2      1.5892e+03     10.1436      12.9162   4.2355     8.6807
+  conductor 6,  alpha=1        7.8617e+00      4.8346       7.6072   4.2355     3.3717
+  conductor 6,  alpha=2        9.7656e-04     -4.1589      -1.3863   4.2355    -5.6218
+  conductor 12, alpha=1/4      1.6739e+10     26.3136      29.0862   4.2355    24.8507
+  conductor 12, alpha=1/2      1.3369e+08     21.4836      24.2562   4.2355    20.0207
+  conductor 12, alpha=1        3.6923e+03     10.9866      13.7592   4.2355     9.5237
+  conductor 12, alpha=2        9.5367e-07    -11.0904      -8.3178   4.2355   -12.5533
+  (CDT's own configuration, q = s = 1: the 3-point bound gives log 256 = 5.5452 and CDT
+   realise 5.0819 -- the bound is not vacuous.)
+
+========================================================================================================
+5.  BREAK-EVEN: what an extra 15th function would have to be
+========================================================================================================
+  CDT level 6: a 15th function with p-adic slope 0 pays for itself iff its LCM
+     denominator rate nu <= 0.744  (baseline margin +6.491 at the ceiling).
+     with nu = 0 it pays for itself iff its 2-adic slope varsigma_2 >= -0.759.
+     extra functions of 2-adic slope  1.0 needed to reach margin 0: 0
+     extra functions of 2-adic slope  2.0 needed to reach margin 0: 0
+     extra functions of 2-adic slope  3.0 needed to reach margin 0: 0
+     extra functions of 2-adic slope  4.0 needed to reach margin 0: 0
+     extra functions of 2-adic slope  8.0 needed to reach margin 0: 0
+  Catalan level 8: a 15th function with p-adic slope 0 pays for itself iff its LCM
+     denominator rate nu <= 0.000  (baseline margin -7.966 at the ceiling).
+     with nu = 0 it pays for itself iff its 2-adic slope varsigma_2 >= +0.309.
+     extra functions of 2-adic slope  1.0 needed to reach margin 0: 14
+     extra functions of 2-adic slope  2.0 needed to reach margin 0: 7
+     extra functions of 2-adic slope  3.0 needed to reach margin 0: 7
+     extra functions of 2-adic slope  4.0 needed to reach margin 0: 6
+     extra functions of 2-adic slope  8.0 needed to reach margin 0: 5

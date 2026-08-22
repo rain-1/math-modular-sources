@@ -1,0 +1,7 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+=== conductor-6 family (MULTI_PRIME lib): prime support of den(Q_b), den(P_b) ===
+alpha=1/4 b=20: kap2=4.150 kap3=0.000 nu=5.626  max prime den(Q)=59 den(P)=113  (6b+5=125)
+alpha=1/4 b=40: kap2=4.325 kap3=0.000 nu=7.659  max prime den(Q)=113 den(P)=239  (6b+5=245)
+alpha=1/4 b=60: kap2=4.317 kap3=0.000 nu=9.078  max prime den(Q)=179 den(P)=359  (6b+5=365)
+alpha=2/1 b=20: kap2=7.650 kap3=2.550 nu=0.402  max prime den(Q)=59 den(P)=113  (6b+5=125)
+alpha=2/1 b=40: kap2=7.825 kap3=2.825 nu=0.782  max prime den(Q)=113 den(P)=239  (6b+5=245)

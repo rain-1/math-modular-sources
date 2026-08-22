@@ -1,0 +1,11 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+=== 3-adic slope on Catalan-class rows (sigma_3 = 0 means no 3-adic resource) ===
+Zagier E (12,4,32), c = 32 = 2^5:
+   n=100  v2(inc)=  477 (/n =  4.770)   v3(inc)=   0
+   n=200  v2(inc)=  973 (/n =  4.865)   v3(inc)=   0
+   n=300  v2(inc)= 1473 (/n =  4.910)   v3(inc)=  -2
+   n=400  v2(inc)= 1969 (/n =  4.923)   v3(inc)=   0
+Zudilin Catalan row:
+   m=100  v2(inc)=  775 (/m =  7.750)   v3(inc)=   0
+   m=200  v2(inc)= 1571 (/m =  7.855)   v3(inc)=  -2
+   m=300  v2(inc)= 2371 (/m =  7.903)   v3(inc)=  -2
