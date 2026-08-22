@@ -1,0 +1,9 @@
+##### 2-TERM #####
+Re(xi1): 0 2-term hits / 1188
+Im(xi1): 0 2-term hits / 1188
+Re(th1): 0 2-term hits / 1188
+Im(th1): 0 2-term hits / 1188
+Re(xi2): 0 2-term hits / 1404
+Im(xi2): 0 2-term hits / 1404
+Re(th2): 0 2-term hits / 1404
+Im(th2): 0 2-term hits / 1404

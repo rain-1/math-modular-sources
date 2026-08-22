@@ -1,0 +1,11 @@
+[0;31m  ***   Warning: new maximum stack size = 6000001024 (5722.047 Mbytes).[0m
+[0;31m  *** _*_: Warning: increasing stack size to 16000000.[0m
+[0;31m  *** _*_: Warning: increasing stack size to 32000000.[0m
+[0;31m  *** _*_: Warning: increasing stack size to 64000000.[0m
+[0;31m  *** Mod: Warning: increasing stack size to 128000000.[0m
+[0;31m  *** matconcat: Warning: increasing stack size to 256000000.[0m
+[0;31m  *** matker: Warning: increasing stack size to 512000000.[0m
+[0;31m  *** matker: Warning: increasing stack size to 1024000000.[0m
+[0;31m  *** _ZM_mul_worker: Warning: increasing stack size to 16000000.[0m
+[0;31m  *** _ZM_mul_worker: Warning: increasing stack size to 16000000.[0m
+[0;31m  *** _ZM_mul_worker: Warning: increasing stack size to 16000000.[0m

@@ -1,0 +1,4 @@
+=== shape A: r=22, D=23 (minimal recurrence order) ===
+  pivot index = 8
+  verify over n=22..1597: failures = 0
+  max coeff digits = 43

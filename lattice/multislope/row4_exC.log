@@ -1,0 +1,15 @@
+pivot index = 9  (i=0, j=8)
+EXACT VERIFY n=0..1597: A failures=0  B failures=39
+Q_0(n) = 952*n^8
+factor Q_0 = Mat([n, 8])
+Q_47(n) = 354658470655426560*n^8 - 123421147788088442880*n^7 + 18783421922852701470720*n^6 - 1632861785236410099302400*n^5 + 88681204685870723644784640*n^4 - 3081207596897002307526328320*n^3 + 66883257512692777772101140480*n^2 - 829282916932254469817421004800*n + 4496688575077565430711189504000
+max coeff digits = 37
+char poly degree 47
+chC factored: 
+[x - 1, 8; x^2 - 8*x + 8, 8; x^2 + 4*x - 4, 8; 952*x^7 - 9519*x^6 + 31599*x^5 - 41048*x^4 - 159840*x^3 + 877656*x^2 - 1071592*x + 322560, 1]
+product of char roots = -6333186975989760/17
+factored product = [-1, 1; 2, 47; 3, 2; 5, 1; 17, -1]
+newtonpoly(chC, p=2) = [-3, 0, 1, 7, 3/2, 3/4]  multiplicities: [1, 9, 16, 1, 16, 4]
+newtonpoly(chC, p=3) = [0, 2]  multiplicities: [46, 1]
+newtonpoly(chC, p=5) = [0, 1]  multiplicities: [46, 1]
+newtonpoly(chC, p=7) = [-1, 0, 1]  multiplicities: [1, 45, 1]

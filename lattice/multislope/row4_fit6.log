@@ -1,0 +1,18 @@
+r=18  D<=55 : kdim = 0
+r=19  D<=55 : kdim = 0
+r=20  D<=55 : kdim = 0
+r=21  D<=55 : kdim = 0
+
+r=22  D=14 : kdim = 0
+r=22  D=15 : kdim = 0
+r=22  D=16 : kdim = 0
+r=22  D=17 : kdim = 0
+r=22  D=18 : kdim = 0
+r=22  D=19 : kdim = 0
+r=22  D=20 : kdim = 0
+r=22  D=21 : kdim = 0
+r=22  D=22 : kdim = 0
+r=22  D=23 : kdim = 1
+r=22  D=24 : kdim = 2
+r=22  D=25 : kdim = 3
+r=22  D=26 : kdim = 4

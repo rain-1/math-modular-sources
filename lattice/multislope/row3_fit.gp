@@ -1,0 +1,46 @@
+default(parisizemax, 6000000000);
+LOG = "/home/ubuntu/code/math-modular-sources/lattice/multislope/row3_fit.log";
+W(s) = write(LOG, s);
+read("/home/ubuntu/code/math-modular-sources/lattice/zeta5_two_row/level16_rows.txt");
+NN = #An;
+W(Str("=== level-16 zeta(5): rows loaded, n = 0..", NN-1, " ==="));
+W(Str("A_0..A_10 = ", vector(11,i,An[i])));
+W(Str("B_0..B_5  = ", vector(6,i,Bn[i])));
+RR = 16; DG = 11; nun = (RR+1)*(DG+1); nrow = nun + 25;
+pbig = nextprime(10^2200);
+{ my(mt, kk, vv, i0, QQ, mx, cp);
+  W(Str("fit (r,D)=(",RR,",",DG,"), unknowns=",nun,", rows=",nrow,", uses A_n up to n=",RR+nrow));
+  gettime();
+  mt = matrix(nrow, nun, a, b, my(i=(b-1)\(DG+1), j=(b-1)%(DG+1), n=RR+a); Mod(An[n-i+1],pbig)*Mod(n,pbig)^j);
+  kk = matker(mt);
+  W(Str("kernel dim mod 2200-digit prime: ", #kk, "  (", gettime(), " ms)"));
+  if(#kk != 1, W("kernel not 1-dimensional -- abort"); quit());
+  vv = kk[,1];
+  i0 = 0; for(i=1,nun, if(lift(vv[i])!=0, i0=i; break));
+  vv = vv/vv[i0];
+  vv = vector(nun, i, bestappr(vv[i]));
+  W(Str("rational reconstruction done (", gettime(), " ms)"));
+  QQ = vector(RR+1, i, sum(j=0,DG, vv[(i-1)*(DG+1)+j+1]*'n^j));
+  mx = 1; for(i=1,RR+1, mx = lcm(mx, denominator(content(QQ[i]))));
+  QQ = vector(RR+1, i, QQ[i]*mx);
+  mx = 0; for(i=1,RR+1, mx = gcd(mx, content(QQ[i])));
+  if(mx>0, QQ = vector(RR+1, i, QQ[i]/mx));
+  /* exact verification over ALL available terms */
+  my(okv=1, nb=0);
+  for(n=RR, NN-1, if(sum(i=0,RR, subst(QQ[i+1],'n,n)*An[n-i+1]) != 0, okv=0; nb++));
+  W(Str("EXACT verification of the fitted recurrence on A_n for n=",RR,"..",NN-1,": ", if(okv,"PASS","FAIL, ",nb," bad")));
+  for(i=0,RR, W(Str("  Q_",i,"(n) = ", QQ[i+1])));
+  cp = sum(i=0,RR, polcoeff(QQ[i+1],DG,'n)*'x^(RR-i));
+  W(Str("char poly (n->oo) = ", cp));
+  W(Str("  factored: ", factor(cp)));
+  W(Str("  trailing/leading = ", polcoeff(cp,0,'x)/polcoeff(cp,RR,'x)));
+  default(realprecision,30);
+  W(Str("  roots: ", polroots(cp)));
+  W(Str("  Q_0(n) = ", factor(QQ[1])));
+  /* does B satisfy the same recurrence? */
+  my(bad=0, firstbad=-1);
+  for(n=RR, NN-1, if(sum(i=0,RR, subst(QQ[i+1],'n,n)*Bn[n-i+1]) != 0, bad++; if(firstbad<0, firstbad=n)));
+  W(Str("B_n satisfies the SAME recurrence for n=",RR,"..",NN-1,"? bad count = ", bad, "  first bad n = ", firstbad));
+  write("/home/ubuntu/code/math-modular-sources/lattice/multislope/row3_rec.txt", Str("QROW3 = ", QQ));
+}
+W("DONE"); quit;

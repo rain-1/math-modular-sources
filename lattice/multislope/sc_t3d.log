@@ -1,0 +1,122 @@
+[0;31m  ***   Warning: new maximum stack size = 6000001024 (5722.047 Mbytes).[0m
+[0;31m  ***   Warning: increasing stack size to 16000000.[0m
+[0;31m  ***   Warning: increasing stack size to 32000000.[0m
+[0;31m  ***   Warning: increasing stack size to 64000000.[0m
+
+######## T3b R4 Sym^3 Zagier E [chi test]  N=15625 ########
+[0;31m  ***   Warning: increasing stack size to 128000000.[0m
+[0;31m  ***   Warning: increasing stack size to 256000000.[0m
+  X^(1) p=3 a=1 | dv=[1, -4, 0, -4, 0, -4, 0, -4]  [valuation NOT eventually constant]
+  X^(1) p=3 a=2 | dv=[4, -4, -1, -3, -1, -3, -1, -3]  [valuation NOT eventually constant]
+  X^(1) p=3 a=3 | dv=[-4, 0, -4, 0, -4, 0, -4]  [valuation NOT eventually constant]
+  X^(1) p=5 a=1 | dv=[-4, -4, -4, -4, -4, -4]  w=4  consec-agree-depths [2, 2, 2, 2, 2]   u_last mod p^2 = 16
+  X^(1) p=5 a=2 | dv=[-6, -2, -4, -4, -4]  w=4  consec-agree-depths [1, 1, 0, 0]   u_last mod p^0 = 0
+  X^(1) p=5 a=3 | dv=[-3, -3, -5, -4, -5]  [valuation NOT eventually constant]
+  X^(1) p=7 a=1 | dv=[0, -4, 0, -4]  [valuation NOT eventually constant]
+  X^(1) p=7 a=2 | dv=[0, -4, 0, -4]  [valuation NOT eventually constant]
+  X^(1) p=7 a=3 | dv=[0, -4, 0, -4]  [valuation NOT eventually constant]
+  X^(1) p=11 a=1 | dv=[0, -4, 0, -4]  [valuation NOT eventually constant]
+  X^(1) p=11 a=2 | dv=[0, -3, -1]  [valuation NOT eventually constant]
+  X^(1) p=11 a=3 | dv=[1, -2, -2]  [valuation NOT eventually constant]
+  X^(1) p=13 a=1 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 0]   u_last mod p^0 = 0
+  X^(1) p=13 a=2 | dv=[-5, -4, -3]  [valuation NOT eventually constant]
+  X^(1) p=13 a=3 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 0]   u_last mod p^0 = 0
+  X^(1) p=17 a=1 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 0]   u_last mod p^0 = 0
+  X^(1) p=17 a=2 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 0]   u_last mod p^0 = 0
+  X^(1) p=17 a=3 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 0]   u_last mod p^0 = 0
+  X^(1) p=19 a=1 | dv=[0, -4, 0]  [valuation NOT eventually constant]
+  X^(1) p=19 a=2 | dv=[0, -4, 0]  [valuation NOT eventually constant]
+  X^(1) p=19 a=3 | dv=[0, -4]  [valuation NOT eventually constant]
+  X^(1) p=23 a=1 | dv=[0, -4, 0]  [valuation NOT eventually constant]
+  X^(1) p=23 a=2 | dv=[0, -4]  [valuation NOT eventually constant]
+  X^(1) p=23 a=3 | dv=[0, -4]  [valuation NOT eventually constant]
+  X^(2) p=3 a=1 | dv=[4, -7, 1, -5, 1, -5, 1]  [valuation NOT eventually constant]
+  X^(2) p=3 a=2 | dv=[3, -4, 1, -5, 1, -5, 1, -5]  [valuation NOT eventually constant]
+  X^(2) p=3 a=3 | dv=[4, -7, 1, -5, 1, -5, 1]  [valuation NOT eventually constant]
+  X^(2) p=5 a=1 | dv=[-4, -4, -4, -4, -4]  w=4  consec-agree-depths [3, 3, 3, 3]   u_last mod p^3 = 6
+  X^(2) p=5 a=2 | dv=[-6, -2, -4, -4, -4]  w=4  consec-agree-depths [1, 1, 0, 0]   u_last mod p^0 = 0
+  X^(2) p=5 a=3 | dv=[-3, -4, -2, -6, -5]  [valuation NOT eventually constant]
+  X^(2) p=7 a=1 | dv=[0, -4, 0]  [valuation NOT eventually constant]
+  X^(2) p=7 a=2 | dv=[1, -5, 2, -6]  [valuation NOT eventually constant]
+  X^(2) p=7 a=3 | dv=[1, -5, 1, -5]  [valuation NOT eventually constant]
+  X^(2) p=11 a=1 | dv=[0, -4, 0]  [valuation NOT eventually constant]
+  X^(2) p=11 a=2 | dv=[0, -4, 0]  [valuation NOT eventually constant]
+  X^(2) p=11 a=3 | dv=[1, -4, 0]  [valuation NOT eventually constant]
+  X^(2) p=13 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(2) p=13 a=2 | dv=[-4, -4, -4]  w=4  consec-agree-depths [1, 1]   u_last mod p^1 = 9
+  X^(2) p=13 a=3 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 0]   u_last mod p^0 = 0
+  X^(2) p=17 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(2) p=17 a=2 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 0]   u_last mod p^0 = 0
+  X^(2) p=17 a=3 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 0]   u_last mod p^0 = 0
+  X^(2) p=19 a=1 | dv=[0, -4]  [valuation NOT eventually constant]
+  X^(2) p=19 a=2 | dv=[0, -4, 0]  [valuation NOT eventually constant]
+  X^(2) p=19 a=3 | dv=[0, -4]  [valuation NOT eventually constant]
+  X^(2) p=23 a=1 | dv=[0, -4]  [valuation NOT eventually constant]
+  X^(2) p=23 a=2 | dv=[0, -4]  [valuation NOT eventually constant]
+  X^(2) p=23 a=3 | dv=[0, -4]  [valuation NOT eventually constant]
+[0;31m  ***   Warning: increasing stack size to 512000000.[0m
+  X^(3) p=3 a=1 | dv=[-4, -4, -4, -4, -4, -4, -4]  w=4  consec-agree-depths [1, 3, 5, 7, 9, 11]   u_last mod p^11 = 177146  (= -1)
+  X^(3) p=3 a=2 | dv=[-4, -4, -4, -4, -4, -4, -4]  w=4  consec-agree-depths [1, 6, 5, 10, 9, 14]   u_last mod p^14 = 1594322
+  X^(3) p=3 a=3 | dv=[-4, -4, -4, -4, -4, -4, -4]  w=4  consec-agree-depths [1, 3, 5, 7, 9, 11]   u_last mod p^11 = 177146  (= -1)
+  X^(3) p=5 a=1 | dv=[-4, -4, -4, -3, -5]  [valuation NOT eventually constant]
+  X^(3) p=5 a=2 | dv=[-2, -4, -4, -3]  [valuation NOT eventually constant]
+  X^(3) p=5 a=3 | dv=[-2, -5, -4, -4, -5]  [valuation NOT eventually constant]
+  X^(3) p=7 a=1 | dv=[-4, -4, -4]  w=4  consec-agree-depths [1, 3]   u_last mod p^3 = 342  (= -1)
+  X^(3) p=7 a=2 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 2]   u_last mod p^2 = 48  (= -1)
+  X^(3) p=7 a=3 | dv=[-4, -4, -4, -4]  w=4  consec-agree-depths [0, 1, 3]   u_last mod p^3 = 342  (= -1)
+  X^(3) p=11 a=1 | dv=[-4, -4, -4]  w=4  consec-agree-depths [1, 3]   u_last mod p^3 = 1330  (= -1)
+  X^(3) p=11 a=2 | dv=[-4, -4]  w=4  consec-agree-depths [1]   u_last mod p^1 = 10  (= -1)
+  X^(3) p=11 a=3 | dv=[-3, -4, -4]  [valuation NOT eventually constant]
+  X^(3) p=13 a=1 | dv=[-4, -3]  [valuation NOT eventually constant]
+  X^(3) p=13 a=2 | dv=[-4, -3]  [valuation NOT eventually constant]
+  X^(3) p=13 a=3 | dv=[-4, -3, -5]  [valuation NOT eventually constant]
+  X^(3) p=17 a=1 | dv=[-3, -5]  [valuation NOT eventually constant]
+  X^(3) p=17 a=2 | dv=[-3, -5]  [valuation NOT eventually constant]
+  X^(3) p=17 a=3 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 0]   u_last mod p^0 = 0
+  X^(3) p=19 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [1]   u_last mod p^1 = 18  (= -1)
+  X^(3) p=19 a=2 | dv=[-4, -4]  w=4  consec-agree-depths [3]   u_last mod p^3 = 6858  (= -1)
+  X^(3) p=19 a=3 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(3) p=23 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [1]   u_last mod p^1 = 22  (= -1)
+  X^(3) p=23 a=3 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(4) p=3 a=1 | dv=[-4, -4, -4, -4, -4, -4]  w=4  consec-agree-depths [4, 4, 8, 8, 12]   u_last mod p^12 = 531440  (= -1)
+  X^(4) p=3 a=2 | dv=[-5, -4, -4, -4, -4, -4, -4]  w=4  consec-agree-depths [0, 3, 4, 7, 8, 11]   u_last mod p^11 = 177146  (= -1)
+  X^(4) p=3 a=3 | dv=[-4, -4, -4, -4, -4, -4]  w=4  consec-agree-depths [4, 4, 8, 8, 12]   u_last mod p^12 = 531440  (= -1)
+  X^(4) p=5 a=1 | dv=[-3, -5, -4, -4, -4]  w=4  consec-agree-depths [0, 0, 0, 0]   u_last mod p^0 = 0
+  X^(4) p=5 a=2 | dv=[-3, -4, -4, -4]  w=4  consec-agree-depths [0, 1, 1]   u_last mod p^1 = 1  (= +1)
+  X^(4) p=5 a=3 | dv=[-4, -4, -3, -5]  [valuation NOT eventually constant]
+  X^(4) p=7 a=1 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 3]   u_last mod p^3 = 342  (= -1)
+  X^(4) p=7 a=2 | dv=[-3, -4, -4]  [valuation NOT eventually constant]
+  X^(4) p=7 a=3 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 3]   u_last mod p^3 = 342  (= -1)
+  X^(4) p=11 a=1 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 3]   u_last mod p^3 = 1330  (= -1)
+  X^(4) p=11 a=2 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(4) p=11 a=3 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(4) p=13 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(4) p=13 a=2 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(4) p=13 a=3 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(4) p=17 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(4) p=17 a=2 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(4) p=17 a=3 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(4) p=19 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(4) p=19 a=2 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(4) p=23 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(5) p=3 a=1 | dv=[-4, -4, -4, -4, -4, -4]  w=4  consec-agree-depths [1, 4, 5, 8, 9]   u_last mod p^9 = 19682  (= -1)
+  X^(5) p=3 a=2 | dv=[-2, -4, -4, -4, -4, -4, -4]  w=4  consec-agree-depths [0, 3, 2, 7, 6, 11]   u_last mod p^11 = 118097
+  X^(5) p=3 a=3 | dv=[-4, -4, -4, -4, -4, -4]  w=4  consec-agree-depths [1, 4, 5, 8, 9]   u_last mod p^9 = 19682  (= -1)
+  X^(5) p=5 a=1 | dv=[-4, -4, -4, -3, -5]  [valuation NOT eventually constant]
+  X^(5) p=5 a=2 | dv=[-2, -4, -3, -5]  [valuation NOT eventually constant]
+  X^(5) p=5 a=3 | dv=[-5, -4, -4, -5]  [valuation NOT eventually constant]
+  X^(5) p=7 a=1 | dv=[-4, -4, -4]  w=4  consec-agree-depths [3, 3]   u_last mod p^3 = 342  (= -1)
+  X^(5) p=7 a=2 | dv=[-3, -4, -4]  [valuation NOT eventually constant]
+  X^(5) p=7 a=3 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 3]   u_last mod p^3 = 342  (= -1)
+  X^(5) p=11 a=1 | dv=[-4, -4, -4]  w=4  consec-agree-depths [0, 3]   u_last mod p^3 = 1330  (= -1)
+  X^(5) p=11 a=2 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(5) p=11 a=3 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(5) p=13 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [1]   u_last mod p^1 = 5
+  X^(5) p=13 a=2 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(5) p=13 a=3 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(5) p=17 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(5) p=17 a=2 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(5) p=17 a=3 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(5) p=19 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(5) p=19 a=2 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0
+  X^(5) p=23 a=1 | dv=[-4, -4]  w=4  consec-agree-depths [0]   u_last mod p^0 = 0

@@ -1,0 +1,22 @@
+NMAX = 1597
+Is there ANY operator with shift order r and poly degree <= 35?
+r=10  D<=35 : kdim = 0
+r=11  D<=35 : kdim = 0
+r=12  D<=35 : kdim = 0
+r=13  D<=35 : kdim = 0
+r=14  D<=35 : kdim = 0
+r=15  D<=35 : kdim = 0
+r=16  D<=35 : kdim = 0
+r=17  D<=35 : kdim = 0
+r=18  D<=35 : kdim = 0
+r=19  D<=35 : kdim = 0
+r=20  D<=35 : kdim = 0
+r=21  D<=35 : kdim = 0
+r=22  D<=35 : kdim = 13
+r=23  D<=35 : kdim = 42
+r=24  D<=35 : kdim = 71
+r=23  D<=40 : kdim = 52
+r=24  D<=11 : kdim = 0
+r=24  D<=12 : kdim = 2
+r=35  D<=7  : kdim = 1
+r=34  D<=7  : kdim = 0

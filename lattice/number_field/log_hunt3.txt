@@ -1,0 +1,11 @@
+##### 2-TERM SCAN #####
+Re(xi1): 0 two-term hits out of 308
+Im(xi1): 0 two-term hits out of 308
+Re(th1): 0 two-term hits out of 308
+Im(th1): 0 two-term hits out of 308
+Re(xi2): 0 two-term hits out of 396
+Im(xi2): 0 two-term hits out of 396
+Re(th2): 0 two-term hits out of 396
+Im(th2): 0 two-term hits out of 396
+Re(xi2)/g3basis: 0 two-term hits out of 308
+Im(xi2)/g3basis: 0 two-term hits out of 308

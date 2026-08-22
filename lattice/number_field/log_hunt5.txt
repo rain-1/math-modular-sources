@@ -1,0 +1,48 @@
+[0;31m[0;31m  ***   at top-level:[0;35m sweep("xi1",xi1,Om3,Lv1,Ln1)
+[0;31m[0;31m  ***                 ^----------------------------
+[0;31m  ***   in function sweep: ...[0;35mLv[li]);my(x=val/m);my(h=[0;35malghit(x,6,10^10));if
+[0;31m[0;31m  ***                                                  ^---------------------
+[0;31m  ***   in function alghit: [0;35mfor(d=1,dmax,my(p=[0;35malgdep(x,d));if(poldegree(p)
+[0;31m[0;31m  ***                                         ^----------------------------
+  *** algdep: domain error in algdep: degree(x) > 1[0m
+... skipping file 'hunt5.gp'
+Re(xi1): 0 algebraic hits
+Im(xi1): 0 algebraic hits
+[0;31m[0;31m  ***   at top-level:[0;35m sweep("th1",th1,Om3,Lv1,Ln1)
+[0;31m[0;31m  ***                 ^----------------------------
+[0;31m  ***   in function sweep: ...[0;35mLv[li]);my(x=val/m);my(h=[0;35malghit(x,6,10^10));if
+[0;31m[0;31m  ***                                                  ^---------------------
+[0;31m  ***   in function alghit: [0;35mfor(d=1,dmax,my(p=[0;35malgdep(x,d));if(poldegree(p)
+[0;31m[0;31m  ***                                         ^----------------------------
+  *** algdep: domain error in algdep: degree(x) > 1[0m
+[0;31m[0;31m  ***   at top-level:[0;35m sweep("xi2",xi2,Om4,Lv2,Ln2)
+[0;31m[0;31m  ***                 ^----------------------------
+[0;31m  ***   in function sweep: ...[0;35mLv[li]);my(x=val/m);my(h=[0;35malghit(x,6,10^10));if
+[0;31m[0;31m  ***                                                  ^---------------------
+[0;31m  ***   in function alghit: [0;35mfor(d=1,dmax,my(p=[0;35malgdep(x,d));if(poldegree(p)
+[0;31m[0;31m  ***                                         ^----------------------------
+  *** algdep: domain error in algdep: degree(x) > 1[0m
+Re(xi2): 0 algebraic hits
+  ALG-HIT Im(xi2) / (Om^2 Pi^0 1) : deg 4  minpoly 708588*x^4 - 1  resid 0.E-211
+Im(xi2): 1 algebraic hits
+[0;31m[0;31m  ***   at top-level:[0;35m sweep("th2",th2,Om4,Lv2,Ln2)
+[0;31m[0;31m  ***                 ^----------------------------
+[0;31m  ***   in function sweep: ...[0;35mLv[li]);my(x=val/m);my(h=[0;35malghit(x,6,10^10));if
+[0;31m[0;31m  ***                                                  ^---------------------
+[0;31m  ***   in function alghit: [0;35mfor(d=1,dmax,my(p=[0;35malgdep(x,d));if(poldegree(p)
+[0;31m[0;31m  ***                                         ^----------------------------
+  *** algdep: domain error in algdep: degree(x) > 1[0m
+[0;31m[0;31m  ***   at top-level:[0;35m sweep("xi2/Om3basis",xi2,Om3,Lv2,Ln2)
+[0;31m[0;31m  ***                 ^-------------------------------------
+[0;31m  ***   in function sweep: ...[0;35mLv[li]);my(x=val/m);my(h=[0;35malghit(x,6,10^10));if
+[0;31m[0;31m  ***                                                  ^---------------------
+[0;31m  ***   in function alghit: [0;35mfor(d=1,dmax,my(p=[0;35malgdep(x,d));if(poldegree(p)
+[0;31m[0;31m  ***                                         ^----------------------------
+  *** algdep: domain error in algdep: degree(x) > 1[0m
+[0;31m[0;31m  ***   at top-level:[0;35m sweep("xi1/Om4basis",xi1,Om4,Lv1,Ln1)
+[0;31m[0;31m  ***                 ^-------------------------------------
+[0;31m  ***   in function sweep: ...[0;35mLv[li]);my(x=val/m);my(h=[0;35malghit(x,6,10^10));if
+[0;31m[0;31m  ***                                                  ^---------------------
+[0;31m  ***   in function alghit: [0;35mfor(d=1,dmax,my(p=[0;35malgdep(x,d));if(poldegree(p)
+[0;31m[0;31m  ***                                         ^----------------------------
+  *** algdep: domain error in algdep: degree(x) > 1[0m

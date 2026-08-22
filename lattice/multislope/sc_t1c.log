@@ -1,0 +1,28 @@
+### R1 Apery zeta(3) [Beukers-Coster control]  N=3000
+   p=5 modulus p^(3s+0) : 748 tests, 0 failures
+   p=7 modulus p^(3s+0) : 498 tests, 0 failures
+   p=13 modulus p^(3s+0) : 248 tests, 0 failures
+   p=2 modulus p^(3s+-1) : 2993 tests, 0 failures
+   p=3 modulus p^(3s+-1) : 1498 tests, 0 failures
+### R2 Zagier C  N=3000
+   p=2 modulus p^(2s+0) : 2993 tests, 0 failures
+   p=5 modulus p^(2s+0) : 748 tests, 0 failures
+   p=7 modulus p^(2s+0) : 498 tests, 0 failures
+   p=13 modulus p^(2s+0) : 248 tests, 0 failures
+   p=3 modulus p^(2s+0) : 1498 tests, 0 failures
+### R3 AZ eta  N=3000
+   p=2 modulus p^(3s+-2) : 2993 tests, 0 failures
+   p=3 modulus p^(3s+0) : 1498 tests, 0 failures
+   p=7 modulus p^(3s+0) : 498 tests, 0 failures
+   p=13 modulus p^(3s+0) : 248 tests, 0 failures
+   p=5 modulus p^(3s+0) : 748 tests, 0 failures
+### R4 Sym^3 Zagier E  N=3000
+   p=2 modulus p^(2s+1) : 2993 tests, 1 failures  first (m,s,v_p,needed)=[1, 2, 4, 5]
+   p=2 modulus p^(2s+0) : 2993 tests, 0 failures
+### R5 AESZ 207  N=3000
+   p=3 modulus p^(2s+0) : 1498 tests, 0 failures
+   p=5 modulus p^(2s+0) : 748 tests, 0 failures
+   p=7 modulus p^(2s+0) : 498 tests, 0 failures
+   p=13 modulus p^(2s+0) : 248 tests, 0 failures
+   p=2 modulus p^(3s+0) : 2993 tests, 0 failures
+   p=2 modulus p^(3s+6) : 2993 tests, 1 failures  first (m,s,v_p,needed)=[1, 1, 5, 9]

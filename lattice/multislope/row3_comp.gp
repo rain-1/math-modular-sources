@@ -1,0 +1,36 @@
+default(parisizemax, 6000000000);
+default(threadsizemax, 4000000000);
+LOG = "/home/ubuntu/code/math-modular-sources/lattice/multislope/row3_comp.log";
+W(s) = write(LOG, s);
+read("/home/ubuntu/code/math-modular-sources/lattice/zeta5_two_row/level16_rows.txt");
+NN = #An; RR = 18; DG = 11; nun = (RR+1)*(DG+1); nr = 125;
+pbig = nextprime(10^2600);
+W(Str("=== level-16 zeta(5): exact joint operator L_18 (order ", RR, ", degree ", DG, ") ==="));
+{ my(mt, kk, vv, i0, QQ, mx, okA, okB, cp);
+  gettime();
+  mt = matconcat([
+    matrix(nr, nun, a, b, my(i=(b-1)\(DG+1), j=(b-1)%(DG+1), n=RR+a); Mod(An[n-i+1],pbig)*Mod(n,pbig)^j);
+    matrix(nr, nun, a, b, my(i=(b-1)\(DG+1), j=(b-1)%(DG+1), n=RR+a); Mod(Bn[n-i+1],pbig)*Mod(n,pbig)^j)]);
+  kk = matker(mt);
+  W(Str("  kernel dim: ", #kk, "  (", gettime(), " ms)"));
+  if(#kk!=1, W("  not 1-dim, abort"); quit());
+  vv = kk[,1];
+  i0=0; for(i=1,nun, if(lift(vv[i])!=0, i0=i; break));
+  vv = vv/vv[i0];
+  vv = vector(nun, i, bestappr(vv[i]));
+  if(type(vv[1])=="t_VEC", W("  rational reconstruction FAILED"); quit());
+  QQ = vector(RR+1, i, sum(j=0,DG, vv[(i-1)*(DG+1)+j+1]*'n^j));
+  mx=1; for(i=1,RR+1, mx=lcm(mx, denominator(content(QQ[i])))); QQ = vector(RR+1,i,QQ[i]*mx);
+  mx=0; for(i=1,RR+1, mx=gcd(mx, content(QQ[i]))); if(mx>0, QQ=vector(RR+1,i,QQ[i]/mx));
+  okA=1; okB=1;
+  for(n=RR, NN-1, if(sum(i=0,RR, subst(QQ[i+1],'n,n)*An[n-i+1])!=0, okA=0); if(sum(i=0,RR, subst(QQ[i+1],'n,n)*Bn[n-i+1])!=0, okB=0));
+  W(Str("  EXACT check on A_n, n=18..399: ", if(okA,"PASS","FAIL"), "   on B_n: ", if(okB,"PASS","FAIL")));
+  cp = sum(i=0,RR, polcoeff(QQ[i+1],DG,'n)*'x^(RR-i));
+  W(Str("  char poly factored: ", factor(cp)));
+  default(realprecision,25);
+  W(Str("  roots: ", polroots(cp)));
+  W(Str("  Q_0(n) factored: ", factor(QQ[1])));
+  W(Str("  integer roots of Q_0 in [1,400]: ", select(t->subst(QQ[1],'n,t)==0, vector(400,i,i))));
+  write("/home/ubuntu/code/math-modular-sources/lattice/multislope/row3_rec18.txt", Str("QROW3B = ", QQ));
+}
+W("DONE"); quit;

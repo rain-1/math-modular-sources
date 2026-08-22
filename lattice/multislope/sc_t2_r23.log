@@ -1,0 +1,84 @@
+
+################ R2 Zagier C (10,3,9)   p=3  sigma_p=2  N=2000 ################
+
+--- companion X^(1) ---
+  xi_p taken as t_N = x_N/a_N ; Cauchy precision v_p(t_N - t_{N-1}) = 3986
+  (so xi_p is known to 3986 p-adic digits; E is meaningful for n <~ N/2)
+  (i) v_p(t_n - xi): n=500 -> 991 ;  n=1000 -> 1992 ; secant slope = 2.0020000000000000000000000000000000000
+      fluctuation  v_p(t_n - xi) - sigma*n  over n=500..1000 : min -25  max -3  mean -13.750499001996007984031936127744510978  range 22
+      same for v_p(x_n - xi a_n) - sigma*n : min -13  max 0
+  (ii) E(m,s) = v_p(x_{m p^s} - xi a_{m p^s}) - sigma*m*p^s     [raw, includes v_p(a_n)]
+       Er(m,s) = v_p(t_{m p^s} - xi)          - sigma*m*p^s     [ratio form]
+     m=1  E : [-1, -2, -2, -2, -2, -2, -2]
+          Er: [-2, -3, -3, -3, -3, -3, -3]
+          v_p(a_{m p^s}): [1, 1, 1, 1, 1, 1, 1]
+     m=2  E : [-3, -4, -3, -2, -2, -2]
+          Er: [-4, -5, -4, -3, -3, -3]
+          v_p(a_{m p^s}): [1, 1, 1, 1, 1, 1]
+     m=3  E : [-2, -2, -2, -2, -2, -2]
+          Er: [-3, -3, -3, -3, -3, -3]
+          v_p(a_{m p^s}): [1, 1, 1, 1, 1, 1]
+     m=4  E : [-2, -3, -3, -3, -3, -3]
+          Er: [-4, -5, -5, -5, -5, -5]
+          v_p(a_{m p^s}): [2, 2, 2, 2, 2, 2]
+     m=5  E : [-3, -4, -2, -3, -3]
+          Er: [-5, -6, -4, -5, -5]
+          v_p(a_{m p^s}): [2, 2, 2, 2, 2]
+     m=6  E : [-4, -3, -2, -2, -2]
+          Er: [-5, -4, -3, -3, -3]
+          v_p(a_{m p^s}): [1, 1, 1, 1, 1]
+  (iii) v_p( t_{m p^{s+1}} - t_{m p^s} )  and  minus sigma*m*p^s
+     m=1  v: [0, 3, 15, 51, 159, 483]
+          v - sigma*m*p^s: [-2, -3, -3, -3, -3, -3]
+     m=2  v: [0, 7, 32, 105, 321, 969]
+          v - sigma*m*p^s: [-4, -5, -4, -3, -3, -3]
+     m=3  v: [3, 15, 51, 159, 483]
+          v - sigma*m*p^s: [-3, -3, -3, -3, -3]
+     m=4  v: [4, 19, 67, 211, 643]
+          v - sigma*m*p^s: [-4, -5, -5, -5, -5]
+     m=5  v: [5, 24, 86, 265, 805]
+          v - sigma*m*p^s: [-5, -6, -4, -5, -5]
+     m=6  v: [7, 32, 105, 321, 969]
+          v - sigma*m*p^s: [-5, -4, -3, -3, -3]
+
+################ R3 AZ eta (11,5,125)   p=5  sigma_p=3  N=2000 ################
+
+--- companion X^(1) ---
+  xi_p taken as t_N = x_N/a_N ; Cauchy precision v_p(t_N - t_{N-1}) = 5974
+  (so xi_p is known to 5974 p-adic digits; E is meaningful for n <~ N/2)
+  (i) v_p(t_n - xi): n=500 -> 1495 ;  n=1000 -> 2993 ; secant slope = 2.9960000000000000000000000000000000000
+      fluctuation  v_p(t_n - xi) - sigma*n  over n=500..1000 : min -25  max -3  mean -13.648702594810379241516966067864271457  range 22
+      same for v_p(x_n - xi a_n) - sigma*n : min -13  max -2
+  (ii) E(m,s) = v_p(x_{m p^s} - xi a_{m p^s}) - sigma*m*p^s     [raw, includes v_p(a_n)]
+       Er(m,s) = v_p(t_{m p^s} - xi)          - sigma*m*p^s     [ratio form]
+     m=1  E : [-1, -2, -2, -2, -2]
+          Er: [-2, -3, -3, -3, -3]
+          v_p(a_{m p^s}): [1, 1, 1, 1, 1]
+     m=2  E : [-2, -2, -2, -2]
+          Er: [-3, -3, -3, -3]
+          v_p(a_{m p^s}): [1, 1, 1, 1]
+     m=3  E : [-2, -3, -3, -3]
+          Er: [-4, -5, -5, -5]
+          v_p(a_{m p^s}): [2, 2, 2, 2]
+     m=4  E : [-4, -5, -3, -3]
+          Er: [-6, -7, -5, -5]
+          v_p(a_{m p^s}): [2, 2, 2, 2]
+     m=5  E : [-2, -2, -2, -2]
+          Er: [-3, -3, -3, -3]
+          v_p(a_{m p^s}): [1, 1, 1, 1]
+     m=6  E : [-2, -3, -3, -3]
+          Er: [-4, -5, -5, -5]
+          v_p(a_{m p^s}): [2, 2, 2, 2]
+  (iii) v_p( t_{m p^{s+1}} - t_{m p^s} )  and  minus sigma*m*p^s
+     m=1  v: [1, 12, 72, 372]
+          v - sigma*m*p^s: [-2, -3, -3, -3]
+     m=2  v: [3, 27, 147, 747]
+          v - sigma*m*p^s: [-3, -3, -3, -3]
+     m=3  v: [5, 40, 220, 1120]
+          v - sigma*m*p^s: [-4, -5, -5, -5]
+     m=4  v: [6, 53, 295]
+          v - sigma*m*p^s: [-6, -7, -5]
+     m=5  v: [12, 72, 372]
+          v - sigma*m*p^s: [-3, -3, -3]
+     m=6  v: [14, 85, 445]
+          v - sigma*m*p^s: [-4, -5, -5]

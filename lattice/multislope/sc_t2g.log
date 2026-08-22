@@ -1,0 +1,46 @@
+[0;31m  ***   Warning: new maximum stack size = 6000001024 (5722.047 Mbytes).[0m
+[0;31m  ***   Warning: increasing stack size to 16000000.[0m
+[0;31m  ***   Warning: increasing stack size to 32000000.[0m
+[0;31m  ***   Warning: increasing stack size to 64000000.[0m
+[0;31m  ***   Warning: increasing stack size to 128000000.[0m
+[0;31m  ***   Warning: increasing stack size to 256000000.[0m
+#### R5 AESZ 207, p=2, sigma=12, N=6000  (xi = t_N, precision v_2 ~ 71951)
+  X^(1):  n = 2..3000
+     v_2(n)=0 : 1499 values, E in [-3,7]
+     v_2(n)=1 : 750 values, E in [-4,-4]
+     v_2(n)=2 : 375 values, E in [-4,-4]
+     v_2(n)=3 : 188 values, E in [-4,-4]
+     v_2(n)=4 : 94 values, E in [-4,-4]
+     v_2(n)=5 : 47 values, E in [-4,-4]
+     v_2(n)=6 : 23 values, E in [-4,-4]
+     v_2(n)=7 : 12 values, E in [-4,-4]
+     v_2(n)=8 : 6 values, E in [-4,-4]
+     v_2(n)=9 : 3 values, E in [-4,-4]
+     v_2(n)=10 : 1 values, E in [-4,-4]
+     v_2(n)=11 : 1 values, E in [-4,-4]
+  X^(2):  n = 2..3000
+     v_2(n)=0 : 1499 values, E in [-12,-12]
+     v_2(n)=1 : 750 values, E in [-11,-11]
+     v_2(n)=2 : 375 values, E in [-10,-10]
+     v_2(n)=3 : 188 values, E in [-9,-9]
+     v_2(n)=4 : 94 values, E in [-7,2]
+     v_2(n)=5 : 47 values, E in [-8,-8]
+     v_2(n)=6 : 23 values, E in [-8,-8]
+     v_2(n)=7 : 12 values, E in [-8,-8]
+     v_2(n)=8 : 6 values, E in [-8,-8]
+     v_2(n)=9 : 3 values, E in [-8,-8]
+     v_2(n)=10 : 1 values, E in [-8,-8]
+     v_2(n)=11 : 1 values, E in [-8,-8]
+  X^(3):  n = 2..3000
+     v_2(n)=0 : 1499 values, E in [-27,-16]
+     v_2(n)=1 : 750 values, E in [-28,-28]
+     v_2(n)=2 : 375 values, E in [-28,-28]
+     v_2(n)=3 : 188 values, E in [-28,-28]
+     v_2(n)=4 : 94 values, E in [-28,-28]
+     v_2(n)=5 : 47 values, E in [-28,-28]
+     v_2(n)=6 : 23 values, E in [-28,-28]
+     v_2(n)=7 : 12 values, E in [-28,-28]
+     v_2(n)=8 : 6 values, E in [-28,-28]
+     v_2(n)=9 : 3 values, E in [-28,-28]
+     v_2(n)=10 : 1 values, E in [-28,-28]
+     v_2(n)=11 : 1 values, E in [-28,-28]

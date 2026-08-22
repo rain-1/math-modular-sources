@@ -1,0 +1,14 @@
+default(parisizemax, 6000000000);
+default(realprecision, 1100);
+read("/home/ubuntu/code/math-modular-sources/lattice/multislope/row2_arch.txt");
+vv = [1.0, XIARCH[1], XIARCH[2], XIARCH[3]];
+L = lindep(vv);
+r = sum(i=1,4, L[i]*vv[i]);
+print("4-term lindep coeff sizes: ", vector(4,i,#Str(abs(L[i]))));
+print("residual = ", r);
+print("log10|residual| = ", if(r==0, "0", log(abs(r))/log(10.0)));
+print("max|coeff| ~ 10^", #Str(abs(vecmax(abs(L)))));
+print("For a GENUINE relation the residual would be ~10^-1100; for spurious it is ~10^(-1100+sum of coeff digits)");
+L2 = lindep([1.0, XIARCH[1], XIARCH[2]]);
+print("3-term [1,B,C] coeff sizes ", vector(3,i,#Str(abs(L2[i]))), "  residual log10 = ", log(abs(sum(i=1,3,L2[i]*[1.0,XIARCH[1],XIARCH[2]][i])))/log(10.0));
+quit;

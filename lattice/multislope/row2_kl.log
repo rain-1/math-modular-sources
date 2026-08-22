@@ -1,0 +1,38 @@
+=== KL zeta_2 validation (exact interpolation L_2(1-n,1) = -(1-2^{n-1})B_n/n): PASS ===
+  v_2(zeta_2(2)) = -1
+  v_2(zeta_2(3)) = -2
+  v_2(zeta_2(4)) = -1
+  v_2(zeta_2(5)) = -3
+  v_2(zeta_2(6)) = -1
+  v_2(zeta_2(7)) = -2
+
+--- is xi_2(X) a rational multiple of zeta_2(m)?  (lindep at 700 2-adic digits) ---
+  B vs zeta_2(2):  coeff sizes 106 digits
+  B vs zeta_2(3):  coeff sizes 105 digits
+  B vs zeta_2(4):  coeff sizes 106 digits
+  B vs zeta_2(5):  coeff sizes 105 digits
+  B vs zeta_2(6):  coeff sizes 105 digits
+  B vs zeta_2(7):  coeff sizes 106 digits
+  C vs zeta_2(2):  coeff sizes 106 digits
+  C vs zeta_2(3):  coeff sizes 106 digits
+  C vs zeta_2(4):  coeff sizes 106 digits
+  C vs zeta_2(5):  coeff sizes 106 digits
+  C vs zeta_2(6):  coeff sizes 106 digits
+  C vs zeta_2(7):  coeff sizes 106 digits
+  D vs zeta_2(2):  coeff sizes 106 digits
+  D vs zeta_2(3):  coeff sizes 106 digits
+  D vs zeta_2(4):  coeff sizes 106 digits
+  D vs zeta_2(5):  coeff sizes 106 digits
+  D vs zeta_2(6):  coeff sizes 106 digits
+  D vs zeta_2(7):  coeff sizes 106 digits
+
+--- xi_2(X) in Q + Q*zeta_2(5)?  and in Q*zeta_2(3)+Q*zeta_2(5)? ---
+  B: [xi,1,z2(5)] coeff sizes [71, 70, 71]   [xi,z2(3),z2(5)] [70, 71, 71]
+  C: [xi,1,z2(5)] coeff sizes [70, 71, 70]   [xi,z2(3),z2(5)] [70, 71, 71]
+  D: [xi,1,z2(5)] coeff sizes [70, 70, 69]   [xi,z2(3),z2(5)] [70, 71, 70]
+
+--- is xi_2 rational? algebraic of degree <= 4? ---
+  B: bestappr-style lindep([xi,1]) coeff sizes [136, 135]   algdep deg 4 height 58
+  C: bestappr-style lindep([xi,1]) coeff sizes [136, 135]   algdep deg 4 height 58
+  D: bestappr-style lindep([xi,1]) coeff sizes [136, 136]   algdep deg 4 height 61
+DONE

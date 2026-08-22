@@ -1,0 +1,16 @@
+
+#### R2 Zagier C  p=3 sigma=2 N=4000  s>=2
+   X^(1): 74 values of m with >=2 usable s; 182 cells; 26 violations of 's-constancy'  first (m,s,E,E_first)=[2, 3, -2, -3]   E range [-8, -2]
+
+#### R3 AZ eta  p=5 sigma=3 N=4000  s>=2
+   X^(1): 16 values of m with >=2 usable s; 35 cells; 0 violations of 's-constancy'   E range [-5, -2]
+
+#### R5 AESZ 207  p=2 sigma=12 N=4000  s>=2
+   X^(1): 250 values of m with >=2 usable s; 744 cells; 0 violations of 's-constancy'   E range [-4, -4]
+   X^(2): 250 values of m with >=2 usable s; 744 cells; 437 violations of 's-constancy'  first (m,s,E,E_first)=[1, 3, -9, -10]   E range [-10, -1]
+   X^(3): 250 values of m with >=2 usable s; 744 cells; 0 violations of 's-constancy'   E range [-28, -28]
+
+#### R5 AESZ 207  p=2 sigma=12 N=4000  s>=6
+   X^(1): 15 values of m with >=2 usable s; 41 cells; 0 violations of 's-constancy'   E range [-4, -4]
+   X^(2): 15 values of m with >=2 usable s; 41 cells; 0 violations of 's-constancy'   E range [-8, -8]
+   X^(3): 15 values of m with >=2 usable s; 41 cells; 0 violations of 's-constancy'   E range [-28, -28]

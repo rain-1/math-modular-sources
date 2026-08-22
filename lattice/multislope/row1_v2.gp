@@ -1,0 +1,20 @@
+default(parisizemax, 6000000000);
+read("/home/ubuntu/code/math-modular-sources/lattice/multislope/row1_rec.txt");
+Qp = QROW1; RR = 6; QC = vector(RR+1, i, Vecrev(Qp[i]));
+evq(i,n) = { my(v=QC[i+1], s=0, t=1); for(j=1,#v, s+=v[j]*t; t*=n); s };
+NB = 800;
+run(seed) = { my(cur=vector(NB+1), sm, ff); cur[seed+1]=(seed!)^4;
+  for(n=seed+1, NB, sm=0; ff=1;
+    for(i=1, min(RR,n), if(i>1, ff *= (n-i+1)^4); if(cur[n-i+1]!=0, sm += evq(i,n)*ff*cur[n-i+1]));
+    cur[n+1] = -sm); cur};
+WA = run(0);
+Av = vector(NB+1, i, WA[i]/((i-1)!)^4);
+{ my(mx=0, mn=99, s=0);
+  for(n=1, NB, my(v=valuation(Av[n+1],2)); mx=max(mx,v); mn=min(mn,v); s+=v);
+  print("Row 1: v_2(A_n) for 1<=n<=", NB, ":  min=", mn, "  max=", mx, "  mean=", s*1.0/NB);
+  print("  => bounded, so mu_1 = lim v_2(A_n)/n = 0  [verified n<=", NB, "]");
+  print("  Newton polygon of (x-8)^3(x-4)^3 at 2: ", newtonpoly((x-8)^3*(x-4)^3, 2));
+  print("  Newton polygon at 3,5,7: ", newtonpoly((x-8)^3*(x-4)^3,3), newtonpoly((x-8)^3*(x-4)^3,5), newtonpoly((x-8)^3*(x-4)^3,7));
+  my(mm=0); for(n=1,300, mm=max(mm, valuation(Av[n+1],3)));
+  print("  max v_3(A_n), n<=300: ", mm); }
+quit;

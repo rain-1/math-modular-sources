@@ -1,0 +1,35 @@
+### R1 Apery zeta(3)   (gen 11 ms)
+   p=2: 2993 tests, 0 failures
+   p=3: 1498 tests, 0 failures
+   p=5: 748 tests, 0 failures
+   p=7: 498 tests, 0 failures
+   p=13: 248 tests, 0 failures
+   TOTAL 5985 tests, 0 failures
+### R2 Zagier C (10,3,9)   (gen 4 ms)
+   p=2: 2993 tests, 0 failures
+   p=3: 1498 tests, 0 failures
+   p=5: 748 tests, 0 failures
+   p=7: 498 tests, 0 failures
+   p=13: 248 tests, 0 failures
+   TOTAL 5985 tests, 0 failures
+### R3 AZ eta (11,5,125)   (gen 5 ms)
+   p=2: 2993 tests, 0 failures
+   p=3: 1498 tests, 0 failures
+   p=5: 748 tests, 0 failures
+   p=7: 498 tests, 0 failures
+   p=13: 248 tests, 0 failures
+   TOTAL 5985 tests, 0 failures
+### R4 Sym^3 Zagier E   (gen 9 ms)
+   p=2: 2993 tests, 0 failures
+   p=3: 1498 tests, 889 failures  first (m,s,v_p(diff)) = [1, 1, 0]
+   p=5: 748 tests, 560 failures  first (m,s,v_p(diff)) = [2, 1, 0]
+   p=7: 498 tests, 361 failures  first (m,s,v_p(diff)) = [1, 1, 0]
+   p=13: 248 tests, 233 failures  first (m,s,v_p(diff)) = [1, 1, 0]
+   TOTAL 5985 tests, 2043 failures
+### R5 AESZ 207   (gen 5 ms)
+   p=2: 2993 tests, 0 failures
+   p=3: 1498 tests, 0 failures
+   p=5: 748 tests, 0 failures
+   p=7: 498 tests, 0 failures
+   p=13: 248 tests, 0 failures
+   TOTAL 5985 tests, 0 failures

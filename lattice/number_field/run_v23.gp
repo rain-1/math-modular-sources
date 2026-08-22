@@ -1,0 +1,10 @@
+tcE = 1/8 + 0.*I;
+xiE = dofold("V2 Zagier E", 12,12,4, 32,0,0, tcE, 2500, 900, 2400);
+print("V2 known xi_E = G/2 = ", Catalan/2);
+print("V2 |xi - G/2|       = ", abs(xiE - Catalan/2));
+print("V2 |Im(xi)|         = ", abs(imag(xiE)));
+tcD = (sqrt(125)-11)/2 + 0.*I;
+xiD = dofold("V3 Zagier D", 11,11,3, -1,0,0, tcD, 2500, 900, 2400);
+print("V3 known xi_D = zeta(2)/5 = ", zeta(2)/5);
+print("V3 |xi - zeta(2)/5|       = ", abs(xiD - zeta(2)/5));
+print("V3 |Im(xi)|               = ", abs(imag(xiD)));

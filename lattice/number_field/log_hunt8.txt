@@ -1,0 +1,6 @@
+scanning Re(xi2) over 560 basis elements
+Re(xi2): 0 three-term hits
+scanning Re(xi1) over 441 basis elements
+Re(xi1): 0 three-term hits
+scanning Im(xi1) over 441 basis elements
+Im(xi1): 0 three-term hits

@@ -1,0 +1,56 @@
+
+#### R5 AESZ 207 p=2 sigma=12  E(n) vs v_p(n),  n = 100..2000
+   X^(1):
+      v_p(n)=0 : 950 values of n, E in [-3,7]
+      v_p(n)=1 : 475 values of n, E in [-4,-4]
+      v_p(n)=2 : 238 values of n, E in [-4,-4]
+      v_p(n)=3 : 119 values of n, E in [-4,-4]
+      v_p(n)=4 : 60 values of n, E in [-4,-4]
+      v_p(n)=5 : 29 values of n, E in [-4,-4]
+      v_p(n)=6 : 15 values of n, E in [-4,-4]
+      v_p(n)=7 : 8 values of n, E in [-4,-4]
+      v_p(n)=8 : 4 values of n, E in [-4,-4]
+      v_p(n)=9 : 2 values of n, E in [-4,-4]
+      v_p(n)=10 : 1 values of n, E in [-4,-4]
+   X^(2):
+      v_p(n)=0 : 950 values of n, E in [-12,-12]
+      v_p(n)=1 : 475 values of n, E in [-11,-11]
+      v_p(n)=2 : 238 values of n, E in [-10,-10]
+      v_p(n)=3 : 119 values of n, E in [-9,-9]
+      v_p(n)=4 : 60 values of n, E in [-7,-1]
+      v_p(n)=5 : 29 values of n, E in [-8,-8]
+      v_p(n)=6 : 15 values of n, E in [-8,-8]
+      v_p(n)=7 : 8 values of n, E in [-8,-8]
+      v_p(n)=8 : 4 values of n, E in [-8,-8]
+      v_p(n)=9 : 2 values of n, E in [-8,-8]
+      v_p(n)=10 : 1 values of n, E in [-8,-8]
+   X^(3):
+      v_p(n)=0 : 950 values of n, E in [-27,-16]
+      v_p(n)=1 : 475 values of n, E in [-28,-28]
+      v_p(n)=2 : 238 values of n, E in [-28,-28]
+      v_p(n)=3 : 119 values of n, E in [-28,-28]
+      v_p(n)=4 : 60 values of n, E in [-28,-28]
+      v_p(n)=5 : 29 values of n, E in [-28,-28]
+      v_p(n)=6 : 15 values of n, E in [-28,-28]
+      v_p(n)=7 : 8 values of n, E in [-28,-28]
+      v_p(n)=8 : 4 values of n, E in [-28,-28]
+      v_p(n)=9 : 2 values of n, E in [-28,-28]
+      v_p(n)=10 : 1 values of n, E in [-28,-28]
+
+#### R2 Zagier C p=3 sigma=2  E(n) vs v_p(n),  n = 100..2000
+   X^(1):
+      v_p(n)=0 : 1268 values of n, E in [-14,2]
+      v_p(n)=1 : 422 values of n, E in [-13,-2]
+      v_p(n)=2 : 140 values of n, E in [-10,-2]
+      v_p(n)=3 : 48 values of n, E in [-8,-3]
+      v_p(n)=4 : 15 values of n, E in [-6,-2]
+      v_p(n)=5 : 6 values of n, E in [-5,-2]
+      v_p(n)=6 : 2 values of n, E in [-2,-2]
+
+#### R3 AZ eta p=5 sigma=3  E(n) vs v_p(n),  n = 100..2000
+   X^(1):
+      v_p(n)=0 : 1520 values of n, E in [-14,-2]
+      v_p(n)=1 : 304 values of n, E in [-12,-3]
+      v_p(n)=2 : 61 values of n, E in [-8,-3]
+      v_p(n)=3 : 13 values of n, E in [-5,-2]
+      v_p(n)=4 : 3 values of n, E in [-3,-2]

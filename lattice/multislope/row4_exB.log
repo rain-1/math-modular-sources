@@ -1,0 +1,4 @@
+=== shape B: r=35, D=7 (minimal ODE order) ===
+  pivot index = 8
+  verify over n=35..1597: failures = 0
+  max coeff digits = 26

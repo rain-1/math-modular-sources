@@ -1,0 +1,13 @@
+Re(xi1): 0 algebraic hits
+Im(xi1): 0 algebraic hits
+Re(th1): 0 algebraic hits
+Im(th1): 0 algebraic hits
+Re(xi2): 0 algebraic hits
+  ALG-HIT Im(xi2) / (g^4 Pi^-1 1) : deg 4  minpoly 2902376448*x^4 - 1  resid 0.E-211
+Im(xi2): 1 algebraic hits
+Re(th2): 0 algebraic hits
+Im(th2): 0 algebraic hits
+Re(xi1)g4: 0 algebraic hits
+Im(xi1)g4: 0 algebraic hits
+Re(xi2)g3: 0 algebraic hits
+Im(xi2)g3: 0 algebraic hits

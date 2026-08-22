@@ -1,0 +1,11 @@
+  ***   Warning: new maximum stack size = 4000002048 (3814.699 Mbytes).
+d_1 = 34 + 15*sqrt5
+d_2 = 7111 + 3180*sqrt5
+d_3 = 2040334 + 912465*sqrt5
+c_2 = 423/4 + 375/8*sqrt5
+  k=0 : first n<=200 with lcm(1..n)^k c_n non-integral = 2
+  k=1 : first n<=200 with lcm(1..n)^k c_n non-integral = 2
+  k=2 : first n<=200 with lcm(1..n)^k c_n non-integral = 2
+  k=3 : first n<=200 with lcm(1..n)^k c_n non-integral = -1
+  k=4 : first n<=200 with lcm(1..n)^k c_n non-integral = -1
+  k=5 : first n<=200 with lcm(1..n)^k c_n non-integral = -1

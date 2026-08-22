@@ -1,0 +1,42 @@
+default(parisizemax, 6000000000);
+LOG = "/home/ubuntu/code/math-modular-sources/lattice/multislope/row1_asym.log";
+W(s) = write(LOG, s);
+read("/home/ubuntu/code/math-modular-sources/lattice/multislope/row1_rec.txt");
+Qp = QROW1; RR = 6;
+QC = vector(RR+1, i, Vecrev(Qp[i]));
+default(realprecision, 40);
+ev(i,n) = { my(v=QC[i+1], s=0.0, t=1.0); for(j=1,#v, s+=v[j]*t; t*=n); s };
+NB = if(type(NBIG)=="t_INT", NBIG, 300000);
+/* ahat_n = u_n / 8^n ;  ahat_n = -(1/Q_0(n)) sum_{i=1}^{6} Q_i(n) 8^{-i} ahat_{n-i} */
+p8 = vector(RR, i, 1.0/8^i);
+runf(seed) = {
+  my(cur = vector(NB+1), sm);
+  cur[seed+1] = 1.0/8^seed;
+  for(n = seed+1, NB,
+    sm = 0.0;
+    for(i = 1, min(RR,n), if(cur[n-i+1]!=0.0, sm += ev(i,n)*p8[i]*cur[n-i+1]));
+    cur[n+1] = -sm/(n^4*1.0));
+  cur};
+W(Str("=== Row 1 floating asymptotics, N = ", NB, " ==="));
+gettime();
+HA = runf(0);
+W(Str("A built in ", gettime(), " ms"));
+W("--- A_n/8^n and local exponent d log(A_n/8^n)/d log n ---");
+SS = [1000, 3000, 10000, 30000, 100000, 300000];
+for(i=1,#SS, my(n=SS[i]); if(n<=NB, W(Str("  n=",n,"  A/8^n = ", HA[n+1], "   exponent = ", log(HA[n+1]/HA[n])/log(n/(n-1.0)), "   (A/8^n)*n/(log n)^2 = ", HA[n+1]*n/log(n*1.0)^2))));
+CN = ["B","C","D","E","F"];
+RT = vector(5);
+for(s=1,5, my(h = runf(s)); RT[s] = vector(#SS, i, h[SS[i]+1]/HA[SS[i]+1]); h=0);
+W("");
+W("--- r_n = x_n/a_n at sample n ---");
+for(s=1,5, my(str=Str("  ",CN[s],": ")); for(i=1,#SS, str=Str(str, "  n=",SS[i],": ", RT[s][i])); W(str));
+W("");
+W("--- differences r_{n} - r_{n/3} (are they shrinking like 1/log n ?) ---");
+for(s=1,5, my(str=Str("  ",CN[s],": ")); for(i=2,#SS, str=Str(str, "  ", RT[s][i]-RT[s][i-1])); W(str));
+W("");
+W("--- extrapolation assuming r_n = L + c/log n, using consecutive pairs ---");
+for(s=1,5, my(str=Str("  ",CN[s],": ")); for(i=2,#SS, my(l1=log(SS[i-1]*1.0), l2=log(SS[i]*1.0), c=(RT[s][i]-RT[s][i-1])/(1/l2-1/l1)); str=Str(str,"  L~", RT[s][i]-c/l2)); W(str));
+W("--- extrapolation assuming r_n = L + c/(log n)^2 ---");
+for(s=1,5, my(str=Str("  ",CN[s],": ")); for(i=2,#SS, my(l1=log(SS[i-1]*1.0)^2, l2=log(SS[i]*1.0)^2, c=(RT[s][i]-RT[s][i-1])/(1/l2-1/l1)); str=Str(str,"  L~", RT[s][i]-c/l2)); W(str));
+W("DONE");
+quit;

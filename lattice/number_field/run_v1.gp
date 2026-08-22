@@ -1,0 +1,10 @@
+read("cfold.gp");
+LB = 3^(-2)*(zetahurwitz(2,1/3) - zetahurwitz(2,2/3));
+print("L(chi_-3,2) = ", LB);
+tcB = (9 - I*sqrt(27))/54;
+xiB = dofold("V1 Zagier B", 9,9,3, 27,0,0, tcB, 1400, 900, 2400);
+known = LB/2 + I*2*Pi^2/(27*sqrt(3));
+print("known xi_B = ", known);
+print("|xi - known|      = ", abs(xiB - known));
+print("|conj(xi) - known|= ", abs(conj(xiB) - known));
+quit;
