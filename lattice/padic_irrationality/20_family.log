@@ -1,0 +1,22 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+(a) c with |c| <= 30000 for which the A-row is integral to n = 60:
+    [-16384, -4096, -1024, -256, -64, -16]
+    (these are exactly c = -4^m, m = 2..7)
+
+(b) deep check of c = -4^m, exact to n = 400:
+m=2 c=      -16: A int=1  k=2  min v_2(B_n)=0  kappa_2=-2.000  sigma_2=  0.020  arch= 1.38629 (log l1= 1.38629)  nonvanishing=1  S=-0.613706  theta= 0.818768
+m=3 c=      -64: A int=1  k=2  min v_2(B_n)=0  kappa_2= 0.000  sigma_2=  5.960  arch= 2.07093 (log l1= 2.07944)  nonvanishing=1  S=+0.079442  theta= 1.019474
+m=4 c=     -256: A int=1  k=2  min v_2(B_n)=0  kappa_2= 0.000  sigma_2=  7.960  arch= 2.75959 (log l1= 2.77259)  nonvanishing=1  S=+0.772589  theta= 1.161880
+m=5 c=    -1024: A int=1  k=2  min v_2(B_n)=0  kappa_2= 0.000  sigma_2=  9.960  arch= 3.45065 (log l1= 3.46574)  nonvanishing=1  S=+1.465736  theta= 1.268168
+m=6 c=    -4096: A int=1  k=2  min v_2(B_n)=0  kappa_2= 0.000  sigma_2= 11.960  arch= 4.14306 (log l1= 4.15888)  nonvanishing=1  S=+2.158883  theta= 1.350532
+m=7 c=   -16384: A int=1  k=2  min v_2(B_n)=0  kappa_2= 0.000  sigma_2= 13.960  arch= 4.83599 (log l1= 4.85203)  nonvanishing=1  S=+2.852030  theta= 1.416231
+m=8 c=   -65536: A int=1  k=2  min v_2(B_n)=0  kappa_2= 0.000  sigma_2= 15.960  arch= 5.52909 (log l1= 5.54518)  nonvanishing=1  S=+3.545177  theta= 1.469860
+m=9 c=  -262144: A int=1  k=2  min v_2(B_n)=0  kappa_2= 0.000  sigma_2= 17.960  arch= 6.22222 (log l1= 6.23832)  nonvanishing=1  S=+4.238325  theta= 1.514464
+
+(c) rationality / algebraicity of xi_2, m = 3..7 (2-adic lindep):
+m=3: max|coeff| of lindep[1,xi] = 262 digits ; of lindep[1,xi,..,xi^4] = 107 digits
+m=4: max|coeff| of lindep[1,xi] = 353 digits ; of lindep[1,xi,..,xi^4] = 143 digits
+m=5: max|coeff| of lindep[1,xi] = 443 digits ; of lindep[1,xi,..,xi^4] = 179 digits
+m=6: max|coeff| of lindep[1,xi] = 533 digits ; of lindep[1,xi,..,xi^4] = 215 digits
+m=7: max|coeff| of lindep[1,xi] = 623 digits ; of lindep[1,xi,..,xi^4] = 251 digits
+   (hundreds of digits = NO relation: xi_2 is neither rational nor algebraic of degree <= 4)

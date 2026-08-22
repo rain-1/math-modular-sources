@@ -1,0 +1,26 @@
+[0;31m  ***   Warning: new maximum stack size = 14000001024 (13351.441 Mbytes).[0m
+R1 = (0,8,4,-256,0):  (n+1)^2 u_{n+1} = (8n+4) u_n + 256 n^2 u_{n-1}
+  A_0..A_11 = [1, 4, 76, 624, 12036, 119568, 2285872, 24914368, 471388132, 5435202448, 101877796912, 1220652211648]
+  B_0..B_7  = [0, 1, 3, 1084/9, 5785/9, 4648324/225, 3488044/25, 4941262064/1225]
+  xi_2 mod 2^100 = 4958757186944352394744761462353/4
+
+--- mutual affine relations (lindep, height < 10^14) ---
+  [1, xi(R1), xi(R2)] : [-12, -720, -20480]~
+  [1, xi(R1), xi(R3)] : none
+  [1, xi(R1), xi(R4)] : none
+  [1, xi(R1), xi(Cal)]: none
+
+--- algebraicity of xi(R1), degree <= 4 ---
+  degree 1: none of height < 10^14
+  degree 2: none of height < 10^14
+  degree 3: none of height < 10^14
+  degree 4: none of height < 10^14
+
+--- three-term with zeta_2(2), zeta_2(3) ---
+  [1, zeta_2(2), zeta_2(3), xi(R1)] : none of height < 10^14
+
+--- affine in L_2(s,chi), even quadratic chi of conductor <= 104, s = 2..5 ---
+  none
+
+--- 2-adic logarithms of small odd units ---
+  none

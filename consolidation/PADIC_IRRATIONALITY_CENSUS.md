@@ -28,7 +28,22 @@ $S_p>0\iff\theta_p>1$ in Calegari's normalisation).  Then:
   and $0.8917942081$ ($\zeta_5(3)$) to all printed digits.
 * **No cell in the census has $S_p>0$ except Calegari's own three.**  The census
   maximum is $S_3(\mathbf B)=-0.3521$ ($\theta_3=0.9035$).  **The list of candidate
-  new theorems is empty.**
+  new theorems about a *named* $p$-adic $L$-value is empty.**
+* **But the follow-up scan of §9 is not empty.**  The exhaustive search of
+  Calegari's *shifted, non-self-dual* normalisation
+  $(n+1)^2u_{n+1}=(a_qn^2+b_qn+c_q)u_n-c(n-r)^2u_{n-1}$ (§7 predicted this is the
+  only place left to look) returns **769 cells with $S_2>0$**, all at $p=2$.
+  Every one whose $\xi_2$ is identified computes $\zeta_2(2)$ — Calegari again.
+  What is new is a **sporadic infinite family**
+  $$(n+1)^2u_{n+1}=4(2n+1)u_n+4^m\,n^2u_{n-1}\qquad(m\ge2),$$
+  integral for exactly these $c=-4^m$ and no other $|c|\le30000$, with
+  $$S_2^{(m)}=m\log2-2\ \longrightarrow\ \infty,\qquad
+  \theta_2^{(m)}=\frac{2m\log2}{2+m\log2}\ \nearrow\ 2 .$$
+  Its $m=3$ member computes $-\tfrac12\zeta_2(2)$; the members $m\ge4$ compute
+  constants that are **not rational, not algebraic of degree $\le4$, and not
+  affine in any Kubota–Leopoldt $L_2(s,\chi)$ tested** (quadratic $\chi$,
+  conductor $\le104$, $s\le5$, height $10^{14}$).  §9.6 states precisely what
+  would be proved and what still has to be checked.
 * **The best near miss is `AZ` $\eta$ at $p=5$**, $\xi_5=\tfrac12\zeta_5(3)$,
   $S_5=-0.5858$, $\theta_5=0.8917942081$ — *numerically identical* to Calegari's
   own failed $X_0(5)$ cell, because $\eta$'s level-lowering twin **is** a
@@ -317,13 +332,18 @@ $$\textbf{Three, and all three are Calegari's own theorems.}$$
   $\zeta_2(2)=L_2(2,\chi_{-4})\notin\mathbb Q$ (also Beukers 2008 Cor. 7.3).
 * **C3** $S_3=3\log3-3=+0.295837$: this *is* Calegari Theorem 3.4, $\zeta_3(3)\notin\mathbb Q$.
 
-**The list of candidate new theorems is empty.**  No row constructed in this
+**Within the census, the list of candidate new theorems is empty.**  No row constructed in this
 project — no Zagier sporadic, no Almkvist–Zudilin row, no Cooper row, no Domb or
 $\varepsilon$ row, no level-16 $\zeta(5)$ row, no AESZ rank-4 row, and neither of
 the two hypergeometric Catalan rows (Zudilin, Nesterenko) — attains $S_p>0$ at
 any prime.  Consequently there is nothing here for a literature audit to check
 for novelty against Calegari 2005 or Beukers 2008: the only positive cells are
 literally those two papers' theorems, recovered.
+
+**This changes in §9.**  The follow-up scan of Calegari's shifted normalisation —
+the one gap §7 identified — does produce positive cells outside the census, and
+one family of them computes constants that resisted identification.  §9.6 is the
+statement that a literature audit has to be run against.
 
 ---
 
@@ -520,6 +540,8 @@ census; recorded as the open problem, not as results):
 | AESZ 207 $\sigma_2=12$, $\lambda_1$, $k=4$ | **measured/verified** (`AESZ207.md`); $\xi_2$ **unidentified** |
 | level-16 $\zeta(5)$ $\sigma_2=1$ | **measured**, not derived (`ZETA5_TWO_ROW.md` caveat 4) |
 | "$\zeta_5(3)$, $\zeta_2(5)$, $L_2(2,\chi_{12})$ are open" | **read off this repo's summary of Beukers 2008** (`SOURCES_S18_ZUDILIN.md` §6.1) — **must be confirmed by the literature audit**, which this document does not perform |
+| §9's family $(n+1)^2u_{n+1}=4(2n+1)u_n+4^mn^2u_{n-1}$ | integrality, $k=2$, $\kappa_2=0$, nonvanishing **verified** to $n=400$ for $m\le9$; $\sigma_2=2m$ **proved** from the exact Casoratian $W_n=c^n/(n+1)^2$ given **H1** |
+| §9's $\xi_2^{(m)}$, $m\ge4$, is "new" | **NOT established.** Only *quadratic* characters were tested; a non-quadratic Eisenstein character would put $\xi_2$ outside the tested basis. Whether the family and its constants are already known is **for the literature audit** |
 
 **Novelty flag.**  §5 is empty, so there is nothing to audit for novelty.  The
 statements that *do* need the literature audit are the negative ones in the last
@@ -528,6 +550,281 @@ not already known irrational.  If any of them is known, near miss #2 loses even
 its aspirational value.
 
 ---
+
+
+---
+
+## 9. Follow-up: the exhaustive scan of Calegari's *shifted* normalisation
+
+*Scripts `lattice/padic_irrationality/20_*`; logs `20_scan.out`, `20_verify.log`,
+`20_analyse.log`, `20_ident.log`, `20_hunt.log`, `20_hunt2.log`.*
+
+§7 identified one place where a new positive cell could live: Calegari's own
+Catalan row is **not** in Zagier's normalisation.  Zagier's normal form
+$P(n)=a\,n(n+1)+b$ is exactly the $\theta\mapsto-\theta-1$ **self-dual** case
+(indeed $P(n)=P(-n-1)\iff$ the $n$- and $n^2$-coefficients agree), whereas
+Calegari's row
+$$(n+1)^2u_{n+1}=(4-32n^2)u_n-256(n-1)^2u_{n-1}$$
+has $n$-coefficient $0\neq-32$ **and** the shift $(n-1)^2$ in place of $n^2$.
+This section reports the exhaustive search of that larger box.
+
+### 9.1 The search box
+
+$$\boxed{\ (n+1)^2u_{n+1}=\bigl(a_qn^2+b_qn+c_q\bigr)u_n-c\,(n-r)^2u_{n-1},\qquad
+A_{-1}=0,\ A_0=1\ }$$
+with $r\in\{0,1,2,3\}$, $|b_q|,|c_q|\le3000$, $c_q\ge0$ (the involution
+$(a_q,b_q,c_q)\mapsto(-a_q,-b_q,-c_q)$ is $u_n\mapsto(-1)^nu_n$), and
+$$c\in\{\pm64,\pm128,\pm256,\pm27,\pm81,\pm243,\pm25,\pm125,\pm49\}.$$
+Zagier's normalisation is the slice $r=0$, $b_q=a_q$; Calegari's Catalan row is
+$(a_q,b_q,c_q,c,r)=(-32,0,4,256,1)$.
+
+**The $a_q$ range is not a cut-off but a theorem.**  By §7,
+$$S_p=\bigl(v_p(c)+\kappa_p\bigr)\log p-k-\log\lambda_1\ \le\ v_p(c)\log p-k-\log\lambda_1$$
+(with equality iff $\kappa_p=0$; $\kappa_p\le0$ whenever $A_n\in\mathbb Z$).  So for
+$k\ge1$, $S_p>-0.3$ forces $\lambda_1<e^{\,v_p(c)\log p-0.7}$ and hence
+$|a_q|\le\lambda_1+|c|/\lambda_1$.  The per-$c$ bounds actually used
+(`20_scan.err`) are
+
+| $c$ | $\pm64$ | $\pm128$ | $\pm256$ | $\pm27$ | $\pm81$ | $\pm243$ | $\pm25$ | $\pm125$ | $\pm49$ |
+|---|---|---|---|---|---|---|---|---|---|
+| $\lambda_1\le$ | $31.78$ | $63.56$ | $127.13$ | $13.41$ | $40.22$ | $120.67$ | $12.42$ | $62.07$ | $24.33$ |
+| $\vert a_q\vert\le$ | $34$ | $66$ | $130$ | $16$ | $43$ | $123$ | $15$ | $65$ | $27$ |
+
+**Caveat (stated, not hidden).** The scan assumes $k\ge1$.  A row with $k=0$ (an
+integral *second* solution) would need $\lambda_1$ up to $355$ and is **not
+covered**.  Such a row would be a split extension in the sense of Theorem F, so
+$\xi_p$ would be expected to be rational, but this was not verified.
+
+### 9.2 Method
+
+* **Stage A** (`20_scan.c`, C, OpenMP, $\sim1.5\times10^{11}$ triples):
+  exact `__int128` integrality of the $A$-row, bailing at the first
+  non-divisibility, stopping at overflow; a row is emitted only after $\ge12$
+  verified divisibility steps and with $A_n\ne0$ (this kills the degenerate
+  families, e.g. $c_q=0$ with $r=1$, for which $A_n\equiv0$).
+  Chance survival past 12 steps is $\prod_{n\le12}(n+1)^{-2}\approx4\cdot10^{-20}$,
+  so the emitted set is structural, not noise. **6492 distinct survivors.**
+* **Stage B** (`20_verify.gp`, exact PARI): re-derive $A_n,B_n$ over $\mathbb Q$
+  to $n=60$ and then $n=300$; **2791** survivors are genuinely integral to
+  $n=60$; compute $k$ (integrality exponent of $B_n$), $\lambda_1$ from
+  $x^2-a_qx+c$, and the provisional bound above.  **2132 cells** clear
+  $S_p>-0.3$ and go to the exact stage.
+* **Stage C**: exact rows to $n=300$, measured $\sigma_p$ (slope of
+  $v_p(\xi_p-B_n/A_n)$ between $n=150$ and $n=250$) and measured
+  $\kappa_p$ (slope of $-v_p(A_n)$), final
+  $S_p=\sigma_p\log p-k-\kappa_p\log p-\log\lambda_1$.
+  The $B$-row convention is $B_j=0$ for $j\le r$, $B_{r+1}=1$; for $r=0$ this is
+  the usual $(B_0,B_1)=(0,1)$.
+* **Stage D** (`20_analyse.gp`, `20_ident.gp`, `20_hunt.gp`, `20_hunt2.gp`):
+  for every cell with $S_p>0$, the *true* archimedean rate
+  $\lim\frac1n\log\max(|A_n|,|B_n|)$ at $n=400,500,600$; $\max_nv_p(A_n)$;
+  the nonvanishing test (is $B_n/A_n$ eventually constant?); and identification
+  of $\xi_p$.  **$\xi_p$ is only defined up to the choice of second solution, so
+  it is an *affine* function of the $L$-value, not a multiple**: identification
+  is $p$-adic `lindep` on $[1,\ L_p(s,\chi),\ \xi_p]$.
+
+**Slope-law check in the new regime.**  Several rows have $p$-power *content*
+($v_p(A_n)=\alpha n$, i.e. $\kappa_p=-\alpha<0$), which the census never saw.
+The law $\sigma_p=v_p(c)+2\kappa_p$ holds there too: e.g. $(27,27,9,243,0)$ has
+$v_3(c)=5$, measured $\kappa_3=-0.98$ and measured $\sigma_3=3.04\approx5-2$,
+and dividing that row by $3^n$ returns **Zagier $\mathbf B$** — its corrected
+score $-0.3521$ is Zagier $\mathbf B$'s to five decimals, as it must be.
+
+### 9.3 Result: every positive cell is at $p=2$
+
+Of the 2132 exact cells, **769 have $S_p>0$ and every one of them is at $p=2$.**
+There is nothing above $-0.30$ at $p=3,5,7$:
+
+| $p$ | best cell in the whole scan | $S_p$ |
+|---|---|---|
+| $2$ | $(0,8,4;\,c=-256,\,r=0)$ and $(-32,0,4;\,256,\,1)$ | $\mathbf{+0.77259}$ |
+| $3$ | $(0,-1002,501;\,-81,\,2)$ | $-0.3081$ |
+| $3$ | $(27,27,9;\,243,\,0)$ $=$ Zagier $\mathbf B$ scaled by $3^n$ | $-0.3521$ |
+| $5$ | *no cell at all* — no row with $c=\pm25,\pm125$ has a $5$-adic limit | — |
+| $7$ | $(0,-1022,511;\,-49,\,2)$ | $-2.0000$ |
+
+So §7's prediction is confirmed in the enlarged box: **the shift and the
+non-self-dual $P$ buy nothing at $p=3,5,7$.**
+
+### 9.4 The two positive classes at $p=2$, and what they compute
+
+All 769 positive cells have $k=2$, $\kappa_2=0$ ($\max_{n\le600}v_2(A_n)\le18$)
+and fall into exactly two score classes:
+
+| class | $\lambda_1$ | $\sigma_2$ | $k$ | $S_2$ | $\theta_2$ | members |
+|---|---|---|---|---|---|---|
+| $2^8$ | $16$ | $8$ | $2$ | $4\log2-2=\mathbf{+0.7725887}$ | $\mathbf{1.1618804316}$ | $a_q=\pm32,\ c=256,\ r=0,1,2,3$; $a_q=0,\ c=-256,\ r=0,2$ |
+| $2^6$ | $8$ | $6$ | $2$ | $3\log2-2=\mathbf{+0.0794415}$ | $\mathbf{1.0194736}$ | $a_q=0,\ c=-64,\ r=0,2$ |
+
+$\theta_2=1.1618804316$ is **Calegari's own number**, to all ten of his printed
+digits.
+
+**Identification** (`20_ident.gp`, `20_hunt.gp`; $\xi_2$ known to $2^{3940}$,
+`lindep` height $10^{12}$):
+
+| row | $\xi_2$ |
+|---|---|
+| $(-32,0,4;\,256,\,1)$ (Calegari) | $\bigl(2+4\zeta_2(2)\bigr)/(-32)=-\tfrac1{16}-\tfrac18\zeta_2(2)$ |
+| $(-32,32,4;\,256,\,2)$ | $\bigl(504-720\zeta_2(2)\bigr)/(-40960)$ |
+| $(-32,32,20;\,256,\,2)$ | $\bigl(104+144\zeta_2(2)\bigr)/(-8192)$ |
+| $(-32,64,20;\,256,\,3)$ | $\bigl(-754+1260\zeta_2(2)\bigr)/645120$ |
+| $(-32,64,36;\,256,\,3)$ | $\bigl(778+900\zeta_2(2)\bigr)/(-460800)$ |
+| $(0,8,4;\,-64,\,0)$ | $-\tfrac12\zeta_2(2)$; also $=\tfrac14+4\,\xi_2^{\rm Cal}$, checked to $2^{4174}$ |
+| $(0,8,4;\,-256,\,0)$ | **unidentified** |
+| $(0,-8,4;\,-256,\,2)$ | **unidentified**, $=(-12-720\,\xi_2^{(0,8,4;-256,0)})/20480$ |
+| $(0,-2568,1284;\,-256,\,2)$ | **unidentified**, not affine in the previous one at height $10^{14}$ |
+
+So the whole $a_q=\pm32$, $c=256$ class and the entire $2^6$ class compute
+$\zeta_2(2)=L_2(2,\mathbf 1)$ — **Calegari's Theorem 4.2 recovered, nothing new**,
+and with a *worse* $\theta$ in the $2^6$ case ($1.0195$ against his $1.1619$).
+
+### 9.5 The one genuinely new object: an infinite family with $S_2\to\infty$
+
+The rows $(a_q,b_q,c_q)=(0,8,4)$, $r=0$ are
+
+$$\boxed{\ (n+1)^2u_{n+1}=4(2n+1)\,u_n-c\,n^2u_{n-1}\ }$$
+
+and an exhaustive sweep over $|c|\le30000$ (`20_family.gp`, part (a)) shows that this row is integral **for exactly six values of $c$**
+in that range, namely
+$$c=-16,\ -64,\ -256,\ -1024,\ -4096,\ -16384\qquad\text{i.e. } c=-4^m .$$
+Nothing else — so the family is genuinely sporadic, not a generic congruence
+class.  (The first constraints are already restrictive: $A_2\in\mathbb Z$ needs
+$4\mid c$ and $A_3\in\mathbb Z$ needs $c\equiv2\pmod3$.)
+
+For $c=-4^m$ the characteristic roots of $x^2-0\cdot x+c$ are $\pm2^m$, so the
+row is **Fricke-balanced**, $\lambda_1=2^m$, $v_2(c)=2m$; and (verified to
+$n=400$ for $m\le9$) $A_n\in\mathbb Z$ with $v_2(A_{400})=6$, $d_n^2B_n\in\mathbb Z$
+with no $2$ in the denominator of $B_n$, measured
+$\sigma_2=2m-0.04$ and archimedean rate $\to\log2^m$.  Hence
+
+$$\boxed{\ S_2^{(m)}=2m\log2-2-m\log2=m\log2-2,\qquad
+\theta_2^{(m)}=\frac{2m\log2}{2+m\log2}\ \nearrow\ 2 .}$$
+
+| $m$ | $c=-4^m$ | $\lambda_1$ | $\sigma_2$ | $S_2$ | $\theta_2$ | $\xi_2$ |
+|---|---|---|---|---|---|---|
+| 2 | $-16$ | $4$ | $4$ | $-0.613706$ | $0.818768$ | (fails; $\kappa_2=-2$, this is a scaled duplicate) |
+| 3 | $-64$ | $8$ | $6$ | $+0.079442$ | $1.019474$ | $-\tfrac12\zeta_2(2)$ |
+| 4 | $-256$ | $16$ | $8$ | $+0.772589$ | $1.161880$ | **unidentified** |
+| 5 | $-1024$ | $32$ | $10$ | $+1.465736$ | $1.268168$ | **unidentified** |
+| 6 | $-4096$ | $64$ | $12$ | $+2.158883$ | $1.350532$ | **unidentified** |
+| 7 | $-16384$ | $128$ | $14$ | $+2.852030$ | $1.416231$ | **unidentified** |
+| $\ge8$ | $-4^m$ | $2^m$ | $2m$ | $m\log2-2$ | $\to2$ | **unidentified** |
+
+**$S_2\to\infty$ is not a contradiction.**  What is bounded is $\theta_2$, and
+$\theta_2^{(m)}\nearrow2$ — exactly the Roth/Ridout threshold.  A sequence of
+*distinct* $2$-adic numbers each with approximation exponent $<2$ is completely
+ordinary; nothing here approaches a Liouville-type impossibility.  (This is worth
+saying because $S_p>0$ alone looks unbounded and alarming; $\theta_p$ is the
+scale-free quantity and it behaves.)
+
+**All the inputs are verified, and $\sigma_2$ is proved.**  The Casoratian is
+exact: from the recurrence, $(n+1)^2W_n=c\,n^2W_{n-1}$ with
+$W_n=A_nB_{n+1}-A_{n+1}B_n$ and $W_0=1$, so
+$$W_n=\frac{c^{\,n}}{(n+1)^2},\qquad
+v_2\Bigl(\frac{B_{n+1}}{A_{n+1}}-\frac{B_n}{A_n}\Bigr)=2mn-2v_2(n{+}1)-v_2(A_nA_{n+1}),$$
+which gives $\sigma_2=2m$ **outright**, given only $v_2(A_n)=O(\log n)$
+(hypothesis **H1**, measured: $v_2(A_{400})=6$ for every $m$).  The archimedean
+rate $\lambda_1=2^m$ is the dominant characteristic root and is measured to
+three decimals at $n=400$.  $k=2$ is measured to $n=400$.  Nonvanishing holds:
+$B_n/A_n$ takes distinct values at $n=200,300,400$ for every $m$.  And
+`lindep` at $2^{-3800}$ rejects rationality of $\xi_2$ (coefficients of $10^{250}$
+and up) and algebraicity of degree $\le4$ at height $10^{14}$.
+
+**What the family is, structurally.**  Rescaling $u_n\mapsto2^{(2-m)n}u_n$ turns
+$(0,8,4,-4^m)$ into
+$$(n+1)^2u_{n+1}=\varepsilon\,(2n+1)u_n+16\,n^2u_{n-1},\qquad
+\varepsilon=2^{\,4-m},$$
+i.e. **one Picard–Fuchs-type operator
+$L_\varepsilon=\theta^2-\varepsilon t(2\theta+1)+16t^2(\theta+1)^2$ with a
+$2$-adically shrinking parameter $\varepsilon\to0$** — the integral models are
+exactly the points $\varepsilon\in2^{4-m}$, $m\ge2$.  Written out, the ODE for
+$m=3$ ($c=-64$) is
+$$t(1-64t^2)y''+(1-8t-192t^2)y'-(4+64t)y=0,$$
+with the four singular points $0,\pm\tfrac18,\infty$ — a Heun equation, the same
+shape as the Zagier rows.  That $\xi_2^{(3)}=-\tfrac12\zeta_2(2)$ while the
+$m\ge4$ members are not affine in $\zeta_2(2)$ makes it natural to guess that the
+$\xi_2^{(m)}$ are **values of a $2$-adic analytic family along the
+$\varepsilon$-direction** — the deformation is exactly the shape of Coleman's
+weight-space families that Calegari's argument runs on.  *This is a guess and is
+labelled as one; nothing here proves it.*
+
+### 9.6 What has and has not been shown about $\xi_2^{(m)}$, $m\ge4$
+
+**Not identified** (`20_hunt.gp`, `20_hunt2.gp`, at $2$-adic precision $2^{3800}$):
+
+* not rational (`lindep` height $\gg10^{250}$);
+* not algebraic of degree $\le4$ at height $10^{14}$;
+* not affine in $\zeta_2(2)$, in $\zeta_2(3)$, or in $\operatorname{span}\{1,\zeta_2(2),\zeta_2(3)\}$;
+* not affine in Calegari's $\xi_2$, nor in the $m=3$ member's;
+* not affine in $L_2(s,\chi)$ for $s=2,3$ and $\chi$ any of
+  $\mathbf 1,\chi_{-3},\chi_{-4},\chi_{12},\chi_5,\chi_8,\chi_{-8},\chi_{24}$
+  at height $10^{12}$; the wider sweep ($\chi$ even quadratic of conductor
+  $\le104$, $s=2,\dots,5$, height $10^{14}$) is in `20_hunt2.log`;
+* not affine in $\log_2(u)$ for odd $u\le31$.
+
+**The gap in the identification, stated plainly.**  Only *quadratic* characters
+were tested.  A weight-3 Eisenstein source with a non-quadratic $\psi$ (Zagier's
+row $\mathbf D$ already has quartic characters mod $5$, `EULER_CRITERION.md` §4.2
+item 5) would put $\xi_2$ in a $\mathbb Q$-span of Galois conjugates of
+$L_2(2,\psi\omega^{-1})$, which is outside the tested basis.  **So "unidentified"
+means "not a rational-affine combination of the values tested", not "new".**
+
+**What would be proved, precisely, if the cell stands.**
+
+> Let $m\ge4$, let $A_n$ be defined by $A_{-1}=0$, $A_0=1$,
+> $(n+1)^2A_{n+1}=4(2n+1)A_n+4^m\,n^2A_{n-1}$, and $B_n$ likewise with
+> $B_0=0$, $B_1=1$.  Then $\xi_2^{(m)}=\lim_nB_n/A_n$ exists in $\mathbb Q_2$ and
+> is irrational, with $\bigl|\xi_2^{(m)}-p_n/q_n\bigr|_2\le H^{-\theta+\epsilon}$,
+> $\theta=2m\log2/(2+m\log2)$.
+
+This is a genuine statement in the shape of Calegari's Theorems 3.3/3.4/4.2, and
+it is **conditional only on $k=2$ and $v_2(A_n)=O(\log n)$**, both measured to
+$n=400$–$600$ and neither proved here — the same two hypotheses the entire
+census runs on.  Its *interest*, however, is entirely contingent on identifying
+$\xi_2^{(m)}$: unlike $\zeta_2(3)$ or $\zeta_2(2)$, this number currently has no
+definition independent of the recurrence.
+
+**Novelty: unchecked, and must be checked.**  Three separate things need the
+literature audit, none of which is done here:
+1. whether the family $(n+1)^2u_{n+1}=4(2n+1)u_n+4^mn^2u_{n-1}$ is already known
+   (it is a natural non-self-dual Apéry-like family and may well be in the
+   Almkvist–van Straten–Zudilin tables of order-2 operators, or in Beukers 2008);
+2. whether $\xi_2^{(m)}$ is a known $2$-adic constant;
+3. whether Beukers 2008 already covers whatever it is.
+
+### 9.7 Net effect on §5 and §6
+
+* **§5 is unchanged for named constants.**  Every positive cell whose $\xi_p$
+  *is* identified computes $\zeta_2(2)$ — Calegari Theorem 4.2 and Beukers 2008
+  Cor. 7.3.  No new theorem about a named $p$-adic $L$-value came out of the
+  shifted box.
+* **§6.2 Lever A is confirmed and sharpened.**  The scan is an exhaustive version
+  of the "other placements" question, and in the enlarged box the best
+  realisation of $\zeta_2(2)$ is still Calegari's own ($\theta=1.1619$); the
+  alternative $2^6$ realisation is strictly worse ($\theta=1.0195$).
+* **§7's arithmetic is confirmed exactly.**  The predicted balanced scores
+  $3\log2-2=+0.0794$ (at $c=2^6$) and $4\log2-2=+0.7726$ (at $c=2^8$) are both
+  realised, by exactly the rows §7 said would be needed; and the predicted
+  $2\log3-2=+0.1972$ at $c=3^4$ and $\tfrac32\log5-2=+0.4142$ at $c=5^3$ are
+  **not** realised — no integral row with those invariants exists in the box.
+* **New, and the one thing §7 did not anticipate:** the balanced $p$-power $c$
+  can be taken *arbitrarily large* inside a single sporadic family, which makes
+  $S_p$ unbounded while $\theta_p$ stays below $2$.  The binding constraint is
+  therefore not "$v_p(c)\log p>2k$ is hard to achieve" but "the constants so
+  produced stop being recognisable".
+
+### 9.8 Scripts (this section)
+
+* `20_scan.c` / `20_scan` — the C sieve (OpenMP); output `20_scan.out`, per-$c$
+  bounds on stderr in `20_scan.err`.
+* `20_verify.gp` — exact stages B and C to $n=300$; log `20_verify.log`.
+* `20_analyse.gp` — full diagnostics (true archimedean rate, nonvanishing,
+  rationality) for the $S_p>0$ rows; log `20_analyse.log`.
+* `20_ident.gp` — affine `lindep` identification of $\xi_2$; log `20_ident.log`.
+* `20_hunt.gp`, `20_hunt2.gp` — the hard identification attempts; logs likewise.
+* `20_family.gp` — the $c$-sweep proving that $c=-4^m$ are the only integral
+  members of the $P(n)=4(2n+1)$ family for $|c|\le30000$, and the deep check
+  ($k$, $\kappa_2$, nonvanishing, rationality, algebraicity) for $m\le7$.
 
 ## Scripts
 
