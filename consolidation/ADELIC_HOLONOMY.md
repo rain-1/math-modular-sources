@@ -416,6 +416,8 @@ identically $0$.)*  The general $(\mathbf b,\mathbf e)$ case is identical with
 $\tau(\mathbf b)$ replaced by $\tau(\mathbf b;\mathbf e)$, since our three
 corrections are independent of $\xi,y_h$.  $\blacksquare$
 
+*Reviewer note (Fable, 2026-08-22).* I have checked §2.6 independently: the lattice twist (index $\prod_pR_p^{D(D+1)/2}$ per summand), the sign conventions of the $p$-adic norms on $E_D^{\rm ad}$ and $G^{(n)}$, the sum $\sum_{n\in\mathcal V_D}(n-D)$, Lemma B via the ultrametric inequality, the independence of the archimedean estimates from the $\mathbb Z$-structure, and the triviality of the twist at $\ell\notin S$. The assembly gives weight exactly $1-\tfrac1m$, and the $m=2$ univalent case is the Borel–Dwork criterion. I regard Theorem A as proved modulo the cited results of Bost, Bost–Charles and CDT §6.3.
+
 #### 2.6.4 Remarks
 
 1. **Why the single-variable route succeeds where §2.3 fails.**  In §2.3 the
