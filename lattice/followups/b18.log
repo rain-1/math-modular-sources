@@ -1,0 +1,73 @@
+[0;31m  ***   Warning: new stack size = 6000000000 (5722.046 Mbytes).[0m
+=== archimedean, xi with an algebraic/period denominator ===
+  [xi, s17*xi] + G : none
+  [xi, s17*xi] + G + s17*G : none
+  [xi, P2*xi] + G : none
+  [xi, s17*xi, P2*xi, P2*s17*xi] + G : none
+  [xi,s17*xi] + {1,s17,Z3,s17*Z3,P2,s17*P2} : none
+  [xi] + {1,s17,Z3,s17*Z3} : none
+  [xi] + {1,Lam,Z3,P2*Lam,Lam^3} : none
+
+=== good-prime tower measurement (clean) ===
+  p=3  a=1  smax=7
+    s=0 n=1     v_p(A)=0   v_p(B)=0    v_p(t)=0    
+    s=1 n=3     v_p(A)=0   v_p(B)=-3    v_p(t)=-3      v_p(ratio)=-3     ratio*p^3 = 1 + 2*3 + 2*3^3 + 3^4 + O(3^5)
+    s=2 n=9     v_p(A)=0   v_p(B)=-7    v_p(t)=-7      v_p(ratio)=-4     ratio*p^3 = 3^-1 + 2*3^2 + 2*3^3 + 2*3^4 + O(3^5)
+    s=3 n=27    v_p(A)=0   v_p(B)=-10   v_p(t)=-10     v_p(ratio)=-3     ratio*p^3 = 1 + 3 + 2*3^2 + O(3^5)
+    s=4 n=81    v_p(A)=0   v_p(B)=-14   v_p(t)=-14     v_p(ratio)=-4     ratio*p^3 = 3^-1 + 2 + 3^2 + 3^3 + 3^4 + O(3^5)
+    s=5 n=243   v_p(A)=0   v_p(B)=-17   v_p(t)=-17     v_p(ratio)=-3     ratio*p^3 = 1 + 2*3 + 3^2 + 2*3^3 + 2*3^4 + O(3^5)
+    s=6 n=729   v_p(A)=0   v_p(B)=-21   v_p(t)=-21     v_p(ratio)=-4     ratio*p^3 = 3^-1 + 1 + 3 + 3^2 + 3^3 + O(3^5)
+    s=7 n=2187  v_p(A)=0   v_p(B)=-24   v_p(t)=-24     v_p(ratio)=-3     ratio*p^3 = 1 + 3^2 + 2*3^3 + 2*3^4 + O(3^5)
+  p=3  a=2  smax=7
+    s=0 n=2     v_p(A)=2   v_p(B)=0    v_p(t)=-2    
+    s=1 n=6     v_p(A)=2   v_p(B)=-3    v_p(t)=-5      v_p(ratio)=-3     ratio*p^3 = 2 + 2*3 + 3^2 + 2*3^3 + 3^4 + O(3^5)
+    s=2 n=18    v_p(A)=2   v_p(B)=-2    v_p(t)=-4      v_p(ratio)=1     ratio*p^3 = 2*3^4 + O(3^5)
+    s=3 n=54    v_p(A)=2   v_p(B)=-10   v_p(t)=-12     v_p(ratio)=-8     ratio*p^3 = 2*3^-5 + 2*3^-4 + 3^-3 + 3^-2 + 2*3^4 + O(3^5)
+    s=4 n=162   v_p(A)=2   v_p(B)=-12   v_p(t)=-14     v_p(ratio)=-2     ratio*p^3 = 3 + 3^2 + 2*3^3 + 3^4 + O(3^5)
+    s=5 n=486   v_p(A)=2   v_p(B)=-17   v_p(t)=-19     v_p(ratio)=-5     ratio*p^3 = 3^-2 + 2*3^-1 + 2 + 3^2 + 3^3 + 3^4 + O(3^5)
+    s=6 n=1458  v_p(A)=2   v_p(B)=-19   v_p(t)=-21     v_p(ratio)=-2     ratio*p^3 = 2*3 + 3^2 + 3^4 + O(3^5)
+    s=7 n=4374  v_p(A)=2   v_p(B)=-24   v_p(t)=-26     v_p(ratio)=-5     ratio*p^3 = 2*3^-2 + 3 + 3^2 + O(3^5)
+  p=3  a=3  smax=6
+    s=0 n=3     v_p(A)=0   v_p(B)=-3    v_p(t)=-3    
+    s=1 n=9     v_p(A)=0   v_p(B)=-7    v_p(t)=-7      v_p(ratio)=-4     ratio*p^3 = 3^-1 + 2*3^2 + 2*3^3 + 2*3^4 + O(3^5)
+    s=2 n=27    v_p(A)=0   v_p(B)=-10   v_p(t)=-10     v_p(ratio)=-3     ratio*p^3 = 1 + 3 + 2*3^2 + O(3^5)
+    s=3 n=81    v_p(A)=0   v_p(B)=-14   v_p(t)=-14     v_p(ratio)=-4     ratio*p^3 = 3^-1 + 2 + 3^2 + 3^3 + 3^4 + O(3^5)
+    s=4 n=243   v_p(A)=0   v_p(B)=-17   v_p(t)=-17     v_p(ratio)=-3     ratio*p^3 = 1 + 2*3 + 3^2 + 2*3^3 + 2*3^4 + O(3^5)
+    s=5 n=729   v_p(A)=0   v_p(B)=-21   v_p(t)=-21     v_p(ratio)=-4     ratio*p^3 = 3^-1 + 1 + 3 + 3^2 + 3^3 + O(3^5)
+    s=6 n=2187  v_p(A)=0   v_p(B)=-24   v_p(t)=-24     v_p(ratio)=-3     ratio*p^3 = 1 + 3^2 + 2*3^3 + 2*3^4 + O(3^5)
+  p=5  a=1  smax=5
+    s=0 n=1     v_p(A)=1   v_p(B)=0    v_p(t)=-1    
+    s=1 n=5     v_p(A)=1   v_p(B)=-4    v_p(t)=-5      v_p(ratio)=-4     ratio*p^3 = 4*5^-1 + 3 + 5 + 3*5^2 + 4*5^3 + 3*5^4 + O(5^5)
+    s=2 n=25    v_p(A)=1   v_p(B)=-7    v_p(t)=-8      v_p(ratio)=-3     ratio*p^3 = 3 + 2*5 + 5^2 + 2*5^3 + 3*5^4 + O(5^5)
+    s=3 n=125   v_p(A)=1   v_p(B)=-10   v_p(t)=-11     v_p(ratio)=-3     ratio*p^3 = 3 + 4*5^2 + 4*5^3 + 2*5^4 + O(5^5)
+    s=4 n=625   v_p(A)=1   v_p(B)=-13   v_p(t)=-14     v_p(ratio)=-3     ratio*p^3 = 3 + 5 + 5^2 + 3*5^3 + 4*5^4 + O(5^5)
+    s=5 n=3125  v_p(A)=1   v_p(B)=-16   v_p(t)=-17     v_p(ratio)=-3     ratio*p^3 = 3 + 2*5^2 + 3*5^3 + 5^4 + O(5^5)
+  p=5  a=2  smax=4
+    s=0 n=2     v_p(A)=0   v_p(B)=0    v_p(t)=0    
+    s=1 n=10    v_p(A)=0   v_p(B)=-4    v_p(t)=-4      v_p(ratio)=-4     ratio*p^3 = 3*5^-1 + 3 + 3*5 + 2*5^2 + 5^3 + 3*5^4 + O(5^5)
+    s=2 n=50    v_p(A)=0   v_p(B)=-7    v_p(t)=-7      v_p(ratio)=-3     ratio*p^3 = 3 + 2*5 + 3*5^2 + O(5^5)
+    s=3 n=250   v_p(A)=0   v_p(B)=-10   v_p(t)=-10     v_p(ratio)=-3     ratio*p^3 = 3 + 3*5^2 + 2*5^3 + 5^4 + O(5^5)
+    s=4 n=1250  v_p(A)=0   v_p(B)=-13   v_p(t)=-13     v_p(ratio)=-3     ratio*p^3 = 3 + 5 + 2*5^2 + 4*5^3 + 3*5^4 + O(5^5)
+  p=5  a=3  smax=4
+    s=0 n=3     v_p(A)=2   v_p(B)=0    v_p(t)=-2    
+    s=1 n=15    v_p(A)=2   v_p(B)=-4    v_p(t)=-6      v_p(ratio)=-4     ratio*p^3 = 3*5^-1 + 4*5^3 + 5^4 + O(5^5)
+    s=2 n=75    v_p(A)=2   v_p(B)=-7    v_p(t)=-9      v_p(ratio)=-3     ratio*p^3 = 3 + 2*5 + 5^2 + 3*5^3 + 2*5^4 + O(5^5)
+    s=3 n=375   v_p(A)=2   v_p(B)=-10   v_p(t)=-12     v_p(ratio)=-3     ratio*p^3 = 3 + 4*5^3 + 2*5^4 + O(5^5)
+    s=4 n=1875  v_p(A)=2   v_p(B)=-13   v_p(t)=-15     v_p(ratio)=-3     ratio*p^3 = 3 + 5 + 4*5^3 + 2*5^4 + O(5^5)
+  p=7  a=1  smax=4
+    s=0 n=1     v_p(A)=0   v_p(B)=0    v_p(t)=0    
+    s=1 n=7     v_p(A)=0   v_p(B)=-3    v_p(t)=-3      v_p(ratio)=-3     ratio*p^3 = 5 + 7 + 2*7^2 + 2*7^3 + O(7^5)
+    s=2 n=49    v_p(A)=0   v_p(B)=-7    v_p(t)=-7      v_p(ratio)=-4     ratio*p^3 = 2*7^-1 + 4*7 + 4*7^2 + 5*7^3 + O(7^5)
+    s=3 n=343   v_p(A)=0   v_p(B)=-11   v_p(t)=-11     v_p(ratio)=-4     ratio*p^3 = 2*7^-1 + 2 + 6*7 + 3*7^2 + 2*7^3 + 7^4 + O(7^5)
+    s=4 n=2401  v_p(A)=0   v_p(B)=-15   v_p(t)=-15     v_p(ratio)=-4     ratio*p^3 = 2*7^-1 + 2 + 5*7 + 6*7^2 + 2*7^4 + O(7^5)
+  p=7  a=2  smax=4
+    s=0 n=2     v_p(A)=0   v_p(B)=0    v_p(t)=0    
+    s=1 n=14    v_p(A)=0   v_p(B)=-3    v_p(t)=-3      v_p(ratio)=-3     ratio*p^3 = 2 + 3*7 + 3*7^2 + 6*7^3 + 2*7^4 + O(7^5)
+    s=2 n=98    v_p(A)=0   v_p(B)=-7    v_p(t)=-7      v_p(ratio)=-4     ratio*p^3 = 2*7^-1 + 3 + 4*7 + 5*7^2 + 4*7^3 + 3*7^4 + O(7^5)
+    s=3 n=686   v_p(A)=0   v_p(B)=-11   v_p(t)=-11     v_p(ratio)=-4     ratio*p^3 = 2*7^-1 + 2 + 5*7 + 6*7^2 + 4*7^3 + 4*7^4 + O(7^5)
+    s=4 n=4802  v_p(A)=0   v_p(B)=-15   v_p(t)=-15     v_p(ratio)=-4     ratio*p^3 = 2*7^-1 + 2 + 5*7 + 3*7^4 + O(7^5)
+  p=7  a=3  smax=3
+    s=0 n=3     v_p(A)=0   v_p(B)=0    v_p(t)=0    
+    s=1 n=21    v_p(A)=0   v_p(B)=-3    v_p(t)=-3      v_p(ratio)=-3     ratio*p^3 = 2 + 2*7 + 4*7^2 + 2*7^3 + 6*7^4 + O(7^5)
+    s=2 n=147   v_p(A)=0   v_p(B)=-7    v_p(t)=-7      v_p(ratio)=-4     ratio*p^3 = 2*7^-1 + 4 + 3*7 + 2*7^2 + 4*7^3 + 6*7^4 + O(7^5)
+    s=3 n=1029  v_p(A)=0   v_p(B)=-11   v_p(t)=-11     v_p(ratio)=-4     ratio*p^3 = 2*7^-1 + 2 + 4*7 + 5*7^2 + 5*7^3 + 4*7^4 + O(7^5)

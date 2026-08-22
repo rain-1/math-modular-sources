@@ -118,7 +118,7 @@ int main(int argc,char**argv)
             else if(CLASS>0){ if(al%CLASS) continue; if((2*de)%CLASS) continue;
                    be = al*(CLASS-1)/CLASS; ep = -2*de/CLASS; }
             long long zemin=-ZEMAX, zemax=ZEMAX, zestep=1;
-            if(CLASS<0){
+            if(CLASS==-1){
               /* free common exponent difference rho = (al-be)/al:
                  beta free, epsilon = -2*de*(al-be)/al  (must be an integer) */
               for(be=-al; be<=al; be++){

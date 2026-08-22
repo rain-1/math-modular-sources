@@ -1,0 +1,15 @@
+xi to 1100 digits loaded.
+[0;31m[0;31m  ***   at top-level: ...[0;35m([G,chi]);for(m=2,6,my(v=[0;35mlfun(L,m));ad(Str("Re
+[0;31m[0;31m  ***                                             ^---------------------
+  *** lfun: the PARI stack overflows !
+  current stack size: 8000000 (7.629 Mbytes)
+  [hint] set 'parisizemax' to a nonzero value in your GPRC
+[0m
+... skipping file 'b15_chars.gp'
+targets: 155
+
+-- singles: xi = q*T --
+
+-- pairs --
+
+-- with Pi powers and zeta(3) --

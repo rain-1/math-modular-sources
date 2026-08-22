@@ -1,0 +1,8 @@
+[0;31m  ***   Warning: new stack size = 10000000000 (9536.743 Mbytes).[0m
+[0;31m[0;31m  ***   at top-level: ...[0;35md=LL[t];for(s=1,k-1,my(v=[0;35mlfun(Ld,s));if(abs(v)
+[0;31m[0;31m  ***                                             ^---------------------
+  *** lfun: incorrect type in lfunmisc_to_ldata (t_VEC).[0m
+... skipping file 'b16_mf.gp'
+newform L-values: 0
+-- pairs with Pi powers --
+-- pairs among newform values --

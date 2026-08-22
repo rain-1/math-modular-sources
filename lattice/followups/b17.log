@@ -1,0 +1,25 @@
+[0;31m  ***   Warning: new stack size = 6000000000 (5722.046 Mbytes).[0m
+=== archimedean, 1100 digits ===
+  Q-span of {1,L,L^2,L^3,pi^2,pi^2 L,zeta(3)} : none (hb=1000000000000000000000000000000)
+  Q(sqrt17)-span of the same : none (hb=10000000000000000000000000)
+  Q-span + zeta(5),pi^4 : none (hb=10000000000000000000000000)
+  Q(sqrt17)-span of {..,pi^4} : none (hb=100000000000000000000)
+
+=== 2-adic ===
+  sqrt17 in Q_2:  1 + 2^3 + 2^5 + 2^6 + 2^7 + 2^9 + 2^10 + 2^13 + 2^16 + 2^17 + O(2^20)
+  v_2(alpha)=1  v_2(beta)=9  v_2(alpha*beta)=10
+  v_2(z_-)=-8
+  v_2(L_2(2,1))=-1  v_2(L_2(3,1))=-2
+  v_2(log2(alpha_unit))=2  v_2(log2(beta_unit))=2
+  Q-span {1,La,La^2,La^3,z2p,z2p*La,z3p} : none
+  Q-span with Lb : none
+  Q(sqrt17)-span with La : none
+  Q(sqrt17)-span with Lb : none
+  {1,La,Lb,z3p,z2p} : none
+[0;31m[0;31m  ***   syntax error, unexpected end of file, expecting )-> or ',' or ')': 
+[0;31m  ***   ...[0;35m3,z3p,z2p*La,z2p*Lb,z2p}"[0;35m,
+[0;31m[0;31m  ***                               ^-[0m
+... skipping file 'b17_gamma.gp'
+[0;31m[0;31m  ***   syntax error, unexpected ',', expecting end of file: 
+[0;31m  ***   ...[0;35m3,z3p,z2p*La,z2p*Lb,z2p])[0;35m,10^25);
+[0;31m[0;31m  ***                               ^--------[0m

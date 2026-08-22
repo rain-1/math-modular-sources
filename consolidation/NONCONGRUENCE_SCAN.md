@@ -12,9 +12,10 @@ attribution to Beukers 1987 Thm 3), `ROOT_ROWS.md` (Theorems R1–R4), `SPORADIC
 
 ## 0. Verdict first
 
-Three theorems, one finite classification, two independent exhaustive scans, a negative
-answer to the question asked with a sharp reason — and one unexpected positive-score
-**candidate** that the ansatz-free scan turned up outside the modular world (§4.4).
+Three theorems, one finite classification, two independent exhaustive scans, and a negative
+answer with a sharp reason. **Beukers' Theorem 3 is the only positive-score non-congruence
+row**, and the only positive-score rows at all (with $k\ge2$) are it, Apéry's $\zeta(2)$
+row, and two infinite families of classical Padé approximants ($\log$ and $\arctan$).
 
 * **Theorem N1 (the score splits).** For a genus-zero group $\Gamma$ commensurable with
   $\mathrm{PSL}_2(\mathbf Z)$, a Hauptmodul-type parameter $t=q+O(q^2)$ at a MUM cusp, and a
@@ -65,14 +66,14 @@ answer to the question asked with a sharp reason — and one unexpected positive
   **Beukers' row** $(136,10,16,4)$ at $+0.139$, the *only* one in the $e=2$ (square-root,
   non-congruence) class, whose next entries are its own rescaling ($-0.554$), the level-$8$
   $T$ row ($-1.624$) and a **new level-$5$ non-congruence row** ($-1.673$, §5);
-  and one **unexpected row at $\rho=\tfrac76$** (§4.4),
-  $$(n+1)^2a_{n+1}=(234n^2-39n-78)a_n+(27n^2-63n+30)a_{n-1},\qquad a_0=1,\ a_1=-78,$$
-  with $\lambda_{1,2}=117\pm6\sqrt{381}$, $k=2$ sharp, and
-  $\operatorname{score}=+0.15998>$ Beukers'. Its four Apéry ingredients are verified to
-  $n\le700$ but **not proved**, its canonical (mirror) coordinate is **not** integral (so it
-  is not a modular row at all), and its limit
-  $\xi=-0.01281209377911993670\ldots$ is unidentified. It is reported as a **candidate**;
-  no irrationality is claimed.
+  and a **second classical family at $\rho=\tfrac76$** (§4.4), integral exactly for
+  $\alpha\equiv18\ (36)$, with $\delta=-27$ and
+  $$\xi=-\tfrac1{2\sqrt3}\arctan\tfrac{6\sqrt3}{\alpha}$$
+  (verified to $184$ digits) — the $\arctan$ analogue of the $\log$ family, again with
+  unbounded score. Its $\alpha=234$ member scores $+0.15998$, above Beukers', and took a
+  $25$-constant `lindep` battery and a mirror-map computation to unmask; the diagnostic that
+  settles such cases is that an unbounded one-parameter family with unbounded score is
+  always a Padé construction.
 
 * **Scan B (modular, `03b_exact.gp`).** All eta-quotient pairs $(t,F)$ on $\Gamma_0(N)$,
   $N\le60$: $t$ of weight $0$ with $\operatorname{ord}_\infty t=1$ and divisor degree
@@ -383,72 +384,55 @@ common exponent difference $\rho$ is arbitrary — no assumption that $\rho=1/e$
 $e\in\{2,3,4,6,\infty\}$ is made. **In every one of them the only positive-score rows with
 $k\ge2$ are Apéry's $\zeta(2)$ row and Beukers' row.**
 
-### 4.4 An unexpected positive-score row outside the modular exponent classes
+### 4.4 The second classical family: $\arctan$ at $\rho=\tfrac76$
 
-The free-exponent runs turned up one row that is **not** in any class $\rho=1/e$ and that
-**out-scores Beukers'**:
+The free-exponent runs turn up one more infinite family of positive-score rows with $k=2$,
+in a class that no $\rho=1/e$ run could see. It is
+$$\boxed{(n+1)^2a_{n+1}=(3n-2)\Bigl[\tfrac\alpha6(2n+1)\,a_n+3(3n-5)\,a_{n-1}\Bigr]},
+\qquad a_0=1,\ a_1=-\tfrac\alpha3,$$
+i.e. $(\alpha,\beta,\gamma,\delta,\varepsilon,\zeta)
+=(\alpha,-\tfrac\alpha6,-\tfrac\alpha3,-27,63,-30)$, with common exponent difference
+$\rho=(\alpha-\beta)/\alpha=\tfrac76$ and
+$$\lambda_{1,2}=\tfrac12\bigl(\alpha\pm\sqrt{\alpha^2+108}\bigr),\qquad
+\lambda_1\lambda_2=-27,\qquad \operatorname{score}=\log\frac1{|\lambda_2|}-2 .$$
+The row is integral exactly for $\alpha\equiv18\pmod{36}$ — verified for every such
+$\alpha\le60000$ — so the family is infinite and its score
+$\approx\log(\alpha/27)-2$ is unbounded. The smallest positive scores are
+$\alpha=234$ ($+0.15998$, which is how it first showed up, out-scoring Beukers'),
+$306$ ($+0.42804$), $558$ ($+1.02861$), $846$ ($+1.44472$).
 
-> $$\boxed{(n+1)^2a_{n+1}=(234n^2-39n-78)\,a_n+(27n^2-63n+30)\,a_{n-1},\qquad a_0=1,\ a_1=-78}$$
-> $$a_n=1,\,-78,\,-2283,\,-197964,\,-23656311,\,-3323008962,\dots$$
-> $\alpha=234$, $\beta=-39$, $\gamma=-78$, $\delta=-27$, $\varepsilon=63$, $\zeta=-30$;
-> common exponent difference $\rho=(\alpha-\beta)/\alpha=\tfrac76$; exponents
-> $(0,0)$ at $t=0$, $(0,\tfrac76)$ at $t_1,t_2$, $(-\tfrac23,\tfrac13)$ at $t=\infty$
-> (Fuchs: $0+\tfrac76+\tfrac76-\tfrac13=2$ ✓).
-> $$\lambda_{1,2}=117\pm6\sqrt{381}=234.1153\ldots,\ -0.1153\ldots,\qquad
-> \lambda_1\lambda_2=-27 .$$
+**It is the $\arctan$ analogue of the Legendre $\log$ family.** For every member
+$$\boxed{\ \xi=\lim\frac{b_n}{a_n}=-\frac{1}{2\sqrt3}\arctan\frac{6\sqrt3}{\alpha}\ }$$
+— verified to $184$ digits for $\alpha=18,54,90,126,234,306,558,846$ (`/tmp` script folded
+into `08_period.py`; $\alpha=18$ gives the closed form $-\pi/(12\sqrt3)$ exactly). Where the
+$\log$ family sits at $\delta=+16$, $\rho=0$ and computes $\operatorname{artanh}$, this one
+sits at $\delta=-27$, $\rho=\tfrac76$ and computes $\arctan$; $\lambda_1\lambda_2=-27=-3^3$
+is the cube-root signature, and $\pi/\sqrt3$ is the value at the symmetric point. Classical
+Padé approximation, no new irrationality.
 
-**All four Apéry ingredients, verified (not proved), `15_verify234.gp`:**
+**What it cost to see this.** For a few hours this looked like a new positive-score row
+beating Beukers': $a_n\in\mathbf Z$ and $d_n^2b_n\in\mathbf Z$ verified to $n=700$, $k=2$
+sharp, $W_n=-3(3n-2)(3n-5)W_{n-1}/(n+1)^2\ne0$ for every $n$, and
+$\tfrac1n\log(d_n^2|a_n\xi-b_n|)=-0.36,-0.15,-0.20,-0.20,-0.18$ at $n=100,\dots,500$
+(`15_verify234.gp`). Every one of those is true; only the identification was missing, and a
+$25$-constant `lindep` battery at $150$–$380$ digits missed it because the right constant,
+$\arctan(6\sqrt3/\alpha)$, is not in any standard battery. The lesson for the census: a
+positive score with $k=2$ is **not** by itself evidence of a new object, and the diagnostic
+that settles it fastest is the **family** — an unbounded one-parameter family with
+unbounded score is always a Padé construction, never a modular row.
 
-| ingredient | status |
-|---|---|
-| $a_n\in\mathbf Z$ | verified exactly for $n\le700$ |
-| $d_n^2b_n\in\mathbf Z$, and $k=2$ is **sharp** ($d_nb_n\notin\mathbf Z$) | verified exactly for $n\le700$ |
-| $W_n=a_nb_{n+1}-a_{n+1}b_n\ne0$ | $W_n=Q(n)W_{n-1}/(n+1)^2$ with $Q(n)=-3(3n-2)(3n-5)$, which has **no positive integer root**; verified $n\le600$ |
-| $\limsup|r_n|^{1/n}\le|\lambda_2|$ | measured $\tfrac1n\log|r_n|=-2.2423,\,-2.2086,\,-2.1953,\,-2.1881,\,-2.1834$ at $n=100,\dots,500$, increasing towards $\log|\lambda_2|=-2.15998$ |
-
-and the decisive quantity
-$$\tfrac1n\log\bigl(d_n^2|a_n\xi-b_n|\bigr)=-0.361,\,-0.147,\,-0.200,\,-0.199,\,-0.177
-\quad (n=100,\dots,500),$$
-always negative and oscillating about $\operatorname{score}\cdot(-1)=2+\log|\lambda_2|=-0.15998$
-— exactly the behaviour of Apéry's own rows. So
-$$\operatorname{score}=\log\frac1{|\lambda_2|}-2=+0.1599769816829892\ldots\ >\
-\text{Beukers'}\ +0.1392,$$
-and if the four ingredients hold for **all** $n$ then
-$$\xi=\lim\frac{b_n}{a_n}=-0.0128120937791199367056491254564324911771086037985708376891\ldots
-\notin\mathbf Q,\qquad \mu(\xi)\le47.6055 .$$
-**No such claim is made here**: the first three ingredients are verified to $n\le700$, not
-proved, and the fourth needs the Poincaré argument of `SQRT_APERY.md` §4 together with a
-non-vanishing/sign argument that we do not have (unlike Apéry's row, the $W_n$ here are not
-of one sign). This is a **candidate**, and stating it as such is the point.
-
-**It is not a modular row.** The canonical (mirror) coordinate $q=t\exp(h/y_1)$ of the
-operator has **non-integral** expansion: writing $t(q)=\sum c_nq^n$, the denominators are
-$1$ for $n\le8$ and then $2,1,5,5,2,5,14,7,40,\dots$, with
-$\operatorname{lcm}$ of the denominators for $n\le58$ equal to
+**A useful negative by-product.** The canonical (mirror) coordinate of this operator is
+*not* integral: with $t(q)=\sum c_nq^n$ the denominators are $1$ for $n\le8$ and then
+$2,1,5,5,2,5,14,7,40,\dots$, with $\operatorname{lcm}$ over $n\le58$ equal to
 $2^{11}5^67^411^213^2\cdot17\cdot19\cdot23$ — new primes keep entering, so the denominators
-are **not** of the form $\mu^{n}$ and Eisenstein's theorem rules out $t(q)$ being algebraic
-or modular (congruence or not). By contrast the same computation on Apéry's $\zeta(2)$ row
-returns $t(q)=q-5q^2+15q^3-30q^4+40q^5-26q^6-30q^7+\cdots$, which is exactly Beukers'
+are not of the form $\mu^n$ and Eisenstein's theorem rules out $t(q)$ being algebraic or
+modular. The same computation on Apéry's $\zeta(2)$ row returns
+$t(q)=q-5q^2+15q^3-30q^4+40q^5-26q^6-30q^7+\cdots$, which is exactly Beukers'
 $\Gamma_1(5)$ Hauptmodul $q\prod(1-q^n)^{5(\frac n5)}$, and on Beukers' own row it returns
 $q-48q^2+1056q^3-14080q^4+\cdots$, i.e. $\tfrac14(\eta_1\eta_6/\eta_2\eta_3)^{12}$ in the
-rescaled nome — both integral (`14_mirror234.gp`). So the new row lies outside the modular
-world entirely: it is an *integral MUM row whose mirror map is not integral*, in the same
-company as Zudilin's non-modular Catalan row (`ROOT_ROWS.md` §5.5).
-
-**And $\xi$ is not identified.** Negative at $150$–$380$ digits: two- and three-term
-`lindep` against $1,\pi,\pi^2,\pi^3,\pi^4,\zeta(3),\zeta(5),\log2,\log3,\log13,\log127,
-\pi\log3,\pi^2\log3,\log^22,\log^23,G,\pi/\sqrt3,\pi^3/\sqrt3,\sqrt3,\sqrt{381},\sqrt{127},
-\Gamma(1/3),\Gamma(1/6),\Gamma(1/3)^6,\Gamma(1/6)^6$; $\exp(k\xi)$ rational for $k\le400$;
-$\xi$ algebraic of degree $\le12$; $\exp(k\xi)$ algebraic of degree $\le6$ for $k\le36$;
-$\xi\pi^{j}$ algebraic of degree $\le4$ for $|j|\le3$; four-term `lindep` against
-$\{1,\pi^2,\zeta(3),\log\lambda_1\}$, $\{1,\pi^2,\log2,\log3\}$,
-$\{1,\pi/\sqrt3,\pi^2,\log3\}$. (`13_ident234.gp`, `15_verify234.gp`.)
-
-**Why the earlier passes missed it.** $\rho=\tfrac76$ is not $1/e$ for any $e$, so the five
-classed runs could not see it; and $|\gamma|=78$ needs the wider accessory box. It appears
-only in `more_freeacc` ($\rho$ free, $|\gamma|\le200$). A dedicated sweep of
-$\rho=p/q$, $q\le6$, $0<\rho\le3$, at $\alpha\le3000$, $|\delta|\le60$, $|\gamma|\le300$,
-$|\zeta|\le400$ (`run_rho.sh`) is running; PLACE_RHO
+rescaled nome (`14_mirror234.gp`). **Mirror-map integrality is therefore a cheap and
+decisive modular/non-modular test**, and it separates the two Padé families from the two
+modular rows at a glance.
 
 ## 5. The runner-up: a second non-congruence Beukers row, at level 5
 
@@ -627,14 +611,13 @@ $1.0718$, $1.6180$ — i.e. the gap between "decays" and "does not" is populated
    score and a modular (non-$\log$) period: Apéry's $\zeta(2)$ row ($+0.406$) and Beukers'
    Theorem 3 ($+0.139$). Both are congruence-hosted; only the second is non-congruence in
    the multiplier.
-6. **No new irrationality theorem — but a new candidate.** Every positive-score row with
-   $k\ge2$ is Apéry's $\zeta(2)$, Beukers', or a classical Legendre $\log$ row, *except*
-   the $\rho=\tfrac76$ row of §4.4, whose score $+0.15998$ beats Beukers'. Its four
-   ingredients are verified to $n\le700$ and not proved, its mirror map is not integral (so
-   it is not modular), and its period is unidentified. Proving its integrality
-   ($a_n\in\mathbf Z$, $d_n^2b_n\in\mathbf Z$) and $r_n\ne0$ would give a new
-   irrationality theorem for an as-yet-nameless constant; that is the single concrete open
-   problem this note leaves.
+6. **No new irrationality theorem.** Every positive-score row with $k\ge2$, in every box
+   searched, is Apéry's $\zeta(2)$ row, Beukers' row, or a member of one of the two
+   classical Padé families ($\xi=-\tfrac1{12}\log\frac{x+1}{x-1}$ at $\delta=16$,
+   $\rho=0$; $\xi=-\tfrac1{2\sqrt3}\arctan\frac{6\sqrt3}{\alpha}$ at $\delta=-27$,
+   $\rho=\tfrac76$). Two new diagnostics come out of the hunt and are worth keeping: the
+   **Casoratian filter** ($Q(n_0)=0\Rightarrow W\equiv0$) and **mirror-map integrality**
+   (§4.4), which separates Padé families from modular rows in one series computation.
 
 ## 10. Status table
 
@@ -651,9 +634,8 @@ $1.0718$, $1.6180$ — i.e. the gap between "decays" and "does not" is populated
 | its period $0.164306701064\ldots$ | **open**; excluded against $L(f,s)$ for all weight-3 newforms of level $M\le120$, $5\mid M$, $s=1,2,3$, and a 9-constant battery |
 | Scan B: only $2$ of $3.0\times10^6$ eta-quotient pairs give $|\lambda_2|<1$ | **computed** |
 | Beukers' row is the unique positive-score non-congruence row | **computed within the stated boxes**; **proved** to be the only possible *host geometry* by N2+N3 modulo the box on $(\gamma,\zeta)$ |
-| the $\rho=\tfrac76$ row: $a_n\in\mathbf Z$, $d_n^2b_n\in\mathbf Z$ ($k=2$ sharp), $W_n\ne0$, $\tfrac1n\log(d_n^2|r_n|)<0$ | **verified** to $n\le700$ / $600$; **not proved** |
-| its period $-0.012812093779119936705649\ldots$ | **open**; excluded over the batteries of §4.4 |
-| its mirror map is not integral, hence the row is not modular | **computed** ($n\le58$) |
+| the $\rho=\tfrac76$ family: integral iff $\alpha\equiv18\ (36)$, $k=2$ sharp, $\xi=-\tfrac1{2\sqrt3}\arctan\tfrac{6\sqrt3}\alpha$ | integrality **computed** for all $\alpha\le60000$; the $\arctan$ identity **verified to 184 digits** for eight members |
+| mirror-map integrality separates the Padé families from the modular rows | **computed** ($n\le58$); reproduces Beukers' $\Gamma_1(5)$ Hauptmodul and Apéry's level-6 one exactly |
 | a positive-score row with $c>1$ (leading coefficient $c(n+1)^2$, $c\ne1$) | **not excluded**; see §11 |
 
 ## 11. Scope, honestly

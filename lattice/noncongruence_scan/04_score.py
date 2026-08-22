@@ -20,7 +20,10 @@ def row(al,be,ga,de,ep,ze,N,a0,a1):
 def main(path, out):
     seen=set(); res=[]
     for line in open(path):
-        t=tuple(map(int,line.split()))
+        f=line.split()
+        if len(f)!=6: continue          # skip truncated/interleaved lines
+        try: t=tuple(map(int,f))
+        except ValueError: continue
         if t[2]==0: continue
         if t in seen: continue
         seen.add(t)

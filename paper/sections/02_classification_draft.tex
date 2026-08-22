@@ -1,0 +1,247 @@
+% DRAFT -- new section, not yet included in the main file.
+% Companion to sections/02_sources.tex (Zagier's six), 02_sqrt_rows.tex and
+% 02_root_rows_draft.tex (the root rows).  Data: consolidation/HERFURTNER_CLASSIFICATION.md,
+% scripts lattice/herfurtner/.
+\section{Classification of the second-order rows: Herfurtner's list}\label{sec:herf}
+
+Sections~\ref{sec:sources} and \ref{sec:rootrows} produced two families of
+second-order integral rows with apparently unrelated normalisations: Zagier's
+$(an^2+an+b,\;cn^2)$ and the root rows'
+$(An^2+\tfrac A2n+B,\;C(2n-1)^2)$. This section shows that both shapes are
+\emph{forced}, that they are two entries of a list of nine, and that the list is
+matched against Herfurtner's classification of rational elliptic surfaces with
+four singular fibres \cite{Herfurtner1991}. The outcome is a classification
+theorem (Theorem~\ref{thm:herfclass}) whose proved part is the local analysis
+and whose verified part is an exhaustive integrality scan.
+
+\subsection{The exponents of a second-order row}
+
+Let $\tht=t\,d/dt$ and let
+\begin{equation}\label{eq:R2gen}
+(n+1)^2u_{n+1}=P(n)u_n-Q(n)u_{n-1},\qquad u_0=1,\quad u_{-1}=0,
+\end{equation}
+with $P=an^2+bn+c$ and $Q=dn^2+en+f$ in $\Q[n]$. Then $y=\sum_nu_nt^n$ is
+annihilated by
+\begin{equation}\label{eq:Lgen}
+L=\tht^2-t\,P(\tht)+t^2Q(\tht+1)
+ =t^2R(t)\,\partial_t^2+t\,S(t)\,\partial_t+\bigl(-ct+(d{+}e{+}f)t^2\bigr),
+\end{equation}
+$R(t)=1-at+dt^2$, $S(t)=1-(a+b)t+(3d+e)t^2$.
+
+\begin{lemma}[exponent dictionary]\label{lem:exps}
+\Proved{} Assume $d\neq0$ and $a^2\neq4d$, so that $L$ has exactly four singular
+points $0,t_1,t_2,\infty$ with $R(t_i)=0$, $t_i=1/\lambda_i$, $\lambda^2-a\lambda+d=0$.
+Put $T(t):=S(t)-tR'(t)=1-bt+(d+e)t^2$. Then the local exponents are
+\[
+(0,0)\ \text{at }0;\qquad
+\Bigl(0,\ \rho_i=-\tfrac{T(t_i)}{t_iR'(t_i)}\Bigr)\ \text{at }t_i;\qquad
+(1-r_1,\,1-r_2)\ \text{at }\infty,
+\]
+$r_1,r_2$ being the roots of $Q$; and $\rho_1+\rho_2=r_1+r_2=-e/d$ \textup{(}Fuchs\textup{)}.
+The point $t=0$ is a MUM point \textup{(}logarithmic, exponents equal\textup{)}.
+\end{lemma}
+
+\begin{proof}
+Expanding \eqref{eq:Lgen} gives the displayed $\partial_t$-form. At a simple zero
+$t_i$ of $R$ the indicial polynomial is $\rho\bigl[(\rho-1)t_iR'(t_i)+S(t_i)\bigr]$,
+whence the exponents $0$ and $1-S(t_i)/(t_iR'(t_i))=-T(t_i)/(t_iR'(t_i))$. At
+$\infty$, $y\sim t^{\mu}$ forces $Q(\mu+1)=0$, so the exponents in $s=1/t$ are
+$-\mu=1-r_i$. The sum of all six exponents is $2=(4-2)\binom22$ as it must be, and
+equals $\rho_1+\rho_2+2-(r_1+r_2)$.
+\end{proof}
+
+\begin{theorem}[normalisation classes]\label{thm:norm}
+\Proved{} With the hypotheses of Lemma~\ref{lem:exps}, $\rho_1=\rho_2=\rho$ if and
+only if
+\begin{equation}\label{eq:normclass}
+b=(1-\rho)a\qquad\text{and}\qquad e=-2\rho d .
+\end{equation}
+Writing $Q(n)=C(Mn-j_1)(Mn-j_2)$, so that $r_i=j_i/M$, this reads
+\[
+\rho=\frac{j_1+j_2}{2M},\qquad
+\delta_\infty:=r_2-r_1=\frac{j_2-j_1}{M},\qquad
+P(n)=A\Bigl(n^2+\bigl(1-\rho\bigr)n\Bigr)+B ,
+\]
+with $A=a$, $B=c$ the accessory parameter and $D=CM^2=d$.
+\end{theorem}
+
+\begin{proof}
+$\rho_1=\rho_2=\rho$ says $T(t_i)+\rho\,t_iR'(t_i)=0$ for $i=1,2$, i.e.\
+$R\mid T+\rho tR'$. Both are quadratics with constant term $1$, so they are
+equal; comparing coefficients gives $b+\rho a=a$ and $e+2\rho d=0$.
+\end{proof}
+
+Two special cases recover the two normalisations of this paper.
+\begin{itemize}
+\item $\rho=0$ and $\delta_\infty=0$ give $b=a$, $e=f=0$: \emph{Zagier's shape}
+$(an^2+an+c,\ dn^2)$. Geometrically $\rho=0$ says both finite singular fibres are
+semistable and $\delta_\infty=0$ says the fibre at $\infty$ is too.
+\item $\rho=\tfrac12$ and $\delta_\infty=0$ give $b=\tfrac a2$ and
+$Q=C(2n-1)^2$: the \emph{root-row shape} of \S\ref{sec:rootrows}, observed
+empirically for all nine $\Sym^1$ square roots. Geometrically the two finite
+fibres have order-two monodromy ($III$ or $III^*$) and the fibre at $\infty$ has
+half-integral exponents ($I_m^*$).
+\end{itemize}
+
+\subsection{Kodaira admissibility}
+
+\begin{theorem}\label{thm:kodaira}
+\Proved{} Suppose the local system $\ker L$ is, up to a rational gauge factor and
+a quadratic character twist, $R^1\pi_*\Q$ of an elliptic surface
+$\pi:\mathcal E\to\PP^1_t$. Then
+\[
+\rho_1,\ \rho_2,\ \delta_\infty\ \in\ \{0,\tfrac12,\tfrac13,\tfrac23\}\pmod 1 .
+\]
+\end{theorem}
+
+\begin{proof}
+Rational gauge and quadratic twist shift exponents by $\tfrac12\Z$ at each point
+and do not change exponent \emph{differences} mod $1$. The difference at a point
+is $\tfrac1{2\pi i}\log$ of the ratio of the eigenvalues of the local monodromy;
+Kodaira's list gives eigenvalue pairs $(1,1)$ for $I_n$, $(-1,-1)$ for $I_n^*$,
+$(\pm i)$ for $III,III^*$, $(e^{\pm2\pi i/3})$ for $IV,IV^*$ and
+$(e^{\pm\pi i/3})$ for $II,II^*$; the ratios are $1,1,-1,e^{\mp 4\pi i/3},
+e^{\mp2\pi i/3}$.
+\end{proof}
+
+\begin{corollary}\label{cor:excluded}
+\Proved{} The $\Sym^1$ square roots of Cooper's $s_{10}$ and $s_{18}$, whose
+trailing coefficients are $-4(8n-3)(8n-5)$ and $12(8n-3)(8n-5)$
+\textup{(}so $\delta_\infty=\tfrac14$, an order-eight local monodromy\textup{)},
+and the positive-score candidate row of \cite[\S4.4]{ProjNoncong}
+\textup{(}$\rho\equiv\tfrac16$\textup{)}, are \emph{not} Picard--Fuchs systems of
+an elliptic surface, in any gauge. These are three of the four second-order rows
+in the census whose Apéry limits resist identification.
+\end{corollary}
+
+\begin{corollary}[Galois rigidity; cf.\ {\cite[Thm.~N3]{ProjNoncong}}]\label{cor:galois}
+\Proved{} If $a^2-4d$ is not a square then $t_1,t_2$ are conjugate, hence
+$\rho_1=\rho_2$ and the two movable fibres have the same Kodaira class. A
+configuration whose movable fibres differ therefore has
+$\lambda_1,\lambda_2\in\Z$, so $|\lambda_2|\ge1$ and the row's score
+$\log(1/|\lambda_2|)-k$ is $\le-k<0$.
+\end{corollary}
+
+\subsection{Herfurtner's list and the cross-ratio invariant}
+
+Herfurtner \cite{Herfurtner1991} classifies the minimal elliptic surfaces over
+$\PP^1$ with section, non-constant $\mathcal J$ and exactly four singular
+fibres. Since $e(I_0^*)=6$, a rational such surface ($\sum e=12$) has at most one
+fibre in $T^-=\{I^*_n,IV^*,III^*,II^*\}$; his Table~3 lists $50$ twist classes and
+``transfer of $*$'' yields $56$ fibre quadruples, of which $38$ are rigid (all
+fibres in $T^+$; $\mathcal J$ is a Belyi map) and $18$ move in one-parameter
+families. The six semistable ones are Beauville's \cite{Beauville1982}.
+
+\begin{definition}\label{def:crossinv}
+The row \eqref{eq:R2gen} has four singular points $0,t_1,t_2,\infty$, of which
+$0$ is the MUM cusp and $\{t_1,t_2\}$ is an unordered pair. Its
+\emph{cross-ratio invariant} is
+\[
+\mathcal I:=\frac{(1+z)^2}{z}=\frac{(\lambda_1+\lambda_2)^2}{\lambda_1\lambda_2}
+=\frac{a^2}{d},\qquad z=\frac{t_1}{t_2} ,
+\]
+invariant under $z\mapsto1/z$, hence under both allowed relabelings.
+\end{definition}
+
+\begin{theorem}[finiteness]\label{thm:finite}
+\Proved{} A row \eqref{eq:R2gen} with $a,d\in\Z$ is the Picard--Fuchs system of a
+\emph{rigid} Herfurtner configuration only if $\mathcal I=a^2/d$ equals the
+cross-ratio invariant of that configuration under an assignment compatible with
+Lemma~\ref{lem:exps}. Since $\mathcal I\in\Q$, every configuration whose
+invariant is irrational or non-real is excluded outright. Per class the
+admissible sets are finite and explicit; for instance
+\[
+\text{all four fibres semistable:}\quad
+\mathcal I\in\Bigl\{0,\ 3,\ \tfrac92,\ -\tfrac{49}8,\ \tfrac{100}9,\
+\tfrac{289}{72},\ -121\Bigr\},
+\]
+\[
+\text{root-row class }(\rho,\delta_\infty)=(\tfrac12,0):\quad
+\mathcal I\in\Bigl\{\tfrac{484}{125}\ (I_1I_5III\,III),\ 0\ (I_2I_4III\,III),\
+-12\ (I_3I_3III\,III)\Bigr\}.
+\]
+\end{theorem}
+
+Zagier's six realise six of the seven semistable values, in the order
+$\mathbf B\,(3)$, $\mathbf E\,(\tfrac92)$, $\mathbf A\,(-\tfrac{49}8)$,
+$\mathbf C\,(\tfrac{100}9)$, $\mathbf F\,(\tfrac{289}{72})$,
+$\mathbf D\,(-121)$; the discarded eighth value $65+\tfrac{682}{25}\sqrt5$
+belongs to $I_5I_5I_1I_1$ with the two $I_1$'s taken as the movable pair, and is
+irrational. \emph{The six of Beauville--Zagier is, on the recurrence side, the
+number of rational cross-ratios in Herfurtner's four-cusp block.}
+
+\subsection{The $\mathcal J$-map test}
+
+The cross-ratio test ignores the accessory parameter; a sufficient test is
+supplied by the nome. Let $q=t\exp(g/y_0)$ be the canonical nome of $L$ at the
+MUM point. If $t$ is a Hauptmodul of a genus-zero $\Gamma$ with
+$t=c\,q_h+O(q_h^2)$ at a cusp of width $h$ then $q=c\,q_h$, hence
+$e^{2\pi i\tau}=(q/c)^h$; so $\Gamma$ is conjugate into $\PSL_2(\Z)$ --- i.e.\
+$L$ is projectively the Picard--Fuchs system of an elliptic surface over
+$\PP^1_t$ --- iff $J\bigl(\gamma q(t)^h\bigr)$ is a rational function of $t$ for
+some $h\in\Z_{>0}$ and some scalar $\gamma=c^{-h}$, and then
+$\deg\mathcal J=\deg J(t)$. This is a finite exact linear-algebra computation
+(\texttt{lattice/herfurtner/05\_jtest.gp}).
+
+\begin{theorem}[which root rows are elliptic surfaces]\label{thm:whichroots}
+\VerifiedR{exact, series order 56, degrees $\le12$, $\gamma$ over $\pm m^{\pm h}$
+for $29$ values of $m$} Of the nine $\Sym^1$ square roots of
+\cite[\S7--8]{ProjSporadicScan2}, exactly two are Picard--Fuchs systems of a
+rational elliptic surface over their own $\PP^1_t$:
+\[
+\sqrt{\mathrm{AZ}(11,5,125)}\ \leftrightarrow\ I_1I_5\,III\,III\ (\deg\mathcal J=6,\ h=1),
+\qquad
+\sqrt{\mathrm{AZ}(9,3,-27)}\ \leftrightarrow\ I_3I_3\,III\,III\ (\deg\mathcal J=6,\ h=3),
+\]
+in agreement with $\mathcal I=\tfrac{484}{125}$ and $\mathcal I=-12$. The
+remaining seven --- including Apéry's own square root, i.e.\ Beukers' Theorem~3
+row --- have $\mathcal I\notin\{\tfrac{484}{125},0,-12\}$ and fail the
+$\mathcal J$-test: their projective monodromy is an Atkin--Lehner quotient
+$\Gamma_0(N)+W$, commensurable with $\PSL_2(\Z)$ but not conjugate into it.
+\end{theorem}
+
+The mechanism is transparent on Apéry's curve: $t=(\eta_1\eta_6/\eta_2\eta_3)^{12}$
+is $W_6$-invariant of degree two on $X_0(6)$, so $\PP^1_t=X_0(6)/W_6$; the
+universal elliptic curve does not descend along that quotient, only its
+symmetric square does. That is why Apéry's \emph{order-three} row lives happily on
+$\PP^1_t$ while its square root does not, and the two fixed points of $W_6$ ---
+the Fricke fold point $i/\sqrt6$ of Theorem~B and its companion --- are exactly
+the two order-two points, i.e.\ the two exponents $\rho=\tfrac12$.
+
+\subsection{The classification theorem}
+
+\begin{namedthm}[Classification of second-order rows]\label{thm:herfclass}
+Let \eqref{eq:R2gen} have $u_n\in\Z$ for all $n$ \textup{(}after the $\lambda^n$
+rescaling of \S\ref{sec:rootrows} if necessary\textup{)}, $\deg P,\deg Q\le2$,
+$d\neq0$, $a^2\neq4d$, and $Q(n)\neq0$ for $n\ge1$ \textup{(}non-degenerate
+Casoratian\textup{)}.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.4em]
+\item \Proved{} The exponents are as in Lemma~\ref{lem:exps}; if $a^2-4d\notin\square$
+then $\rho_1=\rho_2=\rho$ and \eqref{eq:normclass} holds, so $(P,Q)$ lies in one of
+the normalisation classes indexed by $(\rho,\delta_\infty)$.
+\item \Proved{} If moreover $\ker L$ comes from an elliptic surface over
+$\PP^1_t$, then $\rho,\delta_\infty\in\{0,\tfrac12,\tfrac13,\tfrac23\}\bmod1$
+\textup{(}Theorem~\ref{thm:kodaira}\textup{)}, the fibre configuration is one of
+Herfurtner's $56$, and if it is rigid then $a^2/d$ lies in the explicit finite
+set of Theorem~\ref{thm:finite}.
+\item \VerifiedR{exhaustive integrality scan of all $26$ Kodaira-admissible
+classes, $|a|\le3000$, $|c|\le150$, $|d|\le12000$, integrality tested
+prime-by-prime to $n=30$ and re-verified exactly to $n=300$}
+The complete list of primitive integral rows in those ranges is
+Table~\ref{tab:herfrows}. Every one of them is already in the project's census;
+the only ones whose $\ker L$ is an elliptic-surface local system are Zagier's six
+and the two root rows of Theorem~\ref{thm:whichroots}. In particular \emph{no new
+Apéry-like second-order row of Herfurtner type exists in this range}.
+\end{enumerate}
+\end{namedthm}
+
+\begin{remark}
+What (iii) does \emph{not} settle: the eleven Herfurtner one-parameter families
+with a moving $\mathcal J$ are not excluded by Theorem~\ref{thm:finite}
+(their cross-ratio is free), only by the scan; and the scan's box, though large,
+is a box. The proved part of the classification is entirely local
+(Lemma~\ref{lem:exps}, Theorems~\ref{thm:norm}, \ref{thm:kodaira},
+\ref{thm:finite}); the global input is Herfurtner's theorem, and the finiteness of
+the answer is the finiteness of his list together with the rationality of
+$a^2/d$.
+\end{remark}

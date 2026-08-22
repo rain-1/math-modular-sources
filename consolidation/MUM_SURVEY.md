@@ -421,3 +421,29 @@ quintic — the exponent-1 solution and its log partner, normalised $w_0=w_1=w_2
 $5$-integral: $v_5(v_n)\approx-1.64n$. It therefore has no $5$-adic slope and gives no $p$-adic
 Apéry limit. The $p$-adic content of the quintic conifold is in the Frobenius structure (§3),
 not in the conifold Taylor coefficients.
+
+---
+
+## 9. Follow-ups (2026-08-22)
+
+Two items of §5.5–§5.6 have been settled or sharpened; see the dedicated notes.
+
+* **§5.5, AESZ 184.**  `consolidation/L3CHI5_TWO_WORLDS.md`.  AESZ 184 is *not* a new period
+  class: $A^{184}_n=\binom{2n}{n}A^\eta_n$ and $B^{184}_n=\tfrac12\binom{2n}{n}B^\eta_n$
+  exactly, i.e. it is the Hadamard product of the project's row $\eta=(11,5,125)$ with
+  $(1-4z)^{-1/2}$.  The cross-determinant against $\eta$ is identically zero on the diagonal;
+  AESZ 184 has no archimedean Apéry limit but a complex fold
+  $\xi^{184}=\tfrac14L(\chi_5,3)+i\tfrac{\pi}{20}L(\chi_5,2)$, so this section's blind even-part
+  prediction $\tfrac14L(\chi_5,3)$ is exactly right and is a *real part*.  The "drift
+  $5\cdot10^{-2}$ at $n=1400$" recorded here is non-convergence, not slow convergence.
+  Also: the $\zeta_p$ notation of §3 ($\zeta_p(k)=L_p(k,\omega^{1-k})$) and of
+  `EULER_CRITERION.md` ($\zeta_p(s)=L_p(s,\mathbf1)$) disagree at $p=5$, $k=3$.
+* **§5.6, AESZ 207.**  `consolidation/AESZ207.md`.  The archimedean limit is now known to
+  $1139$ digits and the $2$-adic one to $5958$; AvSZ's printed value for #207 is *wrong*
+  (un-converged).  The operator is the reflection at $\infty$ of AESZ 99 (degree-13
+  $5\times5$-Pfaffian in $\mathbf P^5$), its conifolds are defined over $\mathbf Q(\sqrt{17})$,
+  and $\sigma_2=12=v_2(2^{12}\cdot13)$ is carried by the *other*, rational singular point.
+  Neither constant is a Dirichlet or Kubota–Leopoldt value in a much enlarged catalogue, nor a
+  $\widehat\Gamma$-class combination at the conifold, over $\mathbf Q$ or $\mathbf Q(\sqrt{17})$.
+
+> **Correction (follow-up, L3CHI5_TWO_WORLDS.md):** AESZ 184 is not a new period class: $A^{184}_n=\binom{2n}{n}A^\eta_n$, $B^{184}_n=\tfrac12\binom{2n}{n}B^\eta_n$ exactly — the η row Hadamard-multiplied by $(1-4z)^{-1/2}$ — so its class is η's ($\tfrac14L(\chi_5,3)+\tfrac{i\pi}{20}L(\chi_5,2)$ archimedean, $\tfrac14\zeta_5(3)$ 5-adically). AESZ 207: AvSZ's printed archimedean value is unconverged; correct value to 1139 digits and $\xi_2$ to 5958 digits in AESZ207.md; geometry = reflection of AESZ 99 (Pfaffian, $\mathbb Q(\sqrt{17})$); still unidentified.

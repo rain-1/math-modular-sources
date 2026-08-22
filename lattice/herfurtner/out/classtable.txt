@@ -1,0 +1,110 @@
+====================================================================================================
+t_1,t_2 : order 2 (III/III^*)            infinity : order 2 (III/III^*)         
+recurrence classes: (4;1,3) rho=1/2 delta=1/2
+   #45  I3 III III III          degJ=3    0:I3    oo:III    t:III,III   I = 3                            ~ 3.000000
+====================================================================================================
+t_1,t_2 : order 2 (III/III^*)            infinity : order 3 (II,IV,IV^*,II^*)   
+recurrence classes: (3;1,2) rho=1/2 delta=1/3 ; (6;1,5) rho=1/2 delta=2/3
+   #44  I2 IV III III           degJ=2    0:I2    oo:IV     t:III,III   I = 0                            ~ 0.000000
+   #48  I4 II III III           degJ=4    0:I4    oo:II     t:III,III   I = 100/27                       ~ 3.703704
+====================================================================================================
+t_1,t_2 : order 2 (III/III^*)            infinity : cusp (I_n / I_n^*)          
+recurrence classes: (2;1,1) rho=1/2 delta=0  [root rows] ; (1;0,1) rho=1/2 delta=1
+   #38  I1 I5 III III           degJ=6    0:I1    oo:I5     t:III,III   I = 484/125                      ~ 3.872000
+   #38  I1 I5 III III           degJ=6    0:I5    oo:I1     t:III,III   I = 484/125                      ~ 3.872000
+   #39  I2 I4 III III           degJ=6    0:I2    oo:I4     t:III,III   I = 0                            ~ 0.000000
+   #39  I2 I4 III III           degJ=6    0:I4    oo:I2     t:III,III   I = 0                            ~ 0.000000
+   #40  I3 I3 III III           degJ=6    0:I3    oo:I3     t:III,III   I = -12                          ~ -12.000000
+====================================================================================================
+t_1,t_2 : order 3 (II,IV,IV^*,II^*)      infinity : order 2 (III/III^*)         
+recurrence classes: (12;1,7) rho=1/3 delta=1/2 ; (12;5,11) rho=2/3 delta=1/2
+   #46  I3 II III IV            degJ=3    0:I3    oo:III    t:II,IV   I = 25/4                         ~ 6.250000
+   #49  I5 III II II            degJ=5    0:I5    oo:III    t:II,II   I = 121/64                       ~ 1.890625
+====================================================================================================
+t_1,t_2 : order 3 (II,IV,IV^*,II^*)      infinity : order 3 (II,IV,IV^*,II^*)   
+recurrence classes: (3;0,2),(3;1,3) delta=2/3 ; (6;1,3),(6;3,5) delta=1/3
+   #47  I4 IV II II             degJ=4    0:I4    oo:IV     t:II,II   I = 0                            ~ 0.000000
+   #47  I4 IV II II             degJ=4    0:I4    oo:II     t:IV,II   I = 9/2                          ~ 4.500000
+   #50  I6 II II II             degJ=6    0:I6    oo:II     t:II,II   I = 3                            ~ 3.000000
+====================================================================================================
+t_1,t_2 : order 3 (II,IV,IV^*,II^*)      infinity : cusp (I_n / I_n^*)          
+recurrence classes: (3;1,1) rho=1/3 ; (3;2,2) rho=2/3
+   #30  I1 I7 II II             degJ=8    0:I1    oo:I7     t:II,II   I = 169/49                       ~ 3.448980
+   #30  I1 I7 II II             degJ=8    0:I7    oo:I1     t:II,II   I = 169/49                       ~ 3.448980
+   #31  I2 I6 II II             degJ=8    0:I2    oo:I6     t:II,II   I = 0                            ~ 0.000000
+   #31  I2 I6 II II             degJ=8    0:I6    oo:I2     t:II,II   I = 0                            ~ 0.000000
+   #32  I4 I4 II II             degJ=8    0:I4    oo:I4     t:II,II   I = -50                          ~ -50.000000
+   #36  I1 I5 II IV             degJ=6    0:I1    oo:I5     t:II,IV   I = 1681/400                     ~ 4.202500
+   #36  I1 I5 II IV             degJ=6    0:I5    oo:I1     t:II,IV   I = 1681/400                     ~ 4.202500
+   #37  I2 I4 II IV             degJ=6    0:I2    oo:I4     t:II,IV   I = -49/8                        ~ -6.125000
+   #37  I2 I4 II IV             degJ=6    0:I4    oo:I2     t:II,IV   I = -49/8                        ~ -6.125000
+   #43  I2 I2 IV IV             degJ=4    0:I2    oo:I2     t:IV,IV   I = 0                            ~ 0.000000
+====================================================================================================
+t_1,t_2 : cusp (I_n / I_n^*)             infinity : order 2 (III/III^*)         
+recurrence classes: (4;-1,1) rho=0 delta=1/2 ; (4;3,5) rho=1 delta=1/2
+   #23  I1 I1 I7 III            degJ=9    0:I1    oo:III    t:I1,I7   I = 4*(4043*sqrt(7) - 5831*I)/(49*(91*sqrt(7) - 87*I)) ~ (3.83984375-0.5895149007035659j)
+   #23  I1 I1 I7 III            degJ=9    0:I7    oo:III    t:I1,I1   I = 169/128                      ~ 1.320312
+   #24  I1 I2 I6 III            degJ=9    0:I1    oo:III    t:I2,I6   I = -4/3                         ~ -1.333333
+   #24  I1 I2 I6 III            degJ=9    0:I2    oo:III    t:I1,I6   I = 49/12                        ~ 4.083333
+   #24  I1 I2 I6 III            degJ=9    0:I6    oo:III    t:I1,I2   I = 25/4                         ~ 6.250000
+   #25  I1 I3 I5 III            degJ=9    0:I1    oo:III    t:I3,I5   I = -14884/375                   ~ -39.690667
+   #25  I1 I3 I5 III            degJ=9    0:I3    oo:III    t:I1,I5   I = 64009/16000                  ~ 4.000563
+   #25  I1 I3 I5 III            degJ=9    0:I5    oo:III    t:I1,I3   I = 17161/384                    ~ 44.690104
+   #26  I2 I3 I4 III            degJ=9    0:I2    oo:III    t:I3,I4   I = -4/3                         ~ -1.333333
+   #26  I2 I3 I4 III            degJ=9    0:I3    oo:III    t:I2,I4   I = 25/4                         ~ 6.250000
+   #26  I2 I3 I4 III            degJ=9    0:I4    oo:III    t:I2,I3   I = 49/12                        ~ 4.083333
+====================================================================================================
+t_1,t_2 : cusp (I_n / I_n^*)             infinity : order 3 (II,IV,IV^*,II^*)   
+recurrence classes: (3;-1,1) rho=0 delta=2/3 ; (6;-1,1) rho=0 delta=1/3 ; (3;2,4),(6;5,7)
+   #19  I1 I1 I8 II             degJ=10   0:I1    oo:II     t:I1,I8   I = (3017*sqrt(2) - 440*I)/(16*(56*sqrt(2) - 17*I)) ~ (3.2901234567901234+0.35900946143576257j)
+   #19  I1 I1 I8 II             degJ=10   0:I8    oo:II     t:I1,I1   I = 196/81                       ~ 2.419753
+   #20  I1 I2 I7 II             degJ=10   0:I1    oo:II     t:I2,I7   I = -289/1568                    ~ -0.184311
+   #20  I1 I2 I7 II             degJ=10   0:I2    oo:II     t:I1,I7   I = 16900/3969                   ~ 4.257999
+   #20  I1 I2 I7 II             degJ=10   0:I7    oo:II     t:I1,I2   I = 12769/2592                   ~ 4.926312
+   #21  I1 I4 I5 II             degJ=10   0:I1    oo:II     t:I4,I5   I = -6241/80                     ~ -78.012500
+   #21  I1 I4 I5 II             degJ=10   0:I4    oo:II     t:I1,I5   I = 25921/6480                   ~ 4.000154
+   #21  I1 I4 I5 II             degJ=10   0:I5    oo:II     t:I1,I4   I = 6724/81                      ~ 83.012346
+   #22  I2 I3 I5 II             degJ=10   0:I2    oo:II     t:I3,I5   I = -484/135                     ~ -3.585185
+   #22  I2 I3 I5 II             degJ=10   0:I3    oo:II     t:I2,I5   I = 1369/160                     ~ 8.556250
+   #22  I2 I3 I5 II             degJ=10   0:I5    oo:II     t:I2,I3   I = 3481/864                     ~ 4.028935
+   #27  I1 I1 I6 IV             degJ=8    0:I1    oo:IV     t:I1,I6   I = 9/2                          ~ 4.500000
+   #27  I1 I1 I6 IV             degJ=8    0:I6    oo:IV     t:I1,I1   I = 0                            ~ 0.000000
+   #28  I1 I2 I5 IV             degJ=8    0:I1    oo:IV     t:I2,I5   I = -529/50                      ~ -10.580000
+   #28  I1 I2 I5 IV             degJ=8    0:I2    oo:IV     t:I1,I5   I = 2704/675                     ~ 4.005926
+   #28  I1 I2 I5 IV             degJ=8    0:I5    oo:IV     t:I1,I2   I = 841/54                       ~ 15.574074
+   #29  I3 I3 I2 IV             degJ=8    0:I3    oo:IV     t:I3,I2   I = 9/2                          ~ 4.500000
+   #29  I3 I3 I2 IV             degJ=8    0:I2    oo:IV     t:I3,I3   I = 0                            ~ 0.000000
+====================================================================================================
+t_1,t_2 : cusp (I_n / I_n^*)             infinity : cusp (I_n / I_n^*)          
+recurrence classes: (1;0,0) rho=0 delta=0  [Zagier]  and (1;-1,1),(2;-1,1),(1;1,1),(2;1,3)
+   #13  I1 I1 I1 I9             degJ=12   0:I1    oo:I1     t:I1,I9   I = 3                            ~ 3.000000
+   #13  I1 I1 I1 I9             degJ=12   0:I1    oo:I9     t:I1,I1   I = 3                            ~ 3.000000
+   #13  I1 I1 I1 I9             degJ=12   0:I9    oo:I1     t:I1,I1   I = 3                            ~ 3.000000
+   #14  I1 I1 I2 I8             degJ=12   0:I1    oo:I1     t:I2,I8   I = 0                            ~ 0.000000
+   #14  I1 I1 I2 I8             degJ=12   0:I1    oo:I2     t:I1,I8   I = 9/2                          ~ 4.500000
+   #14  I1 I1 I2 I8             degJ=12   0:I1    oo:I8     t:I1,I2   I = 9/2                          ~ 4.500000
+   #14  I1 I1 I2 I8             degJ=12   0:I2    oo:I1     t:I1,I8   I = 9/2                          ~ 4.500000
+   #14  I1 I1 I2 I8             degJ=12   0:I2    oo:I8     t:I1,I1   I = 0                            ~ 0.000000
+   #14  I1 I1 I2 I8             degJ=12   0:I8    oo:I1     t:I1,I2   I = 9/2                          ~ 4.500000
+   #14  I1 I1 I2 I8             degJ=12   0:I8    oo:I2     t:I1,I1   I = 0                            ~ 0.000000
+   #15  I1 I2 I3 I6             degJ=12   0:I1    oo:I2     t:I3,I6   I = -49/8                        ~ -6.125000
+   #15  I1 I2 I3 I6             degJ=12   0:I1    oo:I3     t:I2,I6   I = 100/9                        ~ 11.111111
+   #15  I1 I2 I3 I6             degJ=12   0:I1    oo:I6     t:I2,I3   I = 289/72                       ~ 4.013889
+   #15  I1 I2 I3 I6             degJ=12   0:I2    oo:I1     t:I3,I6   I = -49/8                        ~ -6.125000
+   #15  I1 I2 I3 I6             degJ=12   0:I2    oo:I3     t:I1,I6   I = 289/72                       ~ 4.013889
+   #15  I1 I2 I3 I6             degJ=12   0:I2    oo:I6     t:I1,I3   I = 100/9                        ~ 11.111111
+   #15  I1 I2 I3 I6             degJ=12   0:I3    oo:I1     t:I2,I6   I = 100/9                        ~ 11.111111
+   #15  I1 I2 I3 I6             degJ=12   0:I3    oo:I2     t:I1,I6   I = 289/72                       ~ 4.013889
+   #15  I1 I2 I3 I6             degJ=12   0:I3    oo:I6     t:I1,I2   I = -49/8                        ~ -6.125000
+   #15  I1 I2 I3 I6             degJ=12   0:I6    oo:I1     t:I2,I3   I = 289/72                       ~ 4.013889
+   #15  I1 I2 I3 I6             degJ=12   0:I6    oo:I2     t:I1,I3   I = 100/9                        ~ 11.111111
+   #15  I1 I2 I3 I6             degJ=12   0:I6    oo:I3     t:I1,I2   I = -49/8                        ~ -6.125000
+   #16  I1 I1 I5 I5             degJ=12   0:I1    oo:I1     t:I5,I5   I = -121                         ~ -121.000000
+   #16  I1 I1 I5 I5             degJ=12   0:I1    oo:I5     t:I1,I5   I = 682*sqrt(5)/25 + 65          ~ 125.999934
+   #16  I1 I1 I5 I5             degJ=12   0:I5    oo:I1     t:I1,I5   I = 682*sqrt(5)/25 + 65          ~ 125.999934
+   #16  I1 I1 I5 I5             degJ=12   0:I5    oo:I5     t:I1,I1   I = -121                         ~ -121.000000
+   #17  I2 I2 I4 I4             degJ=12   0:I2    oo:I2     t:I4,I4   I = 0                            ~ 0.000000
+   #17  I2 I2 I4 I4             degJ=12   0:I2    oo:I4     t:I2,I4   I = 9/2                          ~ 4.500000
+   #17  I2 I2 I4 I4             degJ=12   0:I4    oo:I2     t:I2,I4   I = 9/2                          ~ 4.500000
+   #17  I2 I2 I4 I4             degJ=12   0:I4    oo:I4     t:I2,I2   I = 0                            ~ 0.000000
+   #18  I3 I3 I3 I3             degJ=12   0:I3    oo:I3     t:I3,I3   I = 3                            ~ 3.000000

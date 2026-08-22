@@ -1,0 +1,12 @@
+[0;31m  ***   Warning: new stack size = 8000000000 (7629.395 Mbytes).[0m
+[0;31m[0;31m  ***   at top-level: ...[0;35m(t=1,#L,for(s=1,k-1,my(v=[0;35mlfun(L[t],s));if(abs(
+[0;31m[0;31m  ***                                             ^---------------------
+  *** lfun: incorrect type in lfunmisc_to_ldata (t_VEC).[0m
+... skipping file 'b12_newforms.gp'
+newform L-values collected: 0
+
+-- singles --
+
+-- pairs among newform values --
+
+-- newform value with zeta(3), Pi^2, Pi^4, 1 --

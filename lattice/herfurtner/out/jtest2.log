@@ -1,0 +1,8 @@
+root AZ(9,3,-27)         -> h=3  deg J=6  gamma=64
+root AZ(11,5,125)        -> h=1  deg J=6  gamma=-4
+root Domb                -> monodromy NOT conjugate into PSL2(Z)
+root Apery               -> monodromy NOT conjugate into PSL2(Z)
+root T                   -> monodromy NOT conjugate into PSL2(Z)
+root AZ(7,3,81)          -> monodromy NOT conjugate into PSL2(Z)
+root Cooper s7           -> monodromy NOT conjugate into PSL2(Z)
+Zagier B (9,3,27)        -> h=1  deg J=12  gamma=-1
