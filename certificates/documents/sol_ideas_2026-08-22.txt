@@ -1,0 +1,171 @@
+Yes. There are other known cases, but the genuinely difficult ones are remarkably rare.
+
+The biggest recent example is
+[
+\boxed{L(2,\chi_{-3})\ \text{is irrational}.}
+]
+Calegari–Dimitrov–Tang proved this in 2024, and in fact proved the stronger statement
+[
+\boxed{1,\ \zeta(2),\ L(2,\chi_{-3})\ \text{are }\mathbf Q\text{-linearly independent}.}
+]
+They emphasize how exceptional this is: apart from the “easy parity” Dirichlet values that are algebraic multiples of powers of (\pi), essentially the only previous explicit Dirichlet (L)-value of this type known irrational was (\zeta(3)). ([arXiv][1])
+
+What is particularly relevant to us is that their proof uses an arithmetic-holonomy refinement of Apéry-limit constructions. In other words, it is philosophically very close to what we have been doing: exploit the differential equation, analytic continuation past the first singularity, and unusually good denominator arithmetic, rather than merely finding a fast decimal approximation. 
+
+There is now a very clean criterion visible from our (\Psi) example. Suppose
+[
+A(t)=\sum a_nt^n,\qquad
+B(t)=\sum b_nt^n,
+\qquad
+\frac{b_n}{a_n}\to\lambda,
+]
+and
+[
+P(t)=B(t)-\lambda A(t)
+]
+continues through the first singularity and has radius (R). If a common denominator (D_n) satisfies
+[
+D_na_n,\ D_nb_n\in\mathbb Z
+]
+and
+[
+\boxed{\limsup_{n\to\infty}D_n^{1/n}<R,}
+]
+then
+[
+D_n(b_n-\lambda a_n)\to0,
+]
+which gives the Apéry irrationality contradiction if (\lambda\in\mathbb Q).
+
+For our square-root Apéry form we have just found
+[
+D_n=
+2^{2n-s_2(n)-\lfloor\log_2n\rfloor-1}d_n^2.
+]
+Hence
+[
+\lim D_n^{1/n}=4e^2.
+]
+But the companion combination survives analytically all the way to
+[
+R=(1+\sqrt2)^4.
+]
+And crucially
+[
+\boxed{4e^2<(1+\sqrt2)^4.}
+]
+
+That one inequality is essentially the arithmetic/analytic “worthiness test” for the irrationality proof. It explains exactly why this example works.
+
+This gives us a way to screen other modular (L)-values.
+
+The first target I would investigate seriously is
+[
+\boxed{L(3,\chi_5),\qquad \chi_5(n)=\left(\frac n5\right).}
+]
+This is a genuinely difficult, opposite-parity Dirichlet value. Beukers already got extremely close: his 1987 modular construction proves
+[
+\boxed{
+8\zeta(3)-5\sqrt5,L(3,\chi_5)
+\notin\mathbb Q(\sqrt5).
+}
+]
+He does this with a weight-4 modular form on (\Gamma_1(5)), a Fricke transformation, algebraic conjugate recurrences, and denominator estimates. ([Numdam][2])
+
+But this does not prove (L(3,\chi_5)) itself irrational.
+
+That is exactly why I think it is now unusually attractive. Beukers has already supplied most of the geometry; what we would need to do is separate the two periods (\zeta(3)) and (L(3,\chi_5)), perhaps by the sort of refined holonomy/multiple-monodromy argument that Calegari–Dimitrov–Tang used to turn mixed-period information into the pure (L(2,\chi_{-3})) theorem. CDT explicitly discuss Beukers' (\chi_5) mixed-period result as an antecedent of their work. ([Department of Mathematics][3])
+
+The second obvious target is Catalan:
+[
+\boxed{G=L(2,\chi_{-4}).}
+]
+It remains individually open. The strongest finite-set result I found is that at least one of
+[
+\beta(2),\beta(4),\beta(6),\beta(8),\beta(10)
+]
+is irrational. ([arXiv][4])
+
+There is an important warning here. CDT explicitly analyze two well-known Apéry-type approximation families for Catalan and show that their analytic/denominator constants miss the necessary inequality—by a wide margin. So merely having a beautiful recurrence and a harmonic companion is not enough.  This agrees rather strikingly with what we discovered independently in our Catalan work: one needs a different realization with a better analytic branch-unfolding/denominator ratio.
+
+There are also many modular (L(f,2)) values sitting ready-made in Yifan Yang's Apéry-limit paper. For example
+[
+\boxed{
+f(\tau)=\eta(\tau)^3\eta(7\tau)^3
+}
+]
+is a weight-3 cusp form, and Yang constructs rational sequences with
+[
+\frac{b_n}{a_n}\longrightarrow L(f,2).
+]
+The corresponding Hauptmodul has critical values
+[
+0,\quad\frac1{28},\quad1,\quad\infty,
+]
+and the special linear combination (B-L(f,2)A) is analytic through (1/28). ([arXiv][5])
+
+Unfortunately, this already tells us why the elementary Apéry criterion fails: after killing (1/28), the next singularity is only at
+[
+R=1.
+]
+There is no room whatsoever for exponentially growing denominator clearing.
+
+Likewise Yang studies
+[
+f(\tau)=\eta(2\tau)^3\eta(6\tau)^3,
+]
+with singularities
+[
+0,\quad-\frac19,\quad-\frac18,\quad\infty.
+]
+The (L(f,2))-combination removes the (-1/9) singularity, but the next one at (-1/8) is far too close. ([arXiv][5])
+
+So these are beautiful (L)-value Apéry limits, but not immediate irrationality proofs.
+
+There is another large reservoir worth testing: the six Zagier sporadic sequences. Osburn–Straub proved that their interpolations are critical (L)-values of weight-3 modular forms. ([arXiv][6]) They also show, more generally, an infinite family of cellular sequences evaluating to critical modular (L)-values. For example the original interpolated Apéry numbers satisfy
+[
+A!\left(-\frac12\right)
+=\frac{16}{\pi^2}
+L!\left(\eta(2\tau)^4\eta(4\tau)^4,2\right).
+]
+([arXiv][7])
+
+Those six sporadics are especially appealing now because we have precisely the machinery needed to ask the right question for each one:
+
+[
+\boxed{
+\text{denominator entropy}
+\quad\text{versus}\quad
+\text{post-cancellation analytic radius}.
+}
+]
+
+That is much sharper than asking merely “does it have an Apéry recurrence?”
+
+There are also general existence theorems. Fischler proved that, for a fixed Dirichlet character, many sufficiently high integer (L)-values of the appropriate parity are irrational or even linearly independent. But those theorems generally do not tell you which particular small value is irrational. ([arXiv][8]) Similarly, infinitely many odd zeta values are irrational, while results such as “at least two of (\zeta(5),\zeta(7),\ldots,\zeta(35)) are irrational” do not currently isolate (\zeta(5)) or (\zeta(7)). ([arXiv][4])
+
+So my ranking for genuinely interesting individual targets would be:
+
+1. (\mathbf{L(3,\chi_5)}) — strongest immediate candidate. Beukers already built almost exactly the required modular machine, but obtained only a mixed-period theorem.
+2. The six weight-3 modular (L(f,2))'s attached to Zagier's sporadic sequences — finite census, excellent arithmetic, and likely amenable to our exact denominator/branch-radius test.
+3. (G=L(2,\chi_{-4})) — highest-value target, but the known approximation geometries provably fail the straightforward criterion.
+4. Other opposite-parity quadratic (L(2,\chi_D)) and (L(3,\chi_D)) values — now much more plausible after CDT, but likely require genuine arithmetic holonomy rather than plain Apéry convergence.
+
+And there is a striking contemporary confirmation that this is the right screening philosophy: Bortolotto–Oliveira's May 2026 paper revisits Beukers' modular proof, finds a whole affine family of level-6 constructions that still prove (\zeta(3)) irrational, then tests several other genus-zero Fricke groups. The obstruction in the unsuccessful cases is precisely the failure to get the necessary combination of analytic decay and denominator growth. ([arXiv][9])
+
+So yes: I think there is a real research project here. The next thing I would do is an exact **irrationality census of the six Zagier sporadics plus Beukers' level-5 (\chi_5) system**, computing for each
+[
+(R,; \lim D_n^{1/n},; R/\lim D_n^{1/n}),
+]
+and then attack any case with ratio (>1). That would tell us very quickly whether another Beukers-style irrational modular (L)-value is hiding in plain sight.
+
+[1]: https://arxiv.org/abs/2408.15403?utm_source=chatgpt.com "The linear independence of $1$, $ζ(2)$, and $L(2,χ_{-3})$"
+[2]: https://www.numdam.org/article/AST_1987__147-148__271_0.pdf?utm_source=chatgpt.com "Irrationality proofs using modular forms"
+[3]: https://math.uchicago.edu/~fcale/papers/L2chi.pdf?utm_source=chatgpt.com "THE LINEAR INDEPENDENCE OF 1, ζ(2), AND L(2, χ−3)"
+[4]: https://arxiv.org/abs/2103.00904?utm_source=chatgpt.com "At least two of $ζ(5),ζ(7),\ldots,ζ(35)$ are irrational"
+[5]: https://arxiv.org/abs/0709.1968 "Apery limits and special values of L-functions"
+[6]: https://arxiv.org/abs/1806.05207?utm_source=chatgpt.com "Interpolated sequences and critical $L$-values of modular forms"
+[7]: https://arxiv.org/abs/1806.05207 "Interpolated sequences and critical $L$-values of modular forms"
+[8]: https://arxiv.org/abs/1904.02402?utm_source=chatgpt.com "Irrationality of values of L-functions of Dirichlet characters"
+[9]: https://arxiv.org/abs/2605.00673?utm_source=chatgpt.com "Modular Forms and Numerical Explorations of Rational Approximations to $ζ(3)$"
+

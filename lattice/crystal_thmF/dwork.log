@@ -1,0 +1,14 @@
+[0;31m  ***   Warning: new maximum stack size = 6000001024 (5722.047 Mbytes).[0m
+[0;31m  ***   Warning: increasing stack size to 16000000.[0m
+row C  a_n            : non-integral entries=0   Dwork tests=5737  failures=0
+row E  a_n            : non-integral entries=0   Dwork tests=5737  failures=0
+row F  a_n            : non-integral entries=0   Dwork tests=5737  failures=0
+Apery zeta(3) a_n     : non-integral entries=0   Dwork tests=5737  failures=0
+Domb alpha a_n        : non-integral entries=0   Dwork tests=5737  failures=0
+Cooper s18 a_n        : non-integral entries=0   Dwork tests=5737  failures=0
+cusp row a_n          : non-integral entries=0   Dwork tests=5737  failures=531  first: (p,s,m)=[2, 2, 1]
+Zudilin 16^m Q_m      : non-integral entries=0   Dwork tests=2288  failures=0
+  v_2(16^m Q_m) for m=1..12: [2, 2, 4, 2, 4, 4, 6, 2, 4, 4, 6, 4]
+  s_2(m)*2 for m=1..12     : [2, 2, 4, 2, 4, 4, 6, 2, 4, 4, 6, 4]
+  R_0..R_6 = [1, 28, 2596, 311536, 41759524, 5953698928, 882922368784]
+Brown-Zudilin Q_n     : non-integral entries=0   Dwork tests=1716  failures=0
