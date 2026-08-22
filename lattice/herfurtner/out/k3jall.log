@@ -1,0 +1,29 @@
+K3 window: dmax=24 hmax=24 terms=140 #gamma=992 p=2305843009213693951
+label | M j1 j2 A B C | verdict h degJ gamma used extra | ms
+CONTROL+ Zagier B                          | 1 0 0 9 3 27 | YES 1 12 -1 50 65 | 68
+CONTROL+ Zagier D                          | 1 0 0 11 3 -1 | YES 1 12 1 50 65 | 79
+CONTROL+ sqrt(AZ(11,5,125))        [root row] | 2 1 1 88 10 500 | YES 1 6 -4 50 65 | 119
+CONTROL+ sqrt(AZ(9,3,-27))         [root row] | 2 1 1 72 6 -108 | YES 3 6 64 50 65 | 2045
+CONTROL+ NEW row on I1 I7 II II            | 3 1 1 117 21 441 | YES 1 8 -9 50 65 | 151
+CONTROL+ NEW row on I3 III III III         | 4 1 3 72 6 108 | YES 3 3 -8 50 65 | 1950
+sec6.1-NEG sqrt(Domb)                [root row] | 2 1 1 20 2 16 | NO  -  -  -  -  - | 9944
+sec6.1-NEG sqrt(T)                   [root row] | 2 1 1 24 2 4 | NO  -  -  -  -  - | 9941
+sec6.1-NEG sqrt(AZ(7,3,81))          [root row] | 2 1 1 56 6 324 | NO  -  -  -  -  - | 9910
+sec6.1-NEG Beukers = sqrt(Apery)     [root row] | 2 1 1 136 10 4 | NO  -  -  -  -  - | 9842
+sec6.1-NEG A=0 row, class (2;1,3) -        | 2 1 3 0 -4 -64 | NO  -  -  -  -  - | 9901
+sec6.1-NEG A=0 row, class (2;1,3) +        | 2 1 3 0 4 -64 | NO  -  -  -  -  - | 9960
+sec6.1-NEG new row (3;1,1), not a surface  | 3 1 1 180 24 -72 | NO  -  -  -  -  - | 9838
+sec6.1-NEG sqrt(s7) Cooper           [root row] | 3 1 2 26 2 -3 | NO  -  -  -  -  - | 9983
+sec6.1-NEG new row (3;1,2), not a surface  | 3 1 2 40 4 48 | NO  -  -  -  -  - | 9963
+sec6.1-NEG A=0 row, class (3;2,4) -        | 3 2 4 0 -3 -81 | NO  -  -  -  -  - | 9960
+sec6.1-NEG A=0 row, class (3;2,4) +        | 3 2 4 0 3 -81 | NO  -  -  -  -  - | 9978
+sec6.1-NEG new row (4;1,3), not a surface  | 4 1 3 28 2 -8 | NO  -  -  -  -  - | 9993
+sec6.1-NEG new row (4;1,3), not a surface  | 4 1 3 48 4 32 | NO  -  -  -  -  - | 9733
+sec6.1-NEG new row (4;1,3), not a surface  | 4 1 3 68 6 72 | NO  -  -  -  -  - | 8360
+sec6.1-NEG new row (4;1,3), not a surface  | 4 1 3 80 6 36 | NO  -  -  -  -  - | 9956
+sec6.1-NEG level-5 Fricke row              | 4 1 3 88 6 -4 | NO  -  -  -  -  - | 9960
+sec6.1-NEG A=0 row, class (4;3,5) -        | 4 3 5 0 -4 -256 | NO  -  -  -  -  - | 9961
+sec6.1-NEG A=0 row, class (4;3,5) +        | 4 3 5 0 4 -256 | NO  -  -  -  -  - | 9945
+CONTROL- sqrt(s10)   [not Kodaira: delta_inf = 1/4] | 8 3 5 24 2 -4 | NO  -  -  -  -  - | 9902
+CONTROL- sqrt(s18)   [not Kodaira: delta_inf = 1/4] | 8 3 5 56 6 12 | NO  -  -  -  -  - | 9969
+CONTROL- NCS 4.4 arctan row, alpha=18  [rho = 7/6] | 3 2 5 18 -6 -3 | NO  -  -  -  -  - | 10049

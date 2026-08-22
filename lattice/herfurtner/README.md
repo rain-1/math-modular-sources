@@ -56,3 +56,36 @@ rational elliptic surfaces over P^1 with four singular fibres.
   roots of AZ(11,5,125) and AZ(9,3,-27) (deg J = 6), and two NEW rows
   (117,21,441) on I_1 I_7 II II (deg J = 8) and (72,6,108) on I_3 III III III
   (deg J = 3) are elliptic-surface rows; everything else is not.
+
+## The K3 window of the J-map test (deg J <= 24)
+
+See `consolidation/HERFURTNER_K3_WINDOW.md`.  Open item 4 of
+HERFURTNER_CLASSIFICATION.md sec. 8 asked what happens if the deg J <= 12 window
+(rational elliptic surfaces, sum e = 12) is raised to the elliptic-K3 bound
+deg J <= 24.  Answer: nothing, and provably so -- Riemann-Hurwitz for the
+functional invariant gives deg J <= 6c + 4e3 + 3e2 - 12 <= 12 for any elliptic
+surface whose four singular fibres sit over the four singular points of the row
+(c, e2, e3 = the number of those points that are cusps / order 2 / order 3).
+
+    15_k3jtest.gp       the test with DMAX = HMAX = 24, NTERM = 140 series terms
+                        and 992 gamma candidates per h (m^(+-h), m 7-smooth
+                        <= 4096, both signs -- a superset of the old GAMS list).
+                        U is eliminated, leaving a 115 x 25 system for V; that is
+                        solved mod p = 2^61-1 as a filter (a ring homomorphism on
+                        the p-integral coefficients, so no false negatives), and
+                        every survivor is redone exactly over Q: V is fitted from
+                        50 coefficients and the identity V*W - t^h U = O(t^140)
+                        is then checked on 65 further ones.
+                        k3test(mm,j1,j2,A,B,C) -> 0 or
+                        [h, deg J, gamma, #fitted, #extra verified].
+    15_k3rows.py        reads out/jall.log and emits 15_k3run.gp: the 18 rows of
+                        sec. 6.1 with a NEGATIVE verdict (these contain the five
+                        negative root rows), three Kodaira-inadmissible controls
+                        (sqrt(s10), sqrt(s18), the NONCONGRUENCE_SCAN sec. 4.4
+                        row), and the six known positives as implementation
+                        controls.
+    out/k3jall.log      the verdicts.  All 18 negatives stay negative; all six
+                        positives return the same (h, deg J) and the same gamma
+                        as at deg <= 12.  ~3.6 min for 27 rows on one core.
+
+Run:  python3 15_k3rows.py && gp -q -s 8000000000 15_k3run.gp </dev/null >out/k3jall.log
