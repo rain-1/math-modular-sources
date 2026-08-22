@@ -1,0 +1,27 @@
+N = 600
+=== alignment primes sigma_p = v_p(d) for Zagier's six ===
+  A  d=-8   sigma_2=3  sigma_3=0  sigma_5=0
+  B  d=27   sigma_2=0  sigma_3=3  sigma_5=0
+  C  d=9   sigma_2=0  sigma_3=2  sigma_5=0
+  D  d=-1   sigma_2=0  sigma_3=0  sigma_5=0
+  E  d=32   sigma_2=5  sigma_3=0  sigma_5=0
+  F  d=72   sigma_2=3  sigma_3=2  sigma_5=0
+
+=== p=3 cluster:  B, C, F, and Cooper s_18 ===
+v_3(xi_B - xi_C)        = 1185
+v_3(4 xi_F - 5 xi_C)    = 1188
+v_3(xi_s18 - xi_C)      = 589
+v_3(4 xi_F - 5 xi_s18)  = 589
+s_18 Cauchy: v_3(xi_s18(N)-xi_s18(N-1)) = 587  [N = 600]
+
+=== p=2 cluster:  A, E, F ===
+v_2(xi_A)               = 1785   (predicted 0, at rate 3n)
+v_2(xi_E)               = -2
+v_2(xi_F)               = 0
+v_2(xi_E - xi_F)        = -2   (different L-values: zeta_2(2) vs L_2(2,chi_12))
+v_2(xi_A - xi_E)        = -2
+
+=== D: no alignment prime at all ===
+v_2(xi_D(N)-xi_D(N-1))  = -6
+v_3(xi_D(N)-xi_D(N-1))  = -7
+v_5(xi_D(N)-xi_D(N-1))  = -4

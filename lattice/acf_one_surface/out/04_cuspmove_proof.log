@@ -1,0 +1,12 @@
+orig / new = 1
+difference (should be 0): 0
+
+original char. roots : [lam, mu]
+new  char. roots     : [-lam, -lam + mu]
+
+C (a,b,d)=(10,3,9) roots=[1, 9] -> cusp-moved rows [(7, 2, -8), (-17, -6, 72)]
+A (a,b,d)=(7,2,-8) roots=[-1, 8] -> cusp-moved rows [(10, 3, 9), (-17, -6, 72)]
+F (a,b,d)=(17,6,72) roots=[8, 9] -> cusp-moved rows [(-7, -2, -8), (-10, -3, 9)]
+E (a,b,d)=(12,4,32) roots=[4, 8] -> cusp-moved rows [(0, 0, -16), (-12, -4, 32)]
+B (a,b,d)=(9,3,27) roots=[9/2 - 3*sqrt(3)*I/2, 9/2 + 3*sqrt(3)*I/2] -> cusp-moved rows [(-9/2 + 9*sqrt(3)*I/2, -3/2 + 3*sqrt(3)*I/2, -27/2 - 27*sqrt(3)*I/2), (-9/2 - 9*sqrt(3)*I/2, -3/2 - 3*sqrt(3)*I/2, -27/2 + 27*sqrt(3)*I/2)]
+D (a,b,d)=(11,3,-1) roots=[11/2 - 5*sqrt(5)/2, 11/2 + 5*sqrt(5)/2] -> cusp-moved rows [(-11/2 + 15*sqrt(5)/2, -5/2 + 5*sqrt(5)/2, 125/2 - 55*sqrt(5)/2), (-15*sqrt(5)/2 - 11/2, -5*sqrt(5)/2 - 5/2, 55*sqrt(5)/2 + 125/2)]

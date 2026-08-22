@@ -1,0 +1,27 @@
+=== A. sources as Eisenstein combinations (level 6, weight 3, chi_{-3}) ===
+Phi_C  - (1-8V2) Ess          : O(q^260)
+Phi_F' - (1+ V2) Ess          : O(q^260)
+Phi_A  - (1- V2) Ett          : O(q^260)
+Phi_F  - (1-7V2-8V4) Ess      : O(q^260)
+Phi_F  + Phi_F'(tau+1/2)      : O(q^261)
+
+=== B. the multiplicative (cusp-move) form ===
+Phi_A  - Phi_C/(1-t_C)        : O(q^261)
+Phi_F' - Phi_C/(1-9 t_C)      : O(q^261)
+
+=== C. modular-function identities behind the Eisenstein bookkeeping ===
+(1-9 t_C)*(1+V2)Ess - (1-8V2)Ess : O(q^260)
+(1- t_C)*(1-V2)Ett  - (1-8V2)Ess : O(q^260)
+
+=== D. Eichler integrals Theta = D^{-2} Phi ===
+Th_C  - (1-2V2)Ecal            : O(q^260)
+Th_F' - (1+V2/4)Ecal           : O(q^260)
+Th_A  - (1-V2/4)EcalT          : O(q^260)
+Th_Psi0 - (1-V2)Ecal           : O(q^260)
+Th_F' + (5/4)Th_C - (9/4)Th_Psi0 : O(q^260)
+
+=== E. Mellin factors P_X(Y) at Y = 1/4 (Y = V_2/4 acting on constants) ===
+P_C(Y)=1-8Y  -> P_C(1/4)  = -1
+P_F'(Y)=1+Y  -> P_F'(1/4) = 5/4
+P_F(Y)=(1+Y)(1-8Y) -> P_F(1/4) = -5/4
+P_A(Y)=1-Y   -> P_A(1/4)  = 3/4

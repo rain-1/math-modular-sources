@@ -1,0 +1,42 @@
+N = 800
+
+=== A. slopes sigma_p = v_p(d) and Cauchy precision actually attained ===
+row A  d=-8 : sigma_2=3  sigma_3=0
+row C  d= 9 : sigma_2=0  sigma_3=2
+row F  d=72 : sigma_2=3  sigma_3=2
+v_3(xi_C(N)-xi_C(N-1)) = 1581   [2N = 1600]
+v_3(xi_F(N)-xi_F(N-1)) = 1582   [2N = 1600]
+v_2(xi_A(N)-xi_A(N-1)) = 2365   [3N = 2400]
+v_3(xi_A(N)-xi_A(N-1)) = 0   [no 3-adic slope]
+
+=== B. the predicted cusp-move ratio  4 xi_3^F = 5 xi_3^C ===
+v_3(xi_C) = -1,  v_3(xi_F) = -1
+v_3(4 xi_F - 5 xi_C)      = 1586
+v_3(4 xi_F' + 5 xi_C)     = 1586
+v_3(xi_F' + xi_F)         = +oo   (exact: F' row = (-1)^n twist)
+v_3(xi_F - xi_C)          = -1   (control: should be small)
+v_3(3 xi_F - 4 xi_C)      = -1   (control)
+
+=== C. 3-adic digits of xi_3^C, xi_3^F ===
+xi_3^C mod 3^40 : 3^-1 * 8386265965554334030
+xi_3^F mod 3^40 : 3^-1 * 4403999727414453137
+(5/4)xi_3^C     : 3^-1 * 4403999727414453137
+  [CONJ_D_PROOF records xi_3^C = 3^-1 * 8386265965554334030 mod 3^39]
+
+=== D. row A at p = 2 : the limit is ZERO ===
+  n=100  v_2(b^A_n/a^A_n) = 287   (3n = 300)
+  n=200  v_2(b^A_n/a^A_n) = 589   (3n = 600)
+  n=300  v_2(b^A_n/a^A_n) = 882   (3n = 900)
+  n=400  v_2(b^A_n/a^A_n) = 1191   (3n = 1200)
+  n=500  v_2(b^A_n/a^A_n) = 1474   (3n = 1500)
+  n=600  v_2(b^A_n/a^A_n) = 1785   (3n = 1800)
+  n=700  v_2(b^A_n/a^A_n) = 2070   (3n = 2100)
+  n=800  v_2(b^A_n/a^A_n) = 2392   (3n = 2400)
+
+=== E. row F at p = 2 (second alignment prime of F; A's partner would be here) ===
+  n=200  v_2(b^F_n/a^F_n) = 0
+  n=400  v_2(b^F_n/a^F_n) = 0
+  n=600  v_2(b^F_n/a^F_n) = 0
+  n=800  v_2(b^F_n/a^F_n) = 0
+v_2(xi_F(N)-xi_F(N-1)) = 2367   [3N = 2400]
+v_2(xi_A - xi_F)  = 0 ; v_2(xi_A) = 2392 ; v_2(xi_F) = 0

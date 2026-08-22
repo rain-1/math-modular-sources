@@ -1,0 +1,19 @@
+=== A. eta-quotient exponents (basis E_1,E_2,E_3,E_6) ===
+1 - t_C   ~ [1, -5, 5, -1]
+1 - 9 t_C ~ [9, -9, -3, 3]
+F_C       ~ [-3, 6, 1, -2]
+check 1-t_C   : O(q^260)
+check 1-9 t_C : O(q^260)
+check F_C     : O(q^260)
+
+=== B. Ligozat orders at the four cusps of X_0(6) (c'=1:cusp 0, 2:1/2, 3:1/3, 6:oo) ===
+t_C      :  ord_0=0  ord_{1/2}=-1  ord_{1/3}=0  ord_oo=1
+1-t_C    :  ord_0=0  ord_{1/2}=-1  ord_{1/3}=1  ord_oo=0
+1-9t_C   :  ord_0=1  ord_{1/2}=-1  ord_{1/3}=0  ord_oo=0
+F_C      :  ord_0=0  ord_{1/2}=1  ord_{1/3}=0  ord_oo=0
+cusp widths of Gamma_0(6):  0 -> 6,  1/2 -> 3,  1/3 -> 2,  oo -> 1
+
+=== C. link with the level-12 cover picture of RIGIDITY_PROOF.md ===
+modular equation  v^2-(9u^2-8u+1)v+u^2   : O(q^261)
+t_F - (v-u)/(9v-1)                        : O(q^261)
+t_F' - ( -(v-u)/(9v-1) )|_{tau->tau+1/2}  : O(q^261)

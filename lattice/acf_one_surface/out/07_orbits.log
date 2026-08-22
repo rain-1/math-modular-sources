@@ -1,0 +1,12 @@
+A (a,b,d)=[7, 2, -8]  cusp-moves -> [[-17, -6, 72], [10, 3, 9]]
+B (a,b,d)=[9, 3, 27]  cusp-moves -> irrational characteristic roots
+C (a,b,d)=[10, 3, 9]  cusp-moves -> [[-17, -6, 72], [7, 2, -8]]
+D (a,b,d)=[11, 3, -1]  cusp-moves -> irrational characteristic roots
+E (a,b,d)=[12, 4, 32]  cusp-moves -> [[-12, -4, 32], [0, 0, -16]]
+F (a,b,d)=[17, 6, 72]  cusp-moves -> [[-10, -3, 9], [-7, -2, -8]]
+
+third placement of E: (a,b,d)=(0,0,-16), u_n =[1, 0, 4, 0, 36, 0, 400, 0, 4900, 0, 63504, 0, 853776, 0, 11778624]
+binom(2m,m)^2 for m=0..7        :[1, 4, 36, 400, 4900, 63504, 853776, 11778624]
+integral? 1
+
+E's other placement (-12,-4,32) vs (-1)^n * E: [0, 0, 0, 0, 0, 0, 0, 0]
