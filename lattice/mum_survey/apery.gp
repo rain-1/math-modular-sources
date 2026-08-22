@@ -37,5 +37,5 @@ denomExp(B,N) =
 kappaRate(A,p,N) = my(n1=N\2, n2=N); -(valuation(A[n2+1],p)-valuation(A[n1+1],p))/(n2-n1)*1.0;
 
 /* p-adic slope: v_p(B_n/A_n - B_{n-1}/A_{n-1}) ~ sigma_p n */
-slopeVal(A,B,p,n) = if(A[n+1]==0 || A[n]==0, 0, valuation(B[n+1]/A[n+1]-B[n]/A[n],p));
+slopeVal(A,B,p,n) = if(A[n+1]==0 || A[n]==0, 0, my(d=B[n+1]/A[n+1]-B[n]/A[n]); if(d==0, 0, valuation(d,p)));
 slopeData(A,B,p,ns) = vector(#ns,i, slopeVal(A,B,p,ns[i]));

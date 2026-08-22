@@ -74,7 +74,8 @@ static inline int testp(long long al,long long be,long long ga,
 
 int main(int argc,char**argv)
 {
-    int CLASS = atoi(argv[1]);
+    int CLASS = atoi(argv[1]);   /* CLASS = e (order of the two elliptic points),
+                                    0 means e = infinity (both cusps, Zagier-type) */
     long long ALMIN=atoll(argv[2]), ALMAX=atoll(argv[3]);
     long long DEMAX=atoll(argv[4]), GAMAX=atoll(argv[5]), ZEMAX=atoll(argv[6]);
     int N = atoi(argv[7]);
@@ -97,15 +98,18 @@ int main(int argc,char**argv)
 
     long long count=0, hits=0;
     for(long long al=ALMIN; al<=ALMAX; al++){
-        if(CLASS!=2 && (al%2)) continue;
+        
         for(long long de=-DEMAX; de<=DEMAX; de++){
             if(de==0) continue;
-            long long be = (CLASS==2)? al : al/2;
-            long long ep = (CLASS==2)? 0  : -de;
-            long long zemin, zemax, zestep;
-            if(CLASS==1){ if(de%4) continue; zemin=de/4; zemax=de/4; zestep=1; }
-            else if(CLASS==2){ zemin=0; zemax=0; zestep=1; }
-            else { zemin=-ZEMAX; zemax=ZEMAX; zestep=1; }
+            /* generic elliptic-order-e class:
+                 be = al*(e-1)/e,  ep = -2*de/e,  ze free
+               e=2 : (al/2, -de)   [R3 / free-integration class]
+               e=0 : (al, 0)       [both singular points are cusps]        */
+            long long be, ep;
+            if(CLASS==0){ be = al; ep = 0; }
+            else { if(al%CLASS) continue; if((2*de)%CLASS) continue;
+                   be = al*(CLASS-1)/CLASS; ep = -2*de/CLASS; }
+            long long zemin=-ZEMAX, zemax=ZEMAX, zestep=1;
             for(long long ga=-GAMAX; ga<=GAMAX; ga++){
                 for(long long ze=zemin; ze<=zemax; ze+=zestep){
                     /* fast n=1 gate: A_2 = P(1)*ga - Q(1); need 4 | A_2 */

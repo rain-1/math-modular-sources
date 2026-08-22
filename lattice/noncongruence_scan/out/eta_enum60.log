@@ -56,3 +56,5 @@ N= 56 divs= 8 mu=  96  #t=    5  #F=    96  pairs=480
 N= 57 divs= 4 mu=  80  #t=    0  #F=     0  pairs=0
 N= 58 divs= 4 mu=  90  #t=    0  #F=     0  pairs=0
 N= 59 divs= 2 mu=  60  #t=    0  #F=     0  pairs=0
+N= 60 divs=12 mu= 144  #t=   13  #F=    11  pairs=143
+TOTAL PAIRS 3036854

@@ -1,4 +1,9 @@
-"""CDT finder: score every modular Apery host in the project census against the
+"""SUPERSEDED by final_table.py for the ranked output: this script uses |lam_2|
+directly, which is only correct for RATIONAL lam_2.  For a conjugate pair the
+number-field normalisation of CDT_FINDER.md Sec.3 requires |N(lam_2)|^{1/[K:Q]}
+= |c|^{1/2} instead (final_table.py does this).  Kept for the broad scan2 sweep.
+
+CDT finder: score every modular Apery host in the project census against the
 Calegari-Dimitrov-Tang arithmetic holonomy bound (arXiv:2408.15403, Thm 7.0.1).
 
 Model (calibrated on CDT's own L(2,chi_{-3}) proof; see CDT_FINDER.md for the

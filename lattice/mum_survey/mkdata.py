@@ -19,11 +19,11 @@ for r in d:
         pols = [norm(p) for p in pl]
     except Exception:
         continue
-    rows.append((r['aesz'], r['nn'], r.get('degz'), pols, r.get('h3'), r.get('c2h'), r.get('c3'),
+    rows.append((' '.join(str(r['aesz']).split()), r['nn'], r.get('degz'), pols, r.get('h3'), r.get('c2h'), r.get('c3'),
                  r.get('discriminant_list'), r.get('riemann'), (r.get('sol_list') or [])[:8]))
 rows.sort(key=lambda x: int(x[0]) if str(x[0]).isdigit() else 10**6)
 with open('ops.gp','w') as f:
-    f.write('OPS = [\n')
+    f.write('{OPS = [\n')
     for a,nn,dz,pols,h3,c2h,c3,disc,riem,sol in rows:
         sing = []
         if riem:
@@ -36,5 +36,5 @@ with open('ops.gp','w') as f:
             h3 if h3 is not None else '', c2h if c2h is not None else '', c3 if c3 is not None else '',
             ','.join('"%s"'%x for x in sing),
             ','.join(str(x) for x in sol)))
-    f.write('0];\nOPS = OPS[1..#OPS-1];\n')
+    f.write('0];}\nOPS = OPS[1..#OPS-1];\n')
 print(len(rows),'operators of order 4 with AESZ numbers')
