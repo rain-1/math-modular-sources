@@ -1,0 +1,27 @@
+BC=10.458706  ceiling=4.158883  realised=3.695614
+
+=== ADELIC_HOLONOMY.md §4.2, m=14 = 7 pure + 7 conditional ===
+ [SUPERSEDED: conditional slope assumed 0]
+  archimedean only, ceiling                      m= 14  tau=4.235459  gamma2=+0.0000  entry=-0.0766  margin= -11.531
+  archimedean only, realised contour             m= 14  tau=4.235459  gamma2=+0.0000  entry=-0.5398  margin= -18.017
+  adelic (pure 2, cond 0), ceiling               m= 14  tau=4.235459  gamma2=+0.2546  entry=+0.1780  margin=  -7.966
+  adelic (pure 2, cond 0), realised              m= 14  tau=4.235459  gamma2=+0.2546  entry=-0.2852  margin= -14.452
+ [CORRECTED: conditional slope measured -2]
+  adelic (pure 2, cond -2), ceiling              m= 14  tau=4.235459  gamma2=-0.7780  entry=-0.8546  margin= -22.423
+  adelic (pure 2, cond -2), realised             m= 14  tau=4.235459  gamma2=-0.7780  entry=-1.3179  margin= -28.909
+
+=== sub-inventory optimisation (ceiling), pure slope 2 / conditional slope -2 ===
+  BEST containing a conditional function  (n_pure,n_cond)=(7,1) m=  8  tau=4.117188  gamma2=+0.3466  entry=+0.3883  margin=  -7.353
+  BEST unconditional (must be <=0)  (n_pure,n_cond)=(7,0) m=  7  tau=4.078231  gamma2=+1.1883  entry=+1.2689  margin=  -1.576
+
+=== consistency: the unconditional pure module alone (§2.4 check 3) ===
+  pure only, m= 7: tau=4.0782 gamma2=+1.1883 entry=+1.2689 bound=8.242 margin=  -1.576
+  pure only, m= 9: tau=4.1379 gamma2=+1.2323 entry=+1.2533 bound=8.345 margin=  +0.821
+  pure only, m=10: tau=4.1483 gamma2=+1.2477 entry=+1.2582 bound=8.312 margin=  +2.123
+  pure only, m=11: tau=4.1529 gamma2=+1.2603 entry=+1.2663 bound=8.260 margin=  +3.470
+
+=== the two extra level-8 rows under BOTH slope profiles (ceiling) ===
+  (n_pure,n_cond)=(7,1) P1 cond 0   m= 8 tf=3.6875 ts=0.4297 tau=4.1172 g2=+0.7798 entry=+0.8215 margin=  -3.887
+  (n_pure,n_cond)=(7,1) P2 cond -2  m= 8 tf=3.6875 ts=0.4297 tau=4.1172 g2=+0.3466 entry=+0.3883 margin=  -7.353
+  (n_pure,n_cond)=(7,0) P1 cond 0   m= 7 tf=3.5918 ts=0.4864 tau=4.0782 g2=+1.1883 entry=+1.2689 margin=  -1.576
+  (n_pure,n_cond)=(7,0) P2 cond -2  m= 7 tf=3.5918 ts=0.4864 tau=4.0782 g2=+1.1883 entry=+1.2689 margin=  -1.576

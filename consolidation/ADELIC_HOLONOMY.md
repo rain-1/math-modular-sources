@@ -427,3 +427,111 @@ simultaneously fold-regular, of type $[1..2n]^2$, and $2$-adically overconvergen
 of slope $4$), and it is a consequence of the theorem of §2, whose proof is a
 modification of CDT's that I believe to be correct but which has had no
 independent check.
+
+---
+
+## 7. Correction (2026-08-22): the conditional orbit's $y$-slope is $-2$, not $0$
+
+*Added by Fable (Opus 5) after `consolidation/CATALAN_THREE_PERIOD.md` §5.0 found
+the same defect on the level-16 host.  Scripts: `lattice/catalan_three_period/`
+(`20_level8_slopes.gp`, `21_level8_margin.py`; logs `20run.log`, `21run.log`).
+**The tables of §4.2 are superseded, not deleted**: the old rows are reproduced
+below marked SUPERSEDED so that the change can be audited.*
+
+### 7.1 What was wrong
+
+§3 asserts, for the normaliser descent $w(x)=sx/(x-s)$, $y=x+w(x)=x^2/(x-s)$,
+$$\varsigma_y\ \ge\ \max\{0,\ 2\varsigma_x-2v_p(\lambda_2)\},$$
+"the $0$ coming from the integrality already assumed in the denominator type".
+**That floor is not available here.**  $x$ and $w(x)$ are the two roots of
+$X^2-yX+sy=0$, i.e. $x=\tfrac12\bigl(y-\sqrt{y^2-4sy}\bigr)$; with $s=\tfrac14$
+this is $x=\tfrac12\bigl(y-\sqrt{y^2-y}\bigr)$, whose coefficients carry $2$-power
+**denominators**.  So $\mathrm{Sym}^{\pm}$ of an integral $x$-series need not be
+integral in $y$, and the CDT denominator hypothesis
+($a_{i,n}\in\mathbf Z$ over $n^{e}[1..b_1n][1..b_2n]$) is *not* satisfied by the
+functions in this $y$ — the extra $2$-power denominator is a genuine geometric
+denominator, i.e. a genuine negative slope, which the theorem of §2 accounts for
+correctly and at full weight $(1-1/m)$ through $\varsigma_{\min}$.
+
+### 7.2 Measured slopes on the level-8 host (`20run.log`)
+
+$t$-series to $n=300$; $y$-expansions extracted exactly over $\mathbf Q$ by the
+`to_y` algorithm of `lattice/cdt_finder/indep_check2.py` (no $\sqrt y$ needed).
+$\sigma(t)=t/(4t-1)$, $y=4t^2/(4t-1)$.
+
+| object | $v_2(d_k)/k$ at $k=30,60,147$ | $\varsigma_y$ | assumed in §4.2 |
+|---|---|---|---|
+| $\mathrm{Sym}^+\mathrm{Li}_2(4t)$ | $1.800,\ 1.867,\ 1.973$ | $+2$ | $2$ ✅ |
+| $\mathrm{Sym}^+\mathrm{Li}_3(4t)$ | $1.633,\ 1.767,\ 1.918$ | $+2$ | $2$ ✅ |
+| $\mathrm{Sym}^-\mathrm{Li}_2(4t)/(t-\sigma t)$ | $1.767,\ 1.867,\ 1.932$ | $+2$ | $2$ ✅ |
+| $\mathrm{Sym}^-\mathrm{Li}_3(4t)/(t-\sigma t)$ | $1.600,\ 1.767,\ 1.878$ | $+2$ | $2$ ✅ |
+| $\mathrm{Sym}^+A$ (the host) | $-1.700,\ -1.850,\ -1.939$ | $\mathbf{-2}$ | — |
+| $\mathrm{Sym}^+B_{\mathbf E}$ (raw companion) | $-1.767,\ -1.883,\ -1.952$ | $\mathbf{-2}$ | — |
+| $\mathrm{Sym}^+(B_{\mathbf E}+\mu A)$, $\mu=\tfrac73,\tfrac18,-\tfrac12$ (**conditional**) | $-1.767,\ -1.883,\ -1.952$ | $\mathbf{-2}$ | $\mathbf 0$ ❌ |
+| $\mathrm{Sym}^-(B_{\mathbf E}+\mu A)/(t-\sigma t)$ | $-1.733,\ -1.867,\ -1.932$ | $\mathbf{-2}$ | — |
+| $\mathrm{Sym}^+B_0$, $\Phi_0=(1-4V_2)E$ | $2.900,\ 2.950,\ 2.993$ | $+3$ | $4$ ❌ |
+
+**[verified]**  $\mathrm{Sym}^+1$ and $\mathrm{Sym}^+\mathrm{Li}_1(4t)$ are
+identically zero beyond low order — $(1-4t)(1-4\sigma t)=1$, so the $\log$ cancels.
+
+The **$x$-slopes of §4.2 were all correct** (measured in $t$: $A$ $0.027$,
+$B_{\mathbf E}$ $0.020$, $\mathrm{Li}_2(4t)$ $1.987$, $B_0$ $2.990$ at $n=300$,
+i.e. $0,0,2,3$).  The error is entirely in the descent: the correct rule on this
+host is $\varsigma_y=2\varsigma_x-2$ (matching `CATALAN_TWO_CLASSES.md` §3's
+$\varsigma_y=2(\varsigma_x-1)$ for $v_2(s)=-2$), with **no floor at $0$** — which
+gives $2\cdot0-2=-2$ for the conditional orbit.  ($B_0$ measures $+3$ where the
+rule would give $+4$; $B_0$ is unusable anyway, §4.3.)
+
+### 7.3 The corrected §4.2 margin table (`21run.log`)
+
+$m=14=7$ pure $+7$ conditional, $u=(1,3)$, $b=(2,2)$, CDT's $\mathbf e$,
+$\tau=4.235459$, $\mathrm{BC}=10.458706$, ceiling $4.158883$, realised $3.695614$.
+
+| accounting | $\gamma_2$ | **entry** | **margin** |
+|---|---|---|---|
+| archimedean only, ceiling | $0$ | $-0.0766$ | $-11.531$ |
+| archimedean only, realised contour | $0$ | $-0.5398$ | $-18.017$ |
+| ~~adelic (pure 2, cond 0), ceiling~~ **SUPERSEDED** | $+0.2546$ | $+0.1780$ | $-7.966$ |
+| ~~adelic (pure 2, cond 0), realised~~ **SUPERSEDED** | $+0.2546$ | $-0.2852$ | $-14.452$ |
+| **adelic (pure $2$, cond $-2$), ceiling** | $\mathbf{-0.7780}$ | $\mathbf{-0.8546}$ | $\mathbf{-22.423}$ |
+| **adelic (pure $2$, cond $-2$), realised** | $\mathbf{-0.7780}$ | $\mathbf{-1.3179}$ | $\mathbf{-28.909}$ |
+
+> **The headline claim of §0 and §4.2 — "the adelic gain flips the entry test on
+> the level-8 Catalan host" — is withdrawn.**  With the measured slopes
+> $\gamma_2$ is **negative** on the $m=14$ inventory, the entry condition
+> $\log|\varphi'(0)|>\tau_{\mathrm{ad}}$ **fails** ($-0.855$ at the ceiling), and
+> the adelic bound gives no bound at all there.  The level-8 Catalan host never
+> passed CDT's entry test.
+
+The adelic gain is not worthless — it is worthless *in the presence of the
+conditional functions*.  Optimising over sub-inventories at the ceiling
+(`21run.log`):
+
+| sub-inventory | $m$ | $\tau$ | $\gamma_2$ | entry | margin |
+|---|---|---|---|---|---|
+| best containing a conditional function: $7$ pure $+1$ | $8$ | $4.1172$ | $+0.3466$ | $+0.3883$ | $-7.353$ |
+| best unconditional: the pure orbit alone | $7$ | $4.0782$ | $+1.1883$ | $+1.2689$ | $-1.576$ |
+
+So on the level-8 host the best configuration that can prove anything sits at
+$-7.35$, and the unconditional pure orbit alone sits at $-1.58$ (consistent, as
+it must be — a positive margin there would be a false theorem; with this
+$\mathbf e$ the theorem asserts the pure module has $\mathbf Q(y)$-dimension
+$\le8$).
+
+### 7.4 What this changes elsewhere in this document
+
+* §0, row "**Level-8 Catalan host: the adelic gain flips the entry test**":
+  **withdrawn** (§7.3).
+* §0, row "…but the margin stays at $-7.97$ / $-14.45$": the correct figures for
+  that inventory are $-22.42$ / $-28.91$.
+* §4.2's slope table: the $y$-column entries $0$ (conditional) and $4$ ($B_0$)
+  are replaced by $-2$ and $+3$; the $x$-column is unchanged and confirmed.
+* §4.3's dimension cap is *unaffected* (it concerns the hypothetical doubly-small
+  orbit, whose slope was measured in $x$ and whose $y$-slope enters only the
+  hypothetical rows; those rows should be recomputed with $\varsigma_y=2\varsigma_x-2$
+  and no floor).
+* §5's structural ceiling $\log(256/\lambda_2)+\sigma_p\log p\le\log(256\lambda_1)$
+  is unaffected (it is about $\varsigma_x$, not the descent).
+* The $X_1(5)\,\mathrm{Sym}^2$ verdict is unaffected ($\gamma_p\equiv0$ there).
+
+**Still no irrationality claim, and now one fewer positive claim.**

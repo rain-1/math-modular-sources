@@ -16,4 +16,7 @@ paths, `default(parisizemax,...)`, and end with `quit`.
 | `18_slopes.gp` | 2-adic slope in $y$ of every object in the inventory, including the host $A$ and the raw companions — this is where the conditional slope $-2$ is found | `18run.log` |
 | `19_margin3.py` | **definitive** margins, both slope profiles (assumed / measured), with a scale-covariance check | `19run.log` |
 
+| `20_level8_slopes.gp` | the same slope measurement on the **level-8** host (Zagier E, $s=+1/4$, $y=4t^2/(4t-1)$), $t$-series to $n=300$; $y$-expansions extracted exactly over $\mathbf Q$ by the `to_y` algorithm (no $\sqrt y$, which would be imaginary for $s>0$) | `20run.log` |
+| `21_level8_margin.py` | corrected `ADELIC_HOLONOMY.md` §4.2 table (appended there as §7) | `21run.log` |
+
 Reads `lattice/catalan_two_classes/00_setup.gp` for the hosts and companions.

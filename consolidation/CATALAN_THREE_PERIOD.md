@@ -2,8 +2,8 @@
 
 *Fable (Opus 5), 2026-08-22.  Scripts and logs: `lattice/catalan_three_period/`
 (`10_periods.gp`, `11_a0.gp`, `12_exact.gp`, `13_outer_dbl.gp`, `14_symm.gp`,
-`15_rank.gp`, `16_margin.py`, `17_conditions.gp`, `18_slopes.gp`, `19_margin3.py`;
-logs `10run.log`–`19run.log`).
+`15_rank.gp`, `16_margin.py`, `17_conditions.gp`, `18_slopes.gp`, `19_margin3.py`,
+`20_level8_slopes.gp`, `21_level8_margin.py`; logs `10run.log`–`21run.log`).
 Revises `consolidation/CATALAN_TWO_CLASSES.md` §1.1, §2.3, §4, §6 and
 `consolidation/ADELIC_HOLONOMY.md` §4.3; conventions from
 `consolidation/CDT_FINDER.md` §§1–3 and `consolidation/CDT_NONCONGRUENCE.md` §10.
@@ -27,6 +27,7 @@ input, flagged at each use.  **No irrationality claim is made anywhere.**
 | CDT's $m=14=7+7$: the $7$ conditional functions are the **$\theta$-orbit of one** symmetrised conditional function $\mathcal G=\mathrm{Sym}^+H$, $\{\mathcal G,\mathcal G',\mathcal G'',\mathcal G''',\int\mathcal G,\int\mathcal G/y,\int\mathcal G/y^2\}$. The three periods $1,\zeta(2),L(2,\chi_{-3})$ contribute **one** generator, not three | **[verified from `lattice/cdt_finder/indep_check2.py`]** §4.1 |
 | Consequently the **one-period hypothesis $G\in\mathbf Q$ and the three-period hypothesis $a+b\zeta(2)+cG=0$ give exactly the same function count on this host** ($2$ unconditional $+1$ conditional generator). The stronger conclusion is free | **[proved]** §4.2 |
 | The $21$ members of the three small orbits are $\mathbf Q(y)$-linearly independent (rank $21/21$, $42/42$, $63/63$ at $\deg\le0,1,2$) | **[verified]** §4.3 |
+| **The same defect is present on the level-8 host and withdraws a headline claim there:** measured $\varsigma_y=-2$ for the level-8 conditional orbit, so $\gamma_2=-0.778$, the entry test **fails** ($-0.855$ at the ceiling) and the $m=14$ margin is $-22.42$ (ceiling) / $-28.91$ (transported contour), not $-7.97$/$-14.45$. `ADELIC_HOLONOMY.md` §7 records the correction | **[verified]** §5.1, `ADELIC_HOLONOMY.md` §7 |
 | **The conditional functions' $2$-adic slope in $y$ is $-2$, not $0$.** $y=4x^2/(4x+1)$ is not an integral coordinate ($x(v)=\tfrac12(v^2+v\sqrt{1+v^2})$ carries $2$-power denominators), so the "$\max\{0,\cdot\}$ floor" used in `ADELIC_HOLONOMY.md` §3 and `CATALAN_TWO_CLASSES.md` §6 does not hold here. Measured: $\mathrm{Sym}^+A$ and $\mathrm{Sym}^+(B_E+\mu A)$ both $\to-2$ | **[verified]** §5.0 |
 | **Corrected margins at the ceiling.** With the previously *assumed* profile: previous $-7.966$/$-7.551$, best inventory containing a conditional function $-2.006$, best *unconditional* inventory $-0.737$. With the *measured* profile: previous configurations $-22.42$/$-22.43$, best with a conditional function $\mathbf{-5.795}$, best unconditional $-0.737$ (unchanged) | **[verified]**, §5 |
 | **The conditional function is a net cost either way.** Adding one to the best unconditional inventory costs $1.27$ nats on the assumed profile and $5.06$ nats on the measured one. On this host $\gamma_2$ is the only thing holding the entry test open, and every conditional function dilutes it | **[verified]** §5.3 |
@@ -384,7 +385,7 @@ $u=(1,3)$ remain CDT's, transported. [estimate]**
 
 ---
 
-## 5. Margins (`16run.log`, `18run.log`, `19run.log`)
+## 5. Margins (`16run.log`, `18run.log`–`21run.log`)
 
 $\mathrm{BC}=11.845+\log\tfrac14=10.458706$; ceiling $\log(256|s|)=4.158883$;
 "realised" $=$ ceiling $+\log0.62922=3.695614$ **[estimate, and see §5.4]**;
@@ -437,9 +438,23 @@ degenerate, which is what §4.3's rank check needs.
 | (a)/(b) full: $7$ pure $+3$ small orbits | $28$ | $3.9745$ | $0.2177$ | $4.1922$ | $+0.1812$ | $-6.316$ | $-0.4482$ | $-23.942$ |
 | **best containing a conditional function** ($7$ pure $+7$ $\Phi_0^{\rm in}$ $+1$) | $15$ | $3.9111$ | $0.3158$ | $4.2269$ | $+0.6315$ | $\mathbf{-2.006}$ | $+0.3789$ | $\mathbf{-5.795}$ |
 | **best unconditional** ($7$ pure $+7$ $\Phi_0^{\rm in}$) | $14$ | $3.8980$ | $0.3375$ | $4.2355$ | $+0.7709$ | $-0.737$ | $+0.7709$ | $-0.737$ |
+| **level 8** (Zagier E), $7$ pure $+7$ conditional — `ADELIC_HOLONOMY.md` §4.2 | $14$ | $3.8980$ | $0.3375$ | $4.2355$ | $+0.2546$ | $-7.966$ | $-0.7780$ | $-22.423$ |
+| **level 8**, best containing a conditional fn ($7$ pure $+1$) | $8$ | $3.6875$ | $0.4297$ | $4.1172$ | $+0.7798$ | $-3.887$ | $+0.3466$ | $-7.353$ |
+| **level 8**, best unconditional (pure orbit alone) | $7$ | $3.5918$ | $0.4864$ | $4.0782$ | $+1.1883$ | $-1.576$ | $+1.1883$ | $-1.576$ |
 
-(the last row contains no slope-$(-2)$ member, so P1 and P2 agree there.)  With the
-transported contour the first three rows become $-14.452,\,-14.500,\,-19.288$ (P1)
+(the "best unconditional" rows contain no slope-$(-2)$ member, so P1 and P2 agree
+there.  The level-8 rows are computed in §7 of `ADELIC_HOLONOMY.md` from the
+*measured* level-8 slopes, `20run.log`/`21run.log`: $\varsigma_y=+2$ for the whole
+pure orbit — confirming `pure_2adic.py` — and $\varsigma_y=-2$ for
+$\mathrm{Sym}^+A$, for $\mathrm{Sym}^+B_{\mathbf E}$ and for
+$\mathrm{Sym}^+(B_{\mathbf E}+\mu A)$, i.e. for the conditional orbit.  Level 8 and
+level 16 share ceiling, $\mathrm{BC}$ and $\tau$, so the two $m=14$ rows coincide
+exactly.  **This withdraws `ADELIC_HOLONOMY.md`'s headline claim that the adelic
+gain flips the entry test on the level-8 Catalan host**: with the measured slopes
+$\gamma_2=-0.778$ and the entry condition fails by $0.855$ at the ceiling; on the
+transported contour that level-8 row is $-28.909$.)
+
+With the transported contour the first three level-16 rows become $-14.452,\,-14.500,\,-19.288$ (P1)
 and $-28.909,\,-29.380,\,-36.914$ (P2); with the rigorous thrice-punctured ceiling
 the entry test fails outright in every row and there is no bound at all — the
 $-2.76$ contour issue of `CATALAN_TWO_CLASSES.md` §5.3 is untouched and remains
@@ -525,11 +540,12 @@ functions (rank $21/21$).  The "realised contour" rows use CDT's $0.62922$, whic
    the naive polylogarithm candidates are one short.  **[open]**
 3. Whether the $21$ small functions are independent at $\deg\le3$ (the rank came
    out $83/84$ at the edge of the series length).  **[open, minor]**
-4. Whether `ADELIC_HOLONOMY.md` §4.2's level-8 table has the same defect: it
-   asserts $\varsigma_y=0$ for the level-8 conditional orbit from the same
-   integrality floor, which was not measured there.  The level-8 descent has
-   $s=1/4$ as well, so the same $x(v)$ denominators are present.  **[open, and it
-   would move the level-8 margins too]**
+4. ~~Whether `ADELIC_HOLONOMY.md` §4.2's level-8 table has the same defect.~~
+   **Done** (`20_level8_slopes.gp`, `21_level8_margin.py`): it does.  The
+   level-8 conditional orbit measures $\varsigma_y=-2$, its $m=14$ margin is
+   $-22.423$ at the ceiling and $-28.909$ on the transported contour, and its
+   entry test fails by $0.855$.  Recorded as §7 of `ADELIC_HOLONOMY.md`, dated,
+   with the superseded rows kept.  **[closed]**
 5. The general shape of $\xi_\infty$ at a non-zero cusp — §1.4 exhibits
    $\tfrac32\zeta(2)(P(1)-P(2))$ on one host and one cusp; the general
    "Theorem B\* at an arbitrary cusp" is not formulated.  **[open]**
