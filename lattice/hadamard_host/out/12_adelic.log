@@ -1,0 +1,62 @@
+========================================================================================================
+DOMAINS  (univalent architecture (K); BC = log|phi'(0)| exactly, Grunsky)
+  singular set of the host: 3.48756903e-07, 1.09717411, -0.64886152, -2041290.240122
+  W and its theta-orbit              slits at -0.648862 and +1.09717   rho = 1.6309268   log rho =  +0.48915   Landau ceiling log(16 d_min) =  +2.34005
+  COND_Z = A_Z(*)(bB_N-aA_N)         slits at -2.04129e+06 and +1.09717   rho = 4.3886941   log rho =  +1.47903   Landau ceiling log(16 d_min) =  +2.86533
+  DBL = (bB_Z-aA_Z)(*)(bB_N-aA_N)    slits at -2.04129e+06 and +inf   rho = 8165161   log rho = +15.91539   Landau ceiling log(16 d_min) = +17.30168
+  everything (incl. A_Z(*)A_N)       slits at -0.648862 and +3.48757e-07   rho = 1.3950269e-06   log rho = -13.48260   Landau ceiling log(16 d_min) = -12.09630
+
+========================================================================================================
+ADELIC BOUND, architecture (K) (univalent, rigorous end-to-end)
+inventory                         m sigma_m    tau^b   gamma_2     entry  entry(no 2adic)     margin
+(K) {1,W,thW}                     3   12.00  10.6667   -0.9242  -11.1017         -10.1775    -33.794
+(K) {1,W,thW,th2W}                4   12.00  11.2500   -1.0397  -11.8006         -10.7609    -47.691
+(K) {1,W,thW,th2W,th3W}           5   12.00  11.5200   -1.1090  -12.1399         -11.0309    -61.189
+(K) {1,COND_Z,thCOND_Z}           3   12.00  10.6667  -12.0146  -21.2022          -9.1876    -65.086
+(K) {1,DBL,thDBL}                 3   24.00  21.3333  -12.0146  -17.4325          -5.4179    -68.213
+(K) {1,W,thW,COND,thCOND}         5   12.00  11.5200  -11.7558  -22.7866         -11.0309   -114.422
+(K) {1,W,thW,DBL,thDBL}           5   24.00  19.2000  -11.7558  -30.4666         -18.7109   -152.822
+(K) {1,AZ*AN,W,thW}               4   12.00  11.2500   -9.3575  -34.0901         -24.7326   -122.878
+
+========================================================================================================
+BEST CONCEIVABLE on this host: the Landau/Kodaira ceiling log(16 d_min), archimedean only,
+and with the 2-adic term.  (Not attainable: the covering map of a >3-punctured sphere is smaller.)
+  {1,W,thW}                log(16 d) =  +2.3401   tau =  10.6667   entry_adelic =  -9.2508   entry_arch =  -8.3266
+  {1,COND_Z,thCOND_Z}      log(16 d) =  +2.8653   tau =  10.6667   entry_adelic = -19.8159   entry_arch =  -7.8013
+  {1,DBL,thDBL}            log(16 d) = +17.3017   tau =  21.3333   entry_adelic = -16.0462   entry_arch =  -4.0317
+
+========================================================================================================
+Architecture (D) (Kodaira lambda-map, r*=0.46) -- available ONLY when the module has a
+single finite nonzero branch point.  On this host that is true for DBL alone (branch pt s2t2);
+W has three (s1t2,s2t1,s2t2) and COND_Z has two, so (D) is NOT available for them.
+  {1,DBL,thDBL}          log|phi'| =  +16.5252  tau =  21.3333  gamma2 = -12.0146  entry = -16.8227  (arch-only  -4.8082)  margin =   -67.975
+
+========================================================================================================
+ADJACENT-PAIR HADAMARD HOST  (POSITIVITY_PROGRAM.md sec.4.3 fixed rule j0=round(0.30 m))
+  measured to n<=24 (14_pairs.gp): W_pair has LCM type [1..6n]^1 (sigma_m = 6, HALF the
+  Zudilin x Nesterenko value), 2-adic slope 0 (v_2(w_n) = O(1)), growth log|w_n|/n rising
+  through +0.019 at n=24; extrapolated limit ~ +0.26 (pre-asymptotic, uncertain in [0.02,0.40]).
+  growth +0.02 -> d = 0.9802   Koebe ceiling log(4d)    log|phi'| =  +1.3663  tau =  5.3333  entry <=  -3.9670   margin <=   -13.267
+  growth +0.02 -> d = 0.9802   Landau ceiling log(16d)  log|phi'| =  +2.7526  tau =  5.3333  entry <=  -2.5807   margin <=   -10.495
+  growth +0.26 -> d = 0.7711   Koebe ceiling log(4d)    log|phi'| =  +1.1263  tau =  5.3333  entry <=  -4.2070   margin <=   -13.747
+  growth +0.26 -> d = 0.7711   Landau ceiling log(16d)  log|phi'| =  +2.5126  tau =  5.3333  entry <=  -2.8207   margin <=   -10.975
+  growth +0.40 -> d = 0.6703   Koebe ceiling log(4d)    log|phi'| =  +0.9863  tau =  5.3333  entry <=  -4.3470   margin <=   -14.027
+  growth +0.40 -> d = 0.6703   Landau ceiling log(16d)  log|phi'| =  +2.3726  tau =  5.3333  entry <=  -2.9607   margin <=   -11.255
+
+========================================================================================================
+BASELINES: the two source rows on their OWN hosts, m=3 = {1,H,thH}, H the conditional form
+  (K) univalent = Koebe 4|c|;  (D) Kodaira r*=0.46: log|phi'| = log(4|c|)+0.60977, BC = +0.98175
+row                                             |c|      tau    gamma2  (K)entry   (K)marg  (D)entry   (D)marg  (D)defic
+Zudilin, index m  (b=2,k=2, s2=-4)         11.09017   3.5556   -1.8484   -1.6116    -8.627   -1.0018    -8.389    -4.195
+Zudilin 3-section (b=6,k=2, s2=-12)      1364.00073  10.6667   -5.5452   -7.6074   -31.427   -6.9976   -31.189   -15.594
+Nesterenko (4,7)  (b=6,k=2, s2=-14)      1496.54629  10.6667   -6.4694   -8.4388   -34.014   -7.8291   -33.776   -16.888
+
+========================================================================================================
+COMPARISON with the modular hosts, in the per-function units of CDT_NONCONGRUENCE.md
+  (deficit = margin/(m-1) in (K)/(D); margin/13 in (S))
+  (K) {1,W,thW}                    margin   -33.794   deficit   -16.897
+  (K) {1,COND_Z,thCOND_Z}          margin   -65.086   deficit   -32.543
+  (K) {1,DBL,thDBL}                margin   -68.213   deficit   -34.106
+  Catalan level 8/16 (S)+adelic ceiling                      deficit   -0.613
+  Catalan level 8   (S)+measured slopes, ceiling (ADELIC sec.7.3)  margin -22.42 -> deficit  -1.725
+  Beukers row (D)                                            deficit   +0.978  (a proof)

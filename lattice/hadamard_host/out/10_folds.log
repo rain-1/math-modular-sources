@@ -1,0 +1,15 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+   realprecision = 6010 significant digits (6000 digits displayed)
+singular points of A_Z : s1 = 7.3313743586 e-4  s2 = -1.3640007331 e3
+singular points of A_N : t1 = 4.7570467153 e-4  t2 = 1.4965462925 e3
+products: s1t1=3.4875690311 e-7  s1t2=1.0971741115 e0  s2t1=-6.4886152073 e-1  s2t2=-2.0412902401 e6
+
+  growth log|c_n|/n  (n = 100,200,300,400)   vs   -log|nearest singularity|
+[0;31m  ***   Warning: increasing stack size to 16000000.[0m
+  A_Z(*)A_N                     14.73923  14.79713  14.81835  14.82954   pred  14.86889
+  W                              0.30920   0.36394   0.38410   0.39477   pred   0.43254
+  A_Z(*)(B_N-G A_N)             -0.21486  -0.16073  -0.14077  -0.13020   pred  -0.09274
+  A_N(*)(B_Z-G A_Z)              0.30920   0.36394   0.38410   0.39477   pred   0.43254
+  (B_Z-G A_Z)(*)(B_N-G A_N)    -14.64488 -14.59391 -14.57501 -14.56497   pred   0.00000
+
+  reference rates: -log|s1t1|=14.86889  -log|s1t2|=-0.09274  -log|s2t1|=0.43254  -log|s2t2|=-14.52909

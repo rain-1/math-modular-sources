@@ -1,0 +1,45 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+series length N+1 = 401, prime = 2^61-1
+[0;31m  ***   Warning: increasing stack size to 16000000.[0m
+  {1,W}:
+     deg<=0 : rank 2 / needed 2 OK
+     deg<=1 : rank 4 / needed 4 OK
+     deg<=2 : rank 6 / needed 6 OK
+     deg<=3 : rank 8 / needed 8 OK
+     deg<=4 : rank 10 / needed 10 OK
+     deg<=5 : rank 12 / needed 12 OK
+  {1,W,thW}:
+     deg<=0 : rank 3 / needed 3 OK
+     deg<=1 : rank 6 / needed 6 OK
+     deg<=2 : rank 9 / needed 9 OK
+     deg<=3 : rank 12 / needed 12 OK
+     deg<=4 : rank 15 / needed 15 OK
+     deg<=5 : rank 18 / needed 18 OK
+  {1,W,thW,th^2W}:
+     deg<=0 : rank 4 / needed 4 OK
+     deg<=1 : rank 8 / needed 8 OK
+     deg<=2 : rank 12 / needed 12 OK
+     deg<=3 : rank 16 / needed 16 OK
+     deg<=4 : rank 20 / needed 20 OK
+     deg<=5 : rank 24 / needed 24 OK
+  {1,W,thW,th^2W,th^3W}:
+     deg<=0 : rank 5 / needed 5 OK
+     deg<=1 : rank 10 / needed 10 OK
+     deg<=2 : rank 15 / needed 15 OK
+     deg<=3 : rank 20 / needed 20 OK
+     deg<=4 : rank 25 / needed 25 OK
+     deg<=5 : rank 30 / needed 30 OK
+  {1,W,thW,COND,thCOND}:
+     deg<=0 : rank 5 / needed 5 OK
+     deg<=1 : rank 10 / needed 10 OK
+     deg<=2 : rank 15 / needed 15 OK
+     deg<=3 : rank 20 / needed 20 OK
+     deg<=4 : rank 25 / needed 25 OK
+     deg<=5 : rank 30 / needed 30 OK
+  {1,A_Z(*)A_N,W,thW}:
+     deg<=0 : rank 4 / needed 4 OK
+     deg<=1 : rank 8 / needed 8 OK
+     deg<=2 : rank 12 / needed 12 OK
+     deg<=3 : rank 16 / needed 16 OK
+     deg<=4 : rank 20 / needed 20 OK
+     deg<=5 : rank 24 / needed 24 OK

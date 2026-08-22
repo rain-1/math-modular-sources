@@ -1,0 +1,22 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+   realprecision = 6010 significant digits (6000 digits displayed)
+NMAX = 400   #BN = 400
+  n= 50  log|a^N G - b^N|/n = -7.392053   (target -7.310915)
+  n=100  log|a^N G - b^N|/n = -7.358405   (target -7.310915)
+  n=150  log|a^N G - b^N|/n = -7.345276   (target -7.310915)
+  n=200  log|a^N G - b^N|/n = -7.338123   (target -7.310915)
+  n=250  log|a^N G - b^N|/n = -7.333574   (target -7.310915)
+  n=300  log|a^N G - b^N|/n = -7.330405   (target -7.310915)
+  n=350  log|a^N G - b^N|/n = -7.328061   (target -7.310915)
+  n=400  log|a^N G - b^N|/n = -7.326251   (target -7.310915)
+[0;31m  *** write: Warning: increasing stack size to 16000000.[0m
+wrote out/had.gp
+
+### archimedean growth  log|c_n|/n ###
+   n:      100      200      300      400
+  A_Z(*)A_N  14.73923 14.79713 14.81835 14.82954
+  A_Z(*)B_N  14.73835 14.79669 14.81805 14.82932
+  A_N(*)B_Z  14.73835 14.79669 14.81805 14.82932
+  B_Z(*)B_N  14.73747 14.79625 14.81776 14.82911
+  W           0.30920  0.36394  0.38410  0.39477
+  predicted: A_Z(*)A_N 14.86889 ; W  max(-0.09274, 0.43254) = 0.43254

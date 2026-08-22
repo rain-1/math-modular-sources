@@ -1,0 +1,38 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+== high-order end of the order-degree curve (joint module) ==
+[0;31m  ***   Warning: increasing stack size to 16000000.[0m
+[0;31m  *** matrix: Warning: increasing stack size to 32000000.[0m
+[0;31m  ***   Warning: increasing stack size to 64000000.[0m
+[0;31m  ***   Warning: increasing stack size to 128000000.[0m
+[0;31m  ***   Warning: increasing stack size to 256000000.[0m
+[0;31m  *** matker: Warning: increasing stack size to 512000000.[0m
+   r=24 d=57 nullity=522
+   r=24 d=28 nullity=0
+[0;31m  *** matker: Warning: increasing stack size to 1024000000.[0m
+   r=24 d=43 nullity=228
+   r=24 d=36 nullity=81
+   r=24 d=32 nullity=0
+   r=24 d=34 nullity=39
+   r=24 d=33 nullity=18
+  r=24  min d = 33  (nullity 18)
+   r=30 d=45 nullity=366
+   r=30 d=22 nullity=0
+   r=30 d=34 nullity=69
+   r=30 d=28 nullity=0
+   r=30 d=31 nullity=0
+   r=30 d=33 nullity=42
+   r=30 d=32 nullity=15
+  r=30  min d = 32  (nullity 15)
+   r=36 d=37 nullity=198
+   r=36 d=18 nullity=0
+   r=36 d=28 nullity=0
+   r=36 d=33 nullity=66
+   r=36 d=31 nullity=0
+   r=36 d=32 nullity=33
+  r=36  min d = 32  (nullity 33)
+   r=44 d=29 nullity=0
+  r=44  min d = -1  (nullity 0)
+   r=52 d=24 nullity=0
+  r=52  min d = -1  (nullity 0)
+   r=60 d=20 nullity=0
+  r=60  min d = -1  (nullity 0)

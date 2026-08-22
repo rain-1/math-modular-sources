@@ -1,0 +1,22 @@
+Hadamard host singular points: 3.4875690311312326e-07 1.0971741115134825 -0.6488615207279722 -2041290.2401220216
+
+W and its theta-orbit              a=0.648862     b=1.09717       rho(formula)=1.630926768  rho(numeric)=1.630926768  log rho = +0.489148
+                                   min |phi(z)-phi(w)| over a 4x240 grid (sampled) = 7.145e-04  (0 would mean non-injective)
+                                   r=0.9    rearrangement int_0^1 2t (log|phi_r|)^* dt = +0.007203   (log|phi_r'(0)| = +0.383788)
+                                   r=0.99   rearrangement int_0^1 2t (log|phi_r|)^* dt = +0.023753   (log|phi_r'(0)| = +0.479098)
+                                   r=0.999  rearrangement int_0^1 2t (log|phi_r|)^* dt = +0.023999   (log|phi_r'(0)| = +0.488148)
+COND_Z = A_Z(*)(bB_N-aA_N)         a=2.04129e+06  b=1.09717       rho(formula)=4.388694087  rho(numeric)=4.388694087  log rho = +1.479032
+                                   min |phi(z)-phi(w)| over a 4x240 grid (sampled) = 9.275e-04  (0 would mean non-injective)
+                                   r=0.9    rearrangement int_0^1 2t (log|phi_r|)^* dt = +0.616480   (log|phi_r'(0)| = +1.373671)
+                                   r=0.99   rearrangement int_0^1 2t (log|phi_r|)^* dt = +0.626338   (log|phi_r'(0)| = +1.468981)
+                                   r=0.999  rearrangement int_0^1 2t (log|phi_r|)^* dt = +0.626476   (log|phi_r'(0)| = +1.478031)
+DBL (doubly conditional)           a=2.04129e+06  b=inf           rho(formula)=8165160.96  rho(numeric)=8165160.96  log rho = +15.915387
+                                   min |phi(z)-phi(w)| over a 4x240 grid (sampled) = 1.413e+03  (0 would mean non-injective)
+                                   r=0.9    rearrangement int_0^1 2t (log|phi_r|)^* dt = +13.014708   (log|phi_r'(0)| = +15.810026)
+                                   r=0.99   rearrangement int_0^1 2t (log|phi_r|)^* dt = +12.843802   (log|phi_r'(0)| = +15.905337)
+                                   r=0.999  rearrangement int_0^1 2t (log|phi_r|)^* dt = +12.825976   (log|phi_r'(0)| = +15.914386)
+full module (incl. A_Z(*)A_N)      a=0.648862     b=3.48757e-07   rho(formula)=1.395026863e-06  rho(numeric)=1.395026863e-06  log rho = -13.482597
+                                   min |phi(z)-phi(w)| over a 4x240 grid (sampled) = 2.948e-10  (0 would mean non-injective)
+                                   r=0.9    rearrangement int_0^1 2t (log|phi_r|)^* dt = -14.345148   (log|phi_r'(0)| = -13.587957)
+                                   r=0.99   rearrangement int_0^1 2t (log|phi_r|)^* dt = -14.335290   (log|phi_r'(0)| = -13.492647)
+                                   r=0.999  rearrangement int_0^1 2t (log|phi_r|)^* dt = -14.335152   (log|phi_r'(0)| = -13.483597)
