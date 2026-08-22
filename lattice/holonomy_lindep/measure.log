@@ -1,0 +1,62 @@
+Irrationality measures from the CDT arithmetic holonomy bound.
+
+Formula: ICM.tex Remark "withintegrationsremark" (eq. `withintegrations`),
+the quantitative refinement of the holonomy bound
+(= Theorem `theotrue` with K = Q and S = {v} a singleton):
+
+    m  <=  BC / [ log|phi'(0)| - tau^flat(b) - tau^sharp(e)
+                  - (1-gamma)( 2/kappa - (1-gamma)/kappa^2 ) log(1/rho) ]
+
+with
+  gamma  = dim_{Q(x)} V(phi,b) / dim_{R(x)} V(phi,b,eta)
+         = (number of unconditional "genuine" functions) / m,
+  E      = 1 - gamma  (= sum_nu nu*m_nu/m, the "power-system" mean exponent),
+  rho    = radius on which the *individual* A_i and B_i converge after pullback,
+           i.e. phi(|z|<rho) is inside the disc of convergence of A (the fold).
+
+Writing  Delta0 := m*(log|phi'(0)| - tau) - BC   (the qualitative CDT margin),
+the inequality is contradicted as soon as
+
+    Delta0 * kappa^2 - 2*m*L*E*kappa + m*L*E^2 > 0,      L := log(1/rho),
+
+so the resulting measure is the larger root
+
+    kappa_* = E*( m*L + sqrt( m*L*(m*L - Delta0) ) ) / Delta0 ,
+
+and mu_eff(eta) <= kappa_*.  (Delta0 > 0 is exactly the qualitative margin, i.e.
+the irrationality proof; kappa_* ~ 2*E*m*L/Delta0 when Delta0 << m*L.)
+
+Calibration: CDT's own L(2,chi_{-3}) measure, ICM Sec. 6.1, kappa = 24781.
+
+=== calibration: CDT, L(2,chi_-3), ICM Sec.6.1 ===
+  log|phi'(0)| = 5.081908   tau = 4.235459   entry = 0.846449
+  Delta0 (qualitative margin) = 0.005288   log(1/rho) = 9.359967
+  kappa_*  = 24781.0      (CDT print 24781)
+
+=== Beukers (136,10,16,4) ===
+  lambda_1 = 135.882251  lambda_2 = 0.11774901  k = 2
+  score = log(1/|lam2|) - k = +0.139200
+  classical (Apery argument): mu <= 50.65366     [Beukers 1987 Thm 3; L(Psi,2)=0.10018744...]
+  architecture             log|f'(0)|        BC      tau    Delta0 log1/rho       E      kappa_*
+  (K) Koebe m=2              3.52549   3.52549  1.50000   0.52549  8.43772  0.5000       31.861
+  (K) Koebe m=3              3.52549   3.52549  1.77778   1.71766  8.43772  0.6667       19.310
+  (D) Kodaira m=3 r=0.45     4.11328   5.05538  1.77778   1.95113  9.02550  0.6667       18.164
+
+=== Apery zeta(2) (11,3,-1,0) ===
+  lambda_1 = 11.090170  lambda_2 = -0.09016994  k = 2
+  score = log(1/|lam2|) - k = +0.406059
+  classical (Apery argument): mu <= 11.85078     [Apery; Rhin-Viola 5.095]
+  architecture             log|f'(0)|        BC      tau    Delta0 log1/rho       E      kappa_*
+  (K) Koebe m=2              3.79235   3.79235  1.50000   0.79235  6.20247  0.5000       15.402
+  (K) Koebe m=3              3.79235   3.79235  1.77778   2.25137  6.20247  0.6667       10.676
+  (D) Kodaira m=3 r=0.40     4.26236   5.00705  1.77778   2.44669  6.67247  0.6667       10.564
+
+=== Apery zeta(3) (control) ===
+  lambda_1 = 33.970563  lambda_2 = 0.02943725  k = 3
+  score = log(1/|lam2|) - k = +0.525494
+  classical (Apery argument): mu <= 13.41782     [Apery; Rhin-Viola 5.5138]
+  architecture             log|f'(0)|        BC      tau    Delta0 log1/rho       E      kappa_*
+  (K) Koebe m=2              4.91179   4.91179  2.25000   0.41179  8.43772  0.5000       40.729
+  (K) Koebe m=4              4.91179   4.91179  2.81250   3.48537  8.43772  0.7500       14.140
+  (D) Kodaira m=4 r=0.48     5.56411   6.64347  2.81250   4.36298  9.09004  0.7500       12.114
+

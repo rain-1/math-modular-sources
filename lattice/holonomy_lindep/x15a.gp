@@ -1,0 +1,10 @@
+default(parisizemax, 6G);
+read("/home/ubuntu/code/math-modular-sources/lattice/multislope/sc_rows.gp");
+Dcf = ['n^2, -(11*'n^2-11*'n+3), -('n-1)^2];
+NN = 60;
+ee = genseq(Dcf, 2, [1,3], NN+4);
+Gsq = (sum(i=0, NN+2, ee[i+1]*'t^i) + O('t^(NN+3)))^2;
+AA = vector(NN+1, i, polcoeff(Gsq, i-1, 't));
+print("A_n: ", vector(9,i,AA[i]));
+tryfit(oo, dd) = { my(cf = scfit(AA, oo, dd)); if(type(cf)=="t_VEC", print("HIT ord=",oo," deg=",dd,": ",cf)); };
+for(oo=3,5, for(dd=2,4, tryfit(oo,dd)));

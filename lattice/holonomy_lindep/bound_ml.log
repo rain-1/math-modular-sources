@@ -1,0 +1,84 @@
+Task A: the CDT arithmetic holonomy bound applied to MULTI-PERIOD rows.
+
+SET-UP.  A row of holonomic rank R (= theta-order of its operator L, MUM at 0)
+with r-1 companions B^(1..r-1) (Lemma 1.1 of MULTISLOPE_PROGRAM.md), all of
+denominator type [1,..,n]^k, and archimedean limits xi_1,..,xi_{r-1}.
+Hypothesis to be contradicted:  a_0 + sum_i a_i xi_i = 0,  a_i in Q (or in K).
+It produces exactly ONE conditional generator
+
+    H = sum_i a_i B^(i) + a_0 A ,     h_n = sum_i a_i (b^(i)_n - xi_i a_n),
+
+*independently of how many periods the relation involves*.  Its theta-orbit is
+{H, theta H, ..., theta^{R-1} H} (theta^R H is Q(x)-dependent since L(H) is a
+polynomial), so the inventory is {1} u {theta^j H} and
+
+    m = R + 1 ,   tau = tau^flat = k(1 - 1/m^2) ,   tau^sharp = 0 .
+
+FOLD-REGULARITY (Prop. 2.1 of HOLONOMY_LINDEP.md).  |h_n| = O(|lambda_2|^n)
+*only if the dominant characteristic root lambda_1 is SIMPLE*.  If lambda_1 has
+multiplicity mu, the local solution space at x_1 = 1/lambda_1 carries a Jordan
+block of size mu and killing the whole log-tower is a codimension-mu condition;
+one rational relation supplies ONE condition.  Verified: AESZ 207 (mu=1) folds
+(|h_n| = c 53248^n/n^4); Sym^3(Zagier E) (mu=3) and X_1(5) Sym^2 (mu=2) do NOT.
+
+GEOMETRY.  Omega = C minus the singularities that remain after the fold is
+deleted.  If >= 2 finite points remain, Omega is hyperbolic and
+|phi'(0)| <= r_Omega(0) =: C for EVERY admissible phi (Schwarz-Pick): a genuine
+ceiling.  If exactly 1 remains, Omega is not hyperbolic and the ceiling is
+Kodaira's 16|x_2| along the modular-lambda family phi_r = x_2 lambda(rz).
+
+READOUT.  entry = log|phi'(0)| - tau ;  margin = m*entry - BC ;
+deficit = margin/(m-1)  [nats per function, the CDT_NONCONGRUENCE.md unit].
+HEADROOM = log C - (3/4)k  is a *necessary* condition for the architecture ever
+to work with any inventory: the margin (m-1)log C - m tau is positive for large m
+only if log C > tau_infinity, and tau_infinity >= (3/4)k for the best
+inventory that CDT_FINDER.md Sec.4 scenario B allows (u_j = m/2).
+
+row                                              R  nc  k  prk      score  log rho    log C     defK     defC HEADROOM
+CALIB Zagier C (10,3,9) = CDT host, Gamma_0(6)   2   1  2    2    -2.0000   1.3863   2.7726  -1.2804   0.1059  +1.2726
+CALIB Apery zeta(2) (11,3,-1,0)                  2   1  2    1    +0.4061   3.7924   5.1786   1.1257   2.5120  +3.6786
+CALIB Beukers (136,10,16,4)                      2   1  2    1    +0.1392   3.5255   4.9118   0.8588   2.2451  +3.4118
+CALIB Apery zeta(3)                              3   1  3    1    +0.5255   4.9118   6.2981   1.1618   2.5481  +4.0481
+AESZ 207 (4.4.38) rank4, 3 companions            4   3  4    3   -14.8827  -9.4964  -8.0572 -14.2964 -12.8572 -11.0572
+AESZ 243 (4.5.46) rank4, 4 companions            4   4  4    4    -5.0986  -1.0986   1.2558  -5.8986  -3.5442  -1.7442
+AESZ 388 (4.3.18) rank4, 2 companions            4   2  4    2    -5.3863   0.0000   1.3863  -4.8000  -3.4137  -1.6137
+AESZ 313 (4.5.82) rank4, 4 companions            4   4  4    4    -5.7918  -1.7918   0.3588  -6.5918  -4.4412  -2.6412
+AESZ 34 (4.3.1) rank4, 2 companions              4   2  4    2    -6.1972  -0.8109   0.1460  -5.6109  -4.6540  -2.8540
+AESZ 104 (4.8.2) rank4, 7 companions             4   7  4    7    -6.1972  -2.1972  -0.6630  -6.9972  -5.4630  -3.6630
+AESZ 380 (4.5.111) rank4, 4 companions           4   4  4    4    -6.3026  -2.3026  -0.4299  -7.1026  -5.2299  -3.4299
+AESZ 410 (4.3.28) rank4, 2 companions            4   2  4    2    -7.4657  -2.0794  -0.6931  -6.8794  -5.4931  -3.6931
+AESZ 392 (4.3.22) rank4, 2 companions, k=3       4   2  3    2    -7.6821  -3.2958  -1.9095  -6.8958  -5.5095  -4.1595
+zeta(5) level 16 (joint operator rank 11)       11   1  5    1    -6.3863   0.0000   0.7832  -5.4167  -4.6335  -2.9668
+zeta(7) level-12 parent (level-60 programme)   None   3  7    1    -8.7918  -0.4055   0.9808        -        -  -4.2692
+beta(4)@24 = Sym^3(Zagier E) rank4, 5 comp.      4   5  4    3    -5.3863   0.0000   1.3863  -4.8000  -3.4137  -1.6137
+X_1(5) Sym^2 rank3, 3 companions                 3   3  3 None    -0.5939   3.7924   5.1786   0.0424   1.4286  +2.9286
+zeta(7) level 24 = Sym^6 rank7, 2 comp.          7   2  7 None    -8.5745  -1.5745   0.4671  -9.4495  -7.4079  -4.7829
+
+fold-regular?   {'beta(4)@24 = Sym^3(Zagie': False, 'X_1(5) Sym^2 rank3, 3 co': False, 'zeta(7) level 24 = Sym^6': False}
+
+Kodaira (D) deficits where exactly one puncture remains:
+   CALIB Zagier C (10,3,9) = CDT host, Gamma_0(6) r*=0.46  deficit  -1.1615
+   CALIB Apery zeta(2) (11,3,-1,0)                r*=0.46  deficit  +1.2446
+   CALIB Beukers (136,10,16,4)                    r*=0.46  deficit  +0.9777
+   CALIB Apery zeta(3)                            r*=0.53  deficit  +1.4620
+   AESZ 388 (4.3.18) rank4, 2 companions          r*=0.62  deficit  -4.3626
+   AESZ 410 (4.3.28) rank4, 2 companions          r*=0.62  deficit  -6.4420
+   AESZ 392 (4.3.22) rank4, 2 companions, k=3     r*=0.62  deficit  -6.4584
+   beta(4)@24 = Sym^3(Zagier E) rank4, 5 comp.    r*=0.62  deficit  -4.3626
+   X_1(5) Sym^2 rank3, 3 companions               r*=0.53  deficit  +0.3425
+
+RANKING by best available deficit (fold-regular rows only):
+    +2.5481   CALIB Apery zeta(3)                                   [prk 1]
+    +2.5120   CALIB Apery zeta(2) (11,3,-1,0)                       [prk 1]
+    +2.2451   CALIB Beukers (136,10,16,4)                           [prk 1]
+    +0.1059   CALIB Zagier C (10,3,9) = CDT host, Gamma_0(6)        [prk 2]
+    -3.4137   AESZ 388 (4.3.18) rank4, 2 companions                 [prk 2]
+    -3.5442   AESZ 243 (4.5.46) rank4, 4 companions                 [prk 4]
+    -4.4412   AESZ 313 (4.5.82) rank4, 4 companions                 [prk 4]
+    -4.6335   zeta(5) level 16 (joint operator rank 11)             [prk 1]
+    -4.6540   AESZ 34 (4.3.1) rank4, 2 companions                   [prk 2]
+    -5.2299   AESZ 380 (4.5.111) rank4, 4 companions                [prk 4]
+    -5.4630   AESZ 104 (4.8.2) rank4, 7 companions                  [prk 7]
+    -5.4931   AESZ 410 (4.3.28) rank4, 2 companions                 [prk 2]
+    -5.5095   AESZ 392 (4.3.22) rank4, 2 companions, k=3            [prk 2]
+   -12.8572   AESZ 207 (4.4.38) rank4, 3 companions                 [prk 3]
