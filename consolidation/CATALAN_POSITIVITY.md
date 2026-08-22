@@ -1,5 +1,10 @@
 # Positivity and direction in the Catalan two-row lattice
 
+*Follow-up: `consolidation/POSITIVITY_PROGRAM.md` extends §3 to all $n\le80$ and three values
+of $k$, tests the same ratio on 13 332 further lattices, and corrects the reading of the index
+deficit in §1 (it splits into a vanishing Chebyshev part and a gcd loss of size $\le0.2$).*
+
+
 **Verdict.**
 
 * **Mechanism A works as an identity and fails as a criterion.** The two source integrands are

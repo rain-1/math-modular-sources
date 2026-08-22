@@ -1,5 +1,10 @@
 # Explicit moment constructions for the Catalan two-row problem
 
+*Follow-up: `consolidation/POSITIVITY_PROGRAM.md` §4 extends the moment grid to $m\le60$,
+answers the open question of §6 (the optimal pair is $(j_0,j_0+1)$ with $j_0/m\approx0.30$),
+and gives the asymptote $+3.81$ per unit $m$ for the best single moment.*
+
+
 **No claim of irrationality is made anywhere below.** All numbers are finite-$n$ measurements;
 by `CATALAN_AUDIT.md` §4(a) every covolume-driven column here is reproduced verbatim by a
 rational surrogate for $G$, so none of it is evidence about $G$.
