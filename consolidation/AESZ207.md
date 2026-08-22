@@ -180,13 +180,13 @@ $v_2(\zeta_2(2))=-1$, $v_2(\zeta_2(3))=-2$, $v_2(\log_2\alpha_{\rm unit})=v_2(\l
 `[lit]` BKSZ arXiv:2203.09426 treats only the fourteen hypergeometric families (conifold newform
 levels $8,9,16,25,27,32,36,72,108,128,144,200,216,864$); **AESZ 207 appears nowhere**, and its
 conifolds are quadratic-irrational, so a rational newform level is not expected in the naive
-sense.  A scan of $L(f,s)$, $s<k$, over all newforms of weight $k\in\{2,4\}$ and level
-$N\in\{2,4,8,13,16,17,26,32,34,52,68,104,136,221,272\}$, singly, against
-$\{1,\zeta(3),\pi,\pi^2,\pi^3,\pi^4,\sqrt{13},\sqrt{17}\}$, and in pairs, is implemented in
-`b16b.gp` (log `lattice/followups/b16c.log`).  **Status: this run had not finished when this
-note was written** — `mfinit` at the larger levels dominates — so §4.3 is the one exclusion in
-this document that is *pending*, not established.  It is also the least likely to bite, for the
-structural reason above.
+sense.  We nevertheless scanned $L(f,s)$, $1\le s<k$, over **all** newforms of weight $k\in\{2,4\}$ and
+level $N\in\{2,4,8,13,16,17,26,32,34,52,68,104,136,221,272\}$ — **345 nonzero $L$-values**
+(all Galois conjugates of every eigenform, `b16b.gp`, log `lattice/followups/b16c.log`,
+$105$ digits): as rational multiples of $\xi_\infty$ (heights $\le10^{8}$), paired with
+$\{1,\zeta(3),\pi,\pi^2,\pi^3,\pi^4,\sqrt{13},\sqrt{17}\}$, and in all $345\cdot344/2$ pairs
+among themselves (heights $\le10^{15}$, residuals at $95$ digits).  **No hit in any of the three
+sweeps.**
 
 ---
 
