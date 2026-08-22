@@ -23,7 +23,7 @@ from functools import reduce
 
 def lcm(a,b): return a*b//gcd(a,b)
 
-def involutions(n):
+def _unused_involutions(n):
     """all s in S_n with s^2=1, as tuples"""
     res=[]
     def rec(pos, used, cur):
@@ -39,7 +39,7 @@ def involutions(n):
     rec(0,set(),[0]*n)
     return res
 
-def order3(n):
+def _unused_order3(n):
     res=[]
     def rec(pos, used, cur):
         if pos==n: res.append(tuple(cur)); return
@@ -96,8 +96,9 @@ def psl_perms(N):
             key=min(tuple(((u*q[0])%N,(u*q[1])%N)) for u in units)
             img.append(reps[key])
         return img
-    S=[[0,-1],[1,0]]; T=[[1,1],[0,1]]
-    return perm(S), perm(T), len(pts)
+    # PSL_2(Z) = < S, L | S^2 = L^3 = 1 >,  S = [[0,-1],[1,0]], L = ST = [[0,-1],[1,1]]
+    S=[[0,-1],[1,0]]; L=[[0,-1],[1,1]]
+    return perm(S), perm(L), len(pts)
 
 def is_congruence(s,t,N):
     """does the coset action factor through PSL_2(Z/N)?"""
@@ -111,51 +112,82 @@ def is_congruence(s,t,N):
     G2=PermutationGroup([joint(Sp,s), joint(Tp,t)])
     return G2.order()==G1.order()
 
-def run(nmax=12):
-    print("n  e2 e3 cusps  widths            genus  signature            congruence  Wohlfahrt")
-    found=[]
-    for n in range(1,nmax+1):
-        invs=involutions(n); o3=order3(n)
-        seen=set()
-        for s in invs:
-            for t in o3:
-                if not transitive(s,t): continue
-                e2=sum(1 for i in range(n) if s[i]==i)
-                e3=sum(1 for i in range(n) if t[i]==i)
-                st=[s[t[i]] for i in range(n)]
-                cy=cycles(st); c=len(cy)
-                if 12*(1) + n - 3*e2 - 4*e3 - 6*c != 0:   # g=0  <=> 1+n/12-e2/4-e3/3-c/2 = 0
-                    pass
-                g2 = 12 + n - 3*e2 - 4*e3 - 6*c          # = 12*g
-                if g2 != 0: continue
-                if e2+e3+c != 4: continue
-                # canonical form up to simultaneous conjugacy
-                key=canon(s,t,n)
-                if key in seen: continue
-                seen.add(key)
-                widths=sorted(len(x) for x in cy)
-                N=reduce(lcm, widths, 1)
-                cong=is_congruence(s,t,N)
-                sig="(0;"+",".join(["2"]*e2+["3"]*e3)+";"+str(c)+" cusps)"
-                found.append((n,e2,e3,c,widths,sig,cong,N))
-                print(f"{n:2d} {e2:3d}{e3:3d}{c:6d}  {str(widths):18s} 0     {sig:20s} {str(cong):10s} {N}")
-    print()
-    nc=[f for f in found if not f[6]]
-    print("NON-CONGRUENCE candidates:", len(nc))
-    for f in nc: print("  ", f)
-    print("total groups:", len(found))
+
+def gen_t(n, e3):
+    """all t in S_n with t^3=1 and exactly e3 fixed points (n-e3 divisible by 3)"""
+    res=[]
+    def rec(rem, cur, nfix):
+        if not rem:
+            if nfix==e3: res.append(tuple(cur))
+            return
+        i=rem[0]; rest=rem[1:]
+        if nfix<e3:
+            cur[i]=i; rec(rest, cur, nfix+1)
+        for a_i in range(len(rest)):
+            for b_i in range(len(rest)):
+                if a_i==b_i: continue
+                a,b=rest[a_i],rest[b_i]
+                cur[i]=a; cur[a]=b; cur[b]=i
+                rec([x for x in rest if x not in (a,b)], cur, nfix)
+    rec(list(range(n)), [0]*n, 0)
+    return res
+
+def std_s(n, e2):
+    """standard involution with e2 fixed points"""
+    s=list(range(n)); k=(n-e2)//2
+    for i in range(k): s[2*i],s[2*i+1]=2*i+1,2*i
+    return tuple(s)
 
 def canon(s,t,n):
-    """canonical label under simultaneous conjugacy (brute force for small n)"""
+    """BFS canonical form: relabel by discovery order from each base point"""
     best=None
-    for perm in itertools.permutations(range(n)):
-        inv=[0]*n
-        for i,p in enumerate(perm): inv[p]=i
-        ss=tuple(perm[s[inv[i]]] for i in range(n))
-        tt=tuple(perm[t[inv[i]]] for i in range(n))
-        cand=(ss,tt)
+    for b in range(n):
+        lab={b:0}; order=[b]; qi=0
+        while qi<len(order):
+            x=order[qi]; qi+=1
+            for y in (t[x], s[x]):
+                if y not in lab: lab[y]=len(order); order.append(y)
+        if len(lab)!=n: continue
+        ss=[0]*n; tt=[0]*n
+        for x in range(n): ss[lab[x]]=lab[s[x]]; tt[lab[x]]=lab[t[x]]
+        cand=(tuple(ss),tuple(tt))
         if best is None or cand<best: best=cand
     return best
 
+def run(nmax=12):
+    sigs=[]
+    for e2 in range(0,5):
+        for e3 in range(0,5-e2):
+            c=4-e2-e3
+            if c<1: continue
+            n=3*e2+4*e3+6*c-12
+            if n<1 or n>nmax: continue
+            if (n-e2)%2 or (n-e3)%3: continue
+            sigs.append((n,e2,e3,c))
+    sigs.sort()
+    found=[]
+    print("  n  e2 e3  cusps  widths           signature              congruence  Wohlfahrt level")
+    for (n,e2,e3,c) in sigs:
+        s=std_s(n,e2); seen=set()
+        for t in gen_t(n,e3):
+            if not transitive(s,t): continue
+            st=[s[t[i]] for i in range(n)]
+            cy=cycles(st)
+            if len(cy)!=c: continue
+            key=canon(s,t,n)
+            if key in seen: continue
+            seen.add(key)
+            widths=sorted(len(x) for x in cy)
+            N=reduce(lcm, widths, 1)
+            cong=is_congruence(s,t,N)
+            sig="(0;"+",".join(["2"]*e2+["3"]*e3)+";"+str(c)+")"
+            found.append((n,e2,e3,c,widths,sig,cong,N,key))
+            print(f"{n:3d} {e2:3d}{e3:3d}{c:6d}  {str(widths):16s} {sig:22s} {str(cong):10s} {N}")
+    print()
+    nc=[f for f in found if not f[6]]
+    print("total genus-0 four-special-point subgroups of PSL_2(Z), index<=%d : %d"%(nmax,len(found)))
+    print("NON-CONGRUENCE among them: %d"%len(nc))
+    for f in nc: print("   index",f[0],"sig",f[5],"widths",f[4],"Wohlfahrt",f[7])
+
 if __name__=="__main__":
-    run(int(sys.argv[1]) if len(sys.argv)>1 else 9)
+    run(int(sys.argv[1]) if len(sys.argv)>1 else 12)

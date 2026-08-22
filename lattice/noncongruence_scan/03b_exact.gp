@@ -1,6 +1,6 @@
 default(parisize, 3000000000);
 
-MQ = 56; NROW = 48; NK = 34;
+MQ = 42; NROW = 34; NK = 24;
 
 DL = vector(NK+2, i, if(i==1, 1, lcm(vector(i-1,j,j))));   \\ DL[n+1] = lcm(1..n)
 
@@ -47,7 +47,7 @@ scanlevel(N, divs, TS, FS, tlo, thi, outfile) =
       if(bad, next);
       lam = 2^m;
       my(a = vector(NROW+1, i, lam^(i-1)*c[i]));
-      rec = fitmin(a, MAXO, MAXD);
+      rec = fitminp(a, MAXO, MAXD);
       if(rec == 0, next);
       cp = charpol_from(rec[3], rec[1], rec[2]);
       rts = polroots(cp);

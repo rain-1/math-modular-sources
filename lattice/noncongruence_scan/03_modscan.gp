@@ -49,3 +49,28 @@ charpol_from(v, o, d) = {
   sum(j=1, o+1, c[j]*'L^(o+1-j));
 };
 
+
+\\ ---- two-stage fit: mod-p gate, then exact over Q ------------------------
+PGATE = 2147483647;   \\ 2^31-1
+
+fitminp(A, maxo, maxd) = {
+  my(L = #A - 1, Ap = vector(#A, i, Mod(A[i], PGATE)));
+  for(o = 1, maxo,
+    for(d = 0, maxd,
+      my(nc = (o+1)*(d+1), rows = List(), r);
+      if(L - o + 1 < nc + 6, next);
+      for(n = o, L,
+        r = vector(nc);
+        for(j = 0, o, for(e = 0, d, r[j*(d+1)+e+1] = Mod(n,PGATE)^e * Ap[n+1-j]));
+        listput(rows, r));
+      my(Mx = matconcat(Vec(rows)~), K = matker(Mx));
+      if(#K == 1,
+        my(rows2 = List(), r2);
+        for(n = o, L,
+          r2 = vector(nc);
+          for(j = 0, o, for(e = 0, d, r2[j*(d+1)+e+1] = n^e * A[n+1-j]));
+          listput(rows2, r2));
+        my(M2 = matconcat(Vec(rows2)~), K2 = matker(M2));
+        if(#K2 == 1, return([o, d, K2[,1]])))));
+  0;
+};

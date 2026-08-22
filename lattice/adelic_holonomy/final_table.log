@@ -1,0 +1,35 @@
+================================================================================================================
+LEVEL-8 CATALAN HOST  (Zagier E (12,4,32); lambda_1=8, lambda_2=4, s=1/4, k=2, b=(2,2), CDT inventory u=(1,3))
+  ceiling log|phi'(0)| = log(256 s) = 4.158883   realised = 3.695614   BC = 10.458706
+
+[A] CDT architecture, 7 pure + 7 conditional
+  archimedean only, at the ceiling                     m= 14 tau=4.2355 gamma=+0.0000 entry=-0.0766 margin=  -11.531
+  archimedean only, CDT contour                        m= 14 tau=4.2355 gamma=+0.0000 entry=-0.5398 margin=  -18.017
+  ADELIC (pure orbit 2-adic slope 2), ceiling          m= 14 tau=4.2355 gamma=+0.2546 entry=+0.1780 margin=   -7.966
+  ADELIC (pure orbit 2-adic slope 2), CDT contour      m= 14 tau=4.2355 gamma=+0.2546 entry=-0.2852 margin=  -14.452
+
+[B] hypothetical: add d doubly-small functions of 2-adic slope sigma_y
+    sigma_y=4, d=2, ceiling                            m= 16 tau=4.2186 gamma=+0.3520 entry=+0.2923 margin=   -5.782
+    sigma_y=4, d=4, ceiling                            m= 18 tau=4.2029 gamma=+0.4664 entry=+0.4223 margin=   -2.857
+    sigma_y=4, d=7, ceiling                            m= 21 tau=4.1824 gamma=+0.6444 entry=+0.6209 margin=   +2.580
+    sigma_y=8, d=2, ceiling                            m= 16 tau=4.2186 gamma=+0.3628 entry=+0.3031 margin=   -5.608
+    sigma_y=8, d=4, ceiling                            m= 18 tau=4.2029 gamma=+0.5434 entry=+0.4993 margin=   -1.471
+    sigma_y=8, d=7, ceiling                            m= 21 tau=4.1824 gamma=+0.8708 entry=+0.8472 margin=   +7.333
+
+[C] best-conceivable pure inventory (u_1=u_2=m/2), pure orbit = m/2
+    u=(m/2,m/2), adelic, ceiling                       m= 14 tau=3.3375 gamma=+0.2546 entry=+1.0760 margin=   +4.605
+    u=(m/2,m/2), archimedean only, ceiling             m= 14 tau=3.3375 gamma=+0.0000 entry=+0.8214 margin=   +1.041
+    u=(m/2,m/2), adelic, ceiling                       m= 20 tau=3.2389 gamma=+0.2807 entry=+1.2007 margin=  +13.556
+    u=(m/2,m/2), archimedean only, ceiling             m= 20 tau=3.2389 gamma=+0.0000 entry=+0.9200 margin=   +7.941
+    u=(m/2,m/2), adelic, ceiling                       m= 30 tau=3.1606 gamma=+0.3019 entry=+1.3002 margin=  +28.547
+    u=(m/2,m/2), archimedean only, ceiling             m= 30 tau=3.1606 gamma=+0.0000 entry=+0.9983 margin=  +19.489
+    u=(m/2,m/2), adelic, ceiling                       m= 50 tau=3.0970 gamma=+0.3194 entry=+1.3813 margin=  +58.605
+    u=(m/2,m/2), archimedean only, ceiling             m= 50 tau=3.0970 gamma=+0.0000 entry=+1.0619 margin=  +42.634
+
+================================================================================================================
+X_1(5) Sym^2 HOST (Beukers Thm 4; lambda_1=phi^5, lambda_2=phi^{-5} unit, c=-1, k=3)
+  c = -1  =>  sigma_p = v_p(c) = 0 at EVERY prime (Cor 3.2 of CRYSTAL_THEOREM_F);
+  lambda_2 is a unit  =>  the pure module Li_j(x/s) has v_p-slope v_p(lambda_2) = 0 too.
+  Hence gamma_p = 0 at every prime and the adelic bound coincides with CDT's:
+  CDT inventory, k=3 (b=(2,2,2)), ceiling (normalised) m= 14 tau=6.2355 gamma=+0.0000 entry=-0.6903 margin=  -21.509
+  CDT inventory, k=3 (b=(2,2,2)), CDT contour          m= 14 tau=6.2355 gamma=+0.0000 entry=-1.1536 margin=  -27.995

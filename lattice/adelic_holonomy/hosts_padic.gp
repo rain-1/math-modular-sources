@@ -1,0 +1,10 @@
+rowR2(a,b,c,n)={my(A=vector(n+1),B=vector(n+1));A[1]=1;A[2]=b;B[1]=0;B[2]=1;
+  for(k=1,n-1, A[k+2]=((a*k^2+a*k+b)*A[k+1]-c*k^2*A[k])/(k+1)^2;
+               B[k+2]=((a*k^2+a*k+b)*B[k+1]-c*k^2*B[k])/(k+1)^2);[A,B]};
+NN=160; R=rowR2(12,4,32,NN); A=R[1]; B=R[2];
+print("row E  v2(a_n), n=100..103: ", vector(4,j,valuation(A[100+j],2)));
+print("row E  slope of b/a increments:");
+for(j=1,3, my(n=[60,110,155][j]); print("   n=",n,"  v2/n = ",valuation(B[n+2]/A[n+2]-B[n+1]/A[n+1],2)*1./n));
+D=rowR2(11,3,-1,NN); AD=D[1]; BD=D[2];
+print("Zagier D (11,3,-1), c=-1: v_p(b/a increments) at n=150, p=2,3,5,11:");
+for(k=1,4, my(p=[2,3,5,11][k],n=150); print("   p=",p," v_p=",valuation(BD[n+2]/AD[n+2]-BD[n+1]/AD[n+1],p)));

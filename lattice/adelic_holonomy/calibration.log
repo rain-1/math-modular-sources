@@ -1,0 +1,6 @@
+CDT calibration (gamma=0):
+  level 6, L(2,chi_-3)                         m= 14  tau=4.2355  gamma=+0.0000  entry=+0.8464  bnd=  13.994  margin=   +0.005
+  (CDT: bound 13.9938, margin +0.0053)
+
+scale invariance: margin 12.116102827 vs 12.116102827  (diff -1.78e-15)
+
