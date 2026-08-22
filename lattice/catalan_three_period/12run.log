@@ -1,0 +1,40 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+=== fold cusp = the cusp 1/2 of Gamma_0(16) (x=-1/4), gamma_1=[-7, 4; -16, 9], width 4 ===
+R(tau) = alp + bet*tau + a0*g(tau);  fold-regular <=> a0=0 AND 2*alp+bet=0;  then xi=-bet/16
+
+E   a0 = 0   (imag 2.5612392661008423084 E-133)
+     alp/G   = -4   alp/(i pi^2) = 0
+     bet/G   = 8   bet/(i pi^2) = 0
+V2E a0 = 0   (imag 7.490416721615670901 E-134)
+     alp/G   = -1   alp/(i pi^2) = -5/16
+     bet/G   = 2   bet/(i pi^2) = 1/2
+V4E a0 = 0   (imag 0.E-152)
+     alp/G   = -1/4   alp/(i pi^2) = -5/128
+     bet/G   = 1/2   bet/(i pi^2) = 1/16
+T   a0 = -1/4   (imag 5.581228209807200984 E-133)
+     alp/z2  = 4   (imag 2.2230516151514935307 E-131)
+     bet/z2  = -8   (imag 4.492743563112515240 E-131)
+V2T a0 = -1/4   (imag 9.108823028129358516 E-133)
+     alp/z2  = 7   (imag 3.625838734107096207 E-131)
+     bet/z2  = -14   (imag 7.329136192024706763 E-131)
+V4T a0 = -1/4   (imag 8.272716253841638832 E-133)
+     alp/z2  = 25/4   (imag 3.354526827616271523 E-131)
+     bet/z2  = -25/2   (imag 6.754318167015241484 E-131)
+
+=== the two linear functionals on (c1,c2,c4) ===
+inner  lam = -16 alp - 8 bet, in units of i*pi^2:
+   E  : 0
+   V2E: 1
+   V4E: 1/8
+outer  lam = -16 alp - 8 bet, in units of zeta(2):
+   T  : 0  (imag 3.731226624762254274 E-132)
+   V2T: 0  (imag 6.196697904841147953 E-132)
+   V4T: 0  (imag 3.621160942615875091 E-132)
+
+xi = -bet/16 :
+   E   : -1/2*G + 0*i*pi^2
+   V2E : -1/8*G + -1/32*i*pi^2
+   V4E : -1/32*G + -1/256*i*pi^2
+   T   : 1/2*zeta(2)
+   V2T : 7/8*zeta(2)
+   V4T : 25/32*zeta(2)

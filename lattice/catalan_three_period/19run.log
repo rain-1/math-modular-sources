@@ -1,0 +1,38 @@
+BC=10.458706  ceiling=4.158883  realised=3.695614  rigorous=1.476336
+
+scale covariance check: margin -23.942201014 vs -23.942201014 (diff 7.11e-15)
+
+================ P1 assumed (pure 2, din 1, dout 0, cond 0) ================
+ [ceiling]
+  previous: 7 pure + 7 conditional             m= 14 (n2,n1,nd0,nc)=(7,0,0,7)  tf=3.8980 ts=0.3375 tau=4.2355 g2=+0.2546 entry=+0.1780 margin=  -7.966
+  previous: + 1 doubly-small                   m= 15 (n2,n1,nd0,nc)=(7,1,0,7)  tf=3.9111 ts=0.3158 tau=4.2269 g2=+0.2619 entry=+0.1938 margin=  -7.551
+  full (a)/(b): 7 pure + 3 orbits              m= 28 (n2,n1,nd0,nc)=(7,7,7,7)  tf=3.9745 ts=0.2177 tau=4.1922 g2=+0.1812 entry=+0.1479 margin=  -6.316
+ [realised (transported)]
+  previous: 7 pure + 7 conditional             m= 14 (n2,n1,nd0,nc)=(7,0,0,7)  tf=3.8980 ts=0.3375 tau=4.2355 g2=+0.2546 entry=-0.2852 margin= -14.452
+  previous: + 1 doubly-small                   m= 15 (n2,n1,nd0,nc)=(7,1,0,7)  tf=3.9111 ts=0.3158 tau=4.2269 g2=+0.2619 entry=-0.2694 margin= -14.500
+  full (a)/(b): 7 pure + 3 orbits              m= 28 (n2,n1,nd0,nc)=(7,7,7,7)  tf=3.9745 ts=0.2177 tau=4.1922 g2=+0.1812 entry=-0.3153 margin= -19.288
+ [rigorous 3-punctured]
+  previous: 7 pure + 7 conditional             m= 14 (n2,n1,nd0,nc)=(7,0,0,7)  tf=3.8980 ts=0.3375 tau=4.2355 g2=+0.2546 entry=-2.5045 margin= -45.522
+  previous: + 1 doubly-small                   m= 15 (n2,n1,nd0,nc)=(7,1,0,7)  tf=3.9111 ts=0.3158 tau=4.2269 g2=+0.2619 entry=-2.4887 margin= -47.789
+  full (a)/(b): 7 pure + 3 orbits              m= 28 (n2,n1,nd0,nc)=(7,7,7,7)  tf=3.9745 ts=0.2177 tau=4.1922 g2=+0.1812 entry=-2.5346 margin= -81.428
+ [ceiling, optimised over sub-inventories]
+  BEST containing a conditional function       m= 15 (n2,n1,nd0,nc)=(7,7,0,1)  tf=3.9111 ts=0.3158 tau=4.2269 g2=+0.6315 entry=+0.5635 margin=  -2.006
+  BEST unconditional (must be <= 0)            m= 14 (n2,n1,nd0,nc)=(7,7,0,0)  tf=3.8980 ts=0.3375 tau=4.2355 g2=+0.7709 entry=+0.6944 margin=  -0.737
+
+================ P2 MEASURED (pure 2, din 1, dout 0, cond -2) ================
+ [ceiling]
+  previous: 7 pure + 7 conditional             m= 14 (n2,n1,nd0,nc)=(7,0,0,7)  tf=3.8980 ts=0.3375 tau=4.2355 g2=-0.7780 entry=-0.8546 margin= -22.423
+  previous: + 1 doubly-small                   m= 15 (n2,n1,nd0,nc)=(7,1,0,7)  tf=3.9111 ts=0.3158 tau=4.2269 g2=-0.7301 entry=-0.7981 margin= -22.431
+  full (a)/(b): 7 pure + 3 orbits              m= 28 (n2,n1,nd0,nc)=(7,7,7,7)  tf=3.9745 ts=0.2177 tau=4.1922 g2=-0.4482 entry=-0.4816 margin= -23.942
+ [realised (transported)]
+  previous: 7 pure + 7 conditional             m= 14 (n2,n1,nd0,nc)=(7,0,0,7)  tf=3.8980 ts=0.3375 tau=4.2355 g2=-0.7780 entry=-1.3179 margin= -28.909
+  previous: + 1 doubly-small                   m= 15 (n2,n1,nd0,nc)=(7,1,0,7)  tf=3.9111 ts=0.3158 tau=4.2269 g2=-0.7301 entry=-1.2614 margin= -29.380
+  full (a)/(b): 7 pure + 3 orbits              m= 28 (n2,n1,nd0,nc)=(7,7,7,7)  tf=3.9745 ts=0.2177 tau=4.1922 g2=-0.4482 entry=-0.9448 margin= -36.914
+ [rigorous 3-punctured]
+  previous: 7 pure + 7 conditional             m= 14 (n2,n1,nd0,nc)=(7,0,0,7)  tf=3.8980 ts=0.3375 tau=4.2355 g2=-0.7780 entry=-3.5371 margin= -59.979
+  previous: + 1 doubly-small                   m= 15 (n2,n1,nd0,nc)=(7,1,0,7)  tf=3.9111 ts=0.3158 tau=4.2269 g2=-0.7301 entry=-3.4807 margin= -62.669
+  full (a)/(b): 7 pure + 3 orbits              m= 28 (n2,n1,nd0,nc)=(7,7,7,7)  tf=3.9745 ts=0.2177 tau=4.1922 g2=-0.4482 entry=-3.1641 margin= -99.054
+ [ceiling, optimised over sub-inventories]
+  BEST containing a conditional function       m= 15 (n2,n1,nd0,nc)=(7,7,0,1)  tf=3.9111 ts=0.3158 tau=4.2269 g2=+0.3789 entry=+0.3109 margin=  -5.795
+  BEST unconditional (must be <= 0)            m= 14 (n2,n1,nd0,nc)=(7,7,0,0)  tf=3.8980 ts=0.3375 tau=4.2355 g2=+0.7709 entry=+0.6944 margin=  -0.737
+

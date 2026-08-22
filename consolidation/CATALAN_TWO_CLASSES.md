@@ -12,6 +12,9 @@ computation in this task; **[estimate]** = transported input.
 
 ---
 
+
+> **Retraction (2026-08-22, `CATALAN_THREE_PERIOD.md`).** §2.4 and §4 below are wrong: the outer orientation *does* contain an unconditional doubly-small class, $\Phi_0^{\rm out}=(1+3V_2-4V_4)T$. §4 tested outer classes against Theorem B*'s period formula, which does not hold at level 16; the correct outer period functional is $\xi^{\rm out}_\infty=\tfrac32\zeta(2)(P(1)-P(2))$ with fold-regularity $\iff P(0)=0$. The doubly-small orbit has dimension 2. The margins of §6 also used an incorrect slope floor in the $y$-coordinate; see `CATALAN_THREE_PERIOD.md` for the corrected table.
+
 ## 0. Verdict
 
 | claim | verdict |

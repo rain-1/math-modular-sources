@@ -1,0 +1,6 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+cusp 0    condition coefficients (c1,c2,c4) = [64, 8, 1]
+cusp 1/2  condition coefficients (c1,c2,c4) = [0, 8, 1]
+cusp 1/4  condition coefficients (c1,c2,c4) = [0, 0, 1]
+cusp 3/4  condition coefficients (c1,c2,c4) = [0, 0, 1]
+cusp 1/8  condition coefficients (c1,c2,c4) = VACUOUS

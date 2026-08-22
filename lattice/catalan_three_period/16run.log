@@ -1,0 +1,69 @@
+BC=10.458706  ceiling=4.158883  realised(transported)=3.695614  rigorous=1.476336
+
+--- reference rows (previous documents) ---
+level 8/16, m=14, pure slope 2, ceiling        m= 14  tau=4.2355  gamma=+0.2546  entry=+0.1780  bnd=  58.740  margin=   -7.966
+level 16, m=15 (+1 doubly-small), ceiling      m= 15  tau=4.2269  gamma=+0.2619  entry=+0.1938  bnd=  53.953  margin=   -7.551
+
+--- corrected, conservative: one member per small generator (m=16) ---
+m=16: 7 pure + 7 cond + 2 dbl, ceiling         m= 16  tau=4.2186  gamma=+0.2301  entry=+0.1705  bnd=  61.350  margin=   -7.731
+m=16, realised(transported)                    m= 16  tau=4.2186  gamma=+0.2301  entry=-0.2928  bnd=     inf  margin=  -15.143
+
+--- corrected, CDT orbit multiplier (7 members per small generator) ---
+    hypotheses (a) G in Q  and  (b) a+b zeta(2)+c G=0 give the SAME m.
+m=28: 7 pure + 3x7 small, ceiling              m= 28  tau=4.1922  gamma=+0.1812  entry=+0.1479  bnd=  70.697  margin=   -6.316
+m=28, realised(transported)                    m= 28  tau=4.1922  gamma=+0.1812  entry=-0.3153  bnd=     inf  margin=  -19.288
+m=28, rigorous thrice-punctured                m= 28  tau=4.1922  gamma=+0.1812  entry=-2.5346  bnd=     inf  margin=  -81.428
+
+--- the UNCONDITIONAL sub-inventory (must NOT give a positive margin) ---
+m=21: 7 pure + 2x7 doubly-small, ceil          m= 21  tau=4.2177  gamma=+0.3222  entry=+0.2634  bnd=  39.701  margin=   -4.927
+m=20: 6 pure + 2x7 doubly-small, ceil          m= 20  tau=4.2258  gamma=+0.2929  entry=+0.2259  bnd=  46.295  margin=   -5.940
+m=14: 2x7 doubly-small only, ceiling           m= 14  tau=4.3375  gamma=+0.1273  entry=-0.0513  bnd=     inf  margin=  -11.177
+m=7 : inner doubly-small orbit, ceiling        m=  7  tau=4.4864  gamma=+0.5941  entry=+0.2666  bnd=  39.228  margin=   -8.592
+
+--- one-period vs three-period, conditional orbit only added ---
+one-period (a): 7 pure+7 dbl_in+7 cond         m= 21  tau=4.2177  gamma=+0.3222  entry=+0.2634  bnd=  39.701  margin=   -4.927
+one-period (a): + outer dbl orbit              m= 28  tau=4.1922  gamma=+0.1812  entry=+0.1479  bnd=  70.697  margin=   -6.316
+three-period (b): identical inventory          m= 28  tau=4.1922  gamma=+0.1812  entry=+0.1479  bnd=  70.697  margin=   -6.316
+
+--- sensitivity: what m would be needed for margin 0 at the ceiling ---
+m= 28 (3 small orbits + 7 pure)                m= 28  tau=4.1922  gamma=+0.1812  entry=+0.1479  bnd=  70.697  margin=   -6.316
+m= 34 (3 small orbits + 7 pure)                m= 34  tau=4.1626  gamma=+0.1229  entry=+0.1192  bnd=  87.707  margin=   -6.404
+m= 42 (5 small orbits + 7 pure)                m= 42  tau=4.1531  gamma=+0.0806  entry=+0.0863  bnd= 121.160  margin=   -6.833
+m= 49 (6 small orbits + 7 pure)                m= 49  tau=4.1389  gamma=+0.0592  entry=+0.0791  bnd= 132.183  margin=   -6.582
+m= 56 (7 small orbits + 7 pure)                m= 56  tau=4.1273  gamma=+0.0453  entry=+0.0769  bnd= 135.969  margin=   -6.151
+m= 70 (9 small orbits + 7 pure)                m= 70  tau=4.1092  gamma=+0.0290  entry=+0.0786  bnd= 133.001  margin=   -4.954
+
+--- optimisation over admissible sub-inventories (ceiling) ---
+    available: 7 pure (slope 2, u=(1,3)), 7 inner doubly-small (slope 1),
+               7 outer doubly-small (slope 0), 7 conditional (slope 0).
+  top 8 sub-inventories overall (n2,n1,nd0,nc = pure, inner-dbl, outer-dbl, conditional):
+    m= 14  (n2,n1,nd0,nc)=(7,7,0,0)  tau=4.2355 gamma=+0.7709 entry=+0.6944 margin=-0.737
+    m= 13  (n2,n1,nd0,nc)=(7,6,0,0)  tau=4.2194 gamma=+0.7875 entry=+0.7269 margin=-1.009
+    m= 12  (n2,n1,nd0,nc)=(7,5,0,0)  tau=4.1939 gamma=+0.8087 entry=+0.7737 margin=-1.174
+    m= 11  (n2,n1,nd0,nc)=(7,4,0,0)  tau=4.1529 gamma=+0.8364 entry=+0.8423 margin=-1.193
+    m=  7  (n2,n1,nd0,nc)=(7,0,0,0)  tau=4.0782 gamma=+1.1883 entry=+1.2689 margin=-1.576
+    m= 10  (n2,n1,nd0,nc)=(7,3,0,0)  tau=4.1483 gamma=+0.8734 entry=+0.8839 margin=-1.620
+    m= 13  (n2,n1,nd0,nc)=(6,7,0,0)  tau=4.2441 gamma=+0.7424 entry=+0.6572 margin=-1.916
+    m=  9  (n2,n1,nd0,nc)=(7,2,0,0)  tau=4.1379 gamma=+0.9242 entry=+0.9452 margin=-1.952
+  best WITH a conditional function: m=15 (7,7,0,1) margin=-2.006
+  best unconditional               : m=14 (7,7,0,0) margin=-0.737   (must be <=0, else the inputs are inconsistent)
+
+--- headline table: tau^flat, tau^sharp, gamma_2, entry, margin ---
+ [ceiling]
+  previous: 7 pure + 7 conditional           m= 14  tf=3.8980 ts=0.3375 tau=4.2355 g2=+0.2546 entry=+0.1780 margin=  -7.966
+  previous: + 1 doubly-small                 m= 15  tf=3.9111 ts=0.3158 tau=4.2269 g2=+0.2619 entry=+0.1938 margin=  -7.551
+  (a)/(b) full: 7 pure + 3 small orbits      m= 28  tf=3.9745 ts=0.2177 tau=4.1922 g2=+0.1812 entry=+0.1479 margin=  -6.316
+  (a)/(b) best with a conditional            m= 15  tf=3.9111 ts=0.3158 tau=4.2269 g2=+0.6315 entry=+0.5635 margin=  -2.006
+  unconditional only, best                   m= 14  tf=3.8980 ts=0.3375 tau=4.2355 g2=+0.7709 entry=+0.6944 margin=  -0.737
+ [realised(transported)]
+  previous: 7 pure + 7 conditional           m= 14  tf=3.8980 ts=0.3375 tau=4.2355 g2=+0.2546 entry=-0.2852 margin= -14.452
+  previous: + 1 doubly-small                 m= 15  tf=3.9111 ts=0.3158 tau=4.2269 g2=+0.2619 entry=-0.2694 margin= -14.500
+  (a)/(b) full: 7 pure + 3 small orbits      m= 28  tf=3.9745 ts=0.2177 tau=4.1922 g2=+0.1812 entry=-0.3153 margin= -19.288
+  (a)/(b) best with a conditional            m= 15  tf=3.9111 ts=0.3158 tau=4.2269 g2=+0.6315 entry=+0.1003 margin=  -8.955
+  unconditional only, best                   m= 14  tf=3.8980 ts=0.3375 tau=4.2355 g2=+0.7709 entry=+0.2311 margin=  -7.223
+ [rigorous 3-punctured]
+  previous: 7 pure + 7 conditional           m= 14  tf=3.8980 ts=0.3375 tau=4.2355 g2=+0.2546 entry=-2.5045 margin= -45.522
+  previous: + 1 doubly-small                 m= 15  tf=3.9111 ts=0.3158 tau=4.2269 g2=+0.2619 entry=-2.4887 margin= -47.789
+  (a)/(b) full: 7 pure + 3 small orbits      m= 28  tf=3.9745 ts=0.2177 tau=4.1922 g2=+0.1812 entry=-2.5346 margin= -81.428
+  (a)/(b) best with a conditional            m= 15  tf=3.9111 ts=0.3158 tau=4.2269 g2=+0.6315 entry=-2.1190 margin= -42.244
+  unconditional only, best                   m= 14  tf=3.8980 ts=0.3375 tau=4.2355 g2=+0.7709 entry=-1.9882 margin= -38.293
