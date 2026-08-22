@@ -1,0 +1,14 @@
+### zeta_5(3)  (5,k=1)  m=4 budget=3.234941   K=14 N=1024
+  restart 0: cost=3.194850  margin=+0.040091  [252s]
+  restart 1: cost=3.194494  margin=+0.040447  [453s]
+  restart 2: cost=3.194497  margin=+0.040444  [688s]
+  restart 3: cost=3.194677  margin=+0.040264  [928s]
+  restart 4: cost=3.194505  margin=+0.040437  [1188s]
+  restart 5: cost=3.194531  margin=+0.040411  [1413s]
+  N= 2048 RE  val=  1.060447 logdr=-0.533513 cost=  3.194499 margin= +0.040443 bound= 3.972716 maxq=0.785213 gmax=3.901
+  N= 2048 BC  val=  1.027392 logdr=-0.533513 cost=  3.161445 margin= +0.073497 bound= 3.950417 maxq=0.785213 gmax=3.901
+  N= 4096 RE  val=  1.060448 logdr=-0.533513 cost=  3.194500 margin= +0.040441 bound= 3.972717 maxq=0.785213 gmax=3.901
+  N= 4096 BC  val=  1.027398 logdr=-0.533513 cost=  3.161450 margin= +0.073491 bound= 3.950421 maxq=0.785213 gmax=3.901
+  N= 8192 RE  val=  1.060448 logdr=-0.533513 cost=  3.194500 margin= +0.040441 bound= 3.972717 maxq=0.785215 gmax=3.901
+  N= 8192 BC  val=  1.027399 logdr=-0.533513 cost=  3.161451 margin= +0.073490 bound= 3.950422 maxq=0.785215 gmax=3.901
+done 1414s

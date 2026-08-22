@@ -1,0 +1,12 @@
+### 3-adic X_0(9) (Zagier B)  m=3 budget=1.258340   K=12 N=1024
+  restart 0: cost=1.648994  margin=-0.390654  [250s]
+  restart 1: cost=1.649267  margin=-0.390927  [504s]
+  restart 2: cost=1.648719  margin=-0.390379  [727s]
+  restart 3: cost=1.648731  margin=-0.390390  [967s]
+  N= 2048 RE  val=  0.507585 logdr=-0.380379 cost=  1.648722 margin= -0.390382 bound= 3.343139 maxq=0.951719 gmax=1.889
+  N= 2048 BC  val=  0.320446 logdr=-0.380379 cost=  1.461584 margin= -0.203243 bound= 3.178647 maxq=0.951719 gmax=1.889
+  N= 4096 RE  val=  0.507584 logdr=-0.380379 cost=  1.648722 margin= -0.390382 bound= 3.343139 maxq=0.951719 gmax=1.889
+  N= 4096 BC  val=  0.320434 logdr=-0.380379 cost=  1.461572 margin= -0.203232 bound= 3.178637 maxq=0.951719 gmax=1.889
+  N= 8192 RE  val=  0.507585 logdr=-0.380379 cost=  1.648723 margin= -0.390382 bound= 3.343139 maxq=0.951720 gmax=1.889
+  N= 8192 BC  val=  0.320468 logdr=-0.380379 cost=  1.461606 margin= -0.203266 bound= 3.178667 maxq=0.951720 gmax=1.889
+done 969s

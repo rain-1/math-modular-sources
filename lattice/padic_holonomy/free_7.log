@@ -1,0 +1,9 @@
+### zeta_7(3)  (7,k=1)  m=4 budget=0.425461   K=12 N=1024
+  restart 0: cost=0.826031  margin=-0.400570  [251s]
+  restart 1: cost=2.469918  margin=-2.044457  [451s]
+  restart 2: cost=2.469907  margin=-2.044446  [714s]
+  restart 3: cost=0.363103  margin=+0.062358  [957s]
+  N= 2048 RE  val=  8.542603 logdr=-0.270339 cost=  9.623958 margin= -9.198497 bound=15.370469 maxq=0.998898 gmax=4865.655
+  N= 4096 RE  val=  4.349788 logdr=-0.270339 cost=  5.431144 margin= -5.005683 bound=10.187637 maxq=0.998898 gmax=4865.655
+  N= 8192 RE  val=  2.873999 logdr=-0.270339 cost=  3.955354 margin= -3.529893 bound= 8.363380 maxq=0.998898 gmax=4865.655
+done 957s

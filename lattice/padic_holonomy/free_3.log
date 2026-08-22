@@ -1,0 +1,12 @@
+### zeta_3(3)  (3,k=1)  m=4 budget=8.525021   K=12 N=1024
+  restart 0: cost=4.729833  margin=+3.795188  [202s]
+  restart 1: cost=4.731728  margin=+3.793293  [425s]
+  restart 2: cost=4.732109  margin=+3.792913  [650s]
+  restart 3: cost=4.731104  margin=+3.793917  [843s]
+  N= 2048 RE  val=  1.208720 logdr=-0.880279 cost=  4.729837 margin= +3.795184 bound= 2.690817 maxq=0.635134 gmax=3.218
+  N= 2048 BC  val=  1.199891 logdr=-0.880279 cost=  4.721008 margin= +3.804013 bound= 2.687771 maxq=0.635134 gmax=3.218
+  N= 4096 RE  val=  1.208721 logdr=-0.880279 cost=  4.729838 margin= +3.795183 bound= 2.690817 maxq=0.635134 gmax=3.218
+  N= 4096 BC  val=  1.199900 logdr=-0.880279 cost=  4.721017 margin= +3.804005 bound= 2.687774 maxq=0.635134 gmax=3.218
+  N= 8192 RE  val=  1.208721 logdr=-0.880279 cost=  4.729838 margin= +3.795183 bound= 2.690817 maxq=0.635134 gmax=3.218
+  N= 8192 BC  val=  1.199900 logdr=-0.880279 cost=  4.721017 margin= +3.804004 bound= 2.687774 maxq=0.635134 gmax=3.218
+done 845s

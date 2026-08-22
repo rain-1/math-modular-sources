@@ -1,0 +1,12 @@
+### L_2(2,chi_-4) X_1(4)  m=3 budget=5.757022   K=12 N=1024
+  restart 0: cost=2.878565  margin=+2.878456  [255s]
+  restart 1: cost=2.885441  margin=+2.871581  [499s]
+  restart 2: cost=2.877704  margin=+2.879317  [787s]
+  restart 3: cost=2.880384  margin=+2.876637  [1002s]
+  N= 2048 RE  val=  0.463750 logdr=-0.804653 cost=  2.877709 margin= +2.879312 bound= 2.028161 maxq=0.936520 gmax=1.780
+  N= 2048 BC  val=  0.386514 logdr=-0.804653 cost=  2.800473 margin= +2.956548 bound= 2.002092 maxq=0.936520 gmax=1.780
+  N= 4096 RE  val=  0.463751 logdr=-0.804653 cost=  2.877710 margin= +2.879311 bound= 2.028161 maxq=0.936520 gmax=1.780
+  N= 4096 BC  val=  0.386501 logdr=-0.804653 cost=  2.800461 margin= +2.956561 bound= 2.002088 maxq=0.936520 gmax=1.780
+  N= 8192 RE  val=  0.463751 logdr=-0.804653 cost=  2.877710 margin= +2.879311 bound= 2.028161 maxq=0.936520 gmax=1.780
+  N= 8192 BC  val=  0.386498 logdr=-0.804653 cost=  2.800457 margin= +2.956564 bound= 2.002087 maxq=0.936520 gmax=1.780
+done 1004s

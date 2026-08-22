@@ -1,0 +1,11 @@
+zeta_2(3)  (2,k=1)         m=4 budget=13.70330 | RE bound= 2.276462 margin=+7.393615 kappa=6.4 | BC bound= 2.275389 margin=+7.398221 kappa=6.3 | logdr=-1.215476 maxq=0.6218 gmax=2.707  [free_00.json]
+zeta_2(5)  (2,k=2)         m=6 budget=12.42216 | RE bound= 4.438942 margin=+4.187697 kappa=19.4 | BC bound= 4.435532 margin=+4.196845 kappa=19.4 | logdr=-0.774053 maxq=0.6244 gmax=7.568  [free_01.json]
+zeta_2(7)  (2,k=3)         m=8 budget= 3.09936 | RE bound=15.594892 margin=-6.461514 kappa=  -   | BC bound=15.580886 margin=-6.449598 kappa=  -   | logdr=-0.576370 maxq=0.7163 gmax=12.027  [free_02.json]
+zeta_3(3)  (3,k=1)         m=4 budget= 8.52502 | RE bound= 2.690817 margin=+3.795183 kappa=10.0 | BC bound= 2.687774 margin=+3.804006 kappa=10.0 | logdr=-0.880279 maxq=0.6351 gmax=3.218  [free_03.json]
+zeta_3(5)  (3,k=2)         m=6 budget= 3.79170 | RE bound= 8.063418 margin=-2.366532 kappa=  -   | BC bound= 8.051140 margin=-2.352451 kappa=  -   | logdr=-0.583663 maxq=0.7252 gmax=7.162  [free_04.json]
+zeta_5(3)  (5,k=1)         m=4 budget= 3.23494 | RE bound= 3.972717 margin=+0.040441 kappa=716.0 | BC bound= 3.950422 margin=+0.073490 kappa=393.8 | logdr=-0.533513 maxq=0.7852 gmax=3.901  [free_05.json]
+Traceback (most recent call last):
+  File "/home/ubuntu/code/math-modular-sources/lattice/padic_holonomy/assemble.py", line 55, in <module>
+    rec['BC']['bound'], rec['BC']['margin'],
+    ~~~^^^^^^
+KeyError: 'BC'
