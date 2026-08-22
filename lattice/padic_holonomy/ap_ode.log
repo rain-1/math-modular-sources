@@ -1,0 +1,11 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+pr = 2^61-1 prime? 1
+built a_n,b_n mod pr up to n=900  ms=390
+mod-pr a_n,b_n match exact rational reference for n<=40: 1
+
+--- ODE structure, eta = 5/7 ---
+  kernel dimension at D=8: 1
+  deg of the polynomial coefficient of [1, H, H', H'', H''']: [5, 4, 6, 7, 8]
+--- ODE structure, eta = 0 ---
+  kernel dimension at D=8: 1
+  deg of the polynomial coefficient of [1, H, H', H'', H''']: [5, 4, 6, 7, 8]

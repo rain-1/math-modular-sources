@@ -232,3 +232,59 @@ def logabs_x(H, qs):
             tau = complex(tau.real, -tau.imag)
         out[i] = (log_absDelta(N * tau) - log_absDelta(tau)) / e
     return out
+
+
+# --------------------------------------------------------------------------
+# Vectorised log|x|:  same algorithm as log_absDelta / logabs_x, all points at
+# once.  Used for the high-resolution (N up to 2^20) certification runs.
+# --------------------------------------------------------------------------
+def _sl2_reduce_vec(tau, iters=400):
+    tau = np.array(tau, dtype=complex)
+    L = np.zeros(len(tau))
+    for _ in range(iters):
+        tau = tau - np.round(tau.real)
+        a2 = np.abs(tau) ** 2
+        act = a2 < 1.0 - 1e-15
+        if not act.any():
+            break
+        L[act] += 0.5 * np.log(a2[act])
+        tau[act] = -1.0 / tau[act]
+    return tau, L
+
+
+def log_absDelta_vec(tau, nmax=None):
+    t, L = _sl2_reduce_vec(tau)
+    q = np.exp(2j * pi * t)
+    if nmax is None:
+        nmax = max(8, int(45.0 / max(-np.log(np.abs(q).max()), 1e-12)) + 2)
+    n = np.arange(1, nmax + 1)
+    acc = np.zeros(len(t))
+    for nn in n:
+        acc += np.log(np.abs(1.0 - q ** int(nn)))
+    return -TWOPI * t.imag + 24.0 * acc - 12.0 * L
+
+
+def logabs_x_vec(H, qs):
+    N = H.N
+    e = 24 // [ee for (mm, ee) in H.prodspec if mm == N][0]
+    q = np.asarray(qs, dtype=complex)
+    tau = np.log(q) / (2j * pi)
+    tau = np.where(tau.imag <= 0, np.conj(tau), tau)
+    return (log_absDelta_vec(N * tau) - log_absDelta_vec(tau)) / e
+
+
+def theta_logx(H, qs):
+    """Lam(q) = q d/dq log x(q) = 1 + s * sum_n n ( q^n/(1-q^n) - N q^{Nn}/(1-q^{Nn}) )
+    with s the eta exponent, N the level.  Used only for a Lipschitz bound."""
+    N = H.N
+    s = [ee for (mm, ee) in H.prodspec if mm == N][0]
+    q = np.asarray(qs, dtype=complex)
+    r = np.abs(q).max()
+    nmax = int(60.0 / max(-np.log(r), 1e-12)) + 10
+    out = np.ones(len(q), dtype=complex)
+    for n in range(1, nmax + 1):
+        qn = q ** n
+        out += s * n * (qn / (1 - qn))
+        qNn = q ** (N * n)
+        out -= s * n * N * (qNn / (1 - qNn))
+    return out

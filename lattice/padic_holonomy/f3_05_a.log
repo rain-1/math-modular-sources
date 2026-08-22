@@ -1,0 +1,6 @@
+### zeta_5(3)  (5,k=1) NON-EVEN K=12 N=4096 budget=3.234941
+  restart 0 cost=3.1954925 margin=+0.0394488 [201s]
+  restart 1 cost=3.1955360 margin=+0.0394052 [395s]
+  restart 2 cost=3.1955409 margin=+0.0394003 [576s]
+  restart 3 cost=3.1955412 margin=+0.0394000 [739s]
+best 3.1954925  margin +0.0394488

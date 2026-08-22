@@ -1,0 +1,12 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+eta (from N=500 run) mod 5^12 = 124135461
+r=1  2j=18  v_5(denom B_2j)=0  v_5(2*eta - zeta*(1-2j)) = 2   (bernfrac ms=0)
+      zeta*(1-2j) mod 5^3 = 22     2*eta mod 5^3 = 47
+r=2  2j=98  v_5(denom B_2j)=0  v_5(2*eta - zeta*(1-2j)) = 3   (bernfrac ms=0)
+      zeta*(1-2j) mod 5^4 = 172     2*eta mod 5^4 = 297
+r=3  2j=498  v_5(denom B_2j)=0  v_5(2*eta - zeta*(1-2j)) = 4   (bernfrac ms=0)
+      zeta*(1-2j) mod 5^5 = 1547     2*eta mod 5^5 = 2172
+r=4  2j=2498  v_5(denom B_2j)=0  v_5(2*eta - zeta*(1-2j)) = 5   (bernfrac ms=1)
+      zeta*(1-2j) mod 5^6 = 2172     2*eta mod 5^6 = 5297
+r=5  2j=12498  v_5(denom B_2j)=0  v_5(2*eta - zeta*(1-2j)) = 6   (bernfrac ms=18)
+      zeta*(1-2j) mod 5^7 = 52172     2*eta mod 5^7 = 67797

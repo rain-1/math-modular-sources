@@ -1,0 +1,6 @@
+### zeta_5(3)  (5,k=1)  start cost=3.194499480 (budget 3.234941)  K=32 N=16384
+  iter 0 cost=3.192953907 margin=+0.041987305 [451s]
+  iter 1 cost=3.192493162 margin=+0.042448050 [863s]
+  iter 2 cost=3.192436496 margin=+0.042504716 [1196s]
+  iter 3 cost=3.192423492 margin=+0.042517720 [1511s]
+done

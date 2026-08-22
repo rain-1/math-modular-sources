@@ -1,0 +1,47 @@
+### zeta_5(3)  (5,k=1) NON-EVEN K=18 N=4096 budget=3.234941
+Traceback (most recent call last):
+  File "/home/ubuntu/code/math-modular-sources/lattice/padic_holonomy/freeopt3.py", line 48, in <module>
+    r = minimize(f, v0, method=meth, options=dict(maxfev=12000, xtol=1e-7, ftol=1e-10)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/scipy/optimize/_minimize.py", line 701, in minimize
+    res = _minimize_powell(fun, x0, args, callback, bounds, **options)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/scipy/optimize/_optimize.py", line 3550, in _minimize_powell
+    fval, x, direc1 = _linesearch_powell(
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/scipy/optimize/_optimize.py", line 3183, in _linesearch_powell
+    res = _recover_from_bracket_error(_minimize_scalar_brent,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/scipy/optimize/_optimize.py", line 3076, in _recover_from_bracket_error
+    res = solver(fun, bracket, args, **options)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/scipy/optimize/_optimize.py", line 2679, in _minimize_scalar_brent
+    brent.optimize()
+  File "/usr/lib/python3/dist-packages/scipy/optimize/_optimize.py", line 2449, in optimize
+    xa, xb, xc, fa, fb, fc, funcalls = self.get_bracket_info()
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/scipy/optimize/_optimize.py", line 2416, in get_bracket_info
+    xa, xb, xc, fa, fb, fc, funcalls = bracket(func, args=args)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/scipy/optimize/_optimize.py", line 2978, in bracket
+    fc = func(*((xc,) + args))
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/scipy/optimize/_optimize.py", line 3176, in myfunc
+    return func(p + alpha*xi)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/scipy/optimize/_optimize.py", line 620, in function_wrapper
+    fx = function(np.copy(x), *(wrapper_args + args))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/code/math-modular-sources/lattice/padic_holonomy/freeopt3.py", line 46, in <lambda>
+    f = lambda v: cost(v, H, m, N, K)
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/code/math-modular-sources/lattice/padic_holonomy/freeopt3.py", line 32, in cost
+    g = haupt.logabs_x_vec(H, q)
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/code/math-modular-sources/lattice/padic_holonomy/haupt.py", line 273, in logabs_x_vec
+    return (log_absDelta_vec(N * tau) - log_absDelta_vec(tau)) / e
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/code/math-modular-sources/lattice/padic_holonomy/haupt.py", line 259, in log_absDelta_vec
+    nmax = max(8, int(45.0 / max(-np.log(np.abs(q).max()), 1e-12)) + 2)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: cannot convert float NaN to integer

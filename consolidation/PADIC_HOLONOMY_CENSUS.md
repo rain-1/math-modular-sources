@@ -16,7 +16,8 @@ the rearrangement integral and the lune contours of Appendix A.*
 
 **Nothing here is a claimed theorem.**  §9 is the honest computed/estimated/assumed
 ledger; §8 flags the one value that would be new *if* the numerics and the
-quoted multi-place form of the bound both hold.
+quoted multi-place form of the bound both hold; **§11 is a full certification of
+that one value**, with the residual caveats listed in §11.8.
 
 ---
 
@@ -45,17 +46,19 @@ inventory, and an optimised archimedean template — on every $p$-adic near miss
   the margin goes $3.697\ (\Omega_{\rm circ})\to4.123\ (\Omega_{\rm lune})\to
   \mathbf{4.188}$, improving their irrationality measure from $19.744$ to
   $\mathbf{19.44}$.
-* **$\boxed{\zeta_5(3)}$ — the primary target — gives a contradiction.**  With
-  $m=4$, $R_5=5^3$, $\tau(\mathbf b)=\frac{45}{16}$ and an explicit template
-  $\psi(z)=z\exp\bigl(\sum_{k\le16}c_kz^k\bigr)$ lying in $|q|\le0.786$:
-  $$m\;\le\;3.9727173\ \ (\text{rearrangement})\qquad\text{resp.}\qquad
-  3.9504220\ \ (\text{Bost--Charles})\qquad <\;4=m .$$
-  Margin $+0.0404$ out of a budget of $3.2349$ ($1.3\%$); irrationality measure
-  $\kappa\approx716$ (RE) resp. $394$ (BC).  Calegari's elementary criterion
-  fails here ($\theta_5=0.8918$) and Beukers 2008 reaches only
+* **$\boxed{\zeta_5(3)}$ — the primary target — gives a contradiction**, and §11
+  hardens every input of it.  With $m=4$, $R_5=5^3$ (measured from the
+  coefficients to $n=2000$, §11.1), $\tau(\mathbf b)=\frac{45}{16}$ (proved,
+  §11.2) and an explicit template $\psi(z)=z\exp\bigl(\sum_{k\le40}c_kz^k\bigr)$
+  lying in $|q|\le0.8363$:
+  $$m\;\le\;3.9716148\ \ (\text{rearrangement, }N=2^{24}\text{, a-priori error }6.8\cdot10^{-4})
+  \qquad\text{resp.}\qquad 3.9499804\ \ (\text{Bost--Charles})\qquad <\;4=m .$$
+  Certified margin $\ge+0.04214$ out of a budget of $3.23494$ ($1.3\%$);
+  irrationality measure $\kappa\le687$ (RE) resp. $390$ (BC).  Calegari's
+  elementary criterion fails here ($\theta_5=0.8918$) and Beukers 2008 reaches only
   $\zeta_5(3)\pm L_5(3,\chi_5)$, so **this would be a new theorem** — subject to
-  the ledger in §9, in particular the multi-place form of the bound (A1/A2) and
-  the novelty audit of §8.
+  the caveats of §11.8, above all the fact that the multi-place form of the bound
+  is a citation to CDT's companion paper and not verified here.
 * **A host correction.**  The $3$-adic value of the Zagier $\mathbf B$ row is
   $\frac12L_3(2,\chi_{-3})$ ($=\frac12\zeta_3(2)$ in Teichmüller normalisation).
   On the $X_0(9)$ host of the census the bound fails (margin $-0.390$), but the
@@ -74,8 +77,8 @@ inventory, and an optimised archimedean template — on every $p$-adic near miss
   | | $\zeta_2(3)$ | $\zeta_3(3)$ | $L_2(2,\chi_{-4})$ | $\zeta_2(5)$ | $L_3(2,\chi_{-3})^{X_0(3)}$ | $\zeta_5(3)$ | $L_3(2,\chi_{-3})^{X_0(9)}$ | $\zeta_7(3)$ | $\zeta_3(5)$ | $\zeta_2(7)$ | $\zeta_5(5)$ |
   |---|---|---|---|---|---|---|---|---|---|---|---|
   | $m$ | 4 | 4 | 3 | 6 | 3 | **4** | 3 | 4 | 6 | 8 | 6 |
-  | bound | 2.276 | 2.691 | 2.028 | 4.439 | 1.871 | **3.9727** | 3.343 | 6.822 | 8.063 | 15.595 | — |
-  | margin | $+7.394$ | $+3.795$ | $+2.879$ | $+4.188$ | $+4.127$ | $\mathbf{+0.040}$ | $-0.390$ | $-2.048$ | $-2.367$ | $-6.462$ | n/a |
+  | bound | 2.276 | 2.691 | 2.028 | 4.439 | 1.871 | **3.9716** | 3.343 | 6.822 | 8.063 | 15.595 | — |
+  | margin | $+7.394$ | $+3.795$ | $+2.879$ | $+4.188$ | $+4.127$ | $\mathbf{+0.042}$ | $-0.390$ | $-2.048$ | $-2.367$ | $-6.462$ | n/a |
 
 ---
 
@@ -458,7 +461,7 @@ $N=32768$ quadrature nodes, and every contour stays in $|q|\le0.95$.
 | $L_2(2,\chi_{-4})$ | $X_1(4)$ | 3 | $2^{8}$ | 5.54518 | 1.77778 | 5.75702 | -0.804653 | 0.463751 | 0.386521 | **2.028161** | 2.002094 | +2.87931 | **contradiction** |
 | $\zeta_2(5)$ | $X_0(2)$, $k{=}2$ | 6 | $2^{12}$ | 8.31777 | 4.86111 | 12.42216 | -0.774053 | 3.590146 | 3.580998 | **4.438942** | 4.435532 | +4.18770 | **contradiction** |
 | $L_3(2,\chi_{-3})$ | $X_0(3)$, $\chi_{-3}$ | 3 | $3^{6}$ | 6.59167 | 1.77778 | 7.85001 | -1.157963 | 0.249344 | 0.234164 | **1.871210** | 1.867058 | +4.12678 | **contradiction** |
-| $\zeta_5(3)$ | $X_0(5)$, $k{=}1$ | 4 | $5^{3}$ | 4.82831 | 2.81250 | 3.23494 | -0.533513 | 1.060448 | 1.027399 | **3.972717** | 3.950422 | +0.04044 | **contradiction** |
+| $\zeta_5(3)$ | $X_0(5)$, $k{=}1$ | 4 | $5^{3}$ | 4.82831 | 2.81250 | 3.23494 | -0.531289 | 1.066965 | 1.035529 | **3.971615** | 3.949980 | +0.04214 | **contradiction** (certified, §11) |
 | $L_3(2,\chi_{-3})$ | $X_0(9)$, $\chi_{-3}$ | 3 | $3^{3}$ | 3.29584 | 1.77778 | 1.25834 | -0.380379 | 0.507585 | 0.320415 | **3.343139** | 3.178620 | -0.39038 | no contradiction |
 | $\zeta_7(3)$ | $X_0(7)$, $k{=}1$ | 4 | $7^{2}$ | 3.89182 | 2.81250 | 0.42546 | -0.353806 | 1.057868 | 1.000917 | **6.822317** | 6.743819 | -2.04763 | no contradiction |
 | $\zeta_3(5)$ | $X_0(3)$, $k{=}2$ | 6 | $3^{6}$ | 6.59167 | 4.86111 | 3.79170 | -0.583663 | 2.656254 | 2.642173 | **8.063418** | 8.051140 | -2.36653 | no contradiction |
@@ -503,14 +506,18 @@ lies in $|q|\le0.7688$), the values are stable to $10^{-7}$ from $N=4096$ to
 $N=65536$:
 $$\mathrm{RE}=1.0658811,\ \ \text{bound}=3.9763826,\ \ \text{margin}=+0.0350080;\qquad
 \mathrm{BC}=1.0286380,\ \ \text{bound}=3.9512575,\ \ \text{margin}=+0.0722511 .$$
-Extending to degree $16$ (`cert_05.json`) gives the best found,
-$$\boxed{\ \mathrm{RE}=1.0604479,\quad m\le 3.9727173<4=m,\quad\text{margin}=+0.0404412\ }$$
-and $\mathrm{BC}=1.0273996$, bound $3.9504220$, margin $+0.0734895$.  Independent
-re-optimisations at $K=24$, $N=2048$ reproduce $\text{margin}\in[+0.0398,+0.0414]$,
-so the optimum of this family is $\approx+0.041$ and the search has converged.
+Extending the degree to $40$ and polishing directly in the $c_k$ (`pol_05_K40.json`,
+§11.7) gives the best found,
+$$\boxed{\ \mathrm{RE}=1.0669650,\quad m\le 3.9716148<4=m,\quad\text{margin}\ge+0.0421385\ }$$
+and $\mathrm{BC}=1.0355293$, bound $3.9499804$, margin $+0.0742553$.  Ten
+independent optimisations (degrees $8$–$40$, three parametrisations, three
+boundary constraints) all land in $\text{margin}\in[+0.0394,+0.0428]$, so the
+family has converged.  **§11 certifies this**: the error term is a-priori, the
+denominator type is proved rather than measured, and $R_5=5^3$ is read off the
+coefficients to $n=2000$.
 
-Irrationality measure (§7): $\kappa=716$ from RE, $\kappa=394$ from BC.  These are
-large because the margin is small; the qualitative conclusion is the point.
+Irrationality measure (§7): $\kappa\le687$ from RE, $\kappa\le390$ from BC.  These
+are large because the margin is small; the qualitative conclusion is the point.
 
 ### 5.3 The near misses, and why they fail
 
@@ -642,7 +649,7 @@ the contradiction holds:
 | $L_2(2,\chi_{-4})$ | $+2.8793$ | $7.4$ | $+2.9565$ | $7.2$ | Calegari's $\theta=1.16188$ gives $7.18$ |
 | $\zeta_2(5)$ | $+4.1877$ | $19.4$ | $+4.1968$ | $19.4$ | CDT print $\kappa<19.7439<20$ |
 | $L_3(2,\chi_{-3})$ on $X_0(3)$ | $+4.1268$ | $6.0$ | $+4.1420$ | $6.0$ | — |
-| $\zeta_5(3)$ | $+0.0404$ | $716.0$ | $+0.0735$ | $393.8$ | **no previous value** |
+| $\zeta_5(3)$ | $+0.0421$ | $687.2$ | $+0.0743$ | $389.8$ | **no previous value** |
 
 So this route improves CDT's own $\zeta_2(5)$ measure from $19.744$ to $19.39$,
 and Calegari's $\zeta_3(3)$ measure from $22.3$ to $10.0$; it is slightly worse
@@ -677,14 +684,14 @@ Status of each value reached by this recipe:
 | $L_2(2,\chi_{-4})$ ($=\zeta_2(2)$, $2$-adic Catalan) | contradiction, large margin | Calegari 2005 Thm 4.2; Beukers 2008 Cor 7.3 — **not new** |
 | $\zeta_2(5)$ | contradiction, margin $+4.19$, improves CDT's $\kappa$ | CDT ICM 2025; Lai–Sprang–Zudilin 2025 — **not new**, this is the calibration |
 | $L_3(2,\chi_{-3})$ ($=\zeta_3(2)$) on the **level-3** model | contradiction, margin $+4.13$ | Beukers 2008 Cor 7.3 — **not new** (but the level-9/Zagier-$\mathbf B$ model *fails*, see §5) |
-| $\boxed{\zeta_5(3)}$ | **contradiction**, margin $+0.041$ (RE) / $+0.073$ (BC) | Calegari fails; Beukers reaches only $\zeta_5(3)\pm L_5(3,\chi_5)$; **would be NEW** — flag for audit against LSZ 2025 |
+| $\boxed{\zeta_5(3)}$ | **contradiction**, certified margin $\ge+0.0421$ (RE) / $+0.0743$ (BC), §11 | Calegari fails; Beukers reaches only $\zeta_5(3)\pm L_5(3,\chi_5)$; **would be NEW** — flag for audit against LSZ 2025 |
 | $\zeta_2(7)$, $\zeta_3(5)$, $\zeta_7(3)$ | **no contradiction** (margins $-6.46$, $-2.35$, $-2.04$) | open, and stays open by this route |
 | $\zeta_5(5)$ | **method inapplicable**: the entry condition fails for *every* template | open |
 
 **The one candidate new theorem is $\zeta_5(3)\notin\mathbb Q$**, i.e. the $5$-adic
 zeta value at $3$, equivalently $\zeta_5(3)=L_5(3,\mathrm{id})$ in Calegari's
-notation.  Its margin is small ($+0.041$ out of a budget of $3.235$, i.e. $1.3\%$),
-so §9 must be read before any claim is made.
+notation.  Its margin is small ($+0.0421$ out of a budget of $3.2349$, i.e.
+$1.3\%$), so §9 and especially §11.8 must be read before any claim is made.
 
 ---
 
@@ -708,12 +715,14 @@ so §9 must be read before any claim is made.
 * $\log|x|$ on every contour: cross-validated against the direct $\eta$-product
   ($3\times10^{-15}$), against $\Gamma_0(N)$-invariance ($10^{-16}$), and against
   the exact identity $\int_{|q|=r}\log|x|\,d\mu=\log r$.
-* **Independent end-to-end recomputation of the $\zeta_5(3)$ contour.**  With the
-  contour lying in $|q|\le0.7852$, the direct $\eta$-product converges, so
+* **Independent end-to-end recomputation of the $\zeta_5(3)$ contour.**  The
+  contour lies well inside $|q|<1$, so the direct $\eta$-product converges and
   $\log|x|$ was recomputed at $40$ digits in `mpmath` with **no** modular
-  reduction of any kind: agreement $4.9\times10^{-15}$ at every sampled point, and
-  the recomputed bound is $3.972717235$ with margin $+0.040441262$.  The identity
-  $\log|\psi'(0)|=c_0=\overline u$ holds to machine precision.
+  reduction of any kind: agreement $4.9\times10^{-15}$ at every sampled point (on
+  the degree-$16$ template, where the recomputed bound is $3.972717235$ with
+  margin $+0.040441262$).  The identity $\log|\psi'(0)|=c_0=\overline u$ holds to
+  machine precision.  §11.5 repeats the exercise on the final degree-$40$
+  template with an a-priori error bound.
 * $\mathrm{RE}$: the quadrature is exact to $10^{-8}$ on a closed-form test
   ($g=\cos2\pi t$, $\mathrm{RE}=4/\pi^2$), and every reported value is stable to
   $10^{-7}$ over $N=4096\dots65536$.
@@ -729,7 +738,8 @@ so §9 must be read before any claim is made.
 
 ### (A) Assumed / not verified here — read before claiming anything
 
-**A1. The multi-place form of the bound.**  The inequality actually used,
+**A1. The multi-place form of the bound.**  *(Now settled as a citation gap —
+see §11.4, which locates exactly what is and is not in L2chi.)*  The inequality actually used,
 $$m\le\frac{\mathrm{BC}+\sum_v\log R_v}{\log|\varphi'(0)|+\sum_v\log R_v-\tau(\mathbf b)},$$
 is quoted from CDT's ICM survey §6.2 eq. (6.2) (their $\zeta_2(5)$ proof), where
 it is attributed to [L2chi, Thm 2.5.1] with the $p$-adic template
@@ -740,7 +750,7 @@ take the ICM form at face value — it is calibrated exactly against their own
 $\zeta_2(5)$ numbers in §3, which is strong evidence the transcription is right,
 but it is an input, not a verification.
 
-**A2. The rearrangement form of the multi-place bound.**  Nazarov's
+**A2. The rearrangement form of the multi-place bound.**  *(See §11.4.)*  Nazarov's
 $\mathrm{BC}\le\mathrm{RE}$ is a theorem, and CDT prove a holonomy bound with the
 rearrangement integral in place of BC with the *same* $\tau(\mathbf b)$
 (Thm `main:elementary form`).  We assume the same substitution is legitimate in
@@ -822,3 +832,540 @@ outright, exactly as for $\zeta_5(5)$).
 | `precise5.py` | high-precision 2-parameter optimum for $\zeta_5(3)$ (`precise5.log`) |
 | `calib.py` | reproduction of CDT's two $\zeta_2(5)$ contours (`calib.log`) |
 | `assemble.py` | final table, $\kappa$, contour profiles (`FINAL.json`, `assemble.log`) |
+| `freeopt2.py`, `polish.py` | re-optimisation with the vectorised evaluator and the two-resolution anti-aliasing guard (§11.7) |
+| `freeopt3.py` | the non-even (sine-terms) variant, §11.7 |
+| `certnum.py`, `certrig.py` | §11.5: Lipschitz bound, $N$-refinement to $2^{24}$, and the fully a-priori certificate |
+| `ap_lib.gp`, `ap_run2000.gp`, `ap_xcheck.gp` | §11.1: $a_n,b_n,e_n$ mod $5^{6150}$ to $n=2000$ by peeling, cross-checked against exact rationals to $n=600$ |
+| `ap_kl.gp` | §11.1: $2\eta=\zeta_5(3)$ against Kubota–Leopoldt/Bernoulli |
+| `ap_rank.gp`, `ap_rank2.gp`, `ap_ode.gp` | §11.3: rank to $D=120$ and the explicit order-3 ODE |
+| `ap_lip.gp` | §11.5: $\max\lvert q\,d\log x/dq\rvert $ on circles |
+| `ap_out_2000.txt` | the valuation data $\bigl(n,v_5(a_n),v_5(b_n),v_5(e_n),v_5(h_n)\bigr)$, $n\le2000$ |
+
+---
+
+## 11. Certification of the $\zeta_5(3)$ verdict
+
+The margin in §5.2 is $1.3\%$ of the budget, so this section hardens every input
+separately.  Everything below refers to $(p,k)=(5,1)$: $m=4$, $d=2k+1=3$,
+$R_5=5^3$, $\tau(\mathbf b)=45/16$, $L=3\log5$.
+
+### 11.1 $R_5=5^3$ read off the coefficients, to $n=2000$
+
+**What is actually needed.**  The bound needs a *lower* bound $R_5\ge125$ for the
+$5$-adic radius of $H(x)=\sum_n h_nx^n$, $h_n=a_n+\eta b_n$ — equivalently
+$\liminf_n v_5(h_n)/n\ge3$.
+
+**The computation** (`ap_lib.gp`, `ap_run2000.gp`; **exact**).  Since
+$a_n,b_n,e_n\in\mathbb Z_5$ (§11.2), the whole construction can be run in
+$\mathbb Z/5^{M}$ with $M=3N+150=6150$; residues are then exact reductions of the
+true values, with no loss.  $x(q)$ is built from the pentagonal Euler product and
+the re-expansion in $x$ is done by *peeling* (repeatedly take the constant term
+and divide by $x$) rather than by series reversion.  Validation: the residues
+agree with the exact-rational data of §2 for $n\le40$, and with a fully
+independent exact-rational recomputation (`serreverse`+`subst` over $\mathbb Q$)
+**coefficient for coefficient for all $n\le600$**; and $\eta$ computed from
+$N=500$ and from $N=2000$ agree to $5^{1486}$, exactly the predicted accuracy of
+the $N=500$ value.
+
+**$\eta$.**  $v_5(b_N)=1$, so $\eta:=-a_N/b_N$ at $N=2000$ is pinned mod
+$5^{6149}$:
+$$\eta=1+2\cdot5+3\cdot5^2+3\cdot5^3+5^4+3\cdot5^5+4\cdot5^6+3\cdot5^7+2\cdot5^8+\cdots,\qquad v_5(\eta)=0 .$$
+
+**The measurement** (`ap_out_2000.txt`).  With $h_n=a_n+\eta b_n$ and
+$d_n:=v_5(h_n)-3n$ (only $n\le0.8N=1600$ is quoted; beyond that the answer is
+contaminated by the choice of $\eta$):
+
+| $n$ | 50 | 100 | 200 | 400 | 600 | 800 | 1000 | 1200 | 1400 | 1600 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| $v_5(h_n)$ | 141 | 290 | 588 | 1189 | 1789 | 2387 | 2985 | 3585 | 4187 | 4785 |
+| $v_5(h_n)/n$ | 2.8200 | 2.9000 | 2.9400 | 2.9725 | 2.9817 | 2.9838 | 2.9850 | 2.9875 | 2.9907 | 2.9906 |
+| $d_n$ | $-9$ | $-10$ | $-12$ | $-11$ | $-11$ | $-13$ | $-15$ | $-15$ | $-13$ | $-15$ |
+
+* $v_5(h_n)/n\to3$ cleanly, reaching $2.99063$ at $n=1600$.
+* Least squares $d_n=A+B\log n$ gives $A=-0.974$, $B=-1.728$ over
+  $50\le n\le1600$ ($A=-1.463$, $B=-1.654$ over $2\le n\le1600$).  Windowed
+  minima ($-7$ on $[2,25]$, $-10$ on $[51,100]$, $-12$ on $[101,200]$, $-14$ on
+  $[401,800]$, $-15$ on $[801,1600]$) show genuine $-C\log n$ behaviour with
+  $C\approx1.8$, not a bounded constant — exactly the $O(\log n)$ deficit the
+  theory predicts.
+* $\max_n d_n=-3$ (at $n=2$): $d_n$ is **never positive**, so the radius is
+  *exactly* $125$ and there is no slack to harvest.  ($\min d_n=-15$ at $n=937$.)
+
+**The two factors separately — an instructive correction.**  One might expect
+$E^*_{2}(x)$ to have radius $1$ and $E^*_{-2}(x)$ radius $125$.  **That is false.**
+The data ($n\le2000$, exact) gives
+$$v_5\bigl([x^n]E^*_2\bigr)/n\to0,\qquad v_5\bigl([x^n]E'_{-2}\bigr)/n\to0$$
+— both $\le7$ in absolute terms over the whole range, both fitting $\approx0.27\log n$,
+and $v_5(a_n)=v_5(b_n)$ for **every** $1\le n\le2000$.  So *both* naively
+$x$-expanded factors have $5$-adic radius exactly $1$, and the radius $125$ is a
+property of the **product alone**, produced by cancellation between $\eta b_n$ and
+$\sum_{i<n}b_ie_{n-i}$.  There is no contradiction with non-archimedean
+multiplicativity (the Gauss norm at $R=1$ is multiplicative and consistent;
+"Newton polygon of $fg$ = sum of polygons" fails for series with unbounded
+slopes).  The structural reason is that $E^*_2$ has weight $2$ and $E^*_{-2}$
+weight $-2$: their bare $q\mapsto x$ re-expansions are not functions on the curve
+and carry no intrinsic radius — only the weight-$0$ product does.  *This is why
+the criterion is intrinsically about the pair $(a_n,b_n)$ and not about either
+series alone.*
+
+**$2\eta=\zeta_5(3)$, independently of the $a_n/b_n$** (`ap_kl.gp`, exact
+rational Bernoulli numbers).  Using $\zeta_5(3)=\lim\zeta^*(1-2j)$ over
+$2j\equiv-2\pmod{4\cdot5^r}$, $\zeta^*(1-2j)=-(1-5^{2j-1})B_{2j}/(2j)$:
+
+| $r$ | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|---|---|---|---|---|---|---|---|
+| $2j$ | 18 | 98 | 498 | 2498 | 12498 | 62498 | 312498 |
+| $v_5\bigl(2\eta-\zeta^*(1-2j)\bigr)$ | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+
+Agreement is exactly $r+1$ digits at every $r$ — the Kubota–Leopoldt continuity
+rate — confirming $2\eta=\zeta_5(3)$ to $8$ $5$-adic digits, with no input from
+the modular construction.
+
+**Which theorem supplies $R_5\ge5^3$.**  K. Buzzard, *Analytic continuation of
+overconvergent eigenforms*, J. Amer. Math. Soc. **16** (2003), 29–55,
+**Theorem 5.2** (and Corollary 6.2 for the level-$p^2$ variants), applied exactly
+as in Calegari's Lemma 3.1: $E^*_{-2k}$ is an overconvergent eigenform of level
+$\Gamma_0(p)$ of **finite slope** — indeed slope $0$, since it is the weight-$(-2k)$
+member of the *ordinary* Eisenstein family ($U_p$-eigenvalue $1$) — and Buzzard's
+theorem continues such a form **across the entire supersingular annulus**, not
+merely part of it (Calegari: *"such sections extend far into the supersingular
+annuli.  In particular, by Theorem 5.2 of Buzzard, it extends entirely over the
+supersingular annuli"*).  Together with the Fricke description of the ordinary
+locus (§1.1) this is precisely the disc $|x|_5<5^{12/(p-1)}=5^3$.  Two caveats we
+do not close: (i) Buzzard's paper is written for classical integer weights, and
+the weight $-2k$ specialisation is via Coleman's theory / the eigencurve — this
+is what Calegari invokes and we follow him; (ii) Calegari states the $p=2,3$ cases
+and asserts in his §3.2 that "the same technique can also be applied to other $p$
+when $X_0(p)$ has genus zero", which is the $p=5$ statement we use.  **The
+measurement above is what makes this safe in practice: it shows the radius is
+exactly $5^3$, so the cited lower bound is attained and not merely plausible.**
+
+### 11.2 The denominator type: a proof, not a measurement
+
+> **Proposition.**  Let $p$ be a prime with $p-1\mid24$, let
+> $x=(\Delta(p\tau)/\Delta(\tau))^{1/(p-1)}$, and for $1\le k\le3$ put
+> $$E^*_{2k}=E_{2k}(\tau)-p^{2k-1}E_{2k}(p\tau),\qquad
+> E'_{-2k}=\sum_{n\ge1}\Bigl(\sum_{d\mid n,\ p\nmid d}d^{-2k-1}\Bigr)q^n,$$
+> $H_\eta=E^*_{2k}(E'_{-2k}+\eta)=\sum_n(a_n+\eta b_n)x^n$.  Let
+> $$D'_n:=\operatorname{lcm}\{\,d:1\le d\le n,\ p\nmid d\,\}$$
+> be the **prime-to-$p$** lcm.  Then $b_n\in\mathbb Z$ and
+> $(D'_n)^{2k+1}a_n\in\mathbb Z$ for every $n$; a fortiori
+> $[1,\dots,n]^{2k+1}a_n\in\mathbb Z$.
+
+*Proof.*  (i) $24/(p-1)\in\mathbb Z$, so
+$x=q\prod_{n\ge1}\bigl((1-q^{pn})/(1-q^{n})\bigr)^{24/(p-1)}\in q+q^2\mathbb Z[\![q]\!]$.
+A power series $q+\sum_{m\ge2}\alpha_mq^m$ with $\alpha_m\in\mathbb Z$ has compositional
+inverse $q(x)=x+\sum_{m\ge2}\beta_mx^m$ with $\beta_m\in\mathbb Z$ (induction: $\beta_m$
+is a universal polynomial with integer coefficients in $\alpha_2,\dots,\alpha_m$).
+
+(ii) $E_{2k}=1-\frac{4k}{B_{2k}}\sum_{n\ge1}\sigma_{2k-1}(n)q^n$ and
+$\frac{4k}{B_{2k}}=24,-240,504$ for $2k=2,4,6$, all integers; hence
+$E_{2k}\in\mathbb Z[\![q]\!]$ and $E^*_{2k}\in\mathbb Z[\![q]\!]$ for $k\le3$.
+Composing with $q(x)\in x+x^2\mathbb Z[\![x]\!]$ gives $E^*_{2k}\in\mathbb Z[\![x]\!]$,
+i.e. $b_n\in\mathbb Z$.  (For $k\ge6$, $4k/B_{2k}\notin\mathbb Z$ and one rescales by a
+*fixed* rational, which is harmless; it does not arise in this census.)
+
+(iii) The $q^n$-coefficient of $E'_{-2k}$ is $c_n=\sum_{d\mid n,\,p\nmid d}d^{-2k-1}$.
+Every $d$ occurring satisfies $1\le d\le n$ and $p\nmid d$, so $d\mid D'_n$ and
+$(D'_n)^{2k+1}c_n\in\mathbb Z$.
+
+(iv) Substituting $q=q(x)$: $E'_{-2k}(x)=\sum_{n\ge1}c_n\,q(x)^n$ with
+$q(x)^n\in x^n\mathbb Z[\![x]\!]$, so $[x^N]E'_{-2k}(x)$ is a $\mathbb Z$-linear
+combination of $c_1,\dots,c_N$, hence lies in $(D'_N)^{-(2k+1)}\mathbb Z$ because
+$D'_n\mid D'_N$ for $n\le N$.  Multiplying by $E^*_{2k}(x)\in\mathbb Z[\![x]\!]$
+preserves this, giving $(D'_N)^{2k+1}a_N\in\mathbb Z$. $\square$
+
+This is exactly the Eichler-integral/$q$-expansion mechanism of the Theorem-B\*
+integrality proofs elsewhere in this project: the only source of denominators is
+the $d^{-(2k+1)}$ in the $(2k+1)$-fold formal primitive, and the change of
+variable $q\mapsto x$ is integral in both directions.
+
+**Sharpness** is the exact computation of §2.2: for $(p,k)=(5,1)$ the exponent $3$
+cannot be lowered — $[1,\dots,n]^{2}a_n\notin\mathbb Z$ already at $n=3$, with
+$\ell=3$ the obstructing prime.
+
+**Use the Euler operator, not $d/dx$.**  The $x^{N}$-coefficient of $H^{(j)}$ is
+$\frac{(N+j)!}{N!}h_{N+j}$, whose denominator is controlled by $D'_{N+j}$ rather
+than $D'_N$ — a discrepancy of size $e^{O(\log N)}$, harmless for the *rate* but
+outside the literal shape $a_{i,n}\in\mathbb Z$ demanded by the theorem.  Replacing
+$d/dx$ by the Euler operator $\delta=x\,\tfrac{d}{dx}$ removes the issue exactly:
+$$\delta^{j}H=\sum_n n^{j}h_n x^{n},\qquad (D'_n)^{2k+1}\,n^{j}h_n\in\mathbb Z .$$
+Since $\delta^{j}=x^{j}\frac{d^{j}}{dx^{j}}+(\text{lower order, coefficients in }\mathbb Q[x])$
+with invertible leading coefficient $x^j$,
+$$\operatorname{span}_{\mathbb Q(x)}\{1,H,\delta H,\dots,\delta^{2k}H\}
+=\operatorname{span}_{\mathbb Q(x)}\{1,H,H',\dots,H^{(2k)}\},$$
+so the inventory, its size $m$, and its $\mathbb Q(x)$-independence are unchanged,
+while the denominator type is now literally $[1,\dots,n]^{2k+1}$ for every member.
+$\varphi^*\delta^jH$ is still meromorphic on $\mathbb D$ ($\delta=x(dq/dx)\,d/dq$).
+
+**The array $\mathbf b$ and the $u_j$.**  Take $r=2k+1$ and
+$$b_{1,j}=0\ (j=1,\dots,r),\qquad b_{i,j}=1\ (2\le i\le m,\ j=1,\dots,r),$$
+i.e. denominators $[1,\dots,1\cdot n]^{\,r}=[1,\dots,n]^{2k+1}$ on the nose.  Every
+column has the step shape with $u_j=1$ and $b_j=1$, so $\sigma_1=0$,
+$\sigma_i=2k+1$ for $i\ge2$, and
+$$\tau(\mathbf b)=\frac1{m^2}\sum_{i=1}^m(2i-1)\sigma_i
+=\frac{2k+1}{m^2}\sum_{i=2}^{m}(2i-1)=\frac{2k+1}{m^2}(m^2-1)=(2k+1)\Bigl(1-\frac1{m^2}\Bigr),$$
+equivalently $\sigma_m-\frac1{m^2}\sum_ju_j^2b_j=(2k+1)-\frac{2k+1}{m^2}$.
+For $(p,k)=(5,1)$: $m=4$, $r=3$, $u=(1,1,1)$, $b=(1,1,1)$, $\sigma_m=3$,
+$$\boxed{\ \tau(\mathbf b)=3\Bigl(1-\tfrac1{16}\Bigr)=\tfrac{45}{16}=2.8125\ \text{exactly}.}$$
+CDT's presentation ($r=1$, $\mathbf b=(0,2k+1,\dots,2k+1)$, denominators
+$[1,\dots,(2k+1)n]$) gives the *same* $\tau$ because only the growth rate enters;
+the presentation above matches the actual denominators exactly and is the one we
+use.  The prime-to-$p$ refinement gives no asymptotic gain (§2.2), so
+$\tau(\mathbf b)=45/16$ is optimal for this inventory.
+
+### 11.3 $\mathbb Q(x)$-independence of $\{1,H,\delta H,\delta^2H\}$
+
+> **Lemma.**  Suppose $H$ satisfies an inhomogeneous linear ODE over $\mathbb Q(x)$
+> of **exact minimal order** $N$ — i.e. there are $P_0,\dots,P_N,R\in\mathbb Q(x)$
+> with $P_N\ne0$ and $\sum_{i\le N}P_iH^{(i)}=R$, and no such relation with a
+> smaller order.  Then $1,H,H',\dots,H^{(N-1)}$ are $\mathbb Q(x)$-linearly
+> independent.
+
+*Proof.*  Let $\lambda_{-1}\cdot1+\sum_{i=0}^{N-1}\lambda_iH^{(i)}=0$ with
+$\lambda_\bullet\in\mathbb Q(x)$.  If some $\lambda_i\ne0$ with $i\ge0$, take
+$j=\max\{i\ge0:\lambda_i\ne0\}\le N-1$; then
+$\sum_{i\le j}\lambda_iH^{(i)}=-\lambda_{-1}$ is an inhomogeneous ODE for $H$ of
+order $j<N$ with nonzero leading coefficient — contradiction.  Hence all
+$\lambda_i=0$ for $i\ge0$, and then $\lambda_{-1}=0$. $\square$
+
+So the whole of the independence hypothesis reduces to **minimal order $=2k+1$**.
+That is Kontsevich–Zagier (the proof of Fact 1 in their §2.3), quoted by CDT for
+$\zeta_2(5)$.  The structural reason, in our case $k=1$, $p=5$:
+
+* $\theta^{3}E'_{-2}=E^{\mathrm{evil}}_{4}=E_4(\tau)-E_4(5\tau)$, a *classical*
+  holomorphic modular form of weight $4$ on $\Gamma_0(5)$
+  ($\theta=q\,d/dq$).  So $E'_{-2}$ is an Eichler integral: a $3$-fold formal
+  primitive of a weight-$4$ form.
+* Consequently the monodromy of $E'_{-2}$ around the $x$-line adds, for each
+  $\gamma\in\Gamma_0(5)$, a period polynomial of degree $\le2$ in $\tau$; after
+  multiplication by the weight-$2$ form $E^*_{2}$, the monodromy orbit of $H$ is
+  contained in the affine space $H+\operatorname{span}\{E^*_2,E^*_2\tau,E^*_2\tau^2\}$.
+* The three functions $E^*_2\tau^{\,i}$ ($i=0,1,2$) are exactly a basis of
+  solutions of $\operatorname{Sym}^2$ of the Picard–Fuchs (order-$2$) operator of
+  $X_0(5)$, an order-$3$ operator over $\mathbb Q(x)$; hence $H$ satisfies an
+  inhomogeneous ODE of order $\le3$.
+* *Exactness* (order not $\le2$) is the non-degeneracy of the Eichler cocycle of
+  $E^{\mathrm{evil}}_4$, i.e. that its period polynomial spans the full space of
+  degree-$\le2$ polynomials — this is the Kontsevich–Zagier input, and it is what
+  we take on citation.
+
+**Independent verification** (exact, rank over $\mathbb F_q$, $q=2^{61}-1$;
+`ap_rank.gp`, `ap_rank2.gp`, `ap_ode.gp`).  For $\eta=5/7$ and for $\eta=0$ alike:
+
+| family | $D$ | required rank | actual | deficiency |
+|---|---|---|---|---|
+| $\{1,H,H',H''\}$ | $0,1,\dots,120$ | $4(D+1)$, up to $484$ | $4(D+1)$ | $0$ **everywhere** |
+| $\{1,H,H',H'',H'''\}$ | $\le7$ | $5(D+1)$ | full | $0$ |
+| $\{1,H,H',H'',H'''\}$ | $8$ | $45$ | $44$ | $\mathbf 1$ |
+| $\{1,H,H',H'',H'''\}$ | $9,10,\dots$ | $5(D+1)$ | $-$ | $2,3,\dots$ (grows by exactly $1$) |
+
+So: (a) **no $\mathbb Q(x)$-relation among $\{1,H,H',H''\}$ with
+$\deg P_i\le120$** — far beyond any plausible degree; (b) an inhomogeneous ODE of
+order exactly $3$ *does* exist, its kernel at $D=8$ is $1$-dimensional, and the
+polynomial coefficients of $(1,H,H',H'',H''')$ in it have degrees
+$(5,4,6,7,8)$ — the $H'''$ coefficient and the inhomogeneous term are both
+nonzero, so it is a genuine order-$3$ inhomogeneous relation; (c) the deficiency
+incrementing by exactly $1$ per step confirms that relation is unique.
+
+This is a check, not a substitute for Kontsevich–Zagier: a rank certificate to
+degree $D$ cannot by itself exclude a relation of larger degree.  But the
+juxtaposition is striking — the minimal order-$3$ relation has degree $8$, while
+a hypothetical order-$\le2$ relation would have to have degree $>120$.
+
+### 11.4 The multi-place bound: exactly what is being used, and where it lives
+
+The inequality used is
+$$m\;\le\;\frac{\displaystyle\sum_{v}\iint_{\mathbb T^2}\log|\varphi_v(z)-\varphi_v(w)|_v\,\mathrm d\mu\,\mathrm d\mu}
+{\displaystyle\sum_{v}\log|\varphi_v'(0)|_v-\tau(\mathbf b)}
+\;=\;\frac{\mathrm{BC}(\varphi_\infty)+\sum_p\log R_p}{\log|\varphi_\infty'(0)|+\sum_p\log R_p-\tau(\mathbf b)},$$
+where the second equality is the specialisation $\varphi_p(z)=R_p^{-1}z$: then
+$\log|\varphi_p'(0)|_p=\log R_p$, and
+$$\iint_{\mathbb T^2}\log|\varphi_p(z)-\varphi_p(w)|_p=\log R_p+\iint_{\mathbb T^2}\log|z-w|_p=\log R_p+0 ,$$
+so **$\sum_p\log R_p$ enters numerator and denominator once each** — which is
+precisely CDT's ICM eq. (6.2) for $\zeta_2(5)$, and is confirmed empirically: with
+$\mathrm{BC}=2.13322$, $|\varphi'(0)|=1/3$, $\tau=175/36$ and $\log R_2=12\log2$
+it reproduces their $4.43206$ to $5\times10^{-5}$ (§3).  Any other placement of
+$\log R_2$ fails to reproduce it.
+
+**Where the statement lives.**  We searched `papers/cdt/cdt2/L2chi.tex`
+(arXiv:2408.15403) for the $p$-adic-place version and it is **not there**:
+
+* Theorems 2.5.1 / 6.0.2 / 7.0.1 (`basic main`, `main:elementary form`,
+  `main:BC form`) are stated over $\mathbb Q$ with a **single archimedean**
+  $\varphi$.
+* Remark `BCboundK` (§ after Thm `main:BC form`) gives the number-field
+  generalisation, with $\varphi_\sigma$ one per **complex embedding**
+  $\sigma:K\hookrightarrow\mathbb C$:
+  $$m\le\frac{\sum_\sigma\iint\log|\varphi_\sigma(z)-\varphi_\sigma(w)|}
+  {\bigl(\sum_\sigma\log|\varphi_\sigma'(0)|\bigr)-[K:\mathbb Q]\bigl(\tau(\mathbf b)+\tau^\sharp(\mathbf e)\bigr)} .$$
+  This is the exact shape displayed above — a sum over places upstairs and
+  downstairs — but only over **archimedean** places.
+* L2chi says so explicitly in its concluding section: *"in this paper, we have
+  emphasized the archimedean place as special when it comes to overconvergence.
+  In [CDT24] we plan to write our holonomicity bound in a more general Arakelov
+  adelic form over a global field."*  Here **[CDT24] $=$ F. Calegari,
+  V. Dimitrov, Y. Tang, _Arithmetic holonomy bounds and the irrationality of the
+  $2$-adic $\zeta(5)$_, 2024** — the companion treatise, which is **not in this
+  repository**.
+
+> **Therefore:** the inequality we use is stated here as *"the CDT ICM §6.2 form,
+> the one they themselves use for $\zeta_2(5)$"*, proved in the companion paper
+> [CDT24], and **not verified against a proof available to us**.  Its shape is
+> forced by, and consistent with, L2chi Remark `BCboundK`, and its numerical
+> transcription is confirmed by reproducing their $4.43206$; but this remains the
+> single load-bearing citation of the whole census.  The same caveat applies a
+> fortiori to the **rearrangement** variant of the multi-place bound (L2chi's
+> Thm `main:elementary form` is the archimedean rearrangement bound; we assume
+> the multi-place version substitutes $\mathrm{RE}$ for $\mathrm{BC}$ with the
+> same $\tau(\mathbf b)$, which is legitimate at least in the direction
+> $\mathrm{BC}\le\mathrm{RE}$ of Nazarov's inequality).
+
+### 11.5 The archimedean numerics, with an explicit error bound
+
+**The certified template.**  $\psi(z)=z\exp\bigl(c_0+\sum_{k=1}^{40}c_kz^k\bigr)$,
+$c_k\in\mathbb R$ (`pol_05_K40.json`):
+
+$$\begin{aligned}
+c_{0\ldots5}&=(-0.531289158,\,-0.225379074,\,-0.127598877,\,-0.001824369,\,-0.027735780,\,-0.041418343)\\
+c_{6\ldots11}&=(+0.051444137,\,+0.026087140,\,-0.010853938,\,+0.001314954,\,-0.003547849,\,-0.023294126)\\
+c_{12\ldots17}&=(+0.000125751,\,+0.020158067,\,-0.001454440,\,-0.004262361,\,+0.007019143,\,-0.000198726)\\
+c_{18\ldots23}&=(-0.007684408,\,-0.006339902,\,+0.005397468,\,+0.001260337,\,+0.000134428,\,+0.014051878)\\
+c_{24\ldots29}&=(-0.011391873,\,-0.005386029,\,-0.000202917,\,+0.001464054,\,-0.000123972,\,+0.008670335)\\
+c_{30\ldots35}&=(-0.000051833,\,-0.006877094,\,-0.001450246,\,-0.001060183,\,+0.002930635,\,+0.002103211)\\
+c_{36\ldots40}&=(+0.001750273,\,-0.002516914,\,-0.002244428,\,+0.000524421,\,+0.001281738)
+\end{aligned}$$
+
+**(a) Admissibility.**  On $|z|=1$, $\log|\psi|=u(t):=c_0+\sum_kc_k\cos2\pi kt$, a
+trigonometric polynomial with exact Lipschitz constant $2\pi\sum_kk|c_k|=2\pi\cdot4.3589$.
+Sampling on $2^{22}$ points and adding $2\pi\sum k|c_k|/2^{23}$ gives
+$$\max_t u(t)\;\le\;-0.17880 .$$
+Hence $|\psi(z)|\le e^{u}\le e^{-0.1788}<1$ on $|z|=1$, so $\psi(\mathbb D)\subset\mathbb D$
+by the maximum principle, and $\varphi=x\circ\psi$ is admissible (§1.5).  The
+slack is $0.179$, four orders of magnitude above any plausible evaluation error;
+the cheaper sufficient test $c_0+\sum_{k\ge1}|c_k|\le0$ is *not* satisfied
+($=+0.127$), so the grid-plus-Lipschitz certificate is the operative one.
+
+**(b) $\log|\varphi'(0)|$ is exact.**  $x=q+O(q^2)$ so $x'(0)=1$, and
+$\psi'(0)=e^{c_0}$; hence
+$$\log|\varphi'(0)|=c_0=-0.531289158096\quad\text{exactly (a decimal we chose).}$$
+
+**(c) A Lipschitz bound for $g(t)=\log|x(\psi(e^{2\pi it}))|$.**  With
+$\Lambda(q):=q\frac{d}{dq}\log x=1+6\sum_{n\ge1}n\Bigl(\frac{q^n}{1-q^n}-\frac{5q^{5n}}{1-q^{5n}}\Bigr)$
+(from $x=q\prod((1-q^{5n})/(1-q^n))^6$; verified against $d g/d\theta=-\operatorname{Im}\Lambda$
+on circles), and $q=z\,e^{P(z)}$ giving $\frac{dq}{dt}=2\pi i\,q\,(1+zP'(z))$,
+$$g'(t)=\operatorname{Re}\bigl[\,2\pi i\,\Lambda(q)\,(1+zP'(z))\,\bigr],\qquad
+|g'|\le 2\pi\max|\Lambda|\cdot\Bigl(1+\sum_kk|c_k|\Bigr).$$
+We use **two** bounds for $\max|\Lambda|$:
+
+* an **a-priori** one, from the triangle inequality on the Lambert series
+  (`ap_lip.gp` verifies the $q$-series identity
+  $\Lambda=-\tfrac14(E_2(q)-5E_2(q^5))=1+6q+18q^2+24q^3+\cdots$ to $O(q^{61})$):
+  $$\max_{|q|\le r}|\Lambda(q)|\;\le\;M(r):=1+6\sum_{n\ge1}n\Bigl(\frac{r^n}{1-r^n}+\frac{5r^{5n}}{1-r^{5n}}\Bigr),
+  \qquad M(0.836265)=339.3697 ,$$
+  giving $\operatorname{Lip}(g)\le2\pi\cdot339.3697\cdot(1+4.358941)=\mathbf{11427.0}$
+  — **no sampled quantity enters this**;
+* the **true** $\max_t|g'(t)|$ on the contour, sampled on $2^{20}$ points:
+  $\operatorname{Lip}(g)=259.68$.  (It is $44\times$ smaller because the contour
+  reaches $|q|=0.836$ only at angles far from $\theta=0$, where $\Lambda$ peaks:
+  $\max|\Lambda|$ *on the contour* is only $15.25$, against $339$ on the full
+  circle of that radius.)
+
+**(d) The quadrature bound.**  $\mathrm{RE}_N=\frac1{N^2}\sum_{i,j}\max(g_i,g_j)$
+(identically equal to the sorted formula $\sum_ig_{(i)}(2i-1)/N^2$) is a
+left-endpoint Riemann sum on the torus of
+$F(s,t)=\max(g(s),g(t))$, which is $\operatorname{Lip}(g)$-Lipschitz in the
+sup-metric.  Hence
+$$\bigl|\mathrm{RE}-\mathrm{RE}_N\bigr|\;\le\;\frac{\operatorname{Lip}(g)}{N} .$$
+$N$-refinement (`certnum.py`):
+
+| $N$ | $\mathrm{RE}_N$ | $\mathrm{RE}_N-\mathrm{RE}_{N/2}$ | $\operatorname{Lip}/N$ | bound$_N$ |
+|---|---|---|---|---|
+| $2^{12}$ | 1.066964686390 | — | $6.34\cdot10^{-2}$ | 3.971155821 |
+| $2^{13}$ | 1.066964916829 | $2.30\cdot10^{-7}$ | $3.17\cdot10^{-2}$ | 3.971155976 |
+| $2^{14}$ | 1.066964976643 | $5.98\cdot10^{-8}$ | $1.59\cdot10^{-2}$ | 3.971156016 |
+| $2^{15}$ | 1.066964991126 | $1.45\cdot10^{-8}$ | $7.93\cdot10^{-3}$ | 3.971156026 |
+| $2^{16}$ | 1.066964994868 | $3.74\cdot10^{-9}$ | $3.96\cdot10^{-3}$ | 3.971156028 |
+| $2^{17}$ | 1.066964995801 | $9.33\cdot10^{-10}$ | $1.98\cdot10^{-3}$ | 3.971156029 |
+| $2^{18}$ | 1.066964996037 | $2.36\cdot10^{-10}$ | $9.91\cdot10^{-4}$ | 3.971156029 |
+| $2^{19}$ | 1.066964996096 | $5.86\cdot10^{-11}$ | $4.95\cdot10^{-4}$ | 3.971156029 |
+| $2^{20}$ | 1.066964996111 | $1.46\cdot10^{-11}$ | $2.48\cdot10^{-4}$ | 3.971156029 |
+
+The successive differences fall by a factor of exactly $4$ per doubling — the
+$O(N^{-2})$ behaviour expected for a smooth periodic integrand with a
+measure-zero crease — so Richardson gives
+$\mathrm{RE}=1.06696499612\pm10^{-11}$.  We do **not** use that.
+
+**(e) The fully a-priori certificate** (`certrig.py`), using only the majorant
+$\operatorname{Lip}(g)\le11427.0$ of (c), i.e. with *no sampled quantity in the
+error bound at all*:
+
+| $N$ | $\mathrm{RE}_N$ | $\varepsilon=\operatorname{Lip}/N$ | bound $\le$ | margin $\ge$ |
+|---|---|---|---|---|
+| $2^{20}$ | 1.066964996111 | $1.090\cdot10^{-2}$ | 3.978496850 | $+0.031921955$ |
+| $2^{21}$ | 1.066964996114 | $5.449\cdot10^{-3}$ | 3.974826439 | $+0.037370769$ |
+| $2^{22}$ | 1.066964996115 | $2.724\cdot10^{-3}$ | 3.972991234 | $+0.040095176$ |
+| $2^{23}$ | 1.066964996115 | $1.362\cdot10^{-3}$ | 3.972073632 | $+0.041457380$ |
+| $2^{24}$ | 1.066964996116 | $6.811\cdot10^{-4}$ | **3.971614831** | $\mathbf{+0.042138482}$ |
+
+Note the verdict already holds at $N=2^{20}$ with the crudest a-priori chain
+(bound $3.9785<4$).  Using instead the sampled $\operatorname{Lip}(g)=259.68$ at
+$N=2^{20}$ gives $\varepsilon=2.476\times10^{-4}$ and bound $\le3.9713229$.
+
+**(f) The certified inequality.**  With $L=3\log5=4.828313737$ (exact),
+$\tau(\mathbf b)=45/16$ (exact, §11.2), $c_0=-0.531289158096$ (exact),
+$$\boxed{\ m\;\le\;\frac{\mathrm{RE}+L}{c_0+L-\tau(\mathbf b)}
+\;\le\;\frac{1.067646097+4.828313737}{1.484524579}\;=\;3.9716148\;<\;4\;=\;m\ }$$
+$$\textbf{margin}\;=\;m\bigl(c_0+L-\tau(\mathbf b)\bigr)-(\mathrm{RE}+L)\;\ge\;+0.0421385 ,$$
+using the **a-priori** chain at $N=2^{24}$ (the sampled-Lipschitz variant at
+$N=2^{20}$ gives the slightly better $3.9713229$ and $+0.0425719$).
+With the (sharper, $N$-converged to $10^{-8}$) Bost–Charles numerator
+$\mathrm{BC}=1.03552928$ the same template gives bound $=3.9499804$ and margin
+$=+0.0742553$.
+
+**Irrationality measure.**  $\kappa=(1-\gamma)/\bigl(1-\sqrt{1-\text{margin}/(mL)}\bigr)$
+with $\gamma=1/4$: the certified RE margin $+0.0421385$ gives $\kappa\le687.0$;
+the (uncertified but $N$-converged) BC margin $+0.0742553$ gives $\kappa\le389.8$.
+
+**What "certified" does and does not mean here.**  (i) The error bound
+$\varepsilon=\operatorname{Lip}(g)/N$ is a genuine a-priori quadrature bound, and
+in the boxed statement $\operatorname{Lip}(g)$ is itself a-priori (a
+triangle-inequality majorant on $|q|\le\max|q|$), so **no sampled quantity enters
+the error term**.  (ii) $\max_t u\le-0.1788$ is a $2^{22}$-point grid maximum
+plus the exact Lipschitz constant of a trigonometric polynomial — rigorous up to
+float64.  (iii) All arithmetic is float64; the quantities are $O(1)$ with
+$\sim10^{-11}$ round-off, seven orders below $\varepsilon$, and the evaluation of
+$\log|x|$ was cross-checked against a $40$-digit `mpmath` recomputation with no
+modular reduction (agreement $4.9\times10^{-15}$).  (iv) What is *not* done: a
+genuine interval-arithmetic enclosure of $\log|\Delta|$, the
+$\mathrm{SL}_2(\mathbb Z)$ reduction, the FFT and the sort.  Given that the
+verdict survives even the crudest chain at $N=2^{20}$ by a factor of $4$ in
+$\varepsilon$, this is a formality rather than a risk — but it is not done.
+
+### 11.6 Sensitivity: what the verdict actually hinges on
+
+The margin is linear in each input, so the sensitivity is exact.  With
+$\text{margin}=m(c_0+L-\tau)-(\mathrm{RE}+L)$, $m=4$, $L=4.82831$, $\tau=45/16$:
+
+| perturbation | effect on the margin | tolerance |
+|---|---|---|
+| $\mathrm{RE}$ up by $\varepsilon$ | $-\varepsilon$ | survives to $\varepsilon=+0.042$, i.e. a $4\%$ error in RE |
+| $\log R_5$ down by $\varepsilon$ | $-(m-1)\varepsilon=-3\varepsilon$ | survives to $\varepsilon=0.014$, i.e. $R_5\ge5^{2.991}$ |
+| $\tau(\mathbf b)$ up by $\varepsilon$ | $-4\varepsilon$ | survives to $\varepsilon=0.0106$: the exponent $2k+1=3$ must be right to $0.35\%$ |
+| $\log\lvert\varphi'(0)\rvert$ down by $\varepsilon$ | $-4\varepsilon$ | survives to $\varepsilon=0.0106$ |
+| $m\to3$ (an order-$2$ inhomogeneous ODE) | $\tau\to\tfrac83$, margin $\to-1.004$ | **fails** |
+| $m\to5$ (one extra independent function, same type) | $\tau\to\tfrac{72}{25}$, margin $\to+1.185$ | comfortable |
+| $m\to6$ | $\tau\to\tfrac{35}{12}$, margin $\to+2.380$ | comfortable |
+
+So there are exactly three ways the verdict could fail, in decreasing order of
+worry:
+
+1. **$m=4$ wrong downward** — $\{1,H,\delta H,\delta^2H\}$ $\mathbb Q(x)$-dependent,
+   i.e. minimal inhomogeneous ODE of order $\le2$.  Excluded by Kontsevich–Zagier
+   (§11.3) and, to the degrees scanned, by the rank certificate.  An error in the
+   *other* direction only strengthens the conclusion: each extra independent
+   function of the same denominator type is worth about $+1.2$ of margin.
+2. **The multi-place form of the bound** (§11.4) — cited, not verified here.
+3. **The numerics** — bounded explicitly in §11.5, at $\sim0.3\%$ of the margin.
+
+The archimedean template is the *least* critical input: it is a lower bound by
+construction (a better contour only helps), and even a plain disc $|q|\le r$ at
+the optimal $r=0.5965$ already gives a positive margin, $+0.0053$.
+
+### 11.7 Improving the margin, and the one large lever not pulled
+
+Independent re-optimisations, all with the anti-aliasing guard of §9 A5 (the
+objective is evaluated at both $N$ and $2N$ and the *larger* cost used):
+
+| run | family | $K$ | $N$ | cost | margin |
+|---|---|---|---|---|---|
+| `precise5` | $\mathrm{SCALE}(r)\circ\mathrm{BITE}(0,c)$, 2 parameters | — | 32000 | $3.233882$ | $+0.001060$ |
+| `free_05` | even cosine profile | 14 | 1024 | $3.194500$ | $+0.040441$ |
+| `f2_05_a` | even, guarded, $u_{\min}=10^{-3}$ | 16 | 4096 | $3.194244$ | $+0.040697$ |
+| `f2_05_e` | even, guarded, $u_{\min}=10^{-4}$ ($\lvert q\rvert\le0.9999$ allowed) | 24 | 8192 | $3.193693$ | $+0.041249$ |
+| `f2_05_d` | even, guarded, $u_{\min}=10^{-2}$ ($\lvert q\rvert\le0.99$) | 24 | 8192 | $3.194328$ | $+0.040614$ |
+| `f3_05_a` | **non-even** (sine terms allowed) | 12 | 4096 | $3.195493$ | $+0.039449$ |
+| `pol_05_K16` | direct polish in the $c_k$ | 16 | 16384 | $3.193916$ | $+0.041025$ |
+| `pol_05_K24` | " | 24 | 16384 | $3.193078$ | $+0.041863$ |
+| `pol_05_K32` | " | 32 | 16384 | $3.192493$ | $+0.042448$ |
+| `pol_05_K40` | " | 40 | 16384 | $3.192703$ | $+0.042239$ |
+
+Three conclusions.  (i) **Non-even profiles do not help** — expected, since
+$|x(\bar q)|=|x(q)|$; the optimum is genuinely even.  (ii) **Letting the contour
+approach $|q|=1$ does not help**: $u_{\min}=10^{-2}$ ($|q|\le0.99$) and
+$10^{-4}$ ($|q|\le0.9999$) give the same answer as $10^{-3}$, and the optimum has
+$\max|q|=0.785$ — the constraint is *inactive*, the optimum is an interior
+stationary point.  Pushing to $|q|\le0.9$ or beyond is therefore not a lever, and
+the coordinator's alternative is ruled out numerically.  (iii) Raising the degree
+$K$ from $8$ to $40$ buys about $+0.007$ of margin in total and is saturating; the
+best stable value is $\text{margin}=+0.0424$ at $K=32$.
+
+**The one large lever not pulled** is CDT's *convexity / multi-radius* improvement
+of the numerator (L2chi §§7–8, Thms `main:BC conv discrete`, `main:BC fullconv`),
+which replaces $\mathrm{BC}(\varphi)$ by a strictly smaller quantity built from
+$\varphi(rz)$ at several radii.  On their own level-$6$ application it moved the
+numerator by $2.3\%$ ($13.9938\to13.621$).  Here the numerator is
+$\mathrm{RE}+L=5.895$, of which the *contour-dependent* part is
+$\mathrm{RE}=1.067$; a $20\%$ reduction of that part would add $\approx+0.21$ to
+the margin, a fivefold improvement.  We did not implement it: doing so correctly
+needs the multi-place version of those theorems, which is subject to the same
+citation gap as §11.4.
+
+Finally, the **Bost–Charles numerator is the sharper of the two** and is the one
+CDT actually use: with it the margin is $+0.073$ rather than $+0.042$ and the
+bound $3.950$ rather than $3.972$.  The headline uses the conservative
+rearrangement numerator.
+
+### 11.8 The certified statement, and the caveats that remain open
+
+**Certified** (float64 arithmetic; every error term a-priori):
+
+| input | value | how |
+|---|---|---|
+| $m$ | $4$ | Kontsevich–Zagier minimal order $2k+1=3$ + §11.3 Lemma; rank certificate to $D=120$ |
+| $\tau(\mathbf b)$ | $45/16=2.8125$ exactly | §11.2 Proposition (proof) + sharpness by exact computation |
+| $\log R_5$ | $3\log5=4.828313737$ | Buzzard Thm 5.2 (cited); *measured* to be exactly $3$ at $n\le1600$ |
+| $\log\lvert\varphi'(0)\rvert$ | $c_0=-0.531289158096$ exactly | $x'(0)=1$, $\psi'(0)=e^{c_0}$ |
+| admissibility of $\psi$ | $\max_t\log\lvert\psi\rvert\le-0.1788$ | $2^{22}$ grid + exact Lipschitz constant of a trig. polynomial |
+| $\mathrm{RE}$ | $1.066964996\pm6.9\cdot10^{-4}$ | $N=2^{24}$ + a-priori $\operatorname{Lip}(g)\le11427$ |
+
+$$\boxed{\ \text{bound}\;\le\;3.9716148\;<\;4\;=\;m,\qquad \text{margin}\;\ge\;+0.0421385,\qquad \kappa\;\le\;687.2\ }$$
+
+(with the Bost–Charles numerator instead: bound $3.9499804$, margin $+0.0742553$,
+$\kappa\le389.8$.)
+
+**Caveats that remain open**, in order of importance:
+
+1. **The multi-place bound is a citation, not a verification** (§11.4).  The
+   inequality with $\sum_p\log R_p$ in numerator and denominator is stated and
+   used by CDT in the ICM survey §6.2 for $\zeta_2(5)$ and proved in their
+   companion paper *Arithmetic holonomy bounds and the irrationality of the
+   $2$-adic $\zeta(5)$* (2024), which is **not in this repository**.  L2chi
+   (arXiv:2408.15403) contains only the archimedean and the number-field
+   (multi-*embedding*) forms, and says explicitly that the adelic form is deferred
+   to that companion.  We reproduce their $\zeta_2(5)$ numbers exactly, which
+   confirms the transcription but not the theorem.  **This is the one input that
+   an independent reader must check against [CDT24].**
+2. **The rearrangement variant of that multi-place bound** is assumed to hold with
+   the same $\tau(\mathbf b)$.  If it does not, the verdict rests on the
+   Bost–Charles numerator alone, which gives a *larger* margin ($+0.074$) but is
+   the numerically softer quantity (its quadrature is $O(1/N)$ rather than
+   $O(1/N^2)$ where $\varphi$ is non-injective on the boundary; on this contour it
+   is $N$-stable to $10^{-8}$, so this is not a practical worry).
+3. **Kontsevich–Zagier minimal order $2k+1$** is cited, not proved here.  §11.3
+   reduces the whole independence hypothesis to it and gives the structural
+   reason; the rank certificate excludes any relation of degree $\le120$ while the
+   genuine order-$3$ relation has degree $8$.
+4. **Buzzard's theorem at weight $-2k$ and $p=5$** — Calegari's §3.2 asserts the
+   $p=5,7,13$ cases without repeating the argument; we follow him.  The
+   coefficient measurement of §11.1 shows the radius is exactly $5^3$, so nothing
+   is being over-claimed, but the *proof* that it is at least $5^3$ is his.
+5. **No interval arithmetic.**  The float64 chain has $\sim10^{-11}$ round-off
+   against an error budget of $6.8\times10^{-4}$; a certified enclosure of
+   $\log|\Delta|$, the $\mathrm{SL}_2(\mathbb Z)$ reduction, the FFT and the sort
+   has not been implemented.
+6. **Novelty is unaudited** (§8): the check against Lai–Sprang–Zudilin 2025 has
+   not been made.
+
+**Not a caveat:** the contour.  It is a lower bound by construction, and a plain
+disc already gives a positive margin.

@@ -46,3 +46,23 @@ python3 /home/ubuntu/code/math-modular-sources/lattice/padic_holonomy/assemble.p
 Headline: for $\zeta_5(3)$ the bound comes out at $3.9727<4=m$ (rearrangement
 numerator) resp. $3.9504<4$ (Bost–Charles), i.e. a contradiction; see the report
 §9 for the ledger of what is certified and what is assumed.
+
+## Certification of the $\zeta_5(3)$ verdict (report §11)
+
+| file | role |
+|---|---|
+| `ap_lib.gp`, `ap_run.gp`, `ap_run500.gp`, `ap_run2000.gp` | $a_n,b_n,e_n$ in $\mathbb Z/5^{6150}$ to $n=2000$ by *peeling* (constant term + divide by $x$), no series reversion; output `ap_out_500.txt`, `ap_out_2000.txt` |
+| `ap_check.gp`, `ap_xcheck.gp`, `refdata.gp` | validation against the exact-rational data ($n\le40$) and an independent exact-rational recomputation ($n\le600$) |
+| `ap_analyse.py`, `ap_analyse2.py` | valuation fits $v_5(h_n)-3n = A + B\log n$ |
+| `ap_eta.gp`, `eta500.gp`, `eta2000.gp` | $\eta$ mod $5^{6149}$, and the $N=500$ vs $N=2000$ agreement |
+| `ap_kl.gp` | $2\eta=\zeta_5(3)$ against Kubota–Leopoldt (exact Bernoulli), $r\le7$ |
+| `ap_rank.gp`, `ap_ranklib.gp`, `ap_rank2.gp`, `ap_ode.gp` | rank over $\mathbb F_{2^{61}-1}$: $\{1,H,H',H''\}$ full to $D=120$; explicit order-3 inhomogeneous ODE of degree $\le8$ |
+| `ap_lip.gp` | $\max\lvert q\,d\log x/dq\rvert$ on circles $\lvert q\rvert=r$ |
+| `freeopt2.py` | re-optimisation with the two-resolution anti-aliasing guard |
+| `freeopt3.py` | non-even (sine terms) variant — confirms the optimum is even |
+| `polish.py` | direct polish in the polynomial coefficients $c_k$ at $N=16384$; best template `pol_05_K40.json` |
+| `certnum.py` | Lipschitz constant, $N$-refinement $2^{12}\dots2^{20}$, admissibility check |
+| `certrig.py` | **fully a-priori** certificate: no sampled quantity in the error term; $N$ up to $2^{24}$ |
+
+Certified result (`certrig.py 5 pol_05_K40.json`):
+`bound <= 3.9716148 < 4 = m`, `margin >= +0.0421385`, error term `6.8e-4`.

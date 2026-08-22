@@ -1,0 +1,16 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+pr = 2^61-1 prime? 1
+built a_n,b_n mod pr up to n=900  ms=390
+mod-pr a_n,b_n match exact rational reference for n<=40: 1
+
+=== eta = 5/7 ===
+[0;31m  ***   Warning: increasing stack size to 16000000.[0m
+[0;31m  *** Mat: Warning: increasing stack size to 32000000.[0m
+[0;31m  *** matrank: Warning: increasing stack size to 64000000.[0m
+[0;31m  *** matrank: Warning: increasing stack size to 128000000.[0m
+4-family [D, need, rank, def]: [[60, 244, 244, 0], [70, 284, 284, 0], [80, 324, 324, 0], [90, 364, 364, 0], [100, 404, 404, 0], [110, 444, 444, 0], [120, 484, 484, 0]]  ms=579
+5-family [D, need, rank, def]: [[5, 30, 30, 0], [6, 35, 35, 0], [7, 40, 40, 0], [8, 45, 44, 1], [9, 50, 48, 2], [10, 55, 52, 3], [11, 60, 56, 4]]  ms=11
+
+=== eta = 0 ===
+4-family [D, need, rank, def]: [[60, 244, 244, 0], [70, 284, 284, 0], [80, 324, 324, 0], [90, 364, 364, 0], [100, 404, 404, 0], [110, 444, 444, 0], [120, 484, 484, 0]]  ms=523
+5-family [D, need, rank, def]: [[5, 30, 30, 0], [6, 35, 35, 0], [7, 40, 40, 0], [8, 45, 44, 1], [9, 50, 48, 2], [10, 55, 52, 3], [11, 60, 56, 4]]  ms=11

@@ -1,0 +1,14 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+[0;31m  *** subst: Warning: increasing stack size to 16000000.[0m
+[0;31m  *** subst: Warning: increasing stack size to 32000000.[0m
+[0;31m  *** subst: Warning: increasing stack size to 64000000.[0m
+[0;31m  *** subst: Warning: increasing stack size to 128000000.[0m
+exact rational run to n=600  ms=5958
+  [built wq, winv]  t=28
+  [built Es, Eprime]  t=36
+  [peeled Estar]  t=5173
+  [peeled Eprime]  t=5146
+  [convolved a]  t=71
+EXACT vs mod-5^2000 agreement for 0<=n<=600:  a:1  b:1
+v5(b_n) exact, n=590..600: [3, 3, 3, 3, 4, 3, 3, 3, 3, 4, 2]
+v5(b_n) from mod run    : [3, 3, 3, 3, 4, 3, 3, 3, 3, 4, 2]
