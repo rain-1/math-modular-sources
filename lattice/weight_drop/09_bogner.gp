@@ -8,4 +8,11 @@ N=600;
         "   (n+1)|A_n? ", vecmax(vector(N+1,k,denominator(A[k]/k)))==1,
         "   min v_2(A_n), n>=1 = ", vecmin(vector(N,k,valuation(A[k+1],2))));
 );}
+
+/* Xi = theta^{-1} Phi integral, to q^118 */
+NQ=120; read("lattice/weight_drop/03_setup.gp"); build();
+{th1(f)=my(M=NQ-2); sum(m=1,M,polcoeff(f,m)/m*q^m)+O(q^(M+1));}
+{for(r=1,#DAT, my(XI=th1(DAT[r][5]), M=NQ-2);
+ print(DAT[r][1], ": Xi in Z[[q]] to q^", M, "? ",
+       vecmax(vector(M,m,denominator(polcoeff(XI,m))))==1););}
 quit;

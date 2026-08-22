@@ -113,7 +113,7 @@ level of coefficients.
 With $b$ the root companion ($b_0=0,b_1=1$, same recurrence) and
 $\delta_n:=\lambda^nB_n-(a*b)_n$:
 
-| row | $\delta_1,\dots,\delta_8$ |
+| row | $\delta_0,\delta_1,\dots,\delta_7$ |
 |---|---|
 | $s_7$ | $0,\,0,\,-1,\,-\tfrac{188}9,\,-\tfrac{15455}{36},\,-\tfrac{680372}{75},\,-\tfrac{4934776}{25},\,-\tfrac{5393662648}{1225}$ |
 | $s_{10}$ | $0,\,1,\,\tfrac{19}2,\,\tfrac{1796}9,\,\tfrac{149663}{36},\,\tfrac{7332451}{75},\,\tfrac{180362119}{75},\,\tfrac{32357835424}{525}$ |
@@ -169,7 +169,7 @@ one from its parent.  Two rows on the same curve, two sources, two periods.
 $\Xi=\int_0^tF\,dt$; the two displayed identities are then the definition of
 $\thq^{-1}$.  $\square$
 
-\[**Verified** (`02_qseries.gp`): $\Xi\in\Z[[q]]$ to $q^{58}$ for all three rows;
+\[**Verified** (`02_qseries.gp`, `09_bogner.gp`): $\Xi\in\Z[[q]]$ to $q^{118}$ for all three rows;
 $\thq^{-3}\Phi-\thq^{-2}\Xi=0$; $B_n=[t^n](F\thq^{-2}\Xi)$ exactly for $n\le22$;
 $(n+1)\mid A_n$ and $A_n\in\Z$ for $n\le600$ (`09_bogner.gp`).\]
 
@@ -233,7 +233,7 @@ t_{18}(i/\sqrt{18})=\tfrac1{16}$$
 The **only** failure of Theorem II's hypotheses is that $\Phi$ is meromorphic.
 Its poles lie strictly *inside* the Fricke circle: measuring
 $|c(m)|^{1/m}\to1/|q_0|$ (`04_growth.gp`, $m\le200$) gives
-$$1/|q_0|=2.2586\ (s_7),\quad 1.1776\ (s_{10}),\quad 2.9282\ (s_{18}),$$
+$$1/|q_0|\approx2.26\ (s_7),\quad 1.178\ (s_{10}),\quad 2.928\ (s_{18}),$$
 against $e^{2\pi/\sqrt N}=10.749,\;7.293,\;4.397$; so
 $\operatorname{Im}\tau_{\rm pole}<1/\sqrt N$ in all three cases and the whole
 geodesic $(0,i\infty)$ — the contour of the fold argument — avoids the poles.

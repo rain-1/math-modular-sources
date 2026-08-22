@@ -1,0 +1,237 @@
+\section{The weight drop: Cooper's free integration as a source}\label{sec:weightdrop}
+
+\emph{Draft section.  Companion file: \texttt{consolidation/WEIGHT\_DROP.md};
+scripts \texttt{lattice/weight\_drop/}.  This section settles the
+``weight drop'' flagged in Remark~\ref{rem:cooper} and in
+Problem~\ref{prob:free}: the order-three rows $s_7,s_{10},s_{18}$ of Cooper
+whose Ap\'ery limits are those of \emph{weight-one} rows.}
+
+\subsection{Statement of the phenomenon}
+
+Cooper's three sporadic rows satisfy
+\[
+(n+1)^3A_{n+1}=(2n+1)(an^2+an+b)A_n+n(cn^2+d)A_{n-1},\qquad d\neq0,
+\]
+with $(a,b,c,d)=(13,4,27,-3)$, $(6,2,64,-4)$, $(14,6,-192,12)$ and
+$(N,A_1)=(7,4),(10,2),(18,6)$.  Their minimal operators have order three, so
+$w=2$, $\Phi=F\thq t$ has weight $4$, and $\Theta=\thq^{-3}\Phi$; yet
+\[
+\xi_\infty(s_7)=\frac{\zeta(2)}7,\qquad
+\xi_\infty(s_{10})=\frac{\zeta(2)}5,\qquad
+\xi_\infty(s_{18})=\tfrac12L(2,\chi_{-3}),
+\]
+all of them $s=2$ values, i.e. the values of \emph{weight-one} rows; and
+$\xi_3(s_{18})=\tfrac12\zeta_3(2)$, the value of rows $\mathbf B,\mathbf C$.
+\VerifiedR{$10^{-136}$, $10^{-136}$, $10^{-113}$ from the recurrence at $n=900$;
+$3^{3025}$ for the $3$-adic value}
+
+Two mechanisms could account for the missing unit of weight, and only one does.
+The \emph{square root} (\S\ref{sec:sqrt}) replaces the order-three row by an
+order-two row $a_n=\lambda^n[t^n]\sqrt{\sum A_nt^n}$ on the same curve; the
+\emph{free integration} $(n+1)\mid A_n$ \cite{Bogner2013} makes one of the three
+Eichler integrations act on an integral $q$-series.  The square root is not the
+explanation (\S\ref{ss:wd-notroot}); the free integration is (\S\ref{ss:wd-Xi}).
+
+\subsection{The free integration is a source}\label{ss:wd-Xi}
+
+\begin{theorem}[Weight-three slot]\label{thm:WD1}
+Let $(\Gamma_0(N),t,F)$ be a row with $w=2$, $\Phi=F\thq t$, and put
+\[
+\Xi:=\thq^{-1}\Phi=\sum_{m\ge1}\frac{c(m)}{m}q^m .
+\]
+Then, as a $t$-series, $\Xi=\int_0^tF\,dt=\sum_{n\ge0}\frac{A_n}{n+1}t^{n+1}$, and
+\[
+\Theta=\thq^{-3}\Phi=\thq^{-2}\Xi,\qquad
+B_n=[t^n]\bigl(F\,\thq^{-2}\Xi\bigr).
+\]
+For $s_7,s_{10},s_{18}$ one has $\Xi\in\Z[[q]]$, equivalently $(n+1)\mid A_n$.
+\end{theorem}
+
+\begin{proof}
+$\thq\Xi=\Phi=F\thq t$ gives $d\Xi/dt=F$, $\Xi(0)=0$.  The two displayed
+identities are then the definition of $\thq^{-1}$; the last clause is
+\cite{Bogner2013}. \Proved
+\end{proof}
+\VerifiedR{$\Xi\in\Z[[q]]$ to $q^{118}$; $A_n\in\Z$ and $(n+1)\mid A_n$ to $n=600$}
+
+So the companion of an order-three row with $(n+1)\mid A_n$ is a \emph{double}
+Eichler integral of an integral source --- the analytic shape of a weight-one row.
+The $\Sym^2$ picture explains where $\Xi$ comes from.
+
+\begin{lemma}\label{lem:sym2inhom}
+Let $\widetilde L_1=D^2+pD+\varrho$ ($D=d/du$) with analytic solution $A$ and
+Wronskian $W=e^{-\int p}$, and let $S=\Sym^2\widetilde L_1$.  Then for every $z$,
+\[
+S(Az)=A\,(\widetilde L_1z)'+(3A'+2pA)\,(\widetilde L_1z).
+\]
+\end{lemma}
+
+\begin{proposition}\label{prop:WD2}
+Let $L_{\rm par}=\ell\cdot S$ with $\ell=u^3P$ and $L_1=u^2P\widetilde L_1$ the
+$\Sym^1$ operator of \S\ref{sec:sqrt}, $A=\sqrt F$, $W^2=1/(u^2P)$.  If
+$L_{\rm par}(B)=\kappa\lambda u$ then
+\[
+\widetilde L_1\!\Bigl(\frac{B}{A}\Bigr)=\frac{\kappa\lambda\,W^2}{A^3}\int_0^uA^2\,du
+=\frac{\kappa\lambda\,W^2}{A^3}\,\Xi ,
+\]
+and variation of parameters in $\{A,A\log q\}$ returns
+$B=\kappa\lambda\,F\,\thq^{-2}\Xi$.
+\end{proposition}
+
+\begin{proof}
+Lemma~\ref{lem:sym2inhom} with $z=B/A$, $h=\widetilde L_1z$ gives the
+\emph{first-order} equation $Ah'+(3A'+2pA)h=\kappa\lambda u/\ell$, i.e.
+$\bigl(A^3h/W^2\bigr)'=\kappa\lambda A^2$; integrate, and use $A^2=F$.  The
+variation-of-parameters integral is
+$\int_0^q(\log q-\log q')\Xi(q')\,d\log q'=\thq^{-2}\Xi$. \Proved
+\end{proof}
+
+Thus the free integration is precisely the inhomogeneity that the symmetric-square
+structure feeds back into the rank-two system.  Contrast the $\Sym^1$ row's own
+companion, $b_n=\lambda^n[t^n](g\,\thq^{-2}\Psi_{\rm root})$ with
+$\Psi_{\rm root}=g^3u$, $g=\sqrt F$: \emph{same} double Eichler integral,
+\emph{different} source.
+
+\subsection{The archimedean drop}
+
+\begin{proposition}\label{prop:cooperfricke}
+For $s_7,s_{10},s_{18}$: $t\circ W_N=t$, $F|_2W_N=-F$, hence $\Phi|_4W_N=-\Phi$;
+and $t(i/\sqrt N)=t_c$ ($=\tfrac1{27},\tfrac1{16},\tfrac1{16}$).  All poles of
+$\Phi$ have imaginary part $<1/\sqrt N$ and lie off the geodesic $(0,i\infty)$.
+\end{proposition}
+
+\begin{proof}
+$dE_2(d\tau)|_2W_N=(N/d)E_2((N/d)\tau)$, so $F=\tfrac1c\sum a_d\,dE_2(d\tau)$ has
+$F|_2W_N=-F$ iff $a_{N/d}=-a_d$, which holds for all three of Cooper's $F$'s;
+$x_7|W_7=49/x_7$ and $x_{10},x_{18}$ are $W_N$-invariant, and in each case $t$ is
+a rational function of $x$ invariant under that substitution.  The remaining
+claims are \VerifiedR{$10^{-55}$ for the fold; $|c(m)|^{1/m}\to 2.259,\,1.178,\,2.928$
+against $e^{2\pi/\sqrt N}=10.749,\,7.293,\,4.397$ at $m\le200$}. \Proved
+\end{proof}
+
+\begin{theorem}[Theorem~II for meromorphic Fricke sources]\label{thm:WD3}
+Under the hypotheses of Proposition~\ref{prop:cooperfricke},
+$\Lambda(\Phi,s)=\int_0^\infty\Phi(iy)y^{s-1}dy$ is entire,
+$\Lambda(\Phi,s)=-N^{2-s}\Lambda(\Phi,4-s)$, and
+\[
+\xi_\infty=4\pi^3\Lambda(\Phi,3),\qquad \Lambda(\Phi,2)=0,\qquad
+\Lambda(\Phi,1)=-N\Lambda(\Phi,3).
+\]
+\end{theorem}
+
+The proof of Theorem~II uses only the Eichler representation of $\Theta$ on the
+imaginary axis, the substitution $z=W_Nu$ (which maps $[\tau_*,i\infty)$ onto
+$(0,\tau_*]$, so that no contour is deformed and no residue is met), and the fold
+lemma at $\tau_*$; each survives meromorphy of $\Phi$ away from the axis.
+\VerifiedR{$10^{-50}$--$10^{-59}$}
+
+\begin{corollary}[the weight drop]\label{cor:WD}
+With $L(f,s)=(2\pi)^s\Lambda(f,s)/\Gamma(s)$,
+\[
+\boxed{\ \xi_\infty=L(\Xi,2),\qquad L(\Xi,1)=0,\qquad
+\Xi(\text{cusp }0)=-L(\Phi,1)=\frac{N}{2\pi^2}\,\xi_\infty .\ }
+\]
+\end{corollary}
+
+\begin{proof}
+$\Phi=\thq\Xi$ gives $\Phi(iy)=-\tfrac1{2\pi}\tfrac{d}{dy}\Xi(iy)$; integrate by
+parts (boundary terms vanish: $\Xi=O(q)$ at $i\infty$ and $\Xi(iy)\to\Xi(0)$
+finite), obtaining $\Lambda(\Phi,s)=\tfrac{s-1}{2\pi}\Lambda(\Xi,s-1)$, and apply
+Theorem~\ref{thm:WD3} at $s=3,2,1$. \Proved
+\end{proof}
+
+So the period sits in the $s=2$ slot of a weight-three-slot source, and
+$L(\Xi,1)=0$ is the $w=1$ shadow of the forced $L(\Phi,2)=0$ of Theorem~II.
+
+\subsection{Identification of the slot data}
+
+\begin{verification}\label{ver:wdslot}
+At $55$ digits (\texttt{08\_slots.gp}),
+\[
+\frac{L(\Xi_{s_7},2)}{\zeta(2)}=\frac17,\qquad
+\frac{L(\Xi_{s_{10}},2)}{\zeta(2)}=\frac15,\qquad
+\frac{L(\Xi_{s_{18}},2)}{L(\chi_{-3},2)\zeta(0)}=-1,
+\]
+and at $60$ digits $L(\Phi_{s_7},1)=-\tfrac1{12}$, $L(\Phi_{s_{10}},1)=-\tfrac16$.
+Each $s=2$ value has the Theorem~B$^*$ shape
+$\xi_\infty=P(2)L(\psi,2)L(\varphi,0)$ for $w=1$, with
+$(\psi,\varphi,P(2))=(\mathbf 1,\chi_{-7},\tfrac17)$,
+$(\mathbf 1,\varphi\ \text{odd},\,P(2)L(\varphi,0)=\tfrac15)$,
+$(\chi_{-3},\mathbf 1,-1)$.  The higher slots are \emph{not} Eisenstein:
+$L(\Xi_{s_7},3)=0.49168515\ldots$ gives an irrational $P(3)$, and
+$L(\Xi_{s_{18}},3)/L(\chi_{-3},3)=0.72951403\ldots$ has no relation to
+$1,\log2,\log3$.
+\end{verification}
+
+\begin{remark}[what remains]\label{rem:wdopen}
+The one missing step is the \emph{critical-slot purification}: that the principal
+part of $\Xi$ contributes $0$ to $L(\Xi,2)$ --- true at $s=2$ and, by
+Verification~\ref{ver:wdslot}, false at $s=3,4$.  Any proof must therefore be
+slot-specific, and the natural candidate is the same annihilation that forces
+$L(\Phi,2)=0$ in Theorem~II.  For $s_7,s_{10}$ an equivalent and more elementary
+target is offered by Corollary~\ref{cor:WD}: prove that the conifold period
+$\int_{\rm path}F\,dt$ equals $\tfrac1{12}$, resp. $\tfrac16$. \Open
+\end{remark}
+
+\subsection{The $p$-adic corollary, and the repair of the $s_{18}$ entry}
+
+Theorem~F takes $w$ from the number of Eichler integrations acting on the
+operative source.  By Theorem~\ref{thm:WD1} that number is two, so $s_{18}$ is to
+be treated with $w=1$ and the data $(\psi,\varphi)=(\chi_{-3},\mathbf 1)$,
+$P(2)=-1$ of Verification~\ref{ver:wdslot}.
+
+\begin{corollary}\label{cor:s18padic}
+At $p=3$: $3\mid\operatorname{cond}\chi_{-3}$, so $\mathcal E_3\equiv1$, criterion
+\textup{(a)} is vacuous and $Q=P$; $\omega=\chi_{-3}$, so
+$\psi\omega^{-w}=\mathbf 1$ and $\kappa_3=\tfrac12L_3(2,\mathbf 1)=\tfrac12\zeta_3(2)$;
+hence
+\[
+\xi_3(s_{18})=-Q(2)\kappa_3=\tfrac12\zeta_3(2),
+\qquad r_3=r_\infty=\tfrac12 .
+\]
+\end{corollary}
+\VerifiedR{$3^{3025}$}
+
+This is exactly the census entry, and it explains the $3$-adic alignment of
+$s_{18}$ with rows $\mathbf B$ and $\mathbf C$ recorded in the slope census: the
+three rows do not merely satisfy a rigidity relation, they carry the same source
+data $(\chi_{-3},\mathbf 1)$ and the same $P(2)=-1$.  The earlier reading of
+$s_{18}$ as a $w=2$ row --- which predicted $\tfrac12\zeta_3(3)$ and was refuted
+numerically --- was a weight-bookkeeping error, not a failure of Theorem~F.
+
+For $s_7$ and $s_{10}$, $\psi=\mathbf 1$ and $w=1$ force $\varphi$ odd, hence
+$\delta(\varphi)=0$, $\kappa_p=0$ and $\xi_p=0$ whenever a $p$-adic limit exists.
+No limit exists at $p\le7$ (the slope census finds none), so this is consistent
+but untested; it also removes the apparent conflict with
+Proposition~\ref{prop:C}, since under the $w=1$ reading the absence of a slope is
+the ordinary failure of the Euler-factor criterion.
+
+\subsection{Why the square root is not the explanation}\label{ss:wd-notroot}
+
+The $\Sym^2$ half of the analogy is exact: $\lambda^nA_n=\sum_ia_ia_{n-i}$ for all
+three rows \VerifiedR{$n\le400$, exact}.  The companion half fails.
+
+\begin{verification}\label{ver:wdroot}
+$\lambda^nB_n-(a*b)_n\neq0$ (first values $0,0,-1,-\tfrac{188}9,\dots$ for $s_7$),
+and
+$\xi_\infty^{\rm par}/\xi_\infty^{\rm root}
+=0.5029637449\ldots,\,1.0380577124\ldots,\,0.8067346358\ldots$
+admits no algebraic relation of degree $\le6$ and no $\Q$-linear relation with $1$
+at $120$ digits.  Moreover
+$v_2\bigl(\operatorname{den}[q^m]\sqrt F\bigr)=m-s_2(m)$ for $s_{10}$ and $s_{18}$
+($m\le60$), so $\sqrt F$ and $\Psi_{\rm root}=g^3u$ have unbounded denominators
+and are, by \cite{CDT2024}, forms on \emph{non-congruence} groups: no
+$M_3(\Gamma_0(M),\chi)$ contains them.  Only $s_7$'s root is congruence, and there
+\[
+\sqrt{F_7}=E_1(\chi_{-7}),\qquad \Psi_{\rm root}=\bigl(\sqrt{F_7}\bigr)^3t_7
+=\eta(\tau)^3\eta(7\tau)^3\in S_3(\Gamma_0(7),\chi_{-7})
+\]
+\VerifiedR{exact to $q^{90}$}, with period $L(\eta_1^3\eta_7^3,2)=0.4672117689\ldots$,
+which is neither $\zeta(2)/7$ nor a simple multiple of it.
+\end{verification}
+
+The two constructions are cousins: both bring the integration cost of an
+order-three row down to $k=2$.  They are not the same object.  The square root is
+a genuine second row on the same curve, with its own source and its own period;
+the free integration keeps the row and rewrites its source one integration lower.
+It is the latter that the census's limits see.

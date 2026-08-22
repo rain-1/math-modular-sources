@@ -25,7 +25,15 @@ of `EULER_CRITERION.md` §4.1.  Scripts: `lattice/sources_s18_zud/`
    $v_3(\xi_3-\tfrac12\zeta_3(3))=-1$.  So $s_{18}$ realises a **weight drop**:
    a $w=2$ row whose $3$-adic (and archimedean) period is a $w=1$ value.
    The drop is caused by the principal part, and is not explained by any theorem
-   we have. **Open.**
+   we have. ~~**Open.**~~
+   > **SUPERSEDED — see `WEIGHT_DROP.md`.**  The recorded explanation *is* correct;
+   > what was wrong is the weight bookkeeping.  The operative source is not $\Phi$
+   > but $\Xi=\thq^{-1}\Phi=\int_0^tF\,dt\in\Z[[q]]$ (Cooper's free integration,
+   > $(n+1)\mid A_n$), on which only **two** Eichler integrations act; so $s_{18}$
+   > is to be read with $w=1$, $(\psi,\varphi)=(\chi_{-3},\mathbf 1)$, $P(2)=-1$.
+   > Then Theorem B\* gives $\xi_\infty=\tfrac12L(2,\chi_{-3})$ and Theorem F gives
+   > $\kappa_3=\tfrac12L_3(2,\chi_{-3}\omega^{-1})=\tfrac12\zeta_3(2)$,
+   > $\xi_3=\tfrac12\zeta_3(2)$ — both measured values.  §3.4 below is superseded.
 3. **The good news for the meromorphic extension:** the pole sits at $t=\infty$, hence
    outside every affinoid $\{|t|_3\le\rho\}$; equivalently $\tau_0$ has CM by an order
    in $\Q(i)$ and $3$ is inert in $\Q(i)$, so $\tau_0$ is **supersingular at $3$**.
