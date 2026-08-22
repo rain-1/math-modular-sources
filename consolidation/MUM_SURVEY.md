@@ -29,7 +29,7 @@ sub-agent; the reading list is in §7.*
    limits. The law
    $$\boxed{\ \xi_p=\frac{r_\infty}{\mathcal E_p(m)}\,L_p\bigl(m,\chi\omega^{1-m}\bigr),
    \qquad \mathcal E_p(m)=1-\chi(p)p^{-m},\qquad \xi_\infty=r_\infty L(\chi,m)\ }$$
-   holds in **every** case where both places are computable (14 operators), and
+   holds in **every** case where both places are computable (15 operators), and
    $\xi_p=0$ exactly when $\chi\omega^{1-m}$ is odd, i.e. when $\chi(-1)\ne(-1)^{m-1}$
    — which kills all the $\pi^2$ limits and all the $L(\chi_{-3},3)$ limits.
 4. **The $p$-adic side is strictly stronger than the archimedean one here.** 25 operators whose
@@ -232,8 +232,10 @@ The 225 are not counterexamples: most have $\lambda_2/\lambda_1$ very close to 1
 
 ### 5.2 Measured: $p$-adic, and the law
 
-165 of the 297 have a positive $p$-adic slope at some $p\in\{2,3,5,7,11,13\}$; 40 of those
-were identified against Kubota–Leopoldt values at the first pass. **In every case where both
+165 of the 297 have a positive $p$-adic slope ($\sigma_p>0.2$) at some $p\in\{2,3,5,7,11,13\}$;
+for 40 of them at least one $p$-adic limit was identified against a Kubota–Leopoldt value at the
+first pass (a hit is accepted only if the residual valuation exceeds the available precision
+minus 10 digits; "$\xi_p=0$" means $v_p(\xi_p)$ exceeds that same bound). **In every case where both
 places are known, the Euler-factor law of Theorem F holds exactly:**
 
 | AESZ | $\xi_\infty$ | $p$ | $\sigma_p$ | digits | $\xi_p$ | $\mathcal E_p(m)$ | check |
@@ -316,8 +318,9 @@ These five are the sharpest flagged items of the survey.
 
 ### 5.5 New period classes
 
-The extended scan over quadratic characters of conductor $\le24$ (`survey2.gp`) turned up two
-periods that are **not in AvSZ's list at all**:
+The extended scan over quadratic characters of conductor $\le24$ (`survey2.gp`) adds exactly two
+new hits to the 42 found with $\{\mathbf1,\chi_{-3},\chi_{-4}\}$, and both are periods **not in
+AvSZ's list at all**:
 
 * **AESZ 7** (nn 4.2.31, $\deg_z=2$): $\sigma_2>0$, 2441 digits, $\xi_2=\tfrac1{16}L_2(2,\chi_8\omega^{-1})$
   $\Rightarrow$ $\xi_\infty$'s even part $=\tfrac1{16}L(\chi_8,2)$ (here $\mathcal E_2(2)=1$).
@@ -337,9 +340,11 @@ periods that are **not in AvSZ's list at all**:
 
 ### 5.6 Open: 131 unidentified $p$-adic limits
 
-131 operator/prime pairs have a measured positive slope and a $p$-adic limit of 185–3054 digits
-that matched **none** of our targets (all $L_p(2,\chi\omega^{-1})$, $L_p(3,\chi\omega^{-2})$ for
-$\chi$ quadratic of conductor $\le24$, plus trivial). Notable: **AESZ 207**, one of AvSZ's seven
+The full extended scan (`survey2.gp`, all 297 operators, targets $L_p(2,\chi\omega^{-1})$ and
+$L_p(3,\chi\omega^{-2})$ for $\chi$ trivial or quadratic of conductor $\le24$) ends with
+44 operator/prime pairs identified with a nonzero value, 5 with $\xi_p=0$, and
+**129 operator/prime pairs unidentified** — a measured positive slope and a $p$-adic limit
+known to 185–3054 digits that matches none of the 34 targets. Notable: **AESZ 207**, one of AvSZ's seven
 *unidentified* archimedean limits, has $\sigma_2=12$ and a $2$-adic limit known to **2449 digits**
 that is not a single Kubota–Leopoldt value. Also AESZ 227 (two primes), 391, 415, 269, 276, 362
 (two primes each). These are the natural next targets: two-term combinations, weight-4/5 values
@@ -369,7 +374,7 @@ $\sigma_p=v_p(c)+2\kappa_p$ they are the ones worth re-examining for two-row con
    exceeds (available digits $-10$). With 1000+ digits available a false positive is
    implausible, but at the low end (185–400 digits, e.g. AESZ 183, 199, 200) it is not excluded.
 4. **The Euler-factor law is verified, not proved, at rank 4.** No syntomic-regulator argument
-   is offered here. The $14+5$ confirmations and the two-prime agreements are the evidence.
+   is offered here. The $15+5$ confirmations and the two-prime agreements are the evidence.
 5. **The $p$-adic $\widehat\Gamma$-class is formal.** $\prod_j\Gamma_p(1+u_j\rho)^{\varepsilon_j}$
    is manipulated as a formal power series; convergence needs $|u_j\rho|_p\le1/q$. This is the
    standard convention (Beukers–Vlasenko, CdlOvS) but should be said.
