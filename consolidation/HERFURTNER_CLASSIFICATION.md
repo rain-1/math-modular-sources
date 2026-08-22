@@ -92,11 +92,39 @@ Herfurtner's classification and to an exhaustive integrality scan.
   fail here; $\mathrm{AZ}(9,3,-27)$'s passes here yet its period is
   unidentified).
 
-* **The scan.** An exhaustive integrality scan of every Kodaira-admissible
-  normalisation class (26 classes; $|a|\le3000$, $|c|\le150$,
-  $|d|\le12000$; integrality tested prime-by-prime to $n=30$ and re-verified
-  exactly to $n=300$) recovers every second-order row in the project's census
-  and produces **no new row that is a Herfurtner surface**. See §6.
+* **Theorem H5 / the scan.** An exhaustive integrality scan of every
+  Kodaira-admissible normalisation class (26 classes; $|a|\le3000$,
+  $|c|\le150$, $|d|\le12000$; $1.27\times10^6$ hits; integrality tested
+  prime-by-prime to $n=30$ and re-verified exactly to $n=300$) recovers every
+  second-order row of the project's census and produces **two genuinely new
+  Herfurtner rows**, both invisible to Zagier's normalisation and to the
+  root-row normalisation:
+  $$(n+1)^2u_{n+1}=(117n^2+78n+21)u_n-441(3n-1)^2u_{n-1},\quad
+    u_n=1,21,693,23940,734643,\dots$$
+  on $I_1I_7\,II\,II$ (Herfurtner #30, $\deg\mathcal J=8$, monodromy
+  $\Gamma_0(7)$), and
+  $$(n+1)^2u_{n+1}=(72n^2+36n+6)u_n-108(4n-1)(4n-3)u_{n-1},\quad
+    u_n=1,6,90,1140,-5850,\dots$$
+  on $I_3\,III\,III\,III$ (#45, $\deg\mathcal J=3$, the index-three level-3
+  congruence group). Both have $k=2$ and complex-conjugate characteristic roots,
+  hence no archimedean limit. Six further new rows appear that are *not*
+  elliptic surfaces. See §6.
+
+* **Corollary H6 (the only positive scores).** Over the whole scan --- every
+  Kodaira-admissible class, rigid or family --- the only Casoratian-non-degenerate
+  rows with $\log(1/|\lambda_2|)>k\ge2$ are **Apéry's $\zeta(2)$ row**
+  $(11,3,-1)$ at $+0.4061$ and **Beukers' square root of Apéry's row**
+  $(136,10,4)$ at $+0.1392$. Every other positive score in the scan has $k=1$ and
+  is a classical Legendre--Padé row for a logarithm. (The test is a condition on
+  $(a,d)$ alone, so this pass is complete over all $1\,270\,065$ hits.)
+
+* **A structural dichotomy.** A *rigid* Herfurtner configuration supports at most
+  finitely many integral rows; a *one-parameter* Herfurtner family --- exactly the
+  configurations containing an $I_m^*$ or an $I_0^*$ fibre, i.e. the classes
+  where the exponents at $\infty$ are half-integral or an exponent difference is
+  a positive integer --- supports an infinite family of them, and those families
+  are the classical Legendre--Padé rows. Zagier's finiteness statement is a
+  statement about the rigid block.
 
 ---
 
@@ -447,3 +475,344 @@ Two filters are applied before a row is called interesting.
   but carry no information.
 * **Double characteristic root.** $a^2=4d$ gives $\lambda_1=\lambda_2$ and no
   second growth rate; the row cannot separate a limit.
+
+### 5.1 Rigid classes vs. family classes
+
+The scan output splits sharply, and the split is exactly Herfurtner's:
+
+| class $(M;j_1,j_2)$ | $(\rho;\delta_\infty)$ | hits | distinct $(A,B)$ | verdict |
+|---|---|---|---|---|
+| $(1;0,0)$ | $(0;0)$ | 304 | 301 | sporadic |
+| $(2;1,1)$ | $(\tfrac12;0)$ | 137 | 132 | sporadic |
+| $(3;1,1)$, $(3;2,2)$ | $(\tfrac13;0)$, $(\tfrac23;0)$ | 39, 35 | 39, 35 | sporadic |
+| $(3;1,2)$, $(6;1,5)$ | $(\tfrac12;\tfrac13)$, $(\tfrac12;\tfrac23)$ | 78, 10 | 78, 10 | sporadic |
+| $(4;1,3)$ | $(\tfrac12;\tfrac12)$ | 87 | 86 | sporadic |
+| $(3;0,2)$, $(3;1,3)$, $(6;1,3)$, $(6;3,5)$ | order 3 at $\infty$ | 88, 73, 30, 21 | — | sporadic |
+| $(3;-1,1)$, $(4;-1,1)$, $(6;-1,1)$ | $(0;\tfrac23),(0;\tfrac12),(0;\tfrac13)$ | 92, 86, 18 | — | sporadic |
+| $(12;1,7)$, $(12;5,11)$ | $(\tfrac13;\tfrac12)$, $(\tfrac23;\tfrac12)$ | 4, 3 | 4, 3 | sporadic |
+| $(2;3,3)$, $(6;5,7)$ | $(\tfrac32;0)$, $(1;\tfrac13)$ | 85, 139 | — | sporadic |
+| **$(2;-1,1)$** | $(0;1)$ | **28 143** | 130 | **family**: $B=A/4$, $C$ free |
+| **$(2;1,3)$** | $(1;1)$ | **34 430** | 6409 | **family** |
+| **$(1;1,2)$** | $(\tfrac32;1)$ | **1 200 120** | 270 | family, but Casoratian-degenerate ($Q(1)=Q(2)=0$) |
+| $(3;2,4)$, $(4;3,5)$ | $(1;\tfrac23)$, $(1;\tfrac12)$ | 4010, 1595 | 3999, 1592 | large, $(A,B)$-spread |
+
+The two genuinely infinite non-degenerate families, $(2;-1,1)$ and $(2;1,3)$,
+are precisely the classes in which the fibre at $\infty$ has **half-integral**
+exponents ($\delta_\infty=1$, $r=\pm\tfrac12$ resp. $\tfrac12,\tfrac32$), i.e.
+an $I_m^*$; and $(2;1,3)$ additionally has $\rho=1\in\mathbf Z$, i.e. an
+apparent singularity — an $I_0^*$ — at $t_1,t_2$. Those are exactly the
+Kodaira types that put a configuration into Herfurtner's **one-parameter**
+block. For $(2;-1,1)$ the family is explicit:
+$$B=\frac A4,\qquad P(n)=A\bigl(n^2+n\bigr)+\frac A4=\frac A4(2n+1)^2,\qquad
+Q(n)=C\,(2n-1)(2n+1),$$
+with $A\in4\mathbf Z$ and $C$ running over an arithmetic progression: a
+two-parameter family of integral rows, i.e. **one** parameter after the scaling
+$t\mapsto t/\mu$ — matching the one modulus of Herfurtner's families #3, #4 and
+their $*$-transfers ($I_1I_1I_1I_3^*$, $I_3I_1I_1I_1^*$, $I_1I_1I_2I_2^*$,
+$I_2I_2I_1I_1^*$; all $\deg\mathcal J=6$).
+
+> **This is the structural dichotomy of the classification.** A rigid
+> Herfurtner configuration can support at most finitely many integral rows
+> (Theorem H3 pins $a^2/d$, and the accessory parameter is then determined by
+> the surface); a one-parameter Herfurtner family supports an infinite family of
+> them. Zagier's finiteness statement is a statement about the rigid block.
+
+---
+
+## 6. The rows
+
+### 6.1 The rigid classes: complete list
+
+All primitive, Casoratian-non-degenerate, non-double-root integral rows produced
+by the scan in the **sporadic (rigid-block) classes**, sorted by score
+$\log(1/|\lambda_2|)-k$. Every $u_n$ was re-verified exactly for $n\le300$;
+$k$ is the sharp denominator exponent of the census companion ($b_0=0,b_1=1$),
+measured to $n=60$. "$\mathcal J$" is the outcome of the $\mathcal J$-map test of
+§4: **yes** means the row is the Picard–Fuchs system of a rational elliptic
+surface over its own $\mathbf P^1_t$, and then $(h,\deg\mathcal J)$ pin the
+Herfurtner configuration.
+
+| # | class | $P(n)$ | $Q(n)$ | $\lambda_1$ | $\lambda_2$ | $k$ | score | $\mathcal I$ | $\mathcal J$ | Herfurtner | $u_n$ | name |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | $(1;0,0)$ | $9n^2{+}9n{+}3$ | $27n^2$ | $5.196$ | cplx pair | 2 | — | $3$ | yes $(1,12)$ | $I_1I_1I_1I_9$ | $1,3,9,21,9$ | Zagier $\mathbf B$ |
+| 2 | $(2;1,1)$ | $56n^2{+}28n{+}6$ | $324(2n{-}1)^2$ | $36$ | cplx pair | 2 | — | $196/81$ | no | — | $1,6,54,-228$ | $\sqrt{\mathrm{AZ}(7,3,81)}$ |
+| 3 | $(2;1,1)$ | $88n^2{+}44n{+}10$ | $500(2n{-}1)^2$ | $44.72$ | cplx pair | 2 | — | $484/125$ | **yes $(1,6)$** | $I_1I_5\,III\,III$ | $1,10,230,6500$ | $\sqrt{\mathrm{AZ}(11,5,125)}$ |
+| 4 | $(3;1,1)$ | $117n^2{+}78n{+}21$ | $441(3n{-}1)^2$ | $63$ | cplx pair | 2 | — | $169/49$ | **yes $(1,8)$** | $I_1I_7\,II\,II$ | $1,21,693,23940$ | **NEW** |
+| 5 | $(3;1,2)$ | $40n^2{+}20n{+}4$ | $48(3n{-}1)(3n{-}2)$ | $20.78$ | cplx pair | 2 | — | $100/27$ | no | — | $1,4,40,480$ | new, not a surface |
+| 6 | $(4;1,3)$ | $72n^2{+}36n{+}6$ | $108(4n{-}1)(4n{-}3)$ | $41.57$ | cplx pair | 2 | — | $3$ | **yes $(3,3)$** | $I_3\,III\,III\,III$ | $1,6,90,1140$ | **NEW** |
+| 7 | $(1;0,0)$ | $11n^2{+}11n{+}3$ | $-n^2$ | $11.090$ | $-0.0902$ | 2 | $+0.406$ | $-121$ | yes $(1,12)$ | $I_1I_1I_5I_5$ | $1,3,19,147$ | Zagier $\mathbf D$ |
+| 8 | $(2;1,1)$ | $136n^2{+}68n{+}10$ | $4(2n{-}1)^2$ | $135.88$ | $0.1177$ | 2 | $+0.139$ | no | — | $1,10,534,40900$ | Beukers / $\sqrt{\text{Apéry}}$ |
+| 9 | $(2;1,1)$ | $24n^2{+}12n{+}2$ | $4(2n{-}1)^2$ | $23.314$ | $0.6863$ | 2 | $-1.624$ | no | — | $1,2,18,236$ | $\sqrt T$ |
+| 10 | $(4;1,3)$ | $88n^2{+}44n{+}6$ | $-4(4n{-}1)(4n{-}3)$ | $88.721$ | $-0.7214$ | 2 | $-1.673$ | no | — | $1,6,210,10500$ | level-5 Fricke row (`NONCONGRUENCE_SCAN` §5) |
+| 11 | $(1;0,0)$ | $7n^2{+}7n{+}2$ | $-8n^2$ | $8$ | $-1$ | 2 | $-2.000$ | $-49/8$ | yes $(1,12)$ | $I_1I_2I_3I_6$ | $1,2,10,56$ | Zagier $\mathbf A$ |
+| 12 | $(1;0,0)$ | $10n^2{+}10n{+}3$ | $9n^2$ | $9$ | $1$ | 2 | $-2.000$ | $100/9$ | yes $(1,12)$ | $I_1I_2I_3I_6$ | $1,3,15,93$ | Zagier $\mathbf C$ |
+| 13 | $(3;1,2)$ | $26n^2{+}13n{+}2$ | $-3(3n{-}1)(3n{-}2)$ | $27$ | $-1$ | 2 | $-2.000$ | $-676/27$ | no | — | $1,2,22,336$ | $\sqrt{s_7}$ (Cooper) |
+| 14 | $(3;1,1)$ | $180n^2{+}120n{+}24$ | $-72(3n{-}1)^2$ | $183.53$ | $-3.531$ | 2 | $-3.262$ | $-50$ | **no** | (cross-ratio coincidence with $I_4I_4II\,II$) | $1,24,2016$ | new, not a surface |
+| 15 | $(1;0,0)$ | $12n^2{+}12n{+}4$ | $32n^2$ | $8$ | $4$ | 2 | $-3.386$ | $9/2$ | yes $(1,12)$ | $I_1I_1I_2I_8$ | $1,4,20,112$ | Zagier $\mathbf E$ |
+| 16 | $(2;1,1)$ | $20n^2{+}10n{+}2$ | $16(2n{-}1)^2$ | $16$ | $4$ | 2 | $-3.386$ | $25/4$ | no | — | $1,2,12,104$ | $\sqrt{\text{Domb}}$ |
+| 17 | $(4;1,3)$ | $28n^2{+}14n{+}2$ | $-8(4n{-}1)(4n{-}3)$ | $32$ | $-4$ | 2 | $-3.386$ | $-49/8$ | no | — | $1,2,28,504$ | new, not a surface |
+| 18 | $(2;1,1)$ | $72n^2{+}36n{+}6$ | $-108(2n{-}1)^2$ | $77.569$ | $-5.569$ | 2 | $-3.717$ | $-12$ | **yes $(3,6)$** | $I_3I_3\,III\,III$ | $1,6,198,8700$ | $\sqrt{\mathrm{AZ}(9,3,-27)}$ |
+| 19 | $(1;0,0)$ | $17n^2{+}17n{+}6$ | $72n^2$ | $9$ | $8$ | 2 | $-4.079$ | $289/72$ | yes $(1,12)$ | $I_1I_2I_3I_6$ | $1,6,42,312$ | Zagier $\mathbf F$ |
+| 20 | $(4;1,3)$ | $80n^2{+}40n{+}6$ | $36(4n{-}1)(4n{-}3)$ | $72$ | $8$ | 2 | $-4.079$ | $100/9$ | no | — | $1,6,162,6468$ | new, not a surface |
+| 21–22 | $(2;1,3)$ | $\pm4$ | $-64(2n{-}1)(2n{-}3)$ | $16$ | $-16$ | 2 | $-4.773$ | $0$ | no | — | $1,\mp4,-12$ | $A=0$ |
+| 23 | $(4;1,3)$ | $48n^2{+}24n{+}4$ | $32(4n{-}1)(4n{-}3)$ | $32$ | $16$ | 2 | $-4.773$ | $9/2$ | no | — | $1,4,52,912$ | new, not a surface |
+| 24–25 | $(3;2,4)$ | $\pm3$ | $-81(3n{-}2)(3n{-}4)$ | $27$ | $-27$ | 2 | $-5.296$ | $0$ | no | — | $1,\mp3,-18$ | $A=0$ |
+| 26 | $(4;1,3)$ | $68n^2{+}34n{+}6$ | $72(4n{-}1)(4n{-}3)$ | $36$ | $32$ | 2 | $-5.466$ | $289/72$ | no | — | $1,6,108,2472$ | new, not a surface |
+| 27–28 | $(4;3,5)$ | $\pm4$ | $-256(4n{-}3)(4n{-}5)$ | $64$ | $-64$ | 2 | $-6.159$ | $0$ | no | — | $1,\mp4,-60$ | $A=0$ |
+
+Observations.
+
+1. **Every second-order row of the project's census appears**, with its known
+   invariants: Zagier's six, the six AZ square roots, Cooper's $\sqrt{s_7}$, the
+   level-5 Fricke row. $k=2$ for every single row in the table — the free
+   integration of Theorem R3 is universal here.
+2. **Two rows are new and are elliptic surfaces** (rows 4 and 6 above); see
+   §6.2.
+3. Six further rows are new but fail the $\mathcal J$-test (rows 5, 14, 17, 20,
+   23, 26); like Beukers' row they live on Atkin–Lehner quotients. Row 14 is a
+   cautionary example: its $\mathcal I=-50$ coincides with that of Herfurtner
+   #32 $I_4I_4\,II\,II$, yet the $\mathcal J$-test says no — the cross-ratio
+   test is necessary, not sufficient, because it ignores the accessory
+   parameter.
+4. **No new row has a positive score.** Beukers' $+0.139$ and Zagier
+   $\mathbf D$'s $+0.406$ remain the only positive scores among second-order
+   rows, in every Kodaira-admissible class, over the whole scanned box.
+
+### 6.2 The two new elliptic-surface rows
+
+$$\boxed{\ (n+1)^2u_{n+1}=(117n^2+78n+21)\,u_n-441(3n-1)^2u_{n-1},\qquad u_0=1,\ u_1=21\ }$$
+$$u_n=1,\;21,\;693,\;23940,\;734643,\;13697019,\;\dots$$
+Class $(3;1,1)$: exponents $(0,\tfrac13)$ at $t_1,t_2$ and $(\tfrac23,\tfrac23)$
+at $\infty$; $\mathcal I=169/49$; $\mathcal J$-test **yes** with $h=1$,
+$\deg\mathcal J=8$; Herfurtner **#30 $I_1I_7\,II\,II$** (base points
+$(0,\infty,\omega_1,\omega_2)$, $\omega_{1,2}=-\tfrac14(-1\pm3i\sqrt3)^2$). The
+projective monodromy is the index-eight genus-zero group with two cusps of
+widths $1,7$ and two elliptic points of order three, i.e. $\Gamma_0(7)$.
+$\lambda^2-117\lambda+3969$ has discriminant $-2187<0$: the characteristic roots
+are complex conjugate, $|\lambda|=63$, so there is **no archimedean Apéry
+limit** (as for Zagier $\mathbf B$, AZ$(11,5,125)$ and $\sqrt{\mathrm{AZ}(7,3,81)}$).
+$k=2$, budget $\log63-2=+2.14$. The row is primitive only after the scaling
+$\lambda=3$ ($(39,7,49)$ is not integral): it is a $3^n$-rescaled row, exactly
+the phenomenon of Theorem R1.
+
+$$\boxed{\ (n+1)^2u_{n+1}=(72n^2+36n+6)\,u_n-108(4n-1)(4n-3)\,u_{n-1},\qquad u_0=1,\ u_1=6\ }$$
+$$u_n=1,\;6,\;90,\;1140,\;-5850,\;-1265004,\;\dots$$
+Class $(4;1,3)$: exponents $(0,\tfrac12)$ at $t_1,t_2$ and $(\tfrac34,\tfrac14)$
+at $\infty$; $\mathcal I=3$; $\mathcal J$-test **yes** with $h=3$,
+$\deg\mathcal J=3$; Herfurtner **#45 $I_3\,III\,III\,III$**
+($\mathcal J=X^3/Y^3$, $G_2=3X(X^3-Y^3)$, $G_3=(X^3-Y^3)^2$). The projective
+monodromy is the index-three congruence group of level three — the preimage of
+the Klein four-group $V_4\subset\mathrm{PSL}_2(\mathbf F_3)\cong A_4$,
+equivalently the kernel of $\mathrm{PSL}_2(\mathbf Z)\twoheadrightarrow
+\mathbf Z/3$ — with one cusp of width $3$ and three elliptic points of order two.
+$\lambda^2-72\lambda+1728$ has discriminant $-1728<0$, $|\lambda|=41.57$, no
+archimedean limit; $k=2$; the row is primitive only after $\lambda=6$.
+
+**This is the point at which the classification pays.** Both rows have
+$\rho\notin\{0\}$, so *both are invisible to Zagier's normalisation*
+$(an^2+an+b,\;cn^2)$ and to every scan the project has run that assumed it; and
+both are invisible to the root-row normalisation $Q=C(2n-1)^2$ as well. They are
+found only by running the exponent classification first and scanning each
+Kodaira-admissible class in turn. They also carry a moral: the interesting
+signature $(0;2,2,2;\text{1 cusp})$ hosts **two** groups of the same covolume,
+$\Gamma_0(5)+5$ (not inside $\mathrm{PSL}_2(\mathbf Z)$; the level-5 Fricke row,
+row 10) and the index-three level-3 congruence group (inside; row 6), and the
+$\mathcal J$-map test is exactly what separates them.
+
+---
+
+## 7. The classification theorem
+
+> **Theorem H5 (classification of second-order Apéry-like rows).**
+> Let $(n+1)^2u_{n+1}=P(n)u_n-Q(n)u_{n-1}$ with $\deg P,\deg Q\le2$, $u_0=1$,
+> $u_n\in\mathbf Z$ for all $n$ (after the $\lambda^n$ rescaling of Theorem R1 if
+> needed), $d=\mathrm{lc}(Q)\ne0$, $a^2\ne4d$, and $Q(n)\ne0$ for all $n\ge1$.
+> Write $\lambda_{1,2}$ for the roots of $\lambda^2-a\lambda+d$ and
+> $\mathcal I=a^2/d$.
+>
+> **(i) [proved]** The Picard–Fuchs operator has four singular points
+> $0,t_1,t_2,\infty$ with exponents $(0,0)$, $(0,\rho_1)$, $(0,\rho_2)$,
+> $(1-r_1,1-r_2)$ as in §1, and $\rho_1+\rho_2=r_1+r_2$. If $a^2-4d$ is not a
+> square then $\rho_1=\rho_2=\rho$ and
+> $$P(n)=a\bigl(n^2+(1-\rho)n\bigr)+c,\qquad
+>   Q(n)=d\bigl(n-\rho+\tfrac{\delta_\infty}2\bigr)\bigl(n-\rho-\tfrac{\delta_\infty}2\bigr),$$
+> so the row lies in the normalisation class $(\rho;\delta_\infty)$; the only
+> remaining freedom is $a$, $d$, the accessory parameter $c=u_1$, and the scaling
+> $t\mapsto t/\mu$.
+>
+> **(ii) [proved]** If moreover the local system of $L$ is, up to rational gauge
+> and quadratic twist, $R^1\pi_*\mathbf Q$ of an elliptic surface over
+> $\mathbf P^1_t$, then $\rho,\delta_\infty\in\{0,\tfrac12,\tfrac13,\tfrac23\}
+> \bmod 1$; the fibre configuration is one of Herfurtner's 56; the fibre at $t=0$
+> is $I_{n_0}$ with $n_0=h$ the width returned by the $\mathcal J$-map test and
+> $\deg\mathcal J=\sum n_i$; and if the configuration is rigid then $\mathcal I$
+> is one of the finitely many rational values of Table 3 (§3).
+>
+> **(iii) [verified, $|a|\le3000$, $|c|\le150$, $|d|\le12000$, all 26
+> Kodaira-admissible classes, integrality prime-tested to $n=30$ and re-verified
+> exactly to $n=300$]** In the classes attached to **rigid** configurations the
+> complete list of such rows is the 28 rows of §6.1. Of these, exactly ten have
+> an elliptic-surface local system:
+> * Zagier $\mathbf A,\mathbf B,\mathbf C,\mathbf D,\mathbf E,\mathbf F$
+>   ($\deg\mathcal J=12$, Beauville's semistable surfaces $I_1I_2I_3I_6$ (three
+>   times), $I_1I_1I_1I_9$, $I_1I_1I_5I_5$, $I_1I_1I_2I_8$);
+> * $\sqrt{\mathrm{AZ}(11,5,125)}$ on $I_1I_5\,III\,III$ and
+>   $\sqrt{\mathrm{AZ}(9,3,-27)}$ on $I_3I_3\,III\,III$ ($\deg\mathcal J=6$);
+> * two **new** rows, on $I_1I_7\,II\,II$ ($\deg\mathcal J=8$, $\Gamma_0(7)$)
+>   and on $I_3\,III\,III\,III$ ($\deg\mathcal J=3$, the level-3 index-3
+>   congruence group).
+>
+> The other eighteen rows of §6.1 — Beukers'/$\sqrt{\text{Apéry}}$, $\sqrt T$,
+> $\sqrt{\text{Domb}}$, $\sqrt{\mathrm{AZ}(7,3,81)}$, $\sqrt{s_7}$, the level-5
+> Fricke row, six further new rows and the $A=0$ rows — have projective monodromy
+> commensurable with but not conjugate into $\mathrm{PSL}_2(\mathbf Z)$; they are
+> the Atkin–Lehner / non-congruence half of the picture, and Theorems R1–R4
+> govern them instead.
+>
+> **(iv) [verified, same box]** In the classes attached to Herfurtner's
+> **one-parameter** families the integral rows themselves form infinite
+> families; the cleanest is $(\rho;\delta_\infty)=(0;1)$, i.e.
+> $$P(n)=\tfrac A4(2n+1)^2,\qquad Q(n)=C(2n-1)(2n+1),$$
+> which is integral for $A\in4\mathbf Z$ and $C$ in an arithmetic progression —
+> a one-parameter family after $t\mapsto t/\mu$, matching the one modulus of
+> Herfurtner's $I_1I_1I_1I_3^*$ / $I_1I_1I_2I_2^*$ families.
+
+### Why "six"
+
+Reading (i)–(iii) backwards gives the shortest available account of Zagier's
+count. Fix all four fibres semistable. Then Theorem H1 forces
+$(an^2+an+b,\;cn^2)$; Herfurtner (= Beauville here) gives six surfaces;
+Theorem H3 converts each into a value of $a^2/c$; seven of the eight values are
+rational, and six of those seven are realised by an integral row (the eighth,
+$65+\tfrac{682}{25}\sqrt5$, is irrational and therefore unreachable by an
+integer recurrence; the seventh, $\mathcal I=0$, needs $a=0$, and no integral row
+exists there). **The "six" is the number of rational cross-ratios in the
+four-cusp block of Herfurtner's table that carry an integral accessory
+parameter.**
+
+### 6.3 The family classes, and the only positive scores in the whole scan
+
+The two non-degenerate family classes contain, at their top end, the **classical
+Legendre–Padé rows**. In class $(2;-1,1)$,
+$$P(n)=\tfrac A4(2n+1)^2,\qquad Q(n)=4(2n-1)(2n+1)\quad (C=4,\ D=CM^2=16),$$
+is integral for every $A\in8\mathbf Z$ with $A/8$ odd, with
+$\lambda_{1,2}=\tfrac12(A\pm\sqrt{A^2-64})$, so $|\lambda_2|\to0$ and the score
+$\log(1/|\lambda_2|)-k\to\infty$. These are the rows whose Apéry limit is
+$-\tfrac1{12}\log\frac{x+1}{x-1}$ ($A=8x$), already identified in
+`NONCONGRUENCE_SCAN.md` §0; they have $k=1$, not $2$, and they reprove nothing
+new — a Padé approximation to a logarithm. Class $(2;1,3)$ carries the mirror
+image ($A\mapsto A$, $B\mapsto-B$) of the same family. Geometrically they are the
+$I_m^*$ / $I_0^*$ one-parameter Herfurtner families, whose modulus is exactly the
+free parameter $x$.
+
+A cheap complete pass over **all** $1\,270\,065$ scan hits (`13_fastfilter.py`,
+`14_decay.py`: a positive score needs $|\lambda_2|<e^{-k}\le e^{-1}$, which is a
+condition on $(A,D)$ alone) gives:
+
+* $69\,434$ hits lie in Casoratian-non-degenerate classes;
+* $1\,374$ of those have $|\lambda_2|<1$ and real characteristic roots;
+* of those, **exactly two have a positive score with $k\ge2$**:
+  $$\text{Zagier }\mathbf D\ (11,3,-1):\ +0.4061,\qquad
+    \text{Beukers}/\!\sqrt{\text{Apéry}}\ (136,10,4):\ +0.1392 .$$
+  Every other positive score in the scan has $k=1$ and belongs to the classical
+  log family.
+
+> **Corollary H6 [verified over the stated box].** In the whole
+> Kodaira-admissible second-order world — every normalisation class, every
+> Herfurtner configuration, rigid or in a family — the only rows with
+> $\log(1/|\lambda_2|)>k\ge2$ are Apéry's $\zeta(2)$ row and Beukers' square root
+> of Apéry's $\zeta(3)$ row. The scan produces no third candidate.
+
+---
+
+## 8. Status: what is proved, what is verified, what is open
+
+**Proved.**
+* Lemma (exponent dictionary), Theorem H1 (normalisation classes), Theorem H2
+  (Kodaira admissibility) and Corollary H2.1 (Galois). These are elementary and
+  complete; §1.
+* The derivation of Zagier's shape $(an^2+an+b,\,cn^2)$ from "all four fibres
+  semistable", and of the root-row shape from "$III/III^*$ at $t_1,t_2$".
+* Theorem H3 (the cross-ratio $\mathcal I=a^2/d$ is a Möbius invariant, hence a
+  necessary condition), given Herfurtner's table as input.
+* Exclusion of $\sqrt{s_{10}}$, $\sqrt{s_{18}}$ and the `NONCONGRUENCE_SCAN`
+  §4.4 candidate from the elliptic-surface world (Corollary of H2).
+
+**Verified (exact finite computation, not proof).**
+* The $\mathcal J$-map test outcomes (§4): exact rational linear algebra on
+  $56$-term series, degrees $\le12$, $\gamma$ over $116$ candidates per $h$.
+  A *positive* answer is a certificate (an explicit rational $\mathcal J$ whose
+  identity is checked on more coefficients than were used to fit it); a
+  *negative* answer is only "no fit within $h\le12$, $\deg\le12$ and the
+  $\gamma$-list", which for our rows is convincing but not a proof.
+* The scan (§5–6): $|a|\le3000$, $|c|\le150$, $|d|\le12000$, $26$ classes,
+  $1.27\times10^6$ hits; integrality tested prime-by-prime to $n=30$ and
+  re-verified with exact rational arithmetic to $n=300$ for every row listed in
+  §6.1; $k$ measured to $n=60$.
+* The two new rows of §6.2 (integrality to $n=300$, $\mathcal J$-map fits, $k=2$).
+
+**Open / not settled here.**
+1. *Sufficiency of the cross-ratio test.* Matching $\mathcal I$ and the type
+   quadruple does not force the accessory parameter; rows 5, 14 of §6.1 match a
+   configuration's $\mathcal I$ and are not that surface. A clean statement
+   would compute the accessory parameter of each Herfurtner Weierstrass model
+   directly from its $G_2,G_3$ and compare — mechanical, not done here.
+2. *The one-parameter families.* Theorem H3 says nothing about them, and the
+   scan is a box. A complete treatment would parametrise the Picard–Fuchs
+   operator of each family in Herfurtner's $\alpha$ and ask for which $\alpha$ the
+   row is integral. The observed answer for $(0;1)$ is "$\alpha$ in an arithmetic
+   progression"; proving that is a finite computation on the family's
+   Weierstrass model.
+3. *Periods of the two new rows.* Both have complex-conjugate characteristic
+   roots, so there is no archimedean Apéry limit to identify (the situation of
+   Zagier $\mathbf B$ and AZ$(11,5,125)$). Their $p$-adic limits and their
+   sources $\Phi=F\,\theta_qt$ have not been computed. The $\Gamma_0(7)$ row is
+   the natural place to look for the $L(\eta_1^3\eta_7^3,2)$ family of
+   `SPORADIC_SCAN2.md` §8.
+4. *$K3$ and higher.* Herfurtner classifies **rational** elliptic surfaces
+   ($\sum e=12$). An elliptic $K3$ with four singular fibres ($\sum e=24$) would
+   also give a rank-two local system on $\mathbf P^1$ with four singular points;
+   the $\mathcal J$-map test would report $\deg\mathcal J\le24$, outside the
+   $\deg\le12$ window used here. No row in the scan produced a fit with
+   $\deg\mathcal J>12$, but the window was not raised.
+5. *Beyond four singular points.* Everything here is the three-term/quadratic
+   case. Five singular points means $\deg P$ or $\deg Q=3$, i.e. a four-term
+   recurrence or cubic coefficients; Schmickler-Hirzebruch's three-fibre list is
+   the degenerate end (the hypergeometric rows $(16,4,0)$, $(27,3,0)$,
+   $(64,8,0)$, where $d=0$ and $t=\infty$ merges with a finite point).
+
+---
+
+## 9. Reproduction
+
+```
+cd lattice/herfurtner
+python3 01_exponents.py                 # exponent data of the known rows
+gcc -O2 -march=native -o 02_hscan 02_hscan.c
+./run_scan.sh                           # the 26-class scan  (~75 min, 12 cores)
+./run_a0.sh                             # the A = 0 pass
+python3 12_classsummary.py              # per-class hit counts, family detection
+python3 08_report.py out/c_*.txt out/a0.txt      # exact verification, k, score, match
+python3 09_table.py                     # the markdown table of rows
+python3 13_fastfilter.py ; python3 14_decay.py   # every row with |lambda_2| < 1
+python3 04_herfurtner.py                # Herfurtner's table + cross-ratio invariants
+python3 07_classtable.py                # normalisation classes <-> configurations
+python3 10_jtest_all.py ; gp -q 11_jall.gp       # the J-map test on every row
+```
+
+Data files: `out/classtable.txt` (classes vs. configurations),
+`out/rows_full.json` (all verified rows with invariants),
+`out/jall.log` (the $\mathcal J$-test verdicts), `out/classsummary.json`.
+
+**Sources.** S. Herfurtner, *Elliptic surfaces with four singular fibres*,
+Math. Ann. 291 (1991) 319–342 (GDZ scan
+`PPN235181684_0291/LOG_0031.pdf`); A. Beauville, *Les familles stables de courbes
+elliptiques sur $\mathbf P^1$ admettant quatre fibres singulières*, C. R. Acad.
+Sci. Paris 294 (1982) 657–660; R. Miranda, *Persson's list of singular fibers for
+a rational elliptic surface*, Math. Z. 205 (1990) 191–211; R. Vidunas,
+G. Filipuk, *A classification of coverings yielding Heun-to-hypergeometric
+reductions*, arXiv:1204.2730 (Table 4 = Herfurtner's 38 Belyi $\mathcal J$-maps);
+H. Movasati, S. Reiter, *Heun equations coming from geometry*, arXiv:0902.0760;
+D. Zagier, *Integral solutions of Apéry-like recurrence equations* (2009);
+K. Schmickler-Hirzebruch, *Elliptische Flächen über $\mathbf P_1(\mathbf C)$ mit
+drei Ausnahmefasern*, Münster 1985 (the three-fibre case).

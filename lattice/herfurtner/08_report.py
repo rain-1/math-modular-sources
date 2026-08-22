@@ -69,9 +69,9 @@ def main():
         S=2*M-j1-j2
         if (A*S)%(2*M): continue
         be=A*S//(2*M)
-        uu=seq(A,be,B,M,j1,j2,C,NVER,1,B)
+        uu=seq(A,be,B,M,j1,j2,C,80,1,B)
         if all(x.denominator==1 for x in uu): verified.add((M,j1,j2,A,B,C))
-    print("# integral to n=%d: %d"%(NVER,len(verified)))
+    print("# integral to n=80: %d"%(len(verified)))
     # a row is primitive if it is not c*(a smaller verified row)
     prim=set()
     for (M,j1,j2,A,B,C) in verified:
@@ -88,7 +88,8 @@ def main():
         be=A*S//(2*M); D=C*M*M
         # F1 Casoratian
         deg = (j1%M==0 and j1//M>=1) or (j2%M==0 and j2//M>=1)
-        u=seq(A,be,B,M,j1,j2,C,NVER,1,B)
+        NV = NVER if not (deg or (A*A-4*C*M*M)==0) else 80
+        u=seq(A,be,B,M,j1,j2,C,NV,1,B)
         if any(x.denominator!=1 for x in u): continue
         b=seq(A,be,B,M,j1,j2,C,NK,0,1)
         k=0

@@ -208,6 +208,85 @@ $\PP^1_t$ while its square root does not, and the two fixed points of $W_6$ ---
 the Fricke fold point $i/\sqrt6$ of Theorem~B and its companion --- are exactly
 the two order-two points, i.e.\ the two exponents $\rho=\tfrac12$.
 
+\subsection{The scan}\label{sec:herfscan}
+
+Theorem~\ref{thm:norm} turns the search for integral rows into $26$ independent
+three-parameter searches, one for each Kodaira-admissible pair
+$(\rho,\delta_\infty)$ with $r_i=j_i/M\in[-1,2]$. Inside the class $(M;j_1,j_2)$
+the free integers are $A$, the accessory parameter $B=u_1$ and the leading
+coefficient $C$ of $Q$; \texttt{lattice/herfurtner/02\_hscan.c} sweeps
+$1\le A\le3000$, $1\le|B|\le150$, $1\le|C|\le\min(4000,12000/M^2)$ (and a
+separate $A=0$ pass), testing integrality division-free on $U_n=u_n(n!)^2$,
+\[
+U_{n+1}=P(n)U_n-n^2Q(n)U_{n-1},\qquad u_n\in\Z\iff v_p(U_n)\ge2v_p(n!),
+\]
+prime by prime modulo $p^K$ for every $p\le30$. Survivors are re-verified with
+exact rational arithmetic to $n=300$. The sweep is $1.27\times10^6$ hits in
+about $75$ minutes on twelve cores.
+
+Two filters precede any claim. The Casoratian
+$u_nb_{n+1}-u_{n+1}b_n=\pm\prod_{m\le n}Q(m)/((m+1)!)^2$ vanishes identically as
+soon as $Q(n_0)=0$ for an integer $n_0\ge1$ (i.e.\ $M\mid j_i$, $j_i/M\ge1$); the
+companion is then a rational multiple of the row, the Ap\'ery limit is rational
+and the extension class is split. And $a^2=4d$ gives $\lambda_1=\lambda_2$, so
+no second growth rate.
+
+\subsection{Rigid classes and family classes}
+
+The scan of \S\ref{sec:herfscan} splits the $26$ Kodaira-admissible
+normalisation classes into two kinds, and the split is Herfurtner's own. A class
+whose configurations are all \emph{rigid} produces a handful of integral rows;
+a class attached to a \emph{one-parameter family} produces infinitely many. The
+cleanest instance is $(\rho;\delta_\infty)=(0;1)$, i.e.\ $Q=C(2n-1)(2n+1)$,
+where the fibre at $\infty$ has half-integral exponents (an $I^*_m$): there
+\[
+P(n)=\tfrac A4(2n+1)^2,\qquad Q(n)=C(2n-1)(2n+1)
+\]
+is integral for $A\in4\Z$ and $C$ in an arithmetic progression --- one parameter
+after the scaling $t\mapsto t/\mu$, matching the one modulus of Herfurtner's
+$I_1I_1I_1I_3^*$, $I_1I_1I_2I_2^*$ families. Its $C=4$ sub-family
+($\lambda^2-A\lambda+16$, $A=8x$) is the classical Legendre--Pad\'e row with
+Ap\'ery limit $-\tfrac1{12}\log\frac{x+1}{x-1}$: $k=1$, score $\to\infty$, and
+nothing new.
+
+\subsection{Two new rows}\label{sec:herfnew}
+
+Two integral rows produced by the scan are new to this project and are
+Picard--Fuchs systems of Herfurtner surfaces. Both are invisible to Zagier's
+normalisation ($\rho\neq0$) \emph{and} to the root-row normalisation
+($\delta_\infty\neq0$ resp.\ $\rho\neq\tfrac12$), which is why no earlier scan
+found them.
+
+\begin{proposition}\label{prop:newrows}
+\VerifiedR{integrality $n\le300$ exact; $\mathcal J$-fit exact}
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.4em]
+\item $(n+1)^2u_{n+1}=(117n^2+78n+21)u_n-441(3n-1)^2u_{n-1}$, $u_0=1$,
+\[u_n=1,\,21,\,693,\,23940,\,734643,\,13697019,\dots\in\Z ,\]
+class $(\rho;\delta_\infty)=(\tfrac13;0)$, $\mathcal I=\tfrac{169}{49}$,
+$\deg\mathcal J=8$, $h=1$: the surface $I_1I_7\,II\,II$
+\textup{(}Herfurtner \#30\textup{)}, projective monodromy $\Gamma_0(7)$.
+$\lambda^2-117\lambda+3969$ has discriminant $-2187$, so
+$|\lambda_1|=|\lambda_2|=63$ and there is no archimedean limit; $k=2$.
+The row is integral only after the scaling $\lambda=3$.
+\item $(n+1)^2u_{n+1}=(72n^2+36n+6)u_n-108(4n-1)(4n-3)u_{n-1}$, $u_0=1$,
+\[u_n=1,\,6,\,90,\,1140,\,-5850,\,-1265004,\dots\in\Z ,\]
+class $(\tfrac12;\tfrac12)$, $\mathcal I=3$, $\deg\mathcal J=3$, $h=3$: the
+surface $I_3\,III\,III\,III$ \textup{(}\#45, $\mathcal J=X^3/Y^3$\textup{)},
+projective monodromy the index-three congruence group of level three
+\textup{(}the kernel of $\PSL_2(\Z)\twoheadrightarrow\Z/3$\textup{)}.
+$\lambda^2-72\lambda+1728$ has discriminant $-1728$, $|\lambda_i|=41.57$, no
+archimedean limit; $k=2$; integral only after $\lambda=6$.
+\end{enumerate}
+\end{proposition}
+
+The class $(\tfrac12;\tfrac12)$ deserves a remark: its Fuchsian signature is
+$(0;2,2,2;\text{one cusp})$, and \emph{two} groups of that signature occur among
+integral rows --- the index-three subgroup of $\PSL_2(\Z)$ just described, and
+$\Gamma_0(5)+5$, which has the same covolume but is not conjugate into
+$\PSL_2(\Z)$ and carries the level-$5$ Fricke row
+$(88n^2+44n+6,\,-4(4n-1)(4n-3))$ of \cite[\S5]{ProjNoncong}. The
+$\mathcal J$-map test is exactly what separates them.
+
 \subsection{The classification theorem}
 
 \begin{namedthm}[Classification of second-order rows]\label{thm:herfclass}
@@ -227,11 +306,21 @@ set of Theorem~\ref{thm:finite}.
 \item \VerifiedR{exhaustive integrality scan of all $26$ Kodaira-admissible
 classes, $|a|\le3000$, $|c|\le150$, $|d|\le12000$, integrality tested
 prime-by-prime to $n=30$ and re-verified exactly to $n=300$}
-The complete list of primitive integral rows in those ranges is
-Table~\ref{tab:herfrows}. Every one of them is already in the project's census;
-the only ones whose $\ker L$ is an elliptic-surface local system are Zagier's six
-and the two root rows of Theorem~\ref{thm:whichroots}. In particular \emph{no new
-Apéry-like second-order row of Herfurtner type exists in this range}.
+in the classes attached to \emph{rigid}
+configurations the complete list of primitive, Casoratian-non-degenerate rows is
+the $28$ rows of \cite[\S6.1]{ProjHerfurtner}. Exactly ten of them have an
+elliptic-surface local system: Zagier's six ($\deg\mathcal J=12$), the two root
+rows of Theorem~\ref{thm:whichroots} ($\deg\mathcal J=6$), and the two new rows
+of Proposition~\ref{prop:newrows} ($\deg\mathcal J=8$ and $3$). In the classes
+attached to \emph{one-parameter} families the integral rows themselves form
+infinite families.
+\item \VerifiedR{same box; a positive score needs $|\lambda_2|<e^{-k}\le e^{-1}$,
+a condition on $(a,d)$ alone, so the pass is complete over all
+$1.27\times10^6$ scan hits} Of the $69\,434$ hits in Casoratian-non-degenerate
+classes, $1\,374$ have $|\lambda_2|<1$, and \emph{exactly two} have a positive
+score with $k\ge2$: Ap\'ery's $\zeta(2)$ row $(11,3,-1)$ at $+0.4061$ and
+Beukers' row $(136,10,4)$ at $+0.1392$. Every other positive score has $k=1$ and
+belongs to the classical Legendre--Pad\'e log family.
 \end{enumerate}
 \end{namedthm}
 
