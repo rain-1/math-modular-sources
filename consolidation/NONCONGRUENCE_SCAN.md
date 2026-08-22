@@ -12,8 +12,9 @@ attribution to Beukers 1987 Thm 3), `ROOT_ROWS.md` (Theorems R1–R4), `SPORADIC
 
 ## 0. Verdict first
 
-Three theorems, one finite classification, two independent exhaustive scans, and a
-negative answer with a sharp reason.
+Three theorems, one finite classification, two independent exhaustive scans, a negative
+answer to the question asked with a sharp reason — and one unexpected positive-score
+**candidate** that the ansatz-free scan turned up outside the modular world (§4.4).
 
 * **Theorem N1 (the score splits).** For a genus-zero group $\Gamma$ commensurable with
   $\mathrm{PSL}_2(\mathbf Z)$, a Hauptmodul-type parameter $t=q+O(q^2)$ at a MUM cusp, and a
@@ -23,7 +24,9 @@ negative answer with a sharp reason.
   where $t_2$ is the **second-smallest** of the values $t(P)$, $P$ running over the
   cusps and elliptic points of $\Gamma$. The archimedean factor $|t_2|$ depends only on
   $(\Gamma,t)$ — **not on $F$** — and $\lambda\in\{1,2,4\}$ depends only on the $2$-adic
-  structure of $F$. Non-congruence $\Leftrightarrow\lambda>1$ (Calegari–Dimitrov–Tang).
+  structure of $F$. Minimal $\lambda>1$ means the $t$-expansion of $\sqrt F$ has **unbounded**
+  $2$-power denominators, hence (Calegari–Dimitrov–Tang) $\sqrt F$ is a **non-congruence**
+  form; conversely a congruence form has bounded denominators, so $\lambda=1$.
   Hence a positive score needs
   $$|t_2|>e^2\lambda=\begin{cases}7.389 & \lambda=1\ \text{(congruence)}\\
   14.778 & \lambda=2\\ 29.556 & \lambda=4.\end{cases}$$
@@ -47,18 +50,29 @@ negative answer with a sharp reason.
   **host group**, only the "both finite points are cusps" case — the Zagier class —
   and that class is scanned exhaustively in §4.
 
-* **Scan A (recurrence classes, `01_class_scan.c`).** Complete integer search of the
-  five classes $e_1=e_2=e\in\{2,3,4,6,\infty\}$ of second-order MUM rows, with the
-  Casoratian (non-vanishing) filter and the measured $k$. Result:
-  **Apéry's/Beukers' row $(\alpha,\gamma,\delta,\zeta)=(136,10,16,4)$ is the unique
-  positive score in every box searched**, the runner-up being its own rescaling at
-  $-0.554$ and then the level-8 $T$ row at $-1.624$. Beyond it, every positive score in
-  the scan is either a **Casoratian degeneracy** ($Q(n_0)=0$, so $W_n\equiv0$ and the
-  companion is a rational multiple of the row — the criterion is vacuous) or a **classical
-  Legendre/Padé $\log$ row** (e.g. $a_n=\binom{2n}nP_n(75)$, $\exp(4\xi)=\tfrac{38}{37}$),
-  or **Apéry's $\zeta(2)$ row** $(11,3,-1,0)$ at $+0.406$. Exactly **fourteen** rows have
-  positive score *and* $k\ge2$; twelve are the $\log$ family, one is Apéry's $\zeta(2)$,
-  one is Beukers'.
+* **Scan A (recurrence classes, `01_class_scan.c`).** Ansatz-free integer search of the
+  second-order MUM rows: the five classes $e_1=e_2=e\in\{2,3,4,6,\infty\}$, plus a
+  **free-exponent** variant in which the common exponent difference $\rho=(\alpha-\beta)/\alpha$
+  is unconstrained (N3 forces only $\rho_1=\rho_2$), with the Casoratian non-vanishing
+  filter and the measured $k$. Every apparent winner scoring above $+1$ is a **Casoratian
+  degeneracy** ($Q(n_0)=0$, so $W_n\equiv0$: the companion is a rational multiple of the row
+  and the criterion is vacuous); of what survives, all the positive scores with $k\le1$ are
+  the classical Legendre/Padé $\log$ rows (which cannot come from §1's construction, since
+  Theorem R3 forces $k=2$ there). The positive scores with $k\ge2$ are:
+  the classical $\log$ family $\xi=-\tfrac1{12}\log\frac{x+1}{x-1}$
+  ($\alpha=8x$, $\delta=16$, $x$ odd, an infinite family whose score $\to\infty$ with $x$);
+  **Apéry's $\zeta(2)$ row** $(11,3,-1,0)$ at $+0.406$;
+  **Beukers' row** $(136,10,16,4)$ at $+0.139$, the *only* one in the $e=2$ (square-root,
+  non-congruence) class, whose next entries are its own rescaling ($-0.554$), the level-$8$
+  $T$ row ($-1.624$) and a **new level-$5$ non-congruence row** ($-1.673$, §5);
+  and one **unexpected row at $\rho=\tfrac76$** (§4.4),
+  $$(n+1)^2a_{n+1}=(234n^2-39n-78)a_n+(27n^2-63n+30)a_{n-1},\qquad a_0=1,\ a_1=-78,$$
+  with $\lambda_{1,2}=117\pm6\sqrt{381}$, $k=2$ sharp, and
+  $\operatorname{score}=+0.15998>$ Beukers'. Its four Apéry ingredients are verified to
+  $n\le700$ but **not proved**, its canonical (mirror) coordinate is **not** integral (so it
+  is not a modular row at all), and its limit
+  $\xi=-0.01281209377911993670\ldots$ is unidentified. It is reported as a **candidate**;
+  no irrationality is claimed.
 
 * **Scan B (modular, `03b_exact.gp`).** All eta-quotient pairs $(t,F)$ on $\Gamma_0(N)$,
   $N\le60$: $t$ of weight $0$ with $\operatorname{ord}_\infty t=1$ and divisor degree
@@ -116,8 +130,9 @@ This is the key structural point, and it is what makes the search finite.
 *Proof.* At a point $P\in\mathfrak H$ that is not elliptic, $t$ is a local isomorphism and
 $g$ is holomorphic and non-vanishing, so the two solutions $g$, $g\int W$ of $L_1$ are
 holomorphic and independent: $t(P)$ is an ordinary point. At an elliptic point of order
-$e$, $t-t(P)$ vanishes to order $e$ in the uniformiser, producing exponent difference
-$1/e$. At a cusp $c$ with $t(c)$ finite, the second solution carries $\log q_c$, i.e.
+$e$ the local coordinate on $X_\Gamma$ is $w\sim(\tau-\tau_P)^e$ and $t-t(P)\sim w$, so
+the local monodromy of the weight-one system is a rotation by $2\pi/e$ and the exponent
+difference is $1/e$ (Schwarz). At a cusp $c$ with $t(c)$ finite, the second solution carries $\log q_c$, i.e.
 $\log(t-t(c))$: exponents $(0,0)$. Zeros or poles of $F$ at a cusp change the **exponents**
 there, not the **location**. $\square$
 
@@ -220,14 +235,19 @@ comparison in `sympy`).
 **Theorem N3 (unequal exponents kill the score).** The exponent difference of $L_1$ at
 $t_i$ is $1/e_i$ ($e_i=\infty$ at a cusp). Write $L_1=P\theta^2+Q\theta+R$, $P=1-\alpha
 t+\delta t^2$, $P(0)=1$. Then $Q(t_i)=(1-1/e_i)\,t_iP'(t_i)$, two linear conditions on $Q$.
-If $t_1,t_2$ are Galois-conjugate irrationals, applying the nontrivial automorphism carries
-the condition at $t_1$ to the *same* condition at $t_2$, forcing $e_1=e_2$. Hence
+Suppose $t_1,t_2$ are Galois-conjugate irrationals and let $\sigma$ be the nontrivial
+automorphism. $P,Q$ have rational coefficients, so applying $\sigma$ to the condition at
+$t_1$ gives $Q(t_2)=(1-1/e_1)t_2P'(t_2)$; comparing with the condition at $t_2$ and using
+$t_2P'(t_2)\ne0$ forces $e_1=e_2$. Hence
 $$e_1\ne e_2\ \Longrightarrow\ t_1,t_2\in\mathbf Q\ \Longrightarrow\
-\lambda_1,\lambda_2\in\mathbf Q,$$
-and if moreover $P,Q,R\in\mathbf Z[t]$ (the leading recurrence coefficient is exactly
-$(n+1)^2$ — true for every row in the project's census) then $\lambda_{1,2}$ are roots of a
-monic integer quadratic, hence **integers**; a positive score needs $|\lambda_2|<e^{-2}$,
-so $\lambda_2=0$ and the recurrence degenerates. $\square$
+\lambda_1,\lambda_2\in\mathbf Q .$$
+If moreover $P,Q,R\in\mathbf Z[t]$ (equivalently the leading recurrence coefficient is
+exactly $(n+1)^2$ — true for every row in the project's census) then $\lambda_{1,2}$ are the
+roots of the *monic* integer quadratic $x^2-\alpha x+\delta$, hence **rational integers**.
+A positive score needs $|\lambda_2|<e^{-k}\le1$, and the only integer of absolute
+value $<1$ is $0$; $\lambda_2=0$ means $\delta=0$, i.e. the recurrence has no
+$a_{n-1}$-term to leading order and degenerates to first order — no second solution, no
+companion. $\square$
 
 **Consequence for the brief's questions (b), (d).** Read the table against N3:
 
@@ -244,6 +264,16 @@ so $\lambda_2=0$ and the recurrence degenerates. $\square$
   recurrence scan already covers.** The interesting non-congruence-ness is not in the group
   of $t$ but in the multiplier system of $g=\sqrt F$ — which is exactly Beukers' situation
   (his $t$ lives on the *congruence* group $\Gamma_0(6)+6$; his $\sqrt E$ does not).
+* **And a non-congruence host is doubly penalised.** If $\Gamma$ itself is non-congruence
+  then, by Calegari–Dimitrov–Tang applied to the weight-zero form $t$, the Hauptmodul's own
+  $q^{1/h}$-expansion has unbounded denominators: $t\in\mu^{-n}\mathbf Z$ for some
+  $\mu>1$, and every coefficient extraction $[t^n]$ then pays that $\mu$ on top of the
+  $\lambda\mid4$ of the square root. In the score $\log|t_2|-k-\log\lambda$ the
+  $\log\lambda$ term grows accordingly. This is the only place where CDT gives a
+  *quantitative* obstruction rather than a dichotomy, and it is still only qualitative in
+  their theory — $\mu$ would have to be computed from the Belyi map of the degree-$9$ or
+  degree-$10$ cover by Eisenstein's theorem (§2). We did not compute it, because Scan A
+  covers these rows regardless.
 * **Quadratic pullbacks are always fatal.** If $t=t'^2$ then each singular value $t_i$ has
   two preimages $\pm\sqrt{t_i}$ of equal modulus, so
   $\lambda_1'=\lambda_2'=\lambda_1^{1/2}>1$ and the score is
@@ -295,9 +325,9 @@ There are exactly **fourteen**, and they are all classical:
 | score | class | $(\alpha,\gamma,\delta,\zeta)$ | $\lambda_1$ | $\lambda_2$ | $k$ | period $\xi$ |
 |---|---|---|---|---|---|---|
 | $+0.52533$ | $\infty$ | $(200,-150,16,-36)$ | $199.9200$ | $0.0800320$ | 2 | $-\tfrac1{12}\log\tfrac{13}{12}$ |
-| $+0.52533$ | $\infty$ | $(200,-150,16,-100)$ | $199.9200$ | $0.0800320$ | 2 | $\mathbf Q$-comb. of the same log |
+| $+0.52533$ | $\infty$ | $(200,-150,16,-100)$ | $199.9200$ | $0.0800320$ | 2 | $\tfrac1{20}\log\tfrac{13}{12}-\tfrac5{468}$ |
 | $+0.44187$ | $\infty$ | $(184,-138,16,-36)$ | $183.9130$ | $0.0869977$ | 2 | $-\tfrac1{12}\log\tfrac{12}{11}$ |
-| $+0.44187$ | $\infty$ | $(184,-138,16,-100)$ | $183.9130$ | $0.0869977$ | 2 | same log |
+| $+0.44187$ | $\infty$ | $(184,-138,16,-100)$ | $183.9130$ | $0.0869977$ | 2 | rational $+\mathbf Q\cdot$ same log |
 | $\mathbf{+0.40606}$ | $\infty$ | $(11,3,-1,0)$ | $\tfrac{11+5\sqrt5}2$ | $\tfrac{11-5\sqrt5}2$ | 2 | $\boldsymbol{\zeta(2)/5}$ — **Apéry** |
 | $+0.35081$ | $\infty$ | $(168,-126,16,-36/-100)$ | $167.9047$ | $0.0952921$ | 2 | $-\tfrac1{12}\log\tfrac{11}{10}$ |
 | $+0.25060$ | $\infty$ | $(152,-114,16,-36/-100)$ | $151.8947$ | $0.1053362$ | 2 | $-\tfrac1{12}\log\tfrac{10}{9}$ |
@@ -325,6 +355,101 @@ $\log$/algebraic battery ($\exp(k\xi)$ rational for $k\le36$; `algdep` to degree
 are Padé-type limits close to $1/\gamma$ and **we make no claim about them** — they are
 outside the question this note asks.
 
+### 4.3 The boxes, and what each returned
+
+Every run applies the Casoratian filter and the measured $k$; "positive, $k\ge2$" lists the
+survivors. $\mathrm A$ = Apéry's $\zeta(2)$ row, $\mathrm B$ = Beukers' row, $\log$ = the
+Legendre/Padé $\log$ family.
+
+| run | class | $\alpha$ | $|\delta|$ | $|\gamma|$ | $|\zeta|$ | rows | positive, $k\ge2$ |
+|---|---|---|---|---|---|---|---|
+| `r3` | $e=2$ | $\le3000$ | $\le150$ | $\le150$ | $\le300$ | 248 | $\mathrm B$ only |
+| `more_e2deep` | $e=2$ | $\le3000$ | $\le400$ | $\le150$ | $\le300$ | 623 | $\mathrm B$ only |
+| `wide_e2_gamma` (snake) | $e=2$ | $\le1000$ | $\le100$ | $\le1000$ | $\le200$ | 314 | $\mathrm B$ only |
+| `wide_e2_zeta` (snake) | $e=2$ | $\le1000$ | $\le100$ | $\le100$ | $\le2000$ | 308 | $\mathrm B$ only |
+| `wide_e2_alpha` (snake) | $e=2$ | $\le30000$ | $\le60$ | $\le60$ | $\le120$ | 49 | $\mathrm B$ only |
+| `eclass_0` | $e=\infty$ | $\le3000$ | $\le150$ | $\le150$ | $\le300$ | 679 | $\mathrm A$ + 12 $\log$ |
+| `more_e0deep` | $e=\infty$ | $\le3000$ | $\le400$ | $\le150$ | $\le300$ | 1381 | $\mathrm A$ + 12 $\log$ |
+| `eclass_3` | $e=3$ | $\le3000$ | $\le150$ | $\le150$ | $\le300$ | 1684 | none |
+| `eclass_4` | $e=4$ | $\le3000$ | $\le150$ | $\le150$ | $\le300$ | 2902 | none |
+| `eclass_6` | $e=6$ | $\le3000$ | $\le150$ | $\le150$ | $\le300$ | 590 | none |
+| `freeclass` | $\rho$ free | $\le300$ | $\le60$ | $\le30$ | $\le60$ | 1430 | $\mathrm A$, $\mathrm B$ |
+| `more_freewide` | $\rho$ free | $\le500$ | $\le70$ | $\le60$ | $\le120$ | 6165 | $\mathrm A$, $\mathrm B$ |
+| `more_freeacc` | $\rho$ free | $\le250$ | $\le50$ | $\le200$ | $\le300$ | 7433 | $\mathrm A$ + 18 $\log$ + **the $\rho=\tfrac76$ row (§4.4)** |
+
+The `$\rho$ free` runs are the strongest evidence: there $\beta$ ranges over
+$[-\alpha,\alpha]$ and $\varepsilon=-2\delta(\alpha-\beta)/\alpha$ is derived, so the
+common exponent difference $\rho$ is arbitrary — no assumption that $\rho=1/e$ with
+$e\in\{2,3,4,6,\infty\}$ is made. **In every one of them the only positive-score rows with
+$k\ge2$ are Apéry's $\zeta(2)$ row and Beukers' row.**
+
+### 4.4 An unexpected positive-score row outside the modular exponent classes
+
+The free-exponent runs turned up one row that is **not** in any class $\rho=1/e$ and that
+**out-scores Beukers'**:
+
+> $$\boxed{(n+1)^2a_{n+1}=(234n^2-39n-78)\,a_n+(27n^2-63n+30)\,a_{n-1},\qquad a_0=1,\ a_1=-78}$$
+> $$a_n=1,\,-78,\,-2283,\,-197964,\,-23656311,\,-3323008962,\dots$$
+> $\alpha=234$, $\beta=-39$, $\gamma=-78$, $\delta=-27$, $\varepsilon=63$, $\zeta=-30$;
+> common exponent difference $\rho=(\alpha-\beta)/\alpha=\tfrac76$; exponents
+> $(0,0)$ at $t=0$, $(0,\tfrac76)$ at $t_1,t_2$, $(-\tfrac23,\tfrac13)$ at $t=\infty$
+> (Fuchs: $0+\tfrac76+\tfrac76-\tfrac13=2$ ✓).
+> $$\lambda_{1,2}=117\pm6\sqrt{381}=234.1153\ldots,\ -0.1153\ldots,\qquad
+> \lambda_1\lambda_2=-27 .$$
+
+**All four Apéry ingredients, verified (not proved), `15_verify234.gp`:**
+
+| ingredient | status |
+|---|---|
+| $a_n\in\mathbf Z$ | verified exactly for $n\le700$ |
+| $d_n^2b_n\in\mathbf Z$, and $k=2$ is **sharp** ($d_nb_n\notin\mathbf Z$) | verified exactly for $n\le700$ |
+| $W_n=a_nb_{n+1}-a_{n+1}b_n\ne0$ | $W_n=Q(n)W_{n-1}/(n+1)^2$ with $Q(n)=-3(3n-2)(3n-5)$, which has **no positive integer root**; verified $n\le600$ |
+| $\limsup|r_n|^{1/n}\le|\lambda_2|$ | measured $\tfrac1n\log|r_n|=-2.2423,\,-2.2086,\,-2.1953,\,-2.1881,\,-2.1834$ at $n=100,\dots,500$, increasing towards $\log|\lambda_2|=-2.15998$ |
+
+and the decisive quantity
+$$\tfrac1n\log\bigl(d_n^2|a_n\xi-b_n|\bigr)=-0.361,\,-0.147,\,-0.200,\,-0.199,\,-0.177
+\quad (n=100,\dots,500),$$
+always negative and oscillating about $\operatorname{score}\cdot(-1)=2+\log|\lambda_2|=-0.15998$
+— exactly the behaviour of Apéry's own rows. So
+$$\operatorname{score}=\log\frac1{|\lambda_2|}-2=+0.1599769816829892\ldots\ >\
+\text{Beukers'}\ +0.1392,$$
+and if the four ingredients hold for **all** $n$ then
+$$\xi=\lim\frac{b_n}{a_n}=-0.0128120937791199367056491254564324911771086037985708376891\ldots
+\notin\mathbf Q,\qquad \mu(\xi)\le47.6055 .$$
+**No such claim is made here**: the first three ingredients are verified to $n\le700$, not
+proved, and the fourth needs the Poincaré argument of `SQRT_APERY.md` §4 together with a
+non-vanishing/sign argument that we do not have (unlike Apéry's row, the $W_n$ here are not
+of one sign). This is a **candidate**, and stating it as such is the point.
+
+**It is not a modular row.** The canonical (mirror) coordinate $q=t\exp(h/y_1)$ of the
+operator has **non-integral** expansion: writing $t(q)=\sum c_nq^n$, the denominators are
+$1$ for $n\le8$ and then $2,1,5,5,2,5,14,7,40,\dots$, with
+$\operatorname{lcm}$ of the denominators for $n\le58$ equal to
+$2^{11}5^67^411^213^2\cdot17\cdot19\cdot23$ — new primes keep entering, so the denominators
+are **not** of the form $\mu^{n}$ and Eisenstein's theorem rules out $t(q)$ being algebraic
+or modular (congruence or not). By contrast the same computation on Apéry's $\zeta(2)$ row
+returns $t(q)=q-5q^2+15q^3-30q^4+40q^5-26q^6-30q^7+\cdots$, which is exactly Beukers'
+$\Gamma_1(5)$ Hauptmodul $q\prod(1-q^n)^{5(\frac n5)}$, and on Beukers' own row it returns
+$q-48q^2+1056q^3-14080q^4+\cdots$, i.e. $\tfrac14(\eta_1\eta_6/\eta_2\eta_3)^{12}$ in the
+rescaled nome — both integral (`14_mirror234.gp`). So the new row lies outside the modular
+world entirely: it is an *integral MUM row whose mirror map is not integral*, in the same
+company as Zudilin's non-modular Catalan row (`ROOT_ROWS.md` §5.5).
+
+**And $\xi$ is not identified.** Negative at $150$–$380$ digits: two- and three-term
+`lindep` against $1,\pi,\pi^2,\pi^3,\pi^4,\zeta(3),\zeta(5),\log2,\log3,\log13,\log127,
+\pi\log3,\pi^2\log3,\log^22,\log^23,G,\pi/\sqrt3,\pi^3/\sqrt3,\sqrt3,\sqrt{381},\sqrt{127},
+\Gamma(1/3),\Gamma(1/6),\Gamma(1/3)^6,\Gamma(1/6)^6$; $\exp(k\xi)$ rational for $k\le400$;
+$\xi$ algebraic of degree $\le12$; $\exp(k\xi)$ algebraic of degree $\le6$ for $k\le36$;
+$\xi\pi^{j}$ algebraic of degree $\le4$ for $|j|\le3$; four-term `lindep` against
+$\{1,\pi^2,\zeta(3),\log\lambda_1\}$, $\{1,\pi^2,\log2,\log3\}$,
+$\{1,\pi/\sqrt3,\pi^2,\log3\}$. (`13_ident234.gp`, `15_verify234.gp`.)
+
+**Why the earlier passes missed it.** $\rho=\tfrac76$ is not $1/e$ for any $e$, so the five
+classed runs could not see it; and $|\gamma|=78$ needs the wider accessory box. It appears
+only in `more_freeacc` ($\rho$ free, $|\gamma|\le200$). A dedicated sweep of
+$\rho=p/q$, $q\le6$, $0<\rho\le3$, at $\alpha\le3000$, $|\delta|\le60$, $|\gamma|\le300$,
+$|\zeta|\le400$ (`run_rho.sh`) is running; PLACE_RHO
+
 ## 5. The runner-up: a second non-congruence Beukers row, at level 5
 
 The best negative-score row in the $e=2$ class that is **not** a rescaling of a known one is
@@ -351,9 +476,19 @@ It is **not** one of the nine $\operatorname{Sym}^1$ square roots of `SQRT_APERY
 > $$\xi=\lim\frac{b_n}{a_n}=0.16430670106434215862993215002712765277112781369140994089554832534\ldots$$
 > \[$260$ digits computed; the Casoratian tail at $n=1200$ is $O(10^{-2425})$.\]
 
-$\lambda=2>1$, so by Calegari–Dimitrov–Tang the weight-one $g$ and the weight-three source
-$\Psi=g^3t/2$ live on a **non-congruence** group: this is a genuine second instance of
-Beukers' Theorem-3 construction, at the other perfect level. Its host $\Gamma_0(5)+5$ has
+**The Theorem-R3 source, verified.** With $f=\sqrt{E_{2,5}}$ as a $q$-series,
+$$\Psi:=\frac{f^3t}{2}=\tfrac12q-\tfrac72q^2+\tfrac{37}4q^3-\tfrac{29}4q^4
+-\tfrac{565}{16}q^5+\tfrac{3527}{16}q^6-\cdots,\qquad
+\Theta:=\theta_q^{-2}\Psi=\sum_{m\ge1}\frac{\psi(m)}{m^2}q^m,$$
+one has $b_n=2^n[t^n](f\,\Theta)$ — checked as an identity of rationals for all $n\le40$
+(`12_source5.gp`) — and $2^m\psi(m)\in\mathbf Z$ for $m\le59$, which is precisely the
+integrality that makes $d_n^2b_n\in\mathbf Z$. So (Theorem R3) $\xi=L(\Psi,2)$ for the
+weight-three $\Psi$, subject to the same Fricke/endpoint hypotheses as at level $6$.
+
+$v_2(\mathrm{den}\,\psi(m))=1,1,2,2,4,4,\dots$ grows linearly, so $\Psi$ has unbounded
+denominators; $\lambda=2>1$ likewise for $g$. By Calegari–Dimitrov–Tang both live on a
+**non-congruence** group: this is a genuine second instance of Beukers' Theorem-3
+construction, at the other perfect level. Its host $\Gamma_0(5)+5$ has
 covolume index $3$ and signature $(0;2,2,2;1\ \text{cusp})$ — one cusp (the MUM point) and
 three elliptic points of order two, one of which $t$ sends to $\infty$ (whence the exponents
 $(\tfrac14,\tfrac34)$ there, i.e. $\zeta/\delta=3/16$).
@@ -371,7 +506,7 @@ critical value of a non-congruence weight-three form.
 an eta quotient (at level $5$ the only weight-two eta quotient with $F(0)=1$ is
 $\eta_1^5/\eta_5$, which pairs with $u$ to give the Almkvist–Zudilin $(11,5,125)$ square
 root, characteristic roots $-44\pm8i$, no real limit). It is the ansatz-free Scan A that
-finds it. (ii) $\lambda_1=44+20\sqrt5=8\varphi^5\cdot\ldots$, $\lambda_1\lambda_2=-64$: the
+finds it. (ii) $\lambda_1=44+20\sqrt5=8\varphi^5$ and $\lambda_2=-8\varphi^{-5}$ ($\varphi$ the golden ratio), $\lambda_1\lambda_2=-64$: the
 Fricke pairing here is $t_1t_2=-\tfrac14$, not $t_1t_2=1$ as at level $6$. That factor of
 $4$ is precisely why level $6$ wins and level $5$ loses.
 
@@ -398,12 +533,12 @@ of this note add nothing to that statement and take nothing away; what they add 
 
 Two archimedean remarks that put the margin in context.
 
-* The criterion is $\lambda e^{k}<1/|t_1\lambda^{-1}|$, i.e. $4e^2<(\sqrt2+1)^4$:
-  $29.5562<33.9706$, a margin of $1.1494$. Beukers writes the condition as
-  $4e<(\sqrt2+1)^4$ (his denominator claim for the companion is one $\operatorname{lcm}$
-  factor); with the $k=2$ that this project verifies sharply ($d_5b_5\notin\mathbf Z$) the
-  condition is $4e^2<(\sqrt2+1)^4$ and it still holds — the theorem is safe either way, but
-  the measure $\mu\le50.654$ uses $k=2$.
+* The criterion $\operatorname{score}>0$ reads $\lambda e^{k}<|t_2|$, i.e. $4e^2<(\sqrt2+1)^4$:
+  $29.5562<33.9706$, a margin of $1.1494$. (The OCR of Beukers' proof in
+  `papers/beukers1987.txt` reads "$4e<(\sqrt2+1)^4$" with the companion denominator given
+  as "$4[1,\dots,n]$"; superscripts are unreliable in that scan. This project verifies
+  $k=2$ and its sharpness directly — $d_5b_5\notin\mathbf Z$ — so the condition we use is
+  $4e^2<(\sqrt2+1)^4$, which still holds, and the measure $\mu\le50.654$ uses $k=2$.)
 * Level $6$ wins because $t\circ W_6=t$ **with $t_1t_2=1$**: the Fricke pairing is exact, so
   $|t_2|=1/|t_1|=\lambda_1/\lambda=33.97$ is as large as the fastest-growing row allows.
   At level $5$ (§5) the pairing is $t_1t_2=-\tfrac14$ and the same $\lambda_1$-for-$|t_2|$
@@ -442,7 +577,7 @@ $|\lambda_2|<1.05$.
 | score | $k$ | $\lambda$ | $N$ | $\lambda_1$ | $\lambda_2$ | $t$ | $F$ | $F$ exponents even? |
 |---|---|---|---|---|---|---|---|---|
 | $\mathbf{+0.1392}$ | 2 | **4** | 6 | $135.8823$ | $0.1177490$ | $(\eta_1\eta_6/\eta_2\eta_3)^{12}$ | $\eta_2^7\eta_3^7/(\eta_1^5\eta_6^5)$ | **no** $\Rightarrow$ non-congruence |
-| $-1.6235$ | 2 | 1 | 8 | $12{+}8\sqrt2$ | $12{-}8\sqrt2$ | $(\eta_1\eta_8/\eta_2\eta_4)^{8}$ | $\eta_2^{16}/(\eta_1^8\eta_4^6)\cdot\ldots$ | yes $\Rightarrow$ congruence |
+| $-1.6235$ | 2 | 1 | 8 | $12{+}8\sqrt2$ | $12{-}8\sqrt2$ | $\eta_1^{-8}\eta_2^{16}\eta_4^{-16}\eta_8^{8}$ | $\eta_1^{4}\eta_2^{-6}\eta_4^{10}\eta_8^{-4}$ | yes $\Rightarrow$ congruence (the $T$ row of `SQRT_APERY.md` §7) |
 
 Everything else has $|\lambda_2|\ge1$: the linear form does not decay, whatever $k$ is. The
 next classes by $|\lambda_2|$ are $\lambda_2=1$ exactly (levels $6$, $12$), then $1.0635$,
@@ -492,8 +627,14 @@ $1.0718$, $1.6180$ — i.e. the gap between "decays" and "does not" is populated
    score and a modular (non-$\log$) period: Apéry's $\zeta(2)$ row ($+0.406$) and Beukers'
    Theorem 3 ($+0.139$). Both are congruence-hosted; only the second is non-congruence in
    the multiplier.
-6. **No new irrationality theorem.** No positive-score row was found that is not already
-   Apéry's, Beukers', or classical.
+6. **No new irrationality theorem — but a new candidate.** Every positive-score row with
+   $k\ge2$ is Apéry's $\zeta(2)$, Beukers', or a classical Legendre $\log$ row, *except*
+   the $\rho=\tfrac76$ row of §4.4, whose score $+0.15998$ beats Beukers'. Its four
+   ingredients are verified to $n\le700$ and not proved, its mirror map is not integral (so
+   it is not modular), and its period is unidentified. Proving its integrality
+   ($a_n\in\mathbf Z$, $d_n^2b_n\in\mathbf Z$) and $r_n\ne0$ would give a new
+   irrationality theorem for an as-yet-nameless constant; that is the single concrete open
+   problem this note leaves.
 
 ## 10. Status table
 
@@ -510,6 +651,9 @@ $1.0718$, $1.6180$ — i.e. the gap between "decays" and "does not" is populated
 | its period $0.164306701064\ldots$ | **open**; excluded against $L(f,s)$ for all weight-3 newforms of level $M\le120$, $5\mid M$, $s=1,2,3$, and a 9-constant battery |
 | Scan B: only $2$ of $3.0\times10^6$ eta-quotient pairs give $|\lambda_2|<1$ | **computed** |
 | Beukers' row is the unique positive-score non-congruence row | **computed within the stated boxes**; **proved** to be the only possible *host geometry* by N2+N3 modulo the box on $(\gamma,\zeta)$ |
+| the $\rho=\tfrac76$ row: $a_n\in\mathbf Z$, $d_n^2b_n\in\mathbf Z$ ($k=2$ sharp), $W_n\ne0$, $\tfrac1n\log(d_n^2|r_n|)<0$ | **verified** to $n\le700$ / $600$; **not proved** |
+| its period $-0.012812093779119936705649\ldots$ | **open**; excluded over the batteries of §4.4 |
+| its mirror map is not integral, hence the row is not modular | **computed** ($n\le58$) |
 | a positive-score row with $c>1$ (leading coefficient $c(n+1)^2$, $c\ne1$) | **not excluded**; see §11 |
 
 ## 11. Scope, honestly
@@ -549,6 +693,7 @@ lattice/noncongruence_scan/07_modtable.py    # Scan B aggregation and ranking
 lattice/noncongruence_scan/08_period.py      # Apery limit by the exact Casoratian series
 lattice/noncongruence_scan/09_level5.gp      # the Gamma_0(5)+5 row, verified
 lattice/noncongruence_scan/10_ident5.gp      # its period to 260 digits + identification battery
+lattice/noncongruence_scan/12_source5.gp     # Thm R3 source check: b_n = 2^n[t^n](f Theta), Psi = f^3 t/2
 lattice/noncongruence_scan/run_r3.sh run_e.sh run_free.sh run_more.sh snake_wide.sh
 ```
 Raw output under `lattice/noncongruence_scan/out/`; the enumeration in `eta_pairs.json`

@@ -1,0 +1,10 @@
+[0;31m  ***   Warning: new stack size = 12000000000 (11444.092 Mbytes).[0m
+N=400  Cauchy 2-adic digits = 4765   (using PR=1200)
+v_2(xi_2) = -4
+xi_2 * 2^4 mod 2^40 = 360776799631
+quadratic characters: 83
+nonzero 2-adic targets: 188
+
+--- single: xi_2 = q * T ---
+
+--- pairs: xi_2 = q1*T1 + q2*T2 ---

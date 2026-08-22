@@ -75,7 +75,12 @@ static inline int testp(long long al,long long be,long long ga,
 int main(int argc,char**argv)
 {
     int CLASS = atoi(argv[1]);   /* CLASS = e (order of the two elliptic points),
-                                    0 means e = infinity (both cusps, Zagier-type) */
+                                    0 means e = infinity (both cusps, Zagier-type),
+                                   -1 free exponent (beta ranges, epsilon derived),
+                                   -2 fixed rational exponent difference rho = RP/RQ
+                                      given as argv[8], argv[9]                     */
+    long long RP = (argc>9)? atoll(argv[8]) : 1;
+    long long RQ = (argc>9)? atoll(argv[9]) : 1;
     long long ALMIN=atoll(argv[2]), ALMAX=atoll(argv[3]);
     long long DEMAX=atoll(argv[4]), GAMAX=atoll(argv[5]), ZEMAX=atoll(argv[6]);
     int N = atoi(argv[7]);
@@ -107,6 +112,9 @@ int main(int argc,char**argv)
                e=0 : (al, 0)       [both singular points are cusps]        */
             long long be, ep;
             if(CLASS==0){ be = al; ep = 0; }
+            else if(CLASS==-2){ /* rho = RP/RQ:  be = al(1-rho), ep = -2 de rho */
+                   if((al*(RQ-RP))%RQ) continue; if((2*de*RP)%RQ) continue;
+                   be = al*(RQ-RP)/RQ; ep = -2*de*RP/RQ; }
             else if(CLASS>0){ if(al%CLASS) continue; if((2*de)%CLASS) continue;
                    be = al*(CLASS-1)/CLASS; ep = -2*de/CLASS; }
             long long zemin=-ZEMAX, zemax=ZEMAX, zestep=1;

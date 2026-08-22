@@ -1,0 +1,7 @@
+A) exp(k xi) algebraic of degree <= 6, k <= 36 ?
+   None
+B) xi / pi^j and xi * pi^j against algebraics
+C) 4-term lindep against {1, pi^2, zeta(3), log(l1)}
+    1,pi^2,z3,log l1 -> None
+    1,pi^2,log2,log3 -> None
+    1,pi/r3,pi^2,log3 -> None

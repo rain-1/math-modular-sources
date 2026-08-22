@@ -1,0 +1,26 @@
+default(parisize, 8000000000);
+read("../mum_survey/apery.gp"); read("../mum_survey/ops.gp");
+default(realprecision, 80);
+OP=0; for(i=1,#OPS, if(OPS[i][1]=="207", OP=OPS[i]));
+print("nn=",OP[2]," degz=",OP[3]," sings=",OP[8]);
+print("H3,c2,chi fields: ", OP[5],"|",OP[6],"|",OP[7]);
+print("P4 leading const: ", 2973079441506304, " = ", factor(2973079441506304));
+print("53248 = ", factor(53248));
+print("singular quadratic z^2-349/65536 z-1/16777216 roots: ", polroots(x^2-349/65536*x-1/16777216));
+print("  sqrt disc: 122825 = ",factor(122825), "  => field Q(sqrt17)");
+print("1/roots: ", vector(2,i,1/polroots(x^2-349/65536*x-1/16777216)[i]), "  and 53248");
+N=300;
+pr=aperyPair(OP[4],N); A=pr[1]; B=pr[2];
+print("\nA_0..A_5 = ", vector(6,i,A[i]));
+print("B_1..B_5 = ", vector(5,i,B[i+1]));
+print("size of A_300: ", #digits(numerator(A[N+1])), " digits;  denom B_300: ", #digits(denominator(B[N+1])));
+print("\nlam1 = |A_n|^(1/n):");
+forstep(n=100,300,50, print("  n=",n,"  ",exp(log(abs(1.0*A[n+1]))/n)));
+print("\nxi_n = B_n/A_n and successive differences:");
+forstep(n=100,300,50, my(x=1.0*B[n+1]/A[n+1], y=1.0*B[n]/A[n]); print("  n=",n,"  ",x, "   diff=",x-y));
+print("\nratio of successive diffs (should -> lam2/lam1 = 53248/89494.6 = ", 53248/89494.6,")");
+forstep(n=200,300,20, my(d1=1.0*B[n+1]/A[n+1]-1.0*B[n]/A[n], d0=1.0*B[n]/A[n]-1.0*B[n-1]/A[n-1]); print("  n=",n,"  ",d1/d0));
+print("\n2-adic Cauchy: v_2(xi_n - xi_{n-1}):");
+forstep(n=100,300,50, print("  n=",n,"  ", valuation(B[n+1]/A[n+1]-B[n]/A[n],2), "   v_2(A_n)=",valuation(A[n+1],2)));
+print("\ndenominator exponent k up to 200: ", denomExp(B,200));
+quit
