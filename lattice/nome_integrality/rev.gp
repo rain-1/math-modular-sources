@@ -1,0 +1,22 @@
+default(parisizemax,10000000000);
+N=1200;
+A=vector(N+2); A[1]=1; A[2]=5;
+{for(n=1,N, A[n+2] = ((2*n+1)*(17*n^2+17*n+5)*A[n+1] - n^3*A[n])/(n+1)^3);}
+Fs = sum(n=0,N, A[n+1]*t^n) + O(t^(N+1));
+sig = sqrt(1-34*t+t^2+O(t^(N+1)));
+R = 1/(Fs*sig); r = vector(N+1,i,polcoeff(R,i-1));
+u = sum(n=1,N, r[n+1]/n*t^n) + O(t^(N+1));
+q = t*exp(u);
+b=0; {for(i=0,N, if(denominator(polcoeff(q,i))!=1, b++));} print("q in tZ[[t]] to t^",N,": viol=",b);
+tq = serreverse(q);
+b=0; {for(i=0,N, if(denominator(polcoeff(tq,i))!=1, b++));} print("t(q) in qZ[[q]] to q^",N,": viol=",b);
+Fq = subst(Fs,t,tq);
+b=0; {for(i=0,N, if(denominator(polcoeff(Fq,i))!=1, b++));} print("F(t(q)) in 1+qZ[[q]] to q^",N,": viol=",b);
+Ftq = Fq*tq;
+b=0; {for(i=0,N, if(denominator(polcoeff(Ftq,i))!=1, b++));} print("F*t in qZ[[q]] to q^",N,": viol=",b);
+print("t(q) 1..14: ", vector(14,i,polcoeff(tq,i)));
+print("F(t(q)) 0..14: ", vector(15,i,polcoeff(Fq,i-1)));
+print("eta check t(q) vs q*prod((1-q^n)(1-q^6n)/((1-q^2n)(1-q^3n)))^12 : ");
+E = q; E = t*prod(n=1,N,((1-t^n+O(t^(N+1)))*(1-t^(6*n)+O(t^(N+1)))/((1-t^(2*n)+O(t^(N+1)))*(1-t^(3*n)+O(t^(N+1)))))^12);
+print("  difference = ", tq - subst(E,t,t));
+quit;

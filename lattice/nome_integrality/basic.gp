@@ -1,0 +1,31 @@
+default(parisizemax,4000000000);
+N=200;
+A=vector(N+1); A[1]=1; A[2]=5;
+for(n=1,N-1, A[n+2] = ((2*n+1)*(17*n^2+17*n+5)*A[n+1] - n^3*A[n])/(n+1)^3);
+\\ check against binomial sum for n<=30
+for(n=0,30, s=sum(k=0,n, binomial(n,k)^2*binomial(n+k,k)^2); if(s!=A[n+1], print("MISMATCH ",n)));
+print("Apery recurrence vs binomial sum OK to n=30");
+M=120;
+F = sum(n=0,M, A[n+1]*t^n) + O(t^(M+1));
+sig = sqrt(1-34*t+t^2+O(t^(M+1)));
+Fs = F*sig;
+print("F*sigma first 8: ", vector(8,i,polcoeff(Fs,i-1)));
+den = 0; for(i=0,M, if(denominator(polcoeff(Fs,i))!=1, den=1; print("Fsigma NONINT at ",i)));
+if(den==0, print("F*sigma INTEGRAL to t^",M));
+\\ nome: theta q = q/(F sigma), q = t + O(t^2). log(q/t) = L, theta L = 1/(F sig) - 1
+inv = 1/Fs;
+L = 0*t+O(t^(M+1));
+for(n=1,M, L += polcoeff(inv,n)/n * t^n);
+q = t*exp(L);
+print("q first 10: ", vector(10,i,polcoeff(q,i-1)));
+bad=0; for(i=0,M, if(denominator(polcoeff(q,i))!=1, if(bad==0,print("q NONINT first at ",i)); bad++));
+if(bad==0, print("q(t) INTEGRAL to t^",M));
+tq = serreverse(q);
+print("t(q) first 10: ", vector(10,i,polcoeff(tq,i-1)));
+bad=0; for(i=0,M, if(denominator(polcoeff(tq,i))!=1, if(bad==0,print("t(q) NONINT first at ",i)); bad++));
+if(bad==0, print("t(q) INTEGRAL to q^",M));
+Fq = subst(F,t,tq);
+print("F(t(q)) first 10: ", vector(10,i,polcoeff(Fq,i-1)));
+bad=0; for(i=0,M, if(denominator(polcoeff(Fq,i))!=1, if(bad==0,print("F(t(q)) NONINT first at ",i)); bad++));
+if(bad==0, print("F(t(q)) INTEGRAL to q^",M));
+quit;
