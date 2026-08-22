@@ -1,0 +1,153 @@
+% DRAFT -- new section, not yet included in the main file.
+% Companion to sections/02_sqrt_rows.tex, which is the w=2 case of everything below.
+\section{Roots of $\operatorname{Sym}^w$ rows, and the price of a free integration}\label{sec:rootrows}
+
+Section~\ref{sec:sqrt} took square roots of the third-order sporadic rows. Nothing there is
+special to $w=2$. This section states the general construction, computes its exact cost, and
+runs it over every $\operatorname{Sym}^w$ system in the paper.
+
+\subsection{Integrality of $w$-th roots}
+
+\begin{theorem}[minimal scale]\label{thm:rootint}
+\Proved{} Let $w\ge2$ and $\lambda\in\mathbb Z_{\ge1}$. Then $\lambda^n[x^n]G^{1/w}\in\mathbb Z$
+for every $G\in1+x\mathbb Z[[x]]$ and every $n$ if and only if $\lambda_w\mid\lambda$, where
+\[
+\lambda_w:=w\cdot\operatorname{rad}(w)=\prod_{p\mid w}p^{\,v_p(w)+1}
+\qquad(\lambda_2=4,\ \lambda_3=9,\ \lambda_4=8,\ \lambda_5=25,\ \lambda_6=36,\ \lambda_8=16).
+\]
+More precisely, with $e_p:=\min_{n\ge1}v_p([x^n]G)$ one may take
+$\lambda=\prod_{p\mid w}p^{\max(0,\,v_p(w)+1-e_p)}$.
+\end{theorem}
+\begin{proof}
+Write $G=1+S$, $S\in x\mathbb Z[[x]]$ and $G^{1/w}=\sum_k\binom{1/w}{k}S^k$; since
+$[x^n]S^k=0$ for $k>n$ it suffices to control $\lambda^k\binom{1/w}{k}$. For $p\nmid w$ one
+has $1/w\in\mathbb Z_p$, hence $\binom{1/w}{k}\in\mathbb Z_p$. For $p\mid w$, writing
+$a=v_p(w)$ and $\binom{1/w}{k}=\frac1{w^kk!}\prod_{j<k}(1-jw)$, each factor $1-jw$ is a
+$p$-adic unit, so
+$v_p\binom{1/w}{k}=-ak-\frac{k-s_p(k)}{p-1}$ with $s_p$ the base-$p$ digit sum. Thus
+$v_p(\lambda)\ge a+1$ gives $v_p\bigl(\lambda^k\binom{1/w}{k}\bigr)\ge k-\frac{k-s_p(k)}{p-1}\ge0$.
+Conversely $G=1+x$ has $[x^n]G^{1/w}=\binom{1/w}{n}$, and $v_p(\lambda)\le a$ makes
+$v_p(\lambda^n\binom{1/w}{n})\to-\infty$ along $n=p^j$. The graded form is the same estimate
+with $v_p([x^n]S^k)\ge ke_p$ and $n\ge k$.
+\end{proof}
+
+\subsection{Descent: the root of a symmetric power solves the second-order equation}
+
+Let $L_1=\theta^2+p\theta+r$ with $p,r\in x\mathbb Q[[x]]$ (exponents $(0,0)$ at $x=0$) and
+let $L_w=\operatorname{Sym}^wL_1$, the monic operator of order $w+1$ annihilating $y^w$ for
+every solution $y$.
+
+\begin{theorem}[descent]\label{thm:descent}
+\Proved{} For $g\in1+x\mathbb Q[[x]]$ put $u=\theta g/g$ and $\psi=(L_1g)/g$. Then
+\[
+\frac{L_w(g^w)}{g^w}
+= w\,\theta^{w-1}\psi+\sum_{b=0}^{w-2}c^{(b)}\theta^b\psi+N(\psi,\theta\psi,\dots),
+\]
+where $c^{(b)}$ is weighted-homogeneous of weight $w-1-b>0$ in $u,p,r$ and their
+$\theta$-derivatives \textup{(}so $c^{(b)}\in x\mathbb Q[[x]]$\textup{)}, and every monomial
+of $N$ has degree $\ge2$ in the $\theta^i\psi$. Consequently
+\[
+L_w(g^w)=0,\quad g(0)=1\ \Longrightarrow\ L_1g=0 .
+\]
+\end{theorem}
+\begin{proof}
+Grade by $\operatorname{wt}(\theta^iu)=\operatorname{wt}(\theta^ip)=1+i$,
+$\operatorname{wt}(\theta^ir)=\operatorname{wt}(\theta^i\psi)=2+i$. Then
+$Q_j:=\theta^j(g^w)/g^w$ obeys $Q_{j+1}=\theta Q_j+wuQ_j$ with $\theta u=\psi-u^2-pu-r$, so
+$Q_j$ is homogeneous of weight $j$, and the coefficients $c_j$ of $L_w$ (determined by
+$\sum_jc_jQ_j|_{\psi=0}=0$) are homogeneous of weight $w+1-j$. The coefficient of
+$\theta^b\psi$ in $\sum_jc_jQ_j$ therefore has weight $w-1-b$, zero only for $b=w-1$, where
+it equals $w$. For the consequence: $\psi(0)=0$ because $p,r\in x\mathbb Q[[x]]$, so if
+$\psi\neq0$ its order $m$ is $\ge1$; then $w\theta^{w-1}\psi$ contributes $wm^{w-1}[x^m]\psi\ne0$
+to $[x^m]$ while every other term has order $\ge m+1$ (positive-order coefficients, or degree
+$\ge2$ in $\psi$). Contradiction.
+\end{proof}
+
+At $w=2$ the quadratic part is absent and one recovers
+$L_2(g^2)=2g\theta\omega+6(\theta g)\omega+4pg\omega$, $\omega=L_1g$, i.e.
+Proposition~\ref{prop:sqrt-rec}'s identity. For $w=3$,
+$L_3(g^3)/g^3=3\theta^2\psi+15(p+2u)\theta\psi+6(3p^2+10pu+\theta p-2r+10u^2)\psi+21\psi^2$.
+
+\subsection{The companion costs $d_n^2$ whatever $w$ is}
+
+\begin{theorem}[free integration]\label{thm:rootfreeint}
+\Proved{} Let $L_1=P\theta_u^2+Q\theta_u+R$ with $P(0)=1$ and $Q=\tfrac12\theta_uP$, let $g$
+be its analytic solution and $q$ the nome. Then $L_1(g\,h(q))=g^{-3}\theta_q^2h$ for every
+$h\in\mathbb Q[[q]]$; hence, with $\Psi:=g^3u$ of weight three, the census companion
+$B$ \textup{(}$L_1B=u$, $b_0=0$, $b_1=1$\textup{)} equals $g\cdot\theta_q^{-2}\Psi$ and
+$d_n^2b_n\in\mathbb Z$ under the integrality hypotheses of Section~\ref{sec:sqrt}. The
+statement contains no $w$: the root row of a $\operatorname{Sym}^w$ family costs $k=2$ for
+every $w$, and its Apéry limit is $L(\Psi,2)$.
+\end{theorem}
+
+Sharpness ($d_nb_n\notin\mathbb Z$) is verified for all nine $w=2$ rows to $n=420$, for the
+$w=4$ level-16 $\zeta(5)$ root row to $n=400$, and for the $w=6$ level-24 $\zeta(7)$ root row
+to $n=600$ \VerifiedR{exact rational arithmetic}.
+
+\subsection{The score of a root row}
+
+\begin{theorem}[score bookkeeping]\label{thm:rootscore}
+\Proved{} Suppose \textup{(H1)} $L_{\rm parent}=\operatorname{Sym}^wL_1$ over $\mathbb Q(t)$
+with $L_1$ of order two; \textup{(H2)} $a_n=\lambda^n[t^n]F^{1/w}\in\mathbb Z$;
+\textup{(H3)} $F^{1/w}$ has no zero or extra branch point in $|t|\le1/|\lambda_2|$; and
+\textup{(H4)} the dominant singular point of $L_1$ is simple with exponents $(0,\rho)$,
+$\rho\notin\mathbb Z_{<0}$. Then the root row has characteristic roots
+$\lambda\lambda_1,\lambda\lambda_2$, denominator exponent $k=2$, and
+\[
+\operatorname{score}_{\rm root}=\operatorname{score}_{\rm parent}+(k_{\rm parent}-2)-\log\lambda
+\qquad\bigl(=\operatorname{score}_{\rm parent}+(w-1)-\log\lambda\ \text{ when }k_{\rm parent}=w+1\bigr).
+\end{theorem}
+
+With the worst-case $\lambda=\lambda_w$ the gain $(w-1)-\log\lambda_w$ equals
+$-0.386,\,-0.197,\,+0.921,\,+0.781,\,+1.417,\,+4.227$ for $w=2,3,4,5,6,8$: \emph{the root of a
+weight-$w$ row is a strict improvement for every $w\ge4$}, and the improvement grows with $w$.
+This is the exact form of Problem~\ref{prob:free}.
+
+\subsection{Census, and why the prize is not collected}
+
+Applied to the nine sporadic third-order rows, Theorems~\ref{thm:rootint}--\ref{thm:rootscore}
+reproduce Table~\ref{tab:census}'s square-root block exactly ($\lambda\in\{1,2,4\}$, $k=2$
+sharp, Apéry's $+0.1392$ the only positive score); this was re-verified from scratch to
+$n=420$. For the higher-weight systems the outcome is uniformly negative, and for two
+distinct structural reasons.
+
+\begin{itemize}
+\item \emph{Clean $\operatorname{Sym}^3$, degenerate root.} With
+$t=\eta_1^4\eta_4^2\eta_8^4/\eta_2^{10}$ and $F=\eta_2^{10}/(\eta_1^4\eta_4^4)=\theta_3(q)^2$,
+the level-$24$ $\beta(4)$ system is $\operatorname{Sym}^3$ of $F$, and
+$[t^n]F=1,4,20,112,676,\dots$ is \emph{exactly Zagier's Catalan row E} $(12,4,32)$
+\VerifiedR{$n\le300$, exact}: the cube root of $\beta(4)$ is the Catalan row, with
+$\lambda=1$, $\lambda_1=8$, $\lambda_2=4$, $k=2$, score $-3.386$, in agreement with
+Theorem~\ref{thm:rootscore}. Likewise the level-$24$ $L(4,\chi_{-3})$ system is
+$\operatorname{Sym}^3$ of $b=\eta_1^3/\eta_3$, whose expansion in $t_0=(\eta_3/\eta_1)^{12}$ is
+the hypergeometric term $(-27)^n((1/3)_n/n!)^2$; its recurrence has order one, so there is no
+second characteristic root and no companion at all.
+\item \emph{Direct images.} In the \emph{rational} Apéry coordinate these systems are
+$f_*\operatorname{Sym}^w$ of a cover of degree $d>1$ (the direct-image rank principle: a finite map of degree $d$ multiplies the rank, hence the order of the scalar Picard--Fuchs operator, by $d$),
+and the $w$-th root inherits rank $2d$: for $\beta(4)$ in $z=r/(1+r)$ no recurrence of order
+$\le26$ with coefficients of degree $\le8$ exists (mod-$p$ kernel scan on $401$ exact terms).
+\item \emph{Algebraic gauge factors.} The level-$24$ $\zeta(7)$ form is
+$F=\sqrt{1-34s+s^2}\,\mathcal A(s)^3$ with $\mathcal A$ Apéry's own series, so
+$F^{1/6}=(1-34s+s^2)^{1/12}\sqrt{\mathcal A}$ carries exponents $(\tfrac1{12},\tfrac7{12})$ at
+the finite singular points. It is integral with $\lambda=9$ and second order, with $k=2$
+sharp; but the fitted recurrence has leading coefficient $(1-306s+81s^2)^2$ and \emph{every}
+characteristic root is double, so a scalar limit cannot separate the dominant direction:
+one measures $b_n/a_n-\xi\asymp n^{-1/2}=n^{-(7/12-1/12)}$ and
+$\tfrac1n\log|a_n\xi-b_n|\uparrow\log\lambda_1$. Hypothesis (H4) fails.
+For the level-$16$ $\zeta(5)$ system, $F^{1/4}$ is integral with $\lambda=2$ and second
+order with $k=2$ sharp, but $F$ has a real zero at
+$t_0=0.0212336309003705781907\ldots$ (with $1/t_0$ the largest root of the irreducible
+quartic $x^4-38x^3-396x^2-1480x-2016$) well inside its disc of convergence, so $F^{1/4}$
+branches there and a \emph{new} dominant root $\lambda_1=2/t_0=94.1902027676809\ldots$
+appears, demoting the parent's $2+4\sqrt2$ to $\lambda_2=4+8\sqrt2>1$: hypothesis (H3) fails.
+\end{itemize}
+
+\begin{remark}
+This sharpens rather than threatens Conjecture~\ref{conj:barrier}. The natural attack on the
+scalar barrier --- take a $w$-th root and harvest $w-1$ units of $d_n$ --- is now a theorem
+with an exact price $\log\lambda_w$ and two identified obstructions, both of which are
+properties of the \emph{coordinate} (direct image) or of the \emph{form} (algebraic gauge
+factor) rather than of the level. A positive-score $\zeta(5)$ or $\zeta(7)$ row would need a
+weight-$w$ Hauptmodul system that is a scalar $\operatorname{Sym}^w$ with a nowhere-vanishing
+$w$-th root; none is known.
+\end{remark}
