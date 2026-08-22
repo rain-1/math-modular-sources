@@ -1,0 +1,73 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+row F Cauchy v_2 : 2064   (3N = 2100)
+row F Cauchy v_3 : 1377   (2N = 1400)
+row C Cauchy v_3 : 1378
+check 4 xi3F - 5 xi3C : v_3 = 1377
+check   xi3B -   xi3C : v_3 = 1378
+
+### chi_-3 decayer  alpha = 2/1   (a = 2k, b = 1k)
+  k    b   v3(den Q) v2(den Q)   v3(xi_k - 2 xi3C)   v2(xi_k - (8/5) xi2F)   v3incr  v2incr
+  8   8   15  0        17               -9         0  0
+  16   16   39  0        40               -11         17  -11
+  24   24   63  0        65               -14         40  -14
+  32   32   87  0        89               -13         65  -14
+  40   40   113  0        111               -13         89  -11
+
+### chi_-3 decayer  alpha = 3/2   (a = 3k, b = 2k)
+  k    b   v3(den Q) v2(den Q)   v3(xi_k - 2 xi3C)   v2(xi_k - (8/5) xi2F)   v3incr  v2incr
+  6   12   19  9        32               -10         0  0
+  12   24   39  21        65               -12         32  -12
+  18   36   67  26        105               -11         65  -12
+  24   48   87  45        135               -14         105  -14
+  30   60   111  52        173               -16         135  -16
+
+### chi_-3 decayer  alpha = 5/3   (a = 5k, b = 3k)
+  k    b   v3(den Q) v2(den Q)   v3(xi_k - 2 xi3C)   v2(xi_k - (8/5) xi2F)   v3incr  v2incr
+  6   18   36  4        49               -11         0  0
+  12   36   79  16        104               -13         49  -13
+  18   54   120  29        157               -16         104  -16
+  24   72   159  40        207               -15         157  -16
+
+### chi_-3 decayer  alpha = 4/3   (a = 4k, b = 3k)
+  k    b   v3(den Q) v2(den Q)   v3(xi_k - 2 xi3C)   v2(xi_k - (8/5) xi2F)   v3incr  v2incr
+  6   18   24  16        48               -12         0  0
+  12   36   55  40        103               -14         48  -14
+  18   54   84  66        156               -14         103  -13
+
+### chi_-3 decayer  alpha = 5/4   (a = 5k, b = 4k)
+  k    b   v3(den Q) v2(den Q)   v3(xi_k - 2 xi3C)   v2(xi_k - (8/5) xi2F)   v3incr  v2incr
+  4   16   15  23        39               -10         0  0
+  8   32   39  47        87               -12         39  -12
+  12   48   63  68        136               -14         87  -14
+  16   64   88  95        182               -14         136  -11
+
+### chi_-3 decayer  alpha = 7/4   (a = 7k, b = 4k)
+  k    b   v3(den Q) v2(den Q)   v3(xi_k - 2 xi3C)   v2(xi_k - (8/5) xi2F)   v3incr  v2incr
+  4   16   31  2        40               -13         0  0
+  8   32   71  10        87               -15         40  -15
+  12   48   111  23        137               -14         87  -15
+  16   64   152  26        184               -17         137  -17
+
+### chi_-3 decayer  alpha = 9/5   (a = 9k, b = 5k)
+  k    b   v3(den Q) v2(den Q)   v3(xi_k - 2 xi3C)   v2(xi_k - (8/5) xi2F)   v3incr  v2incr
+  4   20   43  2        53               -11         0  0
+  8   40   97  10        111               -13         53  -13
+  12   60   147  14        173               -15         111  -15
+  14   70   170  20        198               -14         173  -15
+
+### chi_-3 decayer  alpha = 1/1   (a = 1k, b = 1k)
+  k    b   v3(den Q) v2(den Q)   v3(xi_k - 2 xi3C)   v2(xi_k - (8/5) xi2F)   v3incr  v2incr
+  6   6   0  9        13               -8         0  0
+  12   12   7  21        32               -10         13  -10
+  18   18   12  32        49               -10         32  -8
+  24   24   15  45        63               -12         49  -12
+  30   30   25  55        88               -12         63  -9
+
+### chi_-3 decayer  alpha = 1/2   (a = 1k, b = 2k)
+  k    b   v3(den Q) v2(den Q)   v3(xi_k - 2 xi3C)   v2(xi_k - (8/5) xi2F)   v3incr  v2incr
+  6   12   0  32        32               -9         0  0
+  12   24   0  68        65               -11         32  -11
+  18   36   0  104        105               -11         65  -10
+  24   48   0  140        135               -13         105  -13
+  30   60   0  174        173               -13         135  -11
+

@@ -1,0 +1,35 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+### archimedean check
+  D5: b/a at n=500 = 0.115620737022370989635832527780   target (15L-6z2)/16 = 0.115620737022370989635832527780
+  D7: b/a at n=500 = 0.674660643579270408495071951382   target (6z2+15L)/32 = 0.674660643579270408495071951382
+
+### integrality / kappa
+  n=100  den(a5)=1  den(a7)=1  v2(a5)=  6 v3(a5)=  0  v2(a7)=  5 v3(a7)=  0
+  n=200  den(a5)=1  den(a7)=1  v2(a5)=  5 v3(a5)=  0  v2(a7)=  6 v3(a7)=  0
+  n=300  den(a5)=1  den(a7)=1  v2(a5)=  6 v3(a5)=  0  v2(a7)= 10 v3(a7)=  0
+  n=400  den(a5)=1  den(a7)=1  v2(a5)=  6 v3(a5)=  0  v2(a7)=  5 v3(a7)=  0
+  n=500  den(a5)=1  den(a7)=1  v2(a5)= 11 v3(a5)=  0  v2(a7)= 12 v3(a7)=  0
+
+### measured slopes (increment valuations of b_n/a_n)
+  n=100  D5: v2=  576 v3=    0  |  D7: v2=  577 v3=    0  |  D5 vs D7: v2(2 xi7 + xi5)=  588
+  n=200  D5: v2= 1174 v3=    0  |  D7: v2= 1171 v3=    0  |  D5 vs D7: v2(2 xi7 + xi5)= 1187
+  n=300  D5: v2= 1776 v3=   -2  |  D7: v2= 1770 v3=   -2  |  D5 vs D7: v2(2 xi7 + xi5)= 1779
+  n=400  D5: v2= 2368 v3=    0  |  D7: v2= 2369 v3=    0  |  D5 vs D7: v2(2 xi7 + xi5)= 2387
+  n=500  D5: v2= 2966 v3=    0  |  D7: v2= 2963 v3=    0  |  D5 vs D7: v2(2 xi7 + xi5)= 2975
+
+### two-prime alignment against the conductor-6 decayer
+  c6 alpha=2/1 b= 60 :  v_2(16 xi5 - 15 xi_c6) =   471   v_3(...) =   -10
+                        v_2(32 xi7 - 15 xi_c6) =   471   v_3(...) =   -10
+     controls: v_2(xi5 - xi_c6)=  -1  v_2(16 xi5 - 16 xi_c6)=   3  v_3(16 xi5 - 14 xi_c6)= -10  v_2(32 xi7 - 16 xi_c6)=   3
+  c6 alpha=1/2 b=120 :  v_2(16 xi5 - 15 xi_c6) =   947   v_3(...) =   -10
+                        v_2(32 xi7 - 15 xi_c6) =   947   v_3(...) =   -10
+     controls: v_2(xi5 - xi_c6)=  -1  v_2(16 xi5 - 16 xi_c6)=   3  v_3(16 xi5 - 14 xi_c6)= -10  v_2(32 xi7 - 16 xi_c6)=   3
+  c6 alpha=1/1 b= 60 :  v_2(16 xi5 - 15 xi_c6) =   467   v_3(...) =   -10
+                        v_2(32 xi7 - 15 xi_c6) =   467   v_3(...) =   -10
+     controls: v_2(xi5 - xi_c6)=  -1  v_2(16 xi5 - 16 xi_c6)=   3  v_3(16 xi5 - 14 xi_c6)= -10  v_2(32 xi7 - 16 xi_c6)=   3
+
+### and against the conductor-3 decayer (expect p=3 only)
+  c3 alpha=5/3 b=72 : v_3(16 xi5 - 15 xi_c3) =   -10   v_2(16 xi5 - 15 xi_c3) =   -15
+
+### is the zeta(2) avatar really 0 ?  row A (xi = zeta(2)/4) at p=2 and p=3
+  v_2(xi_A) =  1474   v_3(xi_A) =   -10   (n=500)

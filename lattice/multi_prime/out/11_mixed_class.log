@@ -1,0 +1,60 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+### the four two-prime rows of the sqrt(Domb) orbit
+  D.2   b/a = -0.3431627829875819787363799948581408174993
+        lindep[xi,1,zeta2,L]  = [-303910502180114, 234640341252204, -239035620091640, 69456741491765]~
+        den(a_n) at n=500 : 1     v2(a)=11 v3(a)=4
+        n=200  v2(incr)=  781 (sig2~ 3.91)   v3(incr)=  188 (sig3~ 0.94)
+        n=300  v2(incr)= 1183 (sig2~ 3.94)   v3(incr)=  293 (sig3~ 0.98)
+        n=400  v2(incr)= 1576 (sig2~ 3.94)   v3(incr)=  386 (sig3~ 0.97)
+        n=500  v2(incr)= 1975 (sig2~ 3.95)   v3(incr)=  489 (sig3~ 0.98)
+  D.3   b/a = 0.8074006442887674970634767093350194665429
+        lindep[xi,1,zeta2,L]  = [28798511578617, -663313779400663, 545156914782375, -328535192095819]~
+        den(a_n) at n=500 : 1     v2(a)=12 v3(a)=4
+        n=200  v2(incr)=  381 (sig2~ 1.91)   v3(incr)=  187 (sig3~ 0.94)
+        n=300  v2(incr)=  579 (sig2~ 1.93)   v3(incr)=  293 (sig3~ 0.98)
+        n=400  v2(incr)=  780 (sig2~ 1.95)   v3(incr)=  386 (sig3~ 0.97)
+        n=500  v2(incr)=  976 (sig2~ 1.95)   v3(incr)=  492 (sig3~ 0.98)
+  D.4   b/a = 0.1269604292250376966666775749371673974332
+        lindep[xi,1,zeta2,L]  = [245294027543735, -274944219588959, -57926487393471, 434002034877842]~
+        den(a_n) at n=500 : 1     v2(a)=11 v3(a)=4
+        n=200  v2(incr)=  382 (sig2~ 1.91)   v3(incr)=  189 (sig3~ 0.95)
+        n=300  v2(incr)=  585 (sig2~ 1.95)   v3(incr)=  293 (sig3~ 0.98)
+        n=400  v2(incr)=  778 (sig2~ 1.95)   v3(incr)=  386 (sig3~ 0.97)
+        n=500  v2(incr)=  977 (sig2~ 1.95)   v3(incr)=  495 (sig3~ 0.99)
+  D.6   b/a = -0.2640810435862341068638307631020990426542
+        lindep[xi,1,zeta2,L]  = [-526247182971272, -729792246234805, 504355142844371, -305657081485314]~
+        den(a_n) at n=500 : 1     v2(a)=12 v3(a)=4
+        n=200  v2(incr)=  778 (sig2~ 3.89)   v3(incr)=  189 (sig3~ 0.95)
+        n=300  v2(incr)= 1178 (sig2~ 3.93)   v3(incr)=  293 (sig3~ 0.98)
+        n=400  v2(incr)= 1577 (sig2~ 3.94)   v3(incr)=  388 (sig3~ 0.97)
+        n=500  v2(incr)= 1971 (sig2~ 3.94)   v3(incr)=  495 (sig3~ 0.99)
+
+### internal p-adic relations (CUSP_MOVE_PROGRAM section 6)
+  v_2(xi2 + 2 xi3) =   981   v_3(xi2 + 2 xi3) =   496
+  v_2(xi4 -   xi6) =   979   v_3(xi4 -   xi6) =   496
+
+### alignment against the conductor-6 decayer (xi_p = the L(2,chi_-3) avatar at BOTH primes)
+  scan of rationals c with xi = c * xi_c6 :
+    c=1       D.2: v2=   -1 v3=   -1 | D.3: v2=   -2 v3=   -1
+    c=2       D.2: v2=   -1 v3=    0 | D.3: v2=   -2 v3=    0
+    c=3       D.2: v2=   -1 v3=   -1 | D.3: v2=   -2 v3=   -1
+    c=4       D.2: v2=   -1 v3=   -1 | D.3: v2=   -2 v3=   -1
+    c=1/2     D.2: v2=   -1 v3=    0 | D.3: v2=   -2 v3=    1
+    c=1/3     D.2: v2=   -1 v3=   -2 | D.3: v2=   -2 v3=   -2
+    c=1/4     D.2: v2=   -1 v3=   -1 | D.3: v2=   -2 v3=   -1
+    c=3/2     D.2: v2=   -1 v3=   -1 | D.3: v2=   -2 v3=   -1
+    c=5/2     D.2: v2=   -1 v3=   -1 | D.3: v2=   -2 v3=   -1
+    c=15/16   D.2: v2=    0 v3=   -1 | D.3: v2=   -2 v3=   -1
+    c=15/32   D.2: v2=   -2 v3=   -1 | D.3: v2=    2 v3=   -1
+    c=5/8     D.2: v2=   -1 v3=   -1 | D.3: v2=   -2 v3=   -1
+    c=8/5     D.2: v2=   -1 v3=   -1 | D.3: v2=   -2 v3=   -1
+    c=2/3     D.2: v2=   -1 v3=   -2 | D.3: v2=   -2 v3=   -2
+  lindep of xi_D2 against the two p-adic constants, p=3, prec 3^60 :
+    v_3(xi2)=-1  v_3(xi3)=-1  v_3(xi_c6)=-1  v_3(xi_c3)=-1
+  best rational relation xi_D2 = c * xi_c6 at p=3 (bestappr on the 3-adic ratio):
+    ratio mod 3^40 = 11395354406918813675
+    bestappr of the 3-adic ratio: -762311052138115126
+[0;31m[0;31m  ***   at top-level: ...[0;35mod(denominator(rt2),2^40)[0;35m^-1),bestappr(centerl
+[0;31m[0;31m  ***                                             ^---------------------
+  *** _^_: impossible inverse in Fp_inv: Mod(16, 1099511627776).[0m
+... skipping file '11_mixed_class.gp'

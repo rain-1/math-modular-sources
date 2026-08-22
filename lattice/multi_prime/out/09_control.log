@@ -1,0 +1,41 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+[0;31m  *** zetahurwitz: Warning: increasing stack size to 16000000.[0m
+[0;31m  *** zetahurwitz: Warning: increasing stack size to 32000000.[0m
+### F<0 candidates: two conductor-6 rows, bridge at BOTH primes
+    surrogate Th* = bestappr(Theta, 10^1200), so 1/den(Th*) ~ 1e-1200
+  c6_1/3 x c6_1/4 [BOTH]     n= 24 v2(h)/n= 7.917 v3(h)/n= 4.208 sig= 21.212 F= -0.7016 | log|q|/n=  4.134  log|qT-p|/n= -0.8793  d_emp= 1.2127 || SURROGATE log|qT*-p|/n= -0.8793  d*= 1.2127
+  c6_1/3 x c6_1/4 [BOTH]     n= 36 v2(h)/n= 7.861 v3(h)/n= 4.000 sig= 21.024 F= -0.4927 | log|q|/n=  4.311  log|qT-p|/n= -0.5381  d_emp= 1.1248 || SURROGATE log|qT*-p|/n= -0.5381  d*= 1.1248
+  c6_1/3 x c6_1/4 [BOTH]     n= 48 v2(h)/n= 8.042 v3(h)/n= 3.979 sig= 21.633 F= -0.3729 | log|q|/n=  4.430  log|qT-p|/n= -0.3730  d_emp= 1.0842 || SURROGATE log|qT*-p|/n= -0.3730  d*= 1.0842
+  c6_1/3 x c6_1/4 [BOTH]     n= 60 v2(h)/n= 7.950 v3(h)/n= 3.983 sig= 21.471 F= -0.2650 | log|q|/n=  4.511  log|qT-p|/n= -0.2828  d_emp= 1.0627 || SURROGATE log|qT*-p|/n= -0.2828  d*= 1.0627
+  c6_1/3 x c6_1/4 [BOTH]     n= 72 v2(h)/n= 8.014 v3(h)/n= 3.958 sig= 21.508 F= -0.2744 | log|q|/n=  4.539  log|qT-p|/n= -0.2827  d_emp= 1.0623 || SURROGATE log|qT*-p|/n= -0.2827  d*= 1.0623
+  c6_1/3 x c6_1/4 [BOTH]     n= 84 v2(h)/n= 8.012 v3(h)/n= 3.893 sig= 21.570 F= -0.3952 | log|q|/n=  4.421  log|qT-p|/n= -0.4232  d_emp= 1.0957 || SURROGATE log|qT*-p|/n= -0.4232  d*= 1.0957
+  c6_1/3 x c6_1/4 [BOTH]     n= 96 v2(h)/n= 8.104 v3(h)/n= 3.906 sig= 21.502 F= -0.1965 | log|q|/n=  4.608  log|qT-p|/n= -0.2217  d_emp= 1.0481 || SURROGATE log|qT*-p|/n= -0.2217  d*= 1.0481
+  c6_1/3 x c6_1/4 [BOTH]     n=108 v2(h)/n= 8.037 v3(h)/n= 3.889 sig= 21.769 F= -0.2157 | log|q|/n=  4.589  log|qT-p|/n= -0.2203  d_emp= 1.0480 || SURROGATE log|qT*-p|/n= -0.2203  d*= 1.0480
+
+  c6_1/2 x c6_1/3 [BOTH]     n= 24 v2(h)/n= 8.125 v3(h)/n= 3.708 sig= 20.807 F= -0.1543 | log|q|/n=  5.510  log|qT-p|/n= -0.2466  d_emp= 1.0448 || SURROGATE log|qT*-p|/n= -0.2466  d*= 1.0448
+  c6_1/2 x c6_1/3 [BOTH]     n= 36 v2(h)/n= 8.139 v3(h)/n= 3.500 sig= 20.667 F= -0.1198 | log|q|/n=  5.513  log|qT-p|/n= -0.1130  d_emp= 1.0205 || SURROGATE log|qT*-p|/n= -0.1130  d*= 1.0205
+  c6_1/2 x c6_1/3 [BOTH]     n= 48 v2(h)/n= 8.229 v3(h)/n= 3.479 sig= 21.213 F= -0.0296 | log|q|/n=  5.610  log|qT-p|/n= -0.1104  d_emp= 1.0197 || SURROGATE log|qT*-p|/n= -0.1104  d*= 1.0197
+  c6_1/2 x c6_1/3 [BOTH]     n= 60 v2(h)/n= 8.117 v3(h)/n= 3.483 sig= 21.086 F=  0.3548 | log|q|/n=  5.954  log|qT-p|/n=  0.3419  d_emp= 0.9426 || SURROGATE log|qT*-p|/n=  0.3419  d*= 0.9426
+  c6_1/2 x c6_1/3 [BOTH]     n= 72 v2(h)/n= 8.236 v3(h)/n= 3.458 sig= 21.112 F=  0.3434 | log|q|/n=  5.967  log|qT-p|/n=  0.3316  d_emp= 0.9444 || SURROGATE log|qT*-p|/n=  0.3316  d*= 0.9444
+  c6_1/2 x c6_1/3 [BOTH]     n= 84 v2(h)/n= 8.155 v3(h)/n= 3.393 sig= 21.177 F=  0.4693 | log|q|/n=  6.103  log|qT-p|/n=  0.4623  d_emp= 0.9243 || SURROGATE log|qT*-p|/n=  0.4623  d*= 0.9243
+  c6_1/2 x c6_1/3 [BOTH]     n= 96 v2(h)/n= 8.281 v3(h)/n= 3.406 sig= 21.076 F=  0.4798 | log|q|/n=  6.115  log|qT-p|/n=  0.4717  d_emp= 0.9229 || SURROGATE log|qT*-p|/n=  0.4717  d*= 0.9229
+  c6_1/2 x c6_1/3 [BOTH]     n=108 v2(h)/n= 8.231 v3(h)/n= 3.389 sig= 21.327 F=  0.3713 | log|q|/n=  6.009  log|qT-p|/n=  0.3600  d_emp= 0.9401 || SURROGATE log|qT*-p|/n=  0.3600  d*= 0.9401
+
+### same pair, p=3 only (single prime), for comparison
+  c6_1/3 x c6_1/4 [p=3]      n= 24 v2(h)/n= 7.917 v3(h)/n= 4.208 sig= 15.725 F=  2.0421 | log|q|/n=  6.882  log|qT-p|/n=  2.0282  d_emp= 0.7053 || SURROGATE log|qT*-p|/n=  2.0282  d*= 0.7053
+  c6_1/3 x c6_1/4 [p=3]      n= 36 v2(h)/n= 7.861 v3(h)/n= 4.000 sig= 15.575 F=  2.2317 | log|q|/n=  6.992  log|qT-p|/n=  2.1981  d_emp= 0.6856 || SURROGATE log|qT*-p|/n=  2.1981  d*= 0.6856
+  c6_1/3 x c6_1/4 [p=3]      n= 48 v2(h)/n= 8.042 v3(h)/n= 3.979 sig= 16.058 F=  2.4141 | log|q|/n=  7.202  log|qT-p|/n=  2.4036  d_emp= 0.6663 || SURROGATE log|qT*-p|/n=  2.4036  d*= 0.6663
+  c6_1/3 x c6_1/4 [p=3]      n= 60 v2(h)/n= 7.950 v3(h)/n= 3.983 sig= 15.960 F=  2.4902 | log|q|/n=  7.314  log|qT-p|/n=  2.4741  d_emp= 0.6617 || SURROGATE log|qT*-p|/n=  2.4741  d*= 0.6617
+  c6_1/3 x c6_1/4 [p=3]      n= 72 v2(h)/n= 8.014 v3(h)/n= 3.958 sig= 15.953 F=  2.5030 | log|q|/n=  7.305  log|qT-p|/n=  2.4949  d_emp= 0.6585 || SURROGATE log|qT*-p|/n=  2.4949  d*= 0.6585
+  c6_1/3 x c6_1/4 [p=3]      n= 84 v2(h)/n= 8.012 v3(h)/n= 3.893 sig= 16.016 F=  2.3815 | log|q|/n=  7.206  log|qT-p|/n=  2.3863  d_emp= 0.6688 || SURROGATE log|qT*-p|/n=  2.3863  d*= 0.6688
+  c6_1/3 x c6_1/4 [p=3]      n= 96 v2(h)/n= 8.104 v3(h)/n= 3.906 sig= 15.885 F=  2.6122 | log|q|/n=  7.426  log|qT-p|/n=  2.6059  d_emp= 0.6491 || SURROGATE log|qT*-p|/n=  2.6059  d*= 0.6491
+  c6_1/3 x c6_1/4 [p=3]      n=108 v2(h)/n= 8.037 v3(h)/n= 3.889 sig= 16.198 F=  2.5697 | log|q|/n=  7.390  log|qT-p|/n=  2.5703  d_emp= 0.6522 || SURROGATE log|qT*-p|/n=  2.5703  d*= 0.6522
+
+  c6_1/3 x c6_1/4 [none]     n= 24 v2(h)/n= 7.917 v3(h)/n= 4.208 sig= 11.102 F=  4.3537 | log|q|/n=  9.180  log|qT-p|/n=  4.3547  d_emp= 0.5257 || SURROGATE log|qT*-p|/n=  4.3547  d*= 0.5257
+  c6_1/3 x c6_1/4 [none]     n= 36 v2(h)/n= 7.861 v3(h)/n= 4.000 sig= 11.181 F=  4.4289 | log|q|/n=  9.249  log|qT-p|/n=  4.4203  d_emp= 0.5221 || SURROGATE log|qT*-p|/n=  4.4203  d*= 0.5221
+  c6_1/3 x c6_1/4 [none]     n= 48 v2(h)/n= 8.042 v3(h)/n= 3.979 sig= 11.687 F=  4.5999 | log|q|/n=  9.406  log|qT-p|/n=  4.6006  d_emp= 0.5109 || SURROGATE log|qT*-p|/n=  4.6006  d*= 0.5109
+  c6_1/3 x c6_1/4 [none]     n= 60 v2(h)/n= 7.950 v3(h)/n= 3.983 sig= 11.584 F=  4.6783 | log|q|/n=  9.493  log|qT-p|/n=  4.6554  d_emp= 0.5096 || SURROGATE log|qT*-p|/n=  4.6554  d*= 0.5096
+  c6_1/3 x c6_1/4 [none]     n= 72 v2(h)/n= 8.014 v3(h)/n= 3.958 sig= 11.604 F=  4.6773 | log|q|/n=  9.489  log|qT-p|/n=  4.6442  d_emp= 0.5106 || SURROGATE log|qT*-p|/n=  4.6442  d*= 0.5106
+  c6_1/3 x c6_1/4 [none]     n= 84 v2(h)/n= 8.012 v3(h)/n= 3.893 sig= 11.739 F=  4.5199 | log|q|/n=  9.337  log|qT-p|/n=  4.4984  d_emp= 0.5182 || SURROGATE log|qT*-p|/n=  4.4984  d*= 0.5182
+  c6_1/3 x c6_1/4 [none]     n= 96 v2(h)/n= 8.104 v3(h)/n= 3.906 sig= 11.594 F=  4.7580 | log|q|/n=  9.578  log|qT-p|/n=  4.7501  d_emp= 0.5041 || SURROGATE log|qT*-p|/n=  4.7501  d*= 0.5041
+  c6_1/3 x c6_1/4 [none]     n=108 v2(h)/n= 8.037 v3(h)/n= 3.889 sig= 11.926 F=  4.7059 | log|q|/n=  9.512  log|qT-p|/n=  4.6880  d_emp= 0.5072 || SURROGATE log|qT*-p|/n=  4.6880  d*= 0.5072
