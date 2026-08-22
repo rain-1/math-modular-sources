@@ -325,7 +325,15 @@ periods that are **not in AvSZ's list at all**:
   $\sigma_5>0$, 612 digits, $\xi_5=\tfrac14L_5(3,\chi_5\omega^{-2})\Rightarrow$ even part
   $\tfrac14L(\chi_5,3)$. This is the rank-4 sibling of the project's own Almkvist–Zudilin row
   $\eta=(11,5,125)$, whose limit is $\tfrac12L(3,\chi_5)$ and whose $5$-adic limit is
-  $\tfrac12\zeta_5(3)$ (`04_padic_euler_draft.tex`, census row $\eta$). **Alignment candidate.**
+  $\tfrac12\zeta_5(3)$ (`04_padic_euler_draft.tex`, census row $\eta$). **Alignment candidate:**
+  a rank-4 and a rank-3 system, one period $L(\chi_5,3)$, one slope prime $p=5$ — the "one class,
+  two worlds" configuration of `THEORY_NOTES_06` §5.3. Testing the cross determinant is the
+  obvious next computation and was not done here.
+
+  Archimedean status of both (`newclass.gp`, $n=1400$): AESZ 7 has drift $4\cdot10^{-6}$ and
+  AESZ 184 drift $5\cdot10^{-2}$, so neither even-part prediction is confirmable archimedeanly
+  at this length; as in §5.4 the measured $x$ differs from the pure prediction by what must be an
+  odd-character component.
 
 ### 5.6 Open: 131 unidentified $p$-adic limits
 
@@ -396,12 +404,12 @@ $\sigma_p=v_p(c)+2\kappa_p$ they are the ones worth re-examining for two-row con
 
 `lattice/mum_survey/`:
 `cyops.gp` (generic $\theta$/$D$-form conversion, local Frobenius and log solutions at any point),
-`conn_quintic.gp` (the 116-digit connection computation), `t3.gp`/`t5.gp` (conifold local structure),
+`conn_quintic.gp` (the 116-digit connection computation), `conifold_local.gp` (conifold local structure: exponents, the canonical vanishing period, its log partner),
 `conifold_padic.gp` (the conifold pair's $p$-adic behaviour — negative, see below),
 `gammap.gp`+`gtest3.gp` ($\Gamma_p$ Taylor coefficients vs $\zeta_p$),
 `lpgen.gp` ($L_p(s,\chi\omega^m)$), `mkdata.py`+`ops.gp` (database → GP),
 `apery.gp` (Apéry pairs), `validate.gp`, `survey.gp`/`survey2.gp` (the census),
-`analyse.py` (the Euler-factor law), `mixed.gp`/`mixed2.gp`/`check_pred.gp` (archimedean checks).
+`analyse.py` (the Euler-factor law), `mixed.gp`/`mixed2.gp`/`check_pred.gp`/`newclass.gp` (archimedean checks).
 
 **A negative result worth recording** (`conifold_padic.gp`): the conifold pair $(V,W)$ of the
 quintic — the exponent-1 solution and its log partner, normalised $w_0=w_1=w_2=0$ — is *not*

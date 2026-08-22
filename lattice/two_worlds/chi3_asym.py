@@ -1,4 +1,10 @@
-"""Saddle-point rates for the chi_{-3} well-poised family.
+"""WARNING (see consolidation/ONE_CLASS_TWO_WORLDS.md Sec.7): the log-Lambda branch below
+is WRONG.  Q_m = 9*sum_j A_j has a sign change at j ~ b/2 and the residues cancel, so
+max_y H(y) overestimates log|Q_m| by a constant.  The log-lambda branch (max_x G) is the
+correct exponential rate of the linear form, up to the polynomial factor m^{2a-4b}.
+Kept as a record; the rates actually used are the measured ones in chi3_design2.py.
+
+Saddle-point rates for the chi_{-3} well-poised family.
 R_m(t) = (2t+b+1) prod_{j=1..a}(t-j+1)(t+b+j) / prod_{j=0..b}(t+j+1/3)^2 (t+j+2/3)^2
 a = alpha*m, b = beta*m.  Linear form  S_m = Q_m L(2,chi-3) - P_m = sum_{t>=0} R_m(t).
   log lambda = max_{x>alpha} G(x),  log Lambda = max_{0<y<beta} H(y)

@@ -24,7 +24,7 @@ merge(lists) = { my(H=Map()); for(i=1,#lists, my(L=lists[i]);
   vecsort(Vec(R),1); }
 
 /* the 14 weight systems, as lists of primitive sets (with multiplicity) */
-FAM = [
+{FAM = [
  ["1/5,2/5,3/5,4/5",   [5]],
  ["1/8,3/8,5/8,7/8",   [8]],
  ["1/10,3/10,7/10,9/10",[10]],
@@ -38,8 +38,8 @@ FAM = [
  ["1/6,1/2,1/2,5/6",   [6,2,2]],
  ["1/4,1/3,2/3,3/4",   [4,3]],
  ["1/6,1/3,2/3,5/6",   [6,3]],
- ["1/6,1/4,3/4,5/6",   [6,4]]
-];
+  ["1/6,1/4,3/4,5/6",   [6,4]]
+];}
 {
 print("weights | factorial exponents (u^e) | C=1/t_c | slope primes | sum e*u^3 | chi/kappa");
 for(i=1,#FAM,
