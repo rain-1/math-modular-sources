@@ -1,0 +1,37 @@
+Cost accounting for every route to a SECOND fold-regular class on the
+(Gamma_0(5)+5, t) host, in score-units of threshold.
+
+Baseline (D): inventory {1, H, theta H}, m = 3, tau = 16/9, threshold -0.83852.
+c fold-regular classes: m = 2c+1, u_j = 1, b_j = 1, all e_i = 0.
+
+level-5 score = -1.673382
+
+BASELINE and the ideal c-class ladder (no extra cost):
+  c = 1 fold-regular classes (ideal)                   m= 3 tau= 1.7778 G= 0.238 r*= 0.46 threshold= -0.8385  deficit(level-5)= -0.8349
+  c = 2 fold-regular classes (ideal)                   m= 5 tau= 1.9200 G= 1.750 r*= 0.62 threshold= -1.4237  deficit(level-5)= -0.2497
+  c = 3 fold-regular classes (ideal)                   m= 7 tau= 1.9592 G= 3.747 r*= 0.73 threshold= -1.7250  deficit(level-5)= +0.0516
+
+ROUTE (a) nebentypus M_2(Gamma_0(5),chi_5): E^{1,chi_5} has zeros in H.
+    extra singular t = (-6 +- sqrt(39))/12 = 0.0204164999, -1.0204164999
+    lambda' = 4 vs lambda = 2  -> common coordinate x = t/4, cost log2 = 0.69315
+    |t_extra| = 1.0204165 < |t_2| = 2.7725425 -> contour cost log = 0.99955
+    TOTAL archimedean cost = 1.69270   (gain from c=2 is +0.5852)
+  c = 2 via the nebentypus class                       m= 5 tau= 1.9200 G= 1.750 r*= 0.62 threshold= +0.2690  deficit(level-5)= -1.9424
+
+ROUTE (b) levels 10,15,20,25: the ONLY order-2 same-singular-set element
+    of M_2(Gamma_0(N)) is E_{2,5} itself (22_gauge_family.log) -- no new class.
+
+ROUTE (c) gauge family F*P(t)^b, P = 1 - 44t - 16t^2:
+    b even: g' = g*P^{b/2} in Q(t)*g  ->  A' = P(4x)^{b/2} A  ->  Q(x)-DEPENDENT.
+    b = 1 : order 2, same roots, but k' = 10 (measured) -> sigma = 10 for that function:
+  c = 2 via F*P (one function of sigma = 10)           m= 4 tau= 5.3750 G= 0.901 r*= 0.53 threshold= +3.4802  deficit(level-5)= -5.1536
+    b = 3 : order 4 with DOUBLED characteristic roots (ROOT_ROWS (H4)):
+            the linear form converges polynomially, no fold-regular companion.
+
+ROUTE (d) the Sym^w tower of the SAME operator L_1 (w = 2: k = 3, sigma = 3):
+  c = 1 + Sym^2 pair (sigma = 0,2,2,3,3)               m= 5 tau= 2.5600 G= 1.750 r*= 0.62 threshold= -0.6237  deficit(level-5)= -1.0497
+    (and the Sym^2 conditional function needs its OWN rationality hypothesis)
+
+ROUTE (e) the algebraic denominator-free function sqrt(P(t)) (integer
+    coefficients, sigma = 0!): branches at BOTH t_1 and t_2, so it is NOT
+    single-valued on the domain -- the Galois obstruction of section 10.2.

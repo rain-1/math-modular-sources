@@ -29,6 +29,7 @@ worth $+0.84$ nats, not $+1.67$.**
 | The entry condition for the level-$5$ row **fails** at the univalent map ($-0.0649$) and **passes** at the Kodaira map ($+0.5449$): the theorem does not even apply without the multivalent contour | **[computed]** §5 |
 | $\sum_p\gamma_p=0$ for every row in the $(K)/(D)$ architectures: those inventories contain no function of positive $p$-adic slope. The adelic gain lives only in $(S)$, i.e. only on hosts with $\lambda_2\in\mathbf Z$ | **[proved]** §6 |
 | **New host at CDT parity:** the square root of Cooper's $s_7$ row, $\lambda_1=27$, $\lambda_2=-1$, $k=2$ — margin $+0.0053$, tying CDT. Its period is $L(f_7,2)$, a CM weight-three critical value, so (as with the other $\lambda_2^{\rm norm}=1$ hosts) no new theorem follows | **[computed]** §5, §7 |
+| **No second fold-regular class exists on $(\Gamma_0(5)+5,t)$**, and the obstruction is a dimension count: $c=\dim\{\text{usable weight-2 forms}\}\le\#\text{cusps}-1$, and $\Gamma_0(5)+5$ has **one** cusp. The nebentypus route costs $1.693$ against a gain of $0.585$; levels $10,15,20,25$ return only $E_{2,5}$ itself; the gauge family gives either $\mathbf Q(x)$-multiples, or $k'=10$, or doubled roots | **[proved]** $+$ **[computed]** §10 |
 | No index-$9$/index-$10$ non-congruence host group contributes a second-order row with real $\lambda_2<1$; and the newly opened window $-0.8385<\operatorname{score}\le0$ contains, in every box the scan searched, only the two Padé families and the rescalings $(22,6,-4,0)$, $(33,9,-9,0)$ of Apéry's $\zeta(2)$ row | **[computed]** §5.4, `index910.py` |
 
 One sentence: *the CDT bound is not insensitive to $\lambda$ — it pays exactly the same
@@ -562,6 +563,234 @@ lattice/cdt_noncongruence/entries.py         # entry conditions in CDT_FINDER un
 lattice/cdt_noncongruence/table_nc.py        # margins, deficits, final ranking
 lattice/cdt_noncongruence/ingredients.py     # what each extra ingredient is worth
 lattice/cdt_noncongruence/index910.py        # index-9/10 groups; the newly opened window
+lattice/cdt_noncongruence/20_dims.gp         # PARI: dim M_2 at level 5 and above (Sec.10.3)
+lattice/cdt_noncongruence/20_second_class.gp # the level-5 nebentypus row and the s-scan (Sec.10.4)
+lattice/cdt_noncongruence/21_higher_levels.gp# M_2(Gamma_0(10/15/20/25)) on the same t-line (Sec.10.5)
+lattice/cdt_noncongruence/22_gauge_family.gp # F*P(t)^b, sqrt(P), and the identification of the hits
+lattice/cdt_noncongruence/23_costs.py        # the cost of every route to a second class (Sec.10.4-10.6)
 ```
 Logs of every run are beside the scripts (`*.log`). All of §§3–7 is reproduced by
 `python3 table_nc.py` after `python3 delta_table.py`.
+
+---
+
+## 10. Is there a second fold-regular class on $(\Gamma_0(5)+5,\ t)$?
+
+*Added after §9. Scripts: `20_dims.gp`, `20_second_class.gp`, `21_higher_levels.gp`,
+`22_gauge_family.gp`, `23_costs.py` (logs beside them).*
+**The answer is no, for a reason that is structural rather than a search failure**, and
+the minimal modification that would supply extra classes moves the host off the row.
+
+### 10.1 What counts as a fold-regular class in architecture (D)
+
+A function $f$ is admissible for architecture (D) iff
+
+1. $f\in\mathbf Q[\![x]\!]$ (rational coefficients — conditionally is allowed),
+2. $f$ is holomorphic at $x=0$ and its Taylor coefficients are of CDT type
+   $a_n/(n^{e}[1..b_1n]\cdots)$ with $\sigma=\sum_jb_j$ as small as possible,
+3. **$f$ is single-valued on $\varphi_r(\mathbf D)=\mathbf C\setminus\{0,x_2\}$, with
+   trivial monodromy at $0$ and at $x_1$** — this is *fold-regularity*, and it is what
+   the hypothesis buys,
+4. the $f$'s are $\mathbf Q(x)$-linearly independent.
+
+Condition 3 does **not** require the $f$'s to solve the same operator $L_1$; it requires
+only that their branch locus be $\{x_2,\infty\}$. This is why
+`NONCONGRUENCE_SCAN.md` **Lemma 1.1 makes a second weight-two form "free"**: the finite
+singular points of the operator attached to $\sqrt{F'}$ are the values $t(P)$ at the
+special points of $\Gamma$ and **do not depend on $F'$** — so a second form on the same
+$(\Gamma,t)$ carries no geometric cost at all: same $x_2$, same $\Omega$, same $\varphi$,
+same $\mathrm{BC}$. The whole cost of a second class is arithmetic, in three places:
+$\lambda'$ (Lemma G), $k'$ (the value of $\sigma$), and *the hypothesis*.
+
+**The hypothesis is the binding constraint.** Fold-regularity at $x_1$ is *one linear
+condition* on the two-dimensional local solution space at $x_1$; a hypothesised
+$\mathbf Q$-linear relation with $\ell$ terms supplies exactly $\ell-1$ such conditions
+(CDT's $H_A,H_B,H_C$ are the $\ell-1=2\,{+}\,1$ basis functions of the solution space of
+their inhomogeneous ODE with the three free constants $a,b,c$ of
+$a+b\zeta(2)+cL(2,\chi_{-3})=0$). A second-order row carries **one** period, so the
+relation is $2$-term and the conditional space is $1$-dimensional:
+$$\boxed{\ c\ =\ \#\{\text{periods on the host in one relation}\}\ =\ \dim\{\text{usable weight-2 forms with }F(0)=1\}\ }$$
+Two rows with two *separate* hypotheses would only prove "not both rational", which is not
+the target.
+
+### 10.2 The Galois obstruction: no unconditional class exists
+
+> **Proposition G [proved].** Let $f\in\mathbf Q[\![x]\!]$ be holonomic and let $L$ be its
+> minimal operator over $\mathbf Q(x)$. The singular locus of $L$ is stable under
+> $\mathrm{Gal}(\overline{\mathbf Q}/\mathbf Q)$. On the level-$5$ host
+> $x_1,x_2$ are conjugate over $\mathbf Q(\sqrt5)$, so any $f$ whose operator is singular at
+> $x_2$ is singular at $x_1$ as well. Hence **every** admissible $f$ owes its regularity at
+> $x_1$ to a codimension-one condition on the solution, i.e. to the hypothesis: there is no
+> pure (unconditional) module on this host, of polylogarithmic or of any other type.
+
+A striking instance. Put $P(t)=1-44t-16t^2=\prod_i(1-t/t_i)$, the symbol polynomial. Then
+$$\sqrt{P(t)}=\sqrt{1-4(11t+4t^2)}\in\mathbf Z[\![t]\!]$$
+(the binomial coefficients $\binom{1/2}{k}4^k=2(-1)^{k-1}\mathrm C_{k-1}$ are integers) —
+a **denominator-free** ($\sigma=0$, $\lambda=1$) holonomic function on the host, of order
+$2$ with characteristic roots $\tfrac12\lambda_1=44.3607$, $\tfrac12\lambda_2=-0.36068$
+(verified, `22_gauge_family.log`). It is exactly the function a pure module would want —
+**and it branches at $x_1$ as well as at $x_2$**, because $P$ is irreducible over
+$\mathbf Q$. Proposition G in one line.
+
+### 10.3 The dimension count on this host
+
+**[computed]** (`20_dims.log`, PARI `mfdim`).
+
+| space | $\dim M_2$ | $\dim S_2$ | usable ($F(0)=1$, divisor on special points) |
+|---|---|---|---|
+| $M_2(\Gamma_0(5))$ | $\mathbf1$ | $0$ | $\mathbf1$: $E_{2,5}$ |
+| $M_2(\Gamma_0(5),\chi_5)$ (the quadratic, even character) | $2$ | $0$ | see §10.4 |
+| $M_2(\Gamma_1(5))=M_2(\Gamma_0(5))\oplus M_2(\Gamma_0(5),\chi_5)$ | $3$ | $0$ | — |
+| $M_2(\Gamma_0(10))$, $M_2(\Gamma_0(15))$, $M_2(\Gamma_0(20))$, $M_2(\Gamma_0(25))$ | $3,4,6,5$ | $0,1,1,0$ | see §10.5 |
+
+Two elementary facts fix the shape of the answer immediately.
+
+* **$\Gamma_0(5)+5$ has exactly one cusp**, so every weight-zero modular unit with cuspidal
+  divisor has divisor $0$ and is constant: *the family $F\mapsto FU$ of the original brief is
+  empty on this host.*
+* On $\Gamma_0(5)$ (two cusps) the unit is $u=(\eta_5/\eta_1)^6$, but a weight-two form has
+  divisor of degree $\mu/6=1$ and $\operatorname{ord}_\infty(E_{2,5}u^j)=j$, so $j=0$:
+  $E_{2,5}$ is the **unique** weight-two form with $\operatorname{ord}_\infty=0$,
+  holomorphic, cuspidal divisor. This is $\dim M_2(\Gamma_0(5))=1$ read geometrically.
+
+### 10.4 Route (a): the nebentypus space $M_2(\Gamma_0(5),\chi_5)$
+
+**[computed]** (`20_second_class.log`). The space is $2$-dimensional and Eisenstein; only
+one basis direction has $a_0\ne0$, giving
+$$E^{\mathbf1,\chi_5}=1-5q+5q^2+10q^3-15q^4-5q^5-10q^6+30q^7+25q^8-\cdots$$
+Its row on the $t$-line:
+$$\lambda'=4,\qquad\text{minimal recurrence order }\mathbf6,\ \deg 4,$$
+$$\text{singular }t\ \in\ \Bigl\{\underbrace{t_1,\ t_2}_{\text{the host's}},\ \underbrace{\tfrac{-6+\sqrt{39}}{12}=0.0204165,\ \tfrac{-6-\sqrt{39}}{12}=-1.0204165}_{\textbf{new}}\Bigr\}.$$
+The two new points are a **new** quadratic irrationality, $\mathbf Q(\sqrt{39})$: they are
+the images of the zeros of $E^{\mathbf1,\chi_5}$ in $\mathfrak H$, where $\sqrt{F'}$
+branches. This is exactly `NONCONGRUENCE_SCAN.md` §1's "non-eta $F$ is strictly worse",
+made explicit. **Contour cost:**
+
+| item | value |
+|---|---|
+| $\lambda'=4$ against $\lambda=2$: the common integral coordinate must be $x=t/4$ | $\log2=0.69315$ |
+| the new branch point sits at $|t|=1.0204165<|t_2|=2.7725425$: the common $\Omega$ shrinks | $\log\frac{2.7725425}{1.0204165}=0.99955$ |
+| **total archimedean cost** | $\mathbf{1.69270}$ |
+| gain from going $c=1\to c=2$ | $+0.58521$ |
+| **net** | $\mathbf{-1.10749}$ |
+
+Threshold with this class: $+0.2690$ (against the baseline $-0.83852$); the level-5
+deficit worsens from $-0.8349$ to $-1.9424$. The whole one-parameter family
+$E^{\mathbf1,\chi_5}+sE^{\chi_5,\mathbf1}$ was scanned over $34$ rationals $s$: **no member
+admits any recurrence of order $\le6$ and degree $\le4$** — generically the zeros in
+$\mathfrak H$ move and multiply. Route (a) is dead.
+
+### 10.5 Route (b): the same $t$-line at levels $10,15,20,25$
+
+**[computed]** (`21_higher_levels.log`, `22_gauge_family.log`). For every rational basis
+element of $M_2(\Gamma_0(N))$, $N=10,15,20,25$, with $a_0\ne0$, normalised to $F'(0)=1$:
+
+| level | $\dim M_2$ | elements with $a_0\ne0$ | order-$2$ with the host's singular set | identification |
+|---|---|---|---|---|
+| $10$ | $3$ | $3$ | $1$ | **$=E_{2,5}$** |
+| $15$ | $4$ | $3$ | $1$ | **$=E_{2,5}$** |
+| $20$ | $6$ | $5$ | $1$ | **$=E_{2,5}$** |
+| $25$ | $5$ | $2$ | $1$ | **$=E_{2,5}$** |
+
+(verified as an equality of $q$-expansions to $q^{20}$). Every other element either has
+non-$2$-power denominators in $[t^n]\sqrt{F'}$ (so it is not a Theorem-R1 row at all) or
+admits no recurrence of order $\le6$, degree $\le4$ — again the zeros in $\mathfrak H$.
+**Raising the level on the same $t$-line supplies literally nothing new**: the map
+$M_2(\Gamma_0(5))\hookrightarrow M_2(\Gamma_0(5m))$ is the only source, and it is the same
+one-dimensional space. Route (b) is dead — and it never even reaches the stage where the
+extra cusps of $\Gamma_0(5m)$ would have to be paid for.
+
+### 10.6 Route (c): the same operator, gauged — and the $\mathrm{Sym}^w$ tower
+
+**[proved]** Two weight-one forms $g,g'$ on the same $\Gamma$ (up to multiplier) differ by
+a weight-zero function, and on a genus-zero $\Gamma$ every weight-zero modular function is a
+rational function of $t$. So $g'=g\sqrt{R_0(t)}$, $R_0\in\mathbf Q(t)$; and for $\sqrt{R_0}$
+to branch only inside $\{0,t_1,t_2,\infty\}$ one needs $R_0=P(t)^b$. Hence the *complete*
+list of same-singular-set deformations is $F'=E_{2,5}\,P(t)^b$, $b\in\mathbf Z_{\ge0}$.
+
+**[computed]** (`22_gauge_family.log`):
+
+| $b$ | order | char. roots | $k'$ | verdict |
+|---|---|---|---|---|
+| even | $2$ | $\lambda_1,\lambda_2$ | — | $g'=gP^{b/2}$, so $A'=P(4x)^{b/2}A$: **$\mathbf Q(x)$-dependent**, no new function |
+| $1$ | $2$, $\deg4$ | $\lambda_1,\lambda_2$ | $\mathbf{10}$ | genuinely new, but $\sigma=10$ instead of $2$ |
+| $3$ | $\mathbf4$, $\deg2$ | $\lambda_1,\lambda_1,\lambda_2,\lambda_2$ | $2$ | **doubled roots**: `ROOT_ROWS.md` (H4), the linear form converges polynomially, no fold-regular companion |
+
+The $b=1$ function *is* admissible, and it is priced exactly: with columns
+$u_1=u_2=1$ (two layers of rate 1) and $u_3=\dots=u_{10}=3$ (eight further layers carried
+by that one function), $m=4$ gives $\tau^\flat=5.375$ and threshold $\mathbf{+3.4802}$ —
+worse than the baseline by $4.32$. Route (c) is dead.
+
+**The $\mathrm{Sym}^w$ tower.** Solutions of $\mathrm{Sym}^wL_1$ are $g^{w-j}(g\!\int\!W)^j$;
+their companions have $k=w+1$, i.e. $\sigma=w+1\ge3$. Adding the $w=2$ pair
+($\sigma=3$) to $\{1,H,\theta H\}$ gives $m=5$, $\tau^\flat=2.56$, threshold
+$\mathbf{-0.6237}$ — worse than the baseline by $0.215$; and the $\mathrm{Sym}^2$
+conditional function needs its **own** rationality hypothesis (its period is the parent
+row's, a different number). Route (d) is dead.
+
+### 10.7 Verdict and the minimal modification of the host
+
+> **No admissible second fold-regular class exists on $(\Gamma_0(5)+5,\ t)$.** The level-5
+> row stays at $c=1$, threshold $-0.83852$, deficit $\mathbf{-0.8349}$.
+
+The obstruction is a dimension count, and it is sharp: by §10.1, $c$ equals the number of
+usable weight-two forms with $F(0)=1$ on the host, which for a genus-zero group with $s$
+cusps is at most $\dim\mathrm{Eis}_2=s-1$; and
+$$\Gamma_0(5)+5\ \text{has}\ s=1 .$$
+**So the minimal modification is a host with more cusps.** Combining this with the scan's
+own classification:
+
+* By `NONCONGRUENCE_SCAN.md` Theorem N2 a three-term (second-order) row forces exactly
+  **four special points**, so $s\le4$ and $c\le3$.
+* By Theorem N3, for $\lambda_2$ to be an irrational conjugate (the only way
+  $|\lambda_2|<1$ with a monic integral symbol) the two finite singular points $t_1,t_2$
+  must carry **equal** exponent differences — so the elliptic point, if any, must be the one
+  $t$ sends to $\infty$.
+* Hence the admissible signatures are exactly the rows of the scan's §3 table with
+  $\ge3$ cusps: $(e_2,e_3,\text{cusps})=(1,0,3)$ at index $9$, $(0,1,3)$ at index $10$
+  ($c\le2$), and $(0,0,4)$ at index $12$ ($c\le3$).
+
+| target $c$ | needed signature | groups | what is actually there |
+|---|---|---|---|
+| $2$ | $4$ special points, $3$ cusps | index $9$: $(0;2;3)$, index $10$: $(0;3;3)$ — four non-congruence groups each, plus their congruence analogues | **no row with real $|\lambda_2|<1$ in any box the scan searched** (§5.4), and a non-congruence Hauptmodul pays an extra $\log\mu$ on top of $\log\lambda$ |
+| $3$ | $4$ cusps | index $12$: **Beauville's six**, all congruence — Zagier's six sporadic rows | thresholds $-1.7250$; the only one of the six above it is **Apéry's $\zeta(2)$ row** ($+0.406$, already proved). Zagier A and C sit at $-2.000$, still $0.275$ short; Catalan at $-3.386$ |
+
+Two consistency checks that this reading is the right one.
+
+1. **CDT's own host is the $c=3$ case.** $\Gamma_0(6)$ has four cusps, $\dim\mathrm{Eis}_2=3$,
+   three periods $1,\zeta(2),L(2,\chi_{-3})$ in one relation, and CDT's $H_A,H_B,H_C$ are
+   exactly the $c=3$ conditional basis. Our $c$-ladder therefore reproduces their function
+   count from the geometry of the host.
+2. **$\Gamma_0(6)+6$, Beukers' host, has $s=2$ cusp orbits** ($\infty\!\sim\!0$,
+   $\tfrac12\!\sim\!\tfrac13$ under $W_6$), so $c\le1$ there too — and it does not need more:
+   its deficit is already $+0.9777$.
+
+**The cost of moving the level-5 row to a $3$- or $4$-cusp host is that the row does not
+exist there.** By Lemma 1.1 the archimedean data $(t_1,t_2)$ is a property of $(\Gamma,t)$,
+so changing $\Gamma$ changes $|t_2|$ and hence the score; the scan already searched every
+such host exhaustively and found nothing with $|\lambda_2|<1$ beyond Apéry's row, Beukers'
+row, $\sqrt T$ and this one. In the honest summary: **the level-5 row is short by $0.835$
+nats, and the one lever that could supply $0.585$ of it ($c=2$) is unavailable on its host
+for a dimension reason ($s=1$ cusp), while the lever that would supply $0.887$ ($c=3$)
+requires four cusps and therefore a different row altogether.**
+
+### 10.8 Ledger for §10
+
+**[proved]** §10.1 (what admissibility means, and $c=\ell-1$); §10.2 (Proposition G, the
+Galois obstruction, and the $\sqrt{P}$ instance); the two geometric facts of §10.3;
+the classification $F'=E_{2,5}P(t)^b$ of §10.6.
+
+**[computed]** all dimensions (`mfdim`); the level-5 nebentypus row (order $6$, $\lambda'=4$,
+new singular points $(-6\pm\sqrt{39})/12$); the $34$-member $s$-scan; the levels
+$10,15,20,25$ sweep and the identification of every order-$2$ hit as $E_{2,5}$ itself;
+$k'=10$ at $b=1$ and the doubled roots at $b=3$; every threshold in §10.4–10.7.
+
+**[open]** (i) $q$-precision is $80$ and the recurrence search is bounded by order $6$,
+degree $4$ — a class whose row satisfies only a larger recurrence would be missed, though by
+§10.1 such a class is useless anyway (its conditional space is not one-dimensional).
+(ii) The claim "$c$ periods $\Rightarrow$ $c$ fold-regular conditional functions" is CDT's
+mechanism transported; it is not proved that the resulting functions are
+$\mathbf Q(x)$-linearly independent (the same gap as §8, item 1).
+(iii) Whether the level-5 period $0.164306701064\ldots$ lies in $\mathbf Q+\mathbf Q\xi'$
+for some second period on a *related* host was not investigated; there is no second period
+on this host to test against.

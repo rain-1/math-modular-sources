@@ -1,0 +1,27 @@
+[0;31m  ***   Warning: new stack size = 3000000000 (2861.023 Mbytes).[0m
+level 10:
+  dim M_2 = 3
+    N=10 basis[1]: lambda = 1, no recurrence order<=6 degree<=4
+    N=10 basis[2]: lambda = 2, order 2, deg 2, singular t = [-2.7725424859373685602557335429570476471503864747572, 0.022542485937368560255733542957047647150386474757204]   <-- same singular set
+    N=10 basis[3]: denominators not 2-powers -- not an R1 row
+level 15:
+  dim M_2 = 4
+    N=15 basis[1]: lambda = 1, no recurrence order<=6 degree<=4
+    N=15 basis[2]: lambda = 2, order 2, deg 2, singular t = [-2.7725424859373685602557335429570476471503864747572, 0.022542485937368560255733542957047647150386474757204]   <-- same singular set
+    N=15 basis[3]: denominators not 2-powers -- not an R1 row
+    basis[4]: a_0 = 0, cannot normalise to F(0)=1
+level 20:
+  dim M_2 = 6
+    N=20 basis[1]: lambda = 1, no recurrence order<=6 degree<=4
+    N=20 basis[2]: lambda = 1, no recurrence order<=6 degree<=4
+    N=20 basis[3]: lambda = 2, order 2, deg 2, singular t = [-2.7725424859373685602557335429570476471503864747572, 0.022542485937368560255733542957047647150386474757204]   <-- same singular set
+    N=20 basis[4]: denominators not 2-powers -- not an R1 row
+    N=20 basis[5]: denominators not 2-powers -- not an R1 row
+    basis[6]: a_0 = 0, cannot normalise to F(0)=1
+level 25:
+  dim M_2 = 5
+    basis[1]: a_0 = 0, cannot normalise to F(0)=1
+    basis[2]: a_0 = 0, cannot normalise to F(0)=1
+    basis[3]: a_0 = 0, cannot normalise to F(0)=1
+    N=25 basis[4]: lambda = 2, order 2, deg 2, singular t = [-2.7725424859373685602557335429570476471503864747572, 0.022542485937368560255733542957047647150386474757204]   <-- same singular set
+    N=25 basis[5]: lambda = 4, no recurrence order<=6 degree<=4

@@ -18,3 +18,13 @@ Companion to `consolidation/CDT_NONCONGRUENCE.md`.  Calibrated on `../cdt_finder
 | `index910.py` | index-9/10 non-congruence groups; the window $-0.8385<\text{score}\le0$ |
 
 Run order: `delta_table.py` (slow, ~40 min) then anything else.  `*.log` are the recorded runs.
+
+## Section 10 (second fold-regular class on Γ_0(5)+5)
+
+| script | what it does |
+|---|---|
+| `20_dims.gp` | `mfdim` at level 5 and above; the one-cusp / unique-form facts |
+| `20_second_class.gp` | the level-5 nebentypus row: order 6, λ'=4, new branch points $(-6\pm\sqrt{39})/12$; the 34-member $s$-scan |
+| `21_higher_levels.gp` | every rational basis element of $M_2(\Gamma_0(N))$, $N=10,15,20,25$, on the same $t$-line |
+| `22_gauge_family.gp` | $F\cdot P(t)^b$; $\sqrt{P}\in\mathbf Z[[t]]$; identification of every order-2 hit as $E_{2,5}$ |
+| `23_costs.py` | cost of every route, in score-units of threshold |
