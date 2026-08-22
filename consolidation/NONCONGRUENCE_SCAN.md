@@ -6,7 +6,9 @@ genus-zero **non-congruence** groups with integral-after-scaling Hauptmoduls, sc
 $\log(1/\lambda_2)-k-\log\lambda$, is a well-posed search no one has done; the known
 positive instance is Beukers'." Builds on `SQRT_APERY.md` (the $w=2$ theory and the
 attribution to Beukers 1987 Thm 3), `ROOT_ROWS.md` (Theorems R1–R4), `SPORADIC_SCAN2.md`
-(scan method).*
+(scan method). Cross-referenced with `HERFURTNER_CLASSIFICATION.md`, written in parallel,
+which reaches Theorem N2's index bound from Riemann–Hurwitz on elliptic surfaces and whose
+Kodaira-admissibility criterion independently rules the §4.4 family non-geometric.*
 
 ---
 
@@ -55,9 +57,10 @@ row, and two infinite families of classical Padé approximants ($\log$ and $\arc
   second-order MUM rows: the five classes $e_1=e_2=e\in\{2,3,4,6,\infty\}$, plus a
   **free-exponent** variant in which the common exponent difference $\rho=(\alpha-\beta)/\alpha$
   is unconstrained (N3 forces only $\rho_1=\rho_2$), with the Casoratian non-vanishing
-  filter and the measured $k$. Every apparent winner scoring above $+1$ is a **Casoratian
-  degeneracy** ($Q(n_0)=0$, so $W_n\equiv0$: the companion is a rational multiple of the row
-  and the criterion is vacuous); of what survives, all the positive scores with $k\le1$ are
+  filter and the measured $k$. The entire top of the raw ranking — every score above $+2$,
+  thousands of rows — consists of **Casoratian degeneracies** ($Q(n_0)=0$, so $W_n\equiv0$:
+  the companion is a rational multiple of the row and the criterion is vacuous); of what
+  survives, all the positive scores with $k\le1$ are
   the classical Legendre/Padé $\log$ rows (which cannot come from §1's construction, since
   Theorem R3 forces $k=2$ there). The positive scores with $k\ge2$ are:
   the classical $\log$ family $\xi=-\tfrac1{12}\log\frac{x+1}{x-1}$
@@ -304,9 +307,10 @@ $p^K$ with $K>2v_p(n!)$ — no big integers, $\approx3\times10^7$ candidates/s/c
 * **Casoratian.** $W_n=a_nb_{n+1}-a_{n+1}b_n$ satisfies $W_n=Q(n)W_{n-1}/(n+1)^2$, so if
   $Q(n)=0$ for some integer $n\ge1$ then $W_m\equiv0$ for $m\ge n$: the companion is a
   rational multiple of the row and the criterion is vacuous. **This filter alone removes
-  $98\%$ of the apparent winners** — every "score $>3$" family found by the raw scan is of
-  this degenerate type (e.g. $\gamma=-\alpha/2$, $\zeta=-2\delta$, where
-  $P(n)=\tfrac\alpha2(2n-1)(n+1)$ and $Q(n)=\delta(n-2)(n+1)$).
+  $98\%$ of the apparent winners** — the whole top of the raw ranking is of this degenerate
+  type (e.g. $\gamma=-\alpha/2$, $\zeta=-2\delta$, where $P(n)=\tfrac\alpha2(2n-1)(n+1)$
+  and $Q(n)=\delta(n-2)(n+1)$, so $W_n\equiv0$ from $n=2$ on: in the first $e=2$ run,
+  $25\,390$ raw hits with $\gamma\ne0$ collapse to $248$).
 * **Measured $k$.** $k=\min\{k: d_n^kb_n\in\mathbf Z\}$ is *measured*, not assumed.
 
 **Boxes searched** ($N=26$ terms of exact integrality per prime, then re-verified to $n=40$
@@ -319,9 +323,13 @@ and, for the finalists, to $n=240$):
 
 plus the wider boxes of §4.3.
 
-### 4.1 Every positive-score row with $k\ge2$
+### 4.1 Every positive-score row with $k\ge2$ in the first pass
 
-There are exactly **fourteen**, and they are all classical:
+The five classed runs of the first pass ($\alpha\le3000$, $|\delta|\le150$,
+$|\gamma|\le150$, $|\zeta|\le300$) return exactly **fourteen**, which is the whole shape of
+the answer in miniature — twelve $\log$-family members, Apéry's $\zeta(2)$ row and
+Beukers'. (Widening $|\gamma|$ adds more $\log$ members and, at $\rho=\tfrac76$, the
+$\arctan$ family of §4.4; both families are infinite.)
 
 | score | class | $(\alpha,\gamma,\delta,\zeta)$ | $\lambda_1$ | $\lambda_2$ | $k$ | period $\xi$ |
 |---|---|---|---|---|---|---|
@@ -342,7 +350,9 @@ $\xi=-\tfrac1{12}\log\frac{x+1}{x-1}$ up to a rational shift — identified by
 $\exp(12\xi)\in\mathbf Q$ at $130$ digits (`08_period.py`). The two genuinely modular
 entries are Apéry's $\zeta(2)$ row and **Beukers' Theorem 3**, and the latter is the only
 one in the $e=2$ (square-root, non-congruence) class. Integrality of $a_n$ and $k=2$ were
-re-verified exactly to $n=240$ for all fourteen.
+re-verified exactly to $n=240$ for all fourteen. Note that the $\log$ family is unbounded:
+larger $x$ gives a larger score, exactly as for the $\arctan$ family of §4.4, and that
+unboundedness is the tell.
 
 ### 4.2 Positive score with $k\le1$
 
@@ -360,7 +370,8 @@ outside the question this note asks.
 
 Every run applies the Casoratian filter and the measured $k$; "positive, $k\ge2$" lists the
 survivors. $\mathrm A$ = Apéry's $\zeta(2)$ row, $\mathrm B$ = Beukers' row, $\log$ = the
-Legendre/Padé $\log$ family.
+Legendre/Padé $\log$ family ($\delta=16$, $\rho=0$), $\arctan$ = the family of §4.4
+($\delta=-27$, $\rho=\tfrac76$).
 
 | run | class | $\alpha$ | $|\delta|$ | $|\gamma|$ | $|\zeta|$ | rows | positive, $k\ge2$ |
 |---|---|---|---|---|---|---|---|
@@ -376,13 +387,32 @@ Legendre/Padé $\log$ family.
 | `eclass_6` | $e=6$ | $\le3000$ | $\le150$ | $\le150$ | $\le300$ | 590 | none |
 | `freeclass` | $\rho$ free | $\le300$ | $\le60$ | $\le30$ | $\le60$ | 1430 | $\mathrm A$, $\mathrm B$ |
 | `more_freewide` | $\rho$ free | $\le500$ | $\le70$ | $\le60$ | $\le120$ | 6165 | $\mathrm A$, $\mathrm B$ |
-| `more_freeacc` | $\rho$ free | $\le250$ | $\le50$ | $\le200$ | $\le300$ | 7433 | $\mathrm A$ + 18 $\log$ + **the $\rho=\tfrac76$ row (§4.4)** |
+| `more_freeacc` | $\rho$ free | $\le250$ | $\le50$ | $\le200$ | $\le300$ | 7433 | $\mathrm A$, $\mathrm B$, 18 $\log$, 1 $\arctan$ |
+| `wide_e0_gamma` (snake) | $e=\infty$ | $\le1000$ | $\le100$ | $\le1000$ | $\le200$ | 2337 | $\mathrm A$ + 215 $\log$ |
+
+and a dedicated **per-$\rho$ sweep** (`run_rho2.sh`, class `-2`), $\rho=p/q$ with $q\le6$ and
+$0<\rho\le3$, all at $\alpha\le3000$, $|\delta|\le60$, $|\gamma|\le300$, $|\zeta|\le400$:
+
+| $\rho$ | $\tfrac16$ | $\tfrac14$ | $\tfrac13$ | $\tfrac12$ | $\tfrac23$ | $\tfrac34$ | $\tfrac56$ | $1$ | $\tfrac76$ | $\tfrac54$ | $\tfrac43$ | $\tfrac32$ | $\tfrac53$ | $\tfrac74$ | $\tfrac{11}6$ | $2$ | $\tfrac73$ | $\tfrac52$ | $\tfrac83$ | $3$ |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| rows | 388 | 2390 | 1318 | 10164 | 727 | 1006 | 194 | 39051 | 152 | 729 | 430 | 39901 | 444 | 778 | 302 | 61609 | 490 | 12478 | 350 | 14476 |
+| positive, $k\ge2$ | — | — | — | $\mathbf B$ | — | — | — | — | $\arctan$ | — | — | — | — | — | $\arctan$ | $\log$ | — | — | — | $\log$ |
+
+**$\rho=\tfrac12$ is the square-root class, and there Beukers' row is the unique positive
+score in a box reaching $\alpha\le3000$.** The two Padé families show up at
+$\rho\in\{0,2,3\}$ ($\log$, $\delta=16$, $\alpha=8x$) and
+$\rho\in\{\tfrac76,\tfrac{11}6\}$ ($\arctan$, $\delta=-27$, $\alpha\equiv18\ (36)$) —
+each family appearing at several $\rho$ differing by integers, i.e. as Hecke modifications
+of one another, with the same $\lambda_{1,2}$ and the same period. Every other $\rho$ in the
+sweep is **empty**. Apéry's $\zeta(2)$ row sits at $\rho=0$, which is the separate
+$e=\infty$ class above.
 
 The `$\rho$ free` runs are the strongest evidence: there $\beta$ ranges over
 $[-\alpha,\alpha]$ and $\varepsilon=-2\delta(\alpha-\beta)/\alpha$ is derived, so the
 common exponent difference $\rho$ is arbitrary — no assumption that $\rho=1/e$ with
-$e\in\{2,3,4,6,\infty\}$ is made. **In every one of them the only positive-score rows with
-$k\ge2$ are Apéry's $\zeta(2)$ row and Beukers' row.**
+$e\in\{2,3,4,6,\infty\}$ is made, which is what Theorem N3 actually leaves open. **In every
+box searched, the positive-score rows with $k\ge2$ are exactly: Apéry's $\zeta(2)$ row,
+Beukers' row, and members of the two Padé families ($\log$ and $\arctan$).**
 
 ### 4.4 The second classical family: $\arctan$ at $\rho=\tfrac76$
 
@@ -403,8 +433,9 @@ $306$ ($+0.42804$), $558$ ($+1.02861$), $846$ ($+1.44472$).
 
 **It is the $\arctan$ analogue of the Legendre $\log$ family.** For every member
 $$\boxed{\ \xi=\lim\frac{b_n}{a_n}=-\frac{1}{2\sqrt3}\arctan\frac{6\sqrt3}{\alpha}\ }$$
-— verified to $184$ digits for $\alpha=18,54,90,126,234,306,558,846$ (`/tmp` script folded
-into `08_period.py`; $\alpha=18$ gives the closed form $-\pi/(12\sqrt3)$ exactly). Where the
+— verified to $193$ digits for $\alpha=18,54,90,126,234,306,558,846$ (`16_arctan.py`, which
+also re-derives $\alpha\equiv18\ (36)$ and $k=2$; $\alpha=18$ gives the closed form
+$-\pi/(12\sqrt3)$ exactly). Where the
 $\log$ family sits at $\delta=+16$, $\rho=0$ and computes $\operatorname{artanh}$, this one
 sits at $\delta=-27$, $\rho=\tfrac76$ and computes $\arctan$; $\lambda_1\lambda_2=-27=-3^3$
 is the cube-root signature, and $\pi/\sqrt3$ is the value at the symmetric point. Classical
@@ -420,6 +451,18 @@ $\arctan(6\sqrt3/\alpha)$, is not in any standard battery. The lesson for the ce
 positive score with $k=2$ is **not** by itself evidence of a new object, and the diagnostic
 that settles it fastest is the **family** — an unbounded one-parameter family with
 unbounded score is always a Padé construction, never a modular row.
+
+**Cross-check with `HERFURTNER_CLASSIFICATION.md`.** That note (written in parallel) reaches
+the same conclusion from the other side: its Theorem H1 derives exactly the class
+parametrisation used here ($\beta=(1-\rho)\alpha$, $\varepsilon=-2\rho\delta$ is
+*equivalent* to $\rho_1=\rho_2$), and its Theorem H2 (Kodaira admissibility) says that a
+row which is the Picard–Fuchs system of an elliptic surface must have every local exponent
+difference in $\{0,\tfrac12,\tfrac13,\tfrac23\}\bmod1$. Our family has
+$\rho=\tfrac76\equiv\tfrac16$, which is **not** admissible — so it cannot come from an
+elliptic surface, independently of the mirror-map computation below. Both routes say the
+same thing, and the $\arctan$ closed form says why: it is Padé, not geometry. (The same
+note excludes Cooper's $s_{10},s_{18}$ square roots for the same reason,
+$\delta_\infty=\tfrac14$; those are exactly two more of the census's unidentified periods.)
 
 **A useful negative by-product.** The canonical (mirror) coordinate of this operator is
 *not* integral: with $t(q)=\sum c_nq^n$ the denominators are $1$ for $n\le8$ and then
@@ -601,11 +644,14 @@ $1.0718$, $1.6180$ — i.e. the gap between "decays" and "does not" is populated
    $0.16430670106434215863\ldots$ — the natural companion to
    `SQRT_APERY.md`'s $0.100187449229\ldots$, and equally resistant to identification.
    It is a new entry for the census (`ROW_LEDGER.md`).
-4. **The Casoratian filter should be standard.** In the raw recurrence scan, *every* row
-   scoring above $+1$ was a $Q(n_0)=0$ degeneracy with $W_n\equiv0$; without that filter one
-   "finds" thousands of spurious winners. Likewise the measured-$k$ filter: the surviving
-   positive scores are dominated by the classical Legendre/Padé $\log$ rows, which have
-   $k=1$ and are not Beukers rows at all.
+4. **Two filters should be standard, and one new diagnostic.** (i) The **Casoratian**
+   filter: in the raw recurrence scan the entire top of the ranking — every score above
+   $+2$ — consists of $Q(n_0)=0$ degeneracies with $W_n\equiv0$; without it one "finds"
+   thousands of spurious winners ($25\,390\to248$ in the first $e=2$ run). (ii) The
+   **measured $k$**: most surviving positive scores have $k=1$ and cannot be Beukers rows
+   at all, since Theorem R3 forces $k=2$ there. (iii) **Mirror-map integrality** (§4.4):
+   one series computation separates Padé families (non-integral $t(q)$) from modular rows
+   (integral $t(q)$, and it *is* the Hauptmodul).
 5. **Conjecture `conj:barrier` is untouched but its $w=2$ boundary is now sharp.** Among
    *all* integral second-order MUM rows in the boxes searched, exactly two have positive
    score and a modular (non-$\log$) period: Apéry's $\zeta(2)$ row ($+0.406$) and Beukers'
@@ -618,6 +664,11 @@ $1.0718$, $1.6180$ — i.e. the gap between "decays" and "does not" is populated
    $\rho=\tfrac76$). Two new diagnostics come out of the hunt and are worth keeping: the
    **Casoratian filter** ($Q(n_0)=0\Rightarrow W\equiv0$) and **mirror-map integrality**
    (§4.4), which separates Padé families from modular rows in one series computation.
+7. **Convergence with `HERFURTNER_CLASSIFICATION.md`.** Its Theorem H1 is Theorem N3's
+   parametrisation, its Riemann–Hurwitz bound $\deg J\le12$ is Theorem N2's covolume bound,
+   and its Kodaira-admissibility test ($\rho\in\{0,\tfrac12,\tfrac13,\tfrac23\}\bmod1$)
+   independently excludes the $\rho=\tfrac76$ family that §4.4 identifies as $\arctan$
+   Padé. Two independent derivations, one answer.
 
 ## 10. Status table
 
@@ -629,7 +680,8 @@ $1.0718$, $1.6180$ — i.e. the gap between "decays" and "does not" is populated
 | Beauville's six recovered as the index-12 four-cusp case, all congruence | **computed** (Wohlfahrt test) |
 | Theorem N3: $e_1\ne e_2\Rightarrow t_1,t_2\in\mathbf Q\Rightarrow$ score $<0$ | **proved** *modulo* the normalisation $P,Q,R\in\mathbf Z[t]$, $P(0)=1$ (true in every census row) |
 | quadratic pullback $t=t'^2$ always has $\lambda_1'=\lambda_2'>1$ | **proved** |
-| Scan A: Apéry $\zeta(2)$, Beukers Thm 3, and the Legendre $\log$ family are the only positive-score rows with $k\ge2$ in the boxes | **computed**; integrality and $k$ re-verified exactly to $n=240$ |
+| Scan A: Apéry $\zeta(2)$, Beukers Thm 3, and the two Padé families ($\log$, $\arctan$) are the only positive-score rows with $k\ge2$ in the boxes | **computed**; integrality and $k$ re-verified exactly to $n=240$ |
+| $\rho=\tfrac12$ (the square-root class) at $\alpha\le3000$, $|\delta|\le60$, $|\gamma|\le300$, $|\zeta|\le400$: Beukers' row is the **unique** positive score | **computed** (`rho2_1_2`) |
 | the level-5 $\Gamma_0(5)+5$ row: $\lambda=2$ minimal, $k=2$ sharp, $\operatorname{score}=-1.6734$ | **computed** ($a_n\in\mathbf Z$ to $n=202$, $k$ to $n=200$) |
 | its period $0.164306701064\ldots$ | **open**; excluded against $L(f,s)$ for all weight-3 newforms of level $M\le120$, $5\mid M$, $s=1,2,3$, and a 9-constant battery |
 | Scan B: only $2$ of $3.0\times10^6$ eta-quotient pairs give $|\lambda_2|<1$ | **computed** |
@@ -653,9 +705,15 @@ $1.0718$, $1.6180$ — i.e. the gap between "decays" and "does not" is populated
   $\Gamma_0(5)+5$ of §5) is not in that list; such groups normalise congruence subgroups, so
   the *host* is congruence and the non-congruence-ness sits in the multiplier of $\sqrt F$.
   Scan A covers them anyway, being ansatz-free.
-* Rows with $k\le1$ and positive score are *not* claims of new irrationality here. They are
-  classical Padé/Legendre families; the three representatives we could not identify are
-  recorded and left open.
+* Rows with $k\le1$ and positive score are *not* claims of new irrationality here; they are
+  Padé families and cannot arise from §1's construction. Three $k=1$ representatives from
+  the $e=3,4,6$ classes resisted a $\log$/algebraic battery and are recorded as open — they
+  are almost certainly further Padé families for other elementary functions (the $\log$ and
+  $\arctan$ ones took a family-level view to unmask, not a constant battery).
+* The per-$\rho$ sweep covers $\rho=p/q$, $q\le6$, $0<\rho\le3$. Larger denominators and
+  $\rho>3$ are not covered; nor is any row whose two finite exponent differences are
+  unequal *and* whose singular points are irrational — but Theorem N3 shows that
+  combination cannot occur.
 
 ## 12. Reproduction
 
@@ -676,7 +734,13 @@ lattice/noncongruence_scan/08_period.py      # Apery limit by the exact Casorati
 lattice/noncongruence_scan/09_level5.gp      # the Gamma_0(5)+5 row, verified
 lattice/noncongruence_scan/10_ident5.gp      # its period to 260 digits + identification battery
 lattice/noncongruence_scan/12_source5.gp     # Thm R3 source check: b_n = 2^n[t^n](f Theta), Psi = f^3 t/2
-lattice/noncongruence_scan/run_r3.sh run_e.sh run_free.sh run_more.sh snake_wide.sh
+lattice/noncongruence_scan/13_ident234.gp    # identification battery for the arctan family
+lattice/noncongruence_scan/14_mirror234.gp   # mirror map q = t exp(h/y1); the modularity test
+lattice/noncongruence_scan/15_verify234.gp   # end-to-end Apery-criterion check for one row
+lattice/noncongruence_scan/16_arctan.py      # the arctan Pade family: integrality, k, the closed form
+lattice/noncongruence_scan/run_r3.sh run_e.sh run_free.sh run_more.sh run_more2.sh
+lattice/noncongruence_scan/run_rho2.sh       # per-rho sweep, rho = p/q with q <= 6
+lattice/noncongruence_scan/snake_wide.sh     # the wide boxes, run on the compute box
 ```
 Raw output under `lattice/noncongruence_scan/out/`; the enumeration in `eta_pairs.json`
 and `lev/L*.gp`.

@@ -35,6 +35,16 @@ possible host groups.
                           special points (index <= 12), with the Wohlfahrt congruence
                           test.  Needs sympy.
 
+## The two classical Pade families (log at delta=16, arctan at delta=-27)
+
+    13_ident234.gp        identification battery
+    14_mirror234.gp       mirror map q = t exp(h/y1)  -- the modular/non-modular test
+                          (integral for Apery's zeta(2) row and for Beukers' row;
+                           NOT integral for either Pade family)
+    15_verify234.gp       end-to-end Apery-criterion check on one row
+    16_arctan.py          the arctan family: integrality (al = 18 mod 36), k=2,
+                          and xi = -(1/(2 sqrt3)) arctan(6 sqrt3 / al) to 193 digits
+
 ## The level-5 Fricke row (the second non-congruence Beukers row)
 
     09_level5.gp          construction and verification (lambda = 2 minimal, k = 2 sharp)
