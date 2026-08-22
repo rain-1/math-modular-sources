@@ -1,0 +1,36 @@
+# What a proof of $G\notin\mathbb Q$ must evade
+
+*Fable, 2026-08-23. A theorem-shaped summary of the Catalan ledger after the six programs, the Hadamard host, the level-16 recount and the $\zeta_5(3)$ work. Every numbered statement below is either proved in the cited document or is a finite computation that has been done. Nothing here is a new result; the value is that the obstruction is now stated with hypotheses, so that one can see what to change.*
+
+## 1. The two methods and their two walls
+
+**Lattice (two-row) method.** Exact reduction, no loss: worthiness $1$ (Lean). The remaining statement is Lemma P2 — the shortest vector of the congruence lattice $\mathcal K_n$ in the weighted metric lies in the positive cone up to $e^{o(n)}$ — and P2 is *equivalent* to $G\notin\mathbb Q$ (`paper/sections/06_threshold.tex`). Every valuation-theoretic device is absorbed (Absorption theorem). What is new since: P2 is measured to $n=80$ with the cone/true ratio at $\sqrt2$ and slope $0\pm0.005$ (`POSITIVITY_PROGRAM.md`, Conjecture P2′); multi-prime lattices move $\delta$ from $0.90$ to $0.94$ in the $F>0$ regime and no further (`MULTI_PRIME_LATTICE.md`); integral engines repay their primes exactly. **Wall: nonvanishing of one selected form.**
+
+**Holonomy (CDT) method.** Needs no nonvanishing; needs a dimension count on a host where the *entry condition* $\log|\varphi'(0)|+(1-\tfrac1m)\sum_p\log R_p>\tau$ holds (`ADELIC_HOLONOMY.md` §2.6, Theorem A). **Wall: entry.** When entry fails, the space of admissible functions is a continuum (CDT, ICM §2 remark; Dimitrov's notes), so no count can work.
+
+## 2. Why entry fails on every Eisenstein host we know
+
+**(2.1) Hodge depth.** $G=L(2,\chi_{-4})$ is the period of the weight-3 Eisenstein class $E_3^{\chi_{-4},\mathbf1}$; the companion is a double Eichler integral; $\tau=2$ (type $[1..n]^2$) in any realisation. A $k=1$ realisation would have period $L(1,\cdot)$, i.e. $\pi$, not $G$. **[proved: weight-drop theorem, Theorem B\*]**
+
+**(2.2) Geometry.** Three-term integral rows for this class live on the Beauville surface $I_8I_2I_1I_1$ (Zagier E) and its level-16 genus-0 cover; the characteristic roots are integers with gaps $\ge1$, so $|t_2|\le\tfrac14$ at every placement (`HERFURTNER_CLASSIFICATION.md`; `CUSP_MOVE_PROGRAM.md` Thm 4). Hence the three-puncture ceiling $\log(16|t_2|)-2\le\log4-2=-0.61$, and the symmetrised ceiling $\log(256\cdot\tfrac14)-\tau_{(S)}=-0.077$ (`CDT_FINDER.md`, `ADELIC_HOLONOMY.md`). This is CDT's own remark "$e^2>16\cdot\tfrac14$" made into an invariant of the class. **[proved modulo the classification's finite checks]**
+
+**(2.3) The $p$-adic rescue is blocked by a theorem.** Under $G=a/b$ the conditional function $H=bB-aA$ has $2$-adic coefficient asymptotics $h_n\approx(b\xi_2-a)a_n$ with $\xi_2=\tfrac12\zeta_2(2)$; since $\xi_2\notin\mathbb Q$ (Calegari 2005), $H$ has $2$-adic slope exactly $0$ (measured: $0$ in $x$, $-2$ in the symmetrised coordinate). A single slope-$0$ function reduces the adelic gain to $O(1/m)$ (the graded twist in §2.6 is by $R_{\min}^{\,n-D}$). So $\sum_p\gamma_p$ cannot restore entry. **[proved: §2.6 mechanism + Calegari]** The same holds at any prime and for any placement: $\xi_p=\xi_\infty$ as rationals is exactly what the hypothesis forbids.
+
+**(2.4) More classes do not help on these hosts.** $c\le\#\text{cusps}-1$ (`CDT_NONCONGRUENCE.md` §10); the level-16 host has two unconditional doubly-small classes (inner and outer), which are genuinely new objects but are worth $+0.4$ each against a measured margin of $-5.8$ (`CATALAN_THREE_PERIOD.md`).
+
+**(2.5) Two-host objects fail at entry by a Galois mechanism.** The Hadamard function $W=A_Z\odot B_N-A_N\odot B_Z$ is overconvergent by $14$ nats and has $v_2\ge24n$ on the cleared rows, but its singular set is a single Galois orbit, so no pure module exists, $\tau^\flat\ge10.7$, entry $-11$ (`HADAMARD_HOST.md`). Same mechanism as Proposition G for $\Gamma_0(5)+5$.
+
+**(2.6) Cuspidal disguise.** $L(\eta(4\tau)^6,2)$ (the unique weight-3 CM form of level 16) is not a rational combination of $G\pi,G,\pi^2,\pi\log2,\dots$ (lindep, 40 digits, 2026-08-23). Catalan is not a cusp-form period on that host.
+
+## 3. What would evade
+
+Each item negates one hypothesis above.
+
+- **(E1) A host with an irrational second singularity.** Negates (2.2). Three-term rows cannot have it (integer roots). Rows with *more* singular points can: elliptic/CM points of Atkin–Lehner quotients $\Gamma_0(4M)+W$ are algebraic, conjugate, and can put $\lambda_2<1$ (as for Apéry's $\zeta(2)$ row on $X_0(5)$ via its elliptic points). The inner class alone does not descend to such quotients (Fricke swaps the orientations); the mixed class $E\pm rT$ does, with period $G\pm r'\zeta(2)$, and the hypothesis "$1,\pi^2,G$ dependent" supplies the conditional function — CDT's own three-period architecture. **Not yet scanned; running (`CATALAN_AL_HOSTS.md`).**
+- **(E2) A realisation with a conditional function that is $p$-adically overconvergent.** Negates (2.3). Requires $\xi_p=\xi_\infty\in\mathbb Q$ at some prime, i.e. a place where the $p$-adic avatar of the relation holds. For Eisenstein classes $\xi_p$ is a Kubota–Leopoldt value, irrational where known. Only conceivable via a class whose $p$-adic period is *zero* **and** whose archimedean hypothesis is "$\xi=0$" — i.e. a target-zero statement, not irrationality. Closed.
+- **(E3) A non-Eisenstein motive with period $G$.** Negates (2.1)–(2.2) by changing the object. Candidates: $G$ as a period of a mixed Tate motive over $\mathbb Z[i]$ (Beilinson element of $K_3(\mathbb Q(i))$), realised on $\mathcal M_{0,n}$-type cellular hosts (Brown) rather than modular curves; or $G$ in a weight-4 or rank-4 setting where it appears with a different Hodge depth (e.g. as $L(2,\chi_{-4})$ inside a rank-4 period matrix with $k$ still $2$ for that entry). The MUM survey lists no such row; the cellular side has not been searched for $G$ specifically.
+- **(E4) Proving P2′.** Negates nothing in §2 — it is the lattice wall. P2′ is equivalent to $G\notin\mathbb Q$, so it needs analytic input about $G$; its measured form (ratio $\sqrt2$, slope $0$) is at least a statement one can try to attack through the arithmetic of the specific $2$-dimensional lattices $\mathcal K_n$ (Gauss reduction is explicit in dimension 2), which nobody has done.
+
+## 4. One sentence
+
+*On every known host the Catalan class has the wrong conformal size for its Hodge depth by a motivic invariant ($|t_2|\le\tfrac14$), and the $p$-adic places cannot compensate because the hypothesis $G\in\mathbb Q$ is false at $p=2$; a holonomy proof therefore needs a host with an irrational second singularity — which means a mixed class on an Atkin–Lehner quotient, or a different motive — and a lattice proof needs P2′.*
