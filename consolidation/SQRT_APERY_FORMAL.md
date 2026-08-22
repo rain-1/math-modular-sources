@@ -1,3 +1,5 @@
+> **Attribution (2026-08-22, found by River):** this theorem is **Beukers, "Irrationality proofs using modular forms", Astérisque 147–148 (1987), Theorem 3**: $\sum a_nq^n=(\eta_1^9\eta_6^9/\eta_2^3\eta_3^3)^{1/2}$ ($=4\Psi$), and $\sum a_n/n^2$ is irrational, proved via the $4^n$ denominators of $\sqrt E$ and $4e<(\sqrt2+1)^4$. Our contribution is the framing (square root of Apéry's recurrence), the explicit recurrence/Casoratian/source, the measure $\mu\le50.66$, and the formalization blueprint. PDF: papers/beukers1987.pdf.
+
 # The square root of Apéry's recurrence: a formalization blueprint
 
 *Standalone statement and proof, organised for Lean 4 / Mathlib autoformalization. Fable, 2026-08-22. Source of the mathematics: `consolidation/SQRT_APERY.md`, `paper/sections/02_sqrt_rows.tex`; every identity below was re-verified exactly (`lattice/sqrt_apery_*.gp`).*
