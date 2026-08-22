@@ -1,0 +1,36 @@
+The best RIGOROUS-shape CDT criterion for a second-order Apery row.
+
+margin(m, inventory, r) = (m-1) log|phi'(0)| - m tau + [ -Delta(r) ]
+   with log|phi'(0)| = log(16 r |x_2|) = log(4|x_2|) + log(4r)
+   => margin = (m-1)(log 4 + 2 + score) - m tau + [(m-1) log(4r) - Delta(r)]
+   with score = log(1/|lam_2|) - 2 and log|x_2| = score + 2.
+G(m) := max(0, max_r (m-1) log(4r) - Delta(r))   [0 = the Koebe map, Delta = 0]
+threshold(m) := smallest score for which margin > 0
+              = ( m*tau - G(m) )/(m-1) - log 4 - 2 .
+
+  m  p  J      tau     G(m)    r*  thresh score (pure>=2 ok)  thresh score (p=1 only)
+  2  1  0  1.50000  0.00000  None                   -0.38629                 -0.38629
+  3  1  0  1.77778  0.23779  0.46                   -0.83852                 -0.83852
+  4  2  0  1.93750  0.90055  0.53                   -1.10315                 -0.60315
+  5  3  0  2.19000  1.74975  0.62                   -1.08623                 -0.28623
+  6  3  1  2.41667  2.71854  0.68                   -1.03000                  0.05333
+  7  3  2  2.60544  3.74664  0.73                   -0.97105                  0.34641
+  8  4  2  2.78906  4.82909  0.75                   -0.88867                  0.62919
+  9  4  3  2.91667  5.95222  0.78                   -0.84907                  0.87142
+ 10  5  3  3.08333  7.10758   0.8                   -0.75010                  1.10268
+ 11  5  4  3.17190  8.27073   0.8                   -0.72428                  1.30663
+ 12  6  4  3.32350  9.43388   0.8                   -0.61829                  1.50343
+ 13  6  5  3.38609 10.59703   0.8                   -0.60111                  1.67987
+ 14  7  5  3.52500 11.76018   0.8                   -0.49477                  1.85001
+ 15  7  6  3.56959 12.92333   0.8                   -0.48483                  2.00435
+ 16  8  6  3.69785 14.08648   0.8                   -0.38102                  2.15345
+ 17  8  7  3.72950 15.24963   0.8                   -0.37680                  2.29006
+ 18  9  7  3.84877 16.41278   0.8                   -0.27659                  2.42235
+ 19  9  8  3.87084 17.57593   0.8                   -0.27684                  2.54459
+ 20 10  8  3.98242 18.73908   0.8                   -0.18054                  2.66324
+
+BEST (any inventory)   : m=4, p=2, J=0, tau=1.93750, r*=0.53, threshold score = -1.10315
+BEST (p = 1, generic)  : m=3, tau=1.77778, r*=0.46, threshold score = -0.83852
+For reference: the elementary (Beukers) criterion is  score > 0.
+So the CDT route is worth  +0.83852 nats over the elementary route (generic inventory),
+                     and   +1.10315 nats with a pure polylogarithm module (needs lam_2 in Z).

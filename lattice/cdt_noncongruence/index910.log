@@ -1,0 +1,57 @@
+    score          lam1         lam2  k           (al,ga,de,ze)  classes
+ +0.40606     11.090170  -0.09016994  2             (11,3,-1,0)  e0deep,eclass_0,free,freeacc,freewide,rhoBIG_1_1,wide_e0_gam
+ +0.13920    135.882251   0.11774901  2           (136,10,16,4)  e2deep,free,freeacc,freewide,r3,rho2_1_2,rho2_3_1,wide_e0_ga
+ +0.01379    119.866518   0.13348181  2       (120,-150,16,140)  rho2_3_1,wide_e0_gamma
+ -0.12968    103.845926   0.15407441  2       (104,-130,16,140)  rho2_3_1,wide_e0_gamma
+ -0.28709     22.180340  -0.18033989  2             (22,6,-4,0)  e0deep,eclass_0,free,freeacc,freewide,rhoBIG_1_1,wide_e0_gam
+ -0.29732     87.817805   0.18219540  2        (88,-110,16,140)  rho2_3_1,wide_e0_gamma
+ -0.45786    126.213922  -0.21392252  2       (126,-84,-27,-84)  freeacc,rho2_11_6
+ -0.49902     71.777088   0.22291236  2         (72,-90,16,140)  rho2_3_1,wide_e0_gamma
+ -0.69255     33.270510  -0.27050983  2             (33,9,-9,0)  e0deep,eclass_0,free,freeacc,freewide,rhoBIG_1_1,wide_e0_gam
+ -0.75238     55.712813   0.28718708  2         (56,-70,16,140)  rho2_3_1,wide_e0_gamma
+ -0.79271     90.299007  -0.29900661  2        (90,-60,-27,-84)  freeacc,freewide,rho2_11_6
+ -0.95596    136.352030  -0.35202996  2      (136,-102,-48,300)  e0deep,eclass_0,freeacc
+ -0.98023     44.360680  -0.36067977  2           (44,12,-16,0)  e0deep,eclass_0,free,freeacc,freewide,wide_e0_gamma
+ -1.08039    120.398675  -0.39867548  2       (120,-90,-48,300)  e0deep,eclass_0,freeacc
+ -1.09386     39.595918   0.40408206  2       (40,-150,16,-196)  e0deep,eclass_0,freeacc,rho2_3_1,wide_e0_gamma
+ -1.18600    144.443081  -0.44308111  2      (144,-108,-64,144)  e0deep,eclass_0,wide_e0_gamma
+ -1.19217    143.554175   0.44582472  2      (144,-108,64,-144)  e0deep,eclass_0,freewide,wide_e0_gamma
+ -1.20338     55.450850  -0.45084972  2           (55,15,-25,0)  e0deep,eclass_0,free,freeacc,freewide,wide_e0_gamma
+ -1.22240    104.459508  -0.45950819  2       (104,-78,-48,300)  e0deep,eclass_0,freeacc
+ -1.29772     54.495454  -0.49545417  2        (54,-36,-27,-84)  freeacc,freewide,rho2_11_6
+ -1.30297    128.498062  -0.49806199  2       (128,-96,-64,144)  e0deep,eclass_0,wide_e0_gamma
+ -1.31078    127.498031   0.50196853  2       (128,-96,64,-144)  e0deep,eclass_0,wide_e0_gamma
+ -1.38570     66.541020  -0.54101966  2           (66,18,-36,0)  e0deep,eclass_0,free,freeacc,freewide,wide_e0_gamma
+ -1.38772     88.542115  -0.54211490  2        (88,-66,-48,300)  e0deep,eclass_0,freeacc
+ -1.43532    112.568543  -0.56854249  2       (112,-84,-64,144)  e0deep,eclass_0,wide_e0_gamma
+ -1.44553    111.425626   0.57437416  2       (112,-84,64,-144)  e0deep,eclass_0,eclass_4,freewide,wide_e0_gamma
+ -1.47372    135.409198   0.59080181  2      (136,-102,80,-180)  e0deep,eclass_0,wide_e0_gamma
+ -1.53985     77.631190  -0.63118961  2           (77,21,-49,0)  e0deep,eclass_0,free,freeacc,freewide,wide_e0_gamma
+ -1.58540     72.660606  -0.66060556  2        (72,-54,-48,300)  e0deep,eclass_0,freeacc
+ -1.58766     96.662100  -0.66210024  2        (96,-72,-64,144)  e0deep,eclass_0,wide_e0_gamma
+ -1.60014    119.329588   0.67041210  2       (120,-90,80,-180)  e0deep,eclass_0,wide_e0_gamma
+ -1.60155     95.328638   0.67136174  2        (96,-72,64,-144)  e0deep,eclass_0,wide_e0_gamma
+ -1.62355     23.313709   0.68629150  2        (24,-90,16,-196)  e0deep,e2deep,eclass_0,free,freeacc,freewide,r3,rho2_1_2,rho
+ -1.67338     88.721360  -0.72135955  2           (88,24,-64,0)  e0deep,e2deep,eclass_0,freewide,r3,wide_e0_gamma,wide_e2_gam
+ -1.74512    103.224994   0.77500610  2       (104,-78,80,-180)  e0deep,eclass_0,wide_e0_gamma
+ -1.76700     80.792156  -0.79215611  2        (80,-60,-64,144)  e0deep,eclass_0,wide_e0_gamma
+ -1.78701     79.191836   0.80816412  2        (80,-60,64,-144)  e0deep,eclass_0,freewide,wide_e0_gamma
+ -1.79116     99.811529  -0.81152949  2           (99,27,-81,0)  e0deep,eclass_0,wide_e0_gamma
+ -1.83088     56.844410  -0.84441020  2        (56,-42,-48,300)  e0deep,eclass_0,free,freeacc,freewide,rho2_1_1
+ -1.89653    110.901699  -0.90169944  2         (110,30,-100,0)  e0deep,eclass_0,wide_e0_gamma
+ -1.91518     87.081318   0.91868154  2        (88,-66,80,-180)  e0deep,eclass_0,wide_e0_gamma
+ -1.98473     64.984845  -0.98484500  2        (64,-48,-64,144)  e0deep,eclass_0,wide_e0_gamma
+
+Reading.  Every real-|lam_2|<1 row with k >= 2 in every box scanned is one of:
+ * the Legendre/Pade log family (delta = 16, al = 8x, ga = -3al/4) and the
+   arctan family (delta = -27, al = 18 mod 36) -- not modular, unbounded score;
+ * Apery's zeta(2) row (11,3,-1,0) and its rescalings (11j,3j,-j^2,0);
+ * Beukers' row (136,10,16,4) and its rescalings (136j,10j,16j^2,4j^2);
+ * the level-8 sqrt-T row (24,2,16,4);
+ * the level-5 Fricke row (88,6,-64,-12).
+None of these has a non-congruence HOST GROUP of index 9 or 10: the two modular
+e=infinity rows are Apery's (Gamma_1(5), congruence) and the Pade families, and
+the e=2 rows live on Gamma_0(6)+6, Gamma_0(5)+5 and level 8 -- all congruence
+groups, with the non-congruence-ness in the multiplier system of sqrt(F).
+So: NO index-9/10 non-congruence host contributes a second-order row with real
+lam_2 < 1, and there is nothing further to score.

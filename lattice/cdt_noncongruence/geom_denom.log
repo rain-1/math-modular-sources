@@ -1,0 +1,56 @@
+How CDT's framework handles a GEOMETRIC denominator lam^n.
+
+Setting.  A modular row has a_n = lam^n [t^n] g with lam in {1,2,4}: in the
+modular coordinate t the coefficients of g carry an unbounded power of 2,
+c_n := [t^n] g in lam^{-n} Z.  A geometric denominator is NOT of CDT's LCM type
+(6.0.9), so g(t) is not admissible as an f_i in the coordinate t.
+
+Two ways to make it admissible; they agree exactly.
+
+(A) RESCALE.  Put x := t/lam.  Then A(x) := g(lam x) = sum a_n x^n has a_n in Z,
+    and every singular point moves x_i = t_i/lam.  A map phi_t : D -> Omega_t is
+    the same thing as phi_x = phi_t/lam : D -> Omega_x, so
+        log|phi_x'(0)| = log|phi_t'(0)| - log lam ,
+        BC(phi_x)      = BC(phi_t)      - log lam
+    (the Bost-Charles integral is log-homogeneous of degree 1 in phi).  tau is
+    unchanged.  Hence
+        entry_x  = entry_t - log lam                      <-- the -log lam of N1
+        margin_x = margin_t - (m-1) log lam .
+
+(B) KEEP t, DECLARE A NEGATIVE p-ADIC SLOPE.  In the coordinate t every function
+    has v_p(c_n) >= -v_p(lam) n, i.e. the UNIFORM slope profile
+    varsigma_i = -v_p(lam) for all i, at every p | lam.  The adelic bound
+    (ADELIC_HOLONOMY.md Thm 2.2) then gives
+        gamma_p = -v_p(lam) log p (1 - 1/m),   sum_p gamma_p = -(1-1/m) log lam ,
+        tau_ad = tau + (1-1/m) log lam .
+    Hence margin_ad = margin_t - (m-1) log lam.  IDENTICAL to (A).
+
+So: a geometric denominator costs exactly  log lam  of ENTRY budget and
+(m-1) log lam of MARGIN, and per function (m -> infinity) exactly log lam --
+which is precisely the -log lam in NONCONGRUENCE_SCAN's Theorem N1,
+  score = log|t_2| - k - log lam = log(1/|lam_2|) - k,   lam_2 = lam/|t_2| .
+This script verifies (A) == (B) numerically.
+
+==============================================================================================
+   m  lam   entry(A)   entry(B)   margin(A)   margin(B)       diff
+   2    2  +1.332348  +1.678922   -8.487156   -8.487156   0.00e+00
+   2    4  +0.639201  +1.332348   -9.180303   -9.180303   0.00e+00
+   2    8  -0.053946  +0.985775   -9.873451   -9.873451   0.00e+00
+   3    2  +1.054570  +1.285620   -7.988141   -7.988141  -8.88e-16
+   3    4  +0.361423  +0.823521   -9.374436   -9.374436   1.78e-15
+   3    8  -0.331724  +0.361423  -10.760730  -10.760730   0.00e+00
+   5    2  +0.912348  +1.050978   -6.590111   -6.590111   0.00e+00
+   5    4  +0.219201  +0.496460   -9.362700   -9.362700   1.78e-15
+   5    8  -0.473946  -0.058058  -12.135289  -12.135289   3.55e-15
+  14    2  +0.842552  +0.892063   +0.643880   +0.643880  -1.78e-15
+  14    4  +0.149405  +0.248426   -8.367033   -8.367033   5.33e-15
+  14    8  -0.543742  -0.395210  -17.377947  -17.377947   0.00e+00
+  30    2  +0.834570  +0.857675  +13.885262  +13.885262  -5.33e-15
+  30    4  +0.141423  +0.187633   -6.216006   -6.216006   4.44e-15
+  30    8  -0.551724  -0.482409  -26.317275  -26.317275   0.00e+00
+
+entry(A) - entry(B) = -log(lam)/m  (the 1/m in gamma_p's (1-1/m)); margins agree exactly.
+
+--- N1 consistency: Beukers' row, modular coordinate t vs integral x ---
+  Beukers Gamma_0(6)+6: |t_2|=33.970563, lam=4, |lam_2|=0.11774901, |x_2|=|t_2|/lam=8.492641=1/|lam_2|=8.492641  score=log|t_2|-2-log(lam)=+0.1392
+  level-5 Gamma_0(5)+5: |t_2|=2.772542, lam=2, |lam_2|=0.72135955, |x_2|=|t_2|/lam=1.386271=1/|lam_2|=1.386271  score=log|t_2|-2-log(lam)=-1.6734

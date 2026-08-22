@@ -1,0 +1,51 @@
+/home/ubuntu/code/math-modular-sources/lattice/cdt_noncongruence/bc_multivalent.py:1: SyntaxWarning: invalid escape sequence '\ '
+  """Beyond Koebe: the Bost-Charles numerator of the multivalent (Andre/Kodaira)
+Beyond Koebe: the Bost-Charles numerator of the multivalent (Andre/Kodaira)
+modular map, computed numerically.
+
+For a second-order row the module {1, H, theta H, ...} is holomorphic at x = 0
+and has its only finite branch point at x_2 = 1/lam_2.  Any phi : D -> C \ {x_2}
+with phi(0) = 0 is admissible (D simply connected => phi lifts; the f_i are
+holomorphic at 0).  Two natural families:
+
+  * UNIVALENT (Koebe):  phi = Riemann map of C \ [x_2, oo);  |phi'(0)| = 4|x_2|,
+    and BC = log|phi'(0)| exactly (Grunsky).  Deficit Delta := BC - log|phi'(0)| = 0.
+  * MULTIVALENT (Kodaira):  phi_r(z) = x_2 * lambda(r z), lambda = 16w -128w^2+...
+    the modular lambda function in the nome w = e^{i pi tau}.  lambda(D) = C\{0,1}
+    and loops in D map only to loops around 0, so phi_r^* f is single-valued.
+    |phi_r'(0)| = 16 |x_2| r  ->  16|x_2| as r -> 1 (the Kodaira ceiling), but
+    Delta(r) = BC(phi_r) - log|phi_r'(0)| grows.
+
+BC is computed as   BC = log|phi'(0)| + iint log|(phi(z)-phi(w))/((z-w) phi'(0))|
+using  iint_{T^2} log|z-w| = 0  exactly; the diagonal value is log|phi'(z)/phi'(0)|.
+Trapezoidal quadrature in both angles (spectrally accurate for the smooth part).
+
+Margin of the CDT bound at m functions:  m(log|phi'(0)| - tau) - BC
+                                       = (m-1) log|phi'(0)| - m tau - Delta.
+So the multivalent map is worth  (m-1) log(4r) - Delta(r)  over Koebe.
+
+quadrature N = 256 per circle
+
+      r  log|phi_r'(0)|-log|x_2|   Delta(r)   gain m=2   gain m=3   gain m=4  gain m=14
+  (gain = (m-1)*log(4r) - Delta(r) : how much phi_r beats the Koebe map at m functions)
+   0.05                 -0.22314   -0.00000   -1.60944   -3.21888   -4.82831  -20.92269
+   0.10                  0.47000   -0.00000   -0.91629   -1.83258   -2.74887  -11.91178
+   0.15                  0.87547   -0.00000   -0.51083   -1.02165   -1.53248   -6.64073
+   0.20                  1.16315   -0.00000   -0.22314   -0.44629   -0.66943   -2.90087
+   0.25                  1.38629    0.11705   -0.11705   -0.11705   -0.11705   -0.11705
+   0.30                  1.56862    0.32225   -0.13993    0.04239    0.22472    2.04793
+   0.35                  1.72277    0.53672   -0.20025    0.13622    0.47269    3.83742
+   0.40                  1.85630    0.74469   -0.27469    0.19531    0.66532    5.36535
+   0.45                  1.97408    0.94210   -0.35431    0.23348    0.82126    6.69913
+   0.50                  2.07944    1.18587   -0.49272    0.20042    0.89357    7.82504
+   0.55                  2.17475    1.46777   -0.67932    0.10914    0.89760    8.78217
+   0.60                  2.26176    1.75586   -0.88039   -0.00492    0.87054    9.62523
+   0.65                  2.34181    2.08211   -1.12660   -0.17108    0.78443   10.33954
+   0.70                  2.41591    2.43881   -1.40919   -0.37957    0.65005   10.94625
+   0.75                  2.48491    2.86119   -1.76258   -0.66397    0.43465   11.42077
+   0.80                  2.54945    3.36078   -2.19763   -1.03448    0.12867   11.76018
+
+  best for m= 2: r=0.25, log|phi'(0)| = log|x_2| + 1.38629, Delta=0.11705, gain over Koebe = -0.11705
+  best for m= 3: r=0.45, log|phi'(0)| = log|x_2| + 1.97408, Delta=0.94210, gain over Koebe = +0.23348
+  best for m= 4: r=0.55, log|phi'(0)| = log|x_2| + 2.17475, Delta=1.46777, gain over Koebe = +0.89760
+  best for m=14: r=0.80, log|phi'(0)| = log|x_2| + 2.54945, Delta=3.36078, gain over Koebe = +11.76018

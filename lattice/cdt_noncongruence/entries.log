@@ -1,0 +1,53 @@
+
+======================================================================================================================
+FINAL RANKING -- deficit in SCORE UNITS (nats).  'proved' = deficit > 0.
+  (K) univalent Koebe, threshold -0.71963 | (D) Kodaira phi_r, threshold -0.83852
+  (D+) with a pure polylogarithm module (needs lam_2 in Z), threshold -1.10315
+  (S) CDT symmetrised, m=14: threshold -2.00041 (realised contour) / -2.49931 (hard ceiling)
+      -- (S) scores the host by its NORMALISED score -log|N(lam_2)|^{1/[K:Q]} - 2, not by 'score'.
+
+host                                   score    sc_S |     (K)     (D)    (D+) |  (S)real  (S)ceil  (S)ad-r  (S)ad-c | best
+Beukers sqrt-Apery (136,10,16,4)     +0.1392 -3.3863 | +0.8588 +0.9777       - |  -1.3859  -0.8870  -1.3859  -0.8870 | D +0.9777
+level-5 Fricke (88,6,-64,-12)        -1.6734 -4.0794 | -0.9538 -0.8349       - |  -2.0790  -1.5801  -2.0790  -1.5801 | D -0.8349
+sqrt-T (24,2,16,4)                   -1.6235 -3.3863 | -0.9039 -0.7850       - |  -1.3859  -0.8870  -1.3859  -0.8870 | D -0.7850
+sqrt-Domb (20,2,64,16)               -3.3863 -3.3863 | -2.6667 -2.5478 -2.2831 |  -1.3859  -0.8870  -1.1117  -0.6128 | S+ad-ceil -0.6128
+sqrt-Cooper s_7 (26,2,-27,-6)        -2.0000 -2.0000 | -1.2804 -1.1615 -0.8969 |  +0.0004  +0.4993  +0.0004  +0.4993 | S-ceil +0.4993
+sqrt-Cooper s_10 (24,2,-256,-60)     -4.0794 -4.0794 | -3.3598 -3.2409 -2.9763 |  -2.0790  -1.5801  -1.6677  -1.1688 | S+ad-ceil -1.1688
+sqrt-Cooper s_18 (56,6,768,180)      -5.1781 -5.1781 | -4.4584 -4.3395 -4.0749 |  -3.1776  -2.6787  -2.5490  -2.0501 | S+ad-ceil -2.0501
+sqrt-AZ(9,3,-27) (72,6,-432,-108)    -3.7173 -5.0342 | -2.9976 -2.8787       - |  -3.0338  -2.5349  -3.0338  -2.5349 | S-ceil -2.5349
+CAL Apery zeta(2) (11,3,-1,0)        +0.4061 -2.0000 | +1.1257 +1.2446       - |  +0.0004  +0.4993  +0.0004  +0.4993 | D +1.2446
+CAL Zagier C = CDT host (10,3,9)     -2.0000 -2.0000 | -1.2804 -1.1615 -0.8969 |  +0.0004  +0.4993  +0.0004  +0.4993 | S-ceil +0.4993
+CAL Zagier E = Catalan (12,4,32)     -3.3863 -3.3863 | -2.6667 -2.5478 -2.2831 |  -1.3859  -0.8870  -1.1117  -0.6128 | S+ad-ceil -0.6128
+
+ranked by best deficit:
+   +1.2446  [D        ] CAL Apery zeta(2) (11,3,-1,0)         congruence               zeta(2)/5  [PROVED irrational, elementar
+   +0.9777  [D        ] Beukers sqrt-Apery (136,10,16,4)      NON-congruence (lam=4)   L(Psi,2)=0.1001874492...
+   +0.4993  [S-ceil   ] sqrt-Cooper s_7 (26,2,-27,-6)         congruence (lam=1)       L(f_7,2)  [CM weight-3, level 7]
+   +0.4993  [S-ceil   ] CAL Zagier C = CDT host (10,3,9)      congruence               L(2,chi_-3)/2 [PROVED, CDT]
+   -0.6128  [S+ad-ceil] sqrt-Domb (20,2,64,16)                congruence (lam=1)       L(f_12,2) [CM weight-3, level 12]
+   -0.6128  [S+ad-ceil] CAL Zagier E = Catalan (12,4,32)      congruence               G = Catalan [OPEN]
+   -0.7850  [D        ] sqrt-T (24,2,16,4)                    congruence (lam=1)       L(f_8,2)  [CM weight-3, level 8]
+   -0.8349  [D        ] level-5 Fricke (88,6,-64,-12)         NON-congruence (lam=2)   0.16430670106434215863... (unidentified)
+   -1.1688  [S+ad-ceil] sqrt-Cooper s_10 (24,2,-256,-60)      NON-congruence (lam=2)   0.31692535921... (unidentified)
+   -2.0501  [S+ad-ceil] sqrt-Cooper s_18 (56,6,768,180)       NON-congruence (lam=2)   0.48423755360... (unidentified)
+   -2.5349  [S-ceil   ] sqrt-AZ(9,3,-27) (72,6,-432,-108)     NON-congruence (lam=4)   0.14551448201... (unidentified)
+m=2 inventory {1,H}      : tau = 1.500000
+m=3 inventory {1,H,thH}  : tau = 1.777778 = 16/9
+(D) optimum at m=3        : r* = 0.46, log|phi'(0)| = log(4|x_2|) +0.609766, Delta = BC - log|phi'(0)| = 0.981746
+(S) CDT                   : tau = 4.235459, BC = 11.845 + log s, log(loss) = -0.463269
+
+host                                 log 4|x2| (K)entry (D)entry  |   ceil_S (S)entryC (S)entryR   gamma   (S)adC   (S)adR
+Beukers sqrt-Apery (136,10,16,4)        3.5255  +1.7477  +2.3575  |   4.1589   -0.0766   -0.5398 +0.0000  -0.0766  -0.5398
+level-5 Fricke (88,6,-64,-12)           1.7129  -0.0649  +0.5449  |   3.4657   -0.7697   -1.2330 +0.0000  -0.7697  -1.2330
+sqrt-T (24,2,16,4)                      1.7627  -0.0150  +0.5947  |   4.1589   -0.0766   -0.5398 +0.0000  -0.0766  -0.5398
+sqrt-Domb (20,2,64,16)                  0.0000  -1.7778  -1.1680  |   4.1589   -0.0766   -0.5398 +0.2546  +0.1780  -0.2852
+sqrt-Cooper s_7 (26,2,-27,-6)           1.3863  -0.3915  +0.2183  |   5.5452   +1.3097   +0.8464 +0.0000  +1.3097  +0.8464
+sqrt-Cooper s_10 (24,2,-256,-60)       -0.6931  -2.4709  -1.8612  |   3.4657   -0.7697   -1.2330 +0.3819  -0.3878  -0.8511
+sqrt-Cooper s_18 (56,6,768,180)        -1.7918  -3.5695  -2.9598  |   2.3671   -1.8683   -2.3316 +0.5837  -1.2846  -1.7479
+sqrt-AZ(9,3,-27) (72,6,-432,-108)      -0.3310  -2.1087  -1.4990  |   2.5110   -1.7245   -2.1878 +0.0000  -1.7245  -2.1878
+CAL Apery zeta(2) (11,3,-1,0)           3.7924  +2.0146  +2.6243  |   5.5452   +1.3097   +0.8464 +0.0000  +1.3097  +0.8464
+CAL Zagier C = CDT host (10,3,9)        1.3863  -0.3915  +0.2183  |   5.5452   +1.3097   +0.8464 +0.0000  +1.3097  +0.8464
+CAL Zagier E = Catalan (12,4,32)        0.0000  -1.7778  -1.1680  |   4.1589   -0.0766   -0.5398 +0.2546  +0.1780  -0.2852
+
+(K)entry uses the Koebe map (|phi'(0)| = 4|x_2|); (D)entry the Kodaira map phi_{r*}.
+An entry <= 0 means CDT's theorem does not even apply in that architecture.

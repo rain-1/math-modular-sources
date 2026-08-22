@@ -1,0 +1,67 @@
+/home/ubuntu/code/math-modular-sources/lattice/cdt_noncongruence/arch_k.py:1: SyntaxWarning: invalid escape sequence '\ '
+  """ARCHITECTURE K: the rigorous univalent (Koebe) form of the CDT bound for a
+ARCHITECTURE K: the rigorous univalent (Koebe) form of the CDT bound for a
+second-order Apery row.
+
+Hypothesis to be contradicted:  xi := lim b_n/a_n = p/q in Q.
+Conditional function:           H := q B - p A  in Q[[x]],  d_n^2 H_n in Z.
+  H is holomorphic at the INNER singular point x_1 = 1/lam_1 (that is exactly
+  |a_n xi - b_n| ~ |lam_2|^n < |lam_1|^{-n}... i.e. radius of convergence
+  |x_2| > |x_1|), and its only finite branch point is x_2 = 1/lam_2.
+
+Domain.  Omega = C \ (the ray from x_2 away from 0).  Simply connected, contains
+0 and x_1; every f_i below is single-valued and holomorphic on it.  By Koebe's
+1/4 theorem the conformal radius is EXACTLY rho = 4|x_2| = 4/|lam_2| and this is
+the largest possible for any simply connected Omega omitting x_2.
+For a univalent phi, CDT's Bost-Charles numerator is exactly BC = log rho
+(Grunsky: log((phi(z)-phi(w))/(z-w)) has constant term log phi'(0)).
+
+Inventory (all conditional, all with rational coefficients under the hypothesis):
+   f_1 = 1                                sigma = 0,  e = 0
+   f_2 = H                                sigma = 2,  e = 0     (two [1..n] layers)
+   f_3 = theta H = x H'                   sigma = 2,  e = 0
+   f_{3+j} = theta^{-j}(H - H(0)), j>=1   sigma = 2,  e = j
+The second-order inhomogeneous ODE satisfied by H gives a Q(x)-relation among
+{1, H, theta H, theta^2 H}, so theta^2 H and beyond are NOT admissible; the tower
+must be continued downwards by Eichler integrals, which cost e_i = j.
+
+Optionally (only when lam_2 in Z, so that the polylogarithms have rational
+integer coefficients) a PURE sub-inventory
+   1, Li_1(lam_2 x), ..., Li_{p-1}(lam_2 x)   sigma = 0,  e = 0,1,...,p-1
+which raises u_1 = u_2 from 1 to p.
+
+Bound: m <= BC/(log|phi'(0)| - tau) = log rho/(log rho - tau).
+Violation  <=>  m(log rho - tau) > log rho  <=>  log rho > tau * m/(m-1).
+
+====================================================================================================
+Thresholds:  a contradiction at inventory (p pure, J Eichler integrals) needs
+             log rho = log(4/|lam_2|) > tau*m/(m-1),  i.e. score > threshold - log 4 - 2
+
+  p   J    m  tau^flat    tau^#      tau  thresh log rho  thresh score
+  1   0    3   1.77778  0.00000  1.77778         2.66667      -0.71963
+  1   1    4   1.87500  0.43750  2.31250         3.08333      -0.30296
+  1   2    5   1.92000  0.91000  2.83000         3.53750      +0.15121
+  1   3    6   1.94444  1.37500  3.31944         3.98333      +0.59704
+  1   4    7   1.95918  1.77551  3.73469         4.35714      +0.97085
+  1   5    8   1.96875  2.14844  4.11719         4.70536      +1.31906
+  1   6    9   1.97531  2.47068  4.44599         5.00174      +1.61544
+  1   7   10   1.98000  2.77083  4.75083         5.27870      +1.89241
+  1   8   11   1.98347  3.03471  5.01818         5.52000      +2.13371
+
+  (p = 1: only the constant is denominator-free -- the generic case, and the
+   only one available when lam_2 is not a rational integer.)
+
+With a pure polylogarithm inventory (needs lam_2 in Z):
+  p   J    m      tau  thresh log rho  thresh score
+  2   0    4  1.93750         2.58333      -0.80296
+  2   2    6  2.69444         3.23333      -0.15296
+  2   4    8  3.51953         4.02232      +0.63603
+  3   0    5  2.19000         2.73750      -0.64879
+  3   2    7  2.60544         3.03968      -0.34661
+  3   4    9  3.37166         3.79311      +0.40682
+  4   0    6  2.48611         2.98333      -0.40296
+  4   2    8  2.78906         3.18750      -0.19879
+  4   4   10  3.26333         3.62593      +0.23963
+  7   0    9  3.26080         3.66840      +0.28211
+  7   2   11  3.35950         3.69545      +0.30916
+  7   4   13  3.47222         3.76157      +0.37528
