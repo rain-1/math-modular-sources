@@ -2,7 +2,7 @@ default(parisize, 3000000000);
 
 MQ = 42; NROW = 34; NK = 24;
 
-DL = vector(NK+2, i, if(i==1, 1, lcm(vector(i-1,j,j))));   \\ DL[n+1] = lcm(1..n)
+DL = vector(260, i, if(i==1, 1, lcm(vector(i-1,j,j))));   \\ DL[n+1] = lcm(1..n)
 
 \\ companion from a fitted recurrence rec=[o,d,v]; census convention
 \\ b_0=..=b_{o-2}=0, b_{o-1}=1, extended by the recurrence for n>=o

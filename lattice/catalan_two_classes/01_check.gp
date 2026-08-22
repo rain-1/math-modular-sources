@@ -1,0 +1,12 @@
+NTERM=40; read("00_setup.gp");
+print("t8  = ", t8 + O(q^7));
+print("F8  = ", F8 + O(q^7));
+print("x16 = ", x16 + O(q^7));
+print("F16 = ", F16 + O(q^7));
+H8 = mkhost(t8,F8);
+A8 = Aof(H8); print("A8(t)  = ", A8 + O(q^8));
+H16 = mkhost(x16,F16);
+A16 = Aof(H16); print("A16(x) = ", A16 + O(q^8));
+PhiE = mkPhi(Sin, [[1,1],[2,-8]]);
+BE = Bof(H8, PhiE); print("B_PhiE(t) = ", BE + O(q^7));
+print("P_E(3)=",Peval([[1,1],[2,-8]],3),"  P_E(2)=",Peval([[1,1],[2,-8]],2));

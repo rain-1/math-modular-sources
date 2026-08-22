@@ -107,9 +107,29 @@ int main(int argc,char**argv)
                e=0 : (al, 0)       [both singular points are cusps]        */
             long long be, ep;
             if(CLASS==0){ be = al; ep = 0; }
-            else { if(al%CLASS) continue; if((2*de)%CLASS) continue;
+            else if(CLASS>0){ if(al%CLASS) continue; if((2*de)%CLASS) continue;
                    be = al*(CLASS-1)/CLASS; ep = -2*de/CLASS; }
             long long zemin=-ZEMAX, zemax=ZEMAX, zestep=1;
+            if(CLASS<0){
+              /* free common exponent difference rho = (al-be)/al:
+                 beta free, epsilon = -2*de*(al-be)/al  (must be an integer) */
+              for(be=-al; be<=al; be++){
+                long long num = -2*de*(al-be);
+                if(num % al) continue;
+                ep = num/al;
+                for(long long ga=-GAMAX; ga<=GAMAX; ga++){
+                  for(long long ze=zemin; ze<=zemax; ze++){
+                    long long A2 = (al+be+ga)*ga - (de+ep+ze);
+                    if(A2 & 3) continue;
+                    count++;
+                    int ok=1;
+                    for(int i=0;i<NP;i++){ if(!testp(al,be,ga,de,ep,ze,i,N)){ok=0;break;} }
+                    if(ok){ hits++; printf("%lld %lld %lld %lld %lld %lld\n",al,be,ga,de,ep,ze); }
+                  }
+                }
+              }
+              continue;
+            }
             for(long long ga=-GAMAX; ga<=GAMAX; ga++){
                 for(long long ze=zemin; ze<=zemax; ze+=zestep){
                     /* fast n=1 gate: A_2 = P(1)*ga - Q(1); need 4 | A_2 */

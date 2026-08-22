@@ -19,14 +19,15 @@ for f in glob.glob('out/mod/j*.txt'):
         rows.append(dict(N=N,t=tr,tdeg=tdeg,F=fr,lam=lam,order=o,deg=dg,k=k,
                          l1=l1,l2=l2,score=sc,
                          Feven=all(x%2==0 for x in fr)))
-rows.sort(key=lambda r:-r['score'])
-# de-duplicate identical (lam1,lam2,lam,order,deg) invariants, keep smallest level
-seen={}; uniq=[]
+rows.sort(key=lambda r:(r['N'],-r['score']))
+# de-duplicate identical (lam1,lam2,lam,order,deg) invariants, keeping the smallest level
+best={}; mult={}
 for r in rows:
     key=(round(r['l1'],9),round(r['l2'],9),r['lam'],r['order'],r['deg'])
-    if key in seen: seen[key]+=1; continue
-    seen[key]=1; uniq.append(r)
-for r in uniq: r['mult']=seen[(round(r['l1'],9),round(r['l2'],9),r['lam'],r['order'],r['deg'])]
+    mult[key]=mult.get(key,0)+1
+    if key not in best or r['N']<best[key]['N']: best[key]=r
+uniq=sorted(best.values(), key=lambda r:-r['score'])
+for r in uniq: r['mult']=mult[(round(r['l1'],9),round(r['l2'],9),r['lam'],r['order'],r['deg'])]
 json.dump(uniq, open('out/mod_table.json','w'), indent=0)
 print(f"{len(rows)} rows, {len(uniq)} distinct invariant classes\n")
 print("score    k lam  ord/deg  lam1          lam2          N   deg(t)  Feven  mult  t                     F")

@@ -1,0 +1,3 @@
+F8*Dq(t8)  - (1-8V2)E : O(q^40)
+F16*Dq(x16) - E       : O(q^40)
+t as a function of x (t = x(1+2x)/(1+4x)^2 ?): O(q^40)
