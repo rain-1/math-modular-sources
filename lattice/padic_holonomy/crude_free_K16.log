@@ -1,0 +1,25 @@
+crude budget = 2.4849412 ; UMIN=0.005 K=16 N=4096
+  restart 0 cost=5.953369  margin=-3.468428  [60s]
+  restart 1 cost=8.932908  margin=-6.447967  [132s]
+  restart 2 cost=6.193397  margin=-3.708456  [224s]
+  restart 3 cost=4.291656  margin=-1.806715  [315s]
+  restart 4 cost=4.552468  margin=-2.067527  [388s]
+  restart 5 cost=5.135814  margin=-2.650873  [479s]
+  N=  20000  logR=-0.998466 logS=+0.297801  cost=4.291666  bound=6.177176  maxq=0.851006
+  N=  80000  logR=-0.998466 logS=+0.297801  cost=4.291666  bound=6.177177  maxq=0.851006
+  N= 320000  logR=-0.998466 logS=+0.297801  cost=4.291666  bound=6.177177  maxq=0.851006
+Traceback (most recent call last):
+  File "/home/ubuntu/code/math-modular-sources/lattice/padic_holonomy/crude4.py", line 60, in <module>
+    json.dump(dict(a=list(a), cost=best[0], UMIN=UMIN, K=K), open('crude_free_K%d.json' % K, 'w'))
+  File "/usr/lib/python3.12/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/usr/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ndarray is not JSON serializable

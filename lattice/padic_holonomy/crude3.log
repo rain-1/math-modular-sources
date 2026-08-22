@@ -1,0 +1,15 @@
+zeta_5(3) crude budget = (m-1)L - m*tau = 2.4849412    (need log^+S - 4 log R < this)
+
+[rejected example] D(0.17,0.83), tangent at q=+1 (an image of the CUSP 0):
+   boundary max log|x| = -0.0266  but interior max = 6271.3355  ->  REJECTED (max principle)
+
+   centred disc |q|<=r                best [0.24]                 logR=-1.427116 logS=+0.680425 cost= 6.388890  (0 rejected)
+   OFF D(-a,b), a+b<=0.999            best [0.23 0.44]            logR=-1.140145 logS=+0.192454 cost= 4.753033  (0 rejected)
+   OFF D(+a,b), a+b<=0.999            best [0.01 0.24]            logR=-1.428854 logS=+0.846950 cost= 6.562366  (0 rejected)
+   TANG at zeta_5^j (cusp inf)        best [2.    0.565]          logR=-1.469291 logS=+8.572795 cost=14.449960  (0 rejected)
+   lune: SCALE(r) o BITE(0,c)         best [0.675 2.   ]          logR=-0.903868 logS=+0.435128 cost= 4.050600  (0 rejected)
+   gobble: r o BITE(0,c1) o BITE(pi,c2) best [ 0.7  2.  20. ]       logR=-0.872501 logS=+0.570610 cost= 4.060612  (0 rejected)
+
+BEST: cost = 4.050600   vs budget 2.484941   ->   FAILS
+  attained by lune: SCALE(r) o BITE(0,c) [0.675 2.   ] : logR=-0.903868 (R=0.40500)  logS=+0.435128 (S=1.54516)
+  crude bound = (log^+S + L)/(logR + L - tau) = 5.693620  (m = 4)

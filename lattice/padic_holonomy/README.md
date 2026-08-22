@@ -66,3 +66,16 @@ numerator) resp. $3.9504<4$ (Bost–Charles), i.e. a contradiction; see the repo
 
 Certified result (`certrig.py 5 pol_05_K40.json`):
 `bound <= 3.9716148 < 4 = m`, `margin >= +0.0421385`, error term `6.8e-4`.
+
+## The crude (sup-norm) multi-place bound — report §11.8
+
+| file | role |
+|---|---|
+| `crude.py`, `crude2.py` | Dimitrov's crude form; calibration on his $\zeta_2(5)$ contour $B=\{\lvert q+3/16\rvert\le5/16\}$ (reproduces $\sup_{\partial B}\lvert x\rvert=3.23160$ and the bound $5.5556<6$) |
+| `crude3.py` | family scans with a **maximum-principle guard** — rejects contours tangent at an image of the cusp $0$, whose bounded boundary values hide an unbounded $x\circ\psi$ inside |
+| `crude4.py` | free-template optimisation of the sup objective |
+| `crude5.py` | fine lune/gobble optimisation; best crude cost $4.035083$, crude bound $5.714335$ |
+
+Verdict: the crude form **fails** for $\zeta_5(3)$ ($m\le5.7143$, need $<4$); the
+claim rests on the refined multi-place form (CDT ICM 2510.04156 eq. (6.2),
+attributed to their companion [CDT24]).

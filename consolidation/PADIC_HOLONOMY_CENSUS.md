@@ -12,7 +12,10 @@ math/0408214 (`papers/calegari_0408214.txt`); F. Calegari, V. Dimitrov, Y. Tang,
 `papers/cdt/cdt/icm/ICM.tex`, §6.2 lines 1063–1201 — this is the source of the
 recipe; and **The linear independence of $1,\zeta(2),L(2,\chi_{-3})$**,
 arXiv:2408.15403 (`papers/cdt/cdt2/L2chi.tex`) for Theorem 2.5.1/6.0.2/7.0.1,
-the rearrangement integral and the lune contours of Appendix A.*
+the rearrangement integral and the lune contours of Appendix A.  For the **crude
+(sup-norm) multi-place** holonomicity theorem, with $p$-adic places included:
+V. Dimitrov's LNT lecture notes `papers/dimitrov_LNT_zeta2_5.txt`, proved in
+V. Dimitrov, arXiv:1912.12545 (the Schinzel–Zassenhaus paper).*
 
 **Nothing here is a claimed theorem.**  §9 is the honest computed/estimated/assumed
 ledger; §8 flags the one value that would be new *if* the numerics and the
@@ -54,7 +57,17 @@ inventory, and an optimised archimedean template — on every $p$-adic near miss
   $$m\;\le\;3.9716148\ \ (\text{rearrangement, }N=2^{24}\text{, a-priori error }6.8\cdot10^{-4})
   \qquad\text{resp.}\qquad 3.9499804\ \ (\text{Bost--Charles})\qquad <\;4=m .$$
   Certified margin $\ge+0.04214$ out of a budget of $3.23494$ ($1.3\%$);
-  irrationality measure $\kappa\le687$ (RE) resp. $390$ (BC).  Calegari's
+  irrationality measure $\kappa\le687$ (RE) resp. $390$ (BC).  **The claim needs
+  the *refined* multi-place bound**: the published *crude* (sup-norm) form of
+  Dimitrov, which suffices for $\zeta_2(5)$ ($5.5556<6$, reproduced), gives only
+  $m\le\mathbf{5.7143}$ here — §11.8 decomposes the $1.59$ gap.  **§11.9(e) closes
+  the citation gap** for the Bost–Charles numerator: the adelic form with the sharp
+  weight $1-\frac1m$ is proved there by an $R_p$-Gauss twist of the evaluation
+  lattice in CDT's own slopes proof (L2chi §6.3), the sharpness being confirmed by
+  the fact that at $m=2$ it *is* the Borel–Dwork criterion $\rho\prod_pR_p>1$.  So
+  the operative statement is the Bost–Charles row — bound $\mathbf{3.9499804}$,
+  margin $+0.0742553$, $\kappa\le390$ — and every ingredient is published except
+  one new elementary lemma (§11.9(e), Lemma B).  Calegari's
   elementary criterion fails here ($\theta_5=0.8918$) and Beukers 2008 reaches only
   $\zeta_5(3)\pm L_5(3,\chi_5)$, so **this would be a new theorem** — subject to
   the caveats of §11.8, above all the fact that the multi-place form of the bound
@@ -423,7 +436,16 @@ $\int_{|q|=r}\log|x|\,\mathrm d\mu=\log r$.
 $|x|\to\infty$ at every $\Gamma_0(p)$-image of the cusp $0$ — the points
 $q=e^{2\pi ia/c}$ with $p\nmid c$, which are **dense** in $|q|=1$.  A contour may
 therefore meet $|q|=1$ only in a measure-zero set, and only at images of the
-cusp $\infty$ (where $x=0$), i.e. $q=\zeta_p^{\,j}$ at depth $c=p$.  For a disc
+cusp $\infty$ (where $x=0$), i.e. $q=\zeta_p^{\,j}$ at depth $c=p$.
+
+*A trap worth recording* (§11.8(b)): a disc internally **tangent at an image of
+the cusp $0$** has *bounded a.e. boundary values*, because the tangential
+approach lands on a horocycle at finite height — for $\Omega=D(0.17,0.83)$ at
+$p=5$ the sampled boundary maximum of $\log|x|$ is $-0.027$.  It is nevertheless
+inadmissible: $x\circ\psi$ is **unbounded on $\mathbb D$** (the point $q=0.9$ is
+interior with $\log|x|=70.1$; a grid over $\Omega$ reaches $6271$), i.e. it has
+singular-inner-function behaviour and is not holomorphic on $\overline{\mathbb D}$.
+Any numerical search must carry a maximum-principle guard.  For a disc
 internally tangent at such a point with radius $b$, the contour maps under the
 $\Gamma_0(p)$ element killing that cusp to a curve asymptotic to the horizontal
 line
@@ -835,6 +857,8 @@ outright, exactly as for $\zeta_5(5)$).
 | `freeopt2.py`, `polish.py` | re-optimisation with the vectorised evaluator and the two-resolution anti-aliasing guard (§11.7) |
 | `freeopt3.py` | the non-even (sine-terms) variant, §11.7 |
 | `certnum.py`, `certrig.py` | §11.5: Lipschitz bound, $N$-refinement to $2^{24}$, and the fully a-priori certificate |
+| `crude.py`…`crude5.py` | §11.8: the crude (sup-norm) multi-place bound — Dimitrov calibration, maximum-principle guard, and the family scans |
+| — | §11.9: the algebraic identity between the CDT ICM form and `ADELIC_HOLONOMY.md` §2 (uniform slope), verified symbolically |
 | `ap_lib.gp`, `ap_run2000.gp`, `ap_xcheck.gp` | §11.1: $a_n,b_n,e_n$ mod $5^{6150}$ to $n=2000$ by peeling, cross-checked against exact rationals to $n=600$ |
 | `ap_kl.gp` | §11.1: $2\eta=\zeta_5(3)$ against Kubota–Leopoldt/Bernoulli |
 | `ap_rank.gp`, `ap_rank2.gp`, `ap_ode.gp` | §11.3: rank to $D=120$ and the explicit order-3 ODE |
@@ -1111,7 +1135,13 @@ $\log R_2$ fails to reproduce it.
 
 > **Therefore:** the inequality we use is stated here as *"the CDT ICM §6.2 form,
 > the one they themselves use for $\zeta_2(5)$"*, proved in the companion paper
-> [CDT24], and **not verified against a proof available to us**.  Its shape is
+> [CDT24], and **not verified against a proof available to us**.  *(Superseded by
+> §11.9(e): for the Bost–Charles numerator the inequality is now proved, from
+> published ingredients plus one new elementary lemma.)*  §11.8 completes
+> the picture: the *crude* (sup-norm) multi-place bound **is** published and
+> available (Dimitrov, arXiv:1912.12545, stated in his LNT notes with $p$-adic
+> places included), and it suffices for $\zeta_2(5)$ — but **not** for
+> $\zeta_5(3)$, which needs the refined form.  Its shape is
 > forced by, and consistent with, L2chi Remark `BCboundK`, and its numerical
 > transcription is confirmed by reproducing their $4.43206$; but this remains the
 > single load-bearing citation of the whole census.  The same caveat applies a
@@ -1316,7 +1346,381 @@ CDT actually use: with it the margin is $+0.073$ rather than $+0.042$ and the
 bound $3.950$ rather than $3.972$.  The headline uses the conservative
 rearrangement numerator.
 
-### 11.8 The certified statement, and the caveats that remain open
+### 11.8 The crude (sup-norm) multi-place bound, and the exact citation chain
+
+#### (a) The two multi-place statements, and where each lives
+
+There are **two** multi-place holonomicity bounds in play, and the $\zeta_5(3)$
+claim rests on the second, not the first.
+
+**(I) The crude form — Dimitrov.**  Stated explicitly in V. Dimitrov's LNT
+lecture notes (`papers/dimitrov_LNT_zeta2_5.txt`, "The arithmetic holonomicity
+theorem"), over a number field $K$ with a radius $R_v>0$ and a normalised
+holomorphic $x_v(z)=z+O(z^2)$ at **every** place $v\in M_K$ (with $x_v(z)=z$ for
+all but finitely many $v$), and $f(x_v(z))$ the germ of a $v$-adic meromorphic
+function on $D(0,R_v)$:
+
+> **Theorem.**  If $\sum_{v\in M_K}\log R_v>\tau_K(f)$ then $f$ is holonomic, and
+> with $S_v:=\sup_{|z|_v=R_v}|x_v(z)|_v$ there is an inhomogeneous equation
+> $L(f)\in K[x]$ with
+> $$r\;\le\;\frac{\sum_v\log^{+}S_v}{\sum_v\log R_v-\tau_K(f)} .$$
+
+Proved in **V. Dimitrov, arXiv:1912.12545** (the Schinzel–Zassenhaus paper), of
+which the $K=\mathbb Q$, $R_p=1$, $x_p(z)=z$ case is the "gist of
+Schinzel–Zassenhaus" specialisation.  $p$-adic places are included from the
+outset.  **This is a published, available statement.**
+
+**(II) The refined form — CDT.**  The same shape with $\log^{+}S_\infty$ replaced
+by the Bost–Charles double integral (or the rearrangement integral) and
+$\tau_K(f)=2k+1$ replaced by the array-refined $\tau(\mathbf b)$:
+$$m\;\le\;\frac{\mathrm{BC}(\varphi_\infty)+\sum_p\log R_p}
+{\log|\varphi_\infty'(0)|+\sum_p\log R_p-\tau(\mathbf b)} .$$
+This is CDT's ICM survey **arXiv:2510.04156, §6.2 eq. (6.2)** (their `fullforce`),
+used by them exactly there for $\zeta_2(5)$.  The ICM survey **states and uses it
+but does not restate or prove it**; it attributes the archimedean ingredients to
+arXiv:2408.15403 (`L2chi`) and the whole package to the companion treatise
+**[CDT24] = Calegari–Dimitrov–Tang, _Arithmetic holonomy bounds and the
+irrationality of the $2$-adic $\zeta(5)$_ (2024)**.  As established in §11.4,
+`L2chi` contains only the archimedean and the multi-*embedding* number-field
+forms and explicitly defers the adelic form to [CDT24].
+
+**Calibration of (I).**  Dimitrov's own $\zeta_2(5)$ application: $R_2=2^{12}$,
+$x_2(z)=z$; $R_\infty=1/5$ with
+$x_\infty(z)=x\bigl(z/(1+3z)\bigr)$, i.e. $\Omega=B=\{|q+\tfrac3{16}|\le\tfrac5{16}\}$;
+$\tau=5$, $m=6$.  We reproduce
+$$\sup_{\partial B}|x|=|x(1/8)|=3.23160,\qquad
+r\le\frac{12\log2+\log3.2316}{12\log2+\log(1/5)-5}=\mathbf{5.555573}<6$$
+(his printed "$<9.5/1.7=5.58$"), i.e. crude cost $10.8296<$ crude budget
+$5L-30=11.5888$ — a contradiction with margin $+0.759$.  So the **crude form
+alone suffices for $\zeta_2(5)$**, which is why the notes can present the whole
+proof without the refined machinery.
+
+#### (b) The crude form applied to $\zeta_5(3)$: it fails
+
+Here $m=4$, $\tau=2k+1=3$ (not $45/16$), $L=\log R_5=3\log5$.  Contradiction
+requires
+$$\log^{+}S_\infty-4\log R_\infty\;<\;(m-1)L-m\tau=3L-12=\mathbf{2.4849412}.$$
+
+**A trap that must be excluded first.**  The crude form needs
+$S=\sup_{\overline{\mathbb D}}|x\circ\psi|$ — the $H^\infty$ norm — not merely the
+sampled boundary values.  A disc internally tangent to $|q|=1$ at an image of the
+**cusp $0$** looks spectacular and is worthless: for $\Omega=D(0.17,0.83)$
+(tangent at $q=+1$) the boundary samples give $\max\log|x|=-0.027$ while the
+interior contains $q=0.9$ with $\log|x(0.9)|=70.1$, and a grid over $\Omega$
+reaches $\log|x|=6271.3$.  The reason is that the tangential approach to the cusp
+$0$ lands on a horocycle at finite height, so the a.e. boundary values stay
+bounded, while $x\circ\psi$ blows up radially: $x\circ\psi$ is unbounded on
+$\mathbb D$ with bounded boundary values — singular-inner-function behaviour — so
+it is not holomorphic on $\overline{\mathbb D}$ and violates the hypothesis of
+*both* forms.  **Tangency to $|q|=1$ is admissible only at images of the cusp
+$\infty$** (where $x\to0$), as in CDT's $\Omega_{\rm circ}$; §4.3 above is
+correct, and every scan below carries a maximum-principle guard that rejects such
+contours (`crude3.py`).
+
+**The optimisation** (`crude2.py`, `crude3.py`, `crude4.py`, `crude5.py`).  Best
+crude cost over each family, all with the guard and all $N$-stable:
+
+| family | best | $\log R$ | $\log^{+}S$ | crude cost | crude bound |
+|---|---|---|---|---|---|
+| centred disc $\lvert q\rvert\le r$ | $r=0.240$ | $-1.42712$ | $+0.68043$ | $6.38889$ | $9.24$ |
+| off-centre disc $D(-a,b)$ | $a=0.23,b=0.44$ | $-1.14015$ | $+0.19245$ | $4.75303$ | $6.84$ |
+| off-centre disc $D(+a,b)$ | $a=0.01,b=0.24$ | $-1.42885$ | $+0.84695$ | $6.56237$ | $9.42$ |
+| tangent at $\zeta_5^{\,j}$ (cusp $\infty$) | $j=2,b=0.565$ | $-1.46929$ | $+8.57280$ | $14.44996$ | $27.7$ |
+| free even profile ($K=10$) | — | $-0.88494$ | $+0.63742$ | $4.17718$ | $5.79381$ |
+| gobble (two bites) | $r{=}0.7,c_1{=}2,c_2{=}20$ | $-0.87250$ | $+0.57061$ | $4.06061$ | $5.75$ |
+| **lune $\mathrm{SCALE}(r)\circ\mathrm{BITE}(0,c)$** | $r=0.680698$, $c=1.948571$ | $\mathbf{-0.924090}$ | $\mathbf{+0.338722}$ | $\mathbf{4.035083}$ | $\mathbf{5.714335}$ |
+
+$$\boxed{\ \text{best crude bound for }\zeta_5(3):\quad m\;\le\;5.714335\;\not<\;4=m\ }$$
+
+crude cost $4.035083$ against a crude budget of $2.484941$: **it fails by
+$1.550$**.  (Conformal radius $R_\infty=0.39689$, $S_\infty=1.40315$; the contour
+is the disc $|q|\le0.680698$ with a single lune-bite of parameter $c=1.948571$
+taken out towards $q=+1$, reaching $\max|q|=0.68070$.)  To succeed one would need
+$S$ smaller by a factor $e^{1.55}=4.7$ at the same $R$, or $R$ larger by
+$e^{0.39}=1.48$ at the same $S$ — neither is remotely available: the free-template
+optimisation over all admissible $\psi$ does *worse* ($4.177$) than the
+two-parameter lune, so the sup-norm optimum is essentially attained.
+
+#### (c) Exactly which refinement carries the claim
+
+Both numerator and denominator refinements are needed.  Evaluating all four
+combinations on **each** contour (each optimised for its own objective):
+
+| contour | numerator | $\tau$ | bound | margin |
+|---|---|---|---|---|
+| crude-optimal ($\log R=-0.92409$) | $\log^{+}S=0.33872$ | $3$ | $5.714331$ | $-1.550138$ |
+| " | $\log^{+}S$ | $45/16$ | $4.732913$ | $-0.800138$ |
+| " | $\mathrm{RE}=-0.10362$ | $3$ | $5.225144$ | $-1.107804$ |
+| " | $\mathrm{RE}$ | $45/16$ | $4.327742$ | $-0.357804$ |
+| refined-optimal ($\log R=-0.53129$) | $\log^{+}S=3.95870$ | $3$ | $6.774750$ | $-3.598918$ |
+| " | $\log^{+}S$ | $45/16$ | $5.919078$ | $-2.848918$ |
+| " | $\mathrm{RE}=1.06696$ | $3$ | $4.545233$ | $-0.707180$ |
+| **"** | $\mathbf{\mathrm{RE}}$ | $\mathbf{45/16}$ | $\mathbf{3.971156}$ | $\mathbf{+0.042820}$ |
+
+* The $\tau$ refinement $3\to\frac{45}{16}$ is worth exactly
+  $m\cdot\frac3{16}=0.75$ of margin, on any contour.
+* The numerator refinement $\log^{+}S\to\mathrm{RE}$ is worth $2.892$ on the
+  refined-optimal contour ($3.9587\to1.0670$) — it is the **decisive** one.
+* Neither alone suffices: with the crude numerator and the refined $\tau$ the best
+  margin is $-0.800$; with the refined numerator and $\tau=3$ it is $-0.707$.
+
+$$\textbf{Therefore the }\zeta_5(3)\textbf{ claim rests specifically on the refined
+multi-place bound}$$
+— the form with a Bost–Charles/rearrangement archimedean numerator *and* the
+array-refined $\tau(\mathbf b)$, at $p$-adic as well as archimedean places.  That
+is CDT ICM arXiv:2510.04156 §6.2 eq. (6.2), **used there but not restated or
+proved there**, and attributed to the companion [CDT24].  Dimitrov's published
+crude form (arXiv:1912.12545) — which is enough for $\zeta_2(5)$ — is **not**
+enough for $\zeta_5(3)$: it gives $m\le5.714$ where $m=4$ is needed.
+
+**The single published statement the proof needs** is therefore the refined
+multi-place (adelic) holonomy bound of [CDT24].  Until that is in hand, the
+$\zeta_5(3)$ computation should be read as: *"the CDT ICM §6.2 inequality, applied
+to $X_0(5)$ with $k=1$, is violated"* — a conditional statement whose one
+unverified hypothesis is that inequality itself.
+
+### 11.9 The dependency chain, and the theorem as it would be written
+
+#### (a) The algebraic reduction, verified
+
+The refined multi-place form is *identically* an assertion about a single
+weighted combination:
+$$\frac{\mathrm{BC}+\sum_p\log R_p}{\log|\varphi'(0)|+\sum_p\log R_p-\tau(\mathbf b)}\;\ge\;m
+\iff
+m\Bigl(\log|\varphi'(0)|-\tau(\mathbf b)+\bigl(1-\tfrac1m\bigr)\!\sum_p\log R_p\Bigr)\;\le\;\mathrm{BC}.$$
+(Cross-multiplication; verified symbolically, difference $\equiv0$.)  So the
+$p$-adic input enters as a single additive gain
+$$\gamma_p=\Bigl(1-\frac1m\Bigr)\log R_p$$
+subtracted from $\tau(\mathbf b)$ — which is exactly the **uniform-slope case**
+of the theorem of `consolidation/ADELIC_HOLONOMY.md` §2
+($\gamma_p=\varsigma\log p\,(1-1/m)$ with $R_p=p^{\varsigma}$, all $m$ functions
+sharing the slope).  Our $m$ functions do share it: $1$ trivially, and
+$\delta^jH$ for $j=0,1,2$ because $v_5$ of the $x^n$-coefficient of $\delta^jH$
+is $v_5(n^jh_n)\ge v_5(h_n)\ge3n-O(\log n)$ (§11.1).
+
+**Why the weight is exactly $1-\frac1m$.**  It is forced by the product formula:
+rescaling the coordinate $x\rightsquigarrow x/p^{v}$ sends
+$\log|\varphi'(0)|\mapsto\log|\varphi'(0)|-v\log p$, $\mathrm{BC}\mapsto\mathrm{BC}-v\log p$,
+$\log R_p\mapsto\log R_p+v\log p$, and leaves $\tau(\mathbf b)$ alone; the signed
+margin then shifts by $v\log p\,(mw-m+1)$, which vanishes **iff** $w=1-\frac1m$.
+Any other weight would make the bound depend on an arbitrary choice of
+coordinate scale.
+
+#### (b) Critical reading of `ADELIC_HOLONOMY.md` §2.3 — a gap, recorded there
+
+The proof there is "CDT's archimedean proof verbatim + one modified Liouville
+step": $\mathrm{den}(\beta)\le e^{\alpha\tau}$ is CDT's, and one adds
+$v_p(\beta)\ge\gamma_p\alpha/\log p$.  The hypothesis is exactly what we need —
+$(\ast_p)$: $v_p(c_{i,n})\ge\varsigma_i n-o(n)$ on the *actual* coefficients,
+with $\mathbb Z$ auxiliary polynomials — and §2.3 correctly observes that the
+$\mathrm{lcm}$ denominators are invisible at a fixed $p$
+($v_p[1,\dots,bn]=O(\log n)=o(n)$), so the $\tau$-rearrangement and the $p$-adic
+gain **do not interact**: they are additive.  That part is sound.
+
+What is **not** sound is the weight.  Part (a) asserts $|\mathbf k|\le\alpha/m$,
+whereas the stated facts ($\mathbf k\in[0,D]^d$, $\alpha=mdD/2$) give only
+$|\mathbf k|\le dD=2\alpha/m$.  The two estimates actually available are
+$$\text{term-by-term: } w=\Bigl(1-\frac1m\Bigr)^{2},\qquad
+p\text{-adic Gauss norm: } w=1-\frac2m,$$
+the former being the better, and §2.4 note 2 itself observes that
+$(1-\frac1m)^2$ *breaks* scale covariance.  A **dated note (2026-08-22)** has been
+added to `ADELIC_HOLONOMY.md` §2 recording this, downgrading its status to
+"[proved for $w=(1-1/m)^2$]".
+
+This matters here quantitatively: the contradiction needs
+$$w\;>\;\frac{\mathrm{RE}/m+\tau(\mathbf b)-\log|\varphi'(0)|}{\log R_5}
+=\frac{0.266741+2.8125+0.531289}{4.828314}=\mathbf{0.747783}$$
+(and $0.747818$ if the certified $\mathrm{RE}+\varepsilon$ is used),
+against $1-\frac1m=0.75$: a slack of only $0.00218$ in $w$, i.e. $0.29\%$.  With
+$w=(1-\frac1m)^2=0.5625$ the denominator is $-0.6279<0$ (margin $-3.58$) and with
+$w=1-\frac2m=0.5$ it is $-0.9296$ (margin $-4.79$): the method does not even
+start.  **The $\zeta_5(3)$ result depends on the exact product-formula weight to
+within $0.3\%$**, so it cannot be rescued by any partial version of the adelic
+step.
+
+#### (c) The exact dependency chain
+
+| # | input | status |
+|---|---|---|
+| 1 | **Archimedean holonomy bound over $\mathbb Q$** with the array-refined $\tau(\mathbf b)$: BC numerator = CDT L2chi Thm 2.5.1 (`basic main`) / Thm 7.0.1 (`main:BC form`); rearrangement numerator = Thm 6.0.2 (`main:elementary form`).  *(We checked: both numerator variants are in the published theorems; `basic main` and `main:BC form` carry $\iint\log\lvert \varphi(z)-\varphi(w)\rvert $, `main:elementary form` carries the piecewise rearrangement integral.)* | **published**, arXiv:2408.15403 |
+| 2 | **Adelic architecture** — the same bound with radii $R_v$ at all places, equivalently the weight $1-\frac1m$ on $\sum_p\log R_p$ — for the **crude (sup-norm)** numerator | **published**, Dimitrov arXiv:1912.12545 (stated with $p$-adic places in his LNT notes) |
+| 3 | **1 + 2 combined**: adelic architecture *with* the refined numerator and $\tau(\mathbf b)$ | **used but not restated or proved** in CDT ICM arXiv:2510.04156 §6.2 eq. (6.2); attributed to the companion **[CDT24]**, *Arithmetic holonomy bounds and the irrationality of the $2$-adic $\zeta(5)$* — not in this repository |
+| 3′ | the Liouville-modification route to 3 (`ADELIC_HOLONOMY.md` §2) | gives only $w=(1-\frac1m)^2$, **insufficient here** (§11.9(b)) |
+| 4 | **Kontsevich–Zagier**: $H$ satisfies an inhomogeneous ODE over $\mathbb Q(x)$ of exact minimal order $2k+1=3$ | **published**, KZ *Periods* §2.3 Fact 1; corroborated by our rank certificate to $D=120$ (§11.3) |
+| 5 | **Buzzard**: $R_5=5^{3}$, i.e. the finite-slope overconvergent $E^*_{-2}$ continues across the whole supersingular annulus of $X_0(5)$ | **published**, JAMS 16 (2003) Thm 5.2, applied as in Calegari 2005 §3; *measured* to be exactly $5^3$ (§11.1) |
+| 6 | denominator type $\tau(\mathbf b)=45/16$; $\mathbb Q(x)$-independence; the certified archimedean numerics | **this document**, §§11.2, 11.3, 11.5 |
+
+$$\boxed{\ \text{The single unavailable input is row 3.}\ }$$
+
+#### (d) The theorem, as it would appear
+
+> **Theorem.**  Let $\zeta_5(3)\in\mathbb Q_5$ be the Kubota–Leopoldt $5$-adic zeta
+> value, i.e. the unique element of $\mathbb Q_5$ for which
+> $$E^*_{-2}=\frac{\zeta_5(3)}{2}+\sum_{n\ge1}\Bigl(\sum_{d\mid n,\,5\nmid d}d^{-3}\Bigr)q^n$$
+> is an overconvergent $5$-adic modular form of weight $-2$ and level $\Gamma_0(5)$.
+> Then $\zeta_5(3)\notin\mathbb Q$.  Moreover, for all $p/q\in\mathbb Q$ with
+> $\max(|p|,|q|)$ sufficiently large,
+> $$\Bigl|\zeta_5(3)-\frac pq\Bigr|_5\;>\;\frac1{\max(|p|,|q|)^{688}} .$$
+> *(With the Bost–Charles numerator in place of the rearrangement numerator the
+> exponent improves to $390$.)*
+>
+> **Conditional on** the refined multi-place holonomy bound of [CDT24]
+> (row 3 above), in the form used by Calegari–Dimitrov–Tang, ICM survey
+> arXiv:2510.04156, §6.2 eq. (6.2).
+>
+> *(Superseded by §11.9(e), which proves that bound for the Bost–Charles numerator
+> from published ingredients plus one elementary lemma; the statement then becomes
+> unconditional, with exponent $390$ in place of $688$.)*
+
+**Proof sketch.**  Let $x=(\Delta(5\tau)/\Delta(\tau))^{1/4}=q\prod((1-q^{5n})/(1-q^n))^6$
+be the hauptmodul of $X_0(5)$, $E^*_2=E_2(\tau)-5E_2(5\tau)$, and
+$H=E^*_2\cdot E^*_{-2}=\sum_nh_nx^n$.  Suppose $\zeta_5(3)\in\mathbb Q$.
+
+1. *Arithmetic.*  $h_n\in\mathbb Q$ with $[1,\dots,n]^{3}h_n\in\mathbb Z$ up to a
+   fixed denominator (§11.2, proved: the only source of denominators is $d^{-3}$
+   in the third formal primitive, and $q\leftrightarrow x$ is integral both ways).
+   Hence the array $\mathbf b$ with $r=3$, $b_{i,j}=1$ for $i\ge2$, $u_j=1$, and
+   $\tau(\mathbf b)=3(1-\tfrac1{16})=\tfrac{45}{16}$.
+2. *$5$-adic.*  $E^*_{-2}$ is overconvergent of slope $0$, so by Buzzard it
+   continues over the entire supersingular annulus of $X_0(5)$; with the Fricke
+   description of the ordinary locus this is the disc $|x|_5<5^{3}$, so
+   $R_5=5^3$ and $R_\ell=1$ for $\ell\ne5$.
+3. *The inventory.*  By Kontsevich–Zagier the minimal inhomogeneous ODE for $H$
+   over $\mathbb Q(x)$ has order exactly $3$, hence $1,H,\delta H,\delta^2H$
+   ($\delta=x\,d/dx$) are $m=4$ $\mathbb Q(x)$-linearly independent elements of
+   $\mathcal V(\varphi_5,\varphi_\infty;\mathbf b)$, all of the same denominator
+   type and all with meromorphic pullback.
+4. *The template.*  $H(x(q))$ and its $\delta$-derivatives are meromorphic on the
+   whole disc $|q|<1$, so $\varphi=x\circ\psi$ is admissible for every
+   holomorphic $\psi:\mathbb D\to\mathbb D$ with $\psi(0)=0$.  Take
+   $\psi(z)=z\exp\bigl(\sum_{k=0}^{40}c_kz^k\bigr)$ with the $c_k$ of §11.5;
+   then $\max_{|z|=1}|\psi|\le e^{-0.1788}<1$, $\log|\varphi'(0)|=c_0$, and the
+   contour lies in $|q|\le0.8363$.
+5. *The bound.*  Apply the multi-place bound with $\varphi_5(z)=5^{-3}z$:
+   $$4=m\;\le\;\frac{\mathrm{RE}(\varphi)+3\log5}{c_0+3\log5-\tfrac{45}{16}}\;\le\;3.9716148\;<\;4 ,$$
+   a contradiction.  The measure follows from the same inequality with CDT's
+   $\kappa$-refinement, $\gamma=1/m=1/4$, $\rho_5=5^{-3}$. $\square$
+
+**The numerical certificate.**
+
+| quantity | value | provenance |
+|---|---|---|
+| $m$ | $4$ | KZ minimal order $3$ + §11.3 Lemma; rank full to $D=120$ |
+| $\tau(\mathbf b)$ | $45/16=2.8125$ | §11.2, proved and sharp |
+| $\log R_5$ | $3\log5=4.828313737$ | Buzzard Thm 5.2; measured slope $2.99063$ at $n=1600$, deficit $O(\log n)$ |
+| $c_0=\log\lvert\varphi'(0)\rvert$ | $-0.531289158096$ | exact ($x'(0)=1$, $\psi'(0)=e^{c_0}$) |
+| $\max_t\log\lvert\psi\rvert$ | $\le-0.1788$ | $2^{22}$ grid + exact trig-polynomial Lipschitz constant |
+| $\max\lvert q\rvert$ on the contour | $0.836265271$ | — |
+| $\operatorname{Lip}(g)$ | $\le11427.0$ | a-priori: $2\pi M(r)(1+\sum k\lvert c_k\rvert)$ |
+| $\mathrm{RE}$ | $1.066964996\pm6.81\cdot10^{-4}$ | $N=2^{24}$, error $=\operatorname{Lip}/N$ |
+| $\mathrm{BC}$ | $1.03552928$ | $N$-converged to $10^{-8}$ |
+| **bound** | $\le3.9716148$ (RE) / $3.9499804$ (BC) | vs $m=4$ |
+| **margin** | $\ge+0.0421385$ (RE) / $+0.0742553$ (BC) | |
+| $\kappa$ | $\le687.2$ (RE) / $389.8$ (BC) | §7 formula, $\gamma=1/4$ |
+| crude (sup-norm) form | $m\le5.714335$ — **fails** | §11.8; needs the refined form |
+| required adelic weight | $w>0.747818$; product formula gives $w=0.75$ (slack $0.0022$, i.e. $0.29\%$) | §11.9(b) |
+
+#### (e) Update (2026-08-22): the citation gap is closed for the Bost–Charles numerator
+
+Row 3 of the chain above — the adelic form with the refined numerator — has now
+been **proved** for the Bost–Charles numerator, by the single-variable slopes
+method.  The argument is written out in `consolidation/ADELIC_HOLONOMY.md` §2.6
+("Proof of the BC-numerator form with weight $1-\frac1m$ via the slopes method");
+here is what it does and why it works where the Thue–Siegel route (§2.3 there,
+§11.9(b) here) does not.
+
+**The mechanism.**  Run CDT's own proof of L2chi Thm `main:BC form` (§6.3)
+with one change: at each $p\in S$ replace the $\mathbb Z$-structures by their
+$R_p$-Gauss counterparts,
+$$\Lambda_D:=\bigoplus_{j=0}^{D}\mathbb Z\,(R_px)^{-j}\ \supset\ \mathbb Z[1/x]_{\le D},
+\qquad G^{(n)}:=R_p^{\,n-D}\,\mathbb Z\cdot x^{n-D},$$
+leaving every **archimedean** norm untouched.  Then, since $h_v$ depends only on
+the norms at $v$ and the real vector spaces and their Euclidean norms are
+unchanged, *all* of CDT's archimedean estimates hold verbatim, and three
+elementary computations account for the twist:
+
+| ingredient | contribution to the slopes inequality | source |
+|---|---|---|
+| $\widehat{\deg}\,\overline E_D$ gains the index $\prod_pR_p^{D(D+1)/2}$ per summand | $+\frac m2D^2\sum_p\log R_p$ | elementary |
+| $\widehat\mu_{\max}(\overline{G^{(n)}})=-(n-D)\log R_p$, summed with $\sum_{n\in\mathcal V_D}n=\frac{m^2}2D^2+o(D^2)$ | $-\bigl(\frac{m^2}2-m\bigr)D^2\sum_p\log R_p$ | L2chi Thm `KolchinSolved` + $\#\mathcal V_D=m(D+1)$ — the *same* input CDT already use for the archimedean sum |
+| **Lemma B** (the $p$-adic operator norm): $h_p(\psi_D^{(n)})\le\log(Cn^A)$ | $o(D^2)$ | new, one paragraph |
+
+Net: $-\bigl(\frac{m^2}2-m\bigr)+\frac m2=-\frac{m(m-1)}2$, i.e. **weight
+$1-\frac1m$**.  Assembling with L2chi (BC-sum-arch-ht), (BC-sum-finite-ht),
+(BCardegED) and optimising over $\xi,y_h$ exactly as CDT do gives
+$$m\bigl(\log|\varphi'(0)|-\tau(\mathbf b;\mathbf e)\bigr)+(m-1)\sum_p\log R_p\ \le\ \mathrm{BC}(\varphi),$$
+verified symbolically (the reduction's two sides differ by $0$ identically).
+
+**Lemma B.**  With $\|\sum_{i,j}q_{ij}f_ix^{-j}\|_{E,p}=\max_{i,j}|q_{ij}|_pR_p^{-j}$
+and $\|c\,x^{n-D}\|_{G,p}=|c|_pR_p^{\,n-D}$, and with
+$|c_{i,k}|_p\le Cn^{A}R_p^{-k}$ on the *actual* coefficients, the ultrametric
+inequality gives
+$$|c_n(Q)|_p=\Bigl|\sum_{i,j}q_{ij}c_{i,n-D+j}\Bigr|_p\le Cn^{A}\max_{i,j}|q_{ij}|_pR_p^{-(n-D+j)}=Cn^{A}R_p^{-(n-D)}\|Q\|_{E,p},$$
+so $\|\psi_D^{(n)}[Q]\|_{G,p}\le Cn^{A}\|Q\|_{E,p}$; and since $c_n(Q)$ depends only
+on the class $[Q]$, the bound passes to the quotient norm.  $\square$
+
+**Why the single-variable route succeeds.**  Both routes pay "$-D$ per slot" for
+the pole of the auxiliary polynomials at $x=0$ — in §11.9(b) it appears as
+$\sum_s(n_s-k_s)\ge\alpha(1-\frac1m)^2$, here as
+$\widehat\mu_{\max}(\overline{G^{(n)}})=-(n-D)\log R_p$.  Only the slopes method
+**pays it back**, through the $+\frac m2D^2\log R_p$ that the twisted lattice adds
+to $\widehat{\deg}\,\overline E_D$; the Thue–Siegel route never forms the
+arithmetic degree of the auxiliary lattice and so cannot.
+
+**Sharpness check.**  For $m=2$, $\mathbf b=0$ and univalent $\varphi(z)=\rho z$
+(so $\mathrm{BC}=\log\rho$), the theorem reads: $\rho\prod_pR_p>1$ forces
+$f\in\mathbb Q(x)$ — the **Borel–Dwork rationality criterion**, exactly.  The
+weight $(1-\frac1m)^2$ would give only $\rho\prod_pR_p^{1/2}>1$.  So $1-\frac1m$
+is sharp and the Thue–Siegel weight is genuinely lossy.
+
+**Consequence: use the BC numerator.**  Our two numerators give
+
+| numerator | multi-place status | bound | margin | $\kappa$ |
+|---|---|---|---|---|
+| Bost–Charles | **proved** with weight $1-\frac1m$ (`ADELIC_HOLONOMY.md` §2.6) | $3.9499804$ | $+0.0742553$ | $\le389.8$ |
+| rearrangement | only $(1-\frac1m)^2$ — **insufficient** ($w$ needed $>0.7478$) | $3.9716148$ | $+0.0421385$ | $\le687.2$ |
+
+so the $\zeta_5(3)$ verdict should be read off the **Bost–Charles** row, whose
+margin is the larger of the two anyway.  The revised dependency chain is:
+
+| # | input | status |
+|---|---|---|
+| 1 | Bost's slopes inequality (adelic by construction, $h(\psi)=\sum_vh_v$) | **published**, Bost, *Foliations*, Prop. 4.6 |
+| 2 | Bost–Charles: $(\overline{\mathcal O(1)}_\varphi\cdot\overline{\mathcal O(1)}_\varphi)=\iint\log\lvert \varphi(z)-\varphi(w)\rvert $, and arithmetic Hilbert–Samuel — used at $\infty$ only | **published**, Bost–Charles Thm 5.4.1/Prop. 5.4.2; Zhang, Gillet–Soulé, Bost |
+| 3 | CDT's archimedean and finite-place evaluation-height estimates and $\tau(\mathbf b;\mathbf e)$ (L2chi (BCardegED), (BC-sum-arch-ht), (BC-sum-finite-ht), Thm `KolchinSolved`) | **published**, arXiv:2408.15403 §6.3 |
+| 4 | the $R_p$-Gauss twist + Lemma B | **ours**, `ADELIC_HOLONOMY.md` §2.6 — one paragraph, elementary |
+| 5 | Kontsevich–Zagier: minimal inhomogeneous order $2k+1=3$ | **published**, KZ *Periods* §2.3; rank certificate to $D=120$ here |
+| 6 | Buzzard Thm 5.2 $\Rightarrow R_5=5^3$ | **published**, JAMS 16 (2003); measured exactly here (§11.1) |
+| 7 | $\tau(\mathbf b)=45/16$, $\mathbb Q(x)$-independence, the certified numerics | **this document**, §§11.2, 11.3, 11.5 |
+
+**Nothing in the chain is now unavailable.**  Row 4 is new — written today, not
+refereed — and it is the only step that is not a citation.  Its hypotheses are met
+here: $R_5=5^3$ is an integral power of $5$ (needed only so that $R_5^{-j}\in\mathbb Q$);
+$(\ast_5)$ holds with a polynomial factor, since $v_5$ of the $x^n$-coefficient of
+$\delta^jH$ is $v_5(n^jh_n)\ge v_5(h_n)\ge3n-O(\log n)$ by §11.1; and the
+$5$-part of the lcm denominators is $O(\log n)$, so it is absorbed in the
+$o(D^2)$.
+
+**Restated theorem.**  With row 4 accepted, the statement of §11.9(d) becomes
+**unconditional**, with the Bost–Charles exponent:
+
+> **Theorem.**  $\zeta_5(3)\notin\mathbb Q$; and for all $p/q\in\mathbb Q$ with
+> $\max(|p|,|q|)$ sufficiently large,
+> $\bigl|\zeta_5(3)-\tfrac pq\bigr|_5>\max(|p|,|q|)^{-390}$.
+
+**The remaining gap, stated exactly.**  There is no longer a missing *published*
+statement; what remains is that step 4 is our own and unreviewed.  Concretely, the
+three assertions a referee must check are: (i) that replacing the $\mathbb Z$-structure
+of $\Gamma(\mathcal X,\mathcal L^{\otimes D})$ by $\Lambda_D$ leaves every
+archimedean estimate of L2chi §6.3 untouched — it does, because $E_{D,\mathbb R}$
+and its Euclidean norm are unchanged and $h_v$ depends only on the $v$-adic norms;
+(ii) the index computation $[\Lambda_D:\mathbb Z[1/x]_{\le D}]=R_p^{D(D+1)/2}$ and
+$\widehat\mu_{\max}(\overline{G^{(n)}})=-(n-D)\log R_p$; (iii) Lemma B.  We regard
+(i)–(iii) as routine, but they have not been checked by anyone else, and the
+$\zeta_5(3)$ margin ($1.5\%$ of budget in the BC row) leaves no room for an error
+in the *weight*.
+
+### 11.10 The certified statement, and the caveats that remain open
 
 **Certified** (float64 arithmetic; every error term a-priori):
 
@@ -1328,30 +1732,40 @@ rearrangement numerator.
 | $\log\lvert\varphi'(0)\rvert$ | $c_0=-0.531289158096$ exactly | $x'(0)=1$, $\psi'(0)=e^{c_0}$ |
 | admissibility of $\psi$ | $\max_t\log\lvert\psi\rvert\le-0.1788$ | $2^{22}$ grid + exact Lipschitz constant of a trig. polynomial |
 | $\mathrm{RE}$ | $1.066964996\pm6.9\cdot10^{-4}$ | $N=2^{24}$ + a-priori $\operatorname{Lip}(g)\le11427$ |
+| crude (sup) form | best $m\le5.7143$ — **fails** | §11.8; the claim needs the refined form |
+| $\mathrm{BC}$ | $1.03552928$ ($N$-converged to $10^{-8}$) | the numerator whose multi-place form is proved (§11.9(e)) |
 
 $$\boxed{\ \text{bound}\;\le\;3.9716148\;<\;4\;=\;m,\qquad \text{margin}\;\ge\;+0.0421385,\qquad \kappa\;\le\;687.2\ }$$
 
-(with the Bost–Charles numerator instead: bound $3.9499804$, margin $+0.0742553$,
-$\kappa\le389.8$.)
+with the **rearrangement** numerator (a-priori error bound, but its multi-place
+form is only proved with weight $(1-\frac1m)^2$), and
+
+$$\boxed{\ \text{bound}\;=\;3.9499804\;<\;4,\qquad \text{margin}\;=\;+0.0742553,\qquad \kappa\;\le\;389.8\ }$$
+
+with the **Bost–Charles** numerator, whose multi-place form is proved in
+§11.9(e) — this is the operative one.
 
 **Caveats that remain open**, in order of importance:
 
-1. **The multi-place bound is a citation, not a verification** (§11.4).  The
-   inequality with $\sum_p\log R_p$ in numerator and denominator is stated and
-   used by CDT in the ICM survey §6.2 for $\zeta_2(5)$ and proved in their
-   companion paper *Arithmetic holonomy bounds and the irrationality of the
-   $2$-adic $\zeta(5)$* (2024), which is **not in this repository**.  L2chi
-   (arXiv:2408.15403) contains only the archimedean and the number-field
-   (multi-*embedding*) forms, and says explicitly that the adelic form is deferred
-   to that companion.  We reproduce their $\zeta_2(5)$ numbers exactly, which
-   confirms the transcription but not the theorem.  **This is the one input that
-   an independent reader must check against [CDT24].**
-2. **The rearrangement variant of that multi-place bound** is assumed to hold with
-   the same $\tau(\mathbf b)$.  If it does not, the verdict rests on the
-   Bost–Charles numerator alone, which gives a *larger* margin ($+0.074$) but is
-   the numerically softer quantity (its quadrature is $O(1/N)$ rather than
-   $O(1/N^2)$ where $\varphi$ is non-injective on the boundary; on this contour it
-   is $N$-stable to $10^{-8}$, so this is not a practical worry).
+1. **The refined multi-place bound — no longer a missing citation, but step 4 of
+   the chain is ours.**  §11.9(e) proves the adelic form *with the Bost–Charles
+   numerator* and the sharp weight $1-\frac1m$, by an $R_p$-Gauss twist of the
+   evaluation lattice in CDT's own §6.3 slopes proof.  Everything else in the
+   chain is published (Bost's slopes inequality; Bost–Charles's self-intersection
+   formula and arithmetic Hilbert–Samuel; CDT's evaluation-height estimates and
+   $\tau(\mathbf b)$).  What remains is that the twist and Lemma B are **new and
+   unreviewed** — see §11.9(e) for the three assertions a referee must check.  The
+   *published crude* form (Dimitrov arXiv:1912.12545) fails here ($m\le5.7143$,
+   §11.8), and the rearrangement-numerator route gives only $(1-\frac1m)^2$, which
+   is insufficient — so the verdict is read off the **Bost–Charles** row.
+
+2. **The rearrangement-numerator multi-place form remains unproved** with the sharp
+   weight (only $(1-\frac1m)^2$, insufficient).  The headline therefore uses the
+   Bost–Charles numerator, whose margin is the larger ($+0.0743$) but whose
+   quadrature is the softer: $O(1/N)$ rather than $O(1/N^2)$ where $\varphi$ is
+   non-injective on the boundary.  On this contour $\mathrm{BC}$ is $N$-stable to
+   $10^{-8}$ over $N=8192\dots32768$, so this is not a practical worry; but unlike
+   $\mathrm{RE}$ it does not yet carry an a-priori error bound.
 3. **Kontsevich–Zagier minimal order $2k+1$** is cited, not proved here.  §11.3
    reduces the whole independence hypothesis to it and gives the structural
    reason; the rank certificate excludes any relation of degree $\le120$ while the

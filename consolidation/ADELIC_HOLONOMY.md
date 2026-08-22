@@ -17,7 +17,7 @@ Tags: [proved] [verified] [open].  **No irrationality claim is made anywhere.***
 
 | claim | verdict |
 |---|---|
-| The $p$-adic gain can be inserted into CDT's proof; it is a **one-line change to the Liouville step**, not a change to the analytic machinery | **[proved]**, §2 |
+| The $p$-adic gain can be inserted into CDT's proof | **[proved]** with the sharp weight $1-\frac1m$ for the **Bost–Charles numerator**, §2.6 (slopes method, $R_p$-Gauss twist of the evaluation lattice); **[proved only with $(1-\frac1m)^2$]** by the Liouville route of §2.3 (rearrangement numerator, mixed slopes) — see the dated note before §2.3 |
 | The gain is $\gamma_p=\log p\bigl[\varsigma_{\min}(1-\tfrac1m)+\tfrac2m\int_0^1\delta^{\downarrow}(t)\max(mt-1,0)\,dt\bigr]$ — a rearrangement functional of the $p$-adic slopes, exactly mirroring CDT's $\tau^\flat$ with the order reversed | **[proved]**, §2.4 |
 | The resulting bound is **exactly invariant** under rescaling the coordinate by a rational number (product formula), verified to $10^{-15}$ | **[proved]** + **[verified]** `adelic_bound.py` |
 | $\gamma=0$ reproduces CDT's own numbers to the last digit ($\tau=16603/3920$, bound $13.9938$, margin $+0.0053$) | **[verified]** |
@@ -122,6 +122,95 @@ Two special cases:
 * **step profile** ($u$ functions of slope $\varsigma$, the rest $0$):
   $\gamma_p=\varsigma\log p\,(u-1)^2/m^2$.
 
+> ### Dated note (2026-08-22, Claude Opus 5): the weight in part (a) of §2.3 is *asserted*, not derived
+>
+> Prompted by `PADIC_HOLONOMY_CENSUS.md` §11, the uniform-slope case of the
+> theorem above was checked against CDT's own multi-place inequality.  Two
+> findings, one positive and one negative.
+>
+> **Positive — the identity is exact.**  For a uniform profile
+> $\varsigma_i\equiv\varsigma$ with $R_p=p^{\varsigma}$, so that
+> $\gamma_p=\varsigma\log p\,(1-\tfrac1m)=(1-\tfrac1m)\log R_p$, the statement of
+> §2.2 is *algebraically identical* to CDT's ICM form:
+> $$m\le\frac{\mathrm{BC}}{\log|\varphi'(0)|-\tau+\sum_p(1-\tfrac1m)\log R_p}
+> \iff m\Bigl(\log|\varphi'(0)|-\tau+\bigl(1-\tfrac1m\bigr)\!\sum_p\log R_p\Bigr)\le\mathrm{BC}
+> \iff m\le\frac{\mathrm{BC}+\sum_p\log R_p}{\log|\varphi'(0)|+\sum_p\log R_p-\tau},$$
+> the last being CDT ICM (arXiv:2510.04156) §6.2 eq. (6.2) verbatim.  Verified
+> symbolically (difference $\equiv0$).  So §2 is not merely "a refinement of
+> theirs": in the uniform case it *is* theirs, and the attribution note above is
+> right.
+>
+> **Negative — §2.3 part (a) does not prove the weight $1-\tfrac1m$.**  Part (a)
+> asserts $|\mathbf k|\le\alpha/m\,(1+O(\epsilon))$.  But the stated facts are
+> $\mathbf k\in[0,D]^d$ and $\alpha=mdD/2$, which give only
+> $$|\mathbf k|\le dD=\frac{2\alpha}{m},$$
+> a factor $2$ weaker.  The two estimates actually available are:
+>
+> * **term-by-term**, using $k_s\le\min(D,n_s)$ and the `F stats` order statistics
+>   $n_{\pi(j)}\approx mD\,(j/d)$:
+>   $$\sum_s(n_s-k_s)\ \ge\ \sum_s\max(n_s-D,0)\approx dD\!\int_0^1\!\max(mt-1,0)\,dt
+>   =dD\frac{(m-1)^2}{2m}=\alpha\Bigl(1-\frac1m\Bigr)^{2};$$
+> * **$p$-adic Gauss norm** at $R=p^{\varsigma}$ (the parenthetical in part (a)):
+>   $\|F\|_R\le\max_{\mathbf k}R^{|\mathbf k|}\le R^{dD}$ and
+>   $|\beta|_pR^{|\mathbf n|}\le\|F\|_R$, giving
+>   $v_p(\beta)\ge\varsigma(\alpha-dD)=\varsigma\alpha\bigl(1-\tfrac2m\bigr)$.
+>
+> Since $(1-\tfrac1m)^2=1-\tfrac2m+\tfrac1{m^2}>1-\tfrac2m$, the *better* of the
+> two is the term-by-term one, with weight $(1-\tfrac1m)^{2}$ — and §2.4 note 2
+> already observes that this weight **breaks scale covariance**.  So:
+>
+> * the weight $1-\tfrac1m$ is **forced** by the product formula (§2.4 check 2 is a
+>   proof that no other weight can be correct — I re-derived it: the signed margin
+>   shifts by $v\log p\,(mw-m+1)$ under $x\rightsquigarrow x/p^{v}$, which vanishes
+>   iff $w=1-\tfrac1m$);
+> * but §2.3 as written **derives only $w=(1-\tfrac1m)^2$**.  Closing the gap needs
+>   the height computation redone $v$-adically at *every* place — an Arakelov
+>   arithmetic-degree identity — not a Liouville tweak bolted onto the archimedean
+>   proof.  That is exactly what L2chi says it is deferring: *"in this paper, we
+>   have emphasized the archimedean place as special when it comes to
+>   overconvergence.  In [CDT24] we plan to write our holonomicity bound in a more
+>   general Arakelov adelic form over a global field."*
+> * The adelic architecture **with** the weight $1-\tfrac1m$ *is* published, for the
+>   **crude (sup-norm)** numerator: V. Dimitrov, arXiv:1912.12545 (stated with
+>   $p$-adic places in his LNT notes) has
+>   $r\le\sum_v\log^+S_v/(\sum_v\log R_v-\tau_K)$, and the same cross-multiplication
+>   turns that into $\bigl(1-\tfrac1m\bigr)\sum_p\log R_p$.  What is *not* published
+>   is that architecture combined with the refined numerator
+>   ($\mathrm{BC}$/rearrangement) and the refined $\tau(\mathbf b)$.
+>
+> **Consequence for applications.**  The weakened weight is not a small loss.  For
+> the $\zeta_5(3)$ application of `PADIC_HOLONOMY_CENSUS.md` §11 ($m=4$,
+> $\log R_5=3\log5$, $\tau(\mathbf b)=45/16$, $\log|\varphi'(0)|=-0.531289$,
+> $\mathrm{RE}=1.066965$) the contradiction needs
+> $$w>\frac{\mathrm{RE}/m+\tau(\mathbf b)-\log|\varphi'(0)|}{\log R_5}=0.747784,$$
+> against $1-\tfrac1m=0.75$ (works, margin $+0.0421$) and
+> $(1-\tfrac1m)^2=0.5625$ (fails outright — the denominator is negative).  So that
+> application depends on the exact product-formula weight to within $0.3\%$.
+>
+> **Status of §2 after this note:** the *statement* is correct (it is CDT's, in the
+> uniform case, and it is the unique scale-covariant weight); the *proof* in §2.3
+> establishes it only with $w=(1-\tfrac1m)^2$ in part (a), and part (b) is
+> unaffected.
+>
+> **Resolved, same day, in §2.6 below.**  The sharp weight $w=1-\tfrac1m$ *is*
+> provable — but by the **single-variable slopes method**, not by the Thue–Siegel
+> route of §2.3.  §2.6 gives the proof for the **Bost–Charles numerator**
+> (L2chi Thm `main:BC form` / Thm 2.5.1): one twists the evaluation lattice
+> $\mathbf Z[1/x]_{\le D}$ to its $R_p$-Gauss counterpart
+> $\bigoplus_j\mathbf Z(R_px)^{-j}$, and the graded pieces correspondingly; the
+> archimedean estimates are CDT's verbatim, the $p$-adic evaluation heights become
+> $\le o(D)$ (Lemma B), and the "$-D$ per slot" that costs §2.3 its factor is paid
+> back by the $+\frac m2D^2\log R_p$ that the twist adds to $\widehat{\deg}\overline E_D$.
+> Sharpness is confirmed at $m=2$: Theorem A is then exactly the Borel–Dwork
+> criterion $\rho\prod_pR_p>1$, whereas $(1-\tfrac1m)^2$ would give only
+> $\rho\prod_pR_p^{1/2}>1$.
+>
+> **Net status:** **[proved]** for the Bost–Charles numerator with weight
+> $1-\tfrac1m$ (§2.6); **[proved only with $w=(1-\tfrac1m)^2$]** for the
+> rearrangement numerator (§2.3) and for the general mixed-slope functional
+> $\gamma_p$ of §2.2, whose part (b) has no single-variable analogue here.
+
+
 ### 2.3 Proof
 
 Run CDT's proof of Theorem 6.0.2 (arXiv:2408.15403 §6) verbatim.  Every step —
@@ -213,6 +302,151 @@ is *necessary* for their Lemma "single step valuationwise") has no analogue
 here: the $\gamma$-side optimisation is a plain rearrangement inequality with no
 shape hypothesis, because it is a *minimum* over a product of a monotone
 sequence with an arbitrary vector.
+
+### 2.6 Proof of the BC-numerator form with weight $1-\frac1m$, via the slopes method
+
+*(Claude Opus 5, 2026-08-22.  This closes, for the **Bost–Charles numerator**, the
+gap identified in the dated note before §2.3.  The argument is a $p$-adic twist of
+the lattice in CDT's own proof of Theorem `main:BC form` (arXiv:2408.15403 §6.3);
+every archimedean estimate is theirs verbatim.)*
+
+#### 2.6.1 Statement
+
+> **Theorem A.**  Let $m,r\ge1$, $\mathbf e\in\mathbf N^m$, $\mathbf b$ a step-shaped
+> array as in §2.1, and $S$ a finite set of primes.  For each $p\in S$ let
+> $R_p=p^{\alpha_p}$ with $\alpha_p\in\mathbf Z_{>0}$.  Suppose
+> $f_1,\dots,f_m\in\mathbf Q[\![x]\!]$ are $\mathbf Q(x)$-linearly independent,
+> of CDT denominator type
+> $$f_i(x)=a_{i,0}+\sum_{n\ge1}a_{i,n}\frac{x^n}{n^{e_i}[1,\dots,b_{i,1}n]\cdots[1,\dots,b_{i,r}n]},\qquad a_{i,n}\in\mathbf Z,$$
+> and that the **actual** coefficients $c_{i,n}$ of $x^n$ satisfy, for each $p\in S$,
+> $$(\ast_p)\qquad |c_{i,n}|_p\ \le\ C\,n^{A}\,R_p^{-n}\qquad(\forall i,n)$$
+> for some constants $C,A$ (equivalently $v_p(c_{i,n})\ge\alpha_p n-O(\log n)$).
+> Let $\varphi:(\overline{\mathbf D},0)\to(\mathbf C,0)$ be holomorphic with each
+> $\varphi^*f_i$ meromorphic on $\mathbf D$.  If
+> $\log|\varphi'(0)|+\bigl(1-\tfrac1m\bigr)\sum_{p\in S}\log R_p>\tau(\mathbf b;\mathbf e)$
+> then
+> $$\boxed{\ m\Bigl(\log|\varphi'(0)|-\tau(\mathbf b;\mathbf e)+\Bigl(1-\frac1m\Bigr)\sum_{p\in S}\log R_p\Bigr)\ \le\ \iint_{\mathbf T^2}\log|\varphi(z)-\varphi(w)|\,\mu(z)\mu(w)\ }$$
+> equivalently
+> $$m\ \le\ \frac{\mathrm{BC}(\varphi)+\sum_{p\in S}\log R_p}{\log|\varphi'(0)|+\sum_{p\in S}\log R_p-\tau(\mathbf b;\mathbf e)} .$$
+
+This is CDT's ICM (arXiv:2510.04156) §6.2 eq. (6.2) — the inequality they use for
+$\zeta_2(5)$ — now with a proof assembled from published ingredients.
+
+#### 2.6.2 The twist
+
+We run the proof of \[L2chi, Thm `main:BC form`\] (§6.3) with **one change**: at
+each $p\in S$ we replace the $\mathbf Z$-structures of the two lattices by their
+$R_p$-Gauss counterparts.  Write $\Lambda_D:=\bigoplus_{j=0}^{D}\mathbf Z\,(R_px)^{-j}
+\supset\mathbf Z[1/x]_{\le D}$ (a superlattice of index $\prod_{p\in S}R_p^{D(D+1)/2}$),
+and set
+$$E_D^{\mathrm{ad}}:=\bigoplus_{h=0}^{r}\bigoplus_{i=u_h+1}^{u_{h+1}}
+\frac{[1,\dots,\xi D]^{e_i}}{[1,\dots,y_{h+1}D]\cdots[1,\dots,y_rD]}\,f_i\cdot\Lambda_D,
+\qquad
+G^{(n)}:=\Bigl(\prod_{p\in S}R_p^{\,n-D}\Bigr)\mathbf Z\cdot x^{n-D},$$
+the **archimedean** norms being unchanged (the Bost–Charles metric
+$\overline{\mathcal O(1)}_\varphi$ on $E_D$, and $\|x^{n-D}\|_\infty=1$ on
+$\mathrm{Gr}_n(F_{\mathbf Q})$).  Since $E_{D,\mathbf R}^{\mathrm{ad}}=E_{D,\mathbf R}$
+and $\mathrm{Gr}_n(F)_{\mathbf R}$ carry the *same* Euclidean norms as CDT's, and
+since $h_v(\psi)$ depends only on the norms at $v$:
+
+> **(0)  Every archimedean quantity in CDT's proof is unchanged.**  In particular
+> $$\sum_{n\in\mathcal V_D}h_\infty(\psi_D^{(n)})\le\Bigl(-\frac{m^2}2\log|\varphi'(0)|+m\,(\overline{\mathcal O(1)}\cdot\overline{\mathcal O(1)})\Bigr)D^2+o(D^2)$$
+> is \[L2chi (BC-sum-arch-ht)\] verbatim, and
+> $(\overline{\mathcal O(1)}\cdot\overline{\mathcal O(1)})=\widehat T(1,\varphi)=\mathrm{BC}(\varphi)$
+> is \[L2chi (BCintersection)\] $=$ \[BostCharles Thm 5.4.1, Prop. 5.4.2\].
+
+Three elementary computations then account for the twist.
+
+**(1) The arithmetic degree gains $\frac m2D^2\sum_p\log R_p$.**  $\Lambda_D$
+contains $\mathbf Z[1/x]_{\le D}$ with index $\prod_pR_p^{D(D+1)/2}$ and the
+archimedean norm is unchanged, so
+$\widehat{\deg}\overline{\Lambda}_D=\widehat{\deg}\overline{\mathbf Z[1/x]_{\le D}}+\frac{D(D+1)}2\sum_p\log R_p$;
+summing the $m$ orthogonal summands of \[L2chi (eval factors)\],
+$$\widehat{\deg}\overline{E^{\mathrm{ad}}_D}=\Bigl(\frac m2\widehat T(1,\varphi)+\sum_{h=1}^ru_hy_h-\xi\sum_ie_i+\frac m2\sum_{p\in S}\log R_p\Bigr)D^2+o(D^2).$$
+
+**(2) The graded pieces contribute $-\bigl(\frac{m^2}2-m\bigr)D^2\sum_p\log R_p$.**
+$\overline{G^{(n)}}$ has rank one with $\mathbf Z$-generator
+$\bigl(\prod_pR_p^{n-D}\bigr)x^{n-D}$ of archimedean norm $\prod_pR_p^{n-D}$, so
+$$\widehat\mu_{\max}(\overline{G^{(n)}})=\widehat{\deg}\overline{G^{(n)}}=-(n-D)\sum_{p\in S}\log R_p .$$
+By \[L2chi Thm `KolchinSolved`\] together with $\#\mathcal V_D=m(D+1)$ one has
+$\sum_{n\in\mathcal V_D}n=\frac{m^2}2D^2+o(D^2)$ (this is precisely the input CDT already
+use for (BC-sum-arch-ht)), hence
+$$\sum_{n\in\mathcal V_D}\widehat\mu_{\max}(\overline{G^{(n)}})=-\Bigl(\frac{m^2}2-m\Bigr)D^2\sum_{p\in S}\log R_p+o(D^2).$$
+
+**(3) The $p$-adic evaluation heights vanish: $h_p(\psi_D^{(n)})\le o(D)$.**  *This
+is the one new lemma; it is the $p$-adic operator-norm estimate.*
+
+> **Lemma B.**  Let $p\in S$ and let $\|\cdot\|_{E,p}$, $\|\cdot\|_{G,p}$ be the
+> norms attached to $E_D^{\mathrm{ad}}$ and $G^{(n)}$.  Under $(\ast_p)$,
+> $$h_p(\psi_D^{(n)})\ \le\ \log\bigl(Cn^{A}\bigr)\qquad\text{for every }n .$$
+
+*Proof.*  By construction $\|\sum_{i,j}q_{ij}f_ix^{-j}\|_{E,p}=\max_{i,j}|q_{ij}|_p\,R_p^{-j}$
+(up to the $p$-parts of the lcm factors, which are $p^{O(\log D)}$ and are absorbed
+in the $o(D^2)$ of \[L2chi (BC-sum-finite-ht)\]), and
+$\|c\,x^{n-D}\|_{G,p}=|c|_p\,R_p^{\,n-D}$.  For $Q=\sum_{i,j}q_{ij}f_ix^{-j}$ the
+image $\psi_D^{(n)}[Q]$ is $c_n(Q)\,x^{n-D}$ with
+$c_n(Q)=\sum_{i,j}q_{ij}\,c_{i,\,n-D+j}$, whence by the ultrametric inequality and
+$(\ast_p)$
+$$|c_n(Q)|_p\ \le\ \max_{i,j}|q_{ij}|_p\,\bigl|c_{i,n-D+j}\bigr|_p
+\ \le\ Cn^{A}\max_{i,j}|q_{ij}|_p\,R_p^{-(n-D+j)}
+\ =\ Cn^{A}R_p^{-(n-D)}\|Q\|_{E,p}.$$
+Therefore $\|\psi_D^{(n)}[Q]\|_{G,p}=|c_n(Q)|_pR_p^{\,n-D}\le Cn^{A}\|Q\|_{E,p}$.
+Since $c_n(Q)$ depends only on the class $[Q]\in E^{(n)}_D/E^{(n+1)}_D$, the same
+bound holds for every representative, hence for the infimum, i.e. for the quotient
+norm $\|[Q]\|_{E,p}$.  $\square$
+
+Summed over $\mathcal V_D$ this is $O(D\log D)=o(D^2)$.  At the primes $\ell\notin S$
+nothing was twisted ($R_p^{n-D}$ is a unit at $\ell$), so
+$\sum_{n}h_\ell(\psi_D^{(n)})$ is bounded by \[L2chi (BC-sum-finite-ht)\] verbatim.
+
+#### 2.6.3 Assembly
+
+Bost's slopes inequality \[BostFoliations Prop. 4.6\] = \[L2chi (slope-inequality)\]
+reads
+$$\widehat{\deg}\overline{E^{\mathrm{ad}}_D}\ \le\ \sum_{n\in\mathcal V_D}\Bigl[\widehat\mu_{\max}(\overline{G^{(n)}})+h_\infty(\psi_D^{(n)})+h_{\mathrm{fin}}(\psi_D^{(n)})\Bigr].$$
+Insert (0), (1), (2), (3) and \[L2chi (BC-sum-finite-ht)\], divide by $D^2$, and
+optimise over $\xi$ and $y_h$ exactly as CDT do (for $\mathbf e=0$, $r=1$ the
+optimum is $y=ub$ and the bracket becomes $\frac b2(m^2-u^2)=\frac{m^2}2\tau(\mathbf b)$).
+Writing $\Lambda:=\sum_{p\in S}\log R_p$, $P:=\log|\varphi'(0)|$, $T:=\widehat T(1,\varphi)$:
+$$\frac m2T+uy+\frac m2\Lambda\ \le\ -\Bigl(\frac{m^2}2-m\Bigr)\Lambda-\frac{m^2}2P+mT+\frac{bm^2}2+\frac{y^2}{2b},$$
+and after $y=ub$ and multiplication by $2/m$,
+$$m\bigl(P-\tau(\mathbf b)\bigr)+(m-1)\Lambda\ \le\ T=\mathrm{BC}(\varphi).$$
+*(Verified symbolically: the difference between the two sides of this reduction is
+identically $0$.)*  The general $(\mathbf b,\mathbf e)$ case is identical with
+$\tau(\mathbf b)$ replaced by $\tau(\mathbf b;\mathbf e)$, since our three
+corrections are independent of $\xi,y_h$.  $\blacksquare$
+
+#### 2.6.4 Remarks
+
+1. **Why the single-variable route succeeds where §2.3 fails.**  In §2.3 the
+   $p$-adic input is a lower bound on $v_p(\beta)$ for *one* rational number, and
+   the auxiliary polynomials' poles cost a full $D$ per slot, giving
+   $\sum_s(n_s-k_s)\ge\alpha(1-\frac1m)^2$.  Here the same "$-D$" appears — in
+   $\widehat\mu_{\max}(\overline{G^{(n)}})=-(n-D)\log R_p$ — but it is **paid back**
+   by the $+\frac m2D^2\log R_p$ that the twisted lattice adds to
+   $\widehat{\deg}\overline{E_D}$.  Net: $-(\frac{m^2}2-m)+\frac m2=-\frac{m(m-1)}2$, i.e.
+   weight $\frac{m-1}m$.  The Thue–Siegel route has no analogue of that credit
+   because it never forms the arithmetic degree of the auxiliary lattice.
+2. **We do not need Bost–Charles's framework to be $p$-adic.**  Bost's slopes
+   inequality is adelic by construction ($h(\psi)=\sum_vh_v$); the Bost–Charles
+   metric and the arithmetic Hilbert–Samuel formula are used only at $\infty$,
+   exactly as in CDT.  All the $p$-adic input is Lemma B and the two index
+   computations (1), (2).
+3. **Sharpness.**  For $m=2$, $\mathbf b=0$, $\varphi(z)=\rho z$ univalent
+   (so $\mathrm{BC}=\log\rho$), Theorem A reads: if $\rho\prod_pR_p>1$ then
+   $1,f$ are $\mathbf Q(x)$-dependent, i.e. $f\in\mathbf Q(x)$ — the **Borel–Dwork
+   rationality criterion**, on the nose.  The weight $(1-\frac1m)^2$ of §2.3 would
+   give only $\rho\prod_pR_p^{1/2}>1$.  So $1-\frac1m$ is sharp and $(1-\frac1m)^2$
+   is genuinely lossy.
+4. **Integrality of $\alpha_p$.**  Only used to have $R_p^{-j}\in\mathbf Q$; for
+   $R_p=p^{\alpha}$ with $\alpha\notin\mathbf Z$ replace $R_p^{-j}$ by
+   $p^{-\lceil\alpha j\rceil}$, which changes (1) and (2) by $O(D)$.  All radii in
+   `PADIC_HOLONOMY_CENSUS.md` are integral powers ($2^{12},3^6,5^3,7^2,2^8,3^3$).
+5. **What is *not* proved.**  The **rearrangement**-numerator form (L2chi
+   Thm `main:elementary form` / 6.0.2) is proved by the high-dimensional
+   Thue–Siegel route, for which §2.3 still gives only $(1-\frac1m)^2$.  Theorem A
+   covers the Bost–Charles numerator only.  Likewise the convexity/multi-radius
+   numerators of L2chi §§7–8 are not treated here.
 
 ---
 
