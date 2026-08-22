@@ -1,0 +1,25 @@
+=== L# z = rho^{-1} L y  with rho = (1+lam s)^(al-1) = (1-lam t)^(1-al) ===
+R2#     = (lam*s + 1)*(lam*s - mu*s + 1)
+   [residue before imposing the alpha-condition:] (al**2*lam*mu - 2*al*lam*mu - al*q1 + lam*mu + q0 + q1)/lam**2
+R2# = s**2*(lam**2 - lam*mu) + s*(2*lam - mu) + 1    [deg_s = 2 ]
+R1# = s**2*(2*al*lam**2 - 2*al*lam*mu + lam**2 + lam*mu - lam*p1 + q1) + s*(2*al*lam + lam - p1)    [deg_s = 2 ]
+R0# = s**2*(lam**2*r1**2 - 3*lam**2*r1 + 2*lam**2 + lam*mu*r1*r2 - lam*mu*r2 + lam*p1*r1 - lam*p1) + s*(-lam*r1 + lam - p0)    [deg_s = 2 ]
+
+=== the transformed row ===
+P#(n) = lam*r1 - lam + n**2*(-2*lam + mu) + n*(2*lam*r1 - 3*lam + p1) + p0
+Q#(n) = lam**2*r1**2 - lam**2*r1 + lam*mu*r1*r2 - lam*mu*r1 + lam*p1*r1 + n**2*(lam**2 - lam*mu) + n*(-2*lam**2*r1 + lam**2 + lam*mu*r1 - lam*mu*r2 + lam*mu - lam*p1)
+
+consistency: R2# const = 1   R1# const = 0   R0# const = 0
+
+=== ALPHA CONDITION ===
+the move gives a 3-term row of degree <=2  iff  (al-1+r1)(al-1+r2) = 0,
+i.e. al = 1-r1 or al = 1-r2, the two exponents of L at t = infinity.
+
+=== Zagier class  P = a(n^2+n)+b,  Q = d n^2  (r1=r2=0, al=1) ===
+  P#(n) = b - lam + n**2*(-2*lam + mu) + n*(-2*lam + mu)
+  Q#(n) = n**2*(lam**2 - lam*mu)
+  ACF Theorem 1: (a#,b#,d#) = (mu-2lam, b-lam, lam^2-lam*mu)
+
+=== root-row class  Q = d(n-1/2)^2, al = 1/2 ===
+  P#(n) = -lam/2 + n**2*(-2*lam + mu) + n*(-2*lam + p1) + p0
+  Q#(n) = -lam**2/4 - lam*mu/4 + lam*p1/2 + n**2*(lam**2 - lam*mu) + n*(lam*mu - lam*p1)

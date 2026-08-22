@@ -1,0 +1,26 @@
+[0;31m[0;31m  ***   at top-level:[0;35m read("lib.gp")
+[0;31m[0;31m  ***                 ^--------------
+  *** read: error opening input file: `lib.gp'.[0m
+... skipping file 'lattice/cusp_move/00_selftest.gp'
+[0;31m  ***   Warning: new stack size = 536870912 (512.000 Mbytes).[0m
+[0;31m[0;31m  ***   at top-level: [0;35mprint("A: ",Vec([0;35mseqA(zagA,6)),"  C: ",Vec(seqA
+[0;31m[0;31m  ***                                 ^------------------------------
+  ***   not a function in function call[0m
+[0;31m[0;31m  ***   at top-level: [0;35maC=[0;35mseqA(zagC,N)
+[0;31m[0;31m  ***                    ^------------
+  ***   not a function in function call[0m
+[0;31m[0;31m  ***   at top-level: ...[0;35mw,rw);lam=if(i==1,1,9);w=[0;35mcmove(aC,lam,1);rw=fi
+[0;31m[0;31m  ***                                             ^---------------------
+  ***   not a function in function call[0m
+[0;31m[0;31m  ***   at top-level: [0;35mprint(" C -(1)-> ",Vec([0;35mcmove(aC,1,1)[1..7]),"
+[0;31m[0;31m  ***                                        ^----------------------
+  ***   not a function in function call[0m
+[0;31m[0;31m  ***   at top-level: [0;35mprint(" C -(9)-> ",Vec([0;35mcmove(aC,9,1)[1..7]),"
+[0;31m[0;31m  ***                                        ^----------------------
+  ***   not a function in function call[0m
+[0;31m[0;31m  ***   at top-level: [0;35mbC=[0;35mseqB(zagC,N)
+[0;31m[0;31m  ***                    ^------------
+  ***   not a function in function call[0m
+[0;31m[0;31m  ***   at top-level: ...[0;35mag2);lam=if(i==1,1,9);bh=[0;35mseqBg(zagC,N,(k)->lam
+[0;31m[0;31m  ***                                             ^---------------------
+  ***   not a function in function call[0m

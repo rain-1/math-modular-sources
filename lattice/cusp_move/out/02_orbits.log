@@ -1,0 +1,257 @@
+[0;31m  ***   Warning: new stack size = 1073741824 (1024.000 Mbytes).[0m
+
+=== ZagierA  (7,2,-8)   zeta(2)/4
+  P = 7*nv^2 + 7*nv + 2   Q = -8*nv^2
+  char roots lam,mu = 8, -1     Q-roots r1,r2 = 0, 0
+  -- move lam=8, al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = -17*nv^2 - 17*nv - 6
+     Q# = 72*nv^2
+     char roots# = [-8, -9]
+  -- move lam=-1, al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = 10*nv^2 + 10*nv + 3
+     Q# = 9*nv^2
+     char roots# = [9, 1]
+
+=== ZagierB  (9,3,27)   no arch limit
+  P = 9*nv^2 + 9*nv + 3   Q = 27*nv^2
+  char roots lam,mu = Mod(y, y^2 - 9*y + 27), Mod(-y + 9, y^2 - 9*y + 27)     Q-roots r1,r2 = 0, 0
+  -- move lam=Mod(y, y^2 - 9*y + 27), al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 3*nv - 1)*y + (9*nv^2 + 9*nv + 3), y^2 - 9*y + 27)
+     Q# = Mod(9*nv^2*y - 54*nv^2, y^2 - 9*y + 27)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 9, y^2 - 9*y + 27), al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 3*nv + 1)*y + (-18*nv^2 - 18*nv - 6), y^2 - 9*y + 27)
+     Q# = Mod(-9*nv^2*y + 27*nv^2, y^2 - 9*y + 27)
+     char roots# = [0, 0]
+
+=== ZagierC  (10,3,9)   L(2,chi-3)/2
+  P = 10*nv^2 + 10*nv + 3   Q = 9*nv^2
+  char roots lam,mu = 9, 1     Q-roots r1,r2 = 0, 0
+  -- move lam=9, al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = -17*nv^2 - 17*nv - 6
+     Q# = 72*nv^2
+     char roots# = [-8, -9]
+  -- move lam=1, al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = 7*nv^2 + 7*nv + 2
+     Q# = -8*nv^2
+     char roots# = [8, -1]
+
+=== ZagierD  (11,3,-1)  zeta(2)/5
+  P = 11*nv^2 + 11*nv + 3   Q = -nv^2
+  char roots lam,mu = Mod(y, y^2 - 11*y - 1), Mod(-y + 11, y^2 - 11*y - 1)     Q-roots r1,r2 = 0, 0
+  -- move lam=Mod(y, y^2 - 11*y - 1), al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 3*nv - 1)*y + (11*nv^2 + 11*nv + 3), y^2 - 11*y - 1)
+     Q# = Mod(11*nv^2*y + 2*nv^2, y^2 - 11*y - 1)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 11, y^2 - 11*y - 1), al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 3*nv + 1)*y + (-22*nv^2 - 22*nv - 8), y^2 - 11*y - 1)
+     Q# = Mod(-11*nv^2*y + 123*nv^2, y^2 - 11*y - 1)
+     char roots# = [0, 0]
+
+=== ZagierE  (12,4,32)  G/2 Catalan
+  P = 12*nv^2 + 12*nv + 4   Q = 32*nv^2
+  char roots lam,mu = 8, 4     Q-roots r1,r2 = 0, 0
+  -- move lam=8, al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = -12*nv^2 - 12*nv - 4
+     Q# = 32*nv^2
+     char roots# = [-4, -8]
+  -- move lam=4, al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = 0
+     Q# = -16*nv^2
+     char roots# = [4, -4]
+
+=== ZagierF  (17,6,72)  5L(2,chi-3)/8
+  P = 17*nv^2 + 17*nv + 6   Q = 72*nv^2
+  char roots lam,mu = 9, 8     Q-roots r1,r2 = 0, 0
+  -- move lam=9, al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = -10*nv^2 - 10*nv - 3
+     Q# = 9*nv^2
+     char roots# = [-1, -9]
+  -- move lam=8, al=1 : closed formula VERIFIED against binomial transform to n=40
+     P# = -7*nv^2 - 7*nv - 2
+     Q# = -8*nv^2
+     char roots# = [1, -8]
+
+=== sqrtApery  Beukers (136,10,4) = sqrt(Apery)
+  P = 136*nv^2 + 68*nv + 10   Q = 16*nv^2 - 16*nv + 4
+  char roots lam,mu = Mod(y, y^2 - 136*y + 16), Mod(-y + 136, y^2 - 136*y + 16)     Q-roots r1,r2 = 1/2, 1/2
+  -- move lam=Mod(y, y^2 - 136*y + 16), al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 2*nv - 1/2)*y + (136*nv^2 + 68*nv + 10), y^2 - 136*y + 16)
+     Q# = Mod((136*nv^2 - 68*nv)*y + (-32*nv^2 + 16*nv), y^2 - 136*y + 16)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 136, y^2 - 136*y + 16), al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 2*nv + 1/2)*y + (-272*nv^2 - 204*nv - 58), y^2 - 136*y + 16)
+     Q# = Mod((-136*nv^2 + 68*nv)*y + (18464*nv^2 - 9232*nv), y^2 - 136*y + 16)
+     char roots# = [0, 0]
+
+=== sqrtT  sqrt of T=(12,4,16)
+  P = 24*nv^2 + 12*nv + 2   Q = 16*nv^2 - 16*nv + 4
+  char roots lam,mu = Mod(y, y^2 - 24*y + 16), Mod(-y + 24, y^2 - 24*y + 16)     Q-roots r1,r2 = 1/2, 1/2
+  -- move lam=Mod(y, y^2 - 24*y + 16), al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 2*nv - 1/2)*y + (24*nv^2 + 12*nv + 2), y^2 - 24*y + 16)
+     Q# = Mod((24*nv^2 - 12*nv)*y + (-32*nv^2 + 16*nv), y^2 - 24*y + 16)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 24, y^2 - 24*y + 16), al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 2*nv + 1/2)*y + (-48*nv^2 - 36*nv - 10), y^2 - 24*y + 16)
+     Q# = Mod((-24*nv^2 + 12*nv)*y + (544*nv^2 - 272*nv), y^2 - 24*y + 16)
+     char roots# = [0, 0]
+
+=== sqrtDomb  sqrt of Domb (10,4,64)
+  P = 20*nv^2 + 10*nv + 2   Q = 64*nv^2 - 64*nv + 16
+  char roots lam,mu = 16, 4     Q-roots r1,r2 = 1/2, 1/2
+  -- move lam=16, al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = -28*nv^2 - 22*nv - 6
+     Q# = 192*nv^2 - 96*nv
+     char roots# = [-12, -16]
+  -- move lam=4, al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = 8*nv^2 + 2*nv
+     Q# = -48*nv^2 + 24*nv
+     char roots# = [12, -4]
+
+=== sqrtAZ93  sqrt of AZ(9,3,-27)
+  P = 72*nv^2 + 36*nv + 6   Q = -432*nv^2 + 432*nv - 108
+  char roots lam,mu = Mod(y, y^2 - 72*y - 432), Mod(-y + 72, y^2 - 72*y - 432)     Q-roots r1,r2 = 1/2, 1/2
+  -- move lam=Mod(y, y^2 - 72*y - 432), al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 2*nv - 1/2)*y + (72*nv^2 + 36*nv + 6), y^2 - 72*y - 432)
+     Q# = Mod((72*nv^2 - 36*nv)*y + (864*nv^2 - 432*nv), y^2 - 72*y - 432)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 72, y^2 - 72*y - 432), al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 2*nv + 1/2)*y + (-144*nv^2 - 108*nv - 30), y^2 - 72*y - 432)
+     Q# = Mod((-72*nv^2 + 36*nv)*y + (6048*nv^2 - 3024*nv), y^2 - 72*y - 432)
+     char roots# = [0, 0]
+
+=== sqrtAZ11  sqrt of AZ(11,5,125)
+  P = 88*nv^2 + 44*nv + 10   Q = 2000*nv^2 - 2000*nv + 500
+  char roots lam,mu = Mod(y, y^2 - 88*y + 2000), Mod(-y + 88, y^2 - 88*y + 2000)     Q-roots r1,r2 = 1/2, 1/2
+  -- move lam=Mod(y, y^2 - 88*y + 2000), al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 2*nv - 1/2)*y + (88*nv^2 + 44*nv + 10), y^2 - 88*y + 2000)
+     Q# = Mod((88*nv^2 - 44*nv)*y + (-4000*nv^2 + 2000*nv), y^2 - 88*y + 2000)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 88, y^2 - 88*y + 2000), al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 2*nv + 1/2)*y + (-176*nv^2 - 132*nv - 34), y^2 - 88*y + 2000)
+     Q# = Mod((-88*nv^2 + 44*nv)*y + (3744*nv^2 - 1872*nv), y^2 - 88*y + 2000)
+     char roots# = [0, 0]
+
+=== sqrtAZ73  sqrt of AZ(7,3,81)
+  P = 56*nv^2 + 28*nv + 6   Q = 1296*nv^2 - 1296*nv + 324
+  char roots lam,mu = Mod(y, y^2 - 56*y + 1296), Mod(-y + 56, y^2 - 56*y + 1296)     Q-roots r1,r2 = 1/2, 1/2
+  -- move lam=Mod(y, y^2 - 56*y + 1296), al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 2*nv - 1/2)*y + (56*nv^2 + 28*nv + 6), y^2 - 56*y + 1296)
+     Q# = Mod((56*nv^2 - 28*nv)*y + (-2592*nv^2 + 1296*nv), y^2 - 56*y + 1296)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 56, y^2 - 56*y + 1296), al=1/2 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 2*nv + 1/2)*y + (-112*nv^2 - 84*nv - 22), y^2 - 56*y + 1296)
+     Q# = Mod((-56*nv^2 + 28*nv)*y + (544*nv^2 - 272*nv), y^2 - 56*y + 1296)
+     char roots# = [0, 0]
+
+=== sqrts7  sqrt of Cooper s7
+  P = 26*nv^2 + 13*nv + 2   Q = -27*nv^2 + 27*nv - 6
+  char roots lam,mu = 27, -1     Q-roots r1,r2 = 2/3, 1/3
+  -- move lam=27, al=1/3 : closed formula VERIFIED against binomial transform to n=40
+     P# = -55*nv^2 - 32*nv - 7
+     Q# = 756*nv^2 - 630*nv + 84
+     char roots# = [-27, -28]
+  -- move lam=27, al=2/3 : closed formula VERIFIED against binomial transform to n=40
+     P# = -55*nv^2 - 50*nv - 16
+     Q# = 756*nv^2 - 126*nv - 42
+     char roots# = [-27, -28]
+  -- move lam=-1, al=1/3 : closed formula VERIFIED against binomial transform to n=40
+     P# = 29*nv^2 + 44/3*nv + 7/3
+     Q# = 28*nv^2 - 70/3*nv + 28/9
+     char roots# = [28, 1]
+  -- move lam=-1, al=2/3 : closed formula VERIFIED against binomial transform to n=40
+     P# = 29*nv^2 + 46/3*nv + 8/3
+     Q# = 28*nv^2 - 14/3*nv - 14/9
+     char roots# = [28, 1]
+
+=== sqrts10  sqrt of Cooper s10
+  P = 24*nv^2 + 12*nv + 2   Q = -256*nv^2 + 256*nv - 60
+  char roots lam,mu = 32, -8     Q-roots r1,r2 = 5/8, 3/8
+  -- move lam=32, al=3/8 : closed formula VERIFIED against binomial transform to n=40
+     P# = -72*nv^2 - 44*nv - 10
+     Q# = 1280*nv^2 - 960*nv + 100
+     char roots# = [-32, -40]
+  -- move lam=32, al=5/8 : closed formula VERIFIED against binomial transform to n=40
+     P# = -72*nv^2 - 60*nv - 18
+     Q# = 1280*nv^2 - 320*nv - 60
+     char roots# = [-32, -40]
+  -- move lam=-8, al=3/8 : closed formula VERIFIED against binomial transform to n=40
+     P# = 48*nv^2 + 26*nv + 5
+     Q# = 320*nv^2 - 240*nv + 25
+     char roots# = [40, 8]
+  -- move lam=-8, al=5/8 : closed formula VERIFIED against binomial transform to n=40
+     P# = 48*nv^2 + 30*nv + 7
+     Q# = 320*nv^2 - 80*nv - 15
+     char roots# = [40, 8]
+
+=== sqrts18  sqrt of Cooper s18
+  P = 56*nv^2 + 28*nv + 6   Q = 768*nv^2 - 768*nv + 180
+  char roots lam,mu = 32, 24     Q-roots r1,r2 = 5/8, 3/8
+  -- move lam=32, al=3/8 : closed formula VERIFIED against binomial transform to n=40
+     P# = -40*nv^2 - 28*nv - 6
+     Q# = 256*nv^2 - 192*nv + 20
+     char roots# = [-8, -32]
+  -- move lam=32, al=5/8 : closed formula VERIFIED against binomial transform to n=40
+     P# = -40*nv^2 - 44*nv - 14
+     Q# = 256*nv^2 - 64*nv - 12
+     char roots# = [-8, -32]
+  -- move lam=24, al=3/8 : closed formula VERIFIED against binomial transform to n=40
+     P# = -16*nv^2 - 14*nv - 3
+     Q# = -192*nv^2 + 144*nv - 15
+     char roots# = [8, -24]
+  -- move lam=24, al=5/8 : closed formula VERIFIED against binomial transform to n=40
+     P# = -16*nv^2 - 26*nv - 9
+     Q# = -192*nv^2 + 48*nv + 9
+     char roots# = [8, -24]
+
+=== level5F  Gamma_0(5)+5 non-congruence
+  P = 88*nv^2 + 44*nv + 6   Q = -64*nv^2 + 64*nv - 12
+  char roots lam,mu = Mod(y, y^2 - 88*y - 64), Mod(-y + 88, y^2 - 88*y - 64)     Q-roots r1,r2 = 3/4, 1/4
+  -- move lam=Mod(y, y^2 - 88*y - 64), al=1/4 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 3/2*nv - 1/4)*y + (88*nv^2 + 44*nv + 6), y^2 - 88*y - 64)
+     Q# = Mod((88*nv^2 - 88*nv + 33/2)*y + (128*nv^2 - 128*nv + 24), y^2 - 88*y - 64)
+     char roots# = [0, 0]
+  -- move lam=Mod(y, y^2 - 88*y - 64), al=3/4 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 5/2*nv - 3/4)*y + (88*nv^2 + 44*nv + 6), y^2 - 88*y - 64)
+     Q# = Mod((88*nv^2 - 11/2)*y + (128*nv^2 - 8), y^2 - 88*y - 64)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 88, y^2 - 88*y - 64), al=1/4 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 3/2*nv + 1/4)*y + (-176*nv^2 - 88*nv - 16), y^2 - 88*y - 64)
+     Q# = Mod((-88*nv^2 + 88*nv - 33/2)*y + (7872*nv^2 - 7872*nv + 1476), y^2 - 88*y - 64)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 88, y^2 - 88*y - 64), al=3/4 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 5/2*nv + 3/4)*y + (-176*nv^2 - 176*nv - 60), y^2 - 88*y - 64)
+     Q# = Mod((-88*nv^2 + 11/2)*y + (7872*nv^2 - 492), y^2 - 88*y - 64)
+     char roots# = [0, 0]
+
+=== herf30  #30 I1 I7 II II
+  P = 117*nv^2 + 78*nv + 21   Q = 3969*nv^2 - 2646*nv + 441
+  char roots lam,mu = Mod(y, y^2 - 117*y + 3969), Mod(-y + 117, y^2 - 117*y + 3969)     Q-roots r1,r2 = 1/3, 1/3
+  -- move lam=Mod(y, y^2 - 117*y + 3969), al=2/3 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 7/3*nv - 2/3)*y + (117*nv^2 + 78*nv + 21), y^2 - 117*y + 3969)
+     Q# = Mod((117*nv^2 - 39*nv)*y + (-7938*nv^2 + 2646*nv), y^2 - 117*y + 3969)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 117, y^2 - 117*y + 3969), al=2/3 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 7/3*nv + 2/3)*y + (-234*nv^2 - 195*nv - 57), y^2 - 117*y + 3969)
+     Q# = Mod((-117*nv^2 + 39*nv)*y + (5751*nv^2 - 1917*nv), y^2 - 117*y + 3969)
+     char roots# = [0, 0]
+
+=== herf45  #45 I3 III III III
+  P = 72*nv^2 + 36*nv + 6   Q = 1728*nv^2 - 1728*nv + 324
+  char roots lam,mu = Mod(y, y^2 - 72*y + 1728), Mod(-y + 72, y^2 - 72*y + 1728)     Q-roots r1,r2 = 3/4, 1/4
+  -- move lam=Mod(y, y^2 - 72*y + 1728), al=1/4 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 3/2*nv - 1/4)*y + (72*nv^2 + 36*nv + 6), y^2 - 72*y + 1728)
+     Q# = Mod((72*nv^2 - 72*nv + 27/2)*y + (-3456*nv^2 + 3456*nv - 648), y^2 - 72*y + 1728)
+     char roots# = [0, 0]
+  -- move lam=Mod(y, y^2 - 72*y + 1728), al=3/4 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((-3*nv^2 - 5/2*nv - 3/4)*y + (72*nv^2 + 36*nv + 6), y^2 - 72*y + 1728)
+     Q# = Mod((72*nv^2 - 9/2)*y + (-3456*nv^2 + 216), y^2 - 72*y + 1728)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 72, y^2 - 72*y + 1728), al=1/4 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 3/2*nv + 1/4)*y + (-144*nv^2 - 72*nv - 12), y^2 - 72*y + 1728)
+     Q# = Mod((-72*nv^2 + 72*nv - 27/2)*y + (1728*nv^2 - 1728*nv + 324), y^2 - 72*y + 1728)
+     char roots# = [0, 0]
+  -- move lam=Mod(-y + 72, y^2 - 72*y + 1728), al=3/4 : closed formula VERIFIED against binomial transform to n=40
+     P# = Mod((3*nv^2 + 5/2*nv + 3/4)*y + (-144*nv^2 - 144*nv - 48), y^2 - 72*y + 1728)
+     Q# = Mod((-72*nv^2 + 9/2)*y + (1728*nv^2 - 108), y^2 - 72*y + 1728)
+     char roots# = [0, 0]

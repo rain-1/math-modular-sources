@@ -1,0 +1,348 @@
+[0;31m  ***   Warning: new stack size = 2147483648 (2048.000 Mbytes).[0m
+
+################ ZagierA  (7,2,-8)   zeta(2)/4
+  ZagierA.1  (a,b,d)=(7,2,-8)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 572,  N=400 -> 1170   [v_p(d)=3]
+           v_p(xi) = 1191   (0 to precision 1170 means xi_p = 0)
+  ZagierA.2  (a,b,d)=(-17,-6,72)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 575,  N=400 -> 1171   [v_p(d)=3]
+           v_p(xi) = 0   (0 to precision 1171 means xi_p = 0)
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 386,  N=400 -> 783   [v_p(d)=2]
+           v_p(xi) = -1   (0 to precision 783 means xi_p = 0)
+  ZagierA.3  (a,b,d)=(10,3,9)  scale=1
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 386,  N=400 -> 783   [v_p(d)=2]
+           v_p(xi) = -1   (0 to precision 783 means xi_p = 0)
+  -- pairwise p-adic ratios xi_p^(i)/xi_p^(j) where both converge:
+     1 vs 2 at p=2 : xi_a = 0 (v_p >= 1191)
+     2 vs 3 at p=3 : xi_a/xi_b = -5/4   [v_p(xi_a - r*xi_b) = 786]
+
+################ ZagierC  (10,3,9)   L(2,chi-3)/2
+  ZagierC.1  (a,b,d)=(10,3,9)  scale=1
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 386,  N=400 -> 783   [v_p(d)=2]
+           v_p(xi) = -1   (0 to precision 783 means xi_p = 0)
+  ZagierC.2  (a,b,d)=(-17,-6,72)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 575,  N=400 -> 1171   [v_p(d)=3]
+           v_p(xi) = 0   (0 to precision 1171 means xi_p = 0)
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 386,  N=400 -> 783   [v_p(d)=2]
+           v_p(xi) = -1   (0 to precision 783 means xi_p = 0)
+  ZagierC.3  (a,b,d)=(7,2,-8)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 572,  N=400 -> 1170   [v_p(d)=3]
+           v_p(xi) = 1191   (0 to precision 1170 means xi_p = 0)
+  -- pairwise p-adic ratios xi_p^(i)/xi_p^(j) where both converge:
+     1 vs 2 at p=3 : xi_a/xi_b = -4/5   [v_p(xi_a - r*xi_b) = 786]
+     2 vs 3 at p=2 : xi_b = 0 (v_p >= 1191)
+
+################ ZagierE  (12,4,32)  G/2 Catalan
+  ZagierE.1  (a,b,d)=(12,4,32)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 973,  N=400 -> 1969   [v_p(d)=5]
+           v_p(xi) = -2   (0 to precision 1969 means xi_p = 0)
+  ZagierE.2  (a,b,d)=(0,0,-16)  scale=1
+  -- pairwise p-adic ratios xi_p^(i)/xi_p^(j) where both converge:
+
+################ ZagierF  (17,6,72)  5L(2,chi-3)/8
+  ZagierF.1  (a,b,d)=(17,6,72)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 575,  N=400 -> 1171   [v_p(d)=3]
+           v_p(xi) = 0   (0 to precision 1171 means xi_p = 0)
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 386,  N=400 -> 783   [v_p(d)=2]
+           v_p(xi) = -1   (0 to precision 783 means xi_p = 0)
+  ZagierF.2  (a,b,d)=(-10,-3,9)  scale=1
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 386,  N=400 -> 783   [v_p(d)=2]
+           v_p(xi) = -1   (0 to precision 783 means xi_p = 0)
+  ZagierF.3  (a,b,d)=(-7,-2,-8)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 572,  N=400 -> 1170   [v_p(d)=3]
+           v_p(xi) = 1191   (0 to precision 1170 means xi_p = 0)
+  -- pairwise p-adic ratios xi_p^(i)/xi_p^(j) where both converge:
+     1 vs 2 at p=3 : xi_a/xi_b = -5/4   [v_p(xi_a - r*xi_b) = 786]
+     1 vs 3 at p=2 : xi_b = 0 (v_p >= 1191)
+
+################ sqrtDomb  sqrt of Domb (10,4,64)
+  sqrtDomb.1  (a,b,d)=(20,2,64)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 388,  N=400 -> 784   [v_p(d)=6]
+           v_p(xi) = 795   (0 to precision 784 means xi_p = 0)
+  sqrtDomb.2  (a,b,d)=(-28,-6,192)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 781,  N=400 -> 1576   [v_p(d)=6]
+           v_p(xi) = -1   (0 to precision 1576 means xi_p = 0)
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 188,  N=400 -> 386   [v_p(d)=1]
+           v_p(xi) = -1   (0 to precision 386 means xi_p = 0)
+  sqrtDomb.3  (a,b,d)=(8,0,-48)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 381,  N=400 -> 780   [v_p(d)=4]
+           v_p(xi) = -2   (0 to precision 780 means xi_p = 0)
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 187,  N=400 -> 386   [v_p(d)=1]
+           v_p(xi) = -1   (0 to precision 386 means xi_p = 0)
+  sqrtDomb.4  (a,b,d)=(8,6,-48)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 382,  N=400 -> 778   [v_p(d)=4]
+           v_p(xi) = -2   (0 to precision 778 means xi_p = 0)
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 189,  N=400 -> 386   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 386 means xi_p = 0)
+  sqrtDomb.5  (a,b,d)=(20,10,64)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 1174,  N=400 -> 2368   [v_p(d)=6]
+           v_p(xi) = -1   (0 to precision 2368 means xi_p = 0)
+  sqrtDomb.6  (a,b,d)=(-28,-12,192)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 778,  N=400 -> 1577   [v_p(d)=6]
+           v_p(xi) = -2   (0 to precision 1577 means xi_p = 0)
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 189,  N=400 -> 388   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 388 means xi_p = 0)
+  sqrtDomb.7  (a,b,d)=(20,4,64)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 1171,  N=400 -> 2369   [v_p(d)=6]
+           v_p(xi) = -2   (0 to precision 2369 means xi_p = 0)
+  sqrtDomb.8  (a,b,d)=(20,12,64)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 384,  N=400 -> 783   [v_p(d)=6]
+           v_p(xi) = -2   (0 to precision 783 means xi_p = 0)
+  -- pairwise p-adic ratios xi_p^(i)/xi_p^(j) where both converge:
+     1 vs 2 at p=2 : xi_a = 0 (v_p >= 795)
+     1 vs 3 at p=2 : xi_a = 0 (v_p >= 795)
+     1 vs 4 at p=2 : xi_a = 0 (v_p >= 795)
+     1 vs 5 at p=2 : xi_a = 0 (v_p >= 795)
+     1 vs 6 at p=2 : xi_a = 0 (v_p >= 795)
+     1 vs 7 at p=2 : xi_a = 0 (v_p >= 795)
+     1 vs 8 at p=2 : xi_a = 0 (v_p >= 795)
+     2 vs 3 at p=2 : xi_a/xi_b = -2   [v_p(xi_a - r*xi_b) = 792]
+     2 vs 3 at p=3 : xi_a/xi_b = -2   [v_p(xi_a - r*xi_b) = 386]
+     2 vs 4 at p=2 : xi_a/xi_b = 4790/642477   [v_p(xi_a - r*xi_b) = 39]
+     2 vs 4 at p=3 : xi_a/xi_b = -2337720238801/1010028   [v_p(xi_a - r*xi_b) = 40]
+     2 vs 5 at p=2 : xi_a/xi_b = 209371/583189   [v_p(xi_a - r*xi_b) = 42]
+     2 vs 6 at p=2 : xi_a/xi_b = 4790/642477   [v_p(xi_a - r*xi_b) = 39]
+     2 vs 6 at p=3 : xi_a/xi_b = -2337720238801/1010028   [v_p(xi_a - r*xi_b) = 40]
+     2 vs 7 at p=2 : xi_a/xi_b = 418742/583189   [v_p(xi_a - r*xi_b) = 42]
+     2 vs 8 at p=2 : no rational of height <= 10^6
+     3 vs 4 at p=2 : xi_a/xi_b = -2395/642477   [v_p(xi_a - r*xi_b) = 38]
+     3 vs 4 at p=3 : xi_a/xi_b = 2337720238801/2020056   [v_p(xi_a - r*xi_b) = 40]
+     3 vs 5 at p=2 : xi_a/xi_b = -209371/1166378   [v_p(xi_a - r*xi_b) = 41]
+     3 vs 6 at p=2 : xi_a/xi_b = -2395/642477   [v_p(xi_a - r*xi_b) = 38]
+     3 vs 6 at p=3 : xi_a/xi_b = 2337720238801/2020056   [v_p(xi_a - r*xi_b) = 40]
+     3 vs 7 at p=2 : xi_a/xi_b = -209371/583189   [v_p(xi_a - r*xi_b) = 41]
+     3 vs 8 at p=2 : xi_a/xi_b = -496347/733789   [v_p(xi_a - r*xi_b) = 42]
+     4 vs 5 at p=2 : xi_a/xi_b = 693611/1405574   [v_p(xi_a - r*xi_b) = 39]
+     4 vs 6 at p=2 : xi_a/xi_b = 1   [v_p(xi_a - r*xi_b) = 789]
+     4 vs 6 at p=3 : xi_a/xi_b = 1   [v_p(xi_a - r*xi_b) = 390]
+     4 vs 7 at p=2 : no rational of height <= 10^6
+     4 vs 8 at p=2 : no rational of height <= 10^6
+     5 vs 6 at p=2 : no rational of height <= 10^6
+     5 vs 7 at p=2 : xi_a/xi_b = 2   [v_p(xi_a - r*xi_b) = 2387]
+     5 vs 8 at p=2 : no rational of height <= 10^6
+     6 vs 7 at p=2 : no rational of height <= 10^6
+     6 vs 8 at p=2 : no rational of height <= 10^6
+     7 vs 8 at p=2 : xi_a/xi_b = 444057/34945   [v_p(xi_a - r*xi_b) = 41]
+
+################ sqrts7  sqrt of Cooper s7
+  sqrts7.1  (a,b,d)=(26,2,-27)  scale=1
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 3,  N=400 -> -1   [v_p(d)=3]
+  sqrts7.2  (a,b,d)=(-55,-7,756)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -11,  N=400 -> -12   [v_p(d)=2]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 3,  N=400 -> -1   [v_p(d)=3]
+        p=7  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 197,  N=400 -> 392   [v_p(d)=1]
+           v_p(xi) = -1   (0 to precision 392 means xi_p = 0)
+  sqrts7.3  (a,b,d)=(-55,-16,756)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -10,  N=400 -> -13   [v_p(d)=2]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 3,  N=400 -> -1   [v_p(d)=3]
+        p=7  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 197,  N=400 -> 399   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 399 means xi_p = 0)
+  sqrts7.4  (a,b,d)=(261,21,2268)  scale=9
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -11,  N=400 -> -12   [v_p(d)=2]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -1,  N=400 -> -1   [v_p(d)=4]
+        p=7  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 197,  N=400 -> 392   [v_p(d)=1]
+           v_p(xi) = -1   (0 to precision 392 means xi_p = 0)
+  sqrts7.5  (a,b,d)=(261,24,2268)  scale=9
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -11,  N=400 -> -13   [v_p(d)=2]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -1,  N=400 -> -1   [v_p(d)=4]
+        p=7  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 197,  N=400 -> 399   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 399 means xi_p = 0)
+  sqrts7.6  (a,b,d)=(104,62,-432)  scale=4
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=4]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 3,  N=400 -> -1   [v_p(d)=3]
+  sqrts7.7  (a,b,d)=(261,147,2268)  scale=9
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -3,  N=400 -> -3   [v_p(d)=2]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -1,  N=400 -> -1   [v_p(d)=4]
+        p=7  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 197,  N=400 -> 392   [v_p(d)=1]
+           v_p(xi) = -1   (0 to precision 392 means xi_p = 0)
+  sqrts7.8  (a,b,d)=(261,150,2268)  scale=9
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=2]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -1,  N=400 -> -1   [v_p(d)=4]
+        p=7  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 197,  N=400 -> 399   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 399 means xi_p = 0)
+  sqrts7.9  (a,b,d)=(-55,-21,756)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -2,  N=400 -> -3   [v_p(d)=2]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -5,  N=400 -> 0   [v_p(d)=3]
+        p=7  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 197,  N=400 -> 391   [v_p(d)=1]
+           v_p(xi) = -1   (0 to precision 391 means xi_p = 0)
+  sqrts7.10  (a,b,d)=(104,6,-432)  scale=4
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=4]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -6,  N=400 -> 0   [v_p(d)=3]
+  sqrts7.11  (a,b,d)=(-55,-30,756)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=2]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -5,  N=400 -> 0   [v_p(d)=3]
+        p=7  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 196,  N=400 -> 399   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 399 means xi_p = 0)
+  sqrts7.12  (a,b,d)=(26,15,-27)  scale=1
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -6,  N=400 -> 0   [v_p(d)=3]
+  -- pairwise p-adic ratios xi_p^(i)/xi_p^(j) where both converge:
+     2 vs 3 at p=7 : xi_a/xi_b = -1993613351679550035306237897/5942321   [v_p(xi_a - r*xi_b) = 40]
+     2 vs 4 at p=7 : xi_a/xi_b = -1022540347144477103541636994/644561   [v_p(xi_a - r*xi_b) = 39]
+     2 vs 5 at p=7 : no rational of height <= 10^6
+     2 vs 7 at p=7 : no rational of height <= 10^6
+     2 vs 8 at p=7 : no rational of height <= 10^6
+     2 vs 9 at p=7 : no rational of height <= 10^6
+     2 vs 11 at p=7 : xi_a/xi_b = 3107588867024113270029302307/2310413   [v_p(xi_a - r*xi_b) = 43]
+     3 vs 4 at p=7 : xi_a/xi_b = -995485341489710324056530755/411429   [v_p(xi_a - r*xi_b) = 39]
+     3 vs 5 at p=7 : xi_a/xi_b = -1216601034234076380364360113/500113   [v_p(xi_a - r*xi_b) = 40]
+     3 vs 7 at p=7 : no rational of height <= 10^6
+     3 vs 8 at p=7 : xi_a/xi_b = -1745541771292177097114408832/728953   [v_p(xi_a - r*xi_b) = 40]
+     3 vs 9 at p=7 : no rational of height <= 10^6
+     3 vs 11 at p=7 : no rational of height <= 10^6
+     4 vs 5 at p=7 : xi_a/xi_b = 5594865116314750423419576895/443674   [v_p(xi_a - r*xi_b) = 40]
+     4 vs 7 at p=7 : xi_a/xi_b = 1854839953787800678107235355/59413   [v_p(xi_a - r*xi_b) = 39]
+     4 vs 8 at p=7 : xi_a/xi_b = -3478504877343542282823318643/5182401   [v_p(xi_a - r*xi_b) = 40]
+     4 vs 9 at p=7 : xi_a/xi_b = 2708698088194397141204683148/8719   [v_p(xi_a - r*xi_b) = 39]
+     4 vs 11 at p=7 : xi_a/xi_b = 8063110943312894873678645941/6204681   [v_p(xi_a - r*xi_b) = 40]
+     5 vs 7 at p=7 : xi_a/xi_b = -563676430478353003492442881/207379   [v_p(xi_a - r*xi_b) = 40]
+     5 vs 8 at p=7 : no rational of height <= 10^6
+     5 vs 9 at p=7 : xi_a/xi_b = -1810762070911711656410910469/323313   [v_p(xi_a - r*xi_b) = 39]
+     5 vs 11 at p=7 : xi_a/xi_b = -2521899990354408896657461482/552647   [v_p(xi_a - r*xi_b) = 41]
+     7 vs 8 at p=7 : no rational of height <= 10^6
+     7 vs 9 at p=7 : xi_a/xi_b = -2530825866570363990043761921/220727   [v_p(xi_a - r*xi_b) = 39]
+     7 vs 11 at p=7 : xi_a/xi_b = -3469662102220686082420545445/535927   [v_p(xi_a - r*xi_b) = 41]
+     8 vs 9 at p=7 : xi_a/xi_b = 1328352834578902195520236899/523405   [v_p(xi_a - r*xi_b) = 39]
+     8 vs 11 at p=7 : no rational of height <= 10^6
+     9 vs 11 at p=7 : xi_a/xi_b = -10273370792641992497696182684/1152487   [v_p(xi_a - r*xi_b) = 40]
+
+################ sqrts10  sqrt of Cooper s10
+  sqrts10.1  (a,b,d)=(24,2,-256)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+  sqrts10.2  (a,b,d)=(-72,-10,1280)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=5  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 190,  N=400 -> 386   [v_p(d)=1]
+           v_p(xi) = -1   (0 to precision 386 means xi_p = 0)
+  sqrts10.3  (a,b,d)=(-72,-18,1280)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=5  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 196,  N=400 -> 398   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 398 means xi_p = 0)
+  sqrts10.4  (a,b,d)=(96,10,1280)  scale=2
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=5  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 191,  N=400 -> 387   [v_p(d)=1]
+           v_p(xi) = -1   (0 to precision 387 means xi_p = 0)
+  sqrts10.5  (a,b,d)=(96,14,1280)  scale=2
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=5  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 196,  N=400 -> 398   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 398 means xi_p = 0)
+  sqrts10.6  (a,b,d)=(24,18,-256)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+  sqrts10.7  (a,b,d)=(96,50,1280)  scale=2
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=5  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 192,  N=400 -> 388   [v_p(d)=1]
+           v_p(xi) = -1   (0 to precision 388 means xi_p = 0)
+  sqrts10.8  (a,b,d)=(96,54,1280)  scale=2
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=5  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 195,  N=400 -> 397   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 397 means xi_p = 0)
+  sqrts10.9  (a,b,d)=(-72,-30,1280)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=5  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 192,  N=400 -> 388   [v_p(d)=1]
+           v_p(xi) = -1   (0 to precision 388 means xi_p = 0)
+  sqrts10.10  (a,b,d)=(24,-2,-256)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+  sqrts10.11  (a,b,d)=(-72,-38,1280)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=5  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 195,  N=400 -> 397   [v_p(d)=1]
+           v_p(xi) = 1   (0 to precision 397 means xi_p = 0)
+  sqrts10.12  (a,b,d)=(24,14,-256)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+  -- pairwise p-adic ratios xi_p^(i)/xi_p^(j) where both converge:
+     2 vs 3 at p=5 : xi_a/xi_b = -22352323890517133325887/2834115   [v_p(xi_a - r*xi_b) = 40]
+     2 vs 4 at p=5 : no rational of height <= 10^6
+     2 vs 5 at p=5 : xi_a/xi_b = -9288506429890851828521/1371535   [v_p(xi_a - r*xi_b) = 40]
+     2 vs 7 at p=5 : xi_a/xi_b = 3770384723486829970426/694193   [v_p(xi_a - r*xi_b) = 40]
+     2 vs 8 at p=5 : xi_a/xi_b = -3883276170686788595776/4113195   [v_p(xi_a - r*xi_b) = 40]
+     2 vs 9 at p=5 : no rational of height <= 10^6
+     2 vs 11 at p=5 : no rational of height <= 10^6
+     3 vs 4 at p=5 : no rational of height <= 10^6
+     3 vs 5 at p=5 : no rational of height <= 10^6
+     3 vs 7 at p=5 : xi_a/xi_b = -1930363156185430243220/510523   [v_p(xi_a - r*xi_b) = 39]
+     3 vs 8 at p=5 : xi_a/xi_b = -1961115129827498087596/22489   [v_p(xi_a - r*xi_b) = 40]
+     3 vs 9 at p=5 : no rational of height <= 10^6
+     3 vs 11 at p=5 : xi_a/xi_b = -15420921931053623431038/229415   [v_p(xi_a - r*xi_b) = 41]
+     4 vs 5 at p=5 : no rational of height <= 10^6
+     4 vs 7 at p=5 : no rational of height <= 10^6
+     4 vs 8 at p=5 : no rational of height <= 10^6
+     4 vs 9 at p=5 : xi_a/xi_b = -952796015257321564877/166161   [v_p(xi_a - r*xi_b) = 39]
+     4 vs 11 at p=5 : xi_a/xi_b = 9302220818523282138271/23791575   [v_p(xi_a - r*xi_b) = 42]
+     5 vs 7 at p=5 : no rational of height <= 10^6
+     5 vs 8 at p=5 : xi_a/xi_b = -3803326792280483618107/208831   [v_p(xi_a - r*xi_b) = 40]
+     5 vs 9 at p=5 : xi_a/xi_b = 3644884587933754298745/816973   [v_p(xi_a - r*xi_b) = 39]
+     5 vs 11 at p=5 : xi_a/xi_b = 10452472850395208937507/4639280   [v_p(xi_a - r*xi_b) = 41]
+     7 vs 8 at p=5 : xi_a/xi_b = -20608769909782956382742/2735705   [v_p(xi_a - r*xi_b) = 41]
+     7 vs 9 at p=5 : xi_a/xi_b = 3459649858891285989617/355904   [v_p(xi_a - r*xi_b) = 39]
+     7 vs 11 at p=5 : no rational of height <= 10^6
+     8 vs 9 at p=5 : no rational of height <= 10^6
+     8 vs 11 at p=5 : no rational of height <= 10^6
+     9 vs 11 at p=5 : xi_a/xi_b = 63347161994160896936793/512425   [v_p(xi_a - r*xi_b) = 41]
+
+################ sqrts18  sqrt of Cooper s18
+  sqrts18.1  (a,b,d)=(56,6,768)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 188,  N=400 -> 383   [v_p(d)=1]
+           v_p(xi) = -2   (0 to precision 383 means xi_p = 0)
+  sqrts18.2  (a,b,d)=(-40,-6,256)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+  sqrts18.3  (a,b,d)=(-40,-14,256)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+  sqrts18.4  (a,b,d)=(-32,-6,-768)  scale=2
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 188,  N=400 -> 385   [v_p(d)=1]
+           v_p(xi) = -2   (0 to precision 385 means xi_p = 0)
+  sqrts18.5  (a,b,d)=(-32,-18,-768)  scale=2
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 186,  N=400 -> 384   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 384 means xi_p = 0)
+  sqrts18.6  (a,b,d)=(-32,2,-768)  scale=2
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 200,  N=400 -> 400   [v_p(d)=1]
+           v_p(xi) = 1   (0 to precision 400 means xi_p = 0)
+  sqrts18.7  (a,b,d)=(56,22,768)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 203,  N=400 -> 399   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 399 means xi_p = 0)
+  sqrts18.8  (a,b,d)=(-32,-10,-768)  scale=2
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 202,  N=400 -> 397   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 397 means xi_p = 0)
+  sqrts18.9  (a,b,d)=(-40,-10,256)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+  sqrts18.10  (a,b,d)=(56,18,768)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 187,  N=400 -> 386   [v_p(d)=1]
+           v_p(xi) = 0   (0 to precision 386 means xi_p = 0)
+  sqrts18.11  (a,b,d)=(-40,-18,256)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+  sqrts18.12  (a,b,d)=(56,34,768)  scale=1
+        p=2  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> -4,  N=400 -> -5   [v_p(d)=8]
+        p=3  Cauchy slope v_p(xi_N - xi_{N-1}): N=200 -> 199,  N=400 -> 398   [v_p(d)=1]
+           v_p(xi) = 1   (0 to precision 398 means xi_p = 0)
+  -- pairwise p-adic ratios xi_p^(i)/xi_p^(j) where both converge:
+     1 vs 4 at p=3 : no rational of height <= 10^6
+     1 vs 5 at p=3 : no rational of height <= 10^6
+     1 vs 6 at p=3 : xi_a/xi_b = 62311688341363/9747027   [v_p(xi_a - r*xi_b) = 42]
+     1 vs 7 at p=3 : xi_a/xi_b = -8187349497997/5013072   [v_p(xi_a - r*xi_b) = 40]
+     1 vs 8 at p=3 : xi_a/xi_b = 18160592752463/4566447   [v_p(xi_a - r*xi_b) = 40]
+     1 vs 10 at p=3 : no rational of height <= 10^6
+     1 vs 12 at p=3 : no rational of height <= 10^6
+     4 vs 5 at p=3 : xi_a/xi_b = 27469058262209/8415945   [v_p(xi_a - r*xi_b) = 40]
+     4 vs 6 at p=3 : no rational of height <= 10^6
+     4 vs 7 at p=3 : xi_a/xi_b = 41789209148435/3207321   [v_p(xi_a - r*xi_b) = 40]
+     4 vs 8 at p=3 : no rational of height <= 10^6
+     4 vs 10 at p=3 : no rational of height <= 10^6
+     4 vs 12 at p=3 : no rational of height <= 10^6
+     5 vs 6 at p=3 : no rational of height <= 10^6
+     5 vs 7 at p=3 : no rational of height <= 10^6
+     5 vs 8 at p=3 : xi_a/xi_b = 3534336404843/849610   [v_p(xi_a - r*xi_b) = 40]
+     5 vs 10 at p=3 : xi_a/xi_b = 3736874099513/228562   [v_p(xi_a - r*xi_b) = 41]
+     5 vs 12 at p=3 : xi_a/xi_b = -5782551598972/2870283   [v_p(xi_a - r*xi_b) = 41]
+     6 vs 7 at p=3 : xi_a/xi_b = 2590036999350/132359   [v_p(xi_a - r*xi_b) = 40]
+     6 vs 8 at p=3 : xi_a/xi_b = -505354046181/806033   [v_p(xi_a - r*xi_b) = 41]
+     6 vs 10 at p=3 : xi_a/xi_b = 3801976801449/263800   [v_p(xi_a - r*xi_b) = 41]
+     6 vs 12 at p=3 : xi_a/xi_b = -4520165683175/161666   [v_p(xi_a - r*xi_b) = 41]
+     7 vs 8 at p=3 : no rational of height <= 10^6
+     7 vs 10 at p=3 : no rational of height <= 10^6
+     7 vs 12 at p=3 : no rational of height <= 10^6
+     8 vs 10 at p=3 : xi_a/xi_b = -2642229751037/105514   [v_p(xi_a - r*xi_b) = 40]
+     8 vs 12 at p=3 : no rational of height <= 10^6
+     10 vs 12 at p=3 : xi_a/xi_b = 13507260912041/1124142   [v_p(xi_a - r*xi_b) = 42]

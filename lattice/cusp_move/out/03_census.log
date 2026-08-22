@@ -1,0 +1,410 @@
+[0;31m  ***   Warning: new stack size = 2147483648 (2048.000 Mbytes).[0m
+
+################ ZagierA   (7,2,-8)   zeta(2)/4
+  orbit size (mod scaling) = 3
+  * ZagierA.1  scale c=1
+      P = 7*nv^2 + 7*nv + 2
+      Q = -8*nv^2
+      a=7 b=2 d=-8   I=a^2/d=-49/8
+      integral to n=200: YES   k=2 (sharp)   lam1=8 lam2=-1   score=-2.00000
+      xi (n=420) = 0.4112335167120566091181037916615062973047
+      p-adic: p=2:v(150)=434,v(300)=879
+  * ZagierA.2  scale c=1
+      P = -17*nv^2 - 17*nv - 6
+      Q = 72*nv^2
+      a=-17 b=-6 d=72   I=a^2/d=289/72
+      integral to n=200: YES   k=2 (sharp)   lam1=-9 lam2=-8   score=-4.07944
+      xi (n=420) = -0.4883140080603039355418736463123540862788
+      p-adic: p=2:v(150)=434,v(300)=879 p=3:v(150)=285,v(300)=590
+  * ZagierA.3  scale c=1
+      P = 10*nv^2 + 10*nv + 3
+      Q = 9*nv^2
+      a=10 b=3 d=9   I=a^2/d=100/9
+      integral to n=200: YES   k=2 (sharp)   lam1=9 lam2=1   score=-2.00000
+      xi (n=420) = 0.3906512064482431484335937148120461781826
+      p-adic: p=3:v(150)=285,v(300)=590
+
+################ ZagierC   (10,3,9)   L(2,chi-3)/2
+  orbit size (mod scaling) = 3
+  * ZagierC.1  scale c=1
+      P = 10*nv^2 + 10*nv + 3
+      Q = 9*nv^2
+      a=10 b=3 d=9   I=a^2/d=100/9
+      integral to n=200: YES   k=2 (sharp)   lam1=9 lam2=1   score=-2.00000
+      xi (n=420) = 0.3906512064482431484335937148120461781826
+      p-adic: p=3:v(150)=285,v(300)=590
+  * ZagierC.2  scale c=1
+      P = -17*nv^2 - 17*nv - 6
+      Q = 72*nv^2
+      a=-17 b=-6 d=72   I=a^2/d=289/72
+      integral to n=200: YES   k=2 (sharp)   lam1=-9 lam2=-8   score=-4.07944
+      xi (n=420) = -0.4883140080603039355418736463123540862788
+      p-adic: p=2:v(150)=434,v(300)=879 p=3:v(150)=285,v(300)=590
+  * ZagierC.3  scale c=1
+      P = 7*nv^2 + 7*nv + 2
+      Q = -8*nv^2
+      a=7 b=2 d=-8   I=a^2/d=-49/8
+      integral to n=200: YES   k=2 (sharp)   lam1=8 lam2=-1   score=-2.00000
+      xi (n=420) = 0.4112335167120566091181037916615062973047
+      p-adic: p=2:v(150)=434,v(300)=879
+
+################ ZagierE   (12,4,32)  G/2 Catalan
+  orbit size (mod scaling) = 2
+  * ZagierE.1  scale c=1
+      P = 12*nv^2 + 12*nv + 4
+      Q = 32*nv^2
+      a=12 b=4 d=32   I=a^2/d=9/2
+      integral to n=200: YES   k=2 (sharp)   lam1=8 lam2=4   score=-3.38629
+      xi (n=420) = 0.4579827970886095075273017574661920553871
+      p-adic: p=2:v(150)=727,v(300)=1473
+  * ZagierE.2  scale c=1
+      P = 0
+      Q = -16*nv^2
+      a=0 b=0 d=-16   I=a^2/d=0
+      integral to n=200: YES   k=2 (sharp)   lam1=4 lam2=-4   score=-3.38629
+      xi (n=420) = 0.0000000000000000000000000000000000000000
+      p-adic: p=2:(a_n vanishes)
+
+################ ZagierF   (17,6,72)  5L(2,chi-3)/8
+  orbit size (mod scaling) = 3
+  * ZagierF.1  scale c=1
+      P = 17*nv^2 + 17*nv + 6
+      Q = 72*nv^2
+      a=17 b=6 d=72   I=a^2/d=289/72
+      integral to n=200: YES   k=2 (sharp)   lam1=9 lam2=8   score=-4.07944
+      xi (n=420) = 0.4883140080603039355418736463123540862788
+      p-adic: p=2:v(150)=434,v(300)=879 p=3:v(150)=285,v(300)=590
+  * ZagierF.2  scale c=1
+      P = -10*nv^2 - 10*nv - 3
+      Q = 9*nv^2
+      a=-10 b=-3 d=9   I=a^2/d=100/9
+      integral to n=200: YES   k=2 (sharp)   lam1=-9 lam2=-1   score=-2.00000
+      xi (n=420) = -0.3906512064482431484335937148120461781826
+      p-adic: p=3:v(150)=285,v(300)=590
+  * ZagierF.3  scale c=1
+      P = -7*nv^2 - 7*nv - 2
+      Q = -8*nv^2
+      a=-7 b=-2 d=-8   I=a^2/d=-49/8
+      integral to n=200: YES   k=2 (sharp)   lam1=-8 lam2=1   score=-2.00000
+      xi (n=420) = -0.4112335167120566091181037916615062973047
+      p-adic: p=2:v(150)=434,v(300)=879
+
+################ sqrtDomb   sqrt of Domb (10,4,64)
+  orbit size (mod scaling) = 8
+  * sqrtDomb.1  scale c=1
+      P = 20*nv^2 + 10*nv + 2
+      Q = 64*nv^2 - 64*nv + 16
+      a=20 b=2 d=64   I=a^2/d=25/4
+      integral to n=200: YES   k=2 (sharp)   lam1=16 lam2=4   score=-3.38629
+      xi (n=420) = 0.7372929961855962401764261978022936979609
+      p-adic: p=2:v(150)=291,v(300)=590
+  * sqrtDomb.2  scale c=1
+      P = -28*nv^2 - 22*nv - 6
+      Q = 192*nv^2 - 96*nv
+      a=-28 b=-6 d=192   I=a^2/d=49/12
+      integral to n=200: YES   k=2 (sharp)   lam1=-16 lam2=-12   score=-4.48491
+      xi (n=420) = -0.3431627829875819787363799948581408174993
+      p-adic: p=2:v(150)=582,v(300)=1183 p=3:v(150)=141,v(300)=293
+  * sqrtDomb.3  scale c=1
+      P = 8*nv^2 + 2*nv
+      Q = -48*nv^2 + 24*nv
+      a=8 b=0 d=-48   I=a^2/d=-4/3
+      integral to n=200: YES   k=2 (sharp)   lam1=12 lam2=-4   score=-3.38629
+      xi (n=420) = 0.8074006442887674970634767093350194665429
+      p-adic: p=2:v(150)=286,v(300)=579 p=3:v(150)=141,v(300)=293
+  * sqrtDomb.4  scale c=1
+      P = 8*nv^2 + 14*nv + 6
+      Q = -48*nv^2 - 24*nv
+      a=8 b=6 d=-48   I=a^2/d=-4/3
+      integral to n=200: YES   k=2 (sharp)   lam1=12 lam2=-4   score=-3.38629
+      xi (n=420) = 0.1269604292250376966666775749371673974332
+      p-adic: p=2:v(150)=283,v(300)=585 p=3:v(150)=141,v(300)=293
+  * sqrtDomb.5  scale c=1
+      P = 20*nv^2 + 26*nv + 10
+      Q = 64*nv^2
+      a=20 b=10 d=64   I=a^2/d=25/4
+      integral to n=200: YES   k=2 (sharp)   lam1=16 lam2=4   score=-3.38629
+      xi (n=420) = 0.1156207370223709896358325277803271381352
+      p-adic: p=2:v(150)=877,v(300)=1776
+  * sqrtDomb.6  scale c=1
+      P = -28*nv^2 - 34*nv - 12
+      Q = 192*nv^2 + 96*nv
+      a=-28 b=-12 d=192   I=a^2/d=49/12
+      integral to n=200: YES   k=2 (sharp)   lam1=-16 lam2=-12   score=-4.48491
+      xi (n=420) = -0.2640810435862341068638307631020990426542
+      p-adic: p=2:v(150)=585,v(300)=1178 p=3:v(150)=141,v(300)=293
+  * sqrtDomb.7  scale c=1
+      P = 20*nv^2 + 14*nv + 4
+      Q = 64*nv^2
+      a=20 b=4 d=64   I=a^2/d=25/4
+      integral to n=200: YES   k=2 (sharp)   lam1=16 lam2=4   score=-3.38629
+      xi (n=420) = 0.6746606435792704084950719513824230150247
+      p-adic: p=2:v(150)=879,v(300)=1770
+  * sqrtDomb.8  scale c=1
+      P = 20*nv^2 + 30*nv + 12
+      Q = 64*nv^2 + 64*nv + 16
+      a=20 b=12 d=64   I=a^2/d=25/4
+      integral to n=200: YES   k=2 (sharp)   lam1=16 lam2=4   score=-3.38629
+      xi (n=420) = 0.1105596693446216445803181588689919099044
+      p-adic: p=2:v(150)=291,v(300)=585
+
+################ sqrts7   sqrt of Cooper s7
+  orbit size (mod scaling) = 12
+  * sqrts7.1  scale c=1
+      P = 26*nv^2 + 13*nv + 2
+      Q = -27*nv^2 + 27*nv - 6
+      a=26 b=2 d=-27   I=a^2/d=-676/27
+      integral to n=200: YES   k=2 (sharp)   lam1=27 lam2=-1   score=-2.00000
+      xi (n=420) = 0.4672117688843731239421100514130912617241
+      p-adic: p=3:v(150)=-4,v(300)=-4
+  * sqrts7.2  scale c=1
+      P = -55*nv^2 - 32*nv - 7
+      Q = 756*nv^2 - 630*nv + 84
+      a=-55 b=-7 d=756   I=a^2/d=3025/756
+      integral to n=200: YES   k=2 (sharp)   lam1=-28 lam2=-27   score=-5.29584
+      xi (n=420) = -0.7184147650212061761968109277614622218621
+      p-adic: p=2:v(150)=-13,v(300)=-11 p=3:v(150)=-3,v(300)=-4 p=7:v(150)=146,v(300)=291
+  * sqrts7.3  scale c=1
+      P = -55*nv^2 - 50*nv - 16
+      Q = 756*nv^2 - 126*nv - 42
+      a=-55 b=-16 d=756   I=a^2/d=3025/756
+      integral to n=200: YES   k=2 (sharp)   lam1=-28 lam2=-27   score=-5.29584
+      xi (n=420) = -0.4184688681276539234215932899057162004582
+      p-adic: p=2:v(150)=-8,v(300)=-15 p=3:v(150)=-3,v(300)=-4 p=7:v(150)=148,v(300)=299
+  * sqrts7.4  scale c=9
+      P = 261*nv^2 + 132*nv + 21
+      Q = 2268*nv^2 - 1890*nv + 252
+      a=261 b=21 d=2268   I=a^2/d=841/28
+      integral to n=200: YES   k=2 (sharp)   lam1=252 lam2=9   score=-4.19722
+      xi (n=420) = 0.0515153008600518620061727561786544577478
+      p-adic: p=2:v(150)=-13,v(300)=-11 p=3:v(150)=-2,v(300)=-2 p=7:v(150)=146,v(300)=291
+  * sqrts7.5  scale c=9
+      P = 261*nv^2 + 138*nv + 24
+      Q = 2268*nv^2 - 378*nv - 126
+      a=261 b=24 d=2268   I=a^2/d=841/28
+      integral to n=200: YES   k=2 (sharp)   lam1=252 lam2=9   score=-4.19722
+      xi (n=420) = 0.0511219549672564233704217780271696489063
+      p-adic: p=2:v(150)=-12,v(300)=-15 p=3:v(150)=-2,v(300)=-2 p=7:v(150)=148,v(300)=299
+  * sqrts7.6  scale c=4
+      P = 104*nv^2 + 160*nv + 62
+      Q = -432*nv^2 + 12
+      a=104 b=62 d=-432   I=a^2/d=-676/27
+      integral to n=200: YES   k=1 (sharp)   lam1=108 lam2=-4   score=-2.38629
+      xi (n=420) = 0.0158087457099769051516051624175149619920
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=3:v(150)=-4,v(300)=-4
+  * sqrts7.7  scale c=9
+      P = 261*nv^2 + 384*nv + 147
+      Q = 2268*nv^2 + 378*nv - 126
+      a=261 b=147 d=2268   I=a^2/d=841/28
+      integral to n=200: YES   k=2 (sharp)   lam1=252 lam2=9   score=-4.19722
+      xi (n=420) = 0.0069572883858584120364502556286845745579
+      p-adic: p=2:v(150)=3,v(300)=-4 p=3:v(150)=-2,v(300)=-2 p=7:v(150)=147,v(300)=291
+  * sqrts7.8  scale c=9
+      P = 261*nv^2 + 390*nv + 150
+      Q = 2268*nv^2 + 1890*nv + 252
+      a=261 b=150 d=2268   I=a^2/d=841/28
+      integral to n=200: YES   k=2 (sharp)   lam1=252 lam2=9   score=-4.19722
+      xi (n=420) = 0.0069300664788161860561886063766940044718
+      p-adic: p=2:v(150)=-6,v(300)=1 p=3:v(150)=-2,v(300)=-2 p=7:v(150)=148,v(300)=299
+  * sqrts7.9  scale c=1
+      P = -55*nv^2 - 60*nv - 21
+      Q = 756*nv^2 + 126*nv - 42
+      a=-55 b=-21 d=756   I=a^2/d=3025/756
+      integral to n=200: YES   k=2 (sharp)   lam1=-28 lam2=-27   score=-5.29584
+      xi (n=420) = -0.1354764349163316371705660890480970600134
+      p-adic: p=2:v(150)=1,v(300)=-4 p=3:v(150)=-1,v(300)=1 p=7:v(150)=147,v(300)=291
+  * sqrts7.10  scale c=4
+      P = 104*nv^2 + 48*nv + 6
+      Q = -432*nv^2 + 12
+      a=104 b=6 d=-432   I=a^2/d=-676/27
+      integral to n=200: YES   k=2 (sharp)   lam1=108 lam2=-4   score=-3.38629
+      xi (n=420) = 0.1181593210449870357614728806459485883446
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=3:v(150)=-1,v(300)=1
+  * sqrts7.11  scale c=1
+      P = -55*nv^2 - 78*nv - 30
+      Q = 756*nv^2 + 630*nv + 84
+      a=-55 b=-30 d=756   I=a^2/d=3025/756
+      integral to n=200: YES   k=2 (sharp)   lam1=-28 lam2=-27   score=-5.29584
+      xi (n=420) = -0.1075746001534131964065528571891653592930
+      p-adic: p=2:v(150)=-6,v(300)=1 p=3:v(150)=-1,v(300)=1 p=7:v(150)=147,v(300)=299
+  * sqrts7.12  scale c=1
+      P = 26*nv^2 + 39*nv + 15
+      Q = -27*nv^2 - 27*nv - 6
+      a=26 b=15 d=-27   I=a^2/d=-676/27
+      integral to n=200: YES   k=2 (sharp)   lam1=27 lam2=-1   score=-2.00000
+      xi (n=420) = 0.0636114043687067755746020893160070214835
+      p-adic: p=3:v(150)=-1,v(300)=1
+
+################ sqrts10   sqrt of Cooper s10
+  orbit size (mod scaling) = 12
+  * sqrts10.1  scale c=1
+      P = 24*nv^2 + 12*nv + 2
+      Q = -256*nv^2 + 256*nv - 60
+      a=24 b=2 d=-256   I=a^2/d=-9/4
+      integral to n=200: YES   k=2 (sharp)   lam1=32 lam2=-8   score=-4.07944
+      xi (n=420) = 0.3169253592103549809788950157422356933928
+      p-adic: p=2:v(150)=-2,v(300)=-3
+  * sqrts10.2  scale c=1
+      P = -72*nv^2 - 44*nv - 10
+      Q = 1280*nv^2 - 960*nv + 100
+      a=-72 b=-10 d=1280   I=a^2/d=81/20
+      integral to n=200: YES   k=2 (sharp)   lam1=-40 lam2=-32   score=-5.46574
+      xi (n=420) = -0.3517064326208754156309788707110795149899
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=5:v(150)=139,v(300)=291
+  * sqrts10.3  scale c=1
+      P = -72*nv^2 - 60*nv - 18
+      Q = 1280*nv^2 - 320*nv - 60
+      a=-72 b=-18 d=1280   I=a^2/d=81/20
+      integral to n=200: YES   k=2 (sharp)   lam1=-40 lam2=-32   score=-5.46574
+      xi (n=420) = -0.2814684478724456467061910950963324473526
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=5:v(150)=148,v(300)=294
+  * sqrts10.4  scale c=2
+      P = 96*nv^2 + 52*nv + 10
+      Q = 1280*nv^2 - 960*nv + 100
+      a=96 b=10 d=1280   I=a^2/d=36/5
+      integral to n=200: YES   k=2 (sharp)   lam1=80 lam2=16   score=-4.77259
+      xi (n=420) = 0.1503618978679531145587767274583103339329
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=5:v(150)=140,v(300)=292
+  * sqrts10.5  scale c=2
+      P = 96*nv^2 + 60*nv + 14
+      Q = 1280*nv^2 - 320*nv - 60
+      a=96 b=14 d=1280   I=a^2/d=36/5
+      integral to n=200: YES   k=2 (sharp)   lam1=80 lam2=16   score=-4.77259
+      xi (n=420) = 0.1452489263359645383628327546574147840700
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=5:v(150)=148,v(300)=291
+  * sqrts10.6  scale c=1
+      P = 24*nv^2 + 44*nv + 18
+      Q = -256*nv^2 + 4
+      a=24 b=18 d=-256   I=a^2/d=-9/4
+      integral to n=200: YES   k=2 (sharp)   lam1=32 lam2=-8   score=-4.07944
+      xi (n=420) = 0.0488788496426701447532478287742112514549
+      p-adic: p=2:v(150)=-2,v(300)=-3
+  * sqrts10.7  scale c=2
+      P = 96*nv^2 + 132*nv + 50
+      Q = 1280*nv^2 + 320*nv - 60
+      a=96 b=50 d=1280   I=a^2/d=36/5
+      integral to n=200: YES   k=2 (sharp)   lam1=80 lam2=16   score=-4.77259
+      xi (n=420) = 0.0229464322945103094230671259970029347192
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=5:v(150)=141,v(300)=293
+  * sqrts10.8  scale c=2
+      P = 96*nv^2 + 140*nv + 54
+      Q = 1280*nv^2 + 960*nv + 100
+      a=96 b=54 d=1280   I=a^2/d=36/5
+      integral to n=200: YES   k=2 (sharp)   lam1=80 lam2=16   score=-4.77259
+      xi (n=420) = 0.0225471353512178055845152343186264034019
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=5:v(150)=147,v(300)=293
+  * sqrts10.9  scale c=1
+      P = -72*nv^2 - 84*nv - 30
+      Q = 1280*nv^2 + 320*nv - 60
+      a=-72 b=-30 d=1280   I=a^2/d=81/20
+      integral to n=200: YES   k=2 (sharp)   lam1=-40 lam2=-32   score=-5.46574
+      xi (n=420) = -0.0666398166240082576666194908426570657304
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=5:v(150)=141,v(300)=293
+  * sqrts10.10  scale c=1
+      P = 24*nv^2 + 4*nv - 2
+      Q = -256*nv^2 + 4
+      a=24 b=-2 d=-256   I=a^2/d=-9/4
+      integral to n=200: YES   k=2 (sharp)   lam1=32 lam2=-8   score=-4.07944
+      xi (n=420) = 0.3402568691886988677644858811906369218950
+      p-adic: p=2:v(150)=-2,v(300)=-3
+  * sqrts10.11  scale c=1
+      P = -72*nv^2 - 100*nv - 38
+      Q = 1280*nv^2 + 960*nv + 100
+      a=-72 b=-38 d=1280   I=a^2/d=81/20
+      integral to n=200: YES   k=2 (sharp)   lam1=-40 lam2=-32   score=-5.46574
+      xi (n=420) = -0.0600055413404171332719026527236115587564
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=5:v(150)=147,v(300)=292
+  * sqrts10.12  scale c=1
+      P = 24*nv^2 + 36*nv + 14
+      Q = -256*nv^2 - 256*nv - 60
+      a=24 b=14 d=-256   I=a^2/d=-9/4
+      integral to n=200: YES   k=2 (sharp)   lam1=32 lam2=-8   score=-4.07944
+      xi (n=420) = 0.0507291923681954835329808062703478843321
+      p-adic: p=2:v(150)=-2,v(300)=-3
+
+################ sqrts18   sqrt of Cooper s18
+  orbit size (mod scaling) = 12
+  * sqrts18.1  scale c=1
+      P = 56*nv^2 + 28*nv + 6
+      Q = 768*nv^2 - 768*nv + 180
+      a=56 b=6 d=768   I=a^2/d=49/12
+      integral to n=200: YES   k=2 (sharp)   lam1=32 lam2=24   score=-5.17805
+      xi (n=420) = 0.4842375536043764245470912391682128132491
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=3:v(150)=131,v(300)=288
+  * sqrts18.2  scale c=1
+      P = -40*nv^2 - 28*nv - 6
+      Q = 256*nv^2 - 192*nv + 20
+      a=-40 b=-6 d=256   I=a^2/d=25/4
+      integral to n=200: YES   k=2 (sharp)   lam1=-32 lam2=-8   score=-4.07944
+      xi (n=420) = -0.2182717230205612277990751988799155832519
+      p-adic: p=2:v(150)=-2,v(300)=-3
+  * sqrts18.3  scale c=1
+      P = -40*nv^2 - 44*nv - 14
+      Q = 256*nv^2 - 64*nv - 12
+      a=-40 b=-14 d=256   I=a^2/d=25/4
+      integral to n=200: YES   k=1 (sharp)   lam1=-32 lam2=-8   score=-3.07944
+      xi (n=420) = -0.0847742024808232181700624454557963770213
+      p-adic: p=2:v(150)=-2,v(300)=-3
+  * sqrts18.4  scale c=2
+      P = -32*nv^2 - 28*nv - 6
+      Q = -768*nv^2 + 576*nv - 60
+      a=-32 b=-6 d=-768   I=a^2/d=-4/3
+      integral to n=200: YES   k=2 (sharp)   lam1=-48 lam2=16   score=-4.77259
+      xi (n=420) = -0.1154769051023868860572459481655828864228
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=3:v(150)=133,v(300)=286
+  * sqrts18.5  scale c=2
+      P = -32*nv^2 - 52*nv - 18
+      Q = -768*nv^2 + 192*nv + 36
+      a=-32 b=-18 d=-768   I=a^2/d=-4/3
+      integral to n=200: YES   k=2 (sharp)   lam1=-48 lam2=16   score=-4.77259
+      xi (n=420) = -0.0453507508585309485183178517911151606026
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=3:v(150)=135,v(300)=286
+  * sqrts18.6  scale c=2
+      P = -32*nv^2 - 12*nv + 2
+      Q = -768*nv^2 - 192*nv + 36
+      a=-32 b=2 d=-768   I=a^2/d=-4/3
+      integral to n=200: YES   k=2 (sharp)   lam1=-48 lam2=16   score=-4.77259
+      xi (n=420) = -0.1247242921962308992273577706117300665958
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=3:v(150)=148,v(300)=299
+  * sqrts18.7  scale c=1
+      P = 56*nv^2 + 60*nv + 22
+      Q = 768*nv^2 - 12
+      a=56 b=22 d=768   I=a^2/d=49/12
+      integral to n=200: YES   k=2 (sharp)   lam1=32 lam2=24   score=-5.17805
+      xi (n=420) = 0.0783046627781169897652511346178166011205
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=3:v(150)=150,v(300)=299
+  * sqrts18.8  scale c=2
+      P = -32*nv^2 - 36*nv - 10
+      Q = -768*nv^2 - 576*nv - 60
+      a=-32 b=-10 d=-768   I=a^2/d=-4/3
+      integral to n=200: YES   k=2 (sharp)   lam1=-48 lam2=16   score=-4.77259
+      xi (n=420) = -0.0479560537259069363515646675386961912370
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=3:v(150)=151,v(300)=300
+  * sqrts18.9  scale c=1
+      P = -40*nv^2 - 36*nv - 10
+      Q = 256*nv^2 + 64*nv - 12
+      a=-40 b=-10 d=256   I=a^2/d=25/4
+      integral to n=200: YES   k=2 (sharp)   lam1=-32 lam2=-8   score=-4.07944
+      xi (n=420) = -0.2027909926930406970823898920007933970181
+      p-adic: p=2:v(150)=-2,v(300)=-3
+  * sqrts18.10  scale c=1
+      P = 56*nv^2 + 52*nv + 18
+      Q = 768*nv^2 - 12
+      a=56 b=18 d=768   I=a^2/d=49/12
+      integral to n=200: YES   k=2 (sharp)   lam1=32 lam2=24   score=-5.17805
+      xi (n=420) = 0.3254227722848721682717376788320871369711
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=3:v(150)=134,v(300)=286
+  * sqrts18.11  scale c=1
+      P = -40*nv^2 - 52*nv - 18
+      Q = 256*nv^2 + 192*nv + 20
+      a=-40 b=-18 d=256   I=a^2/d=25/4
+      integral to n=200: YES   k=2 (sharp)   lam1=-32 lam2=-8   score=-4.07944
+      xi (n=420) = -0.0804537420570558355346168275078463989904
+      p-adic: p=2:v(150)=-2,v(300)=-3
+  * sqrts18.12  scale c=1
+      P = 56*nv^2 + 84*nv + 34
+      Q = 768*nv^2 + 768*nv + 180
+      a=56 b=34 d=768   I=a^2/d=49/12
+      integral to n=200: YES   k=2 (sharp)   lam1=32 lam2=24   score=-5.17805
+      xi (n=420) = 0.0650432162516772860522264116765701025223
+      p-adic: p=2:v(150)=-2,v(300)=-3 p=3:v(150)=149,v(300)=300
