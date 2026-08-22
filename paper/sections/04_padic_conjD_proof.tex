@@ -132,6 +132,10 @@ $\Theta_{\mathbf F}-\xi^*_{\mathbf F}$ and $\Phi_{\mathbf F}$ have the same $W_4
 which coincides with that of $F_{\mathbf F}$; so $H_{\xi^*}$ has $W_4$-eigenvalue
 $(\pm1)^2=+1$ and descends to $\mathbb P^1_{t_{\mathbf F}}$.  Conclude as before.
 
+\begin{remark}[the cusp move]\label{rem:cuspmove}
+The level-$12$ detour for row $\mathbf F$ is avoidable. After the sign normalisation $u_n\mapsto(-1)^nu_n$, Zagier's $\mathbf F$ is the row obtained from $\mathbf C$ by moving the cusp $I_3$ of the surface $I_6I_3I_2I_1$ to $t=\infty$: $t_{\mathbf F'}=t_{\mathbf C}/(1-9t_{\mathbf C})$, $F_{\mathbf F'}=(1-9t_{\mathbf C})F_{\mathbf C}$, $\Phi_{\mathbf F'}=\Phi_{\mathbf C}/(1-9t_{\mathbf C})$ (Section~\ref{sec:herf}; \texttt{ACF\_ONE\_SURFACE.md}). Since $x\mapsto x/(1+9x)$ is an isometric automorphism of $\{|x|_3\le3^{\delta}\}$ for $\delta<2$, overconvergence of $R^{\mathbf C}_{\xi^*}$ transports directly to $\mathbf F$, and $\xi_3^{\mathbf F}=\tfrac54\xi_3^{\mathbf C}$ follows from the $\mathbf C$ case alone (verified to $v_3=1586$ at $N=800$). The same move applied to the cusp $I_2$ gives Zagier's $\mathbf A$, but there the source changes Eisenstein family ($\Phi_{\mathbf A}=(1-V_2)E_{3,\mathbf 1,\chi_{-3}}$, period $\zeta(2)/4$), $\sigma_3(\mathbf A)=0$ and $\mathbf A$ has no $3$-adic limit: one surface, two extension classes.
+\end{remark}
+
 In both cases $R^X_{\xi^*_X}=B^X-\xi^*_XA^X$ converges on a disc of radius $>1$,
 and by Lemma~\ref{lem:overconv} (uniqueness) $\xi^*_X=\xi^X_3$.
 \end{proof}

@@ -44,7 +44,7 @@ Herfurtner's classification and to an exhaustive integrality scan.
   $\operatorname{Sym}^1$ square roots of Cooper's $s_{10}$ and $s_{18}$
   ($Q=-4(8n-3)(8n-5)$ and $12(8n-3)(8n-5)$, so $\delta_\infty=\tfrac14$: an
   order-$8$ local monodromy, impossible in $\mathrm{PSL}_2(\mathbf Z)$), and the
-  unexplained positive-score candidate of `NONCONGRUENCE_SCAN.md` §4.4
+  positive-score candidate of `NONCONGRUENCE_SCAN.md` §4.4 (since identified there as the arctan Padé family, $k=1$)
   ($\rho=\tfrac76\equiv\tfrac16$). These are precisely three of the rows whose
   periods the project's identification batteries have failed to recognise.
 

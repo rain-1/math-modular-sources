@@ -44,7 +44,7 @@ So $s_{10}$ and $s_7$ have **no positive $p$-adic slope at $p=2,3,5,7$** — the
 | $s_7$, Zagier A | $\zeta(2)$ | $7,4$ | 2,3,5,7 | **no alignment** |
 | $s_{18}$, Zagier C | $\tfrac12L(2,\chi_{-3})$ | $1,1$ | 3 | **aligned**: $v_3=51,101,150,204,252,300\approx n$ |
 | $s_{18}$, Zagier B | $\tfrac12L(2,\chi_{-3})$ (B: no arch. limit) | $1,1$ | 3 | **aligned**: $v_3=52,102,151,204,252,301\approx n$ |
-| $s_{18}$, Zagier F | $\tfrac58L(2,\chi_{-3})$ | $5,4$ | 3 | growing but irregular ($8$–$16$), not a clean linear law with this $r$ |
+| $s_{18}$, Zagier F | $\tfrac58L(2,\chi_{-3})$ | $5,4$ | 3 | **aligned**: $v_3(4\xi^{\mathbf F}-5\xi^{s_{18}})=589$ at $N=600$ (full Cauchy precision); the earlier "irregular" verdict was an artefact of the test statistic, see `ACF_ONE_SURFACE.md` |
 
 This confirms the extension-class rigidity law of Notes-03 §2: alignment occurs exactly where **both** rows have positive slope at the same prime ($s_{18}$ vs. C, B at $p=3$), and fails where one side has zero slope even though periods coincide ($s_{10}$/D, $s_7$/A — periods match but no side has a slope at 2,3,5,7 for the Cooper row). $L(2,\chi_{-3})/2$ now has **three** aligned rows at $p=3$: Zagier B, C, and Cooper's $s_{18}$.
 
