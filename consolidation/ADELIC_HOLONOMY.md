@@ -10,6 +10,9 @@ Tags: [proved] [verified] [open].  **No irrationality claim is made anywhere.***
 
 ---
 
+
+> **Attribution (2026-08-22).** The $p$-adic radii are already present in CDT's own bound: Calegari–Dimitrov–Tang, *Arithmetic holonomy bounds and effective Diophantine approximation* (arXiv 2510.04156, §2 and §6.2; from their $L(2,\chi_{-3})$ paper §§6–8) state $m\le(\mathrm{BC}+\sum_p\log R_p)/(\log|\varphi'(0)|+\sum_p\log R_p-\tau)$ with $R_p$ the common $p$-adic convergence radius, and use it to prove $\zeta_2(5)\notin\mathbb Q$. The theorem of §2 below is a rediscovery of this with a per-function rearrangement of the slopes; it should be cited as a refinement of theirs, not as new. See `CDT_UNPACKED.md` and `PADIC_HOLONOMY_CENSUS.md`.
+
 ## 0. Verdict
 
 | claim | verdict |
