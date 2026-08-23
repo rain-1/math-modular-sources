@@ -1,0 +1,17 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+rows = 426   unknowns = 365
+[0;31m  ***   Warning: increasing stack size to 16000000.[0m
+[0;31m  ***   Warning: increasing stack size to 32000000.[0m
+[0;31m  *** matker: Warning: increasing stack size to 64000000.[0m
+nullity at (r,d)=(4,72) = 1
+deg c_i = [56, 60, 64, 68, 72]
+[0;31m  *** matker: Warning: increasing stack size to 128000000.[0m
+stabilised after 2 primes
+leading coeff of c_i (normalised, c_4 leading = 1) = [1, -1156, 2310, -1156, 1]
+balance polynomial sum_i lead_i rho^i = x^4 - 1156*x^3 + 2310*x^2 - 1156*x + 1
+factored = [x - 1, 2; x^2 - 1154*x + 1, 1]
+roots rho = [0.00086655177722008891100052244318394357388 + 0.E-38*I, 1.0000000000000000000000000000000000000 + 0.E-38*I, 1.0000000000000000000000000000000000000 + 0.E-38*I, 1153.9991334482227799110889994775568161 + 0.E-38*I]~
+Newton polygon slopes (deg c_(i+1) - deg c_i) = [4, 4, 4, 4]
+=> u_(n+1)/u_n ~ rho * n^-4
+Pgf(x) (coefficient of theta^72 in the ODE) = 1
+Pgf constant => NO finite nonzero singular point; the generating functions are ENTIRE.

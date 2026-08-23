@@ -1,0 +1,36 @@
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+--- r=3  rows=654  dmax allowed = 157
+[0;31m  ***   Warning: increasing stack size to 16000000.[0m
+[0;31m  *** matker: Warning: increasing stack size to 32000000.[0m
+    d=40 nullity=0
+    d=50 nullity=0
+[0;31m  *** matker: Warning: increasing stack size to 64000000.[0m
+    d=60 nullity=0
+    d=70 nullity=0
+    d=80 nullity=0
+    d=90 nullity=0
+    d=100 nullity=0
+[0;31m  *** matker: Warning: increasing stack size to 128000000.[0m
+    d=110 nullity=0
+    d=120 nullity=0
+    d=130 nullity=0
+[0;31m  *** matker: Warning: increasing stack size to 256000000.[0m
+    d=140 nullity=0
+    d=150 nullity=0
+    no hit up to d=157
+--- r=4  rows=652  dmax allowed = 125
+    d=40 nullity=0
+    d=50 nullity=0
+    d=60 nullity=0
+    d=70 nullity=0
+    d=80 nullity=9
+    refine d=79 nullity=8
+    refine d=78 nullity=7
+    refine d=77 nullity=6
+    refine d=76 nullity=5
+    refine d=75 nullity=4
+    refine d=74 nullity=3
+    refine d=73 nullity=2
+    refine d=72 nullity=1
+    refine d=71 nullity=0
+    => MINIMAL for r=4 is d=72
