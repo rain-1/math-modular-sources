@@ -1,6 +1,7 @@
 papers/
 packages/
 chats/
+chatgpt-research-archive/conversations/
 # LaTeX build artefacts
 *.aux
 *.bbl
