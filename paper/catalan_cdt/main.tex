@@ -1,0 +1,95 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}
+\newcommand{\D}{\mathbb D}\newcommand{\BC}{\mathrm{BC}}\newcommand{\Li}{\mathrm{Li}}
+\title{Catalan's constant and the arithmetic holonomy method:\\ an obstruction}
+\author{Claude (Fable), with River}
+\date{23 August 2026 --- draft}
+\begin{document}
+\begin{abstract}
+Calegari, Dimitrov and Tang remarked that their arithmetic holonomy method cannot reach Catalan's constant $G=L(2,\chi_{-4})$ through the known Ap\'ery-type rows ``unless some completely new idea is discovered''. We make this quantitative and structural. Using the classification of integral second-order Ap\'ery rows by rational elliptic surfaces, we show that every genus-zero modular host of the $\chi_{-4}$ Eisenstein class has its second singularity at distance $\le\tfrac14$ in the integral coordinate, so the entry condition of the holonomy bound fails by at least $0.077$ nats per index even at the uniformisation ceiling; that the $p$-adic version of the bound cannot repair this because, by Calegari's theorem that the $2$-adic Catalan value is irrational, the conditional function is never $2$-adically overconvergent; that Atkin--Lehner quotient hosts place the fold at an orbifold point and carry no conditional function; and that two-host (Hadamard) constructions have a Galois-orbit singular set admitting no pure module. Along the way we exhibit two new unconditional ``doubly small'' functions on the level-$16$ host, prove that the number of usable classes is bounded by the number of cusps, and show that the $2$-adic divisibility driving the two-row lattice method for $G$ is the Zudilin row's $2$-adic convergence rate to $\zeta_2(2)$ --- so both methods stop at the same wall.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+Let $G=\sum_{k\ge0}(-1)^k(2k+1)^{-2}$. The arithmetic holonomy method \cite{CDTl2chi,CDTicm} proved $L(2,\chi_{-3})\notin\Q$ (indeed $1,\pi^2,L(2,\chi_{-3})$ linearly independent) and is, in the authors' words, blocked for $G$: on Zagier's row $\mathbf E$ the relevant inequality reads $e^2>16\cdot\tfrac14$, and on Zudilin's hypergeometric row $e^4>\varphi^5$ ``by a wide margin'' \cite[Rem.~after Lemma 9.1.4]{CDTl2chi}. This note records what one can prove about that block. The answer has three layers.
+
+\emph{Geometry.} The $\chi_{-4}$ Eisenstein class is realised by integral three-term rows only on one rational elliptic surface (Zagier's $\mathbf E$, Kodaira type $I_8I_2I_1I_1$) and its genus-zero cover; all such rows have integer characteristic roots, hence second singularity $|t_2|\le\tfrac14$; and the uniformisation ceilings of the two hosts are $16\cdot\tfrac14$ and, after CDT's symmetrisation, $64$, against denominator rates $2$ and $4.2355$. Entry fails by $0.614$ resp.\ $0.077$ nats per index, and failure of entry means the admissible function space is a continuum (\S2).
+
+\emph{The $p$-adic place.} The multi-place bound rewards functions that are $p$-adically overconvergent. The function that carries the hypothesis $G\in\Q$ is $H=bB-aA$; its $2$-adic coefficients satisfy $h_n\approx(b\xi_2-a)a_n$ with $\xi_2=\tfrac12\zeta_2(2)$ the $2$-adic Ap\'ery limit, and $\xi_2\notin\Q$ (Calegari). So $H$ has $2$-adic slope $0$ whatever $a/b$ is, and one slope-$0$ function reduces the $p$-adic gain to a rescaling (\S3). The same fact, in the lattice method, is that the rationality-kernel vector is $2$-adically the best vector (\S6).
+
+\emph{Other hosts and more functions.} More fold-regular classes are bounded by the number of cusps; the level-$16$ host carries exactly two unconditional doubly-small classes, new objects but worth $+0.4$ each against deficits of order $10$ (\S4). Atkin--Lehner quotients with $4\mid N$ carry the class rationally only when every involution index is a square, and then place the fold at an orbifold point, where there is no Eichler period (\S5). The Hadamard product of the Zudilin and Nesterenko rows yields a striking unconditional function $W$, overconvergent by $14$ nats with $2$-adic content $24n$, but its singular set is one Galois orbit and admits no denominator-free functions, so entry fails by $11$ (\S5).
+
+\begin{theorem}[obstruction]\label{obs}
+Let $(\Gamma,t,F)$ be a genus-zero host carrying the $\chi_{-4}$ Eisenstein class with an integral Hauptmodul $t$ and an integral weight-one form $F$, and let $H=bB-aA$ be the conditional function of the hypothesis $G=a/b$. Then for every admissible archimedean template $\varphi$ and every choice of $p$-adic radii consistent with the actual coefficients,
+\[\log|\varphi'(0)|+\Bigl(1-\frac1m\Bigr)\sum_p\log R_p\ \le\ \tau(\mathbf b),\]
+i.e.\ the entry condition of the holonomy bound fails for every inventory containing $H$; on the best host (Zagier $\mathbf E$, symmetrised) the deficit at the uniformisation ceiling is $0.0766$ nats.
+\end{theorem}
+The proof is the union of \S\S2--5; the hypotheses are those under which the classification of \S2 applies. Everything numerical below is exact or certified as indicated; the documents \texttt{CATALAN\_OBSTRUCTION.md} and its references in the project repository carry the scripts.
+
+\section{Geometry: the host is forced}
+\subsection{Hodge depth} $G=L(2,\chi_{-4})$ is the period of the weight-$3$ Eisenstein class $E=E_3^{\chi_{-4},\mathbf 1}$; an Ap\'ery row for it is a pair $(A,B)=(F,F\cdot D^{-2}\Phi)$ with $\Phi=P(V)E$ an oldform combination and $D^{-2}$ a double Eichler integral. Two integrations give denominators of type $[1,\dots,n]^2$, i.e.\ $\tau=2$ in every realisation; a single integration would produce $L(1,\cdot)$, i.e.\ $\pi$. (Weight-drop theorem; Theorem B$^*$ of the companion paper.)
+
+\subsection{Three-term rows} A three-term integral recurrence $(n+1)^2u_{n+1}=P(n)u_n-Q(n)u_{n-1}$ with $\deg P,\deg Q\le2$ is the Picard--Fuchs system of a rational elliptic surface with four singular fibres when its exponent differences are Kodaira-admissible; Herfurtner's list and the M\"obius invariant $a^2/d$ identify Zagier's six rows with Beauville's six surfaces, with $\mathbf E$ on $I_8I_2I_1I_1$ ($a,b,c=12,4,32$, roots $8,4$). Since $a,d\in\Z$ the characteristic roots are algebraic integers, so rational roots are integers with gaps $\ge1$ and $|t_2|=1/\lambda_2\le\tfrac14$ at every placement of the cusp (cusp-move theorem). The only genus-zero cover is level $16$ ($X_0(32)$ has genus $1$), with roots $4,2\sqrt2$ in the $x$-coordinate. [Classification: \texttt{HERFURTNER\_CLASSIFICATION.md}; rigidity: \texttt{CUSP\_MOVE\_PROGRAM.md}, Thm.~4.]
+
+\subsection{Ceilings} For the unsymmetrised host $\mathbb P^1\setminus\{0,t_2,\infty\}$ (fold $t_1$ filled in by the hypothesis) the optimal multivalent template is Kodaira's, $|\varphi'(0)|=16|t_2|$ \cite[\S1]{CDTl2chi}, so entry $=\log(16\cdot\tfrac14)-2=-0.614$. CDT's symmetrisation uses the involution $\sigma$ of the host and the coordinate $y=x+\sigma(x)$-type descent. On level $8$, $\sigma(x)=x/(4x-1)$ fixes $0$ (cusp) and $\tfrac12$ (free), so the $y$-line is $\mathbb P^1\setminus\{0,-\tfrac18,\infty\}$ with an order-$2$ cone point at $y=1$, of conformal size $64$ at $0$ once the fold image $-\tfrac18$ is dropped: entry $=\log64-\tau=4.1589-4.2355=-0.0766$ with CDT's $m=14$ inventory and $\tau=16603/3920$. On level $16$ the descending involution is $\tau\mapsto\tau+\tfrac12$; both fixed points are cusps, the $y$-line is the level-$8$ $x$-line rescaled by $-4$ (verified to $q^{60}$), there is no cone point, and the ceiling is $16$: entry $-1.463$. [\texttt{CATALAN\_THREE\_PERIOD.md}, appendix.]
+
+\subsection{Entry failure is fatal} When $\sum_v\log R_v\le\tau$, the set of power series with the given denominators and analytic continuation has the cardinality of the continuum \cite[\S2]{CDTicm}, \cite{DimLNT}; no dimension count can then distinguish a conditional function from the unconditional ones. Hence Theorem~\ref{obs} is a theorem about the method, not about a particular inventory.
+
+\section{The $p$-adic place cannot help}
+\subsection{The multi-place bound} In the form proved in \cite[Thm.~2]{Z53} (a twist of the slopes-method proof of \cite[\S6.3]{CDTl2chi}): if the $m$ functions have $p$-adic radii $R_{p,i}$, the bound reads
+\[m\bigl(\log|\varphi'(0)|-\tau\bigr)+\frac1m\sum_{i}\sum_p\log R_{p,i}+(m-2)\sum_p\log R_{p,\min}\ \le\ \BC(\varphi),\]
+which for uniform radii is $(m-1)\sum_p\log R_p$ on the left. The graded pieces of the evaluation module are twisted by $R_{\min}^{\,n-D}$: the $p$-adic gain is governed by the worst function.
+
+\begin{lemma}\label{slope}
+Let $(a_n,b_n)$ be an Ap\'ery row with $a_n\in\Z$, $\liminf v_p(a_n)/n=0$, and a $p$-adic Ap\'ery limit $\xi_p\in\Q_p$ of positive slope: $v_p(b_n-\xi_pa_n)\ge\sigma n-o(n)$, $\sigma>0$. If $\xi_p\notin\Q$ then for all $a,b\in\Z$, $b\ne0$, the function $H=\sum(bb_n-aa_n)x^n$ has $p$-adic slope $\liminf v_p(h_n)/n=0$.
+\end{lemma}
+\begin{proof} $h_n=b(b_n-\xi_pa_n)+(b\xi_p-a)a_n$ with $b\xi_p-a\ne0$ of fixed valuation $v_0$; the first term has valuation $\ge\sigma n-o(n)$, so for $n$ with $v_p(a_n)=o(n)$ one has $v_p(h_n)=v_p(a_n)+v_0$. \end{proof}
+For Zagier $\mathbf E$: $v_2(a_n)=2s_2(n)$ (zero along powers of $2$), $\xi_2=\tfrac12\zeta_2(2)$ with slope $\sigma_2=5$ in $x$ (Theorem F of the companion paper), and $\xi_2\notin\Q$ by \cite{Cal05}. Measured: $H$ has slope $0$ in $x$ and $-2$ in the symmetrised $y$ (the descent $t=\tfrac12(y-\sqrt{y^2-y})$ is not $2$-integral, so $\varsigma_y=2\varsigma_x-2$ with no floor). The pure polylogarithm orbit $\Li_j(4x)$ has slope $2$ in $x$. By scale covariance of the bound under $x\mapsto x/p^v$, the net $p$-adic contribution of an inventory whose worst function has slope $0$ is $\tfrac1m\sum_i\varsigma_i\log p$ minus the rescaling needed to make the worst slope nonnegative; for the level-$8$ inventory this is zero or negative (measured: entry moves from $-0.0766$ to $-0.855$ under the measured profile). This proves the $p$-adic half of Theorem~\ref{obs}. The same argument applies at every prime and every placement: $\xi_p=a/b$ would be required, which the hypothesis $G=a/b$ excludes whenever $\xi_p\ne\xi_\infty$ as numbers --- and a $p$-adic number cannot equal a real one except through $\Q$.
+
+\section{More functions}
+\subsection{Fold-regularity and the cusp count} A class $\Phi$ on the host gives a conditional function iff the Eichler period polynomial of $\Phi$ at the fold cusp has vanishing constant term (and, when the fold cusp is not the cusp $0$ of Theorem B$^*$, also vanishing $\log^2$-coefficient); then $\xi$ is read off the linear coefficient. One hypothesised linear relation among the periods supplies one generator whose $\theta$-orbit has the size of the holonomic rank; the number of such generators is at most $\#\text{cusps}-1$. Fold-regularity is a condition of codimension $\mu$, the Jordan block size at the fold, so only rows with simple dominant root qualify. [\texttt{CDT\_NONCONGRUENCE.md} \S10; \texttt{HOLONOMY\_LINDEP.md}.]
+
+\subsection{Doubly-small functions at level 16}
+\begin{proposition}\label{ds}
+On the level-$16$ host ($x=\eta_2\eta_{16}^2/\eta_1^2\eta_8$, $F=\eta_2^4/\eta_4^2$, fold cusp $\tfrac12$) the fold-regular subspace of each orientation of the $\chi_{-4}$ Eisenstein space is two-dimensional, and each contains a target-zero class:
+\[\Phi_0^{\rm in}=(1+4V_2-32V_4)E_3^{\chi_{-4},\mathbf1},\qquad \Phi_0^{\rm out}=(1+3V_2-4V_4)E_3^{\mathbf1,\chi_{-4}} .\]
+Their companions $B_0\in\Q[[x]]$ have $\xi_\infty=\xi_2=0$, archimedean radius $\sqrt2/4$ against the host's $\tfrac14$, $d_n^2B_0\in\Z$ (sharp), and $2$-adic slopes $\tfrac32$ resp.\ $\to1$; they are $\Q(x)$-independent of each other and of $A$. The outer period functional is $\xi^{\rm out}_\infty=\tfrac32\zeta(2)(P(1)-P(2))$, not the Theorem-B$^*$ value.
+\end{proposition}
+These are unconditional functions small at both places --- precisely the objects the method wants, and the first such on any Catalan host --- but each is worth about $+0.4$ of margin and the Eisenstein space supplies two; a cap of \cite[\S4.3]{AH} bounds the number of such functions on any host. [\texttt{CATALAN\_THREE\_PERIOD.md}, numerically certified at $N=220$.]
+
+\section{Other hosts}
+\subsection{Atkin--Lehner quotients} For odd weight $k$, $|_kW_Q$ on $M_k(\Gamma_0(N),\chi_{-4})$ carries a factor $Q^{k/2}$, so eigenvectors are rational iff every $Q$ in the involution group is a square; of the $23$ genus-zero groups $\Gamma_0(N)+W$ with $4\mid N$ this leaves $10$. On each proper quotient that carries a row ($\Gamma_0(16)+16$, $\Gamma_0(20)+4$, $\Gamma_0(36)+4,9$) the nearest singularity is an order-$2$ orbifold point (an AL fixed point), not a cusp: there is no Eichler period there, the fold-regular space is $\{0\}$, and the Ap\'ery limit is not in $\Q+\Q\zeta(2)+\Q G$ (e.g.\ on $\Gamma_0(16)+16$ the fold is at $x=1/(6+4\sqrt2)$). The best geometry found on any such host is $\Gamma_0(12)$ with roots $(4,2)$ --- $+0.69$ nats of score over $\mathbf E$ --- cancelled exactly by five remaining singular points with no descent (ceiling $\le4$). $\lambda_2<1$ occurs nowhere. [\texttt{CATALAN\_AL\_HOSTS.md}.]
+
+\subsection{The Hadamard host} Let $(a^Z,b^Z)$, $(a^N,b^N)$ be the cleared Zudilin and Nesterenko rows at the aligned indices $(3n,n)$, with $v_2(a^Z_nb^N_n-a^N_nb^Z_n)\ge24n-O(\log n)$ (the engine of the two-row lattice method). The Hadamard products are holonomic with singular set the pairwise products of the rows' singular points, and
+\[W:=A_Z\odot B_N-A_N\odot B_Z=A_Z\odot(B_N-GA_N)-A_N\odot(B_Z-GA_Z)\in\Q[[x]]\]
+is unconditional, overconvergent by $14.44$ nats beyond $A_Z\odot A_N$, of denominator type $[1..6n]^2$, and the unique rational element of its module regular at the fold. Its minimal recurrence has order $4$, degree $96$, leading polynomial irreducible over $\Q$ with the four product points as roots. Because those points form a single Galois orbit, every rational algebraic or polylogarithmic function on the host branches at all four, including the one $W$ removes: there is no pure module, $\tau^\flat\ge10.67$, and entry fails by $11.1$ (the $2$-adic term is a penalty: $v_2(w_n)=-(2n-1)$ after the rows' own $2$-denominators). Isolating the cost: Zudilin alone $-4.2$, $3$-sectioned $-15.6$, Nesterenko $-16.9$, Hadamard $-16.9$ --- the product is a wash; the alignment is the damage. [\texttt{HADAMARD\_HOST.md}.]
+
+\section{The same wall in the lattice method}
+The two-row lattice method divides integer combinations of the two rows by $D_{6n}^2\,2^{\lfloor kn\rfloor}$ and selects a short vector; it reaches worthiness $1-\varepsilon$ as $k\uparrow k^*=22.35$ \cite{Lean,OneEps}, and for $k>k^*$ would prove $G\notin\Q$ if the selected form were nonzero (Lemma~P2). Two exact identities locate the obstruction \cite[\texttt{P2\_HOLONOMIC.md}]{proj}:
+\[v_2\bigl(X_n\xi_2-Y_n\bigr)=v_2(X_n)+24n-1-4s_2(3n),\qquad v_2\bigl(X_nU_n-V_nY_n\bigr)=v_2(X_n)+v_2(V_n)+24n-1-4s_2(3n),\]
+so the $24n$ cross-divisibility \emph{is} the Zudilin row's $2$-adic convergence rate to $\xi_2=\zeta_2(2)$; and the rationality-kernel vector satisfies $\ell_2(c^{\rm ker})=(X_nU_n-V_nY_n)(a-b\zeta_2(2))$ --- the vector that is archimedean-worst (form $0$ if $G=a/b$) is $2$-adically best. The continued fraction of the lattice is $G$-free; $G$ selects one rung of it at a cost of $14.43$ nats per index, and its parity (which is the cone condition) shows no law to $n=200$. Thus the lattice method and the holonomy method stop at the same statement: \emph{the hypothesis $G\in\Q$ is false at $p=2$, and nothing $2$-adic can be extracted from it}.
+
+\section{What would evade}
+Theorem~\ref{obs} has three hypotheses a proof must negate: (i) the class is Eisenstein of weight $3$ on a modular curve (Hodge depth $2$, the Beauville surface); (ii) the host has genus zero with an integral Hauptmodul; (iii) the only arithmetic inputs are archimedean templates and $p$-adic radii. Negating (i) means realising $G$ as a period of a different motive --- e.g.\ the Beilinson element of $K_3(\Q(i))$ on a cellular (Brown--type) host; conductor-$4$ cellular realisations known to us carry $16^n$ denominators, costing exactly $4\log2$. Negating (ii) means higher-genus hosts, where the conformal size must be recomputed but the same integrality rigidity is expected. Negating (iii) is the open conceptual question: whether the sign information of the rows (both linear forms are positive moments) can enter a holonomy-type count. We do not know how.
+
+\begin{thebibliography}{9}
+\bibitem{AH} \emph{The adelic arithmetic holonomy bound} (\texttt{consolidation/ADELIC\_HOLONOMY.md}), 2026.
+\bibitem{Cal05} F.~Calegari, \emph{Irrationality of certain $p$-adic periods for small $p$}, IMRN 2005.
+\bibitem{CDTl2chi} F.~Calegari, V.~Dimitrov, Y.~Tang, \emph{The linear independence of $1,\zeta(2),L(2,\chi_{-3})$}, arXiv:2408.15403.
+\bibitem{CDTicm} F.~Calegari, V.~Dimitrov, Y.~Tang, \emph{Arithmetic holonomy bounds and effective Diophantine approximation}, arXiv:2510.04156.
+\bibitem{DimLNT} V.~Dimitrov, \emph{$p$-adic Eisenstein series, arithmetic holonomicity criteria, and irrationality of $\zeta_2(5)$}, lecture notes.
+\bibitem{Lean} \emph{lean-catalan-worthiness}, Lean 4 formalisation, 2026.
+\bibitem{OneEps} \emph{The near-critical two-row construction for Catalan's constant}, companion note (\texttt{paper/catalan\_1eps}).
+\bibitem{Z53} \emph{The irrationality of the $5$-adic zeta value $\zeta_5(3)$}, companion note (\texttt{paper/zeta5\_3}).
+\bibitem{proj} Project repository \texttt{math-modular-sources}, \texttt{consolidation/} documents cited by name in the text.
+\end{thebibliography}
+\end{document}
