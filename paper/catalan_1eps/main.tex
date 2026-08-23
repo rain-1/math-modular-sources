@@ -1,0 +1,127 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}\newcommand{\R}{\mathbb R}
+\newcommand{\cD}{\mathcal D}\newcommand{\cK}{\mathcal K}
+\title{The near-critical two-row construction for Catalan's constant:\\ a self-contained proof of the worthiness $1-\varepsilon$ theorem}
+\author{Claude (Fable), with River}
+\date{23 August 2026}
+\begin{document}
+\begin{abstract}
+We give a short proof of the theorem formalised in the Lean project \texttt{lean-catalan-worthiness}: for every $0\le k<k^*=22.3513\ldots$, integer combinations of Zudilin's and Nesterenko's rational approximations to Catalan's constant $G$, divided by the modulus $D_{6n}^2\,2^{\lfloor kn\rfloor}$, yield an admissible sequence $(q_n,p_n)$ with $\log|q_n|\ge H(k)n-o(n)$ and $\log|q_nG-p_n|\le F(k)n+o(n)$, where $F(k)=\tfrac{\log2}{2}(k^*-k)\downarrow0$; in particular its worthiness $\delta=D/(D+F(k))$ exceeds $1-\varepsilon$. The proof has three steps: a $2$-adic cross-divisibility theorem for the two rows (quoted), a congruence lattice of controlled covolume, and a two-dimensional Minkowski argument with an explicit selection between the two successive minima. We explain precisely what the statement does and does not say.
+\end{abstract}
+\maketitle
+
+\section{Worthiness, and what the theorem says}
+\begin{definition}[\cite{Lean}, Def.~1.1--1.2]
+Let $\alpha\in\R$. A pair of integer sequences $(q_n,p_n)$ is \emph{admissible} for $\alpha$ if eventually $q_n\ne0$ and $q_n\alpha-p_n\ne0$, and $|q_n|\to\infty$. Its \emph{worthiness} is
+\[\delta(q,p)=\liminf_{n\to\infty}\frac{-\log|\alpha-p_n/q_n|}{\log|q_n|}=1-\limsup_{n\to\infty}\frac{\log|q_n\alpha-p_n|}{\log|q_n|}.\]
+\end{definition}
+Three facts calibrate the scale. (i) For \emph{every} real $\alpha$, rounding $p_n=\lfloor n\alpha\rceil$ (adjusted by one if the form vanishes) gives an admissible sequence with $\delta\ge1$. (ii) If $\alpha=a/b$ is rational, every admissible sequence has $|q_n\alpha-p_n|\ge1/b$, hence $\delta\le1$. (iii) Consequently an admissible sequence with $\delta>1$ proves $\alpha\notin\Q$, and $\delta=1$ is the \emph{rationality ceiling}. Dirichlet's theorem gives $\delta=2$ for irrational $\alpha$.
+
+So a worthiness below $1$ is never a Diophantine statement about $\alpha$; it measures the quality of a \emph{construction}. Zudilin's explicit row for $G$ \cite{Zud} has $\delta=0.9025\ldots$, Nesterenko's \cite{Nes} less; the theorem below says that combining the two rows $2$-adically produces structured sequences whose worthiness approaches the ceiling. The content is in the rates: the cleared linear forms grow like $e^{F(k)n}$ with $F(k)\to0^+$ as $k\to k^*$; for $k>k^*$ the same lattice contains vectors with $F<0$, which would prove irrationality if their forms were known to be nonzero (see \S6). The Lean statement \texttt{catalan\_worthiness\_one\_sub\_eps} does not constrain the witnesses and is therefore also provable by rounding; the formalised proof discharges it with the explicit construction, and that construction is what we prove here.
+
+\section{Inputs: the two rows}
+Throughout $D_N=\operatorname{lcm}(1,\dots,N)$, $S_n:=D_{6n}^2$, $\log D_N=N+o(N)$, and $\varphi=(1+\sqrt5)/2$.
+
+\textbf{Row 1 (Zudilin).} Zudilin's second-order recurrence \cite{Zud} produces rationals $Q_m,P_m$ ($Q_0=1,Q_1=\tfrac74,P_0=0,P_1=\tfrac{13}8$) with $P_m/Q_m\to G$, denominators of $Q_m$ pure powers of $2$, $2^{e_m}Q_m\in\Z$ and $2^{e_m}D_{2m-1}^2P_m\in\Z$ with $e_m=\min(6m,4m+3+\lfloor\log_2(2m-1)\rfloor)$, and rates $\tfrac1m\log|Q_m|\to5\log\varphi$, $\tfrac1m\log|Q_mG-P_m|\to-5\log\varphi$. At the $3$-sectioned index $m=3n$ we set
+\[X_{1,n}:=S_n\,2^{e_{3n}}Q_{3n},\qquad Y_{1,n}:=S_n\,2^{e_{3n}}P_{3n}\quad(\in\Z),\]
+with $\log|X_{1,n}|=A_Zn+o(n)$, $\log|X_{1,n}G-Y_{1,n}|=E_Zn+o(n)$, $A_Z=12+12\log2+15\log\varphi$, $E_Z=12+12\log2-15\log\varphi$.
+
+\textbf{Row 2 (Nesterenko).} Nesterenko's $(4,7)$ construction \cite{Nes} gives rationals $B_n,C_n$ with $J_n:=4B_nG-C_n>0$, $J_n\to0$, such that $V_n:=4^{7n+1}S_nB_n$ and $U_n:=4^{7n}S_nC_n$ are integers. Set $X_{2,n}:=V_n$, $Y_{2,n}:=U_n$, so $X_{2,n}G-Y_{2,n}=4^{7n}S_nJ_n$, with rates $A_N=12+14\log2+2\log T^+$, $E_N=12+14\log2+2\log T^-$, where $T^\pm=(3303\pm437\sqrt{57})/144$, $T^+T^-=32/27$. Numerically $A_N=35.37$, $E_N=14.39$, $D:=A_N-E_N=2\log(T^+/T^-)=14.9616$.
+
+\textbf{The crossed gap.} $A_Z+E_N<A_N+E_Z$, equivalently $30\log\varphi=14.436<D$. \hfill[\cite{Lean}, \texttt{crossed\_gap\_NC}]
+
+\textbf{The $2$-adic package.} Write $X_{i,n}=S_na_{i,n}$. Then for all $n\ge1$
+\begin{equation}\label{cross}
+2^{24n}\ \big|\ a_{1,n}Y_{2,n}-a_{2,n}Y_{1,n}.
+\end{equation}
+This is the one input whose proof we do not reproduce: it is proved in \cite{Lean} (\texttt{NesterenkoCross.lean}, \texttt{dvd\_reduced\_cross\_N}) from the $2$-adic structure of the two rows --- Nesterenko's linear form $J_n$ is, $2$-adically, a unit times an explicit ${}_3F_2(1)$ factor whose terms have $2$-adic norm controlled by half-integral Pochhammer symbols, and the cross determinant inherits $2^{24n}$ exactly. (It is the statement that the two rows realise the same extension class and converge $2$-adically to the same limit at the same rate; cf.\ the discussion of Theorem~F in the companion paper.)
+
+\section{The congruence lattice}
+Fix $0\le k\le24$ and put $T_n:=2^{\lfloor kn\rfloor}$, $M_n:=S_nT_n$, so $\log M_n=\sigma(k)n+o(n)$ with $\sigma(k)=12+k\log2$. By \eqref{cross}, $T_n\mid a_{1,n}Y_{2,n}-a_{2,n}Y_{1,n}$, hence
+\begin{equation}\label{MdivDelta}
+M_n\ \big|\ \Delta_n:=X_{1,n}Y_{2,n}-X_{2,n}Y_{1,n}=S_n\,(a_{1,n}Y_{2,n}-a_{2,n}Y_{1,n}).
+\end{equation}
+Moreover $\Delta_n=X_{2,n}L_{1,n}-X_{1,n}L_{2,n}$ with $L_{i,n}:=X_{i,n}G-Y_{i,n}$, and the crossed gap gives $|X_{2,n}L_{1,n}|=e^{(A_N+E_Z)n+o(n)}\gg|X_{1,n}L_{2,n}|$, so $\Delta_n\ne0$ and $\log|\Delta_n|=(A_N+E_Z)n+o(n)$.
+
+Let $V_n:=\tfrac1{M_n}\bigl(\Z(X_{1,n},Y_{1,n})+\Z(X_{2,n},Y_{2,n})\bigr)\subset\Q^2$, a lattice of covolume $|\Delta_n|/M_n^2$, and $\Gamma_n:=V_n\cap\Z^2$: the integer pairs $(q,p)$ of the form $\bigl(\tfrac{c_1X_1+c_2X_2}{M},\tfrac{c_1Y_1+c_2Y_2}{M}\bigr)$.
+
+\begin{lemma}\label{index} $[V_n:\Gamma_n]\le M_n$; hence $\operatorname{covol}\Gamma_n\le|\Delta_n|/M_n$.\end{lemma}
+\begin{proof}
+$[V_n:\Gamma_n]$ is the order of the image $A$ of $V_n$ in $(\Q/\Z)^2$, generated by $v_i=(X_i,Y_i)/M$. The first-coordinate projection $\pi(A)=\langle X_1/M,X_2/M\rangle\subset\Q/\Z$ has order $M/g$, $g:=\gcd(M,X_1,X_2)$. If $c_1v_1+c_2v_2\in\ker\pi$, i.e.\ $c_1X_1+c_2X_2=Mt$, then $X_1(c_1Y_1+c_2Y_2)=Y_1Mt+c_2\Delta\equiv0\pmod M$ by \eqref{MdivDelta}, and likewise $X_2(c_1Y_1+c_2Y_2)\equiv0$; so $M\mid g\cdot(c_1Y_1+c_2Y_2)$, and the second coordinate of the element lies in $\tfrac gM\Z/\Z$, a group of order $g$. Thus $|A|\le(M/g)\cdot g=M$.
+\end{proof}
+Since $\Gamma_n\subset V_n$, $\operatorname{covol}\Gamma_n=(|\Delta_n|/M_n^2)[V_n:\Gamma_n]\in[|\Delta_n|/M_n^2,\ |\Delta_n|/M_n]$; a sublattice $\Gamma'_n\subset\Gamma_n$ of index $j=\lceil(|\Delta_n|/M_n)/\operatorname{covol}\Gamma_n\rceil$ (e.g.\ $\{(q,p)\in\Gamma_n:j\mid q\}$) then has
+\begin{equation}\label{covol}
+\cD_n:=\operatorname{covol}\Gamma'_n\in\bigl[|\Delta_n|/M_n,\ 2|\Delta_n|/M_n\bigr],\qquad \log\cD_n=(A_N+E_Z-\sigma(k))\,n+o(n).
+\end{equation}
+Every element of $\Gamma'_n$ is an integer pair $(q,p)$; the map $(q,p)\mapsto(q,\ell)$, $\ell:=qG-p$, is unimodular, so the image $\Lambda_n\subset\R^2$ has the same covolume $\cD_n$.
+
+\section{Minkowski: the balanced pair}
+Set $x:=\tfrac12(\sigma(k)+E_N-E_Z)$ and
+\[H:=A_N-x,\qquad F:=x+E_Z-\sigma(k)=\tfrac12\bigl(E_Z+E_N-\sigma(k)\bigr)=\tfrac{\log2}{2}\,(k^*-k),\qquad k^*:=\frac{E_Z+E_N-12}{\log2},\]
+so that $H+F=A_N+E_Z-\sigma(k)$ is the rate of $\cD_n$, $H-F=D>0$, and $F>0$ iff $k<k^*$. Numerically $k^*=22.3513\ldots$ and $\delta(k):=1-F/H=D/(D+F(k))$; $\delta(22)=0.99193\ldots$.
+
+Apply Minkowski's second theorem in the plane to $\Lambda_n$ and the box $K=[-U,U]\times[-V,V]$ with $U:=e^{Hn}$, $V:=2\cD_n/U$: $\lambda_1\lambda_2\operatorname{vol}K\le4\cD_n$ gives $\lambda_1\lambda_2\le\tfrac12$. Let $b_1=(Q_{1},\ell_{1})$, $b_2=(Q_{2},\ell_{2})$ attain $\lambda_1=:\mu\le1$ and $\lambda_2\le1/(2\mu)$; in dimension two they form a basis of $\Lambda_n$, so $|Q_1\ell_2-Q_2\ell_1|=\cD_n$, and since $Q_i\ell_j-Q_j\ell_i=Q_jP_i-Q_iP_j$ this is an integer. Writing $\mu=e^{-rn}$ ($r\ge0$) and using \eqref{covol}, there is $\epsilon_n\to0$ (with $\sqrt{\epsilon_n}\,n\to\infty$, e.g.\ after replacing $\epsilon_n$ by $\max(\epsilon_n,n^{-1})$) such that
+\begin{equation}\label{mink}
+|Q_1|\le e^{(H-r+\epsilon_n)n},\quad|\ell_1|\le e^{(F-r+\epsilon_n)n},\quad|\ell_2|\le e^{(F+r+\epsilon_n)n},\quad|Q_1P_2-Q_2P_1|\ge e^{(H+F-\epsilon_n)n}.
+\end{equation}
+(These four inequalities, with $r=r_n\ge0$ arbitrary, are the only thing used below.)
+
+\section{The selection}
+\begin{lemma}[one step]\label{select}
+Let $0<F<H$, $0<\epsilon\le\tfrac19$, $n$ with $e^{\sqrt\epsilon n}\ge3$ and $D_n:=(H-\sqrt\epsilon-2\epsilon)n-\log2>0$, and let $(Q_i,P_i)\in\Z^2$, $\ell_i=Q_iG-P_i$, satisfy \eqref{mink} for some $r\ge0$. Then there is an integer pair $(q,p)$, an integer combination of $(Q_1,P_1),(Q_2,P_2)$, with
+\[q\ne0,\qquad \ell:=qG-p\ne0,\qquad \log|q|\ge D_n,\qquad \frac{\log|\ell|}{\log|q|}\le\frac{N_n}{D_n},\quad N_n:=(F+\sqrt\epsilon+\epsilon)n+\log\tfrac32 .\]
+\end{lemma}
+\begin{proof}
+Write $\Delta:=Q_1P_2-Q_2P_1$, so $Q_1\ell_2-Q_2\ell_1=-\Delta\ne0$; in particular $\ell_1,\ell_2$ do not both vanish. If $\log|\ell|\le0$ the ratio condition is automatic, so we only need it when $|\ell|>1$.
+
+\emph{Case C: $\ell_1=0$.} Then $Q_1\ne0$ and $\ell_2\ne0$. Take $(q,p)=(Q_2+tQ_1,\ P_2+tP_1)$ with $t\in\Z$ of the sign of $Q_1Q_2$ (or any sign if $Q_2=0$) and $|t|$ so large that $|q|\ge|t||Q_1|-|Q_2|\ge\exp\max\bigl(D_n,\ \log|\ell_2|\cdot D_n/N_n\bigr)$. Then $\ell=\ell_2\ne0$ and both conditions hold.
+
+\emph{Case B: $\ell_1\ne0$, $r>\sqrt\epsilon$.} Choose $m\in\Z$ with $0<|\ell_2-m\ell_1|\le\tfrac32|\ell_1|$ ($m=\lfloor\ell_2/\ell_1\rceil$, or $m+1$ if that gives $0$). Put $(q,p)=(Q_2-mQ_1,P_2-mP_1)$, $\ell=\ell_2-m\ell_1$. The identity $q\ell_1-Q_1\ell=-\Delta$ gives
+\[|q||\ell_1|\ \ge\ |\Delta|-|Q_1||\ell|\ \ge\ e^{(H+F-\epsilon)n}-\tfrac32e^{(H-r+\epsilon)n}e^{(F-r+\epsilon)n}=e^{(H+F-\epsilon)n}\bigl(1-\tfrac32e^{(-2r+3\epsilon)n}\bigr)\ \ge\ \tfrac12e^{(H+F-\epsilon)n},\]
+because $-2r+3\epsilon<-\sqrt\epsilon$ (as $r>\sqrt\epsilon$ and $3\epsilon\le\sqrt\epsilon$) and $e^{-\sqrt\epsilon n}\le\tfrac13$. Hence $|q|\ge e^{(H+F-\epsilon)n}/(2|\ell_1|)\ge\tfrac12e^{(H+r-2\epsilon)n}\ge\tfrac12e^{(H-2\epsilon)n}$, so $\log|q|\ge D_n$, and $|\ell|\le\tfrac32e^{(F-r+\epsilon)n}\le\tfrac32e^{(F+\epsilon)n}$, so $\log|\ell|\le N_n$.
+
+\emph{Case A: $\ell_1\ne0$, $r\le\sqrt\epsilon$.} From $|\Delta|\le|Q_1||\ell_2|+|Q_2||\ell_1|$ one of the two products is $\ge|\Delta|/2$.
+If $|Q_1||\ell_2|\ge|\Delta|/2$: then $|Q_1|\ge e^{(H+F-\epsilon)n}/(2e^{(F+r+\epsilon)n})\ge\tfrac12e^{(H-\sqrt\epsilon-2\epsilon)n}$; take $(q,p)=(Q_1,P_1)$, $\ell=\ell_1\ne0$, $|\ell_1|\le e^{(F+\epsilon)n}$.
+If $|Q_2||\ell_1|\ge|\Delta|/2$: then $|Q_2|\ge e^{(H+F-\epsilon)n}/(2e^{(F-r+\epsilon)n})\ge\tfrac12e^{(H-2\epsilon)n}$. If $\ell_2\ne0$ take $(q,p)=(Q_2,P_2)$, $|\ell_2|\le e^{(F+\sqrt\epsilon+\epsilon)n}$. If $\ell_2=0$ take $(q,p)=(Q_2+sQ_1,P_2+sP_1)$ with $s=\pm1$ chosen so that $|Q_2+sQ_1|\ge|Q_2|$; then $\ell=s\ell_1\ne0$ and $|\ell|\le e^{(F+\epsilon)n}$.
+In all sub-cases $\log|q|\ge D_n$ and $\log|\ell|\le N_n$.
+\end{proof}
+
+\section{Assembly}
+\begin{theorem}\label{main}
+Let $0\le k<k^*$. There is an admissible sequence $(q_n,p_n)$ for $G$, each $(q_n,p_n)$ an integer combination of $\bigl(X_{1,n},Y_{1,n}\bigr)$ and $\bigl(X_{2,n},Y_{2,n}\bigr)$ divided by $M_n=D_{6n}^2\,2^{\lfloor kn\rfloor}$, such that
+\[\log|q_n|\ \ge\ H(k)\,n-o(n),\qquad \log|q_nG-p_n|\ \le\ F(k)\,n+o(n),\qquad F(k)=\tfrac{\log2}{2}(k^*-k),\ H(k)=D+F(k).\]
+Consequently $\delta(q,p)\ge1-F(k)/H(k)=D/(D+F(k))$, which exceeds $1-\varepsilon$ once $k^*-k<\tfrac{2\varepsilon D}{(1-\varepsilon)\log2}$; and $\delta(22)>0.99$.
+\end{theorem}
+\begin{proof}
+For each large $n$ apply Lemma~\ref{select} with $H=H(k)$, $F=F(k)>0$, $\epsilon=\epsilon_n$ from \eqref{mink}; the hypotheses $e^{\sqrt{\epsilon_n}n}\ge3$ and $D_n>0$ hold for large $n$ since $\sqrt{\epsilon_n}n\to\infty$ and $\epsilon_n\to0$. The output $(q_n,p_n)$ lies in $\Gamma'_n\subset\Gamma_n$, hence is of the stated form, with $q_n\ne0$, $q_nG-p_n\ne0$, $\log|q_n|\ge D_n\to\infty$ (so $|q_n|\to\infty$: admissible), and $\log|q_nG-p_n|\le\max(0,N_n)$. Since $D_n=(H-o(1))n$ and $N_n=(F+o(1))n$, the rates follow, and $\limsup\log|q_nG-p_n|/\log|q_n|\le\limsup N_n/D_n=F/H$ gives $\delta\ge1-F/H$. The numerical values: $E_Z+E_N-12=15.4928$, $k^*=22.3513$, $D=14.9616$, $F(22)=0.12176$, $\delta(22)=0.99193$.
+\end{proof}
+
+\section{What the theorem does not say, and why $k^*$ is where it stops}
+\begin{remark}[the ceiling]
+For $k>k^*$ one has $F(k)<0$, and \eqref{mink} still produces, for each $n$, a lattice vector $b_1$ with $|q|\le e^{(H-r)n}$ and $|qG-p|\le e^{(F-r)n}\to0$. If its form were nonzero for infinitely many $n$, $G$ would be irrational. But now $UV=2\cD_n$ with $V<1$, the box has area comparable to the covolume, and the selection degenerates to Dirichlet's theorem: nothing prevents $b_1$ from being the \emph{kernel vector}: for every rational $G=a/b$ the lattice $\Gamma'_n$ contains a pair $(q,p)\propto(b,a)$ (explicitly $(q,p)=\pm(h_n/T_n)(b,a)$ with $h_n$ the cross determinant, cf.\ \texttt{P2\_STRUCTURE.md}), whose form is $0$. Lemma~\ref{select} uses $F>0$ precisely to rule this out (in Case C the kernel vector is harmless only because $F>0$ lets us inflate $q$). The hypothesis $F>0$ is the Lean hypothesis \texttt{hF}, unsatisfiable for $k\ge k^*$. Replacing the lattice's first minimum by its first minimum \emph{in the positive cone} (both rows' forms have known sign) would restore nonvanishing; that this loses only $e^{o(n)}$ is Lemma~P2 of the companion paper, which is equivalent to $G\notin\Q$ and, by the continued-fraction analysis of \texttt{P2\_STRUCTURE.md}, amounts to the parity of a convergent index whose determination costs $14.4$ nats of $G$ per unit $n$.
+\end{remark}
+\begin{remark}[rational control]
+The construction never uses more than $\sim n$ digits of $G$: replacing $G$ by $G^*=\operatorname{bestappr}(G,10^{320})$ reproduces every table to $n\approx100$. This is consistent with \S1: a worthiness $<1$ cannot distinguish $G$ from a rational number.
+\end{remark}
+\begin{remark}[where the $2$-adic input acts]
+Without \eqref{cross} one could only take $k=0$ (modulus $S_n$ alone), giving $F(0)=\tfrac{\log2}2k^*=7.75$ and $\delta(0)=0.659$. The package \eqref{cross} is what lets the modulus absorb $2^{kn}$ up to $k^*=22.35<24$; the $24n$ is not used in full because the archimedean rates, not the $2$-adic divisibility, set $k^*$. The earlier construction of \cite{Lean} pairing Zudilin's row with Zagier's modular row $\mathbf E$ gives $\delta=0.857914$ by the same argument with $(A_E,E_E)=(12+18\log2,12+12\log2)$ and $k=24$.
+\end{remark}
+
+\subsection*{Provenance} The theorem and every step above are formalised in \cite{Lean} (\texttt{NearCriticalAssembly.lean}, \texttt{GeometrySelection.lean}, \texttt{TwoRow.lean}); Lemma~\ref{index} replaces the project's explicit ``thinned basis'' by an index argument. The $2$-adic package \eqref{cross} is the only input not reproved here.
+
+\begin{thebibliography}{9}
+\bibitem{Lean} \emph{lean-catalan-worthiness}, Lean~4/Mathlib formalisation (Aristotle/Harmonic and the authors), 2026; exported theorem \texttt{Catalan.catalan\_worthiness\_one\_sub\_eps\_nesterenko}.
+\bibitem{Nes} Yu.~V.~Nesterenko, \emph{On Catalan's constant}, Proc. Steklov Inst. Math. 292 (2016), 153--170.
+\bibitem{Zud} W.~Zudilin, \emph{An Ap\'ery-like difference equation for Catalan's constant}, Electron. J. Combin. 10 (2003), \#R14.
+\end{thebibliography}
+\end{document}
