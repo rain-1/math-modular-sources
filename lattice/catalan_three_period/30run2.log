@@ -1,0 +1,41 @@
+== closed forms verified against q-expansions ==
+   lambda/q  -> (15.9999991664 + 0.0j)  (limit 16)
+   lambda/q  -> (15.9999999984 + 0.0j)  (limit 16)
+   h_{Gamma_0(2)}/q -> (-256.000040012 + 0.0j)  (limit -256 = -64*4)
+   h_{Gamma_0(2)}/q -> (-256.000000075 + 0.0j)  (limit -256 = -64*4)
+
+tau(b;e) = 16603/3920 = 4.235459184
+
+== level 8 (Zagier E), s = 1/4, sigma(x) = x/(4x-1), y = 4x^2/(4x-1) ==
+   Sigma_x = {0, 1/8, 1/4, oo}   (verified, 30_level16_involution.gp [2])
+   fixed points of sigma: 0 (cusp) and 2s = 1/2 (NOT a cusp -> free point)
+   Sigma_y = {0, -1/8, oo} punctures + CONE-2 at y = 4s = 1
+   ceiling (fold image -1/8 dropped) = 64*|1| = 64.0  log = 4.158883083
+   entry at the ceiling = -0.07657610031
+
+== level 16, s = -1/4, sigma(x) = -x/(4x+1), y = 4x^2/(4x+1) ==
+   Sigma_x = {0, -1/4, -1/2, (-1+-i)/4, oo}  (verified)
+   sigma is induced by tau -> tau+1/2 (verified); fixed points 0 and 2s = -1/2,
+   BOTH cusps  =>  the quotient carries NO cone point.
+   Sigma_y = {0, -1/2, -1, oo}, all punctures; fold at y = oo,
+             extra (outer pair) at y = -1/2, cusp x=2s at y = -1.
+   drop the fold image y=oo        -> P^1-{0,-1/2,-1}       r = 16.0  log = 2.7725887  entry = -1.4628705
+   drop the extra image y=-1/2     -> P^1-{0,-1,oo}         r = 16.0  log = 2.7725887  entry = -1.4628705
+   drop y=-1 (image of cusp x=2s)  -> P^1-{0,-1/2,oo}       r = 8.0  log = 2.0794415  entry = -2.1560176
+   drop nothing: P^1-{0,-1/2,-1,oo} = Y_0(8), y = 4q^2+...  r = 4.0  log = 1.3862944  entry = -2.8491648
+
+   => under EITHER admissible choice of the single point phi may hit
+      (the fold y=oo, or the extra point y=-1/2) the ceiling is exactly 16.
+      The value 64 = 256|s| requires dropping BOTH y=-1/2 AND y=-1, i.e.
+      pretending x=-1/2 is not a cusp.  It is one.
+
+== consequences for CATALAN_THREE_PERIOD.md Sec 5 ==
+   ceiling: log 64 = 4.1588831  ->  log 16 = 2.7725887   (Delta = -1.3862944 = -log 4)
+   archimedean entry at the ceiling: -0.076576 -> -1.4628705
+   transported-contour entry: -0.53985042 -> -1.9261448
+   margins shift by m*Delta (BC held at the transported 11.845+log(1/4)):
+     previous 7 pure + 7 conditional    m=14   P1   -7.966 ->  -27.3741    P2  -22.423 ->  -41.8311
+     previous + 1 doubly-small          m=15   P1   -7.551 ->  -28.3454    P2  -22.431 ->  -43.2254
+     (a)/(b) full: 7 pure + 3 orbits    m=28   P1   -6.316 ->  -45.1322    P2  -23.942 ->  -62.7582
+     best containing a conditional fn   m=15   P1   -2.006 ->  -22.8004    P2   -5.795 ->  -26.5894
+     best unconditional                 m=14   P1   -0.737 ->  -20.1451    P2   -0.737 ->  -20.1451

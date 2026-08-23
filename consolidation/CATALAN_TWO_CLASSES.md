@@ -227,6 +227,14 @@ it does not fix $0$, it glues the base point to the cusp $x=\infty$.)
 $$\textbf{ceiling}\quad |\varphi'(0)|\le256|s|=64,\qquad \log=4.158883$$
 — numerically **identical to the level-8 host**, because $|s|=1/4$ in both.
 
+> **Superseded (2026-08-23).**  $256|s|$ presupposes that $x=2s$ is a *free* point;
+> here $x=-\tfrac12$ is a **cusp** of $\Gamma_0(16)$ (indeed $\sigma$ is induced by
+> $\tau\mapsto\tau+\tfrac12$ and $\langle\Gamma_0(16),T^{1/2}\rangle\cong\Gamma_0(8)$
+> is torsion-free), so $y=-1$ is a puncture and not a $\mathbf Z/2$ branch point: the
+> quotient carries **no cone point** and the ceiling is $16$, $\log=2.772589$, entry
+> $-1.462870$.  See `CATALAN_AL_HOSTS.md` §6.2 and the 2026-08-23 appendix of
+> `CATALAN_THREE_PERIOD.md` (`lattice/catalan_three_period/30_*`).
+
 ### 5.2 The inversion of roles
 
 CDT symmetrise about the *outer* singularity $s=1/\lambda_2$ and the fold becomes
