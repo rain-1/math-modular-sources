@@ -49,6 +49,10 @@ Each item negates one hypothesis above.
   two places convert at a fixed rate $\tfrac12$ — so the $2$-adic place is not a hidden
   resource, and $\zeta_2(2)$ shows no algebraicity, so Ridout/$p$-adic Roth do not apply.
 
+### The dichotomy (added 2026-08-24, `SOL_NOTES_DIGEST.md`, `EMN_VERIFICATION.md`)
+
+On every Catalan host constructed to date, *either* the conformal size is too small for the Hodge depth (the width law — all modular, cyclotomic and cellular hosts, including the golden-host cellular row of Sol's N2, which negates (2.2)'s $|t_2|\le\tfrac14$ with $|t_2|=\varphi^5/16=0.693$ but pays $k=4$), *or* $G$ is a regular value and there is no fold at all (the EMN moving period, entry $+0.096$, (E5)). A proof by these methods needs a host with $G$ as an Apéry limit **at a fold** and $|t_2|=O(1)$ at Hodge depth $2$ — no such host is known, and the classification says none exists in the modular rank-2 world.
+
 ## 4. One sentence
 
 *On every known host the Catalan class has the wrong conformal size for its Hodge depth by a motivic invariant ($|t_2|\le\tfrac14$), and the $p$-adic places cannot compensate because the hypothesis $G\in\mathbb Q$ is false at $p=2$; a holonomy proof therefore needs a host with an irrational second singularity — which means a mixed class on an Atkin–Lehner quotient, or a different motive — and a lattice proof needs P2′.*

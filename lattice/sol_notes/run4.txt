@@ -1,0 +1,39 @@
+== S5. [t^n] 2F1(1/4,3/4;1;t) = (1/4)_n(3/4)_n/(n!)^2  vs  C(4n,2n)C(2n,n)/64^n
+  n=0  pochhammer=1  binomial form=1  equal=1
+  n=1  pochhammer=3/16  binomial form=3/16  equal=1
+  n=2  pochhammer=105/1024  binomial form=105/1024  equal=1
+  n=3  pochhammer=1155/16384  binomial form=1155/16384  equal=1
+  n=4  pochhammer=225225/4194304  binomial form=225225/4194304  equal=1
+  n=5  pochhammer=2909907/67108864  binomial form=2909907/67108864  equal=1
+  n=6  pochhammer=156165009/4294967296  binomial form=156165009/4294967296  equal=1
+  n=7  pochhammer=2151252675/68719476736  binomial form=2151252675/68719476736  equal=1
+  n=8  pochhammer=1933976154825/70368744177664  binomial form=1933976154825/70368744177664  equal=1
+  n=9  pochhammer=27577067392875/1125899906842624  binomial form=27577067392875/1125899906842624  equal=1
+  n=10  pochhammer=1591748329916745/72057594037927936  binomial form=1591748329916745/72057594037927936  equal=1
+  n=11  pochhammer=23192167815233235/1152921504606846976  binomial form=23192167815233235/1152921504606846976  equal=1
+  n=12  pochhammer=5450159436579810225/295147905179352825856  binomial form=5450159436579810225/295147905179352825856  equal=1
+
+== S2. symmetric-square ODE applied to Y=F^2:
+  L(Y) = O(t^40)
+  (zero up to the series truncation order means VERIFIED)
+
+== S6. coefficients of D(64x) and their exact denominators
+  n | c_n = C(4n,2n)C(2n,n)*4*sum(1/(4k+1)-1/(4k+3)) | den(c_n) | d_n=lcm(1..n) | d_n*c_n integral? | min k with den | lcm(1..k)
+  n=1 den=1  d_n=1  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 1   k/n=1.0000000000000000000000000000000000000
+  n=2 den=1  d_n=2  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 1   k/n=0.50000000000000000000000000000000000000
+  n=3 den=3  d_n=6  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 3   k/n=1.0000000000000000000000000000000000000
+  n=4 den=1  d_n=12  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 1   k/n=0.25000000000000000000000000000000000000
+  n=5 den=5  d_n=60  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 5   k/n=1.0000000000000000000000000000000000000
+  n=6 den=15  d_n=60  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 5   k/n=0.83333333333333333333333333333333333333
+  n=7 den=7  d_n=420  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 7   k/n=1.0000000000000000000000000000000000000
+  n=8 den=7  d_n=840  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 7   k/n=0.87500000000000000000000000000000000000
+  n=9 den=9  d_n=2520  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 9   k/n=1.0000000000000000000000000000000000000
+  n=10 den=15  d_n=2520  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 5   k/n=0.50000000000000000000000000000000000000
+  n=11 den=165  d_n=27720  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 11   k/n=1.0000000000000000000000000000000000000
+  n=12 den=33  d_n=27720  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 11   k/n=0.91666666666666666666666666666666666667
+  n=15 den=1365  d_n=360360  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 13   k/n=0.86666666666666666666666666666666666667
+  n=20 den=969  d_n=232792560  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 19   k/n=0.95000000000000000000000000000000000000
+  n=25 den=575  d_n=26771144400  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 25   k/n=1.0000000000000000000000000000000000000
+  n=30 den=6525  d_n=2329089562800  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 29   k/n=0.96666666666666666666666666666666666667
+  n=35 den=5883955  d_n=144403552893600  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 31   k/n=0.88571428571428571428571428571428571429
+  n=40 den=2405  d_n=5342931457063200  d_n*c_n in Z? 1   min k: lcm(1..k)^1 kills den = 37   k/n=0.92500000000000000000000000000000000000
