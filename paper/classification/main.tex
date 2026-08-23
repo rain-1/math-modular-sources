@@ -1,0 +1,1893 @@
+% !TeX program = pdflatex
+% Integral second-order Apery-like recurrences and rational elliptic surfaces.
+% Self-contained; builds with pdflatex; bibliography inline.
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[margin=0.95in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength{\emergencystretch}{3em}
+
+% Modest vertical tightening (amsart 11pt is generous by default).
+\setlength{\abovedisplayskip}{5pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{5pt plus 2pt minus 2pt}
+\setlength{\abovedisplayshortskip}{3pt plus 2pt}
+\setlength{\belowdisplayshortskip}{3pt plus 2pt}
+\makeatletter
+\def\thm@space@setup{\thm@preskip=5pt \thm@postskip=5pt}
+\makeatother
+
+% Named main theorems: A (conditional classification), B (unconditional
+% necessary conditions), C (the scan).
+\theoremstyle{plain}
+\newtheorem{namedthm}{Theorem}
+\renewcommand{\thenamedthm}{\Alph{namedthm}}
+\newtheorem{namedcor}[namedthm]{Corollary}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\HH}{\mathbb{H}}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\lc}{lc}
+\DeclareMathOperator{\Res}{Res}
+\newcommand{\tht}{\theta_t}
+\newcommand{\thq}{\theta_q}
+
+% ---------------------------------------------------------------------------
+% Evidence-class markers.  These are load-bearing and are never upgraded.
+% ---------------------------------------------------------------------------
+\newcommand{\Proved}{\textup{\textsf{[PROVED]}}}
+\newcommand{\VerifiedR}[1]{\textup{\textsf{[VERIFIED: #1]}}}
+\newcommand{\Numerical}[1]{\textup{\textsf{[NUMERICAL: #1]}}}
+\newcommand{\Open}{\textup{\textsf{[OPEN]}}}
+
+\begin{document}
+
+\title[Integral second-order rows and elliptic surfaces]
+      {Integral second-order Ap\'ery-like recurrences\\ and rational elliptic surfaces}
+\author{Claude (Fable), with River}
+\date{\today}
+
+\begin{abstract}
+We study the integral solutions of three-term recurrences
+$(n+1)^2u_{n+1}=P(n)u_n-Q(n)u_{n-1}$, $\deg P,\deg Q\le2$, in two tiers.
+\emph{Theorem A} is a conditional classification and is proved: if the
+Picard--Fuchs operator of such a row is that of an elliptic surface over
+$\PP^1_t$, then for the Zagier shape $(an^2+an+b,\;cn^2)$ all four singular
+fibres are semistable, $\deg\mathcal J=12$ exactly --- by Riemann--Hurwitz
+together with a twist-parity constraint $12\mid\deg\mathcal J$ --- and the
+configuration is, up to quadratic twist, one of Beauville's six; no hypothesis on
+the Kodaira dimension is needed, since a twist raises $\chi$ (two branch points
+give a $K3$) without changing $\mathcal J$, the local system, or the row. The row
+is the period expansion at a cusp in the integral coordinate, and the complete
+list of cusp placements is Zagier's seven rows
+$\mathbf A$--$\mathbf G$, with $\mathbf A,\mathbf C,\mathbf F$ the three
+placements of $I_6I_3I_2I_1$ and $\mathbf E,\mathbf G$ the two of
+$I_1I_1I_2I_8$. The correspondence is Zagier's (2009, \S7) with Beauville's
+theorem; new here are the mechanism --- an exponent dictionary, Kodaira
+admissibility, a cross-ratio invariant, and a cusp-move theorem enumerating the
+placements --- and the completeness of the list. We prove the analogue for the
+root-row shape $(An^2+\tfrac A2n+B,\;C(2n-1)^2)$: there $\deg\mathcal J=6$,
+three of Herfurtner's configurations survive up to twist, and exactly two
+integral rows realise them. Riemann--Hurwitz alone does not force $\chi=1$ in
+either shape --- in the root-row case a mixed $III/III^*$ elliptic $K3$ is inside
+the bound --- and it is the twist parity, not the degree bound, that settles it.
+Beukers' row, the square root of Ap\'ery's $\zeta(3)$ recurrence, is not among
+them --- it lives on $X_0(6)/W_6$, over which the
+universal curve does not descend. \emph{Theorem B} collects the unconditional
+necessary conditions --- Kodaira admissibility of the exponent differences,
+integrality rigidity (rational characteristic roots are integers, so the
+irrationality score is $\le-k$ on every rational cusp-move orbit), and the
+Riemann--Hurwitz bound --- which exclude the square roots of Cooper's
+$s_{10},s_{18}$ and an infinite $\arctan$-Pad\'e family. The unconditional
+classification is exactly Zagier's conjecture that any integral solution has a
+modular parametrisation, i.e.\ Bombieri--Dwork in rank two with four singular
+points; we make the reduction precise and give the evidence: exhaustive scans
+($1.27\times10^6$ integrality hits over $26$ Kodaira-admissible classes;
+$3.0\times10^6$ eta-quotient pairs), two new elliptic-surface rows on
+$I_1I_7\,II\,II$ and $I_3\,III\,III\,III$ (the latter with Chowla--Selberg period
+$\operatorname{Im}\xi=-\Gamma(1/4)^4/(2^{7/2}3^{11/4}\pi)$), and the fact that
+Ap\'ery's $\zeta(2)$ row and Beukers' row are the only rows in the box with
+positive score and denominator exponent $k\ge2$.
+\end{abstract}
+
+\maketitle
+
+% ===========================================================================
+\section{Introduction}\label{sec:intro}
+% ===========================================================================
+
+\subsection*{The question}
+Fix the three-term recurrence
+\begin{equation}\label{eq:R2gen}
+(n+1)^2u_{n+1}=P(n)\,u_n-Q(n)\,u_{n-1},\qquad u_0=1,\quad u_{-1}=0,
+\end{equation}
+with $P=an^2+bn+c$ and $Q=dn^2+en+f$ in $\Q[n]$. Which choices of $(P,Q)$ give
+$u_n\in\Z$ for all $n$?
+
+The question is Ap\'ery's, in the form Zagier gave it. Ap\'ery's proof of the
+irrationality of $\zeta(2)$ runs on
+$(n+1)^2u_{n+1}=(11n^2+11n+3)u_n+n^2u_{n-1}$, whose two solutions are integral,
+respectively integral after multiplication by $\operatorname{lcm}(1,\dots,n)^2$.
+Zagier \cite{Zagier2009} searched the sub-family $P=an^2+an+b$, $Q=-cn^2$ by
+computer and found, besides degenerate and hypergeometric solutions, exactly six
+sporadic integral rows $\mathbf A,\dots,\mathbf F$ (Ap\'ery's is $\mathbf D$),
+all modular: each is the $t$-expansion of a weight-one form against a Hauptmodul
+on a genus-zero group, and the six groups are the six semistable configurations
+of Beauville \cite{Beauville1982}. Almkvist--Zudilin
+\cite{AlmkvistZudilin2006} carried out the analogous search one order up, Cooper
+\cite{Cooper2012} added $s_7,s_{10},s_{18}$, and Beukers \cite{Beukers1987}
+supplied the framework in which all of these are Eichler integrals --- and, in his
+Theorem~3, an irrationality proof for a period attached to the \emph{square root}
+of Ap\'ery's $\zeta(3)$ recurrence.
+
+Zagier's own \S7 already contains the answer to the second half of this, and it
+should be quoted before anything is claimed. He observes that Beauville's six
+stable families give Picard--Fuchs equations of the form \eqref{eq:R2gen}, that
+two of Beauville's families ($V$ and $VI$) are isogenous to two others ($II$ and
+$I$) and give the same equations, that his hypergeometric solutions \#2, \#11,
+\#14 are also on Beauville's list, and that ``each of Beauville's surfaces can
+give rise to several different Picard--Fuchs equations, depending on how one
+chooses the Hauptmodul $t(z)$ \dots\ we must put one fibre at $t=0$ and one at
+$\infty$, giving $12$ choices''. He then gives the correspondence
+\[
+\begin{array}{lcccc}
+\text{Beauville family:} & IV & I,VI & III & II,V\\
+\text{Picard--Fuchs equation:} & \mathbf A,\mathbf C,\mathbf F
+ & \mathbf B,\ \#14 & \mathbf D & \mathbf E,\mathbf G,\ \#11
+\end{array}
+\]
+and notes $t_{\mathbf C}(z)=t_{\mathbf A}(z)/(1+t_{\mathbf A}(z))$. So the fact
+that $\mathbf A,\mathbf C,\mathbf F$ are three placements on one surface, and
+that $\mathbf E,\mathbf G$ are two on another, is \emph{Zagier's}, not ours.
+
+What is not settled there is why the answer is finite, why six, and whether a
+solution can exist outside the imposed normalisation. Zagier says as much: after
+listing $12$ modular solutions he writes that a complete classification of the
+\emph{modular} solutions ``probably can be done'', that the most optimistic guess
+is that the $12$ already found are complete, and that the passage from ``modular''
+to ``all'' is the content of
+
+\begin{quote}
+\textbf{Conjecture} (Zagier \cite[p.~6]{Zagier2009}). \emph{Any integral solution
+of the differential equation \textup{(1)}, where $P(t)$ is a non-degenerate
+quadratic polynomial, has a modular parametrization.}
+\end{quote}
+
+\subsection*{What this paper does}
+We give a two-tier answer. The classification splits into a \emph{local}
+question --- which shapes of $(P,Q)$ are possible --- and a \emph{global} one ---
+which shapes actually carry an elliptic surface. Both are settled by proof,
+conditionally on the geometric hypothesis; the removal of that hypothesis is
+Zagier's conjecture, and \S\ref{sec:BD} makes the reduction precise.
+
+\begin{namedthm}[conditional classification]\label{thmA}
+\Proved{} \textup{(}given Beauville's and Herfurtner's classifications; the
+explicit lists are exact finite computations, marked as such in
+\S\ref{sec:thmA}\textup{)}.
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.6em]
+\item \emph{Zagier shape.} Let $a,b,c\in\Z$ with $c\ne0$ and $a^2\ne4c$, and let
+$u_n\in\Z$ solve $(n+1)^2u_{n+1}=(an^2+an+b)u_n-cn^2u_{n-1}$, $u_0=1$,
+$u_{-1}=0$. Suppose the local system $\ker L$ is, up to a rational gauge factor
+and a quadratic character twist, $R^1\pi_*\Q$ of an elliptic surface
+$\pi:\mathcal E\to\PP^1_t$ with non-constant $\mathcal J$. Then \emph{(a)} all
+four local exponent differences vanish, so all four singular fibres are
+semistable (up to the twist); \emph{(b)} $\deg\mathcal J\le12$ by
+Riemann--Hurwitz and $12\mid\deg\mathcal J$ by twist parity
+(Lemma~\ref{lem:twistparity}), so $\deg\mathcal J=12$ exactly and $\mathcal J$ is
+a Belyi map; the \emph{untwisted} member of the surface's quadratic-twist class
+is then semistable with $\sum e=12$, i.e.\ a \emph{rational} elliptic surface,
+and is one of Beauville's six. No hypothesis on the Kodaira dimension is
+required: a quadratic twist raises $\chi$ (two branch points give a $K3$) without
+changing $\mathcal J$, the local system, or the row; \emph{(c)} $t$ is the Hauptmodul
+normalised $t=q_h+O(q_h^2)$ at the MUM cusp and $u_n$ is its $t$-expansion
+coefficient sequence --- the row is the period expansion at a cusp in the integral
+coordinate; and \emph{(d)} the cross-ratio $\mathcal I=a^2/c$ lies in
+$\{0,3,\tfrac92,-\tfrac{49}8,\tfrac{100}9,\tfrac{289}{72},-121\}$, the
+configuration together with the choice of MUM cusp and of the cusp at $\infty$
+determines the operator and hence $b$, and the complete list of such placements
+is the seven rows $\mathbf A$--$\mathbf G$ of Table~\ref{tab:placements}: three
+placements of $I_6I_3I_2I_1$ ($\mathbf A,\mathbf C,\mathbf F$), two of
+$I_1I_1I_2I_8$ ($\mathbf E,\mathbf G$), one each of $I_1I_1I_1I_9$
+($\mathbf B$) and $I_1I_1I_5I_5$ ($\mathbf D$).
+\item \emph{Root-row shape.} Let the row be
+$(An^2+\tfrac A2n+B,\;C(2n-1)^2)$ with $A,B,C\in\Z$, integral after a $\lambda^n$
+rescaling, and make the same geometric hypothesis. Then $\rho=\tfrac12$ and
+$\delta_\infty=0$: the two finite fibres are of type $III$ or $III^*$ and the
+fibre at $\infty$ is a cusp. Riemann--Hurwitz gives $\deg\mathcal J\le6$ and
+twist parity gives $\deg\mathcal J\equiv6\pmod{12}$, so $\deg\mathcal J=6$; the
+untwisted member of the twist class has fibres $I_n,I_m,III,III$ with $n+m=6$ and
+$\sum e=12$, hence is \emph{rational}, and is one of Herfurtner's \#38
+$I_1I_5\,III\,III$, \#39 $I_2I_4\,III\,III$, \#40 $I_3I_3\,III\,III$, with
+$\mathcal I=\tfrac{484}{125},0,-12$. Riemann--Hurwitz alone does \emph{not} force
+$\chi=1$ here --- the mixed configuration $III$ at $t_1$, $III^*$ at $t_2$, $I_n$
+at $0$, $I_m^*$ at $\infty$ with $n+m=6$ has $\sum e=24$, an elliptic $K3$, and
+$\deg\mathcal J=6$ sits inside the bound --- but that configuration is the
+quadratic twist with branch set $\{t_2,\infty\}$ of the corresponding
+\#38/\#39/\#40 one, so it carries the same $\mathcal J$, the same local system and
+the same row \textup{(}\S\ref{sec:thmA}\textup{)}. Exactly two integral rows
+realise them:
+$\sqrt{\mathrm{AZ}(11,5,125)}=(88,10,500)$ on \#38 with cusp width $h=1$, and
+$\sqrt{\mathrm{AZ}(9,3,-27)}=(72,6,-108)$ on \#40 with $h=3$; the value
+$\mathcal I=0$ forces $A=0$ and yields no non-degenerate integral row. In
+particular \emph{Beukers' row} $(136,10,4)$, with $\mathcal I=1156$, satisfies the
+hypothesis for no elliptic surface: its projective monodromy is the
+Atkin--Lehner quotient $\Gamma_0(6)+6$, and over $\PP^1_t=X_0(6)/W_6$ the
+universal elliptic curve does not descend --- only its symmetric square does.
+\end{enumerate}
+\end{namedthm}
+
+Part (1) is, in substance, Zagier \S7 plus Beauville, and we claim no priority
+for the correspondence. What is new is the mechanism and the completeness: the
+exponent dictionary and the fact that Zagier's normalisation is \emph{forced} by
+semistability rather than assumed (Theorem~\ref{thm:norm}); Kodaira admissibility
+(Theorem~\ref{thm:kodaira}); the cross-ratio invariant $\mathcal I=a^2/d$ as a
+finite \emph{necessary} condition, which turns Zagier's ``$12$ choices'' into a
+finite check (Theorem~\ref{thm:finite}); a cusp-move theorem enumerating the
+placements as a group action, proving the placement list complete and showing
+that $\mathbf A,\mathbf C,\mathbf F$ carry \emph{two} distinct extension classes
+on the one surface (\S\ref{sec:cusp}); the root-row case, which is not in Zagier;
+the Riemann--Hurwitz bound removing ``rational'' from the hypothesis
+(Proposition~\ref{prop:K1}); the scans; and the non-congruence classification of
+\S\ref{sec:noncong}. Relative to Movasati--Reiter \cite{MovasatiReiter}, who list
+the Heun equations attached to Herfurtner's families, we add the recurrence and
+integrality side, the cross-ratio criterion, the root rows, and the scans.
+
+\begin{namedthm}[unconditional necessary conditions]\label{thmB}
+\Proved{} Let \eqref{eq:R2gen} be integral with $d\ne0$, $a^2\ne4d$ and
+$Q(n)\ne0$ for $n\ge1$. Then, with no geometric hypothesis:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.6em]
+\item \emph{(normalisation)} if $a^2-4d\notin\Q^{\times2}$ then the two movable
+exponents agree, $\rho_1=\rho_2=\rho$, and $b=(1-\rho)a$, $e=-2\rho d$;
+\item \emph{(Kodaira admissibility)} if $\ker L$ is, up to rational gauge and
+quadratic twist, that of an elliptic surface, then every local exponent
+difference lies in $\{0,\tfrac12,\tfrac13,\tfrac23\}\bmod1$; contrapositively,
+any row violating this comes from no elliptic surface, in any gauge;
+\item \emph{(integrality rigidity)} $\lambda_1,\lambda_2$ are algebraic integers,
+so $\lambda_1\in\Q$ iff $\lambda_1,\lambda_2\in\Z$ iff $a^2-4d$ is a square; in
+that case all three gaps $|\lambda_1|,|\lambda_2|,|\lambda_1-\lambda_2|$ are
+positive integers and hence $|\lambda_2|\ge1$ at \emph{every} cusp placement, so
+$\operatorname{score}=\log(1/|\lambda_2|)-k\le-k\le-1$ throughout the rational
+orbit. Consequently a positive-score row has irrational characteristic roots;
+\item \emph{(Riemann--Hurwitz)} for any elliptic surface of any Kodaira dimension
+whose four singular fibres sit over the row's singular points,
+$\deg\mathcal J\le6c+4e_3+3e_2-12\le12$, where $c,e_2,e_3$ count the points whose
+projective local monodromy is unipotent, of order $2$, of order $3$.
+\end{enumerate}
+\end{namedthm}
+
+\begin{namedcor}\label{corB}
+\Proved{} The $\Sym^1$ square roots of Cooper's $s_{10}$ and $s_{18}$
+\textup{(}$\delta_\infty=\tfrac14$\textup{)} and the infinite family
+$(\alpha,-\tfrac\alpha6,-\tfrac\alpha3,-27,63,-30)$, integral exactly for
+$\alpha\equiv18\pmod{36}$ \textup{(}$\rho=\tfrac76\equiv\tfrac16$\textup{)}, are
+not Picard--Fuchs systems of any elliptic surface, in any gauge. The second
+family has unbounded positive score and Ap\'ery limit
+$-\tfrac1{2\sqrt3}\arctan\tfrac{6\sqrt3}\alpha$: it is Pad\'e approximation, not
+geometry.
+\end{namedcor}
+
+The third tier is computational and stands in for the missing converse.
+
+\begin{namedthm}[the scans]\label{thmC}
+\VerifiedR{boxes as stated} An exhaustive integrality scan of
+all $26$ Kodaira-admissible normalisation classes over $1\le A\le3000$,
+$|B|\le150$, $|C|\le\min(4000,12000/M^2)$ --- $1\,270\,065$ hits, integrality
+prime-tested to $n=30$ and re-verified exactly to $n=300$ --- returns $28$
+primitive, Casoratian-non-degenerate rows in the rigid classes, of which exactly
+ten have an elliptic-surface local system (Zagier's six, the two root rows of
+Theorem~\ref{thmA}(2), and two new rows on $I_1I_7\,II\,II$ with monodromy
+$\Gamma_0(7)$ and on $I_3\,III\,III\,III$); in the family classes the integral
+rows form infinite families; and the only rows anywhere in the scan with positive
+score and $k\ge2$ are Ap\'ery's $\zeta(2)$ row $(+0.40606)$ and Beukers' row
+$(+0.13920)$. An independent modular scan of $3\,036\,854$ eta-quotient pairs
+$(t,F)$ on $\Gamma_0(N)$, $N\le60$, produces exactly two classes with
+$|\lambda_2|<1$: Beukers' and the level-$8$ $T$ row.
+\end{namedthm}
+
+\noindent
+See Theorem~\ref{thm:herfclass} and Corollary~\ref{cor:H6} for the details.
+
+Two further structural results are used throughout and stated in full below: the
+cusp-move theorem (Theorem~\ref{thm:move}), which makes ``which fibre sits at
+$\infty$'' into a group action and supplies Theorem~\ref{thmB}(iii); and the
+host-group theorem (Theorem~\ref{thm:N2}), by which a three-term row forces its
+host to have exactly four special points, hence covolume index $\le12$, so that
+inside $\PSL_2(\Z)$ there are exactly $28$ candidate groups, $16$ congruence and
+$12$ non-congruence --- with Beauville's six recovered as the four-cusp case.
+Beukers' Theorem~3 row is the unique positive-score row whose form is
+non-congruence.
+
+\subsection*{The honest statement}
+Theorem~\ref{thmA} classifies the rows whose operator is \emph{assumed} to be of
+geometric origin. An unconditional classification --- ``every integral solution is
+on the list'' --- needs the converse, and the converse is exactly Zagier's
+conjecture: it is the rank-two, four-singular-point case of the Bombieri--Dwork
+conjecture that a globally nilpotent operator comes from geometry. One direction
+of the reduction is proved here: by Theorem~\ref{thm:N2} a modular
+parametrisation of a three-term row forces four special points, hence one of $28$
+genus-zero groups, hence (with Theorems~\ref{thmA} and \ref{thm:N3}) the list. So
+\emph{Zagier's conjecture for this class is equivalent to the statement that the
+projective monodromy group of an integral three-term row is commensurable with
+$\PSL_2(\Z)$} (Proposition~\ref{prop:reduction}). That statement is not
+accessible by rigidity --- rank two with four singular points is not rigid in
+Katz's sense, the accessory parameter being the modulus --- nor by the naive
+implication ``globally nilpotent $\Rightarrow$ hypergeometric pullback'', for
+which Krammer's Lam\'e example \cite{Krammer1996,MovasatiReiter} is the standing
+warning; the best partial result we know is Beukers' $p$-adic analysis of Dwork's
+accessory parameter problem in exactly this configuration \cite{Beukers2002},
+which does not close it. \S\ref{sec:BD} gives the evidence in place of a proof.
+\Open{}
+
+\subsection*{Status discipline}
+Every statement carries its evidence class: \Proved{} (a proof or proof sketch is
+given), \VerifiedR{$R$} (an exact finite computation over the stated range $R$ ---
+not a proof, and never silently upgraded), \Numerical{$D$} (a floating-point or
+$p$-adic measurement to $D$ digits), \Open{}. \S\ref{sec:repro} names the source
+documents and scripts for every computation.
+
+% ===========================================================================
+\section{The exponents of a second-order row}\label{sec:exps}
+% ===========================================================================
+
+Let $\tht=t\,d/dt$. Substituting $y=\sum_{n\ge0}u_nt^n$ into \eqref{eq:R2gen}
+gives the Picard--Fuchs operator
+\begin{equation}\label{eq:Lgen}
+L=\tht^2-t\,P(\tht)+t^2Q(\tht+1)
+ =t^2R(t)\,\partial_t^2+t\,S(t)\,\partial_t+\bigl(-ct+(d{+}e{+}f)t^2\bigr),
+\end{equation}
+with
+\[
+R(t)=1-at+dt^2,\qquad S(t)=1-(a+b)t+(3d+e)t^2 .
+\]
+The characteristic roots of the recurrence are $\lambda_i=1/t_i$, the roots of
+$\lambda^2-a\lambda+d$, where $t_1,t_2$ are the roots of $R$.
+
+\begin{lemma}[exponent dictionary]\label{lem:exps}
+\Proved{} Assume $d\neq0$ and $a^2\neq4d$, so that $L$ has exactly four singular
+points $0,t_1,t_2,\infty$. Put $T(t):=S(t)-tR'(t)=1-bt+(d+e)t^2$. Then the local
+exponents are
+\[
+(0,0)\ \text{at }t=0;\qquad
+\Bigl(0,\ \rho_i=-\tfrac{T(t_i)}{t_iR'(t_i)}\Bigr)\ \text{at }t=t_i;\qquad
+(1-r_1,\,1-r_2)\ \text{at }t=\infty,
+\]
+$r_1,r_2$ being the roots of $Q$; and $\rho_1+\rho_2=r_1+r_2=-e/d$
+\textup{(}Fuchs\textup{)}. The point $t=0$ is a MUM point: the exponents are
+equal and the second solution is logarithmic.
+\end{lemma}
+
+\begin{proof}
+Expanding \eqref{eq:Lgen} gives the displayed $\partial_t$-form. At a simple zero
+$t_i$ of $R$ the indicial polynomial is
+$\rho\bigl[(\rho-1)t_iR'(t_i)+S(t_i)\bigr]$, whence the exponents $0$ and
+$1-S(t_i)/(t_iR'(t_i))=-T(t_i)/(t_iR'(t_i))$. At $\infty$, $y\sim t^{\mu}$
+forces $Q(\mu+1)=0$, so the exponents in $s=1/t$ are $-\mu=1-r_i$. The sum of the
+six exponents is $2$, as it must be for a rank-two Fuchsian operator with four
+singular points on $\PP^1$, and equals $\rho_1+\rho_2+2-(r_1+r_2)$.
+\end{proof}
+
+We write $\delta_\infty:=r_2-r_1$ for the exponent difference at $\infty$.
+
+\begin{theorem}[normalisation classes]\label{thm:norm}
+\Proved{} With the hypotheses of Lemma~\ref{lem:exps}, $\rho_1=\rho_2=\rho$ if
+and only if
+\begin{equation}\label{eq:normclass}
+b=(1-\rho)a\qquad\text{and}\qquad e=-2\rho d .
+\end{equation}
+Writing $Q(n)=C(Mn-j_1)(Mn-j_2)$, so that $r_i=j_i/M$, this reads
+\[
+\rho=\frac{j_1+j_2}{2M},\qquad
+\delta_\infty=\frac{j_2-j_1}{M},\qquad
+P(n)=A\Bigl(n^2+\frac{2M-j_1-j_2}{2M}\,n\Bigr)+B ,
+\]
+with $A=a$, $B=c=u_1$ the accessory parameter and $D=CM^2=d$.
+\end{theorem}
+
+\begin{proof}
+$\rho_1=\rho_2=\rho$ says $T(t_i)+\rho\,t_iR'(t_i)=0$ for $i=1,2$, i.e.\
+$R\mid T+\rho tR'$. Both are quadratics with constant term $1$, so they are
+equal; comparing coefficients gives $b+\rho a=a$ and $e+2\rho d=0$.
+\end{proof}
+
+Modulo the scaling $t\mapsto t/\mu$, $u_n\mapsto\mu^nu_n$ (which sends
+$(a,b,c,d,e,f)\mapsto(\mu a,\mu b,\mu c,\mu^2d,\mu^2e,\mu^2f)$), a normalisation
+class is fixed by the pair $(\rho,\delta_\infty)$; inside it the free parameters
+are $A$, the leading coefficient $C$ of $Q$, and the accessory parameter
+$B=u_1$. A rank-two Fuchsian equation with four singular points has exactly one
+accessory parameter, and this is it.
+
+Two special cases recover the two normalisations that occur in the literature.
+
+\begin{itemize}[leftmargin=1.6em]
+\item $\rho=0$ and $\delta_\infty=0$ give $b=a$, $e=f=0$: \emph{Zagier's shape}
+$(an^2+an+c,\ dn^2)$. Geometrically $\rho=0$ says both movable fibres are
+semistable and $\delta_\infty=0$ says the fibre at $\infty$ is too. So Zagier's
+normalisation is not a choice: it is the statement that all four fibres are
+semistable.
+\item $\rho=\tfrac12$ and $\delta_\infty=0$ give $b=\tfrac a2$ and
+$Q=C(2n-1)^2$: the \emph{root-row shape}, observed empirically for all nine
+$\Sym^1$ square roots of the third-order sporadic families. Geometrically the two
+movable fibres have order-two monodromy ($III$ or $III^*$) and the fibre at
+$\infty$ has half-integral exponents ($I_m^*$).
+\end{itemize}
+
+\subsection{Kodaira admissibility}
+
+\begin{theorem}\label{thm:kodaira}
+\Proved{} Suppose the local system $\ker L$ is, up to a rational gauge factor and
+a quadratic character twist, $R^1\pi_*\Q$ of an elliptic surface
+$\pi:\mathcal E\to\PP^1_t$. Then
+\[
+\rho_1,\ \rho_2,\ \delta_\infty\ \in\ \{0,\tfrac12,\tfrac13,\tfrac23\}\pmod 1 .
+\]
+\end{theorem}
+
+\begin{proof}
+A rational gauge factor shifts exponents by integers, a quadratic twist by
+half-integers, at each singular point; neither changes an exponent
+\emph{difference} mod $1$. The exponent difference at a point is
+$\tfrac1{2\pi i}\log$ of the ratio of the eigenvalues of the local monodromy, and
+Kodaira's list \cite{Kodaira1963} gives the eigenvalue pairs $(1,1)$ for $I_n$,
+$(-1,-1)$ for $I_n^*$, $(\pm i)$ for $III,III^*$, $(e^{\pm2\pi i/3})$ for
+$IV,IV^*$ and $(e^{\pm\pi i/3})$ for $II,II^*$; the ratios are
+$1,\,1,\,-1,\,e^{\mp4\pi i/3},\,e^{\mp2\pi i/3}$, i.e.\ differences
+$0,0,\tfrac12,\tfrac13,\tfrac23$ mod $1$.
+\end{proof}
+
+The three admissible values are exactly the three kinds of point of a Fuchsian
+group commensurable with $\PSL_2(\Z)$: a cusp, an elliptic point of order two,
+an elliptic point of order three. The MUM point is always a cusp.
+
+\begin{corollary}\label{cor:excluded}
+\Proved{} The following are \emph{not} Picard--Fuchs systems of an elliptic
+surface, in any gauge:
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.4em]
+\item the $\Sym^1$ square roots of Cooper's $s_{10}$ and $s_{18}$, whose trailing
+coefficients are $-4(8n-3)(8n-5)$ and $12(8n-3)(8n-5)$, so that
+$\delta_\infty=\tfrac14$ --- an order-eight local monodromy;
+\item the one-parameter family
+$(\alpha,-\tfrac\alpha6,-\tfrac\alpha3,-27,63,-30)$, integral exactly for
+$\alpha\equiv18\pmod{36}$, which has $\rho=\tfrac76\equiv\tfrac16$.
+\end{enumerate}
+\end{corollary}
+
+Item (b) is the sharpest available warning against reading a positive score as
+evidence of a new object: the family is
+$(n+1)^2u_{n+1}=(3n-2)\bigl[\tfrac\alpha6(2n+1)u_n+3(3n-5)u_{n-1}\bigr]$ with
+$\lambda_1\lambda_2=-27$ and score $\approx\log(\alpha/27)-2\to\infty$, its member
+$\alpha=234$ scoring $+0.15998$, above Beukers' row; and its Ap\'ery limit is
+$-\tfrac1{2\sqrt3}\arctan\tfrac{6\sqrt3}\alpha$
+\Numerical{193 digits, $\alpha=18,54,90,126,234,306,558,846$}, the $\arctan$
+analogue of the classical Legendre--Pad\'e $\log$ family. Pad\'e approximation,
+not geometry --- and Theorem~\ref{thm:kodaira} says so independently of the closed
+form.
+
+\begin{corollary}[Galois rigidity]\label{cor:galois}
+\Proved{} If $a^2-4d$ is not a square then $t_1,t_2$ are conjugate irrationals,
+hence $\rho_1=\rho_2$ and the two movable fibres have the same Kodaira class.
+Equivalently: a configuration whose two movable fibres differ in class requires
+$a^2-4d\in\Q^{\times2}$, so $\lambda_1,\lambda_2\in\Z$, so $|\lambda_2|\ge1$ and
+the score $\log(1/|\lambda_2|)-k$ is $\le-k<0$.
+\end{corollary}
+
+\begin{proof}
+Let $\sigma$ be the nontrivial automorphism of $\Q(t_1)$. The conditions
+$T(t_i)+\rho_i t_iR'(t_i)=0$ have rational coefficients, so applying $\sigma$ to
+the condition at $t_1$ gives $T(t_2)+\rho_1t_2R'(t_2)=0$; since
+$t_2R'(t_2)\ne0$ this forces $\rho_2=\rho_1$. For the second clause,
+$\lambda_{1,2}$ are the roots of the monic integer quadratic
+$\lambda^2-a\lambda+d$, hence rational integers when the discriminant is a
+square; the only integer of absolute value $<1$ is $0$, and $\lambda_2=0$ means
+$d=0$, excluded.
+\end{proof}
+
+% ===========================================================================
+\section{Herfurtner's list and the cross-ratio invariant}\label{sec:herf}
+% ===========================================================================
+
+Herfurtner \cite{Herfurtner1991} classifies the minimal elliptic surfaces over
+$\PP^1$ with section, non-constant $\mathcal J$, and exactly four singular
+fibres. Since $e(I_0^*)=6$, two fibres in $T^-=\{I_n^*,IV^*,III^*,II^*\}$ force
+$\sum e\ge14>12$, so a \emph{rational} such surface has at most one fibre in
+$T^-$; his Table~3 lists $50$ twist classes, and ``transfer of $*$''
+($I_n\leftrightarrow I_n^*$, $II\leftrightarrow IV^*$, $III\leftrightarrow III^*$,
+$IV\leftrightarrow II^*$) gives the full list of $56$ quadruples: $38$
+\emph{rigid} (all fibres in $T^+$; the surface unique, $\mathcal J$ one of $38$
+Belyi maps --- the same list as Vidunas--Filipuk's Table~4 \cite{VidunasFilipuk}
+and Movasati--Reiter's Table~1 \cite{MovasatiReiter}) and $18$ in
+\emph{one-parameter} families. One has $\deg\mathcal J=\sum n_i$ over the $I_n$
+and $I_n^*$ fibres, and the six semistable configurations
+$I_9I_1I_1I_1$, $I_8I_2I_1I_1$, $I_6I_3I_2I_1$, $I_5I_5I_1I_1$, $I_4I_4I_2I_2$,
+$I_3I_3I_3I_3$ are Beauville's \cite{Beauville1982}, all rigid with
+$\deg\mathcal J=12$.
+
+A row imposes three conditions on a configuration: a cusp at $t=0$ (the MUM
+point); the two movable points $t_1,t_2$ carry fibres of the \emph{same} Kodaira
+class unless $a^2-4d$ is a square (Corollary~\ref{cor:galois}); and the fourth
+fibre sits at $t=\infty$. Grouping the $38$ rigid configurations by the pair
+(Kodaira class at $t_1,t_2$; class at $\infty$) gives nine normalisation
+classes. Beauville's six occupy
+(cusp,\,cusp), i.e.\ $(\rho;\delta_\infty)=(0;0)$; (cusp,\,ord\,$2$) holds
+\#23--\#26 ($I_1I_1I_7III$, $I_1I_2I_6III$, $I_1I_3I_5III$, $I_2I_3I_4III$);
+(cusp,\,ord\,$3$) holds \#19--\#22 and \#27--\#29; (ord\,$2$,\,cusp) --- the
+root-row class --- holds \#38 $I_1I_5III\,III$, \#39 $I_2I_4III\,III$, \#40
+$I_3I_3III\,III$; (ord\,$2$,\,ord\,$2$) holds only \#45 $I_3\,III\,III\,III$;
+(ord\,$2$,\,ord\,$3$) holds \#44, \#48; (ord\,$3$,\,cusp) holds \#30
+$I_1I_7II\,II$, \#31, \#32, \#36, \#37, \#43; (ord\,$3$,\,ord\,$2$) holds \#46,
+\#49; and (ord\,$3$,\,ord\,$3$) holds \#47, \#50. \Proved{} (given Herfurtner's
+table).
+
+The one-parameter families enter as follows. An $I_0^*$ fibre has trivial image
+in $\PSL_2$, so at such a point $L$ has an \emph{apparent} singularity (exponents
+$(0,m)$ with $m\in\Z_{>0}$ and no logarithm): these are the classes with
+$\rho\in\Z_{>0}$. An $I_m^*$ has half-integral exponents, hence in our
+normalisation can only sit at $\infty$, and that is precisely what $Q=C(2n-1)^2$
+does. So the root-row class $(\tfrac12;0)$ meets both the rigid block and, a
+priori, families with an $I_m^*$ at $\infty$; but
+$\sum e=I_a+3+3+(m+6)=12$ forces $a+m=0$, impossible, so in the root-row class
+only \#38, \#39, \#40 survive.
+
+\subsection{The cross-ratio invariant}
+
+\begin{definition}\label{def:crossinv}
+The row \eqref{eq:R2gen} has four singular points $0,t_1,t_2,\infty$, of which
+$0$ is the MUM cusp and $\{t_1,t_2\}$ is an unordered pair. Its
+\emph{cross-ratio invariant} is
+\[
+\mathcal I:=\frac{(1+z)^2}{z}=\frac{(\lambda_1+\lambda_2)^2}{\lambda_1\lambda_2}
+=\frac{a^2}{d},\qquad z=\frac{t_1}{t_2}=\frac{\lambda_2}{\lambda_1},
+\]
+invariant under $z\mapsto1/z$, hence under both allowed relabellings
+($t_1\leftrightarrow t_2$, and $0\leftrightarrow\infty$ when both are cusps).
+\end{definition}
+
+For a Herfurtner configuration with base points $(p_1,\dots,p_4)$ and an
+assignment $(p_0,p_\infty\mid p',p'')$ the same quantity is
+$\mathcal I=(1+z)^2/z$ with
+$z=\frac{(p'-p_0)(p''-p_\infty)}{(p'-p_\infty)(p''-p_0)}$.
+
+\begin{theorem}[finiteness]\label{thm:finite}
+\Proved{} \textup{(}given Herfurtner's table\textup{)} A row \eqref{eq:R2gen}
+with $a,d\in\Z$ is the Picard--Fuchs system of a \emph{rigid} Herfurtner
+configuration only if $\mathcal I=a^2/d$ equals the cross-ratio invariant of that
+configuration under an assignment compatible with Lemma~\ref{lem:exps}. Since
+$\mathcal I\in\Q$, every configuration whose invariant is irrational or non-real
+is excluded outright. Per class the admissible sets are finite and explicit; in
+particular
+\[
+\text{all four fibres semistable:}\quad
+\mathcal I\in\Bigl\{0,\ 3,\ \tfrac92,\ -\tfrac{49}8,\ \tfrac{100}9,\
+\tfrac{289}{72},\ -121\Bigr\},
+\]
+\[
+\text{root-row class }(\tfrac12,0):\quad
+\mathcal I\in\Bigl\{\tfrac{484}{125}\ (\#38),\ 0\ (\#39),\ -12\ (\#40)\Bigr\},
+\qquad
+(\tfrac12;\tfrac12):\ \mathcal I=3\ (\#45),
+\]
+\[
+(\tfrac13;0),(\tfrac23;0):\quad
+\mathcal I\in\Bigl\{\tfrac{169}{49},\ 0,\ -50,\ \tfrac{1681}{400},\
+-\tfrac{49}8\Bigr\}.
+\]
+\end{theorem}
+
+\begin{proof}
+$\mathcal I$ is a M\"obius invariant of the labelled quadruple, and the
+identification of $\ker L$ with the surface's local system is by a M\"obius map
+of $\PP^1_t$ matching the four singular points to the four base points, in a way
+compatible with the Kodaira classes read off from Lemma~\ref{lem:exps}. For each
+of the finitely many rigid configurations and each of the finitely many
+compatible assignments one computes $\mathcal I$ from the base points; the
+displayed lists are the outcome.
+\end{proof}
+
+The eighth semistable value is $65+\tfrac{682}{25}\sqrt5$, belonging to
+$I_5I_5I_1I_1$ with the two $I_1$'s taken as the movable pair; it is irrational,
+hence unreachable by an integer recurrence.
+
+\subsection{Zagier's six, read off the table}
+
+The six rows $\mathbf A(7,2,-8)$, $\mathbf B(9,3,27)$, $\mathbf C(10,3,9)$,
+$\mathbf D(11,3,-1)$, $\mathbf E(12,4,32)$, $\mathbf F(17,6,72)$ have
+$\mathcal I=a^2/c=-\tfrac{49}8,\,3,\,\tfrac{100}9,\,-121,\,\tfrac92,\,
+\tfrac{289}{72}$, matching \#15 $I_1I_2I_3I_6$ (three times), \#13
+$I_1I_1I_1I_9$, \#16 $I_1I_1I_5I_5$ and \#14 $I_1I_1I_2I_8$, all with MUM fibre
+$I_1$ and $\deg\mathcal J=12$ (Table~\ref{tab:placements}). The matching is
+Zagier's \cite[\S7]{Zagier2009}, obtained there by computing the $j$-invariant of
+each Beauville family as a rational function of $t$ and inverting (the
+calculations are in Verrill \cite{Verrill}); what the cross-ratio adds is that
+the match can be made, and its completeness checked, without computing $j$ at
+all. The invariant alone does not separate \#13 from \#18 (both $\mathcal I=3$)
+nor \#14 from \#17 (both $\tfrac92$); the $\mathcal J$-map test of \S\ref{sec:J}
+does, by returning the width $h$ of the MUM cusp: $h=1$ for $\mathbf B$ (so the
+MUM fibre is $I_1$, hence \#13, since \#18 $=I_3I_3I_3I_3$ has all cusps of width
+$3$) and $h=1$ for $\mathbf E$ (\#14, not \#17 whose widths are $2,2,4,4$).
+\VerifiedR{cross-ratios exact; $\mathcal J$-fits exact}
+
+The most interesting line is that \#15 occurs three times: $\mathbf A$,
+$\mathbf C$, $\mathbf F$ are three rows on the \emph{same} surface with the
+\emph{same} MUM fibre, differing only in which of $I_2,I_3,I_6$ is placed at
+$\infty$. This is Zagier's table entry ``$IV\mapsto\mathbf A,\mathbf C,\mathbf
+F$'' together with his remark
+$t_{\mathbf C}=t_{\mathbf A}/(1+t_{\mathbf A})$; \S\ref{sec:cusp} makes it an
+identity of operators with an explicit gauge, adds the second placement pair
+$\{\mathbf E,\mathbf G\}$, proves the placement list complete, and --- this part
+is not in \cite{Zagier2009} --- shows that the three rows on the one surface carry
+\emph{two} different extension classes.
+
+\subsection{Why ``six''}\label{sec:whysix}
+
+Read the classification backwards. Fix all four fibres semistable. Then
+Theorem~\ref{thm:norm} forces the shape $(an^2+an+b,\;cn^2)$;
+Herfurtner (here $=$ Beauville) gives six surfaces, of which $V$ and $VI$ are
+isogenous to $II$ and $I$ and give the same equations \cite[\S7]{Zagier2009};
+Theorem~\ref{thm:finite} converts each configuration and placement into a value
+of $a^2/c$; seven of the eight available values are rational, and each rational
+value is realised by exactly one integral row. The eighth,
+$65+\tfrac{682}{25}\sqrt5$, is irrational and therefore unreachable by an
+integer recurrence. The value $\mathcal I=0$ needs $a=0$ and gives Zagier's
+$\mathbf G$: $u_{2m}=\binom{2m}m^2$, $u_{2m+1}=0$, whose characteristic roots
+$\pm4$ have equal modulus so that there is no Ap\'ery limit --- which is exactly
+why Zagier's \emph{sporadic} list has six entries and the placement list has
+seven. Hence:
+
+\begin{quote}
+\emph{The ``six'' of Beauville--Zagier is, on the recurrence side, the number of
+rational cross-ratios in the four-cusp block of Herfurtner's table that carry a
+non-degenerate integral accessory parameter.}
+\end{quote}
+
+The two Beauville configurations that do not appear as $I$--$VI$ labels in
+Table~\ref{tab:placements} are $I_4I_4I_2I_2$ and $I_3I_3I_3I_3$; they are the
+isogenous partners $V$ and $I$ of $II$ and $VI$, their only rational invariants
+are $\mathcal I=0$ and $\mathcal I=3$, and those values are already taken by
+$\mathbf G$ and $\mathbf B$.
+
+% ===========================================================================
+\section{The functional invariant and the $K3$ question}\label{sec:J}
+% ===========================================================================
+
+The cross-ratio test is necessary but not sufficient: it uses the positions of
+the singular points and ignores the accessory parameter. A sufficient test comes
+from the nome.
+
+\begin{lemma}[the $\mathcal J$-map test]\label{lem:jtest}
+\Proved{} Let $q=t\exp(g/y_0)$ be the canonical nome of $L$ at the MUM point,
+where $y_1=y_0\log t+g$ is the second Frobenius solution. If $t$ is a Hauptmodul
+of a genus-zero group $\Gamma$ with $t=c\,q_h+O(q_h^2)$ at a cusp of width $h$,
+$q_h=e^{2\pi i\tau/h}$, then $q=c\,q_h$, hence $e^{2\pi i\tau}=(q/c)^h$.
+Therefore $\Gamma$ is conjugate into $\PSL_2(\Z)$ --- equivalently $L$ is
+projectively the Picard--Fuchs system of an elliptic surface over $\PP^1_t$ ---
+if and only if for some $h\in\Z_{>0}$ and some constant $\gamma=c^{-h}$ the
+composite $J\bigl(\gamma q(t)^h\bigr)$, with $J=q^{-1}+744+196884q+\cdots$ the
+classical modular function, is a rational function of $t$; and then
+$\deg\mathcal J=\deg J(t)$.
+\end{lemma}
+
+In practice one forms $W:=t^{h}J(\gamma q(t)^h)\in\Q[[t]]$ and solves
+$V\cdot W=t^{h}U$ with $\deg U,\deg V\le d_{\max}$ by linear algebra over $\Q$,
+checking the fit on more coefficients than were used to produce it. A
+\emph{positive} verdict is a certificate; a \emph{negative} verdict is only ``no
+fit within the stated window'', which is why the next proposition matters.
+
+\begin{proposition}[the window is never the constraint]\label{prop:K1}
+\Proved{} Let $\pi:\mathcal E\to\PP^1_t$ be a minimal elliptic surface with
+section and non-constant functional invariant $\mathcal J$, $\mu:=\deg\mathcal J$,
+whose singular fibres sit over the four singular points $0,t_1,t_2,\infty$ of the
+row's operator. Among those four points let $c$ be the number carrying an
+$I_n$ or $I_n^*$ fibre \textup{(}$n\ge1$; a cusp\textup{)}, $e_2$ the number
+carrying $III$ or $III^*$, $e_3$ the number carrying $II,IV,IV^*,II^*$. Then
+\[
+\deg\mathcal J\ \le\ 6c+4e_3+3e_2-12\ \le\ 12 ,
+\]
+with equality on the right only in the all-cusp class. This holds for a surface
+of any Kodaira dimension --- rational, $K3$, or higher.
+\end{proposition}
+
+\begin{proof}
+By Kodaira's dictionary for the functional invariant (see Miranda
+\cite{MirandaBook}, ch.~IV): $\mathcal J^{-1}(\infty)$ is exactly the set of
+$I_n/I_n^*$ fibres, with ramification index $n$, so
+$\#\mathcal J^{-1}(\infty)=c$ and $\sum_{\mathcal J(P)=\infty}(e_P-1)=\mu-c$;
+over $j=0$ the ramification index is divisible by $3$ except at fibres of type
+$II,IV,IV^*,II^*$, so at most $e_3$ preimages have $e_P<3$ and
+$\sum_{\mathcal J(P)=0}(e_P-1)\ge\tfrac23(\mu-e_3)$; over $j=1728$ the index is
+even except at $III,III^*$, giving
+$\sum_{\mathcal J(P)=1728}(e_P-1)\ge\tfrac12(\mu-e_2)$. Riemann--Hurwitz for
+$\mathcal J:\PP^1\to\PP^1$ gives
+\[
+2\mu-2=\sum_P(e_P-1)\ \ge\ (\mu-c)+\tfrac23(\mu-e_3)+\tfrac12(\mu-e_2)
+=\tfrac{13}6\mu-c-\tfrac23e_3-\tfrac12e_2 ,
+\]
+i.e.\ $\tfrac16\mu\le c+\tfrac23e_3+\tfrac12e_2-2$, which is the bound. Any
+further ramification only strengthens it. Maximising $6c+4e_3+3e_2-12$ subject to
+$c+e_2+e_3\le4$ gives $12$, attained only at $c=4$. Fibres of type $I_0^*$ have
+trivial image in $\PSL_2$, are invisible to $L$, and change nothing.
+\end{proof}
+
+This is the genus formula $g=1+\tfrac\mu{12}-\tfrac{e_2}4-\tfrac{e_3}3-\tfrac c2$
+for a genus-zero Fuchsian group of index $\mu$ and signature
+$(0;2^{e_2},3^{e_3};c)$, written so that it survives extra ramification, i.e.\ so
+that it does not assume $t$ is a Hauptmodul. Class by class the bound reads
+$\le12$ for $(0;0)$, $\le6$ for $(\tfrac12;0)$, $\le8$ for $(\tfrac13;0)$,
+$\le4$ for $(\tfrac12;\tfrac13)$, $\le3$ for $(\tfrac12;\tfrac12)$; and for the
+three classes whose movable points carry an apparent singularity
+($\rho\in\Z_{>0}$) the bound is $\le0$, i.e.\ those classes contain no
+elliptic-surface row at all, independently of any search.
+
+Riemann--Hurwitz is not the whole story: it bounds $\deg\mathcal J$ but says
+nothing about $\chi$, and a quadratic twist changes $\chi$ without changing
+$\mathcal J$. The missing constraint is a parity.
+
+\begin{lemma}[twist parity]\label{lem:twistparity}
+\Proved{} In the situation of Proposition~\ref{prop:K1}, let $e_{\min}(P)$ be the
+Euler number of the \emph{unstarred} member of the twist pair at $P$: $n$ at an
+$I_n/I_n^*$, $3$ at a $III/III^*$, $2$ at a $II/IV^*$, $4$ at a $IV/II^*$. Then
+\[
+12\ \mid\ \sum_{P}e_{\min}(P)\ =\ \deg\mathcal J+3e_2+\!\!\sum_{\text{ord-}3\ P}\!\!e_{\min}(P),
+\]
+the sum running over the four singular points of the row.
+\end{lemma}
+
+\begin{proof}
+For a relatively minimal elliptic surface with section over $\PP^1$,
+$\sum e=12\chi$. Every singular fibre of $\mathcal E$ lies either over one of the
+four points or is an $I_0^*$ (trivial image in $\PSL_2$, invisible to $L$; any
+$I_n^*$ with $n\ge1$ elsewhere would be a fifth singular point of $L$). Fix the
+reference twist in which every fibre is unstarred; the actual surface is its
+quadratic twist by a character $\varepsilon_S$ with branch set $S$, and at each point of
+$S$ the fibre flips to its starred partner, raising $e$ by exactly $6$ --- for
+$I_n\!\to\!I_n^*$, $III\!\to\!III^*$, $II\!\to\!IV^*$, $IV\!\to\!II^*$ and
+$I_0\!\to\!I_0^*$ alike. Hence $\sum e=\sum_Pe_{\min}(P)+6\,|S|$. A quadratic
+character on $\PP^1$ has an even number of branch points, so
+$\sum e\equiv\sum_Pe_{\min}(P)\pmod{12}$, and $12\mid\sum e$. Finally
+$\sum_Pe_{\min}(P)=\deg\mathcal J+3e_2+\sum_{\text{ord-}3}e_{\min}$, since the
+cusps contribute their $n_i$, whose sum is $\deg\mathcal J$.
+\end{proof}
+
+Proposition~\ref{prop:K1} and Lemma~\ref{lem:twistparity} together pin
+$\deg\mathcal J$ exactly in every class, and pin the surface up to quadratic
+twist. Class by class:
+
+\smallskip
+{\small
+\begin{tabular}{@{}llllll@{}}
+\hline
+class $(\rho;\delta_\infty)$ & $(c,e_2,e_3)$ & RH bound & parity & forced $\deg\mathcal J$ & untwisted configuration\\
+\hline
+$(0;0)$ & $(4,0,0)$ & $\le12$ & $12\mid D$ & $12$ & Beauville's six\\
+$(\tfrac12;0)$ & $(2,2,0)$ & $\le6$ & $12\mid D{+}6$ & $6$ & \#38, \#39, \#40\\
+$(\tfrac13;0)$, $(\tfrac23;0)$ & $(2,0,2)$ & $\le8$ & $12\mid D{+}s$, $s\in\{4,6,8\}$ & $8,6,4$ & \#30--\#32; \#36, \#37; \#43\\
+$(\tfrac12;\tfrac12)$ & $(1,3,0)$ & $\le3$ & $12\mid D{+}9$ & $3$ & \#45\\
+$(\tfrac12;\tfrac13)$, $(\tfrac12;\tfrac23)$ & $(1,2,1)$ & $\le4$ & $12\mid D{+}6{+}e_{\min}$ & $4$ or $2$ & \#48; \#44\\
+\hline
+\end{tabular}
+}
+\smallskip
+
+\noindent
+In every case the untwisted configuration has $\sum e=12$, i.e.\ $\chi=1$: it is
+a \emph{rational} elliptic surface. In the third row $s=e_{\min}(t_1)+e_{\min}(t_2)$
+is $4$, $6$ or $8$ according as $t_1,t_2$ carry $II,II$; $II,IV$; or $IV,IV$, and
+by Corollary~\ref{cor:galois} the mixed case $s=6$ needs $a^2-4d$ a square. The
+point of the lemma is that the parity, not Riemann--Hurwitz, is what excludes the
+smaller degrees: in the all-cusp class RH alone permits $\deg\mathcal J=6$ (with
+one extra simple ramification point, i.e.\ a one-parameter family carrying a
+single $I^*$ fibre), and it is $12\mid\deg\mathcal J$ that rules it out.
+
+\begin{remark}[the $K3$ recheck]
+An elliptic $K3$ with four singular fibres has $\sum e=24$, so one might expect
+$\deg\mathcal J$ up to $24$. Proposition~\ref{prop:K1} says otherwise: the
+difference between $\sum e=12$ and $24$ is absorbed by fibres contributing to $e$
+but not to $\deg\mathcal J$ ($II,III,IV,IV^*,III^*,II^*$ contribute
+$2,3,4,8,9,10$ to $\sum e$ and $0$ to $\deg\mathcal J$), not by a larger
+$\mathcal J$; equivalently, by Lemma~\ref{lem:twistparity} a $K3$ realisation is
+a quadratic twist of a rational one and shares its $\mathcal J$. The computation agrees: re-run with $\deg\mathcal J\le24$,
+$h\le24$, $140$ series terms and $992$ values of $\gamma$ per $h$ (against $12$,
+$12$, $56$, $96$) on all $18$ negative rows, on three Kodaira-inadmissible
+controls and on the six known positives, \emph{every negative stays negative and
+every positive returns the same $(h,\deg\mathcal J)$}, with $50$ coefficients
+fitted and $65$ further identities verified.
+\VerifiedR{$\deg\le24$, $h\le24$, $140$ terms, $23\,808$ $(h,\gamma)$ pairs per
+row, $27$ rows}
+\end{remark}
+
+\begin{theorem}[which root rows are elliptic surfaces]\label{thm:whichroots}
+\VerifiedR{exact, series order $56$ resp.\ $140$, degrees $\le12$ resp.\ $\le24$}
+Of the nine $\Sym^1$ square roots of the third-order sporadic families, exactly
+two are Picard--Fuchs systems of an elliptic surface over their own $\PP^1_t$:
+\[
+\sqrt{\mathrm{AZ}(11,5,125)}\ \leftrightarrow\ I_1I_5\,III\,III\ (\#38,\ \deg\mathcal J=6,\ h=1),
+\]
+\[
+\sqrt{\mathrm{AZ}(9,3,-27)}\ \leftrightarrow\ I_3I_3\,III\,III\ (\#40,\ \deg\mathcal J=6,\ h=3),
+\]
+in agreement with $\mathcal I=\tfrac{484}{125}$ and $\mathcal I=-12$. The
+remaining seven --- Ap\'ery's own square root, i.e.\ Beukers' Theorem~3 row
+($\mathcal I=1156$), the $T$ row ($36$), Domb's ($\tfrac{25}4$),
+$\mathrm{AZ}(7,3,81)$'s ($\tfrac{196}{81}$) and Cooper's $s_7$'s
+($-\tfrac{676}{27}$), together with $\sqrt{s_{10}},\sqrt{s_{18}}$ which are
+excluded already by Corollary~\ref{cor:excluded} --- fail the test: their
+projective monodromy is an Atkin--Lehner quotient $\Gamma_0(N)+W$, commensurable
+with but not conjugate into $\PSL_2(\Z)$.
+\end{theorem}
+
+The mechanism is transparent on Ap\'ery's curve, where
+$t=(\eta_1\eta_6/\eta_2\eta_3)^{12}$ has degree two on $X_0(6)$ and is
+$W_6$-invariant, so $\PP^1_t=X_0(6)/W_6$: the universal elliptic curve does not
+descend along that quotient, only its symmetric square does, and $j$ is not
+$W_6$-invariant, so no $\mathcal J$-map of finite degree exists. That is why
+Ap\'ery's \emph{order-three} row lives happily on $\PP^1_t$ while its square root
+does not. The two fixed points of $W_6$ become the two order-two points of the
+quotient, i.e.\ the two exponents $\rho=\tfrac12$ that the root-row shape
+records; one is the Fricke fold point $i/\sqrt6$, with
+$t(i/\sqrt6)=(\sqrt2-1)^4$ exactly. Same story for $T$ ($W_8$ on $X_0(8)$), Domb
+and $\mathrm{AZ}(7,3,81)$.
+
+\begin{remark}
+The $\mathcal J$-test is not implied by the cross-ratio test. Row \#14 of
+Table~\ref{tab:rows} has $\mathcal I=-50$, the invariant of Herfurtner \#32
+$I_4I_4\,II\,II$, yet the $\mathcal J$-test says no: the cross-ratio ignores the
+accessory parameter. Making the test sufficient would require computing the
+accessory parameter of each Herfurtner Weierstrass model from its $G_2,G_3$ and
+comparing --- mechanical, and \Open{} here.
+\end{remark}
+
+% ===========================================================================
+\section{The two-tier classification, and the scan}\label{sec:scan}
+% ===========================================================================
+
+\subsection{Proof of Theorem~\ref{thmA}}\label{sec:thmA}
+
+\emph{Part \textup{(1)}.} The Zagier shape has $b=a$ and $e=f=0$, so by
+Lemma~\ref{lem:exps} $\rho_1=\rho_2=0$ and $r_1=r_2=0$, i.e.\ all four exponent
+differences vanish. By Theorem~\ref{thm:kodaira} the projective local monodromy
+at each of the four points is unipotent, so each singular fibre is of type $I_n$
+or $I_n^*$; this is (a). For (b), Proposition~\ref{prop:K1} with $(c,e_2,e_3)=(4,0,0)$ gives
+$\deg\mathcal J\le12$, and Lemma~\ref{lem:twistparity} with $e_2=e_3=0$ gives
+$12\mid\deg\mathcal J$; each of the four points carries a nontrivial unipotent
+projective monodromy, so $n_i\ge1$ and $\deg\mathcal J=\sum n_i\ge4$. Hence
+$\deg\mathcal J=12$. Equality in Riemann--Hurwitz then forces $\mathcal J$ to be
+unramified outside $\{0,1728,\infty\}$ with the minimal indices there --- a Belyi
+map --- and the untwisted member of the twist class has $\sum e=\sum n_i=12$,
+i.e.\ $\chi=1$: a rational semistable elliptic surface with four singular fibres,
+one of Beauville's six \cite{Beauville1982}. The surface itself is that one up to
+quadratic twist, so $\chi=1+|S|/2$ may be $2$ (a $K3$) or more; but the twist
+changes neither $\mathcal J$, nor the local system, nor the row, which is why no
+hypothesis on the Kodaira dimension is needed and why the $K3$ range produces
+nothing new. Riemann--Hurwitz alone would leave $\deg\mathcal J=6$ open, with one
+extra simple ramification point and a single $I^*$ fibre --- exactly Herfurtner's
+one-parameter families; it is the parity $12\mid\deg\mathcal J$ that excludes it.
+For (c), the MUM point is a cusp and $t$ pulls back the canonical nome
+(Lemma~\ref{lem:jtest}); normalising $t=q_h+O(q_h^2)$ makes $t$ a Hauptmodul with
+integral $q$-expansion, and $u_n=[t^n]F$ for the weight-one form $F$ attached to
+the fibration. For (d), $\mathcal I=a^2/c$ is a M\"obius invariant of the
+labelled quadruple, so it must be the invariant of the configuration under the
+chosen placement; Theorem~\ref{thm:finite} lists the seven rational values
+available in the four-cusp block. Given a configuration and a placement --- which
+cusp at $t=0$, which at $t=\infty$ --- the rigid surface, and hence its
+Picard--Fuchs operator, is determined, so the accessory parameter $b$ is
+determined; the enumeration of the resulting placements is
+Table~\ref{tab:placements}.
+\VerifiedR{cross-ratios exact; the $\mathcal J$-fits of \S\ref{sec:J} exact,
+$56$-term series, degrees $\le12$, re-checked at $\deg\le24$} \qed
+
+\begin{table}[t]
+\small
+\begin{tabular}{@{}llllll@{}}
+\hline
+row & Zagier \# & $(a,b,c)$ & configuration & fibre at $t=\infty$ & $\mathcal I=a^2/c$\\
+\hline
+$\mathbf A$ & \#5 & $(7,2,-8)$ & $I_6I_3I_2I_1$ ($IV$) & $I_2$ & $-49/8$\\
+$\mathbf C$ & \#8 & $(10,3,9)$ & $I_6I_3I_2I_1$ ($IV$) & $I_3$ & $100/9$\\
+$\mathbf F$ & \#13 & $(17,6,72)$ & $I_6I_3I_2I_1$ ($IV$) & $I_6$ & $289/72$\\
+$\mathbf B$ & \#7 & $(9,3,27)$ & $I_1I_1I_1I_9$ ($I,VI$) & $I_1$ & $3$\\
+$\mathbf D$ & \#9 & $(11,3,-1)$ & $I_1I_1I_5I_5$ ($III$) & $I_5$ & $-121$\\
+$\mathbf E$ & \#10 & $(12,4,32)$ & $I_1I_1I_2I_8$ ($II,V$) & $I_2$ & $9/2$\\
+$\mathbf G$ & \#2 & $(0,0,-16)$ & $I_1I_1I_2I_8$ ($II,V$) & $I_8$ & $0$\\
+\hline
+\end{tabular}
+\medskip
+\caption{The complete list of cusp placements in the Zagier shape
+\textup{(}Theorem~\ref{thmA}(1)(d)\textup{)}, in Zagier's own labelling
+$\mathbf A$--$\mathbf G$ and with his index numbers; the Roman numerals are
+Beauville's family labels as in \cite[\S7]{Zagier2009}. The cusp-move orbits are
+$\{\mathbf A,\mathbf C,\mathbf F\}$, $\{\mathbf B\}$, $\{\mathbf D\}$,
+$\{\mathbf E,\mathbf G\}$ \textup{(}\S\ref{sec:cusp}\textup{)}. $\mathbf G$ is
+$u_{2m}=\binom{2m}m^2$, $u_{2m+1}=0$: integral but with
+$|\lambda_1|=|\lambda_2|=4$, hence no Ap\'ery limit, which is why Zagier's
+\emph{sporadic} list stops at six. Zagier's remaining modular solutions \#11
+$(16,4,0)$, \#14 $(27,6,0)$ and \#20 $(64,12,0)$ have $c=0$ and only three
+singular points, so they fall outside the hypothesis and belong to
+Schmickler-Hirzebruch's three-fibre classification
+\cite{SchmicklerHirzebruch}.}\label{tab:placements}
+\end{table}
+
+\emph{Part \textup{(2)}.} The root-row shape has $b=\tfrac a2$ and
+$Q=C(2n-1)^2$, so $\rho_1=\rho_2=\tfrac12$ and $r_1=r_2=\tfrac12$: the movable
+points have exponent difference $\tfrac12$ and $\infty$ has exponents
+$(\tfrac12,\tfrac12)$. By Theorem~\ref{thm:kodaira} the movable fibres are $III$
+or $III^*$ and the fibre at $\infty$ is a cusp $I_m$ or $I_m^*$, with $m\ge1$:
+$m=0$ would make $\infty$ an $I_0^*$, invisible to $L$, and
+Proposition~\ref{prop:K1} with $(c,e_2,e_3)=(1,2,0)$ would then give
+$\deg\mathcal J\le0$. Likewise $n\ge1$ at the MUM point. Now
+Proposition~\ref{prop:K1} with $(c,e_2,e_3)=(2,2,0)$ gives
+$\deg\mathcal J=n+m\le6\cdot2+3\cdot2-12=6$, while Lemma~\ref{lem:twistparity}
+gives $12\mid n+m+6$, i.e.\ $\deg\mathcal J\equiv6\pmod{12}$. With
+$2\le\deg\mathcal J\le6$ this forces $\deg\mathcal J=6$, and the untwisted member
+of the twist class has fibres $I_n,I_m,III,III$ with $n+m=6$ and
+$\sum e=6+3+3=12$: a rational elliptic surface, the three possibilities
+$(n,m)=(1,5),(2,4),(3,3)$ being Herfurtner's \#38, \#39, \#40 with cross-ratios
+$\tfrac{484}{125},0,-12$.
+
+It is worth being explicit about what Riemann--Hurwitz does \emph{not} do here.
+Euler numbers alone leave $\chi=2$ open. Writing $\sigma$ for the number of stars
+among $\{0,\infty\}$: with $III$ at both movable points
+$\sum e=n+m+6+6\sigma=12\chi$, and $\deg\mathcal J=n+m\le6$ still admits
+$(\sigma,\chi)=(2,2)$; with $III^*$ at both, $n+m=12\chi-24-6\sigma$ leaves
+nothing new; and in the \emph{mixed} case $III$ at $t_1$, $III^*$ at $t_2$ ---
+indistinguishable at the level of exponents, both having difference $\tfrac12$ ---
+one gets $n+m=12\chi-18-6\sigma$, so $(\sigma,\chi)=(1,2)$ with $n+m=6$ is
+permitted: an elliptic $K3$ with fibres $III$, $III^*$, $I_n$, $I_m^*$, $n+m=6$,
+$\sum e=3+9+n+(m+6)=24$ and $\deg\mathcal J=6$, comfortably inside the bound.
+\emph{Riemann--Hurwitz does not exclude it.} What removes it as a source of new
+rows is that it is the quadratic twist with branch set $\{t_2,\infty\}$ of the
+corresponding \#38/\#39/\#40 configuration --- twisting flips $III^*\!\to\!III$ at
+$t_2$ and $I_m^*\!\to\!I_m$ at $\infty$, lowering $\sum e$ by $12$ to $\chi=1$.
+The two surfaces have the same $\mathcal J$, the same projective monodromy, and
+local systems differing by the quadratic twist already allowed in the hypothesis;
+so they carry the same row. Lemma~\ref{lem:twistparity} is the systematic form of
+this observation. It is also confirmed computationally: the $\mathcal J$-map test
+run at $\deg\mathcal J\le24$, $h\le24$ finds no fit for any root row other than
+the two on \#38 and \#40 \VerifiedR{$27$ rows, $23\,808$ $(h,\gamma)$ pairs
+each}, so no $K3$ realisation occurs among the known root rows either.
+
+The realisations, and the negative verdict for the other seven $\Sym^1$ square
+roots, are Theorem~\ref{thm:whichroots}; the value $\mathcal I=0$ needs $A=0$,
+and the scan below finds no non-degenerate integral row there. \qed
+
+\subsection{The scan}
+
+Theorem~\ref{thm:norm} turns the search for integral rows into $26$ independent
+three-parameter searches, one for each Kodaira-admissible pair $(\rho,\delta_\infty)$ with $r_i=j_i/M\in[-1,2]$, namely
+$(M;j_1,j_2)$ running over
+$(1;0,0)$, $(2;1,1)$, $(3;1,2)$, $(4;1,3)$, $(6;1,5)$, $(3;1,1)$, $(3;2,2)$,
+$(1;0,1)$, $(1;1,1)$, $(2;1,3)$, $(2;-1,1)$, $(1;-1,1)$, $(3;0,2)$, $(3;1,3)$,
+$(3;-1,1)$, $(4;-1,1)$, $(6;1,3)$, $(6;3,5)$, $(6;-1,1)$, $(12;1,7)$,
+$(12;5,11)$, $(2;3,3)$, $(1;1,2)$, $(3;2,4)$, $(4;3,5)$, $(6;5,7)$
+in the notation $Q(n)=C(Mn-j_1)(Mn-j_2)$ of Theorem~\ref{thm:norm}. Inside a
+class the free integers are $A$, the accessory parameter $B=u_1$, and $C$. The
+scan sweeps $1\le A\le3000$ (with the divisibility $2M\mid A(2M-j_1-j_2)$),
+$1\le|B|\le150$, $1\le|C|\le\min(4000,12000/M^2)$, plus a separate $A=0$ pass,
+testing integrality division-free on $U_n=u_n(n!)^2$,
+\[
+U_{n+1}=P(n)U_n-n^2Q(n)U_{n-1},\qquad u_n\in\Z\iff v_p(U_n)\ge2v_p(n!),
+\]
+prime by prime modulo $p^K$ for every $p\le30$. Survivors are re-verified with
+exact rational arithmetic to $n=300$; the sharp denominator exponent $k$ of the
+companion ($b_0=0$, $b_1=1$) is measured to $n=60$. The sweep is
+$1\,270\,065$ hits in about $75$ minutes on twelve cores.
+
+\subsection{Two filters}
+The Casoratian satisfies
+$u_nb_{n+1}-u_{n+1}b_n=\pm\prod_{m\le n}Q(m)/((m+1)!)^2$, so it vanishes
+identically as soon as $Q(n_0)=0$ for an integer $n_0\ge1$ (i.e.\ $M\mid j_i$
+with $j_i/M\ge1$); the companion is then a rational multiple of the row, the
+Ap\'ery limit is rational, and the extension class is split. And $a^2=4d$ gives
+$\lambda_1=\lambda_2$, hence no second growth rate. Both are applied before any
+row is called interesting. The Casoratian filter is not cosmetic: in one early
+run it reduced $25\,390$ raw hits to $248$, and without it the entire top of the
+raw ranking consists of degeneracies.
+
+\subsection{Rigid classes and family classes}
+The scan output splits sharply, and the split is Herfurtner's own. Classes
+attached to rigid configurations yield a handful of rows each ($10$--$140$ hits);
+two classes yield tens of thousands, namely $(2;-1,1)$, i.e.\
+$(\rho;\delta_\infty)=(0;1)$, with $28\,143$ hits, and $(2;1,3)$, i.e.\ $(1;1)$,
+with $34\,430$ --- precisely the classes in which the fibre at $\infty$ has
+half-integral exponents (an $I_m^*$), the second additionally having an apparent
+singularity ($I_0^*$) at $t_1,t_2$. Those are exactly the Kodaira types that put
+a configuration into Herfurtner's one-parameter block. For $(2;-1,1)$ the family
+is explicit: $B=\tfrac A4$, $P(n)=\tfrac A4(2n+1)^2$, $Q(n)=C(2n-1)(2n+1)$,
+integral for $A\in4\Z$ and $C$ in an arithmetic progression --- one parameter after
+$t\mapsto t/\mu$, matching the one modulus of Herfurtner's $I_1I_1I_1I_3^*$ and
+$I_1I_1I_2I_2^*$ families; its $C=4$ sub-family is the classical Legendre--Pad\'e
+row with Ap\'ery limit $-\tfrac1{12}\log\frac{x+1}{x-1}$ at $A=8x$, which has
+$k=1$, score $\to\infty$, and proves nothing new. \emph{This is the structural
+dichotomy of the classification:} a rigid configuration supports at most finitely
+many integral rows (Theorem~\ref{thm:finite} pins $a^2/d$ and the surface then
+determines the accessory parameter), a one-parameter family supports an infinite
+family of them, and Zagier's finiteness statement is a statement about the rigid
+block.
+
+\subsection{The rows}
+
+\begin{table}[t]
+\scriptsize
+\begin{tabular}{@{}rlllrrrrl@{}}
+\hline
+\# & class & $P(n)$ & $Q(n)$ & $\lambda_1$ & $\lambda_2$ & $k$ & score & $\mathcal J$ / name\\
+\hline
+1 & $(1;0,0)$ & $9n^2{+}9n{+}3$ & $27n^2$ & $5.196$ & cplx & 2 & --- & yes $(1,12)$, Zagier $\mathbf B$\\
+2 & $(2;1,1)$ & $56n^2{+}28n{+}6$ & $324(2n{-}1)^2$ & $36$ & cplx & 2 & --- & no, $\sqrt{\mathrm{AZ}(7,3,81)}$\\
+3 & $(2;1,1)$ & $88n^2{+}44n{+}10$ & $500(2n{-}1)^2$ & $44.72$ & cplx & 2 & --- & \textbf{yes} $(1,6)$, $\sqrt{\mathrm{AZ}(11,5,125)}$\\
+4 & $(3;1,1)$ & $117n^2{+}78n{+}21$ & $441(3n{-}1)^2$ & $63$ & cplx & 2 & --- & \textbf{yes} $(1,8)$, \textbf{NEW} $I_1I_7II\,II$\\
+5 & $(3;1,2)$ & $40n^2{+}20n{+}4$ & $48(3n{-}1)(3n{-}2)$ & $20.78$ & cplx & 2 & --- & no, new\\
+6 & $(4;1,3)$ & $72n^2{+}36n{+}6$ & $108(4n{-}1)(4n{-}3)$ & $41.57$ & cplx & 2 & --- & \textbf{yes} $(3,3)$, \textbf{NEW} $I_3III\,III\,III$\\
+7 & $(1;0,0)$ & $11n^2{+}11n{+}3$ & $-n^2$ & $11.090$ & $-0.0902$ & 2 & $\mathbf{+0.406}$ & yes $(1,12)$, Zagier $\mathbf D$\\
+8 & $(2;1,1)$ & $136n^2{+}68n{+}10$ & $4(2n{-}1)^2$ & $135.88$ & $0.1177$ & 2 & $\mathbf{+0.139}$ & no, Beukers $=\sqrt{\text{Ap\'ery}}$\\
+9 & $(2;1,1)$ & $24n^2{+}12n{+}2$ & $4(2n{-}1)^2$ & $23.314$ & $0.6863$ & 2 & $-1.624$ & no, $\sqrt T$\\
+10 & $(4;1,3)$ & $88n^2{+}44n{+}6$ & $-4(4n{-}1)(4n{-}3)$ & $88.721$ & $-0.7214$ & 2 & $-1.673$ & no, level-5 Fricke\\
+11 & $(1;0,0)$ & $7n^2{+}7n{+}2$ & $-8n^2$ & $8$ & $-1$ & 2 & $-2.000$ & yes $(1,12)$, Zagier $\mathbf A$\\
+12 & $(1;0,0)$ & $10n^2{+}10n{+}3$ & $9n^2$ & $9$ & $1$ & 2 & $-2.000$ & yes $(1,12)$, Zagier $\mathbf C$\\
+13 & $(3;1,2)$ & $26n^2{+}13n{+}2$ & $-3(3n{-}1)(3n{-}2)$ & $27$ & $-1$ & 2 & $-2.000$ & no, $\sqrt{s_7}$\\
+14 & $(3;1,1)$ & $180n^2{+}120n{+}24$ & $-72(3n{-}1)^2$ & $183.53$ & $-3.531$ & 2 & $-3.262$ & no ($\mathcal I=-50$), new\\
+15 & $(1;0,0)$ & $12n^2{+}12n{+}4$ & $32n^2$ & $8$ & $4$ & 2 & $-3.386$ & yes $(1,12)$, Zagier $\mathbf E$\\
+16 & $(2;1,1)$ & $20n^2{+}10n{+}2$ & $16(2n{-}1)^2$ & $16$ & $4$ & 2 & $-3.386$ & no, $\sqrt{\text{Domb}}$\\
+17 & $(4;1,3)$ & $28n^2{+}14n{+}2$ & $-8(4n{-}1)(4n{-}3)$ & $32$ & $-4$ & 2 & $-3.386$ & no, new\\
+18 & $(2;1,1)$ & $72n^2{+}36n{+}6$ & $-108(2n{-}1)^2$ & $77.569$ & $-5.569$ & 2 & $-3.717$ & \textbf{yes} $(3,6)$, $\sqrt{\mathrm{AZ}(9,3,-27)}$\\
+19 & $(1;0,0)$ & $17n^2{+}17n{+}6$ & $72n^2$ & $9$ & $8$ & 2 & $-4.079$ & yes $(1,12)$, Zagier $\mathbf F$\\
+20 & $(4;1,3)$ & $80n^2{+}40n{+}6$ & $36(4n{-}1)(4n{-}3)$ & $72$ & $8$ & 2 & $-4.079$ & no, new\\
+21--22 & $(2;1,3)$ & $\pm4$ & $-64(2n{-}1)(2n{-}3)$ & $16$ & $-16$ & 2 & $-4.773$ & no, $A=0$\\
+23 & $(4;1,3)$ & $48n^2{+}24n{+}4$ & $32(4n{-}1)(4n{-}3)$ & $32$ & $16$ & 2 & $-4.773$ & no, new\\
+24--25 & $(3;2,4)$ & $\pm3$ & $-81(3n{-}2)(3n{-}4)$ & $27$ & $-27$ & 2 & $-5.296$ & no, $A=0$\\
+26 & $(4;1,3)$ & $68n^2{+}34n{+}6$ & $72(4n{-}1)(4n{-}3)$ & $36$ & $32$ & 2 & $-5.466$ & no, new\\
+27--28 & $(4;3,5)$ & $\pm4$ & $-256(4n{-}3)(4n{-}5)$ & $64$ & $-64$ & 2 & $-6.159$ & no, $A=0$\\
+\hline
+\end{tabular}
+\medskip
+\caption{All primitive, Casoratian-non-degenerate, non-double-root integral rows
+produced by the scan in the classes attached to rigid configurations, sorted by
+score. ``cplx'' means complex-conjugate characteristic roots, hence no
+archimedean Ap\'ery limit. \VerifiedR{integrality exact to $n=300$; $k$ sharp to
+$n=60$; $\mathcal J$-fits exact}}\label{tab:rows}
+\end{table}
+
+Table~\ref{tab:rows} is the answer in the rigid block. Four observations.
+
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.6em]
+\item \emph{Every second-order row of the known census appears}, with its known
+invariants: Zagier's six, the six Almkvist--Zudilin square roots, Cooper's
+$\sqrt{s_7}$, the level-$5$ Fricke row. And $k=2$ for every row in the table
+without exception.
+\item \emph{Two rows are new and are elliptic surfaces} (rows 4 and 6);
+see \S\ref{sec:newrows}.
+\item Six further rows are new but fail the $\mathcal J$-test (rows 5, 14, 17,
+20, 23, 26); like Beukers' row they live on Atkin--Lehner quotients.
+\item \emph{No new row has a positive score.}
+\end{enumerate}
+
+\subsection{The two new elliptic-surface rows}\label{sec:newrows}
+
+Both are invisible to Zagier's normalisation ($\rho\neq0$) \emph{and} to the
+root-row normalisation, which is why no earlier scan found them. They are found
+only by running the exponent classification first and scanning each
+Kodaira-admissible class in turn.
+
+\begin{proposition}\label{prop:newrows}
+\VerifiedR{integrality $n\le300$ exact; $\mathcal J$-fit exact; uniformisation to
+$q^{90}$ resp.\ $w^{45}$}
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.4em]
+\item $(n+1)^2u_{n+1}=(117n^2+78n+21)u_n-441(3n-1)^2u_{n-1}$, $u_0=1$,
+\[u_n=1,\,21,\,693,\,23940,\,734643,\,13697019,\dots\in\Z ,\]
+class $(\rho;\delta_\infty)=(\tfrac13;0)$, $\mathcal I=\tfrac{169}{49}$,
+$\deg\mathcal J=8$, $h=1$: the surface $I_1I_7\,II\,II$ \textup{(}Herfurtner
+\#30\textup{)}, projective monodromy $\Gamma_0(7)$. Uniformisation:
+\[
+t=-\tfrac19\Bigl(\frac{\eta(7\tau)}{\eta(\tau)}\Bigr)^4,\qquad
+A(t)\,\bigl(1-117t+3969t^2\bigr)^{1/3}=\theta_{-7}(\tau),
+\]
+with $\theta_{-7}$ the weight-one theta series of $\Q(\sqrt{-7})$, the unique
+form in $M_1(\Gamma_0(7),\chi_{-7})$; equivalently
+$\thq t/t=\theta_{-7}^2\in M_2(\Gamma_0(7))$. Moreover
+\[
+\frac{t\,\theta_{-7}(\tau)^3}{1-117t+3969t^2}=-\tfrac19\,\eta(\tau)^3\eta(7\tau)^3,
+\]
+the weight-three newform \textup{7.3.b.a}. Since
+$\lambda^2-117\lambda+3969$ has discriminant $-2187$, $|\lambda_1|=|\lambda_2|=63$
+and there is no archimedean Ap\'ery limit; $k=2$. The row is integral only after
+the scaling $\lambda=3$.
+\item $(n+1)^2u_{n+1}=(72n^2+36n+6)u_n-108(4n-1)(4n-3)u_{n-1}$, $u_0=1$,
+\[u_n=1,\,6,\,90,\,1140,\,-5850,\,-1265004,\dots\in\Z ,\]
+class $(\tfrac12;\tfrac12)$, $\mathcal I=3$, $\deg\mathcal J=3$, $h=3$: the
+surface $I_3\,III\,III\,III$ \textup{(}\#45, $\mathcal J=X^3/Y^3$\textup{)},
+projective monodromy the index-three congruence group of level three, the kernel
+of $\PSL_2(\Z)\twoheadrightarrow\Z/3$. Uniformisation:
+\[
+j=\frac{(24t-1)^3}{8t^3},\qquad 3\,\thq t/t=A(t)^2(1-72t+1728t^2)^{1/2},
+\]
+with $t=-\tfrac12w-6w^2-72w^3-740w^4-\cdots$ a series in $w=q^{1/3}$.
+$\lambda^2-72\lambda+1728$ has discriminant $-1728$, $|\lambda_i|=41.57$, no
+archimedean limit; $k=2$; integral only after $\lambda=6$.
+\end{enumerate}
+\end{proposition}
+
+The two behave differently, and the difference is the gauge exponent. At \#30
+it is $\tfrac13$ and the two $II$ fibres are order-$3$ elliptic points, so
+$R^{1/3}$ is single-valued on $\HH$ and $A\cdot R^{1/3}$ is a genuine holomorphic
+modular form; at \#45 it is $\tfrac14$ while the three $III$ fibres are
+order-$2$ points, so $R^{1/4}$ is not single-valued and the row's ``$F$'' is a
+square root of a weight-two object --- the quadratic twist that
+Theorem~\ref{thm:kodaira} allows. In neither case is the Eichler source
+$\Phi=D^2(B/A)$ a weight-three modular form on the relevant group: for \#30 its
+expansion $-\tfrac19q-\tfrac4{27}q^2-\tfrac{17}{81}q^3+\cdots$ has unbounded
+$3$-power denominators and the fit against $M_3(\Gamma_0(7),\chi_{-7})$ fails
+from $q^4$ on. Since the characteristic roots are complex conjugate the natural
+constant is not an Ap\'ery limit but a \emph{fold constant}, the connection
+coefficient at the complex singular point $t_c$; both folds sit at classical CM
+points ($j(\tau_*)=1728$, discriminant $-4$, for \#45, as it must be with the
+$III$ fibres over $j=1728$; $\tau_*\sim\rho$, discriminant $-3$, for \#30), so
+Chowla--Selberg periods are legitimate candidates alongside $L$-values. For \#45
+the identification succeeds.
+
+\begin{proposition}[a Chowla--Selberg period]\label{prop:CS}
+\Numerical{$\ge245$ digits; agreement $1.0\times10^{-249}$} For the row \#45,
+\[
+\operatorname{Im}\xi=-\frac{\Gamma(1/4)^4}{2^{7/2}\,3^{11/4}\,\pi}
+=-\frac{\varpi^2}{\sqrt2\,3^{11/4}},
+\]
+$\varpi=\Gamma(1/4)^2/(2\sqrt{2\pi})$ the lemniscate constant, the
+Chowla--Selberg period of discriminant $-4$; equivalently
+$4\cdot3^{11}(\operatorname{Im}\xi)^4=\varpi^8$, and \texttt{algdep} returns
+$2^{14}3^{11}x^4-1$ for $\operatorname{Im}\xi/(\Gamma(1/4)^4\pi^{-1})$ at degree
+$4$, height $2\times10^9$.
+\end{proposition}
+
+This is the first constant in this census that is a Chowla--Selberg period rather
+than a critical $L$-value --- a direct consequence of the source not being
+modular. The corresponding constants for \#30 resist identification against every
+basis tried (Chowla--Selberg monomials, Dirichlet and newform $L$-values,
+\texttt{algdep} with algebraic coefficients to degree $18$). \Open{}
+
+Finally, the class $(\tfrac12;\tfrac12)$ has Fuchsian signature
+$(0;2,2,2;\text{one cusp})$, and \emph{two} groups of that signature occur among
+integral rows: the index-three subgroup of $\PSL_2(\Z)$ above (row 6) and
+$\Gamma_0(5)+5$, of the same covolume but not conjugate into $\PSL_2(\Z)$,
+carrying the level-$5$ Fricke row (row 10). The $\mathcal J$-map test is exactly
+what separates them.
+
+\subsection{The classification theorem}
+
+Theorem~\ref{thmC} in full; parts (i)--(ii) are Theorems~\ref{thmA}
+and~\ref{thmB} and are not repeated.
+
+\begin{theorem}[classification of second-order rows]\label{thm:herfclass}
+Let \eqref{eq:R2gen} have $u_n\in\Z$ for all $n$ \textup{(}after a $\lambda^n$
+rescaling\textup{)}, $\deg P,\deg Q\le2$, $d\neq0$, $a^2\neq4d$, $Q(n)\neq0$ for
+$n\ge1$.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.6em,start=3]
+\item \VerifiedR{all $26$ Kodaira-admissible classes, $1\le A\le3000$,
+$|B|\le150$, $|C|\le\min(4000,12000/M^2)$, integrality prime-tested to $n=30$ and
+re-verified exactly to $n=300$} In the classes attached to \emph{rigid}
+configurations the complete list of primitive, Casoratian-non-degenerate rows is
+the $28$ rows of Table~\ref{tab:rows}. Exactly ten have an elliptic-surface local
+system: Zagier's six ($\deg\mathcal J=12$; Beauville's $I_1I_2I_3I_6$ three
+times, $I_1I_1I_1I_9$, $I_1I_1I_5I_5$, $I_1I_1I_2I_8$), the two root rows of
+Theorem~\ref{thm:whichroots} ($\deg\mathcal J=6$), and the two new rows of
+Proposition~\ref{prop:newrows} ($\deg\mathcal J=8$ and $3$). The other eighteen
+have projective monodromy commensurable with, but not conjugate into,
+$\PSL_2(\Z)$.
+\item \VerifiedR{same box} In the classes attached to Herfurtner's
+\emph{one-parameter} families the integral rows form infinite families; the
+cleanest is $(\rho;\delta_\infty)=(0;1)$, $P(n)=\tfrac A4(2n+1)^2$,
+$Q(n)=C(2n-1)(2n+1)$, integral for $A\in4\Z$ and $C$ in an arithmetic
+progression --- one parameter after $t\mapsto t/\mu$, matching the one modulus of
+Herfurtner's $I_1I_1I_1I_3^*$ / $I_1I_1I_2I_2^*$ families.
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}[the only positive scores]\label{cor:H6}
+\VerifiedR{complete pass over all $1\,270\,065$ scan hits: a positive score needs
+$|\lambda_2|<e^{-k}\le e^{-1}$, a condition on $(A,D)$ alone}
+Of the $69\,434$ hits in Casoratian-non-degenerate classes, $1\,374$ have
+$|\lambda_2|<1$ with real characteristic roots, and \emph{exactly two} have a
+positive score with $k\ge2$:
+\[
+\text{Ap\'ery's }\zeta(2)\text{ row }(11,3,-1)\text{ at }+0.40606,\qquad
+\text{Beukers' row }(136,10,4)\text{ at }+0.13920 .
+\]
+Every other positive score in the scan has $k=1$ and belongs to the classical
+Legendre--Pad\'e $\log$ family (top of that ranking: $A=600$, score $+2.5115$,
+$k=1$).
+\end{corollary}
+
+\begin{remark}[what the scan does not settle]
+The eleven Herfurtner one-parameter families with a moving $\mathcal J$ are not
+excluded by Theorem~\ref{thm:finite} --- their cross-ratio is free --- only by the
+scan; and a box is a box. \Open{} The proved part of the classification is
+entirely local (Lemma~\ref{lem:exps},
+Theorems~\ref{thm:norm},~\ref{thm:kodaira},~\ref{thm:finite},
+Proposition~\ref{prop:K1}); the global input is Herfurtner's theorem, and the
+finiteness of the answer is the finiteness of his list together with the
+rationality of $a^2/d$.
+\end{remark}
+
+\subsection{What an unconditional classification would need}\label{sec:BD}
+
+Theorem~\ref{thmA} is conditional on the geometric hypothesis;
+Theorem~\ref{thm:herfclass} replaces it by a box. Neither is the statement one
+wants, which is Zagier's conjecture as quoted in \S\ref{sec:intro}: here his
+$P(t)$ is our $R(t)=1-at+dt^2$, so ``non-degenerate'' is exactly $d\ne0$,
+$a^2\ne4d$. This is the rank-two, four-singular-point instance of the
+Bombieri--Dwork expectation \cite{Bombieri1981} that a globally nilpotent
+Fuchsian operator is of geometric origin: an integral row's solution is a
+$G$-function, so by the Chudnovsky theorem \cite{Chudnovsky1985} its minimal
+operator is globally nilpotent, and what is missing is the passage from that to a
+family of varieties. The converse reduction is proved here.
+
+\begin{proposition}\label{prop:reduction}
+\Proved{} \textup{(}modulo the classification inputs already used\textup{)}
+Suppose an integral row \eqref{eq:R2gen} with $d\ne0$, $a^2\ne4d$ has a modular
+parametrisation: $t$ a Hauptmodul of a genus-zero $\Gamma$ commensurable with
+$\PSL_2(\Z)$, the solution the $t$-expansion of a weight-one form on $\Gamma$.
+Then by Lemma~\ref{lem:singpts} the singular points are the special points of
+$\Gamma$, so $\Gamma$ has exactly four of them; by Theorem~\ref{thm:N2} its
+covolume index is $\le12$ and, if $\Gamma\subseteq\PSL_2(\Z)$, it is one of $28$
+enumerated groups; and Theorems~\ref{thmA} and \ref{thm:N3} then place the row on
+the list. Hence \emph{Zagier's conjecture for this class is equivalent to the
+statement that the projective monodromy group of an integral three-term row is
+commensurable with $\PSL_2(\Z)$.}
+\end{proposition}
+
+Why that is hard was set out in \S\ref{sec:intro}: rank two with four singular
+points is not rigid in Katz's sense \cite{Katz1996}, the accessory parameter
+being the modulus; the implication ``globally nilpotent $\Rightarrow$
+hypergeometric pullback'' may not be used as a shortcut, Krammer's Lam\'e
+equation \cite{Krammer1996,MovasatiReiter} being the standing warning; and the
+strongest partial result, Beukers' $p$-adic analysis of Dwork's accessory
+parameter problem in exactly this configuration \cite{Beukers2002}, does not
+close it.
+
+What the computations supply instead is a census, and it is consistent: over
+every box searched, every integral row is (a) one of the ten elliptic-surface
+rows of Theorem~\ref{thm:herfclass}(iii); or (b) a row on an Atkin--Lehner
+quotient --- Beukers'/$\sqrt{\text{Ap\'ery}}$, $\sqrt T$, $\sqrt{\text{Domb}}$,
+$\sqrt{\mathrm{AZ}(7,3,81)}$, $\sqrt{s_7}$, the level-$5$ Fricke row, six further
+new rows and the $A=0$ rows, all still \emph{modular} in Zagier's sense, the
+universal curve simply failing to descend to their base; or (c) a member of one
+of the two classical Pad\'e families --- the Legendre--Pad\'e $\log$ family, which
+occupies the classes attached to Herfurtner's one-parameter $I_m^*/I_0^*$
+families, and the $\arctan$ family, which Theorem~\ref{thmB}(ii) excludes from
+the elliptic-surface world and whose canonical coordinate is not even integral
+($\operatorname{lcm}$ of denominators over $n\le58$ equal to
+$2^{11}5^67^411^213^2\cdot17\cdot19\cdot23$, new primes entering indefinitely, so
+$t(q)$ is not algebraic by Eisenstein's theorem \VerifiedR{$n\le58$}). No row in
+any box is unaccounted for; but Proposition~\ref{prop:reduction} is where the
+argument stops. \Open{}
+
+% ===========================================================================
+\section{Cusp moves and rigidity}\label{sec:cusp}
+% ===========================================================================
+
+Table~\ref{tab:placements} shows three of Zagier's rows on one surface. That is not
+a coincidence of cross-ratios but a group action, and the action has a sharp
+arithmetic consequence.
+
+\begin{theorem}[the general cusp move]\label{thm:move}
+\Proved{} \textup{(}symbolically\textup{)} Let $y$ solve $Ly=0$ for a row
+$(P,Q)$ with characteristic roots $\lambda,\mu$ and $Q$-roots $r_1,r_2$. Put
+\[
+s=\frac{t}{1-\lambda t}\quad\Bigl(\text{so }t=\frac{s}{1+\lambda s}\Bigr),
+\qquad z(s)=(1-\lambda t)^{\alpha}y(t).
+\]
+Then $z$ is again the analytic solution of a three-term row with coefficients of
+degree $\le2$ \emph{if and only if}
+\[
+(\alpha-1+r_1)(\alpha-1+r_2)=0,\qquad\text{i.e.}\qquad \alpha\in\{1-r_1,1-r_2\},
+\]
+i.e.\ exactly when $\alpha$ is one of the two local exponents of $L$ at
+$t=\infty$. With $\alpha=1-r_1$ the new row is
+\[
+\begin{aligned}
+P^{\sharp}(n)&=(\mu-2\lambda)n^2+(p_1-3\lambda+2\lambda r_1)n
+   +(p_0-\lambda+\lambda r_1),\\
+Q^{\sharp}(n)&=\lambda(\lambda-\mu)n^2
+   +\lambda(\lambda+\mu-p_1-2\lambda r_1+\mu r_1-\mu r_2)n\\
+&\qquad+\lambda(\lambda r_1^2-\lambda r_1+\mu r_1r_2-\mu r_1+p_1r_1),
+\end{aligned}
+\]
+with characteristic roots $-\lambda$ and $\mu-\lambda$, and the two operators are
+related by $L^{\sharp}z=(1-\lambda t)^{1-\alpha}\,Ly$.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Substituting $t=s/(1+\lambda s)$ and $y=(1+\lambda s)^{\alpha}z$ into $Ly$ and
+dividing by $(1+\lambda s)^{\alpha-1}$ makes the coefficients of $z''$ and $z'$
+polynomial of degree $2$ unconditionally, while the coefficient of $z$ is
+polynomial with remainder
+\[
+\frac{\alpha^2\lambda\mu-2\alpha\lambda\mu-\alpha q_1+\lambda\mu+q_0+q_1}{\lambda^2}
+=\frac{d}{\lambda^2}(\alpha-1+r_1)(\alpha-1+r_2)
+\]
+after $q_1=-d(r_1+r_2)$, $q_0=dr_1r_2$. Setting this to zero is the stated
+condition, and the boxed coefficients are then read off. The computation is a
+finite identity in the Weyl algebra and was carried out symbolically.
+\end{proof}
+
+The reading is transparent: the move sends $t=\infty$ to $s=-1/\lambda$, where a
+three-term row needs local exponents $(0,\rho^\sharp)$; the gauge
+$(1-\lambda t)^{\alpha}$ shifts the exponents there by $-\alpha$, and the two
+admissible choices are the two exponents $1-r_i$. So the move is the exponent
+bookkeeping of Theorem~\ref{thm:norm} turned into a group action. In Zagier's
+class ($Q=dn^2$, $r_1=r_2=0$, $\alpha=1$) it specialises to
+$(a,b,d)\mapsto(\mu-2\lambda,\ b-\lambda,\ \lambda^2-\lambda\mu)$ and, on
+coefficients, to
+$u^\sharp_n=\sum_m\binom{n+\alpha-1}{n-m}(-\lambda)^{n-m}u_m$, the signed
+binomial transform; for $\alpha=1$, $\lambda\in\Z$ integrality is automatic,
+while for $\alpha\notin\Z$ the binomials carry denominators at the primes
+dividing $\operatorname{den}(\alpha)$ and a rescaling $u_n\mapsto c^nu_n$ with
+$c\in\{1,2,4,9\}$ restores it in every case measured.
+
+\begin{theorem}[the companion]\label{thm:companion}
+\Proved{}; \VerifiedR{all $22$ available (row, $\lambda$, $\alpha$) cases, exactly
+to $n=40$} In the situation of Theorem~\ref{thm:move}, let $\widehat B$ solve
+$L\widehat B=t(1-\lambda t)^{-\alpha}$ with $\widehat b_0=0$. Then the companion
+of the moved row is $B^{\sharp}=(1-\lambda t)^{\alpha}\widehat B$. In particular
+the naive guess $B^{\sharp}=(1-\lambda t)^{\alpha}B$ is \emph{false}: what is
+replaced is the inhomogeneity, not the companion.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:move}, $L^{\sharp}[(1-\lambda t)^{\alpha}X]
+=(1-\lambda t)^{1-\alpha}LX$ for any $X$. With $X=\widehat B$,
+$L^{\sharp}B^{\sharp}=(1-\lambda t)^{1-\alpha}\cdot t(1-\lambda t)^{-\alpha}
+=t/(1-\lambda t)=s$, which is the defining inhomogeneity of the moved row's
+companion; and $B^\sharp=s+O(s^2)$. Uniqueness of the analytic solution with
+$b_0=0$ finishes.
+\end{proof}
+
+Consequently the Ap\'ery limit is \emph{not} preserved by a cusp move: two
+things change at once, the dominant singularity and the second solution. In
+modular terms, with $\Phi=F\,Dt$ the weight-three source and
+$\Theta=D^{-2}\Phi$, $B^\sharp=F^\sharp D^{-2}(\Phi/(1-\lambda t))$;
+multiplication by the modular unit $(1-\lambda t)^{-1}$ is not Hecke-equivariant,
+so the source can jump between Hecke eigenspaces.
+
+\begin{theorem}[orbits and rigidity]\label{thm:orbits}
+\Proved{} In the coordinate $v=1/t$ the four singular points are $v=\infty$
+\textup{(}MUM\textup{)}, $0$, $\lambda$, $\mu$, and the cusp move by $\lambda$ is
+the translation $v\mapsto v-\lambda$. Hence the orbit consists of exactly three
+\emph{placements} --- which of $\{0,\lambda,\mu\}$ goes to $v=0$ --- each carrying
+at most four gauges, so at most $12$ rows modulo $u_n\mapsto c^nu_n$; and the
+placement at $v=v_j$ has $|\lambda_2|=\min_{i\ne j}|v_i-v_j|$. Moreover
+\textup{(}Theorem~\ref{thmB}(iii)\textup{)}, if $a^2-4d$ is a square then all
+three gaps $|\lambda|,|\mu|,|\lambda-\mu|$ are positive integers, so
+$|\lambda_2|\ge1$ and $\operatorname{score}\le-k\le-1$ at every placement.
+\end{theorem}
+
+\begin{corollary}\label{cor:irrational-roots}
+\Proved{} No rational cusp-move orbit contains a positive-score row; conversely a
+positive-score row has irrational characteristic roots, so its only other
+equally-good placement is its Galois conjugate over $K=\Q(\sqrt{a^2-4d})$.
+\end{corollary}
+
+Measured orbit sizes in the corpus of $49$ distinct rows are $2,3,8,12$; the
+$\mathbf A,\mathbf C,\mathbf F$ orbits coincide, all members are integral to
+$n=200$ after a rescaling $c\in\{1,2,4,9\}$, $k\in\{1,2\}$ throughout and sharp,
+the best score in a rational orbit is exactly $-2$, and the only corpus rows with
+$|\lambda_2|<1$ --- Ap\'ery's $\zeta(2)$ row $(0.09017)$, Beukers' $(0.11775)$,
+$\sqrt T$ $(0.68629)$, $\Gamma_0(5)+5$ $(0.72136)$ --- all have irrational roots.
+\VerifiedR{$49$ rows, $8$ orbits, $n\le200$} The conjugate placements exist over
+$K$ with the \emph{same} score to the last digit but approximate a different real
+number: $0.32781709442\ldots$ against $\zeta(2)/5=0.32898681337\ldots$, and
+$0.10021505333\ldots$ against $0.10018744923\ldots$ \Numerical{$\ge231$ digits}
+
+\subsection{One surface, two extension classes}
+
+With $t_{\mathbf C}=\eta_1^4\eta_6^8/(\eta_2^8\eta_3^4)$,
+$F_{\mathbf C}=\eta_2^6\eta_3/(\eta_1^3\eta_6^2)$ and $\mathbf F'$ denoting
+$\mathbf F$ in the level-$6$ normalisation
+$u_n^{\mathbf F'}=(-1)^nu_n^{\mathbf F}$,
+\[
+t_{\mathbf A}=\frac{t_{\mathbf C}}{1-t_{\mathbf C}},\quad
+t_{\mathbf F'}=\frac{t_{\mathbf C}}{1-9t_{\mathbf C}},\quad
+F_{\mathbf A}=(1-t_{\mathbf C})F_{\mathbf C},\quad
+F_{\mathbf F'}=(1-9t_{\mathbf C})F_{\mathbf C}
+\]
+\VerifiedR{exact to $O(q^{241})$}. The cusps of $\Gamma_0(6)$ are
+$\infty,1/2,1/3,0$ of widths $1,3,2,6$, carrying $I_1,I_3,I_2,I_6$;
+$t_{\mathbf C}$ vanishes at $\infty$, has its pole at $1/2$ and takes the values
+$1$, $\tfrac19$ at $1/3$, $0$, which is why the three substitutions put
+$I_3,I_2,I_6$ at $t=\infty$. The relating map is \emph{not} an Atkin--Lehner
+involution: $\{1,W_2,W_3,W_6\}$ acts simply transitively on the cusps, so no
+nontrivial element fixes the MUM cusp.
+
+The surface fixes the pure local system; the choice of MUM cusp fixes which
+Eisenstein class degenerates there. With $\mathcal S=E_{3,\chi_{-3},\mathbf 1}$,
+$\mathcal T=E_{3,\mathbf 1,\chi_{-3}}$ and $(V_kf)(\tau)=f(k\tau)$, one has
+$\Phi_{\mathbf C}=(1-8V_2)\mathcal S$, $\Phi_{\mathbf F'}=(1+V_2)\mathcal S$,
+$\Phi_{\mathbf A}=(1-V_2)\mathcal T$ \VerifiedR{exact to $O(q^{260})$}. The four
+series $\mathcal S,V_2\mathcal S,\mathcal T,V_2\mathcal T$ are independent, so
+$\{\mathcal S,V_2\mathcal S\}$ and $\{\mathcal T,V_2\mathcal T\}$ span two
+different planes of $\mathcal M_3(\Gamma_0(6),\chi_{-3})$; the cusp move
+multiplies $\Phi$ by the modular unit $(1-\lambda t)^{-1}$ and is not
+Hecke-equivariant, landing in the $\mathcal S$-plane for $\lambda=9$ and in the
+$\mathcal T$-plane for $\lambda=1$. Hence \emph{one surface, two extension
+classes}: $\xi^{\mathbf C}=\tfrac12L(2,\chi_{-3})$,
+$\xi^{\mathbf F'}=-\tfrac58L(2,\chi_{-3})$, so
+$\xi^{\mathbf F'}/\xi^{\mathbf C}=-\tfrac54$ exactly, while
+$\xi^{\mathbf A}=\tfrac14\zeta(2)$ and $\xi^{\mathbf A}/\xi^{\mathbf C}$ has no
+rational approximation of height $\le10^{12}$ beyond the random level.
+\Numerical{$\ge80$ digits}
+
+\begin{corollary}[the $3$-adic relation]\label{cor:3adic}
+Inside the $\mathcal S$-plane,
+$\Theta_{\mathbf F'}=-\tfrac54\Theta_{\mathbf C}+\tfrac94\Theta_{\Psi_0}$ with
+$\Psi_0=(1-4V_2)\mathcal S$ the class of vanishing Mellin factor
+\textup{(}\VerifiedR{$O(q^{260})$}\textup{)}; multiplying by
+$F_{\mathbf F'}=(1-9t_{\mathbf C})F_{\mathbf C}$ gives
+\[
+B^{\mathbf F'}+\tfrac54\xi A^{\mathbf F'}
+=(1-9t_{\mathbf C})\Bigl(-\tfrac54R^{\mathbf C}_\xi+\tfrac94\Xi\Bigr),
+\qquad t_{\mathbf C}=\frac{t_{\mathbf F'}}{1+9t_{\mathbf F'}} .
+\]
+Since $x\mapsto x/(1+9x)$ is an isometric automorphism of the disc
+$\{|x|_3\le3^{\delta}\}$, $0<\delta<2$, and $1\pm9x$ are units of norm $1$ there,
+$\xi_3^{\mathbf F}=\tfrac54\xi_3^{\mathbf C}$ --- conditionally on
+overconvergence of $R^{\mathbf C}_\xi$ and $\Xi$ on such a disc and on
+$v_3(a_n^{\mathbf F})=O(\log n)$.
+\Numerical{$v_3(4\xi_3^{\mathbf F}-5\xi_3^{\mathbf C})=1586$ at $N=800$, against
+Cauchy precision $1581$}
+\end{corollary}
+
+The move transports nothing to $\mathbf A$, and cannot: $\Theta_{\mathbf C},
+\Theta_{\Psi_0},\Theta_{\mathbf A}$ have rank $3$, so no such identity exists;
+$\mathbf A$ has $\sigma_3=v_3(d)=0$ and no $3$-adic Ap\'ery limit at all; and at
+its own alignment prime $\xi_2^{\mathbf A}=0$. The failure is structural, not a
+gap.
+
+\subsection{The cusp move can change the source's Hecke type}
+The $\sqrt{\text{Domb}}$ orbit (size $8$) contains two members with genuinely
+mixed limits: $(20,10,64)$ with
+$\xi=\tfrac1{16}(15L(2,\chi_{-3})-6\zeta(2))$ and $(20,4,64)$ with
+$\xi=\tfrac1{32}(6\zeta(2)+15L(2,\chi_{-3}))$, both integral to $n=200$ with
+$k=2$ sharp, $\lambda_1=16$, $\lambda_2=4$.
+\Numerical{agreement $2.8\times10^{-124}$ resp.\ $2.7\times10^{-118}$ at $n=200$
+against predicted truncation $3.9\times10^{-121}$} Their parent carries the
+\emph{cuspidal} value $L(f_{12},2)$: the cusp move has pushed the weight-three
+source out of the cuspidal part into the Eisenstein part of
+$M_3(\Gamma_0(12),\chi_{-3})$, which Theorem~\ref{thm:companion} explains. These
+are the first rows in this census whose single Ap\'ery limit is a nontrivial
+$\Q$-combination of $\zeta(2)$ and $L(2,\chi_{-3})$, with independent coefficient
+vectors $(-6,15)$ and $(6,15)$ --- the shape a Nesterenko argument for
+$\dim\langle1,\zeta(2),L(2,\chi_{-3})\rangle$ wants. It does not get near: here
+$\sigma=2+\log16$ and $\delta=-2-\log4$, a deficit of $3.386$ nats per step to
+$\dim\ge2$, and from the better pair $(\mathbf A,\mathbf C)$ the deficit to
+$\dim\ge3$ --- the theorem of Calegari--Dimitrov--Tang \cite{CDT2024} --- is
+$10.394$ nats per step.
+
+% ===========================================================================
+\section{Non-congruence hosts}\label{sec:noncong}
+% ===========================================================================
+
+The classification above is organised by the surface. There is a second
+organisation, by the group, and it produces the same finiteness from
+Gauss--Bonnet rather than from Riemann--Hurwitz.
+
+Let $\Gamma$ be a genus-zero Fuchsian group commensurable with $\PSL_2(\Z)$ with
+a distinguished cusp, $t$ a Hauptmodul normalised $t=q_h+O(q_h^2)$ with integral
+coefficients, and $F$ a weight-two form on $\Gamma$ with $F=1+O(q)$ and divisor
+supported on the cusps (an eta quotient, say). Put $g=\sqrt F$ and
+$a_n=\lambda^n[t^n]g$. Then $g$ is a weight-one form on an index-$\le2$ subgroup,
+$a_n$ satisfies a second-order row, and $4^n[t^n]\sqrt G\in\Z$ for any
+$G\in1+x\Z[[x]]$ --- sharply, since $4^k\binom{1/2}k=(-1)^{k-1}2C_{k-1}$ with
+$C_j$ Catalan --- so $\lambda=\max(1,2^{2-e})\in\{1,2,4\}$ where
+$e=\min_{n\ge1}v_2([t^n]F)$.
+
+\begin{lemma}\label{lem:singpts}
+\Proved{} The finite singular points of the weight-one operator in the $t$-line
+are exactly the values $t(P)$ for $P$ a cusp or elliptic point of $\Gamma$ with
+$t(P)\notin\{0,\infty\}$. They do \emph{not} depend on $F$.
+\end{lemma}
+
+\begin{proof}
+At a non-elliptic $P\in\HH$, $t$ is a local isomorphism and $g$ is holomorphic
+and non-vanishing, so both solutions are holomorphic and independent and $t(P)$
+is ordinary. At an elliptic point of order $e$ the local coordinate on
+$X_\Gamma$ is $w\sim(\tau-\tau_P)^e$ and $t-t(P)\sim w$, so the local monodromy
+is a rotation by $2\pi/e$ and the exponent difference is $1/e$. At a cusp with
+$t$ finite the second solution carries $\log(t-t(c))$. Zeros or poles of $F$
+change the exponents, not the locations.
+\end{proof}
+
+\begin{theorem}[the score splits]\label{thm:N1}
+\Proved{} With $k=2$ as above and $|t_1|\le|t_2|\le\cdots$ the singular values,
+\[
+\operatorname{score}=\log(1/|\lambda_2|)-k=\log|t_2|-2-\log\lambda .
+\]
+The archimedean factor $|t_2|$ depends only on $(\Gamma,t)$ --- not on $F$ --- and
+$\lambda\in\{1,2,4\}$ depends only on the $2$-adic structure of $F$. Hence a
+positive score needs $|t_2|>e^2\lambda$, i.e.\ $|t_2|>7.389$, $14.778$ or
+$29.556$ according as $\lambda=1,2,4$.
+\end{theorem}
+
+By Calegari--Dimitrov--Tang \cite{CDT2021}, a modular form on a finite-index
+subgroup with algebraic Fourier coefficients and \emph{bounded} denominators is a
+form on a congruence subgroup. So $\lambda>1$ is a certificate of
+non-congruence; the converse direction, and the value of $\lambda$, come from the
+elementary binomial estimate above, not from their theorem.
+
+\begin{theorem}[four special points; finiteness]\label{thm:N2}
+\Proved{} \textup{(}Gauss--Bonnet\textup{)}$+$\VerifiedR{exhaustive enumeration}
+A three-term row forces $\Gamma$ to have exactly four special points (cusps plus
+elliptic points), whence its covolume index in $\PSL_2(\Z)$ is
+\[
+\mu=6\Bigl(2-\sum_{i}\frac1{e_i}\Bigr)\ \le\ 12 ,
+\]
+with equality exactly in the four-cusp case. Inside $\PSL_2(\Z)$ there are, up to
+conjugacy, exactly $28$ genus-zero subgroups with four special points: $16$
+congruence and $12$ non-congruence. The non-congruence ones have index $7$, $9$,
+$10$ and signatures $(0;2,3;2)$, $(0;2;3)$, $(0;3;3)$, four groups each. The
+index-$12$ four-cusp case returns exactly six groups, with cusp widths
+$[1,1,5,5]$, $[1,2,3,6]$, $[1,1,2,8]$, $[1,1,1,9]$, $[2,2,4,4]$, $[3,3,3,3]$,
+\emph{all congruence} --- Beauville's six, recovered from scratch. In particular
+no non-congruence group has four cusps.
+\end{theorem}
+
+The enumeration is by transitive pairs $(s,t)\in S_n$ with $s^2=t^3=1$,
+canonicalised by breadth-first relabelling, cusps read off as cycles of $st$, and
+congruence decided by Wohlfahrt's criterion.
+
+\begin{theorem}[unequal exponents kill the score]\label{thm:N3}
+\Proved{} \textup{(}modulo the normalisation $P,Q,R\in\Z[t]$, $P(0)=1$, true for
+every row here\textup{)} If the two finite singular points carry different
+exponent differences $1/e_1\ne1/e_2$ then $t_1,t_2\in\Q$, hence
+$\lambda_1,\lambda_2\in\Z$, so $|\lambda_2|\ge1$ and score $\le-k<0$.
+\end{theorem}
+
+This is Corollary~\ref{cor:galois} read on the group side, and it settles the
+non-congruence host question. Index $7$ has signature
+$(0;2,3;2\ \text{cusps})$: whichever of the three non-MUM special points goes to
+$t=\infty$, a \emph{mixed} pair remains at $t_1,t_2$, so all four index-$7$
+groups are excluded outright; for index $9$ and $10$ the only non-mixed option is
+to send the elliptic point to $\infty$, leaving two cusps at $t_1,t_2$ --- the
+Zagier class, covered exhaustively by \S\ref{sec:scan}. So \emph{a
+non-congruence host group contributes nothing beyond the Zagier class: the
+interesting non-congruence-ness is not in the group of $t$ but in the multiplier
+system of $g=\sqrt F$.}
+
+That is exactly Beukers' situation. His $t=(\eta_1\eta_6/\eta_2\eta_3)^{12}$
+lives on the \emph{congruence} group $\Gamma_0(6)+6$; his $\sqrt E$ does not.
+With $F=\eta_2^7\eta_3^7/(\eta_1^5\eta_6^5)$ Ap\'ery's weight-two form
+($F|_2W_6=-F$, divisor $(1/2)+(1/3)$),
+$a_n=4^n[t^n]\sqrt F=1,10,534,40900,3672550,\dots$,
+$\lambda_{1,2}=4(17\pm12\sqrt2)$, $k=2$, $\lambda=4$, and the score is
+$+0.13920$: the criterion $\lambda e^k<|t_2|$ reads $4e^2<(\sqrt2+1)^4$, i.e.\
+$29.5562<33.9706$, a margin of $1.1494$. Level $6$ wins because $t\circ W_6=t$
+with $t_1t_2=1$ exactly, so $|t_2|=1/|t_1|$ is as large as the fastest-growing
+row allows. This is Beukers' Theorem~3 of 1987 \cite{Beukers1987}: the Ap\'ery
+limit $\xi=0.100187449229339406\ldots=L(\Psi,2)$, for the weight-three
+half-integral eta quotient
+$\Psi=\tfrac14(\eta_1\eta_6)^{9/2}(\eta_2\eta_3)^{-3/2}$, is irrational with
+$\mu(\xi)\le50.654$.
+
+\begin{theorem}[uniqueness]\label{thm:unique}
+\VerifiedR{two independent exhaustive scans; boxes stated below}
+Beukers' row is the only positive-score row whose form is non-congruence, and the
+only positive-score rows at all with $k\ge2$ are it, Ap\'ery's $\zeta(2)$ row, and
+members of two infinite classical Pad\'e families.
+\begin{itemize}[leftmargin=1.6em]
+\item \emph{Ansatz-free recurrence scan.} Integer $(\alpha,\gamma,\delta,\zeta)$
+in the five classes $e\in\{2,3,4,6,\infty\}$ and in a free-exponent variant, at
+$\alpha\le3000$, $|\delta|\le150$--$400$, $|\gamma|\le150$--$1000$,
+$|\zeta|\le300$--$2000$, with the Casoratian filter and measured $k$, plus a
+per-$\rho$ sweep over $\rho=p/q$ with $q\le6$, $0<\rho\le3$. Every positive score
+with $k\ge2$ is Ap\'ery's row, Beukers' row, a member of the Legendre--Pad\'e
+$\log$ family ($\delta=16$, $\rho=0$, $\xi=-\tfrac1{12}\log\frac{x+1}{x-1}$ at
+$\alpha=8x$), or a member of the $\arctan$ family of
+Corollary~\ref{cor:excluded}(b). In the square-root class $\rho=\tfrac12$,
+Beukers' row is the \emph{unique} positive score at $\alpha\le3000$.
+\item \emph{Modular scan.} All eta-quotient pairs $(t,F)$ on $\Gamma_0(N)$,
+$N\le60$, with $t$ of weight $0$, $\ord_\infty t=1$, divisor degree $\le4$, and
+$F$ holomorphic of weight $2$ with $\ord_\infty F=0$: $3\,036\,854$ pairs. Of
+these $739$ admit a recurrence of order $\le4$ and degree $\le3$ ($485$ with
+$\lambda=1$, $127$ with $\lambda=2$, $127$ with $\lambda=4$), in $104$ distinct
+invariant classes. \emph{Exactly two} have $|\lambda_2|<1$: Beukers'
+($+0.1392$, $\lambda=4$, non-congruence) and the level-$8$ $T$ row ($-1.6235$,
+$\lambda=1$, congruence). Everything else has $|\lambda_2|\ge1$; the next classes
+by $|\lambda_2|$ are $1$ exactly, then $1.0635$, $1.0718$, $1.6180$.
+\end{itemize}
+\end{theorem}
+
+The modular scan has two documented blind spots --- both $t$ and $F$ are required
+to be eta quotients --- so the ansatz-free scan is the load-bearing one, and it is
+what turns up the runner-up.
+
+\begin{proposition}[the level-$5$ Fricke row]\label{prop:level5}
+\VerifiedR{$a_n\in\Z$ to $n=202$; $k$ to $n=200$; period to $260$ digits}
+Let $u=(\eta_5/\eta_1)^6$, a Hauptmodul of $\Gamma_0(5)$,
+$t=u/(1+22u+125u^2)=q-16q^2+122q^3-\cdots$ the resulting Hauptmodul of
+$\Gamma_0(5)+5$, and $F=E_{2,5}=\tfrac14(5E_2(5\tau)-E_2(\tau))$. Then
+$g=\sqrt F$ is weight one on an index-two subgroup, $\lambda=2$ is minimal,
+$a_n=2^n[t^n]\sqrt F=1,6,210,10500,615510,\dots$ satisfies
+$(n+1)^2a_{n+1}=2(44n^2+22n+3)a_n+4(4n-1)(4n-3)a_{n-1}$ with
+$\lambda_{1,2}=44\pm20\sqrt5=\pm8\varphi^{\pm5}$, $k=2$ sharp, non-vanishing
+Casoratian, and $\xi=0.164306701064342158629932\ldots$ Since $\lambda=2>1$ and
+the source has unbounded $2$-power denominators, $g$ and $\Psi$ live on a
+non-congruence group \cite{CDT2021}: a genuine second instance of Beukers'
+construction, at the other perfect level. But $|t_2|=2.7726\ll2e^2=14.778$, so
+the score is $-1.6734$ and no irrationality follows.
+\end{proposition}
+
+The comparison is exact: at level $6$ the Fricke pairing is $t_1t_2=1$, at level
+$5$ it is $t_1t_2=-\tfrac14$, and the same $\lambda_1$-for-$|t_2|$ exchange loses
+a factor $4$. \emph{That factor of $4$ is the whole difference between the two
+levels.} The period resisted identification against
+$1,\pi,\pi^2,\pi^3,\zeta(3),\log2,\log5,\log\varphi,\sqrt5$ and against
+$L(f,s)$, $s=1,2,3$, for every weight-three newform of every level $M\le120$
+divisible by $5$. \Open{}
+
+One cheap diagnostic separates the Pad\'e families from the modular rows in a
+single series computation: \emph{mirror-map integrality} (\S\ref{sec:BD}). For
+Ap\'ery's $\zeta(2)$ row the canonical coordinate is
+$q-5q^2+15q^3-30q^4+40q^5-26q^6-\cdots$, Beukers' $\Gamma_1(5)$ Hauptmodul
+$q\prod(1-q^n)^{5(\frac n5)}$; for Beukers' own row it is
+$q-48q^2+1056q^3-\cdots$, i.e.\ $\tfrac14(\eta_1\eta_6/\eta_2\eta_3)^{12}$ in the
+rescaled nome; for the $\arctan$ family it is not integral at all.
+\VerifiedR{$n\le58$}
+
+% ===========================================================================
+\section{Outlook}\label{sec:outlook}
+% ===========================================================================
+
+\subsection*{$K3$ and higher, and five singular points}
+Proposition~\ref{prop:K1} and Lemma~\ref{lem:twistparity} close the $K3$ worry
+for four singular points, but in a way worth restating precisely: an elliptic
+$K3$ over $\PP^1_t$ with the row's four singular fibres is \emph{not} excluded
+--- in the root-row class the mixed $III/III^*$ configuration with $\sum e=24$ is
+a genuine possibility --- but every such surface is a quadratic twist of a
+rational one with the same $\mathcal J$, and $\deg\mathcal J$ is pinned by the
+degree bound together with the parity, so the $\deg\le12$ search window was never
+the constraint and no new row can arise. What is not closed is a systematic pass
+through Shimada--Zhang's extremal elliptic $K3$s \cite{ShimadaZhang} against the
+$26$ classes. \Open{} Five singular points means $\deg P$ or $\deg Q=3$, i.e.\ a
+four-term recurrence or cubic coefficients; there is no analogue of Herfurtner's
+theorem in that generality, and the cross-ratio becomes a two-parameter modulus,
+so the finiteness argument of \S\ref{sec:herf} does not survive. At the other
+end, Schmickler-Hirzebruch's classification of elliptic surfaces over $\PP^1$
+with \emph{three} exceptional fibres \cite{SchmicklerHirzebruch} is the
+degenerate boundary: the case $d=0$, where $t=\infty$ merges with a finite
+singular point and the row becomes hypergeometric --- Zagier's modular solutions
+\#11 $(16,4,0)$, \#14 $(27,6,0)$ and \#20 $(64,12,0)$ in the notation of
+Table~\ref{tab:placements}.
+
+\subsection*{A gate on the higher-rank constructions}
+For a linear-independence argument one wants a $\Q$-linear combination $H$ of
+several Ap\'ery limits whose linear form still decays --- ``fold-regularity''.
+
+\begin{lemma}[fold-regularity is codimension $\mu$]\label{lem:foldreg}
+\Proved{} Let $\lambda_1$ be the dominant characteristic root, of multiplicity
+$\mu$. Near $x_1=1/\lambda_1$ the local solution space carries a Jordan block of
+size $\mu$: solutions $y_1,y_1\log,\dots,y_1\log^{\mu-1}$ up to holomorphic
+corrections. A solution has radius of convergence $>|x_1|$ iff \emph{all $\mu$}
+of its coordinates on that block vanish, whereas a hypothesised $\Q$-linear
+relation among the limits makes exactly the \emph{leading} one vanish. Hence one
+relation implies fold-regularity iff $\mu=1$.
+\end{lemma}
+
+For $\mu\ge2$ the form does not decay at all --- one gets polynomial convergence
+with $|h_n|^{1/n}\to|\lambda_1|$ --- so there is nothing for a holonomy bound, or
+for Beukers' criterion, to act on. Verified sharply: a row with $\mu=1$ folds and
+its form decays at rate $\lambda_2$ exactly, while $\Sym^3$ of Zagier $\mathbf E$
+($\mu=3$) and a $\Sym^2$ with $\mu=2$ do not fold at all.
+\VerifiedR{$n$ up to $10^6$} Symmetric powers and Cauchy squares of a single row
+therefore raise $\mu$ and are the wrong place to look; genuinely independent rows
+on one surface (\S\ref{sec:cusp}) are the right one.
+
+\subsection*{What the classification says for irrationality proofs}
+The score $\log(1/|\lambda_2|)-k$ is not a property of the sequence. By
+Theorem~\ref{thm:N1} it splits as $\log|t_2|-2-\log\lambda$, and neither factor
+depends on the accessory parameter or on the period: $|t_2|$ is fixed by the
+surface together with the choice of which fibre sits at $\infty$, and $\lambda$
+by the $2$-adic structure of the weight-two form. The score is therefore a
+\emph{motivic} invariant --- of the geometry plus the placement --- and the
+classification computes it once and for all. Combined with
+Corollary~\ref{cor:irrational-roots} (a positive score forces irrational
+characteristic roots, hence a real quadratic field, hence no second rational
+placement), Theorem~\ref{thm:N2} (only finitely many host geometries, all
+enumerated) and Corollary~\ref{cor:H6} and Theorem~\ref{thm:unique} (over every
+box, exactly two rows clear zero, and both were known), the honest conclusion is
+that the second-order world is closed. Its two positive-score rows are not
+improvable by rearrangement inside the list: the cusp move produces no new
+rational data (Theorem~\ref{thm:orbits}), merging two placements gives
+$\mu\le1+\min_i\sigma_i/\delta_i$, i.e.\ the better of the two with no
+convex-combination gain, and the conjugate placements approximate different
+numbers. A new irrationality theorem of this shape must come from outside the
+second-order box --- from a higher-rank host, or from a bound of
+Bost--Charles/Calegari--Dimitrov--Tang type applied to a whole function module
+rather than to a single linear form.
+
+% ===========================================================================
+\section{Reproducibility}\label{sec:repro}
+% ===========================================================================
+
+{\small
+\sloppy\raggedright
+All computations are reproducible from the project notes and scripts
+\cite{ProjNotes}; \textsc{pari/gp} work uses exact rational (or
+$\Q(y)/(y^2-ay+d)$) arithmetic except where a real or $p$-adic precision is
+quoted. Under \texttt{lattice/herfurtner/}: \texttt{01\_exponents.py},
+\texttt{07\_classtable.py}, \texttt{04\_herfurtner.py} (exponents, classes,
+Herfurtner's table and its cross-ratios); \texttt{02\_hscan.c} with
+\texttt{run\_scan.sh}, \texttt{run\_a0.sh} ($\approx75$\,min, twelve cores),
+\texttt{08\_report.py}, \texttt{09\_table.py} (the scan and its exact
+re-verification to $n=300$); \texttt{05\_jtest.gp}, \texttt{10\_jtest\_all.py},
+\texttt{11\_jall.gp} (the $\mathcal J$-test at $\deg\le12$);
+\texttt{13\_fastfilter.py}, \texttt{14\_decay.py} (the complete positive-score
+pass); \texttt{15\_k3jtest.gp}, \texttt{15\_k3rows.py}, \texttt{15\_k3run.gp}
+(the raised window, $\mathtt{DMAX}=\mathtt{HMAX}=24$, $\mathtt{NTERM}=140$,
+$\mathtt{GLIM}=4096$, $\mathtt{KPRIME}=2^{61}-1$, an $\mathbf F_p$ filter with no
+false negatives and exact certificates); data in \texttt{out/}. Under
+\texttt{lattice/cusp\_move/}: \texttt{01\_general\_move.py} (the symbolic proof
+of Theorem~\ref{thm:move}) through \texttt{12\_domb\_pairs.gp}. Under
+\texttt{lattice/acf\_one\_surface/}: \texttt{01\_cusp\_move.gp} through
+\texttt{08\_census\_check.gp}. Under \texttt{lattice/noncongruence\_scan/}:
+\texttt{01\_class\_scan.c}, \texttt{04\_score.py}, \texttt{06\_groups.py} (the
+$28$ groups, Wohlfahrt test), \texttt{02\_eta\_enum.py}, \texttt{03b\_exact.gp},
+\texttt{09\_level5.gp}, \texttt{10\_ident5.gp}, \texttt{12\_source5.gp},
+\texttt{14\_mirror234.gp}, \texttt{16\_arctan.py}. Under
+\texttt{lattice/sqrt\_apery/}: \texttt{01\_sym2.py}, \texttt{12\_sharp.gp},
+\texttt{06\_fold.gp}. Under \texttt{lattice/number\_field/}:
+\texttt{nf\_herfurtner\_uniformisation.gp}, \texttt{cfold.gp} with
+\texttt{run\_all.gp}, \texttt{run\_v23.gp}, \texttt{run\_t.gp}, and the sweeps
+\texttt{hunt3.gp}--\texttt{hunt9.gp} (\texttt{xi\_targets.txt}).
+}
+
+% ===========================================================================
+\begin{thebibliography}{99}
+\footnotesize
+\setlength{\itemsep}{0pt plus 0.5pt}
+
+\bibitem{AlmkvistZudilin2006}
+G.~Almkvist and W.~Zudilin,
+\emph{Differential equations, mirror maps and zeta values},
+in: Mirror Symmetry V, AMS/IP Stud. Adv. Math. \textbf{38} (2006), 481--515.
+arXiv:math/0402386.
+
+\bibitem{Beauville1982}
+A.~Beauville,
+\emph{Les familles stables de courbes elliptiques sur $\PP^1$ admettant quatre
+fibres singuli\`eres},
+C. R. Acad. Sci. Paris S\'er. I Math. \textbf{294} (1982), 657--660.
+
+\bibitem{Beukers1987}
+F.~Beukers,
+\emph{Irrationality proofs using modular forms},
+Journ\'ees arithm\'etiques de Besan\c{c}on, Ast\'erisque \textbf{147--148}
+(1987), 271--283.
+
+\bibitem{Beukers2002}
+F.~Beukers,
+\emph{On Dwork's accessory parameter problem},
+Math. Z. \textbf{241} (2002), 425--444.
+
+\bibitem{Bombieri1981}
+E.~Bombieri,
+\emph{On $G$-functions},
+in: Recent Progress in Analytic Number Theory, vol.~2, Academic Press (1981),
+1--67.
+
+\bibitem{CDT2021}
+F.~Calegari, V.~Dimitrov and Y.~Tang,
+\emph{The unbounded denominators conjecture},
+preprint (2021), arXiv:2109.09040.
+
+\bibitem{CDT2024}
+F.~Calegari, V.~Dimitrov and Y.~Tang,
+\emph{The linear independence of $1$, $\zeta(2)$ and $L(2,\chi_{-3})$},
+preprint (2024), arXiv:2408.15403.
+
+\bibitem{Cooper2012}
+S.~Cooper,
+\emph{Sporadic sequences, modular forms and new series for $1/\pi$},
+Ramanujan J. \textbf{29} (2012), 163--183.
+
+\bibitem{Chudnovsky1985}
+D.~V.~Chudnovsky and G.~V.~Chudnovsky,
+\emph{Applications of Pad\'e approximations to the Grothendieck conjecture on
+linear differential equations},
+in: Number Theory (New York 1983--84), Lecture Notes in Math. \textbf{1135},
+Springer (1985), 52--100.
+
+\bibitem{Herfurtner1991}
+S.~Herfurtner,
+\emph{Elliptic surfaces with four singular fibres},
+Math. Ann. \textbf{291} (1991), 319--342.
+
+\bibitem{Katz1996}
+N.~M.~Katz,
+\emph{Rigid local systems},
+Ann. of Math. Studies \textbf{139}, Princeton Univ. Press, 1996.
+
+\bibitem{Kodaira1963}
+K.~Kodaira,
+\emph{On compact analytic surfaces II, III},
+Ann. of Math. \textbf{77} (1963), 563--626; \textbf{78} (1963), 1--40.
+
+\bibitem{Krammer1996}
+D.~Krammer,
+\emph{An example of an arithmetic Fuchsian group},
+J. Reine Angew. Math. \textbf{473} (1996), 69--85.
+
+\bibitem{MirandaBook}
+R.~Miranda,
+\emph{The basic theory of elliptic surfaces},
+ETS Editrice, Pisa, 1989.
+
+\bibitem{MovasatiReiter}
+H.~Movasati and S.~Reiter,
+\emph{Heun equations coming from geometry},
+Bull. Braz. Math. Soc. (N.S.) \textbf{43} (2012), 423--442; arXiv:0902.0760.
+
+\bibitem{SchmicklerHirzebruch}
+K.~Schmickler-Hirzebruch,
+\emph{Elliptische Fl\"achen \"uber $\PP_1(\mathbb C)$ mit drei Ausnahmefasern
+und die hypergeometrische Differentialgleichung},
+Schriftenreihe Math. Inst. Univ. M\"unster, 1985.
+
+\bibitem{Verrill}
+H.~A.~Verrill,
+\emph{Picard--Fuchs equations of some families of elliptic curves},
+in: Proceedings on Moonshine and related topics (Montr\'eal 1999), CRM Proc.
+Lecture Notes \textbf{30}, Amer. Math. Soc. (2001), 253--268.
+
+\bibitem{ShimadaZhang}
+I.~Shimada and D.-Q.~Zhang,
+\emph{Classification of extremal elliptic $K3$ surfaces and fundamental groups of
+open $K3$ surfaces},
+Nagoya Math. J. \textbf{161} (2001), 23--54.
+
+\bibitem{VidunasFilipuk}
+R.~Vidunas and G.~Filipuk,
+\emph{A classification of coverings yielding Heun-to-hypergeometric reductions},
+preprint (2012), arXiv:1204.2730.
+
+\bibitem{Zagier2009}
+D.~Zagier,
+\emph{Integral solutions of Ap\'ery-like recurrence equations},
+in: Groups and Symmetries, CRM Proc. Lecture Notes \textbf{47}, Amer. Math. Soc.
+(2009), 349--366.
+
+\bibitem{ProjNotes}
+Claude (Opus 5), Claude (Fable) and River,
+\emph{Project notes and scripts} (2026):
+\texttt{HERFURTNER\_CLASSIFICATION.md} (the exponent dictionary, the cross-ratio
+invariant, the scan, the $\mathcal J$-map test),
+\texttt{HERFURTNER\_K3\_WINDOW.md} (the Riemann--Hurwitz bound and the
+$\deg\le24$ recheck),
+\texttt{CUSP\_MOVE\_PROGRAM.md} (the cusp move, orbits, rigidity),
+\texttt{ACF\_ONE\_SURFACE.md} ($\mathbf A,\mathbf C,\mathbf F$ on one surface),
+\texttt{NONCONGRUENCE\_SCAN.md} (Theorems N1--N3, the $28$ groups, the two
+scans),
+\texttt{SQRT\_APERY.md} (Beukers' row),
+\texttt{NUMBER\_FIELD\_PROGRAM.md} (uniformisation of the two new rows, the
+Chowla--Selberg period),
+\texttt{HOLONOMY\_LINDEP.md} (fold-regularity);
+scripts under \texttt{lattice/}, as itemised in \S\ref{sec:repro}.
+
+\end{thebibliography}
+
+\end{document}
