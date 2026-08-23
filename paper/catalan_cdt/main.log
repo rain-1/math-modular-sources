@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.31)  23 AUG 2026 08:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.31)  23 AUG 2026 09:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -438,16 +438,16 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 705DEBD50596E07E6354EA871C997CED;3045.
+(rerunfilecheck)             Checksum: C275341502D7132FD0FC20CA60E152AC;3340.
  ) 
 Here is how much of TeX's memory you used:
- 10402 strings out of 476182
- 154368 string characters out of 5795595
+ 10404 strings out of 476182
+ 154388 string characters out of 5795595
  1941975 words of memory out of 5000000
- 32095 multiletter control sequences out of 15000+600000
+ 32096 multiletter control sequences out of 15000+600000
  568422 words of font info for 75 fonts, out of 8000000 for 9000
  175 hyphenation exceptions out of 8191
- 75i,8n,79p,1428b,473s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,1450b,473s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texl
@@ -469,10 +469,10 @@ e1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfr
 m1095.pfb>
-Output written on main.pdf (5 pages, 305275 bytes).
+Output written on main.pdf (5 pages, 310063 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
- 191 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 137 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 249 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 145 words of extra memory for PDF output out of 10000 (max. 10000000)
 
