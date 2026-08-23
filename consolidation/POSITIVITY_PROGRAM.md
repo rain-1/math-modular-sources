@@ -6,6 +6,11 @@
 in the arithmetic; **[measured]** = numerical rate or fit, not converged to a proof;
 **[open]** as usual.*
 
+*Follow-up: `consolidation/P2_STRUCTURE.md` (2026-08-23) extends the P2$'$ measurement to
+$n\le120$, corrects 51 of the 231 cone minima of `data/cone_n80.csv` (all downward), settles the
+gcd-loss constant of §3.4 as $c=0$ by identifying $M_n/[\mathbb Z^2:\mathcal K_n]=\gcd(X_n,Y_n,V_n,U_n)$,
+and reduces P2$'$ to a parity statement about one continued-fraction index.*
+
 **No claim of irrationality is made anywhere.**  Every covolume-driven column below is
 reproduced verbatim by a rational surrogate for $G$ (§6.4, and `CATALAN_AUDIT.md` §4(a)),
 so none of it is evidence about $G$.
