@@ -1,0 +1,6 @@
+G_r0o1_M2_1_1                deep 23700          hits 19
+G_r1o1_M1_2_2                deep 1367           hits 0
+G_r-1o1_M1_-1_-1             deep 1340           hits 0
+./run_scan.sh: line 14: 142814 Killed                  ./03_fscan $RN $RD $M $J1 $J2 1 $AMAX $CMAX $DMAX $FMAX $GMAX $N $NJOBS $s > out/${NAME}.s${s}.txt 2> out/${NAME}.s${s}.log
+./run_scan.sh: line 18: 142825 Killed                  ./03_fscan $RN $RD $M $J1 $J2 1 $AMAX $CMAX $DMAX $FMAX $GMAX $N $NJOBS $s > out/${NAME}.s${s}.txt 2> out/${NAME}.s${s}.log
+G_r0o1_M1_0_1                deep 0              hits 0
