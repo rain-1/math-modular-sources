@@ -35,6 +35,16 @@ Each item negates one hypothesis above.
   P2$'$ is equivalent to "the index is even infinitely often, or one partial quotient is
   $e^{o(n)}$"; the indices pass Gauss–Kuzmin and the lattices are indistinguishable from
   Haar-random ones.  The wall is unmoved: deciding the parity needs $14.43n$ nats of $G$.
+  **Followed up: `P2_HOLONOMIC.md` (2026-08-23).**  The Hermite data is now in closed form
+  ($h_{12}\equiv-s_Zh_{22}U_nY_n^{-1}\bmod h_{11}$), the price of $G$ is exactly
+  $d^*(n)=6.267n$ decimal digits with intercept $0$ and spread half a digit, and the
+  continued fraction is shown to be *reset by a single bit* of the modulus $T_n$ (mean common
+  prefix $1.2$ partial quotients), which is why no recursion in $n$ can exist: one unit of $n$
+  costs $\approx22$ fresh bits and the parity's memory is $\approx8$.  The parity survives
+  every test to $n=200$ (591 instances).  The adelic reading: the output pairs approximate $G$
+  archimedeanly *and* $\zeta_2(2)$ $2$-adically, with $v_2(q_n\xi_2-p_n)=(24-k)n+O(1)$, and the
+  two places convert at a fixed rate $\tfrac12$ — so the $2$-adic place is not a hidden
+  resource, and $\zeta_2(2)$ shows no algebraicity, so Ridout/$p$-adic Roth do not apply.
 
 ## 4. One sentence
 

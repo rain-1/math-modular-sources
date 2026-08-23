@@ -93,6 +93,17 @@ So `σ_n → 28.7` is itself only empirical; `v_2(h_n)/n` is measurably *decreas
 (30.5 bits at n=2 → 24.32 at n=98, fitting `24.06 + O(1/n)`), and the whole sign of `F_∞`
 turns on whether it stays above the threshold 22.35 bits/n. Nothing proves it does.
 
+> **Update (`P2_HOLONOMIC.md`, 2026-08-23).** This gap is now localised. With
+> `xi2 = zeta_2(2)` the common 2-adic limit of both rows, the following hold exactly for
+> `4 <= n <= 200` (exact integer arithmetic, xi2 at 7011 2-adic bits):
+> `v_2(X_n xi2 - Y_n) = v_2(X_n) + 24n - 1 - 4 s_2(3n)` (**proved**, `ZUDILIN_2ADIC.md`),
+> `v_2(V_n xi2 - U_n) = v_2(V_n) + 28n - 2 s_2(n) - 2 s_2(3n) - 1` (**verified**, new), hence
+> `v_2(X_n U_n - V_n Y_n) = v_2(X_n) + v_2(V_n) + 24n - 1 - 4 s_2(3n)` and
+> `v_2(h_n) = 24n - O(log n)`, explaining the observed decrease exactly. The 2-adic roof is
+> therefore **24**, above the threshold 22.35, and what remains to be proved is one clean
+> statement about the Nesterenko row alone: `v_2(zeta_2(2) - C_n/(4 B_n)) >= 24n + O(log n)`.
+> This does not touch gaps (a)-(c); the irrationality inference remains blocked at (c).
+
 **(e) Modulus double-use.** The suspicion that `M_n` was used both as covolume and division
 modulus is, unusually, *not* the error — `[Z^2:K_n] ≈ M_n` is genuinely true here. But the
 consequence is that the box area equals the covolume, so Minkowski's first theorem in that box
