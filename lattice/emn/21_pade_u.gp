@@ -1,0 +1,13 @@
+default(parisizemax, 12*10^9);
+NN = 160;
+upad(n) = binomial(4*n,2*n) * sum(k = 0, 2*n, binomial(2*n,k)*(-4)^k*binomial(4*n,2*n-2*k));
+uu = vector(NN+1, i, upad(i-1));
+fitr(W, ord, dg, nmax) = my(rows = List(), unk = (ord+1)*(dg+1)); for(n = 0, nmax-ord, my(row = vector(unk)); for(j = 0, ord, for(e = 0, dg, row[j*(dg+1)+e+1] = n^e*W[n+j+1])); listput(rows,row)); matker(matconcat(Vec(rows)~));
+print("=== minimal recurrence for U = 256^n b_n^{Pade} = C(4n,2n) sum_k C(2n,k)(-4)^k C(4n,2n-2k) ===");
+ORD = 0; DG = 0;
+for(ord = 1, 3, for(dg = 1, 16, if((ord+1)*(dg+1) + 4 <= NN - ord, my(k = fitr(uu, ord, dg, NN)); if(#k == 1, ORD = ord; DG = dg; print("  order ", ord, ", degree ", dg, ", nullspace dim 1"); break(2)))));
+if(ORD > 0, kv = fitr(uu, ORD, DG, NN)[,1]; d = 1; for(i = 1, #kv, d = lcm(d, denominator(kv[i]))); kv = kv*d; g = 0; for(i = 1, #kv, g = gcd(g, kv[i])); kv = kv/g; pl = vector(ORD+1, j, sum(e = 0, DG, kv[(j-1)*(DG+1)+e+1]*'n^e)); for(j = 1, ORD+1, print("  p_", j-1, "(n) = ", factor(pl[j]))); lc = vector(ORD+1, j, polcoef(pl[j], DG, 'n)); print("  leading coefficients: ", lc); chp = sum(j = 0, ORD, lc[j+1]*'lam^j); print("  characteristic polynomial: ", factor(chp)); print("  roots: ", polroots(chp)); print("  log|roots|: ", vector(#polroots(chp), i, log(abs(polroots(chp)[i])))));
+print();
+print("=== growth ===");
+foreach([40,80,120,160], n, print("   n=", n, "  log|U_n|/n = ", log(abs(uu[n+1]*1.0))/n));
+quit;
