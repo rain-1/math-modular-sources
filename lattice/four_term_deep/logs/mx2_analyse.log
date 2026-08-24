@@ -1,0 +1,16 @@
+# 69 distinct hits
+((-1, 2, 0, 1, 1, 0, 0), 'CANDIDATE') 9
+((-1, 2, 0, 1, 1, 0, 0), 'NOT-INTEGRAL') 5
+((-1, 2, 0, 1, 1, 0, 0), 'RESCALED') 15
+((0, 1, -1, 2, 2, 0, 1), 'CANDIDATE') 1
+((0, 1, -1, 2, 2, 0, 1), 'NOT-INTEGRAL') 5
+((0, 1, -1, 2, 2, 0, 1), 'RESCALED') 1
+((0, 1, 1, 2, 2, 1, 2), 'CANDIDATE') 1
+((0, 1, 1, 2, 2, 1, 2), 'NOT-INTEGRAL') 5
+((0, 1, 1, 2, 2, 1, 2), 'RESCALED') 1
+((1, 2, 0, 1, 1, 1, 1), 'CANDIDATE') 9
+((1, 2, 0, 1, 1, 1, 1), 'NOT-INTEGRAL') 2
+((1, 2, 0, 1, 1, 1, 1), 'RESCALED') 15
+TOTAL 69  CANDIDATE 20
+limits written: 14
+DONE

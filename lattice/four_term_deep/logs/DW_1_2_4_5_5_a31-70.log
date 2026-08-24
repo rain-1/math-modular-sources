@@ -1,0 +1,23 @@
+# prefilter primes=5 up to n=12
+# class rho=1/2 M=4 J=(5,5) Astep=2 Dstep=1 primes=9 N=24 stride=0/1
+# a=32 cnt=0 hits=0
+# a=34 cnt=0 hits=0
+# a=36 cnt=0 hits=0
+# a=38 cnt=0 hits=0
+# a=40 cnt=0 hits=0
+# a=42 cnt=0 hits=0
+# a=44 cnt=0 hits=0
+# a=46 cnt=0 hits=0
+# a=48 cnt=0 hits=0
+# a=50 cnt=0 hits=0
+# a=52 cnt=0 hits=0
+# a=54 cnt=0 hits=0
+# a=56 cnt=0 hits=0
+# a=58 cnt=0 hits=0
+# a=60 cnt=0 hits=0
+# a=62 cnt=0 hits=0
+# a=64 cnt=0 hits=0
+# a=66 cnt=0 hits=0
+# a=68 cnt=0 hits=0
+# a=70 cnt=0 hits=0
+# deep 0 hits 0

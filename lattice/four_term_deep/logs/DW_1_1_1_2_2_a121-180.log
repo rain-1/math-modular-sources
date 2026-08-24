@@ -1,0 +1,13 @@
+# prefilter primes=5 up to n=12
+# class rho=1/1 M=1 J=(2,2) Astep=1 Dstep=1 primes=9 N=24 stride=0/1
+# a=121 cnt=0 hits=0
+# a=122 cnt=38 hits=0
+# a=123 cnt=72 hits=0
+# a=124 cnt=151 hits=0
+# a=125 cnt=188 hits=0
+# a=126 cnt=224 hits=0
+# a=127 cnt=342 hits=0
+# a=128 cnt=392 hits=0
+# a=129 cnt=440 hits=0
+# a=130 cnt=523 hits=0
+# a=131 cnt=565 hits=0

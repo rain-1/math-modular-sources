@@ -1,0 +1,6 @@
+--- census rows with |lam_2| <= 1 ---
+  |lam2|=0.454621693372632269834092085595812792587236330879952521653444  irreducible=1  disc=-81920000  row=[0, 1, 2, 1, 1, 154, 42, -128, -12, 8]
+  |lam2|=1.00000000000000000000000000000000000000000000000000000000000  irreducible=0  disc=5000000  row=[0, 1, 2, 1, 1, 87, 24, -152, -16, 16]  factors [x + 1, 1; x^2 - 88*x - 64, 1]
+
+--- D1 exhaustive numerical check over integer cubics ---
+  cubics with |lam_2|<1 in |a|<=24,|d|<=70,|g|<=70 : 37088   reducible among them: 0

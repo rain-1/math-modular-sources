@@ -1,0 +1,239 @@
+Zagier E   a_n[0..7] = [1, 4, 20, 112, 676, 4304, 28496, 194240]
+Zagier E   b_n[0..7] = ['0', '1', '7', '404/9', '2603/9', '428284/225', '2884316/225', '194369872/2205']
+Zagier E   sharp k (companion, n<=120) = 2
+
+==========================================================================
+nu = 1
+==========================================================================
+  (ii) v_n integral to n=459 : True
+       v_n[0..8] = [1, 3, 13, 63, 333, 1863, 10849, 65019, 398029]
+       w_n[0..6] = ['0', '1', '5', '242/9', '443/3', '189284/225', '1111012/225']
+  (i) 12-unknown nullspace dim (n=2..30) = 1
+      raw integral solution (l2,l1,l0,p2,p1,p0,q2,q1,q0,r2,r1,r0) = [1, 2, 1, 9, 9, 3, 11, 0, 0, -21, 21, 0]
+      normalised to (n+1)^2 u_{n+1} = P u_n - Q u_{n-1} + R u_{n-2}
+      P(n) = 9 n^2 + 9 n + 3
+      Q(n) = 11 n^2 + 0 n + 0
+      R(n) = -21 n^2 + 21 n + 0
+      all coefficients integral : True
+      Prop F4 closed form matches : True  (F4: (9, 9, 3) (11, 0, 0) (-21, 21, 0) )
+      recurrence exact on v_n, n=0..299 : True
+      fail at n= 1
+      recurrence exact on w_n, n=1..299 : False
+  (v) char poly lam^3 - 9 lam^2 + 11 lam - -21 ; roots = ['7.0', '3.0', '-1.0']
+      predicted {l1-nu, l2-nu, -nu} = [7, 3, -1]
+  (v) sharp k (companion, n<=120) = 2   [d_n^1 fails at n=3 ; d_n^2 ok: True]
+      score = log(1/|lam_2|) - k = -3.0986
+  (iii) xi (n=459) = 0.4579827970886095075273017574661920553870746871408360671332490598108815
+        |xi_n - xi_{n-1}| = 10^-169.1  (=> >=169 digits stable)
+        xi/Catalan = 0.5
+  (iv) t=infinity : R roots s=(0,1), exponents (2,1), delta=1
+       Frobenius obstruction S = 0.0  (scale 42.0)  ->  APPARENT: True
+       finite singular points t_i = 1/lam_i, exponents (0, rho_i):
+         t=0.142857142857  rho=9.37713700999e-202
+         t=0.333333333333  rho=-9.18576686693e-202
+         t=-1.0  rho=0.0
+
+==========================================================================
+nu = 2
+==========================================================================
+  (ii) v_n integral to n=459 : True
+       v_n[0..8] = [1, 2, 8, 32, 148, 712, 3584, 18496, 97444]
+       w_n[0..6] = ['0', '1', '3', '134/9', '595/9', '73534/225', '40912/25']
+  (i) 12-unknown nullspace dim (n=2..30) = 1
+      raw integral solution (l2,l1,l0,p2,p1,p0,q2,q1,q0,r2,r1,r0) = [1, 2, 1, 6, 6, 2, -4, 0, 0, -24, 24, 0]
+      normalised to (n+1)^2 u_{n+1} = P u_n - Q u_{n-1} + R u_{n-2}
+      P(n) = 6 n^2 + 6 n + 2
+      Q(n) = -4 n^2 + 0 n + 0
+      R(n) = -24 n^2 + 24 n + 0
+      all coefficients integral : True
+      Prop F4 closed form matches : True  (F4: (6, 6, 2) (-4, 0, 0) (-24, 24, 0) )
+      recurrence exact on v_n, n=0..299 : True
+      fail at n= 1
+      recurrence exact on w_n, n=1..299 : False
+  (v) char poly lam^3 - 6 lam^2 + -4 lam - -24 ; roots = ['6.0', '-2.0', '2.0']
+      predicted {l1-nu, l2-nu, -nu} = [6, 2, -2]
+  (v) sharp k (companion, n<=120) = 2   [d_n^1 fails at n=3 ; d_n^2 ok: True]
+      score = log(1/|lam_2|) - k = -2.6931
+  (iii) xi (n=459) = 0.4579827970886095075273017574661920553870746871408360671332490598108815
+        |xi_n - xi_{n-1}| = 10^-218.2  (=> >=218 digits stable)
+        xi/Catalan = 0.5
+  (iv) t=infinity : R roots s=(0,1), exponents (2,1), delta=1
+       Frobenius obstruction S = 0.0  (scale 48.0)  ->  APPARENT: True
+       finite singular points t_i = 1/lam_i, exponents (0, rho_i):
+         t=0.166666666667  rho=0.0
+         t=-0.5  rho=0.0
+         t=0.5  rho=0.0
+
+==========================================================================
+nu = -1
+==========================================================================
+  (ii) v_n integral to n=459 : True
+       v_n[0..8] = [1, 5, 29, 185, 1261, 9025, 67025, 512125, 4000525]
+       w_n[0..6] = ['0', '1', '9', '620/9', '4633/9', '871534/225', '147936/5']
+  (i) 12-unknown nullspace dim (n=2..30) = 1
+      raw integral solution (l2,l1,l0,p2,p1,p0,q2,q1,q0,r2,r1,r0) = [1, 2, 1, 15, 15, 5, 59, 0, 0, 45, -45, 0]
+      normalised to (n+1)^2 u_{n+1} = P u_n - Q u_{n-1} + R u_{n-2}
+      P(n) = 15 n^2 + 15 n + 5
+      Q(n) = 59 n^2 + 0 n + 0
+      R(n) = 45 n^2 + -45 n + 0
+      all coefficients integral : True
+      Prop F4 closed form matches : True  (F4: (15, 15, 5) (59, 0, 0) (45, -45, 0) )
+      recurrence exact on v_n, n=0..299 : True
+      fail at n= 1
+      recurrence exact on w_n, n=1..299 : False
+  (v) char poly lam^3 - 15 lam^2 + 59 lam - 45 ; roots = ['9.0', '5.0', '1.0']
+      predicted {l1-nu, l2-nu, -nu} = [9, 5, 1]
+  (v) sharp k (companion, n<=120) = 2   [d_n^1 fails at n=3 ; d_n^2 ok: True]
+      score = log(1/|lam_2|) - k = -3.6094
+  (iii) xi (n=459) = 0.4579827970886095075273017574661920553870746871408360671332490598108815
+        |xi_n - xi_{n-1}| = 10^-117.4  (=> >=117 digits stable)
+        xi/Catalan = 0.5
+  (iv) t=infinity : R roots s=(0,1), exponents (2,1), delta=1
+       Frobenius obstruction S = 0.0  (scale 90.0)  ->  APPARENT: True
+       finite singular points t_i = 1/lam_i, exponents (0, rho_i):
+         t=0.111111111111  rho=-2.06679754506e-201
+         t=0.2  rho=6.3790047687e-202
+         t=1.0  rho=0.0
+
+==========================================================================
+nu = -2
+==========================================================================
+  (ii) v_n integral to n=459 : True
+       v_n[0..8] = [1, 6, 40, 288, 2196, 17496, 144256, 1222080, 10579108]
+       w_n[0..6] = ['0', '1', '11', '890/9', '2545/3', '1627034/225', '13965424/225']
+  (i) 12-unknown nullspace dim (n=2..30) = 1
+      raw integral solution (l2,l1,l0,p2,p1,p0,q2,q1,q0,r2,r1,r0) = [1, 2, 1, 18, 18, 6, 92, 0, 0, 120, -120, 0]
+      normalised to (n+1)^2 u_{n+1} = P u_n - Q u_{n-1} + R u_{n-2}
+      P(n) = 18 n^2 + 18 n + 6
+      Q(n) = 92 n^2 + 0 n + 0
+      R(n) = 120 n^2 + -120 n + 0
+      all coefficients integral : True
+      Prop F4 closed form matches : True  (F4: (18, 18, 6) (92, 0, 0) (120, -120, 0) )
+      recurrence exact on v_n, n=0..299 : True
+      fail at n= 1
+      recurrence exact on w_n, n=1..299 : False
+  (v) char poly lam^3 - 18 lam^2 + 92 lam - 120 ; roots = ['10.0', '6.0', '2.0']
+      predicted {l1-nu, l2-nu, -nu} = [10, 6, 2]
+  (v) sharp k (companion, n<=120) = 2   [d_n^1 fails at n=3 ; d_n^2 ok: True]
+      score = log(1/|lam_2|) - k = -3.7918
+  (iii) xi (n=459) = 0.4579827970886095075273017574661920553870746871408360671332490598108815
+        |xi_n - xi_{n-1}| = 10^-102.1  (=> >=102 digits stable)
+        xi/Catalan = 0.5
+  (iv) t=infinity : R roots s=(0,1), exponents (2,1), delta=1
+       Frobenius obstruction S = 0.0  (scale 240.0)  ->  APPARENT: True
+       finite singular points t_i = 1/lam_i, exponents (0, rho_i):
+         t=0.1  rho=-2.23265166905e-201
+         t=0.166666666667  rho=-1.83715337339e-201
+         t=0.5  rho=0.0
+
+wrote out/catsrc_limits.txt
+{
+ "1": {
+  "P": [
+   9,
+   9,
+   3
+  ],
+  "Q": [
+   11,
+   0,
+   0
+  ],
+  "R": [
+   -21,
+   21,
+   0
+  ],
+  "k": 2,
+  "score": -3.0986122886681096,
+  "lam": [
+   "7.0",
+   "3.0",
+   "-1.0"
+  ],
+  "xi": "0.4579827970886095075273017574661920553870746871408360671332490598108815",
+  "apparent_inf": true,
+  "integral": true
+ },
+ "2": {
+  "P": [
+   6,
+   6,
+   2
+  ],
+  "Q": [
+   -4,
+   0,
+   0
+  ],
+  "R": [
+   -24,
+   24,
+   0
+  ],
+  "k": 2,
+  "score": -2.6931471805599454,
+  "lam": [
+   "6.0",
+   "-2.0",
+   "2.0"
+  ],
+  "xi": "0.4579827970886095075273017574661920553870746871408360671332490598108815",
+  "apparent_inf": true,
+  "integral": true
+ },
+ "-1": {
+  "P": [
+   15,
+   15,
+   5
+  ],
+  "Q": [
+   59,
+   0,
+   0
+  ],
+  "R": [
+   45,
+   -45,
+   0
+  ],
+  "k": 2,
+  "score": -3.6094379124341005,
+  "lam": [
+   "9.0",
+   "5.0",
+   "1.0"
+  ],
+  "xi": "0.4579827970886095075273017574661920553870746871408360671332490598108815",
+  "apparent_inf": true,
+  "integral": true
+ },
+ "-2": {
+  "P": [
+   18,
+   18,
+   6
+  ],
+  "Q": [
+   92,
+   0,
+   0
+  ],
+  "R": [
+   120,
+   -120,
+   0
+  ],
+  "k": 2,
+  "score": -3.791759469228055,
+  "lam": [
+   "10.0",
+   "6.0",
+   "2.0"
+  ],
+  "xi": "0.4579827970886095075273017574661920553870746871408360671332490598108815",
+  "apparent_inf": true,
+  "integral": true
+ }
+}

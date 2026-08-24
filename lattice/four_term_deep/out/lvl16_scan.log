@@ -1,0 +1,32 @@
+[0;31m  ***   Warning: new stack size = 3000000000 (2861.023 Mbytes).[0m
+a_0..a_198
+  terms=3 deg=1 unknowns=6 eqs=51 ker dim = 0
+  terms=3 deg=2 unknowns=9 eqs=54 ker dim = 0
+  terms=3 deg=3 unknowns=12 eqs=57 ker dim = 0
+  terms=3 deg=4 unknowns=15 eqs=60 ker dim = 0
+  terms=3 deg=5 unknowns=18 eqs=63 ker dim = 0
+  terms=4 deg=1 unknowns=8 eqs=53 ker dim = 0
+  terms=4 deg=2 unknowns=12 eqs=57 ker dim = 0
+  terms=4 deg=3 unknowns=16 eqs=61 ker dim = 0
+  terms=4 deg=4 unknowns=20 eqs=65 ker dim = 0
+  terms=4 deg=5 unknowns=24 eqs=69 ker dim = 0
+  terms=5 deg=1 unknowns=10 eqs=55 ker dim = 0
+  terms=5 deg=2 unknowns=15 eqs=60 ker dim = 0
+  terms=5 deg=3 unknowns=20 eqs=65 ker dim = 1
+  terms=5 deg=4 unknowns=25 eqs=70 ker dim = 2
+  terms=5 deg=5 unknowns=30 eqs=75 ker dim = 3
+  terms=6 deg=1 unknowns=12 eqs=57 ker dim = 0
+  terms=6 deg=2 unknowns=18 eqs=63 ker dim = 1
+  terms=6 deg=3 unknowns=24 eqs=69 ker dim = 3
+  terms=6 deg=4 unknowns=30 eqs=75 ker dim = 5
+  terms=6 deg=5 unknowns=36 eqs=81 ker dim = 7
+  terms=7 deg=1 unknowns=14 eqs=59 ker dim = 0
+  terms=7 deg=2 unknowns=21 eqs=66 ker dim = 2
+  terms=7 deg=3 unknowns=28 eqs=73 ker dim = 5
+  terms=7 deg=4 unknowns=35 eqs=80 ker dim = 8
+  terms=7 deg=5 unknowns=42 eqs=87 ker dim = 11
+  terms=8 deg=1 unknowns=16 eqs=61 ker dim = 0
+  terms=8 deg=2 unknowns=24 eqs=69 ker dim = 3
+  terms=8 deg=3 unknowns=32 eqs=77 ker dim = 7
+  terms=8 deg=4 unknowns=40 eqs=85 ker dim = 11
+  terms=8 deg=5 unknowns=48 eqs=93 ker dim = 15

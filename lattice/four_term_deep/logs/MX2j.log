@@ -1,0 +1,14 @@
+# mixed class rho_p=0/1 rho_r=1/2 M=2 J=(1,2) r in [-20,-1] stride 0/1
+# r=-20 cnt=0 hits=0
+# r=-19 cnt=575 hits=2
+# r=-18 cnt=575 hits=2
+# r=-17 cnt=578 hits=2
+# r=-16 cnt=578 hits=2
+# r=-15 cnt=1318 hits=7
+# r=-14 cnt=1318 hits=7
+# r=-13 cnt=1321 hits=7
+# r=-12 cnt=1321 hits=7
+# r=-11 cnt=2211 hits=15
+# r=-10 cnt=2211 hits=15
+# r=-9 cnt=2223 hits=15
+# r=-8 cnt=2223 hits=15

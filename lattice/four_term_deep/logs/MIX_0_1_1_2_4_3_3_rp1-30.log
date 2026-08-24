@@ -1,0 +1,7 @@
+# mixed class rho_p=0/1 rho_r=1/2 M=4 J=(3,3) r in [1,30] stride 0/1
+# r=1 cnt=0 hits=0
+# r=2 cnt=0 hits=0
+# r=3 cnt=2 hits=0
+# r=4 cnt=2 hits=0
+# r=5 cnt=169 hits=0
+# r=6 cnt=169 hits=0
