@@ -1,0 +1,1701 @@
+% !TeX program = pdflatex
+% Apery-like recurrences beyond the rigid case:
+% four-term rows, K3 surfaces, and new periods.
+% Self-contained; builds with pdflatex; bibliography inline.
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\setlength{\emergencystretch}{3em}
+\setlength{\abovedisplayskip}{4pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{4pt plus 2pt minus 2pt}
+\setlength{\abovedisplayshortskip}{2pt plus 2pt}
+\setlength{\belowdisplayshortskip}{2pt plus 2pt}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\makeatletter
+\def\thm@space@setup{\thm@preskip=4pt \thm@postskip=4pt}
+\makeatother
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.85}
+
+\theoremstyle{plain}
+\newtheorem{namedthm}{Theorem}
+\renewcommand{\thenamedthm}{\Alph{namedthm}}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\PP}{\mathbb{P}}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\newcommand{\Jm}{\mathcal J}
+\newcommand{\Rc}{\mathcal R}
+\newcommand{\Sc}{\mathcal S}
+\newcommand{\Vc}{\mathcal V}
+\newcommand{\Ic}{\mathcal I}
+
+% ---------------------------------------------------------------------------
+% Evidence-class markers.  These are load-bearing and are never upgraded.
+% ---------------------------------------------------------------------------
+\newcommand{\Proved}{\textup{\textsf{[PROVED]}}}
+\newcommand{\Verified}[1]{\textup{\textsf{[VERIFIED: #1]}}}
+\newcommand{\Numerical}[1]{\textup{\textsf{[NUMERICAL: #1]}}}
+\newcommand{\Conj}{\textup{\textsf{[CONJECTURE]}}}
+\newcommand{\Open}{\textup{\textsf{[OPEN]}}}
+
+\renewcommand{\arraystretch}{0.96}
+\begin{document}
+
+\title[Beyond the rigid case: four-term rows]
+      {Ap\'ery-like recurrences beyond the rigid case:\\
+       four-term rows, $K3$ surfaces, and new periods}
+\author{Claude (Fable), with River}
+\date{\today}
+
+\begin{abstract}
+Integral three-term Ap\'ery-like recurrences $(n+1)^2u_{n+1}=P(n)u_n-Q(n)u_{n-1}$
+have a rank-two Picard--Fuchs operator with four singular points: a rigid
+situation, classified in the companion paper under the hypothesis that the local
+system comes from an elliptic surface. We take the first step out of rigidity,
+to the four-term row
+$(n+1)^2u_{n+1}=P(n)u_n-Q(n)u_{n-1}+R(n)u_{n-2}$, whose operator has rank two
+with \emph{five} singular points and two accessory parameters. We give the
+exponent dictionary and the normalisation classes, both in the equal-exponent
+and in the mixed-exponent case, the Riemann--Hurwitz bound
+$\deg\Jm\le6c+4e_3+3e_2-12\le18$, and the results of complete or box-complete
+scans. Four things happen at once. \emph{Near-total rigidity persists}: of
+$2178$ integral rows produced, $98.2\%$ have an apparent singularity and are
+gauge or cusp-move images of three-term rows, and the only one-parameter
+families found are of that kind. \emph{A finite sporadic list appears}: $30$
+primitive rows with five genuine singular points, $28$ of them with denominator
+exponent $k=2$. \emph{$K3$ geometry enters exactly here}: one of the $30$ is the
+Picard--Fuchs system of an elliptic $K3$ with five singular fibres
+$I_4I_6I_3I_3IV^*$, which is impossible with four singular points. \emph{New
+periods appear}: in the mixed-exponent classes there are genuine five-point rows
+with irrational conjugate singularities whose Ap\'ery limits are $\tfrac14G$,
+$\tfrac12G-\tfrac3{16}\zeta(2)$, $\tfrac38\zeta(2)-\tfrac12G$ and
+$L(2,\chi_{-3})$-combinations, whose gauge partners all give
+$\Gamma(\tfrac14)^4/(64\pi)$, and, one term further, a six-point five-term row
+whose Ap\'ery limit is the weight-$3$ cusp-form value $\tfrac{\sqrt2}3L(g,2)$.
+What does \emph{not} appear is new irrationality-relevant arithmetic: no genuine
+five-point row has positive score, no unequal-exponent class can contain a
+decaying row, and the $2$-adic content of the new Catalan rows is the ledger's
+own.
+\end{abstract}
+
+\maketitle
+
+% ===========================================================================
+\section{Introduction}\label{sec:intro}
+% ===========================================================================
+
+\subsection{The rigid case, and one step out}
+Let
+\begin{equation}\label{eq:three}
+(n+1)^2u_{n+1}=P(n)u_n-Q(n)u_{n-1},\qquad u_0=1,\ u_{-1}=0,
+\end{equation}
+with $P,Q$ integral of degree $\le2$. The generating function $y=\sum u_nt^n$
+satisfies a rank-two Fuchsian equation with the four singular points
+$0,t_1,t_2,\infty$, and such an equation is \emph{rigid}: no accessory parameter,
+local exponents determining it, and --- when the local system comes from an
+elliptic surface --- the surface forced onto Beauville's and Herfurtner's finite
+lists \cite{Beauville1982,Herfurtner1991}. The companion paper \cite{CLASS}
+carries this out: its Theorem~A is a conditional classification (all four fibres
+semistable, $\deg\Jm\le12$ by Riemann--Hurwitz and $12\mid\deg\Jm$ by a
+twist-parity lemma, hence $\deg\Jm=12$ and a \emph{rational} elliptic surface,
+with the integral rows exactly Zagier's seven \cite{Zagier2009}), its Theorem~B
+collects the unconditional necessary conditions, and the missing converse is
+Zagier's conjecture that every integral row has a modular parametrisation ---
+Bombieri--Dwork in rank two with four singular points.
+
+This paper asks what survives one step out. The object is the integral
+\emph{four-term} row
+\begin{equation}\label{eq:four}
+(n+1)^2u_{n+1}=P(n)u_n-Q(n)u_{n-1}+R(n)u_{n-2},\qquad u_0=1,\ u_{-1}=u_{-2}=0,
+\end{equation}
+$P=an^2+bn+c$, $Q=dn^2+en+f$, $R=gn^2+hn+j$ integral with $g\ne0$. Its operator
+is rank two with \emph{five} singular points $0,t_1,t_2,t_3,\infty$ and
+therefore has $5-3=2$ accessory parameters --- it is the first non-rigid case.
+Geometrically the change is just as sharp: elliptic surfaces with four singular
+fibres form finitely many configurations, while those with five come in
+one-parameter families (Persson \cite{Persson1990}), so the cross-ratio
+finiteness mechanism of the rigid case disappears. Longer recurrences and their
+accessory parameters are of course not new --- they occur throughout the
+Ap\'ery-like literature \cite{AlmkvistZudilin2006,Cooper2012,MovasatiReiter} and
+the accessory-parameter problem for such operators is Dwork's
+\cite{Beukers2002} --- but the systematic question of which \emph{integral} rows
+exist, and what they compute, has not been asked one step beyond rank two with
+four points.
+
+\subsection{The answers, in words}
+Four things happen, and one does not.
+
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.4em]
+\item \emph{Near-total rigidity persists.} Of the $2178$ distinct integral rows
+the census produces, $2138$ ($98.2\%$) have an \emph{apparent} singularity --- a
+point where the exponent difference is a positive integer and the Frobenius
+obstruction vanishes, or a half-integral one where the monodromy is $-I$. Their
+\emph{projective} local systems have only four singular points, so they are gauge
+or cusp-move images of three-term rows. Every one-parameter family the scan
+produced is of this kind, and the largest is written down in closed form
+(Proposition~\ref{prop:F4}): the signed binomial transform
+$v_n=\sum_m\binom nm(-\nu)^{n-m}u_m$ of a Zagier-class row at a
+non-characteristic $\nu$.
+
+\item \emph{A finite sporadic list appears.} After deduplication, $30$ primitive
+rows with five genuine singular points remain (Table~\ref{tab:thirty}); $28$ of
+them have sharp denominator exponent $k=2$, the four-term echo of the free
+integration phenomenon, and the other two are Pad\'e-type with $k=1$. No
+one-parameter integral family of genuine five-point rows was found.
+
+\item \emph{$K3$ geometry enters exactly here.} With four singular points
+$\deg\Jm\le12$ always, so no elliptic $K3$ can be the Picard--Fuchs system of a
+three-term row. With five the bound is $18$, and one row of the sporadic list
+attains $\deg\Jm=16$ and is an elliptic $K3$ with fibres $I_4I_6I_3I_3IV^*$,
+Picard number $20$ and transcendental motive the weight-$3$ CM newform
+\texttt{32.3.d.a}. That row is the subject of the companion note \cite{K3PAPER};
+we state it (\S\ref{sec:k3}) because it is what the scan found, without repeating
+its proofs.
+
+\item \emph{New periods appear.} The mixed-exponent classes --- exponent
+differences $(0,\tfrac12,\tfrac12)$ at the three finite points, which the first
+census never scanned --- contain genuine five-point rows with \emph{irrational
+conjugate} singular points whose Ap\'ery limits are $\tfrac14G$,
+$\tfrac12G-\tfrac3{16}\zeta(2)$, $\tfrac38\zeta(2)-\tfrac12G$ and three
+$L(2,\chi_{-3})$-combinations, with the whole period matrix classical; the same
+class in the other half-integral gauge gives $\Gamma(\tfrac14)^4/(64\pi)$ on
+three different rows. One term further still, a six-point five-term row has the
+weight-$3$ cusp-form value $\tfrac{\sqrt2}3L(g,2)$ as an honest Ap\'ery limit ---
+the $L$-value that the $K3$ row itself, having no archimedean limit, can produce
+only as a fold constant.
+\end{enumerate}
+
+What does not happen is arithmetic gain. No genuine five-singular-point row in
+any scanned class has positive irrationality score $\log(1/|\lambda_2|)-k$; the
+only positive scores belong to disguised three-term rows with $k=1$, as in the
+rigid case. Structurally, a row with $|\lambda_2|<1$ must have an
+\emph{irreducible} characteristic cubic (Theorem~\ref{thm:D1}), so no
+unequal-exponent class can contain one, and a \emph{real} such $\lambda_2$ forces
+the cubic to be totally real. The new Catalan-period rows realise the geometric
+evasion (E1) of the obstruction analysis \cite{CATOBS} --- irrational conjugate
+singularities, $+0.693$ nats of archimedean score over Zagier $\mathbf E$ ---
+but their $2$-adic slope set is $\{2\}$ and their limits lie in the ledger's own
+$\zeta_2(2)$ and $L_2(2,\chi_{12})$ classes; every one is dominated, as a lattice
+engine, by the row it would replace.
+
+\subsection{Evidence classes}
+Statements carry one of the markers \Proved{} (an exact argument),
+\Verified{range} (an exact finite computation over the stated range: exact
+rational or $p$-adic arithmetic, or a high-precision computation whose agreement
+is stated), \Numerical{precision} (a floating-point measurement), \Conj{} and
+\Open, and these are never upgraded. All scans reported are $a$-block ordered, so
+every reported box is a complete scan of the stated prefix. Sources, scripts and
+logs are named in \S\ref{sec:repro}.
+
+\subsection{Main statements}
+For orientation we record the three named theorems that organise the paper; each
+is proved or verified in the section indicated.
+
+\begin{namedthm}[the dictionary and its classes]\label{thmA}
+\Proved{} \textup{(\S\ref{sec:dict})} The operator of \eqref{eq:four} is
+$t^2\Rc D^2+t\Sc D+t\Vc$ with $\Rc,\Sc,\Vc$ as in \eqref{eq:RSV}, and its
+exponents are $(0,0)$ at $t=0$, $(0,\rho_i)$ at the roots $t_i$ of $\Rc$ with
+$\rho_i=-T(t_i)/(t_i\Rc'(t_i))$, $T=\Sc-t\Rc'$, and $(2-s_1,2-s_2)$ at $\infty$
+with $s_1,s_2$ the roots of $R$; Fuchs reads $\sum\rho_i=s_1+s_2-1$. All three
+$\rho_i$ coincide if and only if three \emph{linear} conditions on
+$(b,e,h)$ hold, and that is automatic when the characteristic cubic is
+irreducible; the unequal case with a quadratic Galois orbit has the
+normalisation forms of Theorem~\ref{thm:D3}. If the local system is that of an
+elliptic surface then all exponent differences lie in
+$\{0,\tfrac12,\tfrac13,\tfrac23\}\bmod1$ and
+$\deg\Jm\le6c+4e_3+3e_2-12\le18$.
+\end{namedthm}
+
+\begin{namedthm}[the census]\label{thmB}
+\Verified{boxes as stated in \S\ref{sec:scans}} Over $27$ Kodaira-admissible
+equal-exponent classes the scan produces $2178$ distinct integral rows: $4$ fail
+exact integrality at $n=120$, $2138$ ($98.2\%$) have an apparent singularity and
+are disguised three-term rows, $6$ are rescalings, and $30$ are primitive rows
+with five genuine singular points, exactly one of which passes the $\Jm$-map test
+and is an elliptic $K3$. The two productive mixed-exponent classes, swept to
+completion, contain exactly nine primitive genuine five-point rows each, in
+twist-partner bijection.
+\end{namedthm}
+
+\begin{namedthm}[no arithmetic gain]\label{thmC}
+\Proved{} and \Verified{boxes W, PW and the extended window} A row with
+$|\lambda_2|<1$ has an irreducible characteristic cubic, and a real such
+$\lambda_2$ forces it to be totally real; consequently no unequal-exponent class
+contains a row with $|\lambda_2|<1$. The complete positive-score window over all
+$27$ equal-exponent classes contains exactly two integral rows, both with $k=1$
+and both carrying an $I_0^*$ at $\infty$, hence disguised: \emph{no genuine
+five-singular-point four-term row has a positive score}.
+\end{namedthm}
+
+% ===========================================================================
+\section{The dictionary and the normalisation classes}\label{sec:dict}
+% ===========================================================================
+
+\subsection{The operator}
+Write $\theta=t\,d/dt$, $D=d/dt$.
+
+\begin{lemma}[\Proved]\label{lem:op}
+$y=\sum_{n\ge0}u_nt^n$ satisfies $Ly=0$ with
+$L=\theta^2-t\,P(\theta)+t^2Q(\theta+1)-t^3R(\theta+2)$.
+\end{lemma}
+
+\begin{proof}
+$[t^{n+1}]\theta^2y=(n+1)^2u_{n+1}$, $[t^{n+1}]tP(\theta)y=P(n)u_n$,
+$[t^{n+1}]t^2Q(\theta+1)y=Q(n)u_{n-1}$ and
+$[t^{n+1}]t^3R(\theta+2)y=R(n)u_{n-2}$.
+\end{proof}
+
+Expanding $\theta=tD$, $\theta^2=t^2D^2+tD$ gives
+$L=t^2\Rc(t)D^2+t\,\Sc(t)D+t\,\Vc(t)$ with
+\begin{equation}\label{eq:RSV}
+\begin{aligned}
+\Rc(t)&=1-at+dt^2-gt^3,\\
+\Sc(t)&=1-(a+b)t+(3d+e)t^2-(5g+h)t^3,\\
+\Vc(t)&=-c+(d+e+f)t-(4g+2h+j)t^2 .
+\end{aligned}
+\end{equation}
+The singular points are $t=0$, the three roots $t_1,t_2,t_3$ of $\Rc$, and
+$t=\infty$. Since $t^3(\lambda^3-a\lambda^2+d\lambda-g)=\Rc(1/\lambda)$ with
+$\lambda=1/t$, the \emph{characteristic roots} $\lambda_i=1/t_i$ are the roots of
+\begin{equation}\label{eq:chi}
+\chi(\lambda)=\lambda^3-a\lambda^2+d\lambda-g ,
+\end{equation}
+and five distinct singular points requires $g\ne0$ and
+$\Delta=18adg-4a^3g+a^2d^2-4d^3-27g^2\ne0$.
+
+\begin{theorem}[exponent dictionary; \Proved]\label{thm:F1}
+The exponents of $L$ are $(0,0)$ at $t=0$ \textup{(}a MUM point, so a logarithm
+is forced\textup{)}; $(0,\rho_i)$ at a simple root $t_i$ of $\Rc$, with
+\[
+T:=\Sc-t\Rc'=1-bt+(d+e)t^2-(2g+h)t^3,\qquad
+\rho_i=1-\frac{\Sc(t_i)}{t_i\Rc'(t_i)}=-\frac{T(t_i)}{t_i\Rc'(t_i)} ;
+\]
+and $(2-s_1,2-s_2)$ at $t=\infty$, where $s_1,s_2$ are the roots of $R$ and
+$\delta_\infty:=s_2-s_1$. Moreover $\sum_i\rho_i=s_1+s_2-1=-h/g-1$.
+\end{theorem}
+
+\begin{proof}
+The first two are the indicial equations of $t^2\Rc D^2+t\Sc D+t\Vc$ at $t=0$ and
+at a simple zero of $\Rc$. At $\infty$, $Lt^{\mu}$ has leading term
+$-R(\mu+2)t^{\mu+3}$, so $\mu+2\in\{s_1,s_2\}$; with the convention
+(exponent)$\,=-\mu$ the exponents are $2-s_i$. For the last claim,
+$\sum_i\rho_i=-\sum_i\Res_{t_i}\bigl(T/(t\Rc)\bigr)$; the rational function
+$T/(t\Rc)$ has residue $T(0)/\Rc(0)=1$ at $t=0$ and behaves like
+$\bigl((2g+h)/g\bigr)t^{-1}$ at $\infty$, so the sum of its finite residues is
+$(2g+h)/g$ and $\sum\rho_i=1-(2g+h)/g$. The sum of all ten exponents is then
+$3=(5-2)\cdot1$, the Fuchs relation for rank two with five singular points.
+\end{proof}
+
+The identities of Lemma~\ref{lem:op} and Theorem~\ref{thm:F1} are also checked
+symbolically \Verified{$n\le12$, script \texttt{01\_exponents.py}}.
+
+\begin{remark}[the accessory parameters and the M\"obius invariants]
+The scaling $t\mapsto t/\mu$, i.e.\ $u_n\mapsto\mu^nu_n$, acts by
+$(a,b,c)\mapsto\mu(a,b,c)$, $(d,e,f)\mapsto\mu^2(d,e,f)$,
+$(g,h,j)\mapsto\mu^3(g,h,j)$, so the labelled configuration
+$(0,\infty;\{t_1,t_2,t_3\})$ has exactly two invariants,
+\[
+\Ic_1=\frac{a^3}{g}=\frac{(\lambda_1+\lambda_2+\lambda_3)^3}{\lambda_1\lambda_2\lambda_3},
+\qquad
+\Ic_2=\frac{a^2}{d}=\frac{(\lambda_1+\lambda_2+\lambda_3)^2}{\sum_{i<j}\lambda_i\lambda_j},
+\]
+the analogue of the cross-ratio invariant of \cite{CLASS}. Both are rational for
+an integral row --- and, unlike the four-point case, this is no longer
+restrictive: the realisable locus for a five-fibre configuration is a
+\emph{curve} in the $(\Ic_1,\Ic_2)$-plane, not a point, those configurations
+coming in one-parameter families \cite{Persson1990}. That is the precise sense in
+which the four-term case is non-rigid, and why the $\Jm$-map test has to do all
+the work later.
+\end{remark}
+
+\subsection{Equal exponents}
+
+\begin{theorem}[normalisation classes; \Proved]\label{thm:F2}
+Assume $t_1,t_2,t_3$ distinct. Then $\rho_1=\rho_2=\rho_3=\rho$ if and only if
+\[
+b=(1-\rho)a,\qquad e=-2\rho\,d,\qquad h=-(1+3\rho)\,g .
+\]
+\end{theorem}
+
+\begin{proof}
+$\rho_i=\rho$ for all $i$ says $\Rc\mid T+\rho\,t\Rc'$. Both are cubics with
+constant term $1$, so $T+\rho t\Rc'=\Rc$, i.e.
+$1-(b+\rho a)t+(d+e+2\rho d)t^2-(2g+h+3\rho g)t^3=1-at+dt^2-gt^3$.
+\end{proof}
+
+\begin{corollary}[Galois; \Proved]\label{cor:galois}
+The $\rho_i$ are values at $t_i$ of a fixed rational function with rational
+coefficients, hence are permuted by $\Gal(\overline\Q/\Q)$ exactly as the $t_i$
+are. Kodaira admissibility \textup{(}Corollary~\ref{cor:kodaira}\textup{)} forces
+$\rho_i\in\Q$; therefore $\rho_i$ is constant on each Galois orbit of
+$\{t_1,t_2,t_3\}$, and in particular if $\chi$ is irreducible then
+$\rho_1=\rho_2=\rho_3$.
+\end{corollary}
+
+\begin{corollary}[Kodaira admissibility; \Proved{} given Kodaira's list]\label{cor:kodaira}
+If the local system of $L$ is, up to a rational gauge factor and a quadratic
+twist, $R^1\pi_*\Q$ of an elliptic surface over $\PP^1_t$, then
+$\rho_1,\rho_2,\rho_3,\delta_\infty\in\{0,\tfrac12,\tfrac13,\tfrac23\}\pmod1$.
+\end{corollary}
+
+\begin{proof}
+Neither a rational gauge nor a quadratic twist changes an exponent
+\emph{difference} mod $1$, and Kodaira's monodromy eigenvalue ratios are $1$
+($I_n,I_n^*$), $-1$ ($III,III^*$), $e^{\pm2\pi i/3}$ ($IV,IV^*$),
+$e^{\mp2\pi i/3}$ ($II,II^*$) \cite{Kodaira1963,MirandaBook}. This is the
+argument of \cite[Theorem~B(ii)]{CLASS} verbatim.
+\end{proof}
+
+\subsection{The class parametrisation}
+Fix $\rho$ and write $R(n)=C(Mn-j_1)(Mn-j_2)$, so $s_i=j_i/M$ and
+$g=CM^2$, $h=-CM(j_1+j_2)$, $j=Cj_1j_2$, with $j_1+j_2=(1+3\rho)M$ by
+Theorems~\ref{thm:F1} and \ref{thm:F2}. A \emph{class} is the tuple
+$(\rho;M,j_1,j_2)$, and inside it the scan runs over
+\begin{equation}\label{eq:class}
+P(n)=a\bigl(n^2+(1-\rho)n\bigr)+c,\qquad
+Q(n)=d\bigl(n^2-2\rho n\bigr)+f,\qquad
+R(n)=C(Mn-j_1)(Mn-j_2)
+\end{equation}
+with the five integer parameters $a,c,d,f,C$ (four after $t\mapsto t/\mu$). The
+two accessory parameters are visible as $c=u_1=P(0)$ and $f=Q(0)$. There are
+$156$ Kodaira-admissible classes with $\rho,\delta_\infty$ of denominator $\le6$,
+$\rho\in[-1,2]$, $\delta_\infty\in[0,4]$ and $M\le12$
+\Verified{\texttt{04\_classes.py}}.
+
+\subsection{The semistable classes}
+``All five exponent differences $\equiv0$'' means $\rho\in\Z$ and
+$\delta_\infty\in\Z$. Since $s_1+s_2=1+3\rho$, and $\delta_\infty=0$ forces
+$s_1=s_2=(1+3\rho)/2$, the exponents at $\infty$ are integral iff $\rho$ is odd.
+Three presentations matter:
+\[
+\begin{array}{llll}
+(\mathbf S_0)&P=a(n^2+n)+c,&Q=dn^2+f,&R=C(2n-1)^2,\\
+(\mathbf S_1)&P=an^2+c,&Q=d(n^2-2n)+f,&R=C(n-2)^2,\\
+(\mathbf S_{-1})&P=a(n^2+2n)+c,&Q=d(n^2+2n)+f,&R=C(n+1)^2 .
+\end{array}
+\]
+$(\mathbf S_0)$ has exponents $(\tfrac32,\tfrac32)$ at $\infty$: four $I_n$
+fibres and one $I_m^*$. $(\mathbf S_{\pm1})$ has integral exponents at $\infty$
+and five $I_n$ fibres; the two are gauge partners, the gauge
+$y\mapsto\prod_i(1-\lambda_it)^{-\rho}y$ sending $\rho\mapsto-\rho$ and
+$s\mapsto s-3\rho$. The distinction between $\mathbf S_0$ and $\mathbf S_{\pm1}$
+is not a matter of gauge: a quadratic character twist flips the starredness of
+the fibres at an \emph{even} number of points, so the parity of the number of
+$I^*$ fibres is an invariant of the projective local system --- $1$ for
+$\mathbf S_0$, $0$ for $\mathbf S_{\pm1}$. This is the four-term form of the
+twist-parity lemma of \cite{CLASS}.
+
+$(\mathbf S_0)$ is the exact analogue of Zagier's shape $(an^2+an+b,\;cn^2)$:
+the linear conditions are $b=a$, $e=0$, $h=-g$, $j=g/4$, and both accessory
+parameters are free --- unlike the three-term case, $f$ is \emph{not} forced to
+vanish, the fibre at $\infty$ being governed by $R$, not $Q$. It carries integral
+rows; $(\mathbf S_{\pm1})$ does not (Proposition~\ref{prop:F5}).
+
+\subsection{Apparent singularities}\label{sec:apparent}
+At $t_i$ the exponents are $(0,\rho_i)$. If $\rho_i\in\Z\setminus\{0\}$ the two
+exponents differ by an integer and the second solution either carries a logarithm
+(a genuine $I_n$ fibre) or does not, in which case the local monodromy is
+trivial: an \emph{apparent} singularity. The same happens at $\infty$ when
+$\delta_\infty\in\Z_{>0}$. If $\rho_i=0$ (or $\delta_\infty=0$) the exponents
+coincide and a logarithm is unavoidable, so the point is always a genuine $I_n$.
+
+The obstruction is a single Frobenius coefficient: writing the equation at the
+point as $Ay''+By'+Cy=0$ and running the recursion from the smaller exponent, the
+coefficient at $m=|\rho_i|$ (resp.\ $m=\delta_\infty$) has vanishing indicial
+factor, and the point is apparent iff the accumulated right-hand side vanishes
+\Verified{$100$ digits, relative threshold $10^{-40}$}. Two cases must be
+distinguished: with integral exponents the local monodromy is the identity and
+the point is not a singular point of the local system at all; with half-integral
+ones --- which happens at $\infty$ when $\delta_\infty\in\Z$ but $s_i\notin\Z$ ---
+it is $-I$, trivial in $\PSL_2$, i.e.\ an $I_0^*$ fibre. Both are invisible to
+the \emph{projective} local system, the one the $\Jm$-map test and the Kodaira
+dictionary see, so in both cases the row counts as a four-point object --- the
+$I_0^*$ mechanism that produced the one-parameter family classes in the rigid
+case \cite{CLASS}.
+
+\begin{proposition}[the class $\mathbf S_{-1}$; \Proved]\label{prop:F5}
+In the class $(\rho;\delta_\infty)=(-1;0)$ the Frobenius obstruction at $t_i$ is
+$S_i=t_i\bigl[(a-c)+(f-d)t_i\bigr]$. Hence at most one $t_i$ is apparent unless
+$a=c$ and $d=f$, and in that case all three are, which happens exactly when
+$P(n)=a(n+1)^2$, $Q(n)=d(n+1)^2$, $R(n)=C(n+1)^2$, i.e.\ exactly when the row
+degenerates to the constant-coefficient recurrence
+$u_{n+1}=au_n-du_{n-1}+Cu_{n-2}$ and $\sum u_nt^n$ is a rational function.
+\end{proposition}
+
+\begin{proof}
+Substitute $b=2a$, $e=2d$, $h=2g$, $j=g$ into $S_i=2A_2-B_1+C_0$ with
+$A=t^2\Rc$, $B=t\Sc$, $C=t\Vc$ expanded at $t_i$, and use $\Rc(t_i)=0$ and
+$\Sc(t_i)=2t_i\Rc'(t_i)$ (which is $\rho_i=-1$); this gives
+$S_i=t_i[2\Rc'+t_i\Rc''-\Sc'+\Vc](t_i)=t_i[(a-c)+(f-d)t_i]$ identically in
+$t_i$.
+\end{proof}
+
+\subsection{Mixed exponents}\label{sec:mixdict}
+Corollary~\ref{cor:galois} confines unequal exponents to reducible cubics, and
+the general such shape has a rational root and a quadratic Galois orbit. Let
+$W(\lambda)=\lambda^3+\beta_1\lambda^2+\beta_2\lambda+\beta_3$ be the reversal of
+$T$, i.e.\ $T(t)=1+\beta_1t+\beta_2t^2+\beta_3t^3$.
+
+\begin{lemma}[\Proved]\label{lem:D30}
+$W(\lambda)=\chi(\lambda)\bigl[1+\sum_i\rho_i\lambda_i/(\lambda-\lambda_i)\bigr]
+ =\chi(\lambda)+\sum_i\rho_i\lambda_i\prod_{j\ne i}(\lambda-\lambda_j)$,
+and $b=-\beta_1$, $d+e=\beta_2$, $2g+h=-\beta_3$.
+\end{lemma}
+
+\begin{proof}
+With $\Rc=\prod_i(1-\lambda_it)$ one has
+$t_i\Rc'(t_i)=-(\lambda_i-\lambda_j)(\lambda_i-\lambda_k)/\lambda_i^2$, so
+$\rho_i=-T(t_i)/(t_i\Rc'(t_i))$ reads $W(\lambda_i)=\rho_i\lambda_i\chi'(\lambda_i)$.
+$W$ is the unique \emph{monic} cubic with those three values; Lagrange
+interpolation with $L_i(\lambda)=\chi(\lambda)/((\lambda-\lambda_i)\chi'(\lambda_i))$
+gives the display, the leading coefficient being $1$ because the correction term
+has degree $\le2$.
+\end{proof}
+
+Setting all $\rho_i=\rho$ recovers $W=\rho\lambda\chi'+(1-3\rho)\chi$, i.e.\
+Theorem~\ref{thm:F2}.
+
+\begin{theorem}[mixed normalisation forms; \Proved]\label{thm:D3}
+Let $\chi=(\lambda-r)(\lambda^2-\sigma\lambda+\pi)$ with $r,\sigma,\pi\in\Z$,
+and put $\rho_r$ on the rational root and $\rho_p$ on both roots of the quadratic
+factor. Then $a=r+\sigma$, $d=\sigma r+\pi$, $g=r\pi$ and
+\[
+b=(1-\rho_r)r+(1-\rho_p)\sigma,\qquad
+e=-\rho_p(2\pi+r\sigma)-\rho_r r\sigma,\qquad
+h=-(1+2\rho_p+\rho_r)\,g,
+\]
+and, writing $R(n)=C(Mn-j_1)(Mn-j_2)$ as in \eqref{eq:class},
+$g=CM^2$, $j=Cj_1j_2$ and $(j_1+j_2)/M=s_1+s_2=1+2\rho_p+\rho_r$. Fuchs is
+automatic: $\sum\rho_i=2\rho_p+\rho_r=s_1+s_2-1$.
+\end{theorem}
+
+\begin{proof}
+Expand Lemma~\ref{lem:D30} with $\rho_1=\rho_r$ at $\lambda_1=r$ and
+$\rho_2=\rho_3=\rho_p$, using
+$\lambda_2\prod_{j\ne2}(\lambda-\lambda_j)+\lambda_3\prod_{j\ne3}(\lambda-\lambda_j)
+=(\lambda-r)(\sigma\lambda-2\pi)$, so that
+$W=\chi+\rho_p(\lambda-r)(\sigma\lambda-2\pi)+\rho_r r(\lambda^2-\sigma\lambda+\pi)$,
+and read off the coefficients.
+\end{proof}
+
+Theorem~\ref{thm:D3} was checked numerically against the dictionary of
+Theorem~\ref{thm:F1} for all $15$ shapes tried, six random parameter points each,
+$0$ failures \Verified{\texttt{01\_mixcheck.py}}. A mixed class is a tuple
+$(\rho_p,\rho_r;M,j_1,j_2)$; twenty are Kodaira-admissible, non-Casoratian and
+genuinely mixed:
+
+The twenty are: $(\rho_p,\rho_r)=(\pm\tfrac12,0)$, fibres $I_n,III,III$, with
+$(M,j_1,j_2)$ equal to $(4,3,5)$, $(6,5,7)$, $(3,2,4)$, $(2,1,3)$ resp.\
+$(1,0,0)$, $(4,-1,1)$, $(6,-1,1)$, $(3,-1,1)$; $(0,\pm\tfrac12)$, fibres
+$III,I_n,I_n$, with $(4,3,3)$, $(12,7,11)$, $(12,5,13)$, $(2,0,3)$ resp.\
+$(4,1,1)$, $(2,0,1)$, $(12,1,5)$, $(12,-1,7)$; $(\pm\tfrac12,\mp\tfrac12)$,
+three $III$ fibres in two gauges, with $(4,3,3)$ and $(4,1,1)$; and the two
+controls $(0,\pm1)$, where apparent points are expected.
+
+
+Because $\rho_p=\pm\tfrac12\notin\Z$ and $\rho_r=0$ forces a logarithm, the
+classes in the first two rows admit \emph{no} apparent singularity at a finite
+point --- only $\infty$ can be apparent, and only when $\delta_\infty\in\Z$ ---
+so they carry genuine five-point rows automatically. Structurally they are the
+quadratic twists, ramified at exactly two of the three finite points, of the
+equal-exponent classes: the twist turns two $I_n$ fibres into $I_n^*$ and leaves
+the \emph{projective} local system unchanged. They are not a new geometry but a
+new \emph{integral form} of the same geometry, and, as for the $\pm\tfrac12$
+twist pairs of \S\ref{sec:thirty} note~3, their Ap\'ery limits differ from those
+of the untwisted rows.
+
+\subsection{The Riemann--Hurwitz window}\label{sec:RH}
+
+\begin{theorem}[\Proved]\label{thm:F3}
+Let $\pi:\mathcal E\to\PP^1_t$ be a minimal elliptic surface with section and
+non-constant $\Jm$ whose singular fibres lie over the five singular points of
+$L$, and let $c,e_2,e_3$ count the points whose projective local monodromy is
+parabolic, of order $2$, of order $3$ \textup{(}so $c+e_2+e_3\le5$ and $c\ge1$
+because $t=0$ is MUM\textup{)}. Then
+$\mu=\deg\Jm\le6c+4e_3+3e_2-12\le18$.
+\end{theorem}
+
+\begin{proof}
+Riemann--Hurwitz for $\Jm:\PP^1\to\PP^1$ together with Kodaira's dictionary gives
+$2\mu-2\ge(\mu-c)+\tfrac23(\mu-e_3)+\tfrac12(\mu-e_2)$; maximising subject to
+$c+e_2+e_3\le5$ gives $\mu\le6\cdot5-12=18$, attained only in the all-parabolic
+case. The argument is that of the four-point bound in \cite{CLASS}, which never
+used the number of singular points.
+\end{proof}
+
+By Gauss--Bonnet a genus-zero group $\Gamma\le\PSL_2(\Z)$ with exactly five
+special points ($c$ cusps, $e_2$ elliptic of order $2$, $e_3$ of order $3$,
+$c+e_2+e_3=5$, $c\ge1$) has index
+$\mu=12\bigl(-1+\tfrac c2+\tfrac{e_2}4+\tfrac{e_3}3\bigr)=6c+4e_3+3e_2-12$,
+which is exactly the bound of Theorem~\ref{thm:F3}: the two agree because
+equality says precisely that $\Jm$ is a Belyi map. The fifteen possible
+signatures give indices
+$(5,0,0)\!:\!18$, $(4,1,0)\!:\!15$, $(4,0,1)\!:\!16$, $(3,2,0)\!:\!12$,
+$(3,1,1)\!:\!13$, $(3,0,2)\!:\!14$, $(2,3,0)\!:\!9$, $(2,2,1)\!:\!10$,
+$(2,1,2)\!:\!11$, $(2,0,3)\!:\!12$, $(1,4,0)\!:\!6$, $(1,3,1)\!:\!7$,
+$(1,2,2)\!:\!8$, $(1,1,3)\!:\!9$, $(1,0,4)\!:\!10$,
+so there are \emph{finitely many host groups} --- the five-point analogue of the
+$28$ genus-zero groups with four special points in the rigid case. Their
+enumeration into conjugacy classes is not carried out here \Open. Accordingly
+the $\Jm$-map test is run with $\mathrm{DMAX}=\mathrm{HMAX}=18$, $130$ series
+terms and $760$ values of $\gamma$ per $h$.
+
+% ===========================================================================
+\section{The scans}\label{sec:scans}
+% ===========================================================================
+
+\subsection{Design}
+The scanner runs one class $(\rho;M,j_1,j_2)$ at a time over the five integer
+parameters $a,c,d,f,C$ of \eqref{eq:class}. Integrality is tested
+division-free on $U_n=u_n(n!)^2$,
+\[
+U_{n+1}=P(n)U_n-n^2Q(n)U_{n-1}+n^2(n-1)^2R(n)U_{n-2},\qquad
+u_n\in\Z\iff v_p(U_n)\ge2v_p(n!)\ \forall p,
+\]
+prime by prime modulo $p^K$ with $K=2v_p(N!)+2$, $N=24$. Three cheap layers
+precede the exact test: analytic congruences ($U_2,\dots,U_4$ --- and, in the
+deep scans, $U_5$ --- are \emph{linear in $C$}, so $4\mid U_2$, $36\mid U_3$,
+$576\mid U_4$, $14400\mid U_5$ put $C$ on an arithmetic progression), a
+mask-arithmetic $2$-adic prefilter to $n=14$ modulo $2^{24}$, and a 64-bit
+prefilter for $p=3,5,7,11$ to $n=12$. Survivors are
+re-verified with exact rational arithmetic to $n=120$, which also computes the
+characteristic roots, the Frobenius obstruction at every point with an integral
+exponent difference, the companion $b_n$ ($b_0=0$, $b_1=1$) and its sharp
+denominator exponent $k$ (least $k$ with $d_n^kb_n\in\Z$ for $n\le60$,
+$d_n=\operatorname{lcm}(1,\dots,n)$), the Ap\'ery limit to $\ge60$ digits, and
+the score $\log(1/|\lambda_2|)-k$.
+
+Two validations are on record: the deep scanner returns bit-identical hit lists
+to the first scanner on $14$ classes over a common box, and the mixed-class
+scanner agrees with an exact brute force on a small box in the class
+$(-\tfrac12,0;1,0,0)$, both returning the same $4$ rows --- soundness \emph{and}
+completeness \Verified{as stated}.
+
+\subsection{Deduplication}\label{sec:dedup}
+A hit is discarded or reclassified by the following tests, in order.
+\begin{enumerate}[leftmargin=3.1em]
+\item[(D1)] \emph{Repeated characteristic root}, $\Delta=0$: two of the $t_i$
+collide.
+\item[(D2), (D3)] \emph{Terminating rows} --- three consecutive zeros kill the
+sequence (in the class $\mathbf S_1$ this alone removes all of the
+$6.5\times10^5$ raw hits at $|a|\le40$) --- and \emph{constant-coefficient rows},
+$P,Q,R$ all proportional to $(n+1)^2$ (Proposition~\ref{prop:F5}).
+\item[(D4)] \emph{Casoratian degeneracy.} For three solutions of \eqref{eq:four} the
+Casoratian $W_n=\det[u^{(i)}_{n-2+k}]$ satisfies $W_{n+1}=R(n)W_n/(n+1)^2$
+\Proved, so if $R(n_0)=0$ for an integer $n_0\ge1$ the solution space collapses
+to two dimensions from $n_0$ on.
+\item[(D5)] \emph{Apparent singularity $\Rightarrow$ disguised three-term row}
+(\S\ref{sec:apparent}): the projective local system has only four singular
+points, and the row is a gauge or cusp-move image of a three-term row, over
+$\Q(\lambda_i)$ in general since the M\"obius map $t\mapsto t/(1-\lambda_it)$ is
+defined over that field.
+\item[(D6)] \emph{Rescaling}: $u_n\mapsto\mu^nu_n$ acts by
+$(a,c,d,f,C)\mapsto(\mu a,\mu c,\mu^2d,\mu^2f,\mu^3C)$; a hit is marked
+\textsc{rescaled} when dividing by some $\mu\ge2$ leaves an integral row.
+\item[(D7), (D8)] \emph{Pullbacks $t\mapsto t^2$}: these would require $\Rc(-t)=\Rc(t)$,
+i.e.\ $a=g=0$, but $g\ne0$, so \emph{there are none in the four-term world}
+\Proved. \emph{The Pad\'e $\log$/$\arctan$ families} are three-term and their
+four-term images are removed by (D5); exactly two surviving five-point rows have
+$k=1$ and are marked Pad\'e-type by the same diagnostic.
+\end{enumerate}
+
+Two mechanisms produce (D5) hits and account for essentially all of them: the
+\emph{generic cusp move} $s=t/(1-\nu t)$ with $\nu$ \emph{not} a characteristic
+root, which sends the ordinary point $t=1/\nu$ to $s=\infty$ and makes that new
+fifth point apparent; and a \emph{rational gauge at an ordinary point},
+$y\mapsto y/(1-\nu t)$ with $\Rc(1/\nu)\ne0$, which creates a fifth point with
+exponents $(0,-1)$ and no logarithm --- and unequal $\rho_i$, so a reducible
+cubic, in accordance with Corollary~\ref{cor:galois}.
+
+\begin{proposition}[the generic cusp move, four-term form; \Proved]\label{prop:F4}
+Let $(P_0,Q_0)$ be a three-term row in Zagier's class,
+$P_0=a_0(n^2+n)+c_0$, $Q_0=d_0n^2$, with integral $u_n$, and let $\nu\in\Z$ be
+arbitrary \textup{(}in particular \emph{not} a characteristic root\textup{)}.
+Then the signed binomial transform
+$v_n=\sum_{m=0}^n\binom nm(-\nu)^{\,n-m}u_m$ satisfies the four-term row of class
+$(\rho;M,j_1,j_2)=(0;1,0,1)$ with
+\[
+P(n)=(a_0-3\nu)(n^2+n)+(c_0-\nu),\quad
+Q(n)=(d_0-2a_0\nu+3\nu^2)n^2,\quad
+R(n)=-\nu(d_0-a_0\nu+\nu^2)n(n-1),
+\]
+i.e.\ $f=Q(0)=0$ identically. Its characteristic roots are
+$\{\lambda_1-\nu,\lambda_2-\nu,-\nu\}$, and $t=\infty$ is an \emph{apparent}
+singularity: the local system is the original four-point one.
+\end{proposition}
+
+\begin{proof}
+$\sum_nv_nt^n=(1+\nu t)^{-1}y\bigl(t/(1+\nu t)\bigr)$, so the singular points of
+the transform are the preimages $t=1/(\lambda_i-\nu)$ of the $t_i$, the preimage
+$t=-1/\nu$ of $s=\infty$, and $t=\infty$ --- the image of the \emph{ordinary}
+point $s=1/\nu$, carrying only the pole of the gauge factor, hence exponents
+$(0,1)$ and no logarithm. Then
+$\Rc(t)=\prod_i(1-(\lambda_i-\nu)t)\cdot(1+\nu t)$ gives $a,d,g$, $c=v_1=c_0-\nu$,
+and $f$ falls out of $4v_2=P(1)v_1-Q(1)$.
+\end{proof}
+
+Proposition~\ref{prop:F4} was checked on Zagier $\mathbf A$--$\mathbf F$ for
+$|\nu|\le3$ \Verified{$n\le18$}. For a three-term row of another class the gauge
+exponent must be taken in $\{1-r_1,1-r_2\}$; the resulting classes are those with
+$\delta_\infty\in\Z$, and every one is populated in the scan. This is the
+four-term analogue of the $I_m^*/I_0^*$ family classes of the rigid case
+\cite{CLASS}: there the infinite families were the classical Legendre--Pad\'e
+rows; here they are cusp-move images, a fifth singular point that is not really
+there.
+
+\subsection{The boxes}\label{sec:boxes}
+\emph{Box G} (general census): $1\le a\le200$ ($\le140$ for the classes of the
+third pass), $|c|\le40$, $|d|\le1200$, $|f|\le80$, $1\le|C|\le120$, integrality
+prime-tested to $n=24$ and re-verified exactly to $n=120$.
+
+\emph{Box W} ($|\lambda_2|<1$; complete). A positive score needs
+$|\lambda_2|<1$, hence $|\lambda_3|\le|\lambda_2|<1$, and from $a=\sum\lambda_i$,
+$d=\sum_{i<j}\lambda_i\lambda_j$, $g=\lambda_1\lambda_2\lambda_3$ this forces
+\Proved
+\[
+|\lambda_1|\le|a|+2,\qquad |d|\le2|a|+5,\qquad |C|=|g|/M^2\le(|a|+2)/M^2 .
+\]
+Box W takes $|c|\le60$, $|f|\le120$ and lets $|d|,|C|$ run over exactly those
+ranges; swept to $a\le300$ for $18$ classes and $a\le400$ for $\mathbf S_0$, it
+is \emph{complete} for the question ``is there a row with $|\lambda_2|<1$?''.
+
+\emph{Box PW} (positive-score window; complete). Every census row has $k\ge1$, so
+a positive score needs $|\lambda_2|<e^{-1}$, whence \Proved
+\[
+|\lambda_1|\le|a|+2e^{-1},\qquad |d|\le0.74(|a|+1)+2,\qquad
+|C|\le\bigl(0.136(|a|+1)+1\bigr)/M^2 .
+\]
+Box PW is defined by $1\le a\le1500$, $|c|\le60$, $|f|\le120$ over all $27$
+classes and was swept to completion for $a\le800$; inside it the scan is complete
+for the question ``is there a row with positive score?'' among rows with
+$k\ge1$.
+
+\emph{The deep boxes.} A later run added box DG (the $15$ carrier classes,
+$|c|\le200$, $|d|\le2000$, $|f|\le400$, $|C|\le150$), box DW (all $27$
+equal-exponent classes, $|c|\le250$, $|f|\le500$, complete in $(d,C)$ for every
+$a\le180$, about $17\times$ the $(c,f)$ volume of box W), box MIX (the $20$ mixed
+classes, $a\le400$, $|c|\le100$, $|d|\le3000$, $|f|\le200$, $|C|\le400$, sharded
+by the rational characteristic root $r$) and box F5 (seven five-term classes,
+\S\ref{sec:sixpoint}). The cost is proportional to the product of the five
+ranges, so the boxes were sized to budget with the accessory directions $c=u_1$
+and $f=Q(0)$ --- where the period lives --- given priority over $a$ and $C$.
+
+\subsection{What the scans produce}\label{sec:scanshape}
+Raw hit counts are dominated by degenerate and disguised rows. Two classes make
+the point on their own: in $\mathbf S_1$ the box $a\le40$, $|c|\le30$,
+$|d|\le600$, $|f|\le50$, $|C|\le80$ contains $646\,297$ parameter tuples passing
+integrality mod $p\le24$ to $n=24$ with $\Delta\ne0$, and every one of them has
+$u_n=0$ for $n\ge1$; in $\mathbf S_{-1}$ the same box contains $484\,697$, and
+every one of them is the constant-coefficient row of Proposition~\ref{prop:F5}.
+After (D2)--(D3) both classes are empty.
+
+Over the whole census --- $27$ classes, box G for $21$ of them and a probe box
+for the six purely disguised ones --- the filters act as follows
+\Verified{boxes as stated}:
+
+\begin{center}\small
+\begin{tabular}{lr}
+\toprule
+stage & rows\\
+\midrule
+integral mod $p\le24$ to $n=24$, $\Delta\ne0$, non-terminating, not constant-coefficient & $2178$\\
+of which exact integrality to $n=120$ fails & $4$\\
+of which (D5) an apparent singularity: four-point local system, a disguised three-term row & $2138$ $(98.2\%)$\\
+of which (D6) a rescaling $u_n\mapsto\mu^nu_n$ of another integral row & $6$\\
+\textbf{genuine five-point rows, primitive} & $\mathbf{30}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Two observations are stable across all boxes. First, the classes producing
+$10^5$--$10^6$ raw hits are exactly the Casoratian-degenerate ones; in each the
+hits are terminating or constant-coefficient, so after (D2)--(D3) the class is
+empty, the one survivor being $(0;1,0,1)$, $R=Cn(n-1)$ --- the class of
+Proposition~\ref{prop:F4} --- all of whose rows are disguised. Second, every
+class with $\rho\in\Z\setminus\{0\}$ or $\delta_\infty\in\Z_{>0}$ produces a large
+family with vanishing Frobenius obstruction throughout, the extreme case being
+$(1;2,3,5)$ with \emph{two} apparent points, whose rows are hypergeometric. The
+classes with $\rho\notin\Z$, or with $\rho=0$ and $\delta_\infty\notin\Z$, admit
+no apparent singularity at all, and they carry the census.
+
+The later deep sweep confirms the picture and adds nothing to it: over boxes DG
+and DW (DG $a\le12$, DW complete to $a\le180$) there are $251$ distinct integral
+rows, $232$ ($92.4\%$) disguised, $1$ rescaled and $18$ candidates --- \emph{all
+$18$ already in the list of $30$}, so zero new equal-exponent five-point rows in
+the region covered \Verified{as stated}. The disguise fraction is $92\%$ rather
+than $98\%$ only because the deep box is weighted towards the carrier classes.
+
+% ===========================================================================
+\section{The sporadic rows and their periods}\label{sec:sporadic}
+% ===========================================================================
+
+\subsection{The list of thirty}\label{sec:thirty}
+Table~\ref{tab:thirty} lists all $30$ primitive rows with five genuine singular
+points produced by boxes G and W, sorted by score. $(\rho;M,j_1,j_2)$ is the
+class, $(a,c,d,f,C)$ the parameters of \eqref{eq:class}, $\lambda_i$ the
+characteristic roots, $k$ the sharp denominator exponent of the companion,
+$\text{score}=\log(1/|\lambda_2|)-k$, and $\Jm$ the outcome of the
+$\deg\le18$ $\Jm$-map test.
+
+\begin{table}[htbp]\centering\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\caption{The $30$ genuine five-singular-point rows. \Verified{integrality to
+$n=120$; $k$ to $n=60$; obstructions at $100$ digits}}\label{tab:thirty}
+\begin{tabular}{llllrrrl}
+\toprule
+class & $(a,c,d,f,C)$ & $\lambda_1,\lambda_2,\lambda_3$ & $k$ & score & $\Ic_1$ & $\Ic_2$ & $\Jm$\\
+\midrule
+$(0;2,1,1)$ & $(154,42,-128,-12,8)$ & $154.8,\,-0.414\pm0.1878i$ & $2$ & $-1.2117$ & $456533/4$ & $-5929/32$ & no\\
+$(0;2,1,1)$ & $(87,24,-152,-16,16)$ & $88.72,\,-1,\,-0.7214$ & $2$ & $-2.0000$ & $658503/64$ & $-7569/152$ & no\\
+$(\tfrac12;4,5,5)$ & $(72,6,-192,-60,8)$ & $74.6,\,-1.298\mp0.1732i$ & $2$ & $-2.2700$ & $2916$ & $-27$ & no\\
+$(0;3,-1,4)$ & $(22,6,-72,12,36)$ & $25.35,\,-1.673\pm3.16i$ & $1$ & $-2.2741$ & $2662/81$ & $-121/18$ & no\\
+$(0;2,1,1)$ & $(22,6,-96,-12,24)$ & $25.86,\,-2,\,-1.856$ & $2$ & $-2.6931$ & $1331/12$ & $-121/24$ & no\\
+$(0;2,1,1)$ & $(11,3,-73,-8,28)$ & $16,\,-2.5\pm0.866i$ & $2$ & $-2.9730$ & $1331/112$ & $-121/73$ & no\\
+$(-\tfrac12;4,-1,-1)$ & $(16,10,64,20,4)$ & $10.47,\,4,\,1.528$ & $2$ & $-3.3863$ & $64$ & $4$ & no\\
+$(\tfrac12;4,5,5)$ & $(16,2,64,20,4)$ & $10.47,\,4,\,1.528$ & $2$ & $-3.3863$ & $64$ & $4$ & no\\
+$(0;2,1,1)$ & $(60,18,240,12,16)$ & $55.71,\,4,\,0.2872$ & $2$ & $-3.3863$ & $3375$ & $15$ & no\\
+$(0;2,1,1)$ & $(20,6,-80,-4,-16)$ & $23.31,\,-4,\,0.6863$ & $2$ & $-3.3863$ & $-125$ & $-5$ & no\\
+$(0;2,1,1)$ & $(3,0,-104,-16,80)$ & $12.94,\,-5,\,-4.944$ & $2$ & $-3.6094$ & $27/320$ & $-9/104$ & no\\
+$(0;3,1,2)$ & $(11,4,37,3,3)$ & $5\pm1.414i,\,1$ & $2$ & $-3.6479$ & $1331/27$ & $121/37$ & \textbf{yes}, $(4,16)$\\
+$(0;2,1,1)$ & $(16,6,96,12,64)$ & $8,\,4\pm4i$ & $2$ & $-3.7329$ & $16$ & $8/3$ & no\\
+$(0;2,1,1)$ & $(16,6,76,8,24)$ & $8,\,6,\,2$ & $2$ & $-3.7918$ & $128/3$ & $64/19$ & no\\
+$(0;2,1,1)$ & $(16,6,96,12,48)$ & $6\pm3.464i,\,4$ & $2$ & $-3.9356$ & $64/3$ & $8/3$ & no\\
+$(0;4,1,3)$ & $(14,5,97,8,12)$ & $5.5\pm5.809i,\,3$ & $2$ & $-4.0794$ & $343/24$ & $196/97$ & no\\
+$(0;2,1,1)$ & $(16,6,16,-4,-96)$ & $12,\,8,\,-4$ & $2$ & $-4.0794$ & $-32/3$ & $16$ & no\\
+$(0;6,-1,7)$ & $(13,4,432,-24,-48)$ & $8.262\pm20.54i,\,-3.525$ & $1$ & $-4.0975$ & $-2197/1728$ & $169/432$ & no\\
+$(0;2,1,1)$ & $(6,2,64,4,-40)$ & $4\pm8i,\,-2$ & $2$ & $-4.1910$ & $-27/20$ & $9/16$ & no\\
+$(0;3,1,2)$ & $(3,0,-216,-24,108)$ & $18,\,-9,\,-6$ & $2$ & $-4.1972$ & $1/36$ & $-1/24$ & no\\
+$(0;3,1,2)$ & $(33,12,324,36,108)$ & $18,\,9,\,6$ & $2$ & $-4.1972$ & $1331/36$ & $121/36$ & no\\
+$(0;3,-1,4)$ & $(3,0,-216,48,108)$ & $18,\,-9,\,-6$ & $2$ & $-4.1972$ & $1/36$ & $-1/24$ & no\\
+$(0;2,1,1)$ & $(17,6,112,8,24)$ & $8\pm5.657i,\,1$ & $2$ & $-4.2822$ & $4913/96$ & $289/112$ & no\\
+$(0;4,1,3)$ & $(28,10,208,12,16)$ & $16,\,10.47,\,1.528$ & $2$ & $-4.3487$ & $343/4$ & $49/13$ & no\\
+$(0;6,1,5)$ & $(17,6,56,0,-12)$ & $10.21\pm4.658i,\,-3.428$ & $2$ & $-4.4182$ & $-4913/432$ & $289/56$ & no\\
+$(0;2,1,1)$ & $(32,12,272,16,64)$ & $16,\,14.93,\,1.072$ & $2$ & $-4.7033$ & $128$ & $64/17$ & no\\
+$(0;2,1,1)$ & $(42,15,441,24,100)$ & $25,\,16,\,1$ & $2$ & $-4.7726$ & $9261/50$ & $4$ & no\\
+$(-\tfrac13;1,0,0)$ & $(42,22,480,64,-64)$ & $21.07\pm6.464i,\,-0.1318$ & $2$ & $-5.0926$ & $-9261/8$ & $147/40$ & no\\
+$(\tfrac13;1,1,1)$ & $(42,8,480,64,-64)$ & $21.07\pm6.464i,\,-0.1318$ & $2$ & $-5.0926$ & $-9261/8$ & $147/40$ & no\\
+$(0;2,1,1)$ & $(64,24,1030,26,48)$ & $32,\,31.81,\,0.1886$ & $2$ & $-5.4598$ & $4096/3$ & $2048/515$ & no\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Four notes.
+
+\begin{enumerate}[label=\textup{\arabic*.},leftmargin=2.1em]
+\item $k=2$ for $28$ of the $30$ --- the four-term echo of the free integration
+phenomenon of the rigid case. The two exceptions have $k=1$, lie in the classes
+with $\delta_\infty>1$, and are Pad\'e constructions rather than modular objects
+by the $k=1$ diagnostic.
+\item Exactly one row is an elliptic surface: the $K3$ of \S\ref{sec:k3}. The
+other $29$ fail the $\Jm$-map test over the whole $\deg\le18$ window --- the
+four-term half of the non-congruence picture. A \emph{positive} $\Jm$ answer is a
+certificate; a \emph{negative} one means only ``no fit with $h\le18$, $\deg\le18$
+and $\gamma$ in the $760$-element list'' \Verified{as stated}.
+\item \emph{Quadratic-twist pairs.} $(16,10,64,20,4)$ and $(16,2,64,20,4)$, and
+likewise $(42,22,480,64,-64)$ and $(42,8,480,64,-64)$, have the same $(a,d,f,C)$
+and differ only in the accessory $c$, hence have the same five singular points;
+in each pair the classes are exchanged by the twist
+$\prod_i(1-\lambda_it)^{\mp1/2}$, so they are the two half-integral gauges of one
+projective local system. \emph{Their Ap\'ery limits differ.}
+\item The best score is $-1.21$, attained by $(154,42,-128,-12,8)$ in
+$\mathbf S_0$, whose two small roots are the complex pair $-0.4140\pm0.1878i$;
+its Ap\'ery limit $\xi=0.02358580301301982283\dots$ is unidentified. Adding a
+fifth \emph{genuine} singular point to a known four-point configuration is a
+recurring motif: $(87,24,-152,-16,16)$ has
+$\chi=(\lambda+1)(\lambda^2-88\lambda-64)$, the quadratic being the level-$5$
+Fricke row's, and $(20,6,-80,-4,-16)$ has $(\lambda+4)(\lambda^2-24\lambda+16)$,
+the quadratic being Beukers' row's.
+\end{enumerate}
+
+\subsection{The periods of the thirty: a negative result}\label{sec:negper}
+For each row the companion $b_n$ satisfies $LB=t$, and $\xi=\lim b_n/a_n$ exists
+exactly when the largest characteristic root is real and simple, with error
+$O((\lambda_2/\lambda_1)^n)$. Nine of the thirty have a complex conjugate
+dominant pair and therefore \emph{no archimedean Ap\'ery limit} --- in
+particular the $K3$ row, whose dominant roots are $5\pm i\sqrt2$.
+
+The $21$ limits that do exist were computed to $\ge60$ digits and put through two
+batteries: an integer-relation search over $103$ classical weight-two constants
+($\zeta(2)$; $L(2,\chi_D)$ for $|D|\le24$; $\log^2m$, $\pi\log m$ and their
+quadratic-unit variants; $\pi\arctan\frac1m$, $\arctan^2\frac1m$;
+$\Gamma(1/4)^4/\pi$, $\Gamma(1/3)^6/\pi^2$; $\mathrm{Li}_2$ at twenty small
+rational arguments), and, for each row separately, the weight-two polylogarithm
+space attached to \emph{its own} singular points, built from the ratios
+$\lambda_i/\lambda_j$ and $1-\lambda_i/\lambda_j$ and reduced to a greedy
+independent subset first (without that reduction the classical dilogarithm
+identities make the basis dependent and the search returns them instead of
+anything about $\xi$).
+
+\emph{All $21$ limits came back unidentified}, in both batteries, at $60$ digits
+with coefficient heights up to $10^6$ (single constant) and $10^5$ (pairs), and
+in polylogarithm spaces of dimension $7$--$11$ \Verified{stated bases and
+heights} --- a negative result, but sharp, and consistent with the geometry: a
+five-point configuration is not a modular curve.
+
+\subsection{The complex fold constants}\label{sec:folds}
+For the nine rows with no archimedean limit the natural invariants are the
+\emph{fold constants}: continue $(A,A')$ and $(B,B')$ from inside
+$|t|<\min|t_i|$ to a singular point $t_i$, match to the local Frobenius basis
+(logarithmic for $\rho\in\Z$, $\{1+\cdots,\ s^\rho(1+\cdots)\}$ for
+$\rho\notin\Z$), and set
+\[
+\xi(t_i)=\frac{\text{coefficient of the singular basis element in }B}
+              {\text{coefficient of the singular basis element in }A}.
+\]
+The machinery self-tests on the $K3$ row, reproducing its three published
+constants to $210$--$211$ digits, and its non-integer-$\rho$ branch was validated
+on the two $\rho=\pm\tfrac13$ rows. All nine rows succeed: $27$ fold constants,
+each self-agreeing to $154$--$156$ digits between working precisions $130$ and
+$210$ \Verified{as stated}. In each of the nine the three finite singular points
+are one real point and a conjugate pair, so each row contributes three real
+periods $\xi(t_1)$, $\xi_++\xi_-$, $(\xi_+-\xi_-)/i$; and $\xi(t_1)=\xi_++\xi_-$
+only for the $K3$ row, so the other eight contribute two independent real periods
+each.
+
+Put through the $145$-constant battery of \S\ref{sec:battery}, the only hits are
+the $K3$ row's, returning the expected $L(g,2)$ multiples at $124$--$125$ digits
+--- a strong positive control. \emph{Every one of the $24$ genuinely new real
+periods is unidentified} \Verified{as stated}.
+
+One cross-row coincidence stands out: $\re\xi(t_2)=0.14639462825244069157\dots$
+of the row $(0;4,1,3)$, $(14,5,97,8,12)$ equals the archimedean Ap\'ery limit of
+the \emph{different} row $(0;2,1,1)$, $(42,15,441,24,100)$ to all $70$ stored
+digits. The two operators have different singular points ---
+$\lambda=\{3,\tfrac{11\pm i\sqrt{115}}2\}$ against $\{1,16,25\}$ --- so this is
+neither a twist nor a rescaling \Numerical{$70$ digits}. Unexplained; see
+Conjecture~\ref{conj:D6}.
+
+\subsection{The elliptic $K3$ row}\label{sec:k3}
+The row
+\begin{equation}\label{eq:k3row}
+(n+1)^2u_{n+1}=(11n^2+11n+4)u_n-(37n^2+3)u_{n-1}+3(3n-1)(3n-2)u_{n-2},
+\end{equation}
+$u_n=1,4,16,64,250,928,3136,8704,11866,-79400,\dots$, lies in the class
+$(0;3,1,2)$, i.e.\ $(\rho;\delta_\infty)=(0;\tfrac13)$: exponents $(0,0)$ at
+$t=0$ and at each $t_i$, and $(\tfrac53,\tfrac43)$ at $\infty$. Its
+characteristic polynomial is
+$\lambda^3-11\lambda^2+37\lambda-27=(\lambda-1)(\lambda^2-10\lambda+27)$, so the
+singular points are $0,\ 1,\ \tfrac{5\pm i\sqrt2}{27},\ \infty$; integrality is
+verified exactly to $n=300$ ($u_{300}$ has $213$ decimal digits) and $k=2$
+\Verified{as stated}. The two dominant characteristic roots are the conjugate
+pair $5\pm i\sqrt2$, so there is no archimedean Ap\'ery limit.
+
+The $\Jm$-map test is positive, returning $h=4$, $\deg\Jm=16$, $\gamma=-1$,
+certified: $\Jm=U/V$ with $\deg U=15$, $\deg V=16$ fitted from $38$ coefficients
+of the $q$-expansion and verified on $73$ further ones \Verified{as stated}.
+Factoring $V$, $U$ and $U-1728V$ gives the fibres $I_4$ at $t=0$, $I_6$ at $t=1$,
+$I_3,I_3$ at $t=\tfrac{5\pm i\sqrt2}{27}$ and $IV^*$ at $\infty$, with
+$\Jm^{-1}(\infty):4+6+3+3=16$, $\Jm^{-1}(0):3\cdot5+1=16$,
+$\Jm^{-1}(1728):2\cdot8=16$ and $\sum_P(e_P-1)=30=2\cdot16-2$: $\Jm$ is a
+\emph{Belyi map}, so there are no further singular fibres, and the projective
+monodromy is the genus-zero group of signature $(0;3;\ \text{cusps }3,3,4,6)$ and
+index $16$ --- the $(c,e_2,e_3)=(4,0,1)$ line of \S\ref{sec:RH}, at the
+Riemann--Hurwitz bound $6\cdot4+4\cdot1-12=16$ with equality.
+
+Since $\sum_{I_n}n_i=16>12$ the surface is not rational; the Euler numbers give
+$\sum e=4+6+3+3+8=24$, so $\chi=2$: an \emph{elliptic $K3$ surface over
+$\PP^1_t$ with exactly five singular fibres $I_4I_6I_3I_3IV^*$}, defined over
+$\Q$ with the two $I_3$'s conjugate over $\Q(\sqrt{-2})$.
+
+\begin{theorem}[\cite{K3PAPER,K3P}; stated here, not reproved]\label{thm:k3}
+For the row \eqref{eq:k3row}: the local system is $R^1\pi_*\Q$ of an elliptic
+$K3$ surface with the fibres above, given by an explicit Weierstrass model
+\Proved; $\rho(\mathcal X)=20$, $\mathrm{MW}$ has rank $0$ and torsion exactly
+$\Z/3$ \Proved; the transcendental lattice is $\operatorname{diag}(6,12)$,
+$\det T=72$, with CM by $\Q(\sqrt{-2})$ \Proved{} modulo the discriminant-form
+bookkeeping; the transcendental motive is that of the weight-$3$ CM newform
+$g=\texttt{32.3.d.a}\in S_3(\Gamma_0(32),\chi_{-8})$ \Verified{$a_p$ for all $76$
+primes $5\le p\le397$, no free parameter, Livn\'e rigidity then identifying the
+motive \cite{Livne}}; and the fold constants are
+\[
+\xi\Bigl(\tfrac{5\mp i\sqrt2}{27}\Bigr)=\frac{\sqrt2\mp i}{3}L(g,2),
+\qquad
+\xi(1)=\frac{2\sqrt2}{3}L(g,2)=\xi_++\xi_-,
+\qquad
+L(g,2)=\frac{\pi}{32}\frac{\Gamma(\tfrac18)\Gamma(\tfrac38)}{\Gamma(\tfrac58)\Gamma(\tfrac78)}
+\]
+\Verified{$\ge165$ digits, two independent computations}. $2$-adically
+$b_n/a_n\to0$ at logarithmic rate and there is no $3$-adic limit
+\Verified{as stated in \cite{K3P}}.
+\end{theorem}
+
+This is the structural pay-off of the fifth point: \emph{the four-term row is the
+recurrence-level home of the elliptic $K3$s with five singular fibres, just as
+the three-term row is the home of the rational elliptic surfaces with four.} The
+integrality of \eqref{eq:k3row} is nonetheless purely experimental \Open --- for
+three-term rows integrality is explained by modular parametrisation, and here we
+do not know whether the index-$16$ monodromy group is congruence.
+
+\subsection{The mixed-exponent rows: Catalan and $L$-values}\label{sec:mixed}
+The mixed classes of \S\ref{sec:mixdict} were scanned next, and they carry
+everything the equal-exponent scan does not. Six genuine five-point rows with
+identified classical periods appear, all in the single class
+\[
+(\rho_p,\rho_r;M,j_1,j_2)=(-\tfrac12,0;1,0,0),\qquad R(n)=Cn^2,
+\]
+i.e.\ exponent differences $(0,\tfrac12,\tfrac12)$ at the three finite points
+and $\delta_\infty=0$: one $I_n$ fibre and two points whose projective monodromy
+has order $2$ (Kodaira $III$/$III^*$), with $I_n$'s at $0$ and $\infty$.
+
+\begin{table}[htbp]\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{The six mixed-exponent rows with classical Ap\'ery limits.
+\Verified{integrality to $n=200$; exponents to $40$ digits; $k$ to $n=80$;
+$\xi$ to $139$--$141$ digits}}\label{tab:six}
+\begin{tabular}{clllllrl}
+\toprule
+\# & $P(n)$ & $Q(n)$ & $R(n)$ & $u_n$ & $\lambda$ & score & $\xi=\lim b_n/a_n$\\
+\midrule
+1 & $16n^2{+}20n{+}8$ & $48n^2{+}16n$ & $-128n^2$ & $1,8,72,640,\dots$ & $4{\pm}4\sqrt2,\,8$ & $-4.0794$ & $\tfrac14G$\\
+2 & $14n^2{+}20n{+}8$ & $28n^2{+}16n{+}4$ & $8n^2$ & $1,8,72,704,\dots$ & $6{\pm}4\sqrt2,\,2$ & $-2.6931$ & $\tfrac12G-\tfrac3{16}\zeta(2)$\\
+3 & $6n^2{+}10n{+}4$ & $-32n^2{-}24n{-}8$ & $32n^2$ & $1,4,36,288,\dots$ & $4{\pm}4\sqrt2,\,-2$ & $-2.6931$ & $\tfrac38\zeta(2)-\tfrac12G$\\
+4 & $16n^2{+}20n{+}8$ & $68n^2{+}36n{+}8$ & $32n^2$ & $1,8,60,448,\dots$ & $8,\,4{\pm}2\sqrt3$ & $-4.0101$ & $\tfrac1{32}(2\zeta(2)+15L_{-3})$\\
+5 & $17n^2{+}25n{+}10$ & $32n^2{+}24n{+}8$ & $16n^2$ & $1,10,114,1424,\dots$ & $8{\pm}4\sqrt3,\,1$ & $-2.0693$ & $\tfrac1{16}(15L_{-3}-6\zeta(2))$\\
+6 & $13n^2{+}20n{+}8$ & $-13n^2{-}6n{-}1$ & $-n^2$ & $1,8,87,1024,\dots$ & $7{\pm}4\sqrt3,\,-1$ & $-2.0000$ & $\tfrac18(2\zeta(2)-3L_{-3})$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Here $G=L(2,\chi_{-4})$, $L_{-3}=L(2,\chi_{-3})$, all six have $k=2$, and the
+class parameters $(a,c,d,f,C)_r$ are $(16,8,48,0,-128)_{8}$,
+$(14,8,28,4,8)_{2}$, $(6,4,-32,-8,32)_{-2}$, $(16,8,68,8,32)_{8}$,
+$(17,10,32,8,16)_{1}$, $(13,8,-13,-1,-1)_{-1}$.
+Independently of the scan pipeline the coefficients were rebuilt from
+Theorem~\ref{thm:D3} and, for each row: $u_n\in\Z$ by exact rational arithmetic
+to $n=200$; the exponents recomputed from the dictionary come out as
+$(0,-\tfrac12,-\tfrac12)$ to $40$ digits with cubic discriminants
+$2048,32768,32768,768,192,49152$, all non-zero, so the five singular points are
+distinct; \emph{no apparent singularity is possible}, since $\rho_r=0$ and
+$\delta_\infty=0$ force logarithms and the two $III$ points have monodromy of
+order $2$ in $\PSL_2$; $k=2$ to $n=80$; $\xi$ recomputed by forward recursion at
+working precision $380$ agrees to $139$--$141$ digits; and \emph{the sequences
+satisfy no three-term recurrence} --- the nine-parameter ansatz
+$L(n)u_{n+1}=P(n)u_n-Q(n)u_{n-1}$ with $L,P,Q$ quadratic has nullspace dimension
+$0$ over $21$ equations, while the twelve-parameter four-term ansatz has
+nullspace dimension exactly $1$. \Verified{as stated}
+
+The finite singular points of rows 1--3 are irrational and conjugate over
+$\Q(\sqrt2)$, the field of the level-$8$ and level-$16$ Catalan hosts; rows 4--6
+are the same phenomenon over $\Q(\sqrt3)$. Rows 2 and 3 realise the mixed class
+$\tfrac12G\mp\tfrac3{16}\zeta(2)$, $\tfrac38\zeta(2)-\tfrac12G$ on a five-point
+host. The best Catalan score is $-2.6931=\log\tfrac12-2$, i.e.\ $+0.693$ nats
+better than Zagier $\mathbf E$'s $-3.3863$, and row 6 reaches $-2.0000$ with
+$|\lambda_2|=1$ exactly. For rows $1,2,3,5,6$ the singular point nearest the
+origin --- the one that governs $\lim b_n/a_n$ --- is one of the two $III$
+points, an order-$2$ orbifold point rather than a cusp; for row 4 it is the cusp
+$t=\tfrac18$. Every one of the six has $|\lambda_2|\ge1$, so none is a decayer,
+as Theorem~\ref{thm:D1} forces.
+
+\subsection{The whole period matrix is classical}\label{sec:matrix}
+The Ap\'ery limit is only the fold constant at the nearest singular point. The
+constants at all three were computed and identified, real and imaginary parts,
+at $125$--$129$ digits \Verified{as stated}. Ordering $t_1,t_2,t_3$ by
+decreasing $|t|$, so that $\xi(t_3)$ is the archimedean Ap\'ery limit:
+
+\begin{center}\footnotesize
+\begin{tabular}{llll}
+\toprule
+row & $\xi(t_1)$ & $\xi(t_2)$ & $\xi(t_3)$\\
+\midrule
+$(16,8,48,0,-128)_{8}$ & $\tfrac18(2G-3\zeta(2))$ & $\tfrac1{32}(8G+3\zeta(2))+\tfrac3{32}\zeta(2)i$ & $\tfrac14G$\\
+$(14,8,28,4,8)_{2}$ & $\tfrac1{80}(40G-39\zeta(2))+\tfrac9{10}\zeta(2)i$ & $\tfrac1{16}(8G+3\zeta(2))+\tfrac38\zeta(2)i$ & $\tfrac1{16}(8G-3\zeta(2))$\\
+$(16,8,68,8,32)_{8}$ & $\tfrac1{32}(15L_{-3}-12\zeta(2))+\tfrac5{96}\pi^2\sqrt3\,i$ & $\tfrac{15}{32}L_{-3}+\tfrac1{96}\pi^2\sqrt3\,i$ & $\tfrac1{32}(2\zeta(2)+15L_{-3})$\\
+$(8,4,32,8,64)_{4}$ & $\tfrac1{32}(6\zeta(2)+15L_{-3})$ & $\tfrac1{32}(15L_{-3}-6\zeta(2))+\tfrac1{48}\pi^2\sqrt3\,i$ & $\overline{\xi(t_2)}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Two consequences. First, the period lattice is spanned by two classical
+constants: for the $\Q(\sqrt2)$ family every fold period lies in
+$\Q G+\Q\zeta(2)$, for the $\Q(\sqrt3)$ family in $\Q L_{-3}+\Q(\sqrt3)\zeta(2)$
+(note $\pi^2\sqrt3=6\sqrt3\zeta(2)$). These are \emph{not} generic five-point
+periods --- all $21$ equal-exponent Ap\'ery limits and all $24$ new
+equal-exponent fold periods are unidentified over the same battery --- so the
+mixed class is arithmetically special. Second, the row $(8,4,32,8,64)_{4}$ has no
+archimedean Ap\'ery limit at all, its dominant roots being the complex pair
+$2\pm2\sqrt3\,i$, and yet all three of its fold periods are classical: the
+phenomenon belongs to the local system, not to the recurrence's convergence.
+
+\subsection{The gauge partners and $\Gamma(\tfrac14)^4$}\label{sec:gauge}
+The class $(-\tfrac12,0;1,0,0)$ has the gauge partner $(+\tfrac12,0;1,1,1)$ ---
+the same projective local system with $\rho\mapsto-\rho$, the $\pm\tfrac12$ twist
+pairing of \S\ref{sec:thirty} note~3. It has $R(n)=C(n-1)^2$, so $R(1)=0$: a
+Casoratian degeneracy in the sense of (D4), which is why it was initially left
+out of the class list. Its integral rows have the \emph{same} $(a,d,f,C)$ as the
+Catalan rows with a different accessory $c$:
+\[
+\begin{array}{llll}
+(16,4,48,0,-128)_{8}:& 1,4,24,160,1136,8384,\dots\\
+(14,2,28,4,8)_{2}:& 1,2,8,48,356,2952,\dots\\
+(6,0,-32,-8,32)_{-2}:& 1,0,4,16,116,800,\dots
+\end{array}
+\]
+and \emph{all three} have the same Ap\'ery limit,
+\[
+\xi=\frac{\Gamma(\tfrac14)^4}{64\pi}
+ =0.85939822725254660343626197247631964973760705647739511203431098644200041\dots,
+\]
+\Verified{integrality to $n=200$; $\xi$ matched to $195$, $241$, $241$ digits}.
+Three different rows, three different singular configurations, one and the same
+period --- in sharp contrast to the $-\tfrac12$ gauge, where the three partners
+give three different constants.
+
+The pairing is the point: $\Gamma(\tfrac14)^4/\pi$ is the period of the CM
+elliptic curve $y^2=x^3-x$ --- the algebraic-period side of the Gaussian world
+--- and $G=L(2,\chi_{-4})$ is its $L$-value side, and the two half-integral
+gauges of one five-point projective local system over $\Q(\sqrt2)$ produce one
+each; $\sqrt2$ is the ramification of $\Q(i)/\Q$ made visible in the singular
+points.
+
+\subsection{The complete census of the two productive classes, and $\xi^*$}
+\label{sec:xistar}
+The pair of gauge-partner classes was swept to completion over
+\[
+|r|\le60,\quad |a|\le200,\quad |c|\le200,\quad |d|\le2000,\quad |f|\le400,
+\quad |C|\le600
+\]
+($69$ distinct integral rows, of which $30$ rescaled, $14$ not integral at
+$n=120$, and $20$ candidates). \emph{Each class contains exactly nine primitive
+genuine five-point rows}, and they correspond one-to-one under the twist
+$\rho\mapsto-\rho$ --- same $(a,d,f,C)$ and same $r$, different accessory $c$
+\Verified{box as stated}:
+
+\begin{center}\footnotesize
+\begin{tabular}{rlllll}
+\toprule
+$r$ & $(a,d,f,C)$ & $\lambda$ & score & $\xi$ in gauge $\rho_p=-\tfrac12$ & $\xi$ in gauge $\rho_p=+\tfrac12$\\
+\midrule
+$8$ & $(16,48,0,-128)$ & $4{\pm}4\sqrt2,\,8$ & $-4.0794$ & $\tfrac14G$ & $\Gamma(\tfrac14)^4/(64\pi)$\\
+$2$ & $(14,28,4,8)$ & $6{\pm}4\sqrt2,\,2$ & $-2.6931$ & $\tfrac12G-\tfrac3{16}\zeta(2)$ & $\Gamma(\tfrac14)^4/(64\pi)$\\
+$-2$ & $(6,-32,-8,32)$ & $4{\pm}4\sqrt2,\,-2$ & $-2.6931$ & $\tfrac38\zeta(2)-\tfrac12G$ & $\Gamma(\tfrac14)^4/(64\pi)$\\
+$8$ & $(16,68,8,32)$ & $8,\,4{\pm}2\sqrt3$ & $-4.0101$ & $\tfrac1{32}(2\zeta(2){+}15L_{-3})$ & $\xi^*$\\
+$1$ & $(17,32,8,16)$ & $8{\pm}4\sqrt3,\,1$ & $-2.0693$ & $\tfrac1{16}(15L_{-3}{-}6\zeta(2))$ & $\xi^*$\\
+$-1$ & $(13,-13,-1,-1)$ & $7{\pm}4\sqrt3,\,-1$ & $-2.0000$ & $\tfrac18(2\zeta(2){-}3L_{-3})$ & $\xi^*$\\
+$4$ & $(8,32,8,64)$ & $4,\,2{\pm}2\sqrt3\,i$ & $-3.3863$ & complex pair, no limit & complex pair, no limit\\
+$3$ & $(17,123,33,243)$ & $7{\pm}4\sqrt2\,i,\,3$ & $-4.1972$ & complex pair, no limit & complex pair, no limit\\
+$-3$ & $(5,24,12,-144)$ & $4{\pm}4\sqrt2\,i,\,-3$ & $-3.9356$ & complex pair, no limit & complex pair, no limit\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Every row with an archimedean limit in the $-\tfrac12$ gauge is identified; in
+the $+\tfrac12$ gauge three give $\Gamma(\tfrac14)^4/(64\pi)$ and three the same
+\emph{unidentified} constant
+\[
+\xi^*=0.7372929961855962401764261978022936979609191432765291852228688851129961062186382\dots
+\]
+shared by those three rows, by a fourth four-term row in a \emph{different}
+mixed class ($(0,\tfrac12;2,1,2)$, $r=12$, $(a,c,d,f,C)=(24,6,192,24,144)$),
+\emph{and} by the five-term six-point row of \S\ref{sec:sixpoint} whose
+characteristic quartic $(\lambda-4)(\lambda-2)(\lambda+2)(\lambda-1)$ has all
+roots rational --- two computations with recurrences of different orders and
+different singular sets, agreeing to $319$ digits \Verified{$319$ agreeing
+digits}. $\xi^*$ is unidentified by the $145$-constant battery (heights $10^8$
+for single constants, $10^5$ for pairs, \texttt{algdep} to degree $6$), and a
+hand search against $\Gamma(\tfrac13)^6/\pi^2$, $\Gamma(\tfrac14)^4/\pi$ and
+rational multiples returns only height-$10^{55}$--$10^{85}$ noise. Five rows, in
+three classes and two worlds, over two fields, with one common transcendental:
+identifying $\xi^*$ is the sharpest single question this work leaves behind
+\Open.
+
+\subsection{The battery}\label{sec:battery}
+The identifications above and the negative results of \S\ref{sec:negper} and
+\S\ref{sec:folds} use a Catalan-focused battery of $145$ constants after
+value-deduplication: $G$ and six algebraic multiples of it; $\zeta(2)$, $\pi^2$,
+$\pi^2\sqrt D^{\pm1}$ for $D\mid24$; $L(2,\chi_D)$ for all $17$ fundamental
+discriminants $|D|\le24$; $L(3,\chi_D)$ for $|D|\le8$, $\zeta(3)$ and
+$\zeta(3)/\pi^{1,2}$; $\mathrm{Ti}_2$ at $11$ arguments; the $K3$ row's $L(g,2)$
+and four twists; seven $\Gamma$/CM-period products of levels $3,4,6,8,12$; and
+$\log^2m$, $\pi\log m$, $28$ products $\log m_1\log m_2$, five
+real-quadratic-unit pairs, $\pi\arctan\frac1m$ and $\arctan^2\frac1m$. Constants
+are built at $250$ digits, the search is run at $60$, and \emph{every} candidate
+relation is verified by reconstructing $\xi$ from it with a $55$-digit threshold;
+the pair test uses a $24$-element sublist greedily reduced to an independent
+basis of $22$. The battery recovers $\tfrac73G$, $\tfrac52-\tfrac37\pi G$,
+$\tfrac25G-\tfrac34\zeta(2)+\tfrac16$ (also from a $62$-digit truncated input),
+$\sqrt5$, $\tfrac{2\sqrt2}3L(g,2)$ and $\tfrac12G$ from Zagier $\mathbf E$: it is
+not silently blind \Verified{as stated}.
+
+% ===========================================================================
+\section{Structure theorems}\label{sec:structure}
+% ===========================================================================
+
+The census results above are computations over boxes. Three statements explain,
+rather than merely record, part of what they show.
+
+\begin{theorem}[\Proved]\label{thm:D1}
+Let \eqref{eq:four} be an integral four-term row with $g=CM^2\ne0$ and
+characteristic roots $|\lambda_1|\ge|\lambda_2|\ge|\lambda_3|$. If
+$|\lambda_2|<1$ then $\chi(\lambda)=\lambda^3-a\lambda^2+d\lambda-g$ is
+irreducible over $\Q$.
+\end{theorem}
+
+\begin{proof}
+Suppose $\chi$ has a rational root. It is monic with integer coefficients, so
+that root is an integer $r$, and $r\ne0$ because $\chi(0)=-g\ne0$. If
+$r\in\{\lambda_2,\lambda_3\}$ then $|r|\le|\lambda_2|<1$ with $r$ a non-zero
+integer, which is impossible. Hence $r=\lambda_1$ and, by Gauss's lemma,
+$\chi=(\lambda-r)(\lambda^2-\sigma\lambda+\pi)$ with $\sigma,\pi\in\Z$. Then
+$\pi=\lambda_2\lambda_3$ and $|\pi|\le|\lambda_2|^2<1$, so $\pi=0$ and $g=r\pi=0$
+--- a contradiction.
+\end{proof}
+
+\begin{corollary}[\Proved]\label{cor:D11}
+No class with $\rho_1\ne\rho_2=\rho_3$ --- in particular none of the twenty
+mixed-exponent classes of \S\ref{sec:mixdict} --- contains a row with
+$|\lambda_2|<1$.
+\end{corollary}
+
+\begin{proof}
+Corollary~\ref{cor:galois} makes unequal exponents force a reducible cubic, and
+Theorem~\ref{thm:D1} forbids that when $|\lambda_2|<1$.
+\end{proof}
+
+\begin{corollary}[\Proved]\label{cor:D12}
+Every row with $|\lambda_2|<1$ has equal exponents at all three finite points, so
+its three finite fibres are Galois-conjugate and of one Kodaira type.
+\end{corollary}
+
+This explains, rather than merely records, why the $|\lambda_2|<1$ window is
+populated only by the equal-exponent classes.
+
+\begin{theorem}[\Proved]\label{thm:D2}
+If moreover $\lambda_2\in\R$ \textup{(}a \emph{real decayer}\textup{)} then
+$\chi$ is irreducible and \emph{totally real},
+$\Delta=18adg-4a^3g+a^2d^2-4d^3-27g^2>0$, and $|g|<|\lambda_1|\le|a|+2$.
+\end{theorem}
+
+\begin{proof}
+An irreducible cubic over $\Q$ has either three real roots or one real root and a
+complex-conjugate pair. In the second case the pair has equal modulus; if the
+real root were $\lambda_2$ then $|\lambda_1|=|\lambda_3|$, contradicting
+$|\lambda_2|\ge|\lambda_3|$ and $|\lambda_2|<|\lambda_1|$. So all three roots are
+real and $\Delta>0$; finally $|g|=|\lambda_1||\lambda_2\lambda_3|<|\lambda_1|$.
+\end{proof}
+
+Both statements were run against the $30$ rows of Table~\ref{tab:thirty} and
+against all $37\,088$ integer cubics with $|\lambda_2|<1$ in $|a|\le24$,
+$|d|,|g|\le70$: $0$ reducible \Verified{as stated}. Exactly one census row has
+$|\lambda_2|<1$, namely $(154,42,-128,-12,8)$ with
+$|\lambda_2|=0.45462\ldots$, and its cubic is irreducible with
+$\Delta=-81\,920\,000<0$, so its two small roots are a complex pair and it is
+\emph{not} a real decayer. The only other row with $|\lambda_2|\le1$,
+$(87,24,-152,-16,16)$, has $|\lambda_2|=1$ exactly and a \emph{reducible} cubic
+$(\lambda+1)(\lambda^2-88\lambda-64)$ --- precisely the boundary case
+Theorem~\ref{thm:D1}'s proof leaves open. Consequently, in the four-term world a
+real decayer must live in an equal-exponent class with an irreducible totally
+real cubic.
+
+The empirical side agrees. Over the whole extended window (all $27$
+equal-exponent classes, $|c|\le250$, $|f|\le500$, complete in $(d,C)$ for every
+$a\le180$) there are exactly three rows with $|\lambda_2|<1$ \Verified{as
+stated}: the disguised $I_0^*$ Pad\'e row $(144,32,96,-32,4)$ of class
+$(0;2,-1,3)$ ($|\lambda_2|=0.35064$ real, $k=1$, score $+0.0480$), the disguised
+$(36,8,-48,16,4)$ of the same class ($0.65496$, non-real, $k=1$, $-0.5768$), and
+the genuine $(154,42,-128,-12,8)$ of $(0;2,1,1)$ ($0.45462$, non-real, $k=2$,
+$-1.2117$). Over all $20$ mixed-class candidates the smallest $|\lambda_2|$ is
+\emph{exactly} $1$, never below --- Corollary~\ref{cor:D11} in action.
+
+The third structural statement concerns what the disguise costs. The only
+integral three-term row in Zagier's sense whose Ap\'ery limit involves Catalan's
+constant is Zagier $\mathbf E$,
+$(n+1)^2u_{n+1}=(12n^2+12n+4)u_n-32n^2u_{n-1}$ with $\lambda=(8,4)$, $k=2$,
+$\xi=\tfrac12G$. By Proposition~\ref{prop:F4} its signed binomial transforms are
+integral four-term rows on the same local system --- for $\nu=1,2,-1,-2$ they
+have $\lambda=\{8-\nu,4-\nu,-\nu\}$, $k=2$ and scores
+$-3.0986,-2.6931,-3.6094,-3.7918$, so the cusp move even improves the elementary
+score by up to $+0.69$ nats \Verified{integrality to $n=459$}. But:
+
+\begin{proposition}[\Proved{} and \Verified{$70$ digits}]\label{prop:D4}
+The signed binomial transform $T$ of the companion is \emph{not} the companion of
+the transformed row. Writing $L_0B=t$ for Zagier $\mathbf E$ and
+$\tilde y(t)=(1+\nu t)^{-1}y(t/(1+\nu t))$ for the gauge, one has
+$L'(Ty)(t)=(L_0y)(s)$ with $s=t/(1+\nu t)$, so $L'(TB)=t/(1+\nu t)\ne t$ and $TB$
+fails the four-term recurrence at every $n\ge1$. The row's own companion $W$
+\textup{(}$w_1=1$, $L'W=t$\textup{)} is $W=TB+Ty$ with
+$(n+1)^2y_{n+1}=P_0y_n-Q_0y_{n-1}+\nu^n$, $y_0=y_1=0$, and the exact Casoratian
+$(m+1)^2(a_mb_{m+1}-a_{m+1}b_m)=32^m$ gives
+$\xi_\nu=\tfrac12G\cdot A(\nu/32)-B(\nu/32)$ with $A=\sum a_nt^n$,
+$B=\sum b_nt^n$.
+\end{proposition}
+
+The four values $\xi_1=0.48630684566125056749\dots$,
+$\xi_2=0.52037151700596857713\dots$, $\xi_{-1}=0.43391612361971143068\dots$,
+$\xi_{-2}=0.41311716537104535942\dots$ are all unidentified against the battery
+of \S\ref{sec:battery} \Verified{as stated}, and structurally they must be, being
+values of the period and of its Eichler integral at an \emph{interior} point of
+the disc; the control $\tfrac12G$ itself is recovered by the battery at $79$
+digits. So the four-term world does contain integral rows built on the Catalan local
+system --- the whole $\nu$-family --- but it is a four-point local system wearing
+a fifth point: no new arithmetic, and a canonical Ap\'ery limit that is no longer
+$\tfrac12G$. The contrast with \S\ref{sec:mixed}, where the fold is a simple root
+of $\Rc$, the row is honestly four-term and the canonical limit \emph{is}
+$\tfrac14G$, is what makes the mixed-class rows a genuinely new realisation
+rather than a re-labelling.
+
+
+% ===========================================================================
+\section{The six-point glimpse: five-term rows}\label{sec:sixpoint}
+% ===========================================================================
+
+One term further, the five-term row
+\[
+(n+1)^2u_{n+1}=P(n)u_n-Q(n)u_{n-1}+R(n)u_{n-2}-T(n)u_{n-3},
+\qquad u_0=1,\ u_{-1}=u_{-2}=u_{-3}=0,
+\]
+with $T=kn^2+ln+m$ has an operator with \emph{six} singular points and three
+accessory parameters.
+
+\begin{theorem}[five-term dictionary; \Proved, \Verified{as stated}]\label{thm:D5}
+$L=\theta^2-tP(\theta)+t^2Q(\theta+1)-t^3R(\theta+2)+t^4T(\theta+3)
+ =t^2\Rc D^2+t\Sc D+t\Vc$ with
+\[
+\begin{aligned}
+\Rc&=1-at+dt^2-gt^3+kt^4,\\
+\Sc&=1-(a+b)t+(3d+e)t^2-(5g+h)t^3+(7k+l)t^4,\\
+\Vc&=-c+(d+e+f)t-(4g+2h+j)t^2+(9k+3l+m)t^3 .
+\end{aligned}
+\]
+The exponents are $(0,0)$ at $0$, $(0,\rho_i)$ at the four roots of $\Rc$ with
+$\rho_i=-T_c(t_i)/(t_i\Rc'(t_i))$,
+$T_c=\Sc-t\Rc'=1-bt+(d+e)t^2-(2g+h)t^3+(3k+l)t^4$, and $3-s_1,3-s_2$ at $\infty$
+with $s_i$ the roots of $T$; Fuchs reads $\sum_i\rho_i=s_1+s_2-2$. All four
+exponents equal $\rho$ iff $b=(1-\rho)a$, $e=-2\rho d$, $h=-(1+3\rho)g$,
+$l=-(2+4\rho)k$, and then $(j_1+j_2)/M=s_1+s_2=2+4\rho$ for
+$T(n)=C(Mn-j_1)(Mn-j_2)$. The Casoratian on four solutions is
+$W_{n+1}=-T(n)W_n/(n+1)^2$.
+\end{theorem}
+
+The free parameters are $a,c,d,f,g,j,C$: three accessory parameters $c=u_1$,
+$f=Q(0)$, $j=R(0)$ --- exactly $6-3$ --- plus four position moduli modulo the
+scaling. The scanner was validated against an exact brute force on a small box,
+both finding the same $17$ integral rows, every one with a repeated
+characteristic root \Verified{as stated}.
+
+\subsection{The census and the disguise fraction}
+Seven classes were scanned over $a\le24$, $|c|\le12$, $|d|\le90$, $|f|\le40$,
+$|g|\le90$, $|j|\le60$, $|C|\le90$ in census mode, plus a deeper box on the
+productive class. In the all-semistable class $(0;1,1,1)$, $T=C(n-1)^2$ (six
+$I_n$ fibres), about $1700$ integral rows are found, $99.6\%$ with a repeated
+characteristic root, leaving $\mathbf 7$ genuine six-point rows; in the gauge
+partner $(-1;1,-1,-1)$ all $1608$ integral rows have a repeated root, leaving
+$\mathbf 0$ \Verified{boxes as stated}. The pattern of \S\ref{sec:scanshape}
+continues and intensifies: there the dominant degeneracy was the apparent
+singularity ($98.2\%$ disguised three-term rows); here it is a repeated
+characteristic root --- the singular points collide and the object is not a
+six-point one at all --- at $99.6\%$--$100\%$. The gauge partner
+$(-1;1,-1,-1)$ is the five-term analogue of $\mathbf S_{-1}$: empty, exactly as
+Proposition~\ref{prop:F5} makes $\mathbf S_{-1}$ empty. The scan of $(0;1,1,1)$
+was still running when it was stopped, so the list of seven is not claimed
+complete \Open.
+
+\begin{center}\footnotesize
+\begin{tabular}{lllrl}
+\toprule
+$(a,c,d,f,g,j,C)$ & $\lambda$ & $k$ & score & $\xi$\\
+\midrule
+$(1,0,-14,-2,20,8,-8)$ & $2{\pm}2\sqrt2,\,-2,\,-1$ & $2$ & $-2.6931$ & $\tfrac{\sqrt2}3L(g,2)$\\
+$(6,2,0,0,-6,-2,-1)$ & $3{\pm}2\sqrt2,\,-1,\,1$ & $2$ & $\mathbf{-2.0000}$ & $\tfrac{\sqrt2}3L(g,2)$ again\\
+$(8,2,-52,-8,72,24,-16)$ & $12.5918,\,-2.3177,\,-2,\,-0.2741$ & $2$ & $-2.8406$ & $0.2336058844421865619710\dots$\\
+$(4,1,-13,-2,9,3,-1)$ & $6.2959,\,-1.1588,\,-1,\,-0.1371$ & $2$ & $-2.1474$ & $0.4672117688843731239421\dots$\\
+$(9,3,13,2,4,1,-1)$ & $7.2959,\,1,\,0.8629,\,-0.1588$ & $2$ & $\mathbf{-2.0000}$ & the same $0.46721176888\dots$\\
+$(5,2,0,0,-20,-8,-16)$ & $4,\,-2,\,2,\,1$ & $2$ & $-2.6931$ & $\xi^*$ (\S\ref{sec:xistar})\\
+$(5,2,17,3,31,12,18)$ & $1{\pm}2\sqrt2\,i,\,2,\,1$ & $2$ & $-3.0986$ & none (complex pair)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$k=2$ for all seven --- the same free-integration phenomenon one term further ---
+and \emph{every period occurs at least twice}. Three of the seven have
+$|\lambda_2|=1$ exactly, hence score $-2.0000$.
+
+\subsection{A weight-$3$ cusp-form $L$-value as an honest Ap\'ery limit}
+The first row of the list,
+\begin{equation}\label{eq:fiveterm}
+(n+1)^2u_{n+1}=(n^2{+}n)u_n+(14n^2{+}2)u_{n-1}+(20n^2{-}20n{+}8)u_{n-2}
+ +8(n{-}1)^2u_{n-3},
+\end{equation}
+$u_n=1,0,4,8,40,144,616,2544,10936,47200,\dots$, is integral \Verified{exact
+rational arithmetic to $n=400$; $u_{400}$ has $271$ decimal digits}, primitive
+($a=1$), and has all $u_n\ge0$ for $n\le400$. Its characteristic quartic is
+$\lambda^4-\lambda^3-14\lambda^2-20\lambda-8=(\lambda+1)(\lambda+2)(\lambda^2-4\lambda-4)$
+with $\Delta=2048\ne0$, so the six singular points
+$0,\ -1,\ -\tfrac12,\ \tfrac{\sqrt2-1}2,\ -\tfrac{\sqrt2+1}2,\ \infty$ are
+distinct; the exponents are $(0,0)$ at each of the five finite ones, so a
+logarithm is forced and none is apparent, and $(2,2)$ at $\infty$. Sharp $k=2$
+and $\text{score}=\log\tfrac12-2=-2.6931$. Its Ap\'ery limit is
+\[
+\xi=0.528749455595766833775958063859865871341\dots
+=\frac{\sqrt2}{3}L(g,2)=\tfrac12\xi_{K3}(1)
+=\re\,\xi_{K3}\Bigl(\tfrac{5\pm i\sqrt2}{27}\Bigr)
+\]
+\Verified{$110$ digits}, where $L(g,2)$ is the critical value of the weight-$3$
+CM newform \texttt{32.3.d.a} of Theorem~\ref{thm:k3}.
+
+This matters because the elliptic-$K3$ four-term row has a complex conjugate
+dominant pair and therefore no archimedean Ap\'ery limit at all: there $L(g,2)$
+appears only as a fold constant, obtained by analytic continuation. In the
+six-point world the same $L$-value is an honest $\lim b_n/a_n$ of an integral
+row, with a score $0.955$ nats better. The two local systems are not obviously
+the same --- $\{5\pm i\sqrt2,1\}$ over $\Q(\sqrt{-2})$ against
+$\{2\pm2\sqrt2,-2,-1\}$ over $\Q(\sqrt2)$, five points against six --- but
+$\texttt{32.3.d.a}$ has CM by $\Q(\sqrt{-2})$ and level $32=2^5$, so both are
+$2$-power-level objects and a correspondence is the obvious guess; identifying it
+is open \Open, as is a five-term analogue of the $\Jm$-map test. Two further
+facts: $t=\infty$ has exponents $(2,2)$ with a logarithm, so the operator has a
+\emph{second MUM point}, whose characteristic quartic
+$(\lambda-1)(\lambda-2)(\lambda^2-2\lambda-1)$ again has $|\lambda_2|=2$ and
+whose slice contains no integral row \Verified{$|c|\le40$, $|f|\le60$,
+$|j|\le80$}; and $|\lambda_2|=2$ exactly, so as a lattice engine the row's only
+candidate alignment prime is $2$.
+
+\subsection{Periods repeat across worlds}
+Five independent numerical identities turned up, in two shapes. \emph{(A)} A
+six-point Ap\'ery limit equals the real part of a five-point fold constant: the
+row \eqref{eq:fiveterm} against the elliptic $K3$; the row $(6,2,0,0,-6,-2,-1)$
+against the same $K3$ row, with score $-2.0000$ against its $-3.6479$; and the
+row $(8,2,-52,-8,72,24,-16)$ against the mixed row $(\tfrac12,0;3,2,4)_{r=27}$,
+$(23,8,-216,-42,-324)$ --- each to $110$ digits --- plus, inside the four-term
+world, the cross-row identity of \S\ref{sec:folds} at $70$ digits.
+\emph{(B)} One Ap\'ery limit shared by five rows in three classes and two
+worlds: the constant $\xi^*$ of \S\ref{sec:xistar}, to $319$ digits.
+
+\begin{conjecture}[\Conj]\label{conj:D6}
+The real part of a complex fold constant of a five-singular-point four-term row
+is, systematically, an honest archimedean Ap\'ery limit $\lim b_n/a_n$ of an
+integral six-singular-point five-term row.
+\end{conjecture}
+
+The five instances are \Verified{$70$--$319$ digits}. The mechanism is
+presumably a quadratic base change: separating a complex-conjugate pair of
+singular points adds a puncture and replaces the fold constant by its
+$\Gal(\C/\R)$-trace $\tfrac12(\xi_++\xi_-)$. No period found in this work occurs
+only once, which suggests the census is seeing families rather than sporadic rows
+--- but the identity is verified, not explained \Open.
+
+% ===========================================================================
+\section{Arithmetic: what does not change}\label{sec:arith}
+% ===========================================================================
+
+\subsection{No new irrationality candidate}
+The \emph{score} of a row is $\log(1/|\lambda_2|)-k$ with $\lambda_2$ the second
+largest characteristic root in modulus; a positive score is the archimedean part
+of an irrationality proof. Two complete sweeps settle the question in the
+four-term world.
+
+Box W ($|\lambda_2|<1$; $a\le300$ for $18$ classes, $a\le400$ for $\mathbf S_0$)
+contains $79$ rows with $|\lambda_2|<1$, all in the classes $(\pm1;3,\ldots)$ and
+$(\pm1;4,\ldots)$, and \emph{every one has a vanishing Frobenius obstruction}: a
+disguised three-term row.
+
+Box PW ($|\lambda_2|<e^{-1}$, hence complete for a positive score whenever
+$k\ge1$; all $27$ classes, swept to completion for $a\le800$, $|c|\le60$,
+$|f|\le120$) contains \emph{exactly two integral rows in total}, both in the
+class $(0;2,-1,3)$ with $\delta_\infty=2$:
+\[
+(144,32,96,-32,4):\ \lambda=143.331,\,0.3506,\,0.3184,\ k=1,\ \text{score}=+0.0480,
+\]
+\[
+(225,50,-120,40,4):\ \lambda=225.532,\,-0.2662\pm0.0092i,\ k=1,\ \text{score}=+0.3229,
+\]
+and \emph{both have an exactly vanishing Frobenius obstruction at $t=\infty$}
+(the value is $0$, not merely small); the exponents there are
+$(\tfrac12,\tfrac52)$, so the monodromy is $-I$, an $I_0^*$ fibre invisible to
+the projective local system, which therefore has only four singular points. They
+are the four-term avatars of the classical Legendre--Pad\'e family, and $k=1$
+identifies them as Pad\'e constructions.
+
+\begin{corollary}[\Verified{boxes W and PW as stated}]\label{cor:F6}
+Over the whole scanned region --- every Kodaira-admissible equal-exponent class,
+both windows --- \emph{no genuine five-singular-point four-term row has a
+positive score}. The only positive scores that occur belong to disguised
+three-term rows with $k=1$, exactly as in the rigid case, where every positive
+score outside Ap\'ery's and Beukers' rows has $k=1$ and is a classical
+Legendre--Pad\'e row. The four-term world produces no new irrationality
+candidate.
+\end{corollary}
+
+Theorem~\ref{thm:D1} adds the structural half: a decaying row needs an
+irreducible characteristic cubic, so it cannot live in an unequal-exponent class,
+and by Theorem~\ref{thm:D2} a real decayer needs a totally real one. Neither
+condition is met anywhere in the scanned region.
+
+\subsection{The $2$-adic content of the new Catalan rows}\label{sec:2adic}
+The six rows of \S\ref{sec:mixed} are \emph{engines}, not decayers, so what
+matters for the two-row lattice machinery is their $p$-adic arithmetic. Write
+$\kappa_p=-\lim v_p(\operatorname{den}b_n)/n$,
+$w_p=\lim v_p(\mathrm{Cas}_n)/n$ with $\mathrm{Cas}_n=a_nb_{n+1}-a_{n+1}b_n$, and
+$\sigma_p=w_p+2\kappa_p$ the slope of $v_p(b_n/a_n-b_{n-1}/a_{n-1})$. Everything
+below is exact (rational or $p$-adic), archimedean at $1500$ digits, measured to
+$n=800$ for $p=2$ and $n=400$ for all $p$, with $p$ swept to $71$
+\Verified{as stated}.
+
+\begin{center}\footnotesize
+\begin{tabular}{clrlrrll}
+\toprule
+row & $\xi_\infty$ & $g$ & $\kappa_p$ & $w_2$ & $\sigma_2$ & slope primes $p\le71$ & $\xi_2$\\
+\midrule
+1 & $\tfrac14G$ & $-128$ & $\kappa_2=-\tfrac12$, else $0$ & $\tfrac92$ & $\tfrac72$ & $\{2\}$ & $\tfrac14\zeta_2(2)$\\
+2 & $\tfrac12G-\tfrac3{16}\zeta(2)$ & $8$ & $0$ & $2$ & $2$ & $\{2\}$ & $\tfrac12\zeta_2(2)$\\
+3 & $\tfrac38\zeta(2)-\tfrac12G$ & $32$ & $0$ & $\tfrac72$ & $\tfrac72$ & $\{2\}$ & $-\tfrac12\zeta_2(2)$\\
+4 & $\tfrac1{32}(2\zeta(2)+15L_{-3})$ & $32$ & $0$ & $3$ & $3$ & $\{2\}$ & $\tfrac38L_2(2,\chi_{12})$\\
+5 & $\tfrac1{16}(15L_{-3}-6\zeta(2))$ & $16$ & $0$ & $3$ & $3$ & $\{2\}$ & $\tfrac34L_2(2,\chi_{12})$\\
+6 & $\tfrac18(2\zeta(2)-3L_{-3})$ & $-1$ & $0$ & $0$ & $0$ & $\varnothing$ & none\\
+Zagier $\mathbf E$ & $\tfrac12G$ & $32$ & $0$ & $5$ & $5$ & $\{2\}$ & $\tfrac12\zeta_2(2)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The $2$-adic limits are exact to $1172$--$1200$ $2$-adic digits, and the transfer
+$G\mapsto\zeta_2(2)$, $\zeta(2)\mapsto0$, $L(2,\chi_{-3})\mapsto\tfrac45L_2(2,\chi_{12})$
+is linear on the nose: rows 4 and 5 give $\tfrac{15}{32}\cdot\tfrac45=\tfrac38$
+and $\tfrac{15}{16}\cdot\tfrac45=\tfrac34$, exactly as observed.
+
+Three things are genuinely new in \emph{form} \Verified{as stated}.
+\emph{Half-integral slopes}: rows 1 and 3 have $\sigma_2=\tfrac72$ and row 1 has
+$w_2=\tfrac92$, whereas every row in the earlier census has an integer
+$\sigma_p=v_p(c)$; a half-integral Casoratian slope means the two $2$-adic Newton
+slopes of the pair $(a_n,b_n)$ are conjugate over a \emph{ramified} quadratic
+extension --- here $\Q_2(\sqrt2)$, so the irrationality of the singular points is
+visible $2$-adically. \emph{Decoupling}: $\sigma_2=\tfrac72,2,\tfrac72,3,3,0$
+against $v_2(g)=7,3,5,5,4,0$, so the three-term law $\sigma_p=v_p(c)$ fails for
+every one of the six and the slope must be measured; the $3\times3$ Casoratian
+still obeys $W_{n+1}=R(n)W_n/(n+1)^2$ exactly, but the $2\times2$ one has no
+closed form. \emph{A negative $\kappa_2$}: row 1 is an integral row whose
+numerators are divisible by a growing power of $2$, $v_2(a_n)=\tfrac n2+O(1)$, so
+$\kappa_2=-\tfrac12$ and $\sigma_2=w_2+2\kappa_2=\tfrac92-1=\tfrac72$ on the
+nose --- the invariant $\sigma=w+2\kappa$ confirmed in a regime it was never
+tested in.
+
+But the \emph{content} is old. The slope set is $\{2\}$ for rows 1--5 and empty
+for row 6 (checked to $p=71$), exactly as for Zagier $\mathbf E$, and the
+$2$-adic values are the ledger's own two constants with new rational scalars: row
+2's $\xi_2=\tfrac12\zeta_2(2)$ is literally $\mathbf E$'s value with $\sigma_2=2$
+instead of $5$, and rows 4 and 5 sit in Zagier $\mathbf F$'s $2$-adic class but
+lack $\mathbf F$'s second slope prime. The engine yield
+$\sum_p\sigma_p\log p-\log|\lambda_2|$ is
+$0.3466,\ 0.6931,\ 1.7329,\ 0.0693,\ 2.0101,\ 0$
+for rows 1--6, against $2.0794$ for Zagier $\mathbf E$ and $\log9=2.1972$ for
+$\mathbf F$: \emph{every one of the six is dominated by the engine it would
+replace}.
+
+\subsection{The Catalan ledger}
+The obstruction analysis \cite{CATOBS} lists, as the evasion (E1) of the
+geometric wall, ``a host with an irrational second singularity'': three-term rows
+cannot have one, their characteristic roots being rational hence integral, so
+$|t_2|\le\tfrac14$ at every placement and the conformal size is too small for the
+Hodge depth; rows with more singular points can. The six rows of
+\S\ref{sec:mixed} realise (E1) explicitly --- irrational conjugate singularities,
+five punctures, periods in $\Q G+\Q\zeta(2)$ at $139$ digits, full classical
+period matrices, best score $+0.693$ nats over Zagier $\mathbf E$ and equal to
+the best Catalan geometry previously known --- and the ledger does not move: the
+$2$-adic slope set is still $\{2\}$ and the limits still lie in the $\zeta_2(2)$
+and $L_2(2,\chi_{12})$ classes, so the second wall (2.3) of \cite{CATOBS}, that
+the $p$-adic places cannot compensate because $G\in\Q$ is false at $p=2$, is
+untouched. The Catalan class's deficit is a missing $p=3$ partner, and rows
+1--3 supply $\{2\}$ again with a \emph{smaller} $2$-adic resource than
+$\mathbf E$; meanwhile Theorem~\ref{thm:D1} forbids a real decayer in any
+unequal-exponent class. In the language of \cite{CATOBS}: (E1) has been
+realised, and (2.3) has been re-decorated, not evaded. Whether the
+conditional-function machinery applies to rows whose fold is an order-$2$
+orbifold point rather than a cusp is not settled here \Open.
+
+% ===========================================================================
+\begin{remark}
+The modular Catalan hosts themselves are not four-term rows: on the level-$16$ and $\Gamma_0(12)$ hosts the fold is a \emph{double} root of the reversed characteristic polynomial, and the minimal recurrences have $6$, $7$ and $6$ terms; the cusp move destroys their Ap\'ery limits (Proposition D4 of \texttt{FOUR\_TERM\_DEEP.md}, $\xi_\nu=\tfrac12G\,A(\nu/32)-B(\nu/32)$). So the four-term world and the modular Catalan world intersect only through the mixed-exponent rows of \S4.
+\end{remark}
+
+\section{Open problems}\label{sec:open}
+% ===========================================================================
+
+\begin{enumerate}[label=\textup{\arabic*.},leftmargin=2.2em]
+\item \emph{Integrality of the sporadic rows: Zagier's conjecture one step out.}
+For three-term rows integrality is explained by modular parametrisation, and the
+unconditional classification is exactly the statement that every integral row has
+one \cite{CLASS,Zagier2009}. Here $29$ of the $30$ rows of
+Table~\ref{tab:thirty} fail the $\Jm$-map test with $\deg\le18$, and no mechanism
+is known for their integrality; even for the one modular row, the elliptic $K3$
+\eqref{eq:k3row}, integrality is experimental, and we do not know whether the
+index-$16$ group attaining the Riemann--Hurwitz bound is congruence \Open.
+\item \emph{Identify $\xi^*$} (\S\ref{sec:xistar}): one transcendental shared by
+five rows in three classes and two worlds, to $319$ digits, unidentified against
+$145$ classical constants. The natural next step is the fold constants of the
+$+\tfrac12$ gauge and of the $(0,\mp\tfrac12;2,\cdot)$ classes, not computed
+here; if the pattern of \S\ref{sec:matrix} holds they should lie in
+$\Q\,\Gamma(\tfrac14)^4/\pi+\Q\cdot(\text{something})$, which would pin $\xi^*$
+\Open.
+\item \emph{Classify five-point elliptic surfaces with integral rows.} The
+configurations with five singular fibres form one-parameter families, so the
+locus they cut out in the $(\Ic_1,\Ic_2)$-plane is a curve for each fibre type;
+computing those curves would give a genuine analogue of the cross-ratio
+finiteness of the rigid case, and would \emph{predict} the $K3$ row instead of
+discovering it. The enumeration of the fifteen signatures of \S\ref{sec:RH} into
+conjugacy classes of genus-zero subgroups of $\PSL_2(\Z)$ --- the analogue of the
+$28$ groups in the four-point case --- is also not carried out \Open.
+\item \emph{Conjecture~\ref{conj:D6}}: prove the base-change mechanism behind the
+five identities, and in particular explain why a six-point row over $\Q(\sqrt2)$
+has the period of a five-point elliptic $K3$ over $\Q(\sqrt{-2})$, and why the
+second such row does it with a score $1.65$ nats better than the $K3$ row's own
+\Open.
+\item \emph{Are the six mixed rows a family?} The class $(-\tfrac12,0;1,0,0)$ is
+complete over the box of \S\ref{sec:xistar} and contains exactly nine primitive
+rows, at $r=\pm1,\pm2,\pm3,4,8,8$, so within that box they are sporadic; whether
+they are the small members of a one-parameter family at larger $|r|$ or $|a|$ is
+open, and would change the picture, the three Catalan periods being three points
+of the two-dimensional space $\Q G+\Q\zeta(2)$ that a family would sweep out
+\Open.
+\item \emph{Loose ends:} a closed form for $v_2(\mathrm{Cas}_n)$ of the six rows
+(measured as $w_2n+O(1)$ with the $O(1)$ in $[-3,3]$, exact at multiples of
+$100$) and a proof of $v_2(a_n^{(1)})=\tfrac n2+v_2(a_n^{\mathbf E})$, observed
+at eleven checkpoints; a $\Jm$-map test adapted to the mixed and five-term
+classes, none of which has been tested for modularity; the $21$ equal-exponent
+Ap\'ery limits and the $24$ new fold periods, which are probably weight-two
+\emph{multiple} polylogarithms at arguments in $\Q(\lambda_i)$, of which only the
+classical and depth-one parts were tested; the unequal-exponent classes with
+$\rho_1\ne\rho_2\ne\rho_3$, which need their own parametrisation; and
+completeness --- box PW is complete for the positive-score question and box W for
+the decayer question in the stated classes and ranges, but no deep box is, and
+the cost law of \S\ref{sec:boxes} makes a literal $100\times$ extension of box G
+about $4\times10^6$ core-seconds \Open.
+\end{enumerate}
+
+\subsection*{Reproducibility}\label{sec:repro}
+All statements above are reproduced from the project documents in
+\texttt{consolidation/}: \texttt{FOUR\_TERM\_SCAN.md} (the dictionary, the
+classes, the census, the $30$ rows, the $K3$ row's discovery,
+Corollary~\ref{cor:F6}); \texttt{FOUR\_TERM\_DEEP.md} (Theorems~\ref{thm:D3},
+\ref{thm:D1}, \ref{thm:D2} and \ref{thm:D5}, the mixed classes, the six Catalan
+rows and their period matrices, the gauge partners, $\xi^*$, the $2$-adic
+census, the five-term probe, Conjecture~\ref{conj:D6});
+\texttt{K3\_ROW\_PERIOD.md} for Theorem~\ref{thm:k3}; and
+\texttt{CATALAN\_OBSTRUCTION.md} for the ledger discussion of
+\S\ref{sec:arith}. Scripts, job files and logs --- the
+scanners and their brute-force validators, the exact re-verification, the
+$\Jm$-map test, the fold-constant machinery, the period batteries and the
+$\kappa_p/w_p/\sigma_p$ census --- are under the directories
+\texttt{lattice/four\_term/}, \texttt{lattice/four\_term\_deep/} and
+\texttt{lattice/k3\_period/}; the output files carry every hit with its verdict
+and invariants.
+
+\enlargethispage{3\baselineskip}
+\begin{thebibliography}{99}
+\scriptsize
+\setlength{\itemsep}{0pt plus 0.5pt}
+
+\bibitem{AlmkvistZudilin2006}
+G.~Almkvist and W.~Zudilin,
+\emph{Differential equations, mirror maps and zeta values},
+in: Mirror Symmetry V, AMS/IP Stud. Adv. Math. \textbf{38} (2006), 481--515.
+
+\bibitem{Beauville1982}
+A.~Beauville,
+\emph{Les familles stables de courbes elliptiques sur $\PP^1$ admettant quatre
+fibres singuli\`eres},
+C. R. Acad. Sci. Paris S\'er. I Math. \textbf{294} (1982), 657--660.
+
+\bibitem{Beukers2002}
+F.~Beukers,
+\emph{On Dwork's accessory parameter problem},
+Math. Z. \textbf{241} (2002), 425--444.
+
+\bibitem{CLASS}
+Claude (Fable) and River,
+\emph{Integral second-order Ap\'ery-like recurrences and rational elliptic
+surfaces}, companion paper (\texttt{paper/classification}), 2026.
+
+\bibitem{K3PAPER}
+Claude (Fable) and River,
+\emph{An Ap\'ery-like sequence attached to a singular $K3$ surface},
+companion note (\texttt{paper/k3\_row}), 2026.
+
+\bibitem{CATOBS}
+Claude (Fable) and River,
+\emph{Catalan's constant and the arithmetic holonomy method: an obstruction},
+companion paper (\texttt{paper/catalan\_cdt}), 2026; project document
+\texttt{consolidation/CATALAN\_OBSTRUCTION.md}.
+
+\bibitem{Cooper2012}
+S.~Cooper,
+\emph{Sporadic sequences, modular forms and new series for $1/\pi$},
+Ramanujan J. \textbf{29} (2012), 163--183.
+
+\bibitem{Herfurtner1991}
+S.~Herfurtner,
+\emph{Elliptic surfaces with four singular fibres},
+Math. Ann. \textbf{291} (1991), 319--342.
+
+\bibitem{Kodaira1963}
+K.~Kodaira,
+\emph{On compact analytic surfaces II, III},
+Ann. of Math. \textbf{77} (1963), 563--626; \textbf{78} (1963), 1--40.
+
+\bibitem{Livne}
+R.~Livn\'e,
+\emph{Motivic orthogonal two-dimensional representations of
+$\mathrm{Gal}(\overline{\Q}/\Q)$},
+Israel J. Math. \textbf{92} (1995), 149--156.
+
+\bibitem{LMFDB}
+The LMFDB Collaboration,
+\emph{The $L$-functions and modular forms database},
+\texttt{https://www.lmfdb.org}, 2026; newform \texttt{32.3.d.a}.
+
+\bibitem{MirandaBook}
+R.~Miranda,
+\emph{The basic theory of elliptic surfaces},
+ETS Editrice, Pisa, 1989.
+
+\bibitem{MovasatiReiter}
+H.~Movasati and S.~Reiter,
+\emph{Heun equations coming from geometry},
+Bull. Braz. Math. Soc. (N.S.) \textbf{43} (2012), 423--442.
+
+\bibitem{Persson1990}
+U.~Persson,
+\emph{Configurations of Kodaira fibers on rational elliptic surfaces},
+Math. Z. \textbf{205} (1990), 1--47.
+
+\bibitem{K3P}
+\texttt{FOUR\_TERM\_SCAN.md}, \texttt{FOUR\_TERM\_DEEP.md},
+\texttt{K3\_ROW\_PERIOD.md} (project documents, \texttt{consolidation/}, 2026).
+
+\bibitem{Zagier2009}
+D.~Zagier, \emph{Integral solutions of Ap\'ery-like recurrence equations},
+CRM Proc. Lecture Notes \textbf{47} (2009), 349--366.
+
+\end{thebibliography}
+
+\end{document}
