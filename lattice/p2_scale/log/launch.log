@@ -1,0 +1,15 @@
+worker 00 : n = 4 .. 1313   pid 422056
+worker 01 : n = 1314 .. 1653   pid 422060
+worker 02 : n = 1654 .. 1891   pid 422064
+worker 03 : n = 1892 .. 2081   pid 422068
+worker 04 : n = 2082 .. 2242   pid 422072
+worker 05 : n = 2243 .. 2382   pid 422076
+worker 06 : n = 2383 .. 2507   pid 422080
+worker 07 : n = 2508 .. 2621   pid 422084
+worker 08 : n = 2622 .. 2726   pid 422088
+worker 09 : n = 2727 .. 2823   pid 422092
+worker 10 : n = 2824 .. 2914   pid 422096
+worker 11 : n = 2915 .. 3000   pid 422100
+all workers finished
+./launch.sh: line 28: t: command not found
+all workers finished

@@ -1,0 +1,13 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+[0;31m  ***   Warning: new stack size = 3000000000 (2861.023 Mbytes).[0m
+[0;31m  ***   Warning: new maximum stack size = 9000001536 (8583.070 Mbytes).[0m
+[0;31m[0;31m  ***   at top-level: [0;35mRW=[0;35mrdrows(ROWF)
+[0;31m[0;31m  ***                    ^------------
+[0;31m  ***   in function rdrows: [0;35mmy(v=[0;35mreadstr(FILE),h=Map());for(i=1,#v,my(w=st
+[0;31m[0;31m  ***                            ^-----------------------------------------
+  *** readstr: error opening input file: `/home/ubuntu/code/math-modular-sources/lattice/p2_scale/data/rows_c1.txt'.[0m
+... skipping file '/tmp/p2scale/run_1.gp'
+[0;31m[0;31m  ***   at top-level: [0;35mfor(nn=NL,NH,my(rw=[0;35mmapget(RW,nn),XX=rw[1],YY=r
+[0;31m[0;31m  ***                                    ^---------------------------
+  *** mapget: incorrect type in mapget (t_POL).[0m

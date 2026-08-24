@@ -1,0 +1,69 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+[0;31m  ***   Warning: new stack size = 6000000000 (5722.046 Mbytes).[0m
+[0;31m  ***   Warning: new maximum stack size = 13000003584 (12397.770 Mbytes).[0m
+[rows] one operator for both B and C: 1
+[rows] operator failures on the n<=120 cache (B and C): 0
+[rows] n=100 ok, log10 X = 1192
+[rows] n=200 ok, log10 X = 2387
+[rows] n=300 ok, log10 X = 3590
+[rows] n=400 ok, log10 X = 4800
+[rows] n=500 ok, log10 X = 5981
+[rows] n=600 ok, log10 X = 7175
+[rows] n=700 ok, log10 X = 8363
+[rows] n=800 ok, log10 X = 9568
+[rows] n=900 ok, log10 X = 10742
+[rows] n=1000 ok, log10 X = 11949
+[rows] n=1100 ok, log10 X = 13161
+[rows] n=1200 ok, log10 X = 14348
+[rows] n=1300 ok, log10 X = 15550
+[rows] n=1400 ok, log10 X = 16730
+[rows] n=1500 ok, log10 X = 17924
+[rows] n=1600 ok, log10 X = 19135
+[rows] n=1700 ok, log10 X = 20353
+[rows] n=1800 ok, log10 X = 21542
+[rows] n=1900 ok, log10 X = 22711
+[rows] n=2000 ok, log10 X = 23898
+[rows] n=2100 ok, log10 X = 25115
+[rows] n=2200 ok, log10 X = 26337
+[rows] n=2300 ok, log10 X = 27524
+[rows] n=2400 ok, log10 X = 28646
+[rows] n=2500 ok, log10 X = 29890
+[rows] n=2600 ok, log10 X = 31100
+[rows] n=2700 ok, log10 X = 32327
+[rows] n=2800 ok, log10 X = 33474
+[rows] n=2900 ok, log10 X = 34680
+[rows] n=3000 ok, log10 X = 35890
+[rows] n=3100 ok, log10 X = 37110
+[rows] n=3200 ok, log10 X = 38200
+[rows] n=3300 ok, log10 X = 39429
+[rows] n=3400 ok, log10 X = 40663
+[rows] n=3500 ok, log10 X = 41812
+[rows] n=3600 ok, log10 X = 43050
+[rows] n=3700 ok, log10 X = 44280
+[rows] n=3800 ok, log10 X = 45464
+[rows] n=3900 ok, log10 X = 46667
+[rows] n=4000 ok, log10 X = 47875
+[rows] n=4100 ok, log10 X = 49062
+[rows] n=4200 ok, log10 X = 50224
+[rows] n=4300 ok, log10 X = 51419
+[rows] n=4400 ok, log10 X = 52624
+[rows] n=4500 ok, log10 X = 53843
+[rows] n=4600 ok, log10 X = 54970
+[rows] n=4700 ok, log10 X = 56192
+[rows] n=4800 ok, log10 X = 57430
+[rows] n=4900 ok, log10 X = 58622
+[rows] n=5000 ok, log10 X = 59761
+[rows] n=5100 ok, log10 X = 60946
+[rows] n=5200 ok, log10 X = 62160
+[rows] n=5300 ok, log10 X = 63347
+[rows] n=5400 ok, log10 X = 64540
+[rows] n=5500 ok, log10 X = 65780
+[rows] n=5600 ok, log10 X = 66998
+[rows] n=5700 ok, log10 X = 68171
+[rows] n=5800 ok, log10 X = 69408
+[rows] n=5900 ok, log10 X = 70574
+[rows] n=6000 ok, log10 X = 71749
+[rows] noninteger count = 0   mismatch vs cached n<=200 = 0
+[rows] done, NHI = 6000
+rows6 build: wall 138.71 s maxRSS 1775832 kB

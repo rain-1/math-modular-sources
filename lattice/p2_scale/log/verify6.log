@@ -1,0 +1,9 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+[0;31m  ***   Warning: new stack size = 4000000000 (3814.697 Mbytes).[0m
+[0;31m  ***   Warning: new maximum stack size = 10000003072 (9536.746 Mbytes).[0m
+[verify] building xi_2 snapshots up to m = 36000 ...
+[verify] snapshots done
+[verify] samples = 60   failures = 0
+[verify] E1 = 13.0995887908  E2 = 14.3931452672
+verify6: wall 553.10 s maxRSS 2519744 kB

@@ -1,0 +1,9 @@
+[0;31m  ***   Warning: new maximum stack size = 12000002048 (11444.094 Mbytes).[0m
+[0;31m  ***   Warning: new maximum stack size = 8000000000 (7629.395 Mbytes).[0m
+[0;31m  ***   Warning: new stack size = 3000000000 (2861.023 Mbytes).[0m
+[0;31m  ***   Warning: new maximum stack size = 9000001536 (8583.070 Mbytes).[0m
+  n=7000 k=22.3500000000000000000000000000000000000 idx=77210 L=148151 agree=1
+  n=7000 k=22.4000000000000000000000000000000000000 idx=77102 L=148529 agree=1
+  n=7000 k=23.0000000000000000000000000000000000000 idx=78407 L=150611 agree=1
+  n=7000 k=23.9000000000000000000000000000000000000 idx=80582 L=154575 agree=1
+[checkwin] window failures: 0

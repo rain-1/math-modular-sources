@@ -1,0 +1,55 @@
+==============================================================================
+A. ROBUSTNESS OF THE log rho SLOPE  (39988 instances, n <= 10000)
+  k=22.3500  OLS +5.54e-07 +- 2.91e-06 | Theil-Sen -3.57e-08 [-1.31e-06,+1.18e-06] | winsorised(99%) +1.04e-06 +- 2.71e-06
+            mean log rho: first half 0.7133 +- 0.0120, second half 0.7132 +- 0.0117, difference -0.0002 +- 0.0168  (over 4998 in n)
+            P[rho<=sqrt2] trend per unit n: -1.30e-06 +- 1.73e-06
+  k=22.4000  OLS -3.65e-06 +- 2.81e-06 | Theil-Sen -3.27e-08 [-1.30e-06,+1.18e-06] | winsorised(99%) -2.81e-06 +- 2.64e-06
+            mean log rho: first half 0.7157 +- 0.0118, second half 0.6873 +- 0.0111, difference -0.0284 +- 0.0162  (over 4998 in n)
+            P[rho<=sqrt2] trend per unit n: -2.04e-07 +- 1.73e-06
+  k=23.0000  OLS -2.76e-06 +- 2.85e-06 | Theil-Sen -1.02e-06 [-2.54e-06,+1.50e-07] | winsorised(99%) -3.20e-06 +- 2.65e-06
+            mean log rho: first half 0.7130 +- 0.0117, second half 0.6958 +- 0.0116, difference -0.0172 +- 0.0164  (over 4998 in n)
+            P[rho<=sqrt2] trend per unit n: +3.07e-06 +- 1.73e-06
+  k=23.9000  OLS -2.67e-06 +- 2.84e-06 | Theil-Sen -2.25e-07 [-1.56e-06,+9.31e-07] | winsorised(99%) -3.06e-06 +- 2.67e-06
+            mean log rho: first half 0.7152 +- 0.0115, second half 0.7051 +- 0.0116, difference -0.0101 +- 0.0164  (over 4998 in n)
+            P[rho<=sqrt2] trend per unit n: +3.22e-08 +- 1.73e-06
+
+==============================================================================
+B. WHAT P2' ACTUALLY ASKS: the liminf statistic
+   rho >= 1 always, so (1/n) log rho >= 0; P2' asks for infinitely many
+   n with (1/n) log rho -> 0.  Two exact finite-n statements:
+  k=22.3500  max over windows of W consecutive n of (min log rho): W=6: 1.3773  W=8: 0.8202  W=12: 0.3465  W=16: 0.3328  W=25: 0.2874  W=50: 0.1659
+            max (1/n) log rho by range: 4-100: 0.24604  101-300: 0.03837  301-1000: 0.01637  1001-2000: 0.00513  2001-3000: 0.00377  3001-4500: 0.00185  4501-6000: 0.00114  6001-8000: 0.00102  8001-10000: 0.00090
+  k=22.4000  max over windows of W consecutive n of (min log rho): W=6: 1.0232  W=8: 0.6462  W=12: 0.3449  W=16: 0.3316  W=25: 0.3130  W=50: 0.2044
+            max (1/n) log rho by range: 4-100: 0.30905  101-300: 0.04061  301-1000: 0.01669  1001-2000: 0.00952  2001-3000: 0.00290  3001-4500: 0.00200  4501-6000: 0.00129  6001-8000: 0.00112  8001-10000: 0.00067
+  k=23.0000  max over windows of W consecutive n of (min log rho): W=6: 1.3118  W=8: 0.5522  W=12: 0.3381  W=16: 0.3269  W=25: 0.2712  W=50: 0.1381
+            max (1/n) log rho by range: 4-100: 0.37821  101-300: 0.03516  301-1000: 0.00907  1001-2000: 0.00414  2001-3000: 0.00294  3001-4500: 0.00233  4501-6000: 0.00164  6001-8000: 0.00115  8001-10000: 0.00099
+  k=23.9000  max over windows of W consecutive n of (min log rho): W=6: 1.1375  W=8: 0.7565  W=12: 0.3454  W=16: 0.3206  W=25: 0.2618  W=50: 0.1565
+            max (1/n) log rho by range: 4-100: 0.18253  101-300: 0.03858  301-1000: 0.01063  1001-2000: 0.00465  2001-3000: 0.00258  3001-4500: 0.00240  4501-6000: 0.00147  6001-8000: 0.00102  8001-10000: 0.00071
+
+==============================================================================
+C. THE MIDPOINT LAW, CORRECTED FOR THE ABSORPTION CONTENT m_Z
+   i/L = 1/2 + (log m_Z - log h22 - (E2-E1)n) / (2 (log h11 - log m_Z))
+  k=22.3500  observed 0.52146 +- 0.00141 (s.e. 0.00001) | old prediction 0.52354 | corrected prediction 0.52141
+  k=22.4000  observed 0.52142 +- 0.00142 (s.e. 0.00001) | old prediction 0.52351 | corrected prediction 0.52138
+  k=23.0000  observed 0.52108 +- 0.00140 (s.e. 0.00001) | old prediction 0.52316 | corrected prediction 0.52103
+  k=23.9000  observed 0.52058 +- 0.00139 (s.e. 0.00001) | old prediction 0.52265 | corrected prediction 0.52053
+
+==============================================================================
+D. THE EXACT 2-ADIC LAW  v_2(q xi_2 - p) = (24 - k) n + O(1)
+  k=22.3500  fitted slope 1.649946 (s.e. 0.000013)  vs 24-k = 1.650000  [difference -5.4e-05]
+            v2 - (24-k)n : mean +2.410  sd 3.701  min -12  max +21
+  k=22.4000  fitted slope 1.599949 (s.e. 0.000013)  vs 24-k = 1.600000  [difference -5.1e-05]
+            v2 - (24-k)n : mean +2.337  sd 3.728  min -12  max +18
+  k=23.0000  fitted slope 0.999945 (s.e. 0.000013)  vs 24-k = 1.000000  [difference -5.5e-05]
+            v2 - (24-k)n : mean +1.947  sd 3.748  min -11  max +19
+  k=23.9000  fitted slope 0.099943 (s.e. 0.000013)  vs 24-k = 0.100000  [difference -5.7e-05]
+            v2 - (24-k)n : mean +2.380  sd 3.736  min -10  max +19
+
+==============================================================================
+E. THE ARCHIMEDEAN RATE  (1/n) log |q_n G - p_n|  against F(k)
+  k=22.3500  measured -0.00316 (n>4000)   F(k) = 0.00045   half-log-covol -0.00327   log q / n = 14.9582
+  k=22.4000  measured -0.02049 (n>4000)   F(k) = -0.01688   half-log-covol -0.02060   log q / n = 14.9409
+  k=23.0000  measured -0.22846 (n>4000)   F(k) = -0.22483   half-log-covol -0.22856   log q / n = 14.7329
+  k=23.9000  measured -0.54035 (n>4000)   F(k) = -0.53674   half-log-covol -0.54045   log q / n = 14.4210
+
+written data/summary2.json

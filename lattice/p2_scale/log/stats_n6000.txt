@@ -1,0 +1,141 @@
+==============================================================================
+P2 at scale -- 23988 instances, n <= 6000, k = [22.35, 22.4, 23.0, 23.9]
+instances failing the exactness certificate `ok`: 0
+instances where the ladder pair was NOT already Gauss-reduced (Theorem 1 re-verified): 0
+
+==============================================================================
+1. PARITY OF THE BALANCE INDEX
+
+k=22.3500  n=4..6000  even 3026/5997 = 0.5046  binom p=0.486 | runs z=+0.92 p=0.356 | longest odd run 12 | longest run rho>sqrt2 11 | parity<->cone 5997/5997
+           record odd run starts at n=4035 ; record rho>sqrt2 run starts at n=1845 ; gaps in n: 0
+k=22.4000  n=4..6000  even 2996/5997 = 0.4996  binom p=0.959 | runs z=-0.25 p=0.806 | longest odd run 10 | longest run rho>sqrt2 10 | parity<->cone 5997/5997
+           record odd run starts at n=4125 ; record rho>sqrt2 run starts at n=4125 ; gaps in n: 0
+k=23.0000  n=4..6000  even 2975/5997 = 0.4961  binom p=0.553 | runs z=-0.52 p=0.600 | longest odd run 10 | longest run rho>sqrt2 9 | parity<->cone 5997/5997
+           record odd run starts at n=3012 ; record rho>sqrt2 run starts at n=2090 ; gaps in n: 0
+k=23.9000  n=4..6000  even 2960/5997 = 0.4936  binom p=0.326 | runs z=+1.19 p=0.235 | longest odd run 11 | longest run rho>sqrt2 11 | parity<->cone 5997/5997
+           record odd run starts at n=2836 ; record rho>sqrt2 run starts at n=2836 ; gaps in n: 0
+
+autocorrelation of the parity sequence (lags 1..24, |z| shown):
+  k=22.3500  max|z| = 2.17 at lag 17   (all: -0.9 -0.6 +0.7 +0.8 +1.2 +0.9 -0.1 -1.0 -0.4 -1.3 -0.9 +1.5 -0.3 -0.6 -1.4 -0.5 -2.2 -0.9 -1.2 -0.6 -0.3 +0.5 +0.6 +0.1)
+  k=22.4000  max|z| = 1.21 at lag 3   (all: +0.2 -0.3 -1.2 -0.4 -0.3 +0.3 +0.8 -0.8 +0.6 +0.1 -0.0 +0.7 +0.5 +0.7 +0.4 -0.7 -0.6 +0.1 +0.6 +0.2 +0.1 +0.0 -0.4 +1.0)
+  k=23.0000  max|z| = 2.44 at lag 4   (all: +0.5 -1.0 -1.7 -2.4 -1.5 -1.6 -2.4 +0.6 +0.4 +1.3 +0.9 -0.4 +1.0 +0.3 -0.8 +0.2 -0.4 +0.3 -0.3 +1.7 -0.4 -1.1 +0.8 +0.7)
+  k=23.9000  max|z| = 2.48 at lag 17   (all: -1.2 -1.0 +0.7 +0.9 +0.6 +0.9 -1.2 +1.0 +0.5 +2.2 -0.5 +0.2 -0.1 +0.6 -0.8 +0.1 -2.5 -2.0 -0.9 -0.4 +1.1 -0.2 +0.1 -0.3)
+
+n mod m, m = 2..60 (chi-square of even-frequency across residues), Bonferroni over 59 tests per k:
+  k=22.3500  smallest p: m=2 p=0.0426, m=4 p=0.0529, m=43 p=0.0612, m=32 p=0.0836   surviving Bonferroni: none
+  k=22.4000  smallest p: m=43 p=0.0030, m=39 p=0.0037, m=37 p=0.0168, m=41 p=0.0196   surviving Bonferroni: none
+  k=23.0000  smallest p: m=40 p=0.0338, m=55 p=0.0481, m=56 p=0.0662, m=9 p=0.0692   surviving Bonferroni: none
+  k=23.9000  smallest p: m=37 p=0.0195, m=19 p=0.0397, m=41 p=0.0694, m=29 p=0.0742   surviving Bonferroni: none
+
+cross-k agreement of the parity (on the common n range):
+  k=22.3500 vs k=22.4000 : 0.5001 on 5997 values  (z=+0.01)
+  k=22.3500 vs k=23.0000 : 0.5026 on 5997 values  (z=+0.40)
+  k=22.3500 vs k=23.9000 : 0.4927 on 5997 values  (z=-1.12)
+  k=22.4000 vs k=23.0000 : 0.4942 on 5997 values  (z=-0.89)
+  k=22.4000 vs k=23.9000 : 0.5018 on 5997 values  (z=+0.27)
+  k=23.0000 vs k=23.9000 : 0.4879 on 5997 values  (z=-1.87)
+
+==============================================================================
+2. THE CONE-MIN / TRUE-MIN LOG-RATIO  (headline)
+
+  k=22.3500  median rho=1.4113  max rho=7051.1  P[rho<=sqrt2]=0.5453  P[rho>20]=0.0293  median lam2/lam1=1.9203
+     log rho ~ n on n in [4,120]       : slope +0.000106 +- 0.002213 (HC1 0.002615), intercept +0.6843, N=117
+     log rho ~ n on n in [4,200]       : slope +0.000043 +- 0.000994 (HC1 0.000937), intercept +0.6797, N=197
+     log rho ~ n on n in [4,500]       : slope -0.000183 +- 0.000243 (HC1 0.000218), intercept +0.7346, N=497
+     log rho ~ n on n in [4,1000]      : slope +0.000033 +- 0.000088 (HC1 0.000086), intercept +0.6956, N=997
+     log rho ~ n on n in [4,2000]      : slope +0.000016 +- 0.000033 (HC1 0.000034), intercept +0.7043, N=1997
+     log rho ~ n on n in [1001,6000]   : slope -0.000007 +- 0.000008 (HC1 0.000008), intercept +0.7344, N=5000
+     log rho ~ n on n in [4,6000]      : slope -0.000004 +- 0.000006 (HC1 0.000006), intercept +0.7229, N=5997
+     (1/n) log rho ~ n (mis-specified)  : slope -0.00000063 +- 0.00000004
+  k=22.4000  median rho=1.4117  max rho=31670.3  P[rho<=sqrt2]=0.5396  P[rho>20]=0.0262  median lam2/lam1=1.9236
+     log rho ~ n on n in [4,120]       : slope +0.003363 +- 0.002333 (HC1 0.002563), intercept +0.5477, N=117
+     log rho ~ n on n in [4,200]       : slope -0.000374 +- 0.001106 (HC1 0.001019), intercept +0.7487, N=197
+     log rho ~ n on n in [4,500]       : slope -0.000384 +- 0.000252 (HC1 0.000231), intercept +0.7624, N=497
+     log rho ~ n on n in [4,1000]      : slope +0.000128 +- 0.000094 (HC1 0.000100), intercept +0.6578, N=997
+     log rho ~ n on n in [4,2000]      : slope -0.000002 +- 0.000033 (HC1 0.000032), intercept +0.7071, N=1997
+     log rho ~ n on n in [1001,6000]   : slope -0.000005 +- 0.000008 (HC1 0.000008), intercept +0.7237, N=5000
+     log rho ~ n on n in [4,6000]      : slope -0.000005 +- 0.000006 (HC1 0.000006), intercept +0.7224, N=5997
+     (1/n) log rho ~ n (mis-specified)  : slope -0.00000062 +- 0.00000004
+  k=23.0000  median rho=1.4125  max rho=4309.4  P[rho<=sqrt2]=0.5349  P[rho>20]=0.0277  median lam2/lam1=1.9127
+     log rho ~ n on n in [4,120]       : slope -0.002367 +- 0.002620 (HC1 0.003106), intercept +0.8059, N=117
+     log rho ~ n on n in [4,200]       : slope -0.001004 +- 0.001057 (HC1 0.001196), intercept +0.7588, N=197
+     log rho ~ n on n in [4,500]       : slope +0.000213 +- 0.000245 (HC1 0.000284), intercept +0.6434, N=497
+     log rho ~ n on n in [4,1000]      : slope +0.000161 +- 0.000087 (HC1 0.000094), intercept +0.6408, N=997
+     log rho ~ n on n in [4,2000]      : slope +0.000023 +- 0.000031 (HC1 0.000033), intercept +0.6874, N=1997
+     log rho ~ n on n in [1001,6000]   : slope -0.000003 +- 0.000008 (HC1 0.000008), intercept +0.7201, N=5000
+     log rho ~ n on n in [4,6000]      : slope -0.000002 +- 0.000006 (HC1 0.000006), intercept +0.7194, N=5997
+     (1/n) log rho ~ n (mis-specified)  : slope -0.00000066 +- 0.00000006
+  k=23.9000  median rho=1.4120  max rho=4655.1  P[rho<=sqrt2]=0.5349  P[rho>20]=0.0270  median lam2/lam1=1.9603
+     log rho ~ n on n in [4,120]       : slope +0.001294 +- 0.002158 (HC1 0.002002), intercept +0.6228, N=117
+     log rho ~ n on n in [4,200]       : slope +0.000417 +- 0.001037 (HC1 0.000975), intercept +0.6783, N=197
+     log rho ~ n on n in [4,500]       : slope +0.000085 +- 0.000253 (HC1 0.000254), intercept +0.6746, N=497
+     log rho ~ n on n in [4,1000]      : slope -0.000043 +- 0.000086 (HC1 0.000085), intercept +0.7001, N=997
+     log rho ~ n on n in [4,2000]      : slope +0.000044 +- 0.000031 (HC1 0.000033), intercept +0.6595, N=1997
+     log rho ~ n on n in [1001,6000]   : slope -0.000005 +- 0.000008 (HC1 0.000008), intercept +0.7404, N=5000
+     log rho ~ n on n in [4,6000]      : slope +0.000004 +- 0.000006 (HC1 0.000006), intercept +0.7062, N=5997
+     (1/n) log rho ~ n (mis-specified)  : slope -0.00000057 +- 0.00000003
+
+  pooled over all k, log rho ~ n with k fixed effects:
+     slope = -0.000002 +- 0.000003   (2-sigma band -0.000008 .. +0.000004)
+
+==============================================================================
+3. GAUSS-KUZMIN AND THE PARTIAL QUOTIENT AT THE BALANCE
+
+  1547021901 partial quotients of h12/h11 in all
+  a         :       1       2       3       4       5       6       7       8     >=9
+  observed  :  0.4150  0.1699  0.0931  0.0589  0.0406  0.0298  0.0227  0.0179  0.1520
+  Gauss-Kuzmin:0.4150  0.1699  0.0931  0.0589  0.0406  0.0297  0.0227  0.0179  0.1520  
+  chi^2 = 2.89 on 8 df   (p = 0.941)
+
+  the partial quotient AT the balance index, a_{i(n)}, and the next, a_{i(n)+1}:
+    a_{i}    N=23988  mean=9.629  median=1.0  max=17005  P[>=9]=0.1111 (GK 0.1520)  chi^2=888.57 (p=0.000)
+      histogram :  0.5030  0.1660  0.0799  0.0483  0.0334  0.0261  0.0177  0.0145  0.1111
+    a_{i+1}  N=23988  mean=125.093  median=6.0  max=376540  P[>=9]=0.4172 (GK 0.1520)  chi^2=19390.83 (p=0.000)
+      histogram :  0.0769  0.1349  0.1035  0.0792  0.0643  0.0511  0.0400  0.0331  0.4172
+    max a over i+-5        median=    28.0  max=   1546732   log ~ n slope +2.75e-06 +- 5.03e-06
+    max a over i+-20       median=    93.0  max=   1701697   log ~ n slope +3.96e-06 +- 4.83e-06
+    max a over the whole CF median=117527.0  max=3303464313   log ~ n slope +5.00e-04 +- 5.09e-06
+
+  run lengths against a fair coin (10^5 Monte-Carlo replicates of the same length and even-frequency):
+    k=22.3500  longest odd run 12 ; null mean 11.74, median 11, P[null >= observed] = 0.484 ; log2(N) = 12.6
+    k=22.4000  longest odd run 10 ; null mean 11.90, median 12, P[null >= observed] = 0.949 ; log2(N) = 12.6
+    k=23.0000  longest odd run 10 ; null mean 12.02, median 12, P[null >= observed] = 0.958 ; log2(N) = 12.6
+    k=23.9000  longest odd run 11 ; null mean 12.10, median 12, P[null >= observed] = 0.810 ; log2(N) = 12.6
+
+  tail of rho against the Haar law P[rho>R] ~ 0.54/R, and Corollary D:
+    k=22.3500  P[rho>5]=0.1152 (Haar 0.1080)  P[rho>10]=0.0580 (Haar 0.0540)  P[rho>20]=0.0293 (Haar 0.0270)  P[rho>50]=0.0108 (Haar 0.0108)  P[rho>100]=0.0052 (Haar 0.0054)
+             rho<=sqrt2 with v1 outside the cone: 245 (all have lam2/lam1<=1.633? True) ; v1 in cone with rho>sqrt2: 1 (Proposition C says 0)
+    k=22.4000  P[rho>5]=0.1162 (Haar 0.1080)  P[rho>10]=0.0570 (Haar 0.0540)  P[rho>20]=0.0262 (Haar 0.0270)  P[rho>50]=0.0098 (Haar 0.0108)  P[rho>100]=0.0053 (Haar 0.0054)
+             rho<=sqrt2 with v1 outside the cone: 241 (all have lam2/lam1<=1.633? True) ; v1 in cone with rho>sqrt2: 1 (Proposition C says 0)
+    k=23.0000  P[rho>5]=0.1127 (Haar 0.1080)  P[rho>10]=0.0572 (Haar 0.0540)  P[rho>20]=0.0277 (Haar 0.0270)  P[rho>50]=0.0107 (Haar 0.0108)  P[rho>100]=0.0050 (Haar 0.0054)
+             rho<=sqrt2 with v1 outside the cone: 233 (all have lam2/lam1<=1.633? True) ; v1 in cone with rho>sqrt2: 0 (Proposition C says 0)
+    k=23.9000  P[rho>5]=0.1147 (Haar 0.1080)  P[rho>10]=0.0569 (Haar 0.0540)  P[rho>20]=0.0270 (Haar 0.0270)  P[rho>50]=0.0103 (Haar 0.0108)  P[rho>100]=0.0052 (Haar 0.0054)
+             rho<=sqrt2 with v1 outside the cone: 248 (all have lam2/lam1<=1.633? True) ; v1 in cone with rho>sqrt2: 0 (Proposition C says 0)
+
+  the P2'_par equivalence: lam2/lam1 against a_{i(n)+1}
+    k=22.3500  lam2/lam1 in [0.000,1.514]*a_{i+1} ; corr of logs 0.748 ; max (log a_{i+1})/n = 0.4380 ; log a_{i+1} ~ n slope +3.55e-06 +- 1.15e-05
+    k=22.4000  lam2/lam1 in [0.000,1.507]*a_{i+1} ; corr of logs 0.732 ; max (log a_{i+1})/n = 0.3844 ; log a_{i+1} ~ n slope -2.85e-06 +- 1.12e-05
+    k=23.0000  lam2/lam1 in [0.000,1.521]*a_{i+1} ; corr of logs 0.752 ; max (log a_{i+1})/n = 0.4090 ; log a_{i+1} ~ n slope +7.25e-07 +- 1.12e-05
+    k=23.9000  lam2/lam1 in [0.000,1.512]*a_{i+1} ; corr of logs 0.740 ; max (log a_{i+1})/n = 1.1373 ; log a_{i+1} ~ n slope -1.13e-05 +- 1.12e-05
+
+==============================================================================
+4. THE BALANCE POSITION i(n)/L(n)  (predicted 0.5238)
+
+  k=22.3500  mean 0.52144 +- 0.00326 (sd)   slope in n -2.476e-08 +- 2.430e-08   mean on the top half 0.52138   L(n)/n = 21.126
+  k=22.4000  mean 0.52139 +- 0.00323 (sd)   slope in n -8.025e-09 +- 2.413e-08   mean on the top half 0.52135   L(n)/n = 21.157
+  k=23.0000  mean 0.52100 +- 0.00318 (sd)   slope in n +2.757e-08 +- 2.369e-08   mean on the top half 0.52102   L(n)/n = 21.510
+  k=23.9000  mean 0.52057 +- 0.00323 (sd)   slope in n -2.251e-08 +- 2.409e-08   mean on the top half 0.52051   L(n)/n = 22.033
+
+==============================================================================
+5. v_2(q_n xi_2 - p_n) AGAINST THE (24.02-k) n LAW
+
+  k=22.3500  v2/n on the top half = 1.6506   (24.02-k = 1.6700)   fit v2 = 1.65003 n +2.38  (s.e. 0.00003)   k+slope = 24.0000
+           delta_inf = 0.0004  delta_2 = 0.0765  sum = 0.0769 (top half)
+  k=22.4000  v2/n on the top half = 1.6005   (24.02-k = 1.6200)   fit v2 = 1.60001 n +2.35  (s.e. 0.00003)   k+slope = 24.0000
+           delta_inf = 0.0015  delta_2 = 0.0743  sum = 0.0758 (top half)
+  k=23.0000  v2/n on the top half = 1.0005   (24.02-k = 1.0200)   fit v2 = 1.00004 n +1.90  (s.e. 0.00003)   k+slope = 24.0000
+           delta_inf = 0.0157  delta_2 = 0.0471  sum = 0.0628 (top half)
+  k=23.9000  v2/n on the top half = 0.1006   (24.02-k = 0.1200)   fit v2 = 0.10003 n +2.36  (s.e. 0.00003)   k+slope = 24.0000
+           delta_inf = 0.0376  delta_2 = 0.0048  sum = 0.0425 (top half)
+
+written data/summary.json

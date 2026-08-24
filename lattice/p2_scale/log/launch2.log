@@ -1,0 +1,13 @@
+worker 00 : n = 3001 .. 3497   pid 512312
+worker 01 : n = 3498 .. 3882   pid 512318
+worker 02 : n = 3883 .. 4203   pid 512322
+worker 03 : n = 4204 .. 4482   pid 512326
+worker 04 : n = 4483 .. 4729   pid 512330
+worker 05 : n = 4730 .. 4953   pid 512334
+worker 06 : n = 4954 .. 5158   pid 512338
+worker 07 : n = 5159 .. 5349   pid 512342
+worker 08 : n = 5350 .. 5526   pid 512346
+worker 09 : n = 5527 .. 5693   pid 512350
+worker 10 : n = 5694 .. 5850   pid 512354
+worker 11 : n = 5851 .. 6000   pid 512358
+all workers finished

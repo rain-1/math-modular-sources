@@ -1,0 +1,13 @@
+worker 00 : n = 6001 .. 10000   pid 804420
+worker 01 : n = 6002 .. 10000   pid 804424
+worker 02 : n = 6003 .. 10000   pid 804428
+worker 03 : n = 6004 .. 10000   pid 804432
+worker 04 : n = 6005 .. 10000   pid 804436
+worker 05 : n = 6006 .. 10000   pid 804440
+worker 06 : n = 6007 .. 10000   pid 804444
+worker 07 : n = 6008 .. 10000   pid 804448
+worker 08 : n = 6009 .. 10000   pid 804452
+worker 09 : n = 6010 .. 10000   pid 804456
+worker 10 : n = 6011 .. 10000   pid 804460
+worker 11 : n = 6012 .. 10000   pid 804464
+all workers finished

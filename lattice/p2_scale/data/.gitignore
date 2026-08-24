@@ -1,0 +1,6 @@
+# The exact row cache is regenerable by build_rows.gp (2.5 GB and 474 s at
+# n = 10000) and the per-worker split by split_rows.py; neither is kept in git.
+# What is kept: the 39 988 certified scan lines, the 2-adic row validation and
+# the three summary JSONs -- 9.2 MB in all.
+rows_scale.txt
+rows_c*.txt
