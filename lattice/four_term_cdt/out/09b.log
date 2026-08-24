@@ -1,0 +1,16 @@
+R1
+   xi^(1) = 0.228991398544304753763650878733   (agree ~218 digits)
+        pslq: [-4, 0, 0, 1]  ->  xi^(1) = -(1*G)/-4
+   xi^(2) = 0.0352787486192337502723508470418   (agree ~219 digits)
+        pslq: no relation with 1, zeta(2), G at height 1e12
+   xi^(3) = 0.00470164237113336373391472909134   (agree ~219 digits)
+        pslq: no relation with 1, zeta(2), G at height 1e12
+R4
+   xi^(1) = 0.469043885223242103936020055552   (agree ~218 digits)
+        pslq: [32, 0, -2, -15]  ->  xi^(1) = -(-2*zeta(2) + -15*L(2,chi_-3))/32
+   xi^(2) = 0.108484215878620459355701896683   (agree ~218 digits)
+        pslq: no relation with 1, zeta(2), L(2,chi_-3) at height 1e12
+   xi^(3) = 0.0200536145729603458925268278462   (agree ~218 digits)
+        pslq: no relation with 1, zeta(2), L(2,chi_-3) at height 1e12
+
+wrote out/second_slow.json

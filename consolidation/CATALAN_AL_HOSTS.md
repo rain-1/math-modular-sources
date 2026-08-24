@@ -218,6 +218,9 @@ class exists in the $\chi_{-4}$ Eisenstein space.** **[verified]**
 
 ---
 
+
+> **Correction (2026-08-24, `FOUR_TERM_CDT.md`).** The mechanism claimed in §5 — that an order-2 orbifold fold admits no Eichler period and hence no fold-regular class — is **false in general**: on all six mixed-exponent four-term rows the fold is an order-2 point and fold-regularity holds (radius enlargement 0.07–2.6 nats, perturbed-ξ controls). The empirical findings of §5 stand (on the specific AL-quotient hosts no fold-regular class was found and the limits are not in $\mathbb Q+\mathbb Q\zeta(2)+\mathbb QG$), but the orbifold-ness of the fold is not by itself the obstruction.
+
 ## 5. The proper Atkin–Lehner quotients: the fold is an orbifold point
 
 | host | placement | $\Sigma$ | $\lambda_1$ | $\lambda_2$ | fold is | $\dim$FR | $\lim b_n/a_n$ |

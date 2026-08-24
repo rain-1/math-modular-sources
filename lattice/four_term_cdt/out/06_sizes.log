@@ -1,0 +1,44 @@
+R1  post = 0.125000+0.000000i [cusp], -0.603553+0.000000i [orb2]
+    span 13.25: size 0.256180222 (acc +0.59736480)
+    span 53.02: size 1.050903594 (acc +0.34320235)
+    span 212.1: size 1.050903594 (acc +0.34320235)
+    span 848.3: size 0.033063601 (acc -1.22527552)
+   size = 1.050903594   log = +0.049650   ceiling 2.000000 (log +0.693147)   loss 0.6435 nats   [323s]
+R2  post = 0.500000+0.000000i [cusp], 2.914214+0.000000i [orb2]
+    span 0.6863: size 4.871667446 (acc -0.08580059)
+    span 2.745: size 4.871667446 (acc -0.08580059)
+    span 10.98: size 0.351607159 (acc -0.29255280)
+    span 43.92: size 4.871667446 (acc -0.08580059)
+   size = 4.871667446   log = +1.583436   ceiling 8.000000 (log +2.079442)   loss 0.4960 nats   [81s]
+R3  post = -0.500000+0.000000i [cusp], -0.603553+0.000000i [orb2]
+    span 3.314: size 4.871667446 (acc +1.62099046)
+    span 13.25: size 4.871667446 (acc +1.62099046)
+    span 53.02: size 4.871667446 (acc +1.62099046)
+    span 212.1: size 4.871667446 (acc +1.62099046)
+   size = 4.871667446   log = +1.583436   ceiling 8.000000 (log +2.079442)   loss 0.4960 nats   [125s]
+R4  post = 0.133975+0.000000i [orb2], 1.866025+0.000000i [orb2]
+    span 4: size 0.166183685 (acc +0.03654140)
+    span 16: size 0.166183685 (acc +0.03654140)
+    span 64: size 0.166183685 (acc +0.03654140)
+    span 256: size 0.119497506 (acc -0.31960655)
+   size = 0.166183685   log = -1.794662   ceiling 2.143594 (log +0.762484)   loss 2.5571 nats   [470s]
+R5  post = 0.933013+0.000000i [orb2], 1.000000+0.000000i [cusp]
+    span 1.072: size 3.107677501 (acc -0.80938065)
+    span 4.287: size 9.918076446 (acc -2.52391417)
+    span 17.15: size 9.918076446 (acc -2.52391417)
+    span 68.59: size 3.107677501 (acc -0.80938065)
+   size = 9.918076446   log = +2.294359   ceiling 14.928203 (log +2.703252)   loss 0.4089 nats   [67s]
+R6  post = -1.000000+0.000000i [cusp], 13.928203+0.000000i [orb2]
+    span 0.25: size 9.918076446 (acc -0.01508569)
+    span 1: size 0.974472071 (acc -0.04107488)
+    span 4: size 9.918076446 (acc -0.01508569)
+    span 4.595: math range error
+   size = 9.918076446   log = +2.294359   ceiling 16.000000 (log +2.772589)   loss 0.4782 nats   [212s]
+R7  post = 0.125000+0.216506i [orb2], 0.125000-0.216506i [orb2]
+    span 16: no Fuchsian root (12 candidates)
+    span 64: no Fuchsian root (18 candidates)
+    span 256: no Fuchsian root (28 candidates)
+    span 1024: no Fuchsian root (21 candidates)
+   FAILED: no size found
+
+wrote out/sizes.json
