@@ -14,10 +14,10 @@
 \newcommand{\adeg}{\widehat{\deg}}\newcommand{\amu}{\widehat{\mu}_{\max}}
 \title{The irrationality of the $5$-adic zeta value $\zeta_5(3)$}
 \author{Claude (Fable), with River}
-\date{23 August 2026 --- draft for audit}
+\date{27 August 2026 --- corrected draft for audit}
 \begin{document}
 \begin{abstract}
-We prove that the Kubota--Leopoldt $5$-adic zeta value $\zeta_5(3)\in\Q_5$ is irrational, with the effective bound $|\zeta_5(3)-p/q|_5>\max(|p|,|q|)^{-390}$ for $\max(|p|,|q|)$ large. The proof is the arithmetic holonomy method of Calegari, Dimitrov and Tang, in the form they used for $\zeta_2(5)$: Calegari's $p$-adic Ap\'ery construction on $X_0(5)$ gives an overconvergent function $H$ of $5$-adic radius $5^3$ whose coefficients would be rational with denominators $[1,\dots,n]^3$ if $\zeta_5(3)$ were rational, and a holonomy bound with an archimedean template chosen among \emph{all} holomorphic self-maps of the $q$-disc caps the dimension of the space such functions span below the four exhibited. The multi-place form of the bound (with $p$-adic radii) is derived from the published Bost--Charles form by a twist of the integral structure in Bost's slopes inequality. Calegari's original criterion fails for this value by $11\%$; the crude sup-norm holonomy bound fails by $1.55$ nats; the refined bound succeeds by $0.074$ nats.
+We prove that the Kubota--Leopoldt $5$-adic zeta value $\zeta_5(3)\in\Q_5$ is irrational. The proof is the arithmetic holonomy method of Calegari, Dimitrov and Tang, in the form they used for $\zeta_2(5)$: Calegari's $p$-adic Ap\'ery construction on $X_0(5)$ gives an overconvergent function $H$ which is analytic on $|x|_5<5^3$ and whose coefficients would be rational with denominators $[1,\dots,n]^3$ if $\zeta_5(3)$ were rational. For every fixed $\alpha<3$ this analyticity gives the coefficient bound required by the adelic holonomy argument with effective radius $R_5=5^\alpha$; we take $\alpha=2.995$. A holonomy bound with an archimedean template chosen among \emph{all} holomorphic self-maps of the $q$-disc then caps the dimension of the space such functions span below the four exhibited. The multi-place form of the bound, allowing real exponents $R_p=p^{\alpha_p}$, is obtained from the published Bost--Charles form by a floor-twist of the integral structure in Bost's slopes inequality. Calegari's original criterion fails for this value by $11\%$; the crude sup-norm holonomy bound fails; the refined bound succeeds with a certified positive margin.
 \end{abstract}
 \maketitle
 
@@ -25,8 +25,7 @@ We prove that the Kubota--Leopoldt $5$-adic zeta value $\zeta_5(3)\in\Q_5$ is ir
 For a prime $p$, let $\zeta_p$ denote the Kubota--Leopoldt $p$-adic zeta function and, for $k\ge1$, $\zeta_p(2k+1)\in\Q_p$ its value at the positive odd integer $2k+1$ (interpolating $\zeta^*(s)=(1-p^{-s})\zeta(s)$ at negative integers of the right parity). Calegari \cite{Cal05} proved $\zeta_p(3)\notin\Q$ for $p=2,3$ and $L_2(2,\chi_{-4})\notin\Q$; Calegari--Dimitrov--Tang \cite{CDTicm} proved $\zeta_2(5)\notin\Q$ (see also Lai--Sprang--Zudilin \cite{LSZ} for an Ap\'ery-type proof); Beukers \cite{Beu08} proved $\zeta_p(2),\zeta_p(3)\notin\Q$ for $p=2,3$ and obtained, for $p=5$, only that $\zeta_5(3)\pm L_5(3,\chi_5)$ is irrational; Lai--Lupu--Sprang \cite{LLS25} proved that for every $p\ge5$ some $\zeta_p(i)$ with odd $i\in[3,p+p/\log p+5]$ is irrational.
 
 \begin{theorem}\label{main}
-$\zeta_5(3)\notin\Q$. Moreover, for all $p/q\in\Q$ with $\max(|p|,|q|)$ sufficiently large,
-\[\Bigl|\zeta_5(3)-\frac pq\Bigr|_5\;>\;\max(|p|,|q|)^{-390}.\]
+$\zeta_5(3)\notin\Q$.
 \end{theorem}
 
 The characterisation of $\zeta_5(3)$ used throughout is the one of \cite[\S2.2]{Cal05}, \cite[\S6.2]{CDTicm}: $\zeta_5(3)/2$ is the unique element $\eta\in\Q_5$ such that
@@ -39,7 +38,7 @@ is the $q$-expansion of an overconvergent $5$-adic modular form of weight $-2$ a
 \subsection{Calegari's construction}
 Let $x=(\Delta(5\tau)/\Delta(\tau))^{1/4}=q\prod_{n\ge1}\bigl((1-q^{5n})/(1-q^n)\bigr)^6\in q+q^2\Z[[q]]$, a Hauptmodul of $X_0(5)$ with $x=0$ at the cusp $\infty$ and $x=\infty$ at the cusp $0$; its formal inverse lies in $q\in x+x^2\Z[[x]]$. Let $E_2^*=E_2(\tau)-5E_2(5\tau)\in 1+q\Z[[q]]$ (here $4k/B_{2k}=24$ makes $E_2$ integral), and set
 \[H\;:=\;E_2^*\cdot E^*_{-2}\;=\;\sum_{n\ge0}h_nx^n,\qquad h_n=a_n+\eta\,b_n,\quad a_n,b_n\in\Q .\]
-$H$ is a weight-$0$ overconvergent form, i.e.\ a function on the rigid curve $X_0(5)$. The Fricke involution sends $x\mapsto5^{-3}/x$ and exchanges the two components $\{|x|_5\le1\}$, $\{|x|_5\ge5^3\}$ of the ordinary locus; by Buzzard's theorem \cite[Thm.~5.2]{Buz03} the slope-$0$ form $E^*_{-2}$ extends over the whole supersingular annulus, so $H(x)$ converges on $|x|_5<5^3$. (We also read this off the coefficients: $v_5(h_n)-3n$ is $-O(\log n)$ and never positive for $n\le2000$; see \S4.)
+$H$ is a weight-$0$ overconvergent form, i.e.\ a function on the rigid curve $X_0(5)$. The Fricke involution sends $x\mapsto5^{-3}/x$ and exchanges the two components $\{|x|_5\le1\}$, $\{|x|_5\ge5^3\}$ of the ordinary locus; by Buzzard's theorem \cite[Thm.~5.2]{Buz03} the slope-$0$ form $E^*_{-2}$ extends over the whole supersingular annulus, so $H(x)$ converges on $|x|_5<5^3$. We use only this open-disc continuation, not any assertion that the radius is exactly $5^3$; see Proposition~\ref{padic-overconv}.
 
 Suppose $\zeta_5(3)\in\Q$. Then $H\in\Q[[x]]$.
 
@@ -50,17 +49,19 @@ a holomorphic $\varphi:(\overline\D,0)\to(\C,0)$ such that each $f_i\circ\varphi
 
 For a $p$-adic target one needs the version with $p$-adic radii, used in \cite[\S6.2]{CDTicm} and attributed there to a forthcoming paper:
 \begin{theorem}[multi-place bound]\label{adelic}
-In the situation above, let $S$ be a finite set of primes and for $p\in S$ let $R_p=p^{\alpha_p}$, $\alpha_p\in\Z_{>0}$, be such that the coefficients $c_{i,n}$ of $x^n$ in $f_i$ satisfy $|c_{i,n}|_p\le Cn^AR_p^{-n}$ for all $i,n$. If $\log|\varphi'(0)|+(1-\tfrac1m)\sum_{p\in S}\log R_p>\tau(\mathbf b)$ then
+In the situation above, let $S$ be a finite set of primes and for $p\in S$ let $R_p=p^{\alpha_p}$ with $\alpha_p>0$ real, such that the coefficients $c_{i,n}$ of $x^n$ in $f_i$ satisfy $|c_{i,n}|_p\le Cn^AR_p^{-n}$ for all $i,n$. If $\log|\varphi'(0)|+(1-\tfrac1m)\sum_{p\in S}\log R_p>\tau(\mathbf b)$ then
 \[m\;\le\;\frac{\BC(\varphi)+\sum_{p\in S}\log R_p}{\log|\varphi'(0)|+\sum_{p\in S}\log R_p-\tau(\mathbf b)} .\]
 \end{theorem}
 A proof from published ingredients is given in \S3. The crude (sup-norm) analogue, with $\sup_{\T}\log|\varphi|$ in place of $\BC$, is Dimitrov's arithmetic holonomicity theorem \cite{Dim19,DimLNT}; it does not suffice here (Remark~\ref{crude}).
 
 \subsection{The inventory and the reduction to one inequality}
-By Kontsevich--Zagier \cite[\S2.3]{KZ}, a modular form of weight $w$ expressed in a modular function satisfies a linear ODE of minimal order $w+1$; for the product $H$ this gives an \emph{inhomogeneous} ODE over $\Q(x)$ of minimal order $3$, so that $\{1,H,\delta H,\delta^2H\}$, $\delta=x\,d/dx$, are $m=4$ $\Q(x)$-linearly independent functions (Lemma~\ref{indep}). Their denominators are of type $[1,\dots,n]^3$ (Proposition~\ref{tau}), so $\mathbf b$ has $r=3$, $b_{i,j}=1$ for $i\ge2$, $u_j=1$, and $\tau(\mathbf b)=3(1-\tfrac1{16})=\tfrac{45}{16}$. With $S=\{5\}$, $L:=\log R_5=3\log5$, and $\rho:=|\varphi'(0)|$, Theorem~\ref{adelic} contradicts $m=4$ exactly when
+By Kontsevich--Zagier \cite[\S2.3]{KZ}, a modular form of weight $w$ expressed in a modular function satisfies a linear ODE of minimal order $w+1$; for the product $H$ this gives an \emph{inhomogeneous} ODE over $\Q(x)$ of minimal order $3$, so that $\{1,H,\delta H,\delta^2H\}$, $\delta=x\,d/dx$, are $m=4$ $\Q(x)$-linearly independent functions (Lemma~\ref{indep}). Their denominators are of type $[1,\dots,n]^3$ (Proposition~\ref{tau}), so $\mathbf b$ has $r=3$, $b_{i,j}=1$ for $i\ge2$, $u_j=1$, and $\tau(\mathbf b)=3(1-\tfrac1{16})=\tfrac{45}{16}$. Fix
+\[\alpha=2.995<3,\qquad R_5:=5^\alpha,\qquad L:=\log R_5=2.995\log5,\]
+which is permitted by Proposition~\ref{padic-overconv}, and put $\rho:=|\varphi'(0)|$. Theorem~\ref{adelic} contradicts $m=4$ exactly when
 \begin{equation}\label{ineq}
-\mathrm{cost}(\varphi):=\BC(\varphi)-4\log\rho\;<\;3\bigl(L-4+\tfrac14\bigr)=3.2349412\ldots=:\mathrm{budget}.
+\mathrm{cost}(\varphi):=\BC(\varphi)-4\log\rho\;<\;3\bigl(L-4+\tfrac14\bigr)=3.2107997\ldots=: \mathrm{budget}.
 \end{equation}
-The budget is arithmetic ($p=5$, $k=1$); the cost depends only on the template.
+The budget is arithmetic ($p=5$, $k=1$, together with the chosen $\alpha<3$); the cost depends only on the template.
 
 \subsection{Admissible templates}
 $H(x(q))$ and its $\delta$-derivatives are meromorphic on the whole disc $|q|<1$ ($E_2^*$ is holomorphic on $\mathfrak H$, the coefficients of $E^*_{-2}$ are bounded, and $d/dx$ only introduces poles at the critical points of $x$). Hence $\varphi=x\circ\psi$ is admissible for \emph{every} holomorphic $\psi:\D\to\D$ with $\psi(0)=0$ --- no injectivity is required and $\psi(\D)$ need not be a Jordan domain. Writing $\psi(z)=z\exp(c_0+\sum_{k\ge1}c_kz^k)$ with real $c_k$, the only constraint is $\max_{|z|=1}\log|\psi|\le0$, and $\log\rho=c_0$ exactly (since $x'(0)=1$). We optimise \eqref{ineq} over this family. The points of $|q|=1$ at which $x$ is unbounded are the $\Gamma_0(5)$-images of the cusp $0$, which are dense on the circle (unlike $p=2$, where CDT's contour may touch $q=-1$); the optimum stays inside $|q|\le0.8363$ with the constraint inactive.
@@ -72,19 +73,57 @@ We follow the proof of \cite[Thm.~\emph{main:BC form}, \S6.3]{CDTl2chi}, which r
 \end{equation}
 where $\mathcal V_D$ is the set of attained vanishing orders, $\#\mathcal V_D=m(D+1)$ and $\sum_{n\in\mathcal V_D}n=\tfrac{m^2}2D^2+o(D^2)$ by their Kolchin-type lemma. CDT evaluate every term: $\adeg\overline{E_D}=(\tfrac m2\BC(\varphi)+\cdots)D^2+o(D^2)$, $\sum h_\infty\le(-\tfrac{m^2}2\log|\varphi'(0)|+m\BC(\varphi))D^2+o(D^2)$, and $\sum h_{\mathrm{fin}}$ accounts for the lcm denominators and produces $\tau(\mathbf b)$.
 
-\emph{The twist.} For $p\in S$ replace the two lattices by
-\[\Lambda_D:=\bigoplus_{j=0}^D\Z\,(R_px)^{-j}\ \supset\ \Z[1/x]_{\le D},\qquad G^{(n)}_{\mathrm{ad}}:=\Bigl(\prod_{p\in S}R_p^{\,n-D}\Bigr)\Z\cdot x^{n-D},\]
-i.e.\ use $\Lambda_D$ in place of $\Z[1/x]_{\le D}$ in each of the $m$ summands of $E_D$, keeping every archimedean norm unchanged. Since $E_{D,\R}$ and $\mathrm{Gr}_n(F)_\R$ and their Euclidean norms are unchanged and $h_v$ depends only on the $v$-adic norms, all archimedean estimates of \cite{CDTl2chi} hold verbatim; at primes $\ell\notin S$ nothing changes ($R_p$ is an $\ell$-unit). Three computations account for the twist.
+\emph{The floor-twist.} Put $a_{p,j}=\lfloor\alpha_pj\rfloor$. Replace the two lattices by
+\[
+\Lambda_D^{\mathrm{ad}}
+ :=\bigoplus_{j=0}^D\Z\Bigl(\prod_{p\in S}p^{-a_{p,j}}\Bigr)x^{-j}
+ \ \supset\ \Z[1/x]_{\le D},
+\qquad
+G^{(n)}_{\mathrm{ad}}
+ :=\Bigl(\prod_{p\in S}p^{\lfloor\alpha_p(n-D)\rfloor}\Bigr)\Z\cdot x^{n-D}.
+\]
+Use $\Lambda_D^{\mathrm{ad}}$ in place of $\Z[1/x]_{\le D}$ in each of the $m$ summands of $E_D$, keeping every archimedean norm unchanged. Since $E_{D,\R}$ and $\mathrm{Gr}_n(F)_\R$ and their Euclidean norms are unchanged and $h_v$ depends only on the $v$-adic norms, all archimedean estimates of \cite{CDTl2chi} hold verbatim; at primes $\ell\notin S$ nothing changes. The floor errors are $O(1)$ per basis vector or graded piece and therefore contribute only $O(D)$ or $O(D\log D)$, hence $o(D^2)$, to the slopes inequality. Three computations account for the twist.
 
-(1) $\Lambda_D\supset\Z[1/x]_{\le D}$ has index $\prod_{p\in S}R_p^{D(D+1)/2}$, so $\adeg\overline{E^{\mathrm{ad}}_D}=\adeg\overline{E_D}+\tfrac m2D^2\sum_p\log R_p+o(D^2)$.
+(1) Since
+\[\sum_{j=0}^D\lfloor\alpha_pj\rfloor=\frac{\alpha_p}{2}D(D+1)+O(D),\]
+the enlargement $\Lambda_D^{\mathrm{ad}}\supset\Z[1/x]_{\le D}$ changes the Arakelov degree by
+\[\adeg\overline{E^{\mathrm{ad}}_D}=\adeg\overline{E_D}+\frac m2D^2\sum_{p\in S}\alpha_p\log p+o(D^2).
+\]
 
-(2) $\overline{G^{(n)}_{\mathrm{ad}}}$ has rank one with generator of archimedean norm $\prod_pR_p^{n-D}$, so $\amu(\overline{G^{(n)}_{\mathrm{ad}}})=-(n-D)\sum_p\log R_p$, and summing over $\mathcal V_D$ gives $-(\tfrac{m^2}2-m)D^2\sum_p\log R_p+o(D^2)$.
+(2) The rank-one lattice $\overline{G^{(n)}_{\mathrm{ad}}}$ has a generator of archimedean norm $\prod_p p^{\lfloor\alpha_p(n-D)\rfloor}$, hence
+\[\amu(\overline{G^{(n)}_{\mathrm{ad}}})=-\sum_{p\in S}\lfloor\alpha_p(n-D)\rfloor\log p.
+\]
+Using $\sum_{n\in\mathcal V_D}n=\tfrac{m^2}{2}D^2+o(D^2)$ and $\#\mathcal V_D=m(D+1)$, summation gives
+\[-\Bigl(\frac{m^2}{2}-m\Bigr)D^2\sum_{p\in S}\alpha_p\log p+o(D^2).
+\]
 
-(3) \begin{lemma}[$p$-adic operator norm]\label{opnorm} For $p\in S$ and every $n$, $h_p(\psi^{(n)}_D)\le\log(Cn^A)$.\end{lemma}
-\begin{proof} The $p$-adic norm on $E^{\mathrm{ad}}_D$ is $\|\sum_{i,j}q_{ij}f_ix^{-j}\|_{E,p}=\max_{i,j}|q_{ij}|_pR_p^{-j}$ (the $p$-parts of the lcm factors are $p^{O(\log D)}$ and are absorbed into the $o(D^2)$ of CDT's finite-place estimate), and on $G^{(n)}_{\mathrm{ad}}$ it is $\|c\,x^{n-D}\|_{G,p}=|c|_pR_p^{\,n-D}$. The image of $Q=\sum q_{ij}f_ix^{-j}$ is $c_n(Q)x^{n-D}$ with $c_n(Q)=\sum_{i,j}q_{ij}c_{i,n-D+j}$, so by the ultrametric inequality and the hypothesis on the $c_{i,n}$,
-\[|c_n(Q)|_p\le\max_{i,j}|q_{ij}|_p\,Cn^AR_p^{-(n-D+j)}=Cn^AR_p^{-(n-D)}\|Q\|_{E,p},\]
-whence $\|\psi^{(n)}_D[Q]\|_{G,p}\le Cn^A\|Q\|_{E,p}$; as $c_n(Q)$ depends only on the class of $Q$, the same holds for the quotient norm.\end{proof}
-Summed over $\mathcal V_D$, (3) is $O(D\log D)$. Inserting (1)--(3) into \eqref{slopes} and dividing by $D^2$ adds $\tfrac m2\Lambda$ to the left and $-(\tfrac{m^2}2-m)\Lambda$ to the right of CDT's inequality, where $\Lambda=\sum_p\log R_p$; after their optimisation over the auxiliary parameters this is $m(\log|\varphi'(0)|-\tau(\mathbf b))+(m-1)\Lambda\le\BC(\varphi)$, which is the statement. $\qed$
+(3) \begin{lemma}[$p$-adic operator norm]\label{opnorm} For $p\in S$ and every $n$, $h_p(\psi^{(n)}_D)\le\log(Cn^A)$.
+\end{lemma}
+\begin{proof}
+At $p$, the norm on $E^{\mathrm{ad}}_D$ is
+\[\Bigl\|\sum_{i,j}q_{ij}f_ix^{-j}\Bigr\|_{E,p}
+ =\max_{i,j}|q_{ij}|_p\,p^{-\lfloor\alpha_pj\rfloor},
+\]
+up to the $p$-parts of the lcm factors, which contribute only $o(D^2)$ in CDT's finite-place estimate, while
+\[\|c\,x^{n-D}\|_{G,p}=|c|_p\,p^{\lfloor\alpha_p(n-D)\rfloor}.
+\]
+Writing $k=n-D$, the leading coefficient of $Q=\sum q_{ij}f_ix^{-j}$ is
+$c_n(Q)=\sum_{i,j}q_{ij}c_{i,k+j}$. By the ultrametric inequality and the hypothesis on $c_{i,r}$,
+\[
+|c_n(Q)|_p
+ \le \max_{i,j}|q_{ij}|_p\,Cn^A p^{-\alpha_p(k+j)}
+ \le Cn^A p^{-\lfloor\alpha_pk\rfloor}
+       \max_{i,j}|q_{ij}|_p p^{-\lfloor\alpha_pj\rfloor},
+\]
+because $\lfloor\alpha_pk\rfloor+\lfloor\alpha_pj\rfloor\le\alpha_p(k+j)$. Thus
+$\|\psi^{(n)}_D[Q]\|_{G,p}\le Cn^A\|Q\|_{E,p}$, and the same inequality holds for the quotient norm.
+\end{proof}
+Summed over $\mathcal V_D$, (3) is $O(D\log D)$. Inserting (1)--(3) into \eqref{slopes} and dividing by $D^2$ adds $\tfrac m2\Lambda$ to the left and $-(\tfrac{m^2}2-m)\Lambda$ to the right of CDT's inequality, where
+\[\Lambda=\sum_{p\in S}\alpha_p\log p=\sum_{p\in S}\log R_p.
+\]
+After their optimisation over the auxiliary parameters this is
+\[m(\log|\varphi'(0)|-\tau(\mathbf b))+(m-1)\Lambda\le\BC(\varphi),\]
+which is the statement. \qed
 
 \begin{remark} With $m=2$, $\mathbf b=0$ and $\varphi$ univalent, Theorem~\ref{adelic} reduces to the Borel--Dwork criterion $\rho\prod_pR_p>1$; the weight $1-\tfrac1m$ on $\Lambda$ is forced by the product formula (the margin is invariant under $x\mapsto x/p^v$). The high-dimensional proof of the rearrangement-numerator form \cite[Thm.~\emph{elementary form}]{CDTl2chi} can be twisted in the same way but, as far as we can see, only yields the weight $(1-\tfrac1m)^2$; we therefore use the Bost--Charles numerator throughout.\end{remark}
 
@@ -98,8 +137,18 @@ The prime-to-$5$ lcm grows like $e^{n}$ (prime number theorem), so the array is 
 \begin{lemma}[independence]\label{indep} $1,H,\delta H,\delta^2H$ are $\Q(x)$-linearly independent.\end{lemma}
 \begin{proof} A relation $a_0+a_1H+a_2\delta H+a_3\delta^2H=0$ with $a_i\in\Q(x)$ not all zero and $(a_1,a_2,a_3)\ne0$ is an inhomogeneous linear ODE for $H$ of order $\le2$, contradicting the minimal order $3$ of Kontsevich--Zagier (structurally: $\theta^3E'_{-2}=E_4-E_4(5\tau)$, the Eichler cocycle has degree $\le2$, and $E_2^*$ is a period of the $\mathrm{Sym}^2$ of the Picard--Fuchs system); $(a_1,a_2,a_3)=0$ forces $a_0=0$. The rank was also verified directly: no relation with polynomial coefficients of degree $\le120$ exists (computed modulo $2^{61}-1$).\end{proof}
 
-\begin{proposition}[$5$-adic radius] $R_5=5^3$.\end{proposition}
-\begin{proof} Buzzard \cite[Thm.~5.2]{Buz03} (slope $0$, Eisenstein family) gives analyticity of $E^*_{-2}$ on the ordinary component containing $\infty$ together with the entire supersingular annulus, which in the coordinate $x$ is the disc $|x|_5<5^3$; cf.\ \cite[\S3]{Cal05} for $p=2,3$ and \cite[\S6.2]{CDTicm}. Independently, exact computation of $h_n$ in $\Z/5^{6150}$ for $n\le2000$ (cross-checked against exact rationals for $n\le600$) gives $v_5(h_n)\ge3n-0.974-1.728\log n$ with $\max_n(v_5(h_n)-3n)=-3$, so the radius is exactly $5^3$. (Each factor $E_2^*(x)$, $E^*_{-2}(x)$ alone has radius $1$; the overconvergence belongs to the product, which is a function on the curve.)\end{proof}
+\begin{proposition}[$5$-adic overconvergence]\label{padic-overconv}
+The series $H(x)=\sum_{n\ge0}h_nx^n$ is analytic for $|x|_5<5^3$. Consequently, for every real $\alpha<3$ there is a constant $C_\alpha$ such that
+\[|h_n|_5\le C_\alpha 5^{-\alpha n}\qquad(n\ge0).\]
+The same estimate holds for the coefficients of $\delta H$ and $\delta^2H$.
+\end{proposition}
+\begin{proof}
+Buzzard \cite[Thm.~5.2]{Buz03} (slope $0$, Eisenstein family) gives analyticity of $E^*_{-2}$ on the ordinary component containing $\infty$ together with the entire supersingular annulus, which in the coordinate $x$ is the disc $|x|_5<5^3$; cf.\ \cite[\S3]{Cal05} for $p=2,3$ and \cite[\S6.2]{CDTicm}. Since $E_2^*$ is classical, the product $H=E_2^*E^*_{-2}$ is analytic on the same disc.
+
+Fix $\alpha<3$. Because $5^\alpha<5^3$, convergence on the closed disc $|x|_5\le5^\alpha$ implies that the sequence $|h_n|_5 5^{\alpha n}$ is bounded; this gives the displayed estimate. The coefficient of $x^n$ in $\delta^jH$ is $n^jh_n$, and $|n|_5\le1$, so the same bound holds for $j=1,2$.
+
+Exact computations for $n\le2000$ are consistent with the stronger asymptotic behaviour $v_5(h_n)=3n+O(\log n)$, but a finite computation does not prove that the radius is exactly $5^3$, and exactness is not used here.
+\end{proof}
 
 \section{The template and the numerical certificate}
 Take $\psi(z)=z\exp\bigl(\sum_{k=0}^{40}c_kz^k\bigr)$ with
@@ -120,28 +169,52 @@ c_{36..40}&=(+0.001750273,-0.002516914,-0.002244428,+0.000524421,+0.001281738).
 quantity & value & provenance\\\midrule
 $m$ & $4$ & Lemma~\ref{indep}\\
 $\tau(\mathbf b)$ & $45/16=2.8125$ & Prop.~\ref{tau}\\
-$\log R_5$ & $3\log5=4.828313737$ & Buzzard; measured to $n=2000$\\
+$\log R_5$ & $2.995\log5=4.820266548$ & Prop.~\ref{padic-overconv}\\
 $\log\rho=c_0$ & $-0.531289158$ & exact\\
 $\max|q|$ on contour & $0.836265$ & \\
 $\RE(\varphi)$ & $1.066965\pm0.00068$ & $N=2^{24}$, a-priori error\\
 $\BC(\varphi)$ & $1.0355293$ & $N$-converged to $10^{-8}$\\
-bound (RE) & $\le3.9716148$ & $<4$, margin $\ge+0.0421$\\
-bound (BC) & $3.9499804$ & $<4$, margin $+0.0743$\\
+bound (RE) & $\le3.98782$ & certified $<4$ using the $+6.8\cdot10^{-4}$ error\\
+bound (BC) & $3.9660586$ & numerical cross-check only\\
 crude sup-norm form & $5.714$ & fails (Remark~\ref{crude})\\\bottomrule
 \end{tabular}
 \end{center}
 
-\begin{proof}[Proof of Theorem~\ref{main}] Assume $\zeta_5(3)\in\Q$. By \S2 and \S4, $\{1,H,\delta H,\delta^2H\}$ satisfy the hypotheses of Theorem~\ref{adelic} with $S=\{5\}$, $R_5=5^3$, $\mathbf b$ as in \S2.3 and $\varphi=x\circ\psi$; the entry condition $c_0+\tfrac34\cdot3\log5=3.090>\tfrac{45}{16}$ holds. Theorem~\ref{adelic} gives $4\le(\BC+3\log5)/(c_0+3\log5-\tfrac{45}{16})=3.94998<4$, a contradiction. The measure follows from the quantitative form of the bound \cite[\S2.2--2.3]{CDTicm} (as in their \S6.2), with $\gamma=1/4$ (one of the four functions has integer coefficients), $\rho_5=5^{-3}$ and the margin $\Delta_0=0.0742553$: $\kappa=\tfrac34\bigl(mL+\sqrt{mL(mL-\Delta_0)}\bigr)/\Delta_0=389.8$ with $L=3\log5$, $m=4$.\end{proof}
+\begin{proof}[Proof of Theorem~\ref{main}]
+Assume $\zeta_5(3)\in\Q$. By \S2 and Proposition~\ref{padic-overconv}, $\{1,H,\delta H,\delta^2H\}$ satisfy the hypotheses of Theorem~\ref{adelic} with $S=\{5\}$, $R_5=5^{2.995}$, $\mathbf b$ as in \S2.3 and $\varphi=x\circ\psi$. The entry condition is
+\[c_0+\frac34\cdot2.995\log5=3.0839107\ldots>\frac{45}{16}.
+\]
+Moreover Nazarov's comparison inequality \cite[Prop.~8.1.13]{CDTl2chi} and the certified rearrangement computation give
+\[\BC(\varphi)\le\RE(\varphi)\le1.066965+0.00068=1.067645.
+\]
+Hence Theorem~\ref{adelic} gives
+\[
+4\le
+\frac{1.067645+2.995\log5}
+     {c_0+2.995\log5-45/16}
+<3.98782<4,
+\]
+a contradiction.
+\end{proof}
+
+\begin{remark}[effective measure]
+An earlier draft also stated the effective irrationality measure $390$. That numerical exponent used the boundary choice $R_5=5^3$ inside the quantitative version of the holonomy argument. The present proof needs only the qualitative multi-place theorem and the floor-twist above; we therefore do not record an effective irrationality measure here. A quantitative measure can be reinstated once the quantitative floor-twist, including its lower-order terms, is checked separately.
+\end{remark}
 
 \section{Remarks}
 \begin{remark}[Calegari's criterion]
 Calegari's $p$-adic Ap\'ery argument \cite{Cal05} compares the $p$-adic smallness of $b_n\eta-a_n$ with the archimedean size of the cleared coefficients; in his normalisation the criterion is $\theta_p>1$ with $\theta_p=\sigma_p\log p/(k+\log\lambda_1)$, and for $(p,k)=(5,1)$ one finds $\theta_5=0.8918$, his own recorded failure. The holonomy bound replaces the naive archimedean disc of radius $1/\lambda_1=5^{-3/2}$ by the template $\varphi$, whose conformal size $e^{c_0}=0.588$ is $6.6$ times larger, at the price of the numerator $\BC(\varphi)$.
 \end{remark}
 \begin{remark}[the crude form fails]\label{crude}
-Dimitrov's sup-norm bound $m\le(\sup_\T\log|\varphi|+\sum\log R_p)/(\log|\varphi'(0)|+\sum\log R_p-\tau)$, optimised over discs and lune-bitten discs in the $q$-disc, gives at best $m\le5.71$ (cost $4.035$ against budget $2.485$), so it does not prove the theorem; the Bost--Charles numerator is essential. By contrast for CDT's $\zeta_2(5)$ the crude form already suffices ($5.56<6$ in \cite{DimLNT}).
+Dimitrov's sup-norm bound
+\[
+m\le\frac{\sup_\T\log|\varphi|+\sum\log R_p}
+{\log|\varphi'(0)|+\sum\log R_p-\tau},
+\]
+optimised over discs and lune-bitten discs in the $q$-disc, gives at best $m\le5.71$ (cost $4.035$ against budget $2.485$), so it does not prove the theorem; the Bost--Charles numerator is essential. By contrast for CDT's $\zeta_2(5)$ the crude form already suffices ($5.56<6$ in \cite{DimLNT}).
 \end{remark}
 \begin{remark}[sensitivity]
-The verdict survives a $4\%$ error in the numerator, $R_5\ge5^{2.991}$, or $0.35\%$ in $\tau$, but not a change of the weight $1-\tfrac1m$ in Theorem~\ref{adelic} to $(1-\tfrac1m)^2$ (which would give margin $-3.6$); the weight is the one load-bearing step that is ours, and \S3 is written so that it can be checked against \cite[\S6.3]{CDTl2chi} line by line.
+The proof deliberately uses $R_5=5^{2.995}$ rather than asserting an exact radius. For the fixed template, including the stated $6.8\cdot10^{-4}$ numerical error, the certified rearrangement numerator requires only $\alpha>2.99128\ldots$, so there is room to stay strictly inside the open disc $|x|_5<5^3$. The argument does not survive a change of the weight $1-\tfrac1m$ in Theorem~\ref{adelic} to $(1-\tfrac1m)^2$; that weight remains the load-bearing step, and \S3 is written so that it can be checked against \cite[\S6.3]{CDTl2chi} line by line.
 \end{remark}
 \begin{remark}[other values]
 The same computation gives, for $(p,k)$ with $p-1\mid24$: $\zeta_7(3)$ fails by $2.05$ nats, $\zeta_3(5)$ by $2.37$, $\zeta_2(7)$ by $6.46$, and $\zeta_5(5)$ fails the entry condition for every template ($3\log5\cdot\tfrac56<\tfrac{35}{36}\cdot5$). It reproduces the known cases: Calegari's $\zeta_2(3),\zeta_3(3),L_2(2,\chi_{-4})$ with large margins, CDT's $\zeta_2(5)$ with their printed numbers ($4.43206$ and $4.48866$ for their two contours, improved to $4.4389$ here), and $L_3(2,\chi_{-3})$ on $X_0(3)$ (Beukers).
@@ -150,7 +223,7 @@ The same computation gives, for $(p,k)$ with $p-1\mid24$: $\zeta_7(3)$ fails by 
 We have not found $\zeta_5(3)\notin\Q$ in the literature cited above; in particular \cite{Beu08} reaches only $\zeta_5(3)\pm L_5(3,\chi_5)$ and \cite{LLS25} only the existence of an irrational value in a range. This draft is circulated for that check.
 \end{remark}
 
-\subsection*{Reproducibility} All scripts and logs are in \texttt{lattice/padic\_holonomy/} of the project repository; the full ledger of what is exact, numerically converged, and assumed is \texttt{consolidation/PADIC\_HOLONOMY\_CENSUS.md}, and the proof of Theorem~\ref{adelic} with its checks is \texttt{consolidation/ADELIC\_HOLONOMY.md} \S2.6.
+\subsection*{Reproducibility} All scripts and logs are in \path{lattice/padic_holonomy/} of the project repository; the full ledger of what is exact, numerically converged, and assumed is \path{consolidation/PADIC_HOLONOMY_CENSUS.md}, and the proof of Theorem~\ref{adelic} with its checks is \path{consolidation/ADELIC_HOLONOMY.md} \S2.6.
 
 \begin{thebibliography}{9}
 \bibitem{Beu08} F.~Beukers, \emph{Irrationality of some $p$-adic $L$-values}, Acta Math. Sin. (Engl. Ser.) 24 (2008), 663--686.
