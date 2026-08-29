@@ -1,0 +1,4034 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  10pt,
+  letterpaper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=0.88in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{amsthm,mathtools}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\usepackage{mathrsfs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Transverse Plücker Arithmetic Holonomy for Catalan's Constant},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Transverse Plücker Arithmetic Holonomy for Catalan's Constant}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{An Audited Candidate Proof}
+\author{}
+\date{26 August 2026}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{Abstract}\label{abstract}
+
+Let \[
+G=\beta(2)=\sum_{n\ge0}\frac{(-1)^n}{(2n+1)^2}
+\] be Catalan's constant. This manuscript assembles a candidate proof of
+\(G\notin\mathbf Q\) from a collection of independently audited
+arithmetic, reflection, Hermite, denominator, and Archimedean modules.
+The proof constructs a single rational rank-\(2D\) determinant line. At
+\(p=2\), two transverse approximations produce a resource \[
+\Omega_D=4D^2+4D-4\sum_{m=1}^D s_2(m),
+\] while exact reflection/Hermite comparison and a conservative third
+reflection reserve leave an effective coefficient \(\log2\). At odd
+primes the descended rank-two source has denominator profile \((0,2)\),
+giving cost \(3\). At infinity the actual conditional reflection channel
+admits the quadratic fold \[
+\phi_f(z)=\frac{64z(1-z)^2}{(1+z)^4},
+\] with mixed energies \(T(r_0)=4\log2\), \(T(1)=8\log2\), and a
+worst-case half-fold gain \[
+I_*=\log2+\frac{6(\log2)^2}{\operatorname{arcosh}3}.
+\] The adelic determinant inequality forced by rationality then reduces
+to \[
+2\log2-3+\frac{6(\log2)^2}{\operatorname{arcosh}3}\le0,
+\] whereas a certified rational estimate proves that the left-hand side
+is \(>27/1250\). The paper is deliberately labelled a candidate proof
+pending independent expert verification of the assembled manuscript; the
+purpose of the present version is to place every load-bearing transition
+in one self-contained text.
+
+\section{Main theorem and
+architecture}\label{main-theorem-and-architecture}
+
+\begin{theorem}[Main theorem -- candidate proof]\label{thm:main}
+Catalan's constant
+\[
+G=\beta(2)=\sum_{n\ge0}\frac{(-1)^n}{(2n+1)^2}
+\]
+is irrational.
+\end{theorem}
+
+The proof is by contradiction. Assume throughout the global assembly
+that \(G=a/b\in\mathbf Q\) in lowest terms. The argument is deliberately
+modular. Sections A--E construct and analyze the finite arithmetic and
+reflection source; Sections K-Finite and K-Global prove that the moving
+Padé/Christoffel--Darboux and reflected Hermite realizations are
+presentations of the same rational transverse determinant line. Section
+G supplies the odd-prime denominator term. Sections H--J supply the
+Archimedean fold and its optimal worst-case energy. The final two
+sections reduce the product formula to a scalar inequality and
+contradict it by certified rational bounds.
+
+For traceability to the multi-party audit, the letters A--L are retained
+in the section titles. They are not assumptions: the mathematical
+content of the audited modules is reproduced below.
+
+The manuscript uses \(v_2(2)=1\) and writes \(s_2(n)\) for the binary
+digit sum. All asymptotic statements are as \(D\to\infty\).
+
+\section{\texorpdfstring{Section A --- Exact \(2\)-adic transverse
+arithmetic}{Section A --- Exact 2-adic transverse arithmetic}}\label{section-a-exact-2-adic-transverse-arithmetic}
+
+\subsubsection{0. Conventions and
+definitions}\label{conventions-and-definitions}
+
+Normalize \(v_2(2)=1\), and write \(s_2(n)\) for the binary digit sum of
+\(n\).
+
+For \(k\ge 0\), put
+
+\[
+\left[\frac{k}{x}\right]
+:=
+\frac{k!}{x(x+1)\cdots(x+k)}.
+\]
+
+Let
+
+\[
+\Theta(x)
+:=
+-\sum_{k=0}^{\infty}
+\left[\frac{k}{x}\right]
+\left[\frac{k}{1-x}\right].
+\]
+
+This is the sign convention compatible with the Beukers continued
+fraction and with
+
+\[
+\boxed{\Theta(x+1)+\Theta(x)=\frac{2}{x^2}.}
+\]
+
+Let \(q_n(x),p_n(x)\) be the Beukers denominator and numerator
+polynomials, normalized by
+
+\[
+q_0(x)=1,\qquad q_1(x)=x^2-x+1,
+\]
+
+\[
+p_0(x)=0,\qquad p_1(x)=1,
+\]
+
+and, for \(n\ge1\), by
+
+\[
+(n+1)^2u_{n+1}
+=
+\bigl(2n(n+1)+1-x+x^2\bigr)u_n
+-
+n^2u_{n-1}.
+\]
+
+Define
+
+\[
+E_n(x):=q_n(x)\Theta(x)-p_n(x).
+\]
+
+We shall also use the rising factorial
+
+\[
+(y)_r=y(y+1)\cdots(y+r-1),\qquad (y)_0=1.
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{A1. Beukers half-integer Padé
+valuation}\label{a1.-beukers-half-integer-paduxe9-valuation}
+
+For every odd integer \(a\) and every \(n\ge0\),
+
+\[
+\boxed{
+v_2(E_n(a/2))=4n+2-2s_2(n),
+}
+\]
+
+and
+
+\[
+\boxed{
+v_2(q_n(a/2))=-4n+2s_2(n).
+}
+\]
+
+\subsubsection{A1.1 Corrected remainder
+expansion}\label{a1.1-corrected-remainder-expansion}
+
+Beukers's Padé identity, in the above sign convention, is
+
+\[
+p_n(x)-q_n(x)\Theta(x)
+=
+(-1)^n
+\sum_{k=n}^{\infty}
+\binom{k}{n}
+\left[\frac{k}{x}\right]
+\left[\frac{k}{1-x}\right].
+\]
+
+Since \(E_n=q_n\Theta-p_n\),
+
+\[
+\boxed{
+E_n(x)
+=
+(-1)^{n+1}
+\sum_{k=n}^{\infty}
+\binom{k}{n}
+\left[\frac{k}{x}\right]
+\left[\frac{k}{1-x}\right].
+}
+\tag{A1}
+\]
+
+This is the only sign correction needed in the original derivation.
+
+\subsubsection{A1.2 Half-integer factorial
+valuation}\label{a1.2-half-integer-factorial-valuation}
+
+Let \(a\) be odd. Then
+
+\[
+\left[\frac{k}{a/2}\right]
+=
+\frac{k!}{\prod_{j=0}^{k}(a/2+j)}.
+\]
+
+Each factor \(a/2+j=(a+2j)/2\) has valuation \(-1\), because \(a+2j\) is
+odd. Hence
+
+\[
+v_2\!\left(\prod_{j=0}^{k}(a/2+j)\right)=-(k+1).
+\]
+
+Legendre's formula gives
+
+\[
+v_2(k!)=k-s_2(k).
+\]
+
+Therefore
+
+\[
+\boxed{
+v_2\!\left(\left[\frac{k}{a/2}\right]\right)
+=
+k-s_2(k)+(k+1)
+=
+2k+1-s_2(k).
+}
+\tag{A2}
+\]
+
+Since \(2-a\) is also odd, the same formula applies to
+\(\left[k/(1-a/2)\right]\).
+
+\subsubsection{A1.3 Unique minimum in the
+remainder}\label{a1.3-unique-minimum-in-the-remainder}
+
+The \(k\)-th summand in (A1) has valuation
+
+\[
+v_2\binom{k}{n}+4k+2-2s_2(k).
+\]
+
+At \(k=n\) this is
+
+\[
+4n+2-2s_2(n).
+\]
+
+Write \(k=n+r\), \(r>0\). The difference from the \(k=n\) valuation is
+
+\[
+4r
+-
+2\bigl(s_2(n+r)-s_2(n)\bigr)
++
+v_2\binom{n+r}{n}.
+\]
+
+Binary digit-sum subadditivity gives
+
+\[
+s_2(n+r)-s_2(n)\le s_2(r)\le r.
+\]
+
+Hence the difference is at least
+
+\[
+4r-2r=2r>0.
+\]
+
+Thus the \(k=n\) term is uniquely of least \(2\)-adic valuation, so
+cancellation is impossible:
+
+\[
+\boxed{
+v_2(E_n(a/2))=4n+2-2s_2(n).
+}
+\tag{A3}
+\]
+
+\subsubsection{A1.4 Denominator
+valuation}\label{a1.4-denominator-valuation}
+
+The explicit Beukers formula is
+
+\[
+q_n(x)
+=
+\sum_{k=0}^{n}
+\frac{(1-x)_{n-k}(x)_k^2}
+{(n-k)!(k!)^2}.
+\tag{A4}
+\]
+
+At \(x=a/2\), with \(a\) odd, the \(k\)-th summand has valuation
+
+\[
+V_k
+=
+-2n-2k+s_2(n-k)+2s_2(k).
+\]
+
+For \(k=n\),
+
+\[
+V_n=-4n+2s_2(n).
+\]
+
+Put \(j=n-k>0\). Then
+
+\[
+V_{n-j}-V_n
+=
+2j+s_2(j)+2s_2(n-j)-2s_2(n).
+\]
+
+Using
+
+\[
+s_2(n)\le s_2(j)+s_2(n-j),
+\]
+
+we obtain
+
+\[
+V_{n-j}-V_n
+\ge
+2j-s_2(j)>0.
+\]
+
+Thus the terminal term \(k=n\) is uniquely minimal, and
+
+\[
+\boxed{
+v_2(q_n(a/2))=-4n+2s_2(n).
+}
+\tag{A5}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{A2. Moving Rivoal--Zudilin
+fibre}\label{a2.-moving-rivoalzudilin-fibre}
+
+For \(m\ge1\), set
+
+\[
+x_m=\frac12-m,
+\qquad
+Q_m:=q_m(x_m),
+\]
+
+and define the alternating partial sum
+
+\[
+\sigma_m^{\mathrm{alt}}
+:=
+\sum_{j=0}^{m-1}\frac{(-1)^j}{(2j+1)^2}.
+\]
+
+Put
+
+\[
+\xi:=\Theta(1/2).
+\]
+
+Use the standard Rivoal--Zudilin normalization
+
+\[
+\boxed{
+P_m
+=
+Q_m\sigma_m^{\mathrm{alt}}
++
+\frac{(-1)^m}{8}\,p_m(x_m).
+}
+\tag{A6}
+\]
+
+This normalization begins with
+
+\[
+(Q_1,P_1)=\left(\frac74,\frac{13}{8}\right)
+\]
+
+and agrees with the usual Rivoal--Zudilin Catalan row.
+
+\subsubsection{A2.1 Iteration of the functional
+equation}\label{a2.1-iteration-of-the-functional-equation}
+
+Let \(x_j=\frac12-j\). Since \(x_j+1=x_{j-1}\),
+
+\[
+\Theta(x_j)
+=
+\frac{2}{x_j^2}-\Theta(x_{j-1})
+=
+\frac{8}{(2j-1)^2}-\Theta(x_{j-1}).
+\]
+
+Iteration from \(x_0=1/2\) gives
+
+\[
+\boxed{
+\Theta(x_m)
+=
+(-1)^m
+\left(
+\xi-8\sigma_m^{\mathrm{alt}}
+\right).
+}
+\tag{A7}
+\]
+
+\subsubsection{A2.2 Exact moving error}\label{a2.2-exact-moving-error}
+
+Using (A6) and (A7),
+
+\[
+\begin{aligned}
+\frac{\xi}{8}-\frac{P_m}{Q_m}
+&=
+\frac{\xi}{8}
+-
+\sigma_m^{\mathrm{alt}}
+-
+\frac{(-1)^m}{8}\frac{p_m(x_m)}{q_m(x_m)}
+\\
+&=
+\frac{(-1)^m}{8}
+\left(
+\Theta(x_m)-\frac{p_m(x_m)}{q_m(x_m)}
+\right)
+\\
+&=
+\frac{(-1)^m}{8Q_m}E_m(x_m).
+\end{aligned}
+\tag{A8}
+\]
+
+Now \(x_m=(1-2m)/2\) has odd numerator, so A1 applies:
+
+\[
+v_2(E_m(x_m))=4m+2-2s_2(m),
+\]
+
+\[
+v_2(Q_m)=-4m+2s_2(m).
+\]
+
+Therefore
+
+\[
+\boxed{
+v_2\!\left(
+\frac{\xi}{8}-\frac{P_m}{Q_m}
+\right)
+=
+8m-1-4s_2(m).
+}
+\tag{A9}
+\]
+
+Also
+
+\[
+\boxed{
+v_2(Q_m)=-4m+2s_2(m).
+}
+\tag{A10}
+\]
+
+For later use, note that the \(k=0\) term of the series for \(\xi\) has
+valuation \(2\), while all \(k\ge1\) terms have strictly larger
+valuation. Hence
+
+\[
+v_2(\xi)=2,
+\qquad
+v_2(\xi/8)=-1.
+\tag{A11}
+\]
+
+Since the error in (A9) has valuation \(>-1\) for \(m\ge1\),
+
+\[
+\boxed{
+v_2(P_m)=-4m+2s_2(m)-1.
+}
+\tag{A12}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{A3. Fixed modular fibre}\label{a3.-fixed-modular-fibre}
+
+Define
+
+\[
+Y_0(t):=\sum_{k\ge0}q_k(1/2)t^k,
+\qquad
+Y_1(t):=\sum_{k\ge0}p_k(1/2)t^k,
+\]
+
+and
+
+\[
+A(z):=\sum_{n\ge0}A_nz^n,
+\qquad
+B(z):=\sum_{n\ge0}B_nz^n.
+\]
+
+Assume the stated quadratic pullback identities
+
+\[
+\boxed{
+A(z)
+=
+(1-8z)\,
+Y_0\!\left(16z(1-4z)\right),
+}
+\tag{A13}
+\]
+
+\[
+\boxed{
+16B(z)
+=
+(1-8z)\,
+Y_1\!\left(16z(1-4z)\right).
+}
+\tag{A14}
+\]
+
+We prove
+
+\[
+\boxed{
+v_2(A_n)=2s_2(n)\qquad(n\ge0),
+}
+\tag{A15}
+\]
+
+and
+
+\[
+\boxed{
+v_2(B_n)=2s_2(n)-2\qquad(n\ge1).
+}
+\tag{A16}
+\]
+
+\subsubsection{A3.1 The fixed Beukers numerator
+valuation}\label{a3.1-the-fixed-beukers-numerator-valuation}
+
+At \(x=1/2\),
+
+\[
+p_n(1/2)=\xi q_n(1/2)-E_n(1/2).
+\]
+
+For \(n\ge1\),
+
+\[
+v_2(\xi q_n(1/2))
+=
+2-4n+2s_2(n),
+\]
+
+whereas
+
+\[
+v_2(E_n(1/2))
+=
+4n+2-2s_2(n).
+\]
+
+Their difference is
+
+\[
+8n-4s_2(n)>0.
+\]
+
+Thus \(\xi q_n(1/2)\) is uniquely of smaller valuation, and
+
+\[
+\boxed{
+v_2(p_n(1/2))
+=
+-4n+2s_2(n)+2
+\qquad(n\ge1).
+}
+\tag{A17}
+\]
+
+\subsubsection{\texorpdfstring{A3.2 Exact valuation of
+\(A_n\)}{A3.2 Exact valuation of A\_n}}\label{a3.2-exact-valuation-of-a_n}
+
+Put
+
+\[
+T(z)=16z(1-4z).
+\]
+
+In the unshifted part \(Y_0(T(z))\), the coefficient of \(z^n\) receives
+contributions with
+
+\[
+k=n-j,
+\qquad
+0\le j\le \lfloor n/2\rfloor.
+\]
+
+The corresponding term is
+
+\[
+q_{n-j}(1/2)\,
+16^{\,n-j}
+(-4)^j
+\binom{n-j}{j},
+\]
+
+of valuation
+
+\[
+2s_2(n-j)+2j+v_2\binom{n-j}{j}.
+\tag{A18}
+\]
+
+For \(j=0\) this equals \(2s_2(n)\).
+
+If \(j\ge2\), digit-sum subadditivity gives
+
+\[
+\begin{aligned}
+&2s_2(n-j)+2j+v_2\binom{n-j}{j}
+-2s_2(n)
+\\
+&\qquad\ge
+2(j-s_2(j))
++
+v_2\binom{n-j}{j}
+>0.
+\end{aligned}
+\]
+
+For \(j=1\), using
+
+\[
+s_2(n)=s_2(n-1)+1-v_2(n),
+\]
+
+the difference is
+
+\[
+v_2(n-1)+2v_2(n)>0
+\]
+
+whenever the \(j=1\) term exists.
+
+Thus the \(j=0\) contribution is uniquely minimal in the unshifted
+coefficient.
+
+Every term coming from the factor \(-8z\) has valuation at least
+
+\[
+3+2s_2(n-1).
+\]
+
+Since
+
+\[
+s_2(n-1)=s_2(n)-1+v_2(n),
+\]
+
+this exceeds \(2s_2(n)\) by
+
+\[
+1+2v_2(n)>0.
+\]
+
+Hence the global minimum is unique and
+
+\[
+\boxed{v_2(A_n)=2s_2(n).}
+\]
+
+\subsubsection{\texorpdfstring{A3.3 Exact valuation of
+\(B_n\)}{A3.3 Exact valuation of B\_n}}\label{a3.3-exact-valuation-of-b_n}
+
+For \(k\ge1\), (A17) differs from the \(q_k(1/2)\) valuation by exactly
+\(2\). The same coefficient-extraction argument therefore gives, for
+\(n\ge1\),
+
+\[
+v_2(16B_n)=2s_2(n)+2.
+\]
+
+Consequently
+
+\[
+\boxed{
+v_2(B_n)=2s_2(n)-2.
+}
+\]
+
+\subsubsection{A3.4 Exact fixed-fibre
+error}\label{a3.4-exact-fixed-fibre-error}
+
+Because the present section uses
+
+\[
+E_k=q_k\Theta-p_k,
+\]
+
+subtracting \(\xi A(z)\) from \(16B(z)\) gives
+
+\[
+\boxed{
+16B(z)-\xi A(z)
+=
+-(1-8z)
+\sum_{k\ge0}
+E_k(1/2)\,
+T(z)^k.
+}
+\tag{A19}
+\]
+
+The minus sign in (A19) is required by the chosen definition of \(E_k\);
+it does not affect any valuation.
+
+Consider the coefficient of \(z^{2m}\), \(m\ge1\).
+
+\paragraph{Unshifted terms}\label{unshifted-terms}
+
+Write
+
+\[
+k=m+r,\qquad 0\le r\le m.
+\]
+
+Then the power of \((-4z)\) chosen from \((1-4z)^k\) is \(m-r\). The
+term has valuation
+
+\[
+10m+6r+2
+-
+2s_2(m+r)
++
+v_2\binom{m+r}{m-r}.
+\]
+
+At \(r=0\), this is
+
+\[
+10m+2-2s_2(m).
+\tag{A20}
+\]
+
+For \(r>0\), the excess over (A20) is
+
+\[
+6r
++
+2\bigl(s_2(m)-s_2(m+r)\bigr)
++
+v_2\binom{m+r}{m-r}.
+\]
+
+Since
+
+\[
+s_2(m+r)-s_2(m)\le s_2(r)\le r,
+\]
+
+the excess is at least \(4r>0\).
+
+\paragraph{\texorpdfstring{Terms from
+\(-8z\)}{Terms from -8z}}\label{terms-from--8z}
+
+Here \(0\le r\le m-1\), and the excess over (A20) is
+
+\[
+6r+1
++
+2\bigl(s_2(m)-s_2(m+r)\bigr)
++
+v_2\binom{m+r}{m-1-r},
+\]
+
+which is at least
+
+\[
+4r+1>0.
+\]
+
+Thus the \(r=0\) unshifted term is uniquely minimal. Hence
+
+\[
+\boxed{
+v_2(16B_{2m}-\xi A_{2m})
+=
+10m+2-2s_2(m).
+}
+\tag{A21}
+\]
+
+Since
+
+\[
+v_2(A_{2m})
+=
+2s_2(2m)
+=
+2s_2(m),
+\]
+
+we obtain
+
+\[
+\boxed{
+v_2\!\left(
+\frac{\xi}{8}
+-
+\frac{2B_{2m}}{A_{2m}}
+\right)
+=
+10m-1-4s_2(m).
+}
+\tag{A22}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{A4. Transverse Plücker
+determinant}\label{a4.-transverse-pluxfccker-determinant}
+
+Define
+
+\[
+\rho_m:=\frac{4B_{2m}}{A_{2m}},
+\qquad
+\sigma_m:=\frac{2P_m}{Q_m},
+\qquad m\ge1.
+\]
+
+It is useful to make the normalization step explicit. Before multiplying
+by \(2\), the two approximations to the common \(2\)-adic quantity
+\(\xi/8\) are
+
+\[
+\frac{P_m}{Q_m}
+\quad\text{and}\quad
+\frac{2B_{2m}}{A_{2m}}.
+\]
+
+Their error valuations are respectively
+
+\[
+8m-1-4s_2(m)
+\]
+
+and
+
+\[
+10m-1-4s_2(m).
+\]
+
+They are unequal for every \(m\ge1\). Therefore the strong ultrametric
+equality gives
+
+\[
+v_2\!\left(
+\frac{P_m}{Q_m}
+-
+\frac{2B_{2m}}{A_{2m}}
+\right)
+=
+8m-1-4s_2(m).
+\]
+
+Multiplying the difference by \(2\),
+
+\[
+\boxed{
+v_2(\sigma_m-\rho_m)
+=
+8m-4s_2(m).
+}
+\tag{A23}
+\]
+
+Now
+
+\[
+\sigma_m-\rho_m
+=
+\frac{
+2(P_mA_{2m}-2B_{2m}Q_m)
+}{
+Q_mA_{2m}
+}.
+\]
+
+Using
+
+\[
+v_2(Q_m)=-4m+2s_2(m)
+\]
+
+and
+
+\[
+v_2(A_{2m})=2s_2(m),
+\]
+
+equation (A23) is equivalent to
+
+\[
+\boxed{
+v_2(P_mA_{2m}-2B_{2m}Q_m)
+=
+4m-1.
+}
+\tag{A24}
+\]
+
+Thus the transverse determinant statement is proved, not assumed.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{A5. Quadratic resource}\label{a5.-quadratic-resource}
+
+Define
+
+\[
+\Omega_D
+:=
+\sum_{m=1}^{D}
+v_2(\sigma_m-\rho_m).
+\]
+
+By (A23),
+
+\[
+\begin{aligned}
+\Omega_D
+&=
+\sum_{m=1}^{D}
+\bigl(8m-4s_2(m)\bigr)
+\\
+&=
+8\frac{D(D+1)}2
+-
+4\sum_{m=1}^{D}s_2(m)
+\\
+&=
+\boxed{
+4D^2+4D-4S_D,
+}
+\end{aligned}
+\]
+
+where
+
+\[
+S_D:=\sum_{m=1}^{D}s_2(m).
+\]
+
+Since \(s_2(m)\le 1+\lfloor\log_2m\rfloor\),
+
+\[
+S_D=O(D\log D),
+\]
+
+and therefore
+
+\[
+\boxed{
+\Omega_D=4D^2+O(D\log D).
+}
+\tag{A25}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{A6. Independent small-row
+check}\label{a6.-independent-small-row-check}
+
+As a consistency check, one can compute the moving row directly from the
+Beukers recurrence at \(x_m=1/2-m\), compute the fixed row directly from
+the quadratic pullback, and use exact rational arithmetic.
+
+For \(m=1,\ldots,8\), the resulting valuations are:
+
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+\(m\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(v_2(P_mA_{2m}-2B_{2m}Q_m)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+predicted \(4m-1\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(v_2(\sigma_m-\rho_m)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+predicted \(8m-4s_2(m)\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 3 & 3 & 4 & 4 \\
+2 & 7 & 7 & 12 & 12 \\
+3 & 11 & 11 & 16 & 16 \\
+4 & 15 & 15 & 28 & 28 \\
+5 & 19 & 19 & 32 & 32 \\
+6 & 23 & 23 & 40 & 40 \\
+7 & 27 & 27 & 44 & 44 \\
+8 & 31 & 31 & 60 & 60 \\
+\end{longtable}
+
+This check is not used in the proof, but it catches the relevant
+\(2/4/8\) normalization errors very effectively.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Section D --- Reflection coinvariants and the rational
+source}\label{section-d-reflection-coinvariants-and-the-rational-source}
+
+\subsubsection{D1. Reflection module}\label{d1.-reflection-module}
+
+Let \[
+R_D=\mathbf Z[Y]_{<D}
+\] viewed as a free \(\mathbf Z\)-module of rank \(D\). Set \[
+L_D=R_DA\oplus R_DB\oplus R_DC.
+\] Thus \(L_D\) is free of rank \(3D\), and \(T\) acts \(R_D\)-linearly.
+
+\subsubsection{D2. Primitive anti-invariant summand and coinvariant
+quotient}\label{d2.-primitive-anti-invariant-summand-and-coinvariant-quotient}
+
+Let \[
+N_D=R_D(B+C).
+\] Since \[
+(A,B,B+C)
+\] is an integral basis of each coefficient slot (the change-of-basis
+determinant from \((A,B,C)\) is \(1\)), one has the direct decomposition
+\[
+L_D=R_DA\oplus R_DB\oplus N_D.
+\] Consequently \(N_D\) is primitive and saturated over \(\mathbf Z\),
+including after localization at \(p=2\), and \[
+W_D:=L_D/N_D
+\] is torsion-free of rank \(2D\). Explicitly, \[
+W_D\cong R_D[A]\oplus R_D[B],
+\qquad [C]=-[B].
+\]
+
+Moreover \[
+(T-1)A=0,\qquad (T-1)B=-(B+C),\qquad (T-1)C=-(B+C),
+\] so \[
+N_D=(T-1)L_D.
+\] Hence \[
+\boxed{W_D=L_D/(T-1)L_D}
+\] is canonically the \textbf{coinvariant}, equivalently maximal
+\(T\)-trivial, quotient. The induced action of \(T\) on \(W_D\) is the
+identity.
+
+This must not be confused integrally with the invariant submodule. In
+fact \[
+L_D^T=R_DA\oplus R_D(B-C),
+\] and the natural map \[
+L_D^T\longrightarrow W_D
+\] sends \[
+A\longmapsto[A],\qquad B-C\longmapsto2[B].
+\] Therefore its cokernel is \[
+(\mathbf Z/2\mathbf Z)^D.
+\] After tensoring with \(\mathbf Q\), invariants and coinvariants are
+canonically identified by averaging: \[
+\boxed{
+\jmath:W_D\otimes\mathbf Q\xrightarrow{\sim}L_D^T\otimes\mathbf Q,
+\qquad
+[v]\longmapsto\frac{v+Tv}{2}.
+}
+\] Thus \[
+\jmath([A])=A,
+\qquad
+\jmath([B])=\frac{B-C}{2}.
+\] The factor \(2^{-D}\) in this rational identification is the entire
+invariant/coinvariant defect at \(p=2\); it is only \(O(D)\)
+logarithmically.
+
+\subsubsection{D3. Rationality-dependent invariant
+basis}\label{d3.-rationality-dependent-invariant-basis}
+
+Assume \[
+G=\frac ab\in\mathbf Q,
+\qquad \gcd(a,b)=1,
+\qquad b>0.
+\] Define \[
+H_+=b(B-C)-aA,
+\qquad
+H_-=B+C.
+\] Then \[
+TH_+=H_+,
+\qquad
+TH_-=-H_-.
+\] In \(W_D\), \[
+[H_+]=2b[B]-a[A].
+\] Hence, over \(\mathbf Q\), the change from the coinvariant basis
+\(([A],[B])\) to \(([A],[H_+])\) has one-slot matrix \[
+\begin{pmatrix}
+1&-a\\
+0&2b
+\end{pmatrix}
+\] and determinant \(2b\). Across \(D\) polynomial slots the determinant
+is \[
+(2b)^D.
+\] Equivalently, the integral lattice generated by \([A],[H_+]\) has
+index \((2b)^D\) in the lattice generated by \([A],[B]\). Since \(G\) is
+fixed while \(D\to\infty\), this contributes only \[
+D\log(2b)=O(D)
+\] to any logarithmic determinant ledger.
+
+\subsubsection{D4. Formal descent to the quotient
+coordinate}\label{d4.-formal-descent-to-the-quotient-coordinate}
+
+Let \[
+s(X)=\sqrt{1-X}\in\mathbf Q[[X]],
+\qquad s(0)=1.
+\] Since \[
+1-w(X)=\frac1{1-X},
+\] one has, with the formal branch normalized at \(0\), \[
+s(w(X))=s(X)^{-1}.
+\] If \(Tf=f\), then \(f(w(X))=(1-X)f(X)=s(X)^2f(X)\), and therefore \[
+(s f)(w(X))=s(w(X))f(w(X))=s(X)f(X).
+\] Thus multiplication by \(s\) converts every \(T\)-invariant function
+into an ordinary \(w\)-invariant function.
+
+To identify the invariant formal-series ring, put \[
+u=\frac{X}{2-X}.
+\] Then \[
+u(w(X))=-u(X),
+\qquad
+Y=-\frac{4u^2}{1-u^2}.
+\] Since \(u\) is a formal coordinate at \(X=0\), and \(Y\) is a formal
+coordinate in \(u^2\), \[
+\mathbf Q[[X]]^w
+=\mathbf Q[[u]]^{u\mapsto-u}
+=\mathbf Q[[u^2]]
+=\mathbf Q[[Y]].
+\] Therefore the two invariant combinations descend unconditionally: \[
+\boxed{
+P(Y)=s(X)A(X)\in\mathbf Q[[Y]],
+}
+\] \[
+\boxed{
+R_0(Y)=s(X)(B-C)(X)\in\mathbf Q[[Y]].
+}
+\]
+
+Under the rationality hypothesis define \[
+K(Y)=s(X)(B-C-GA)(X).
+\] Then \[
+\boxed{K=R_0-GP\in\mathbf Q[[Y]].}
+\] The basis change \[
+(P,R_0)\longmapsto(P,K=R_0-GP)
+\] is the same global \(\mathbf Q\)-linear change at every place, with
+matrix \[
+\begin{pmatrix}
+1&-G\\
+0&1
+\end{pmatrix}
+\] and determinant \(1\). It need not preserve the standard
+\(\mathbf Z_p\)-lattice at primes dividing \(b\), but it has exactly
+zero determinant-line cost at every place.
+
+The averaging/descent map from the coinvariant quotient satisfies \[
+[A]\longmapsto P,
+\qquad
+[B]\longmapsto \frac{R_0}{2},
+\] and, under \(G=a/b\), \[
+[H_+]\longmapsto bK.
+\] Thus the integral factor \(2\) separating invariants from
+coinvariants is explicit and cannot be hidden in the descent.
+
+\subsubsection{D5. The global rational
+source}\label{d5.-the-global-rational-source}
+
+To avoid assuming a zero estimate at this stage, define the source first
+as the abstract rational vector space \[
+\boxed{
+\mathcal E_D^{\mathrm{abs}}
+=
+\mathbf Q[Y]_{<D}e_P
+\oplus
+\mathbf Q[Y]_{<D}e_{R_0},
+}
+\] which has dimension exactly \(2D\), together with the global
+evaluation map \[
+\operatorname{ev}_D:\mathcal E_D^{\mathrm{abs}}\longrightarrow\mathbf Q[[Y]],
+\qquad
+f e_P+g e_{R_0}\longmapsto fP+gR_0.
+\]
+
+If one writes \[
+\mathbf Q[Y]_{<D}P\oplus\mathbf Q[Y]_{<D}R_0
+\] as a direct sum \textbf{inside} \(\mathbf Q[[Y]]\), injectivity of
+\(\operatorname{ev}_D\) is additionally required. That is not a
+consequence of the reflection quotient alone; it is proved separately in
+Section E. Accordingly, injectivity is deferred to that section.
+
+Under \(G\in\mathbf Q\), the abstract basis may globally be changed to
+\[
+\mathbf Q[Y]_{<D}e_P
+\oplus
+\mathbf Q[Y]_{<D}e_K,
+\qquad e_K=e_{R_0}-G e_P,
+\] with determinant \(1\). At the Archimedean place these are the \(D\)
+base directions and \(D\) fold directions used later.
+
+\section{Shared local expansion
+lemma}\label{shared-local-expansion-lemma}
+
+Place this immediately after the construction of the descended source
+\((P,R_0)\), before the Hermite, denominator, and fold sections.
+
+Put \[
+t=\frac Y4,\qquad z=\frac Y{64},
+\] and \[
+\mathscr Q=4t(1-t)D_t^2+4(1-2t)D_t-1.
+\] The reflected companion satisfies \[
+\mathscr Q\,R_0(4t)=\frac1{2\sqrt{1-t}},
+\qquad R_0(0)=0,
+\] and \[
+P(Y)={}_2F_1\!\left(\frac12,\frac12;1;\frac Y4\right).
+\]
+
+Write \[
+R_0(4t)=\sum_{n\ge0}c_nt^n.
+\] After division by \(4\), coefficient extraction gives \[
+(n+1)^2c_{n+1}-\left(n+\frac12\right)^2c_n
+=
+\frac18\frac{\binom{2n}{n}}{4^n}.
+\tag{S0.1}
+\]
+
+Let \[
+a_n=\left(\frac{(1/2)_n}{n!}\right)^2
+=\frac{\binom{2n}{n}^2}{16^n},
+\] so \[
+(n+1)^2a_{n+1}=\left(n+\frac12\right)^2a_n.
+\] Define \[
+S_0=0,\qquad
+S_n=\sum_{m=0}^{n-1}
+\frac{4^m}{(2m+1)^2\binom{2m}{m}}.
+\] Then \[
+S_{n+1}-S_n
+=
+\frac{4^n}{(2n+1)^2\binom{2n}{n}}.
+\]
+
+The sequence \[
+c_n=\frac12a_nS_n
+\] satisfies (S0.1), since \[
+\begin{aligned}
+&(n+1)^2c_{n+1}-\left(n+\frac12\right)^2c_n\\
+&=
+\frac12\left(n+\frac12\right)^2a_n(S_{n+1}-S_n)
+=
+\frac18\frac{\binom{2n}{n}}{4^n}.
+\end{aligned}
+\] It also has \(c_0=0\), so uniqueness of the first-order recurrence
+gives \[
+R_0(4t)=
+\frac12\sum_{n\ge1}
+\frac{\binom{2n}{n}^2}{16^n}S_nt^n.
+\]
+
+Putting \(t=16z\), \[
+\boxed{
+R_0(64z)=
+\frac12\sum_{n\ge1}\binom{2n}{n}^2
+\left(
+\sum_{m=0}^{n-1}
+\frac{4^m}{(2m+1)^2\binom{2m}{m}}
+\right)z^n.
+}
+\tag{S0.2}
+\] Also \[
+\boxed{
+P(64z)=\sum_{n\ge0}\binom{2n}{n}^2z^n.
+}
+\tag{S0.3}
+\]
+
+Under \(G\in\mathbf Q\), \(K=R_0-GP\), hence \[
+\boxed{
+K(64z)=
+\sum_{n\ge0}\binom{2n}{n}^2
+\left[
+-G+
+\frac12\sum_{m=0}^{n-1}
+\frac{4^m}{(2m+1)^2\binom{2m}{m}}
+\right]z^n.
+}
+\tag{S0.4}
+\]
+
+This is exactly the local expansion used in Sections E and H. Section H
+proves the inverse-central-binomial identity converting (S0.4) to the
+tail form.
+
+For the final manuscript, the inhomogeneous equation for \(R_0\) should
+be proved at the same point as the descent/reflection differential
+equations; audited Section K already uses it in the exact fixed-fibre
+bridge.
+
+\section{Section E --- Reflected Hermite and Hankel
+normality}\label{section-e-reflected-hermite-and-hankel-normality}
+
+\subsubsection{E1. Exact coefficients and their 2-adic
+size}\label{e1.-exact-coefficients-and-their-2-adic-size}
+
+Set \[
+z=\frac Y{64}.
+\] From \[
+\left(\frac{(1/2)_n}{n!}\right)^2
+=\frac1{16^n}\binom{2n}{n}^2,
+\] the hypergeometric expansion of \(P\) gives \[
+P(64z)=\sum_{n\ge0}p_nz^n,
+\qquad
+p_n=\binom{2n}{n}^2.
+\]
+
+Using the displayed local expansion of \(K\) and \(R_0=K+GP\), the
+\(-G\)-term cancels coefficientwise and \[
+R_0(64z)=\sum_{n\ge1}r_nz^n,
+\] where \[
+r_n=\frac12\binom{2n}{n}^2S_n,
+\qquad
+S_n=\sum_{m=0}^{n-1}
+\frac{4^m}{(2m+1)^2\binom{2m}{m}}.
+\] (The constant term is zero.)
+
+For \(m\ge1\), Kummer's identity \[
+v_2\binom{2m}{m}=s_2(m)
+\] gives \[
+v_2\!\left(
+\frac{4^m}{(2m+1)^2\binom{2m}{m}}
+\right)
+=2m-s_2(m)\ge1.
+\] The \(m=0\) summand is \(1\). Hence \[
+S_n\in\mathbf Z_2^\times,
+\qquad
+S_n\equiv1\pmod2.
+\] Consequently \[
+v_2(r_n)=2s_2(n)-1\ge1,
+\] so \(r_n\in2\mathbf Z_2\), and \[
+\frac{r_n}{2}\equiv1\pmod2
+\iff s_2(n)=1.
+\]
+
+\subsubsection{E2. Ratio parity theorem}\label{e2.-ratio-parity-theorem}
+
+Define \[
+\beta(z)=\frac{R_0(64z)}{P(64z)}
+=\sum_{n\ge1}b_nz^n,
+\qquad b_0=0.
+\] Since \(p_0=1\), coefficient comparison in \[
+\left(\sum_{k\ge0}p_kz^k\right)
+\left(\sum_{j\ge0}b_jz^j\right)
+=\sum_{n\ge0}r_nz^n
+\] gives, for \(n\ge1\), \[
+b_n=r_n-\sum_{k=1}^{n-1}p_kb_{n-k}.
+\tag{E2.1}
+\] For every \(k\ge1\), \[
+v_2(p_k)=2s_2(k)\ge2,
+\qquad p_k\in4\mathbf Z_2.
+\] We prove by induction on \(n\) that \(b_n\in2\mathbf Z_2\) and \[
+b_n\equiv r_n\pmod8.
+\tag{E2.2}
+\] For \(n=1\), (E2.1) has no correction term, so the claim is
+immediate. If it holds below \(n\), then every summand \(p_kb_{n-k}\) in
+(E2.1) lies in \[
+4\mathbf Z_2\cdot2\mathbf Z_2=8\mathbf Z_2.
+\] Since \(r_n\in2\mathbf Z_2\), both assertions follow.
+
+Dividing (E2.2) by \(2\) gives the stronger congruence \[
+\frac{b_n}{2}\equiv\frac{r_n}{2}\pmod4,
+\] and therefore, in particular, \[
+\frac{b_n}{2}\equiv\frac{r_n}{2}\pmod2.
+\] By E1, \[
+\boxed{
+\frac{b_n}{2}\equiv1\pmod2
+\iff s_2(n)=1
+\iff n\text{ is a positive power of }2.
+}
+\]
+
+\subsubsection{E3. Binary Hankel
+determinant}\label{e3.-binary-hankel-determinant}
+
+Let \[
+M_D^{(z)}=(b_{D+i-j})_{0\le i,j<D}.
+\] Reverse the \(D\) columns. The reversal permutation has sign \[
+(-1)^{D(D-1)/2},
+\] and the resulting matrix is \[
+H_D=(b_{i+j+1})_{0\le i,j<D}.
+\] Thus \[
+\det M_D^{(z)}=(-1)^{D(D-1)/2}\det H_D,
+\] so column reversal does not affect the \(2\)-adic valuation.
+
+By E2 every \(b_n\in2\mathbf Z_2\). Hence \[
+H_D=2C_D,
+\qquad C_D\in M_D(\mathbf Z_2),
+\] and modulo \(2\), \[
+C_D\equiv\mathcal A_D=(a_{i+j+1})_{0\le i,j<D},
+\qquad
+a_n=\mathbf1_{\{n=2^r\}}.
+\] Also define \[
+\mathcal B_D=(a_{i+j+2})_{0\le i,j<D}.
+\] All determinant identities in the rest of this section are in
+\(\mathbf F_2\).
+
+For \(m\ge1\), \[
+a_{2m}=a_m,
+\qquad
+a_{2m+1}=0,
+\] while \(a_1=1\).
+
+\paragraph{\texorpdfstring{Even size for
+\(\mathcal A\)}{Even size for \textbackslash mathcal A}}\label{even-size-for-mathcal-a}
+
+For \(D=2h\), order rows and columns by even indices first and odd
+indices second. Then \[
+\mathcal A_{2h}\sim
+\begin{pmatrix}
+E_h&\mathcal A_h\\
+\mathcal A_h&0
+\end{pmatrix},
+\] where \(E_h\) has a single \(1\) in its \((0,0)\)-entry. Swapping the
+two column blocks gives a block-upper-triangular matrix with diagonal
+blocks \(\mathcal A_h,\mathcal A_h\). Therefore \[
+\det\mathcal A_{2h}=(\det\mathcal A_h)^2.
+\tag{E3.1}
+\]
+
+\paragraph{\texorpdfstring{Odd size for
+\(\mathcal A\)}{Odd size for \textbackslash mathcal A}}\label{odd-size-for-mathcal-a}
+
+For \(D=2h+1\) with \(h\ge1\), parity ordering followed by separating
+the even index \(0\) gives \[
+\mathcal A_{2h+1}\sim
+\begin{pmatrix}
+1&0&u^T\\
+0&0&\mathcal B_h\\
+u&\mathcal B_h&0
+\end{pmatrix}
+\] for some \(u\in\mathbf F_2^h\). Adding suitable multiples of the
+first column to the last \(h\) columns, and then suitable multiples of
+the first row to the last \(h\) rows, clears \(u\) without changing the
+determinant. Hence \[
+\det\mathcal A_{2h+1}=(\det\mathcal B_h)^2.
+\tag{E3.2}
+\]
+
+\paragraph{\texorpdfstring{The \(\mathcal B\)
+recurrences}{The \textbackslash mathcal B recurrences}}\label{the-mathcal-b-recurrences}
+
+The same parity ordering gives directly \[
+\mathcal B_{2h}\sim
+\begin{pmatrix}
+\mathcal A_h&0\\
+0&\mathcal B_h
+\end{pmatrix},
+\] so \[
+\det\mathcal B_{2h}
+=\det\mathcal A_h\,\det\mathcal B_h,
+\tag{E3.3}
+\] and \[
+\mathcal B_{2h+1}\sim
+\begin{pmatrix}
+\mathcal A_{h+1}&0\\
+0&\mathcal B_h
+\end{pmatrix},
+\] so \[
+\det\mathcal B_{2h+1}
+=\det\mathcal A_{h+1}\,\det\mathcal B_h.
+\tag{E3.4}
+\]
+
+Now \[
+\mathcal A_1=(a_1)=(1),
+\qquad
+\mathcal B_1=(a_2)=(1).
+\] A simultaneous strong induction on \(D\), using (E3.1)--(E3.4),
+yields \[
+\det\mathcal A_D=
+\det\mathcal B_D=1
+\qquad(D\ge1)
+\] in \(\mathbf F_2\).
+
+Therefore \(\det C_D\in\mathbf Z_2^\times\), and \[
+\det H_D=2^D\det C_D.
+\] Consequently \[
+\boxed{v_2(\det M_D^{(z)})=D.}
+\]
+
+\subsubsection{E4. Hermite independence}\label{e4.-hermite-independence}
+
+Let \(J_{2D}\) denote the first \(2D\) coefficient map in the
+\(z\)-coordinate. Because \[
+P(64z)=1+O(z),
+\] multiplication by \(P(64z)^{-1}\) induces on \(J_{2D}\) a
+lower-triangular target automorphism with diagonal entries \(1\). Thus
+it preserves rank and determinant nonvanishing.
+
+After dividing the source by \(P\), and using the \(\mathbf Q\)-basis \[
+1,z,\ldots,z^{D-1},
+\qquad
+\beta,z\beta,\ldots,z^{D-1}\beta,
+\] the coefficient matrix for orders \(0,1,\ldots,2D-1\) has block form
+\[
+\begin{pmatrix}
+I_D&T_D\\
+0&M_D^{(z)}
+\end{pmatrix},
+\] where the lower-right block is exactly \[
+(M_D^{(z)})_{i,j}=b_{D+i-j}.
+\] Hence the full \(2D\times2D\) coefficient determinant equals
+\(\det M_D^{(z)}\), and is nonzero by E3.
+
+The original polynomial source is written in powers of \(Y\), whereas
+the displayed matrix uses powers of \(z=Y/64\). The two polynomial bases
+differ by a nonzero diagonal rational rescaling, so this change does not
+affect linear independence. (Its \(2\)-adic determinant must of course
+be charged separately whenever one tracks the determinant in the
+unscaled \(Y\)-coordinate.)
+
+Therefore the first \(2D\) coefficient evaluations on \(\mathcal E_D\)
+are linearly independent for every \(D\).
+
+Under the rationality hypothesis, Section D gives the unipotent basis
+change \[
+(P,R_0)\longmapsto(P,K=R_0-GP),
+\] so the \(2D\) source directions split as exactly \(D\) directions of
+type \(P\) and \(D\) directions of type \(K\).
+
+\section{Section C --- Exact reflection Smith
+mass}\label{section-c-exact-reflection-smith-mass}
+
+\subsubsection{C1. Reflection matrix and exact entry
+valuations}\label{c1.-reflection-matrix-and-exact-entry-valuations}
+
+For \(0\le m\le r<D\), \[
+U_{r,m}
+=
+(-1)^m\frac{(m+\frac12)_{2(r-m)}}{(2(r-m))!},
+\] and \(U_{r,m}=0\) for \(m>r\).
+
+Put \(n=r-m\). Then \[
+(m+\tfrac12)_{2n}
+=2^{-2n}\prod_{j=0}^{2n-1}(2m+1+2j),
+\] and every factor in the product is odd. Hence \[
+v_2\bigl((m+\tfrac12)_{2n}\bigr)=-2n.
+\] Legendre's formula gives \[
+v_2((2n)!)=2n-s_2(2n)=2n-s_2(n).
+\] Therefore \[
+\boxed{
+v_2(U_{r,m})=-4(r-m)+s_2(r-m).
+}
+\] This also holds for \(r=m\), since both sides are \(0\).
+
+The matrix is lower triangular and \[
+U_{m,m}=(-1)^m.
+\] Consequently \[
+\boxed{
+\det U_D=(-1)^{D(D-1)/2}\in\{\pm1\}.
+}
+\]
+
+\subsubsection{C2. Universal lower bound for determinant terms and
+minors}\label{c2.-universal-lower-bound-for-determinant-terms-and-minors}
+
+Consider a nonzero determinant term in any \(k\times k\) minor. Write
+its matched row/column pairs as \((r_i,m_{\sigma(i)})\), and put \[
+d_i=r_i-m_{\sigma(i)}\ge0.
+\] Let \[
+I=\{i:d_i>0\},\qquad q=|I|,\qquad S=\sum_i d_i=\sum_{i\in I}d_i.
+\] The \(q\) positive source indices \(m_{\sigma(i)}\) are distinct
+elements of \(\{0,\ldots,D-1\}\), and so are the \(q\) positive target
+indices \(r_i\). Therefore \[
+\sum_{i\in I}r_i
+\le (D-q)+(D-q+1)+\cdots+(D-1),
+\] while \[
+\sum_{i\in I}m_{\sigma(i)}
+\ge 0+1+\cdots+(q-1).
+\] Subtracting gives \[
+\boxed{S\le q(D-q).}
+\]
+
+By C1, the valuation of the determinant term is \[
+-4S+\sum_i s_2(d_i).
+\] Every positive integer has binary digit sum at least \(1\), hence \[
+\sum_i s_2(d_i)\ge q.
+\] Thus every nonzero determinant term satisfies \[
+v_2(\text{term})
+\ge -4q(D-q)+q.
+\] Set \[
+h=\lfloor D/2\rfloor,
+\qquad c=\lceil D/2\rceil,
+\qquad
+R_D:=4hc-h.
+\] Equivalently, \[
+\boxed{R_D=D^2-\lceil D/2\rceil.}
+\] For every integer \(q\), \[
+4q(D-q)-q\le R_D.
+\] Indeed, if \(D=2h\), the difference is \[
+R_D-[4q(D-q)-q]
+=4(q-h)^2+(q-h)\ge0,
+\] and if \(D=2h+1\), it is \[
+R_D-[4q(D-q)-q]
+=4(q-h)^2-3(q-h)\ge0.
+\] (The displayed quadratic is nonnegative for every integer \(q-h\).)
+Hence every determinant term has valuation at least \(-R_D\), and by the
+ultrametric inequality every minor satisfies \[
+\boxed{
+v_2(\det M)\ge -R_D.
+}
+\] This is a sharp \emph{universal} lower bound over minors of all
+sizes. It is not, in general, the exact minimum for each fixed size
+\(k\).
+
+\subsubsection{C3. A minor attaining the
+bound}\label{c3.-a-minor-attaining-the-bound}
+
+The case \(D=1\) is immediate: \(U_1=[1]\) and \(R_1=0\). Assume
+\(D\ge2\), so \(h\ge1\).
+
+Take the \(h\times h\) minor \[
+M=(U_{c+i,j})_{0\le i,j<h},
+\] using rows \(c,c+1,\ldots,D-1\) and columns \(0,1,\ldots,h-1\). Put
+\[
+d_{ij}=c+i-j.
+\] All \(d_{ij}>0\). Define \[
+\widetilde M_{ij}=2^{4d_{ij}-1}M_{ij}.
+\] By C1, \[
+v_2(\widetilde M_{ij})=s_2(d_{ij})-1\ge0,
+\] so \(\widetilde M\in M_h(\mathbf Z_2)\). Modulo \(2\), \[
+\overline{\widetilde M}_{ij}
+=
+\begin{cases}
+1,&d_{ij}\text{ is a power of }2,\\
+0,&\text{otherwise}.
+\end{cases}
+\] (The sign \((-1)^j\) and all odd units reduce to \(1\) in
+\(\mathbf F_2\).)
+
+Moreover the normalization is a genuine row/column scaling: \[
+\widetilde M
+=
+\operatorname{diag}(2^{4(c+i)-1})_{i=0}^{h-1}
+\,M\,
+\operatorname{diag}(2^{-4j})_{j=0}^{h-1}.
+\] Hence \[
+v_2(\det\widetilde M)
+=
+v_2(\det M)+h(4c-1).
+\] It remains to show that \(\det\widetilde M\) is odd.
+
+Let \(a_n\in\mathbf F_2\) be the indicator that \(n\ge1\) is a power of
+\(2\). Reverse the order of the columns. If \(D=2h\), the reduced matrix
+becomes \[
+A_h=(a_{i+j+1})_{0\le i,j<h};
+\] if \(D=2h+1\), it becomes \[
+B_h=(a_{i+j+2})_{0\le i,j<h}.
+\] We prove simultaneously that every \(A_n\) and every \(B_n\) is
+nonsingular over \(\mathbf F_2\).
+
+The identities \[
+a_{2m}=a_m\quad(m\ge1),
+\qquad
+a_{2m+1}=0\quad(m\ge1),
+\qquad a_1=1
+\] are immediate.
+
+For \(B_n\), reorder rows and columns by parity of their indices. With
+\[
+e=\lceil n/2\rceil,
+\qquad o=\lfloor n/2\rfloor,
+\] one obtains the block diagonal matrix \[
+B_n\sim A_e\oplus B_o.
+\] Thus \(B_n\) is nonsingular once the smaller matrices on the right
+are.
+
+For \(A_n\), the same parity reordering gives \[
+A_n\sim
+\begin{pmatrix}
+E&C\\
+C^T&0
+\end{pmatrix},
+\] where \(E\) has a single \(1\) in its \((0,0)\)-entry and zeros
+elsewhere, and \[
+C_{p,q}=a_{p+q+1}.
+\] If \(n=2m\), then \(C=A_m\). If \(A_m\) is nonsingular, a vector in
+the kernel has even block zero from the lower equation and then odd
+block zero from the upper equation. Hence \(A_{2m}\) is nonsingular.
+
+If \(n=2m+1\), then \(C\) is \((m+1)\times m\). Its first \(m\) rows
+form \(A_m\), so \(C\) has full column rank. Its last \(m\) rows form
+\(B_m\). Suppose \((x,y)\) lies in the kernel. Then \[
+C^T x=0,
+\qquad
+x_0e_0+Cy=0.
+\] If \(x_0=0\), the first equation restricted to the last \(m\)
+coordinates gives \(B_m^Tx_{1:}=0\), hence \(x=0\), and then \(y=0\). If
+\(x_0=1\), the second equation says \(Cy=e_0\); deleting its first row
+gives \(B_my=0\), hence \(y=0\), contradiction. Thus the kernel is
+trivial.
+
+Starting from \(A_1=B_1=[1]\), strong induction proves that all
+\(A_n,B_n\) are nonsingular. Therefore \[
+\det\widetilde M\in\mathbf Z_2^\times,
+\qquad
+v_2(\det\widetilde M)=0.
+\] Consequently \[
+v_2(\det M)
+=-h(4c-1)
+=-4hc+h
+=-R_D.
+\] So the universal lower bound from C2 is attained.
+
+\subsubsection{C4. Smith exponents and exact
+mass}\label{c4.-smith-exponents-and-exact-mass}
+
+For \(0\le k\le D\), let \[
+\delta_k
+=
+\min\{v_2(\det N):N\text{ is a nonzero }k\times k\text{ minor of }U_D\},
+\] with \(\delta_0=0\). Smith theory over the DVR \(\mathbf Z_2\) gives
+\[
+\delta_k=e_1+\cdots+e_k.
+\] By C2, \(\delta_k\ge -R_D\) for every \(k\). By C3, the \(h\times h\)
+attaining minor gives \(\delta_h=-R_D\). Therefore \[
+\min_k\delta_k=-R_D.
+\] Since \(e_1\le\cdots\le e_D\), the minimum partial sum is exactly the
+sum of the negative Smith exponents. Hence \[
+\boxed{
+-\sum_{e_i<0}e_i=R_D=D^2-\lceil D/2\rceil.
+}
+\]
+
+From C1, \[
+\det U_D=(-1)^{D(D-1)/2},
+\] so \[
+\sum_i e_i=v_2(\det U_D)=0.
+\] Therefore \[
+\boxed{
+\sum_{e_i>0}e_i=R_D=D^2-\lceil D/2\rceil.
+}
+\]
+
+\section{Section B --- Christoffel--Darboux
+no-backflow}\label{section-b-christoffeldarboux-no-backflow}
+
+The following local theorem is proved:
+
+\[
+\boxed{
+\text{Intrinsic selected-mode Christoffel–Darboux transport is }
+2\text{-adically unimodular}.
+}
+\]
+
+For strictly increasing pivots \(1\le n_0<\cdots<n_{D-1}\), \[
+T_{ij}
+=
+\mathbf1_{j\le i}
+(\sigma_{n_j}-\rho_{n_j})
+q_{n_j}(1/2-n_i)q_{n_j}(1/2)
+\] satisfies \[
+\boxed{T_D\in GL_D(\mathbf Z_2)}
+\] and therefore \[
+\boxed{v_2(\det T_D)=0.}
+\]
+
+The proof consists of the uniform valuation \[
+v_2q_n(1/2-m)=-4n+2s_2(n),
+\] the projective depth from Section A \[
+v_2(\sigma_n-\rho_n)=8n-4s_2(n),
+\] and the exact compensation \[
+v_2\!\left(
+(\sigma_n-\rho_n)
+q_n(1/2-m)q_n(1/2)
+\right)=0.
+\]
+
+The Christoffel--Darboux identity \[
+(n+1)^2W_n(x,y)
+=
+(x-y)(x+y-1)
+\sum_{k=0}^nq_k(x)q_k(y)
+\] proves the required triangularity because the row indexed by \(n_i\)
+contains only modes \(k\le n_i\).
+
+If literal \(W_n\) rather than the normalized CD sum is used, row \(i\)
+is additionally multiplied by \[
+\frac{n_i^2}{(n_i+1)^2}.
+\] For consecutive pivots \(N,\ldots,N+D-1\), these factors telescope to
+\[
+\left(\frac{N}{N+D}\right)^2,
+\] so their \(2\)-adic determinant cost is \(O(\log D)\) when
+\(N=O(D)\). More generally, \(O(D)\)-range pivots give
+\(O(D\log D)=o(D^2)\).
+
+Thus the CD transport itself cannot pay back a positive proportion of
+the \(D^2\)-scale transverse \(2\)-adic resource.
+
+A global compatibility statement is additionally required to ensure that
+the same saturated integral source/quotient lattice survives subsequent
+pullback, Hermite, and basis changes. This compatibility is proved
+explicitly in Section K-Finite; the present CD theorem is the local
+input to that construction.
+
+\section{Section K-Finite --- Common determinant line and finite
+compatibility}\label{section-k-finite-common-determinant-line-and-finite-compatibility}
+
+\subsubsection{Audited and completed
+version}\label{audited-and-completed-version}
+
+\subsection{K1. General determinant-line
+identity}\label{k1.-general-determinant-line-identity}
+
+Let \[
+\psi:E\longrightarrow F
+\] be a rational linear isomorphism. At a place \(v\), let \(S_v\) and
+\(T_v\) be source and target basis matrices relative to fixed rational
+reference bases. Then \[
+\boxed{
+\log|\det(T_v^{-1}\psi S_v)|_v
+=
+\log|\det\psi|_v
++
+\log|\det S_v|_v
+-
+\log|\det T_v|_v.
+}
+\tag{K1.1}
+\]
+
+Thus:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  different local bases and lattices may be used at different places;
+\item
+  every local source and target basis determinant must be charged at
+  that place;
+\item
+  only a genuinely global rational basis change may be cancelled by the
+  product formula;
+\item
+  unrelated local changes of coordinates do not cancel automatically.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{K2. The single rational source and the exact fixed-fibre
+bridge}\label{k2.-the-single-rational-source-and-the-exact-fixed-fibre-bridge}
+
+Section D supplies \[
+\boxed{
+\mathcal E_D^{\rm abs}
+=
+\mathbf Q[Y]_{<D}e_P
+\oplus
+\mathbf Q[Y]_{<D}e_{R_0}.
+}
+\tag{K2.1}
+\]
+
+Its evaluation map is \[
+f e_P+g e_{R_0}\longmapsto fP+gR_0.
+\]
+
+Section E proves that the first \(2D\) coefficient functionals are
+independent.
+
+Under \(G\in\mathbf Q\), put \[
+e_K=e_{R_0}-Ge_P.
+\] Then \[
+(e_P,e_{R_0})\longleftrightarrow(e_P,e_K)
+\] is a global rational unipotent basis change of determinant exactly
+\(1\).
+
+The remaining invariant/coinvariant and integral rationality-basis
+discrepancies in D have logarithmic size only \(O(D)\), hence
+\(o(D^2)\).
+
+\subsubsection{K2.1 Exact identification of Section A's fixed modular
+fibre}\label{k2.1-exact-identification-of-section-as-fixed-modular-fibre}
+
+Write Section A's modular series as \[
+A_{\rm mod}(\zeta),\qquad B_{\rm mod}(\zeta).
+\]
+
+Define \[
+Y_0(t)=\sum_{n\ge0}q_n(1/2)t^n,
+\qquad
+Y_1(t)=\sum_{n\ge0}p_n(1/2)t^n.
+\]
+
+Section A gives \[
+A_{\rm mod}(\zeta)
+=(1-8\zeta)Y_0(16\zeta(1-4\zeta)),
+\tag{K2.2}
+\] \[
+16B_{\rm mod}(\zeta)
+=(1-8\zeta)Y_1(16\zeta(1-4\zeta)).
+\tag{K2.3}
+\]
+
+Put \[
+t=16\zeta(1-4\zeta),\qquad g=1-8\zeta.
+\] Then \[
+1-t=g^2.
+\tag{K2.4}
+\]
+
+At \(x=1/2\), the Padé recurrence gives \[
+\mathscr L_B
+=
+t(t-1)^2D_t^2
++(3t-1)(t-1)D_t
++t-\frac34
+\] with \[
+\mathscr L_BY_0=0,\qquad
+\mathscr L_BY_1=1.
+\tag{K2.5}
+\]
+
+For \[
+V(t)=\sqrt{1-t}\,Y(t),
+\] direct substitution gives \[
+\mathscr L_B((1-t)^{-1/2}V)
+=
+\frac{\sqrt{1-t}}4\,\mathscr QV,
+\tag{K2.6}
+\] where \[
+\mathscr Q
+=
+4t(1-t)D_t^2
++4(1-2t)D_t
+-1.
+\tag{K2.7}
+\]
+
+For \[
+V_0=\sqrt{1-t}\,Y_0
+\] we have \[
+\mathscr QV_0=0,\qquad
+V_0(0)=1,\qquad
+V_0'(0)=\frac14.
+\]
+
+Since \[
+P(Y)
+={}_2F_1\!\left(\frac12,\frac12;1;\frac Y4\right),
+\] the function \(P(4t)\) satisfies the same equation and initial data.
+Therefore \[
+\boxed{
+\sqrt{1-t}\,Y_0(t)=P(4t).
+}
+\tag{K2.8}
+\]
+
+Similarly, \[
+V_1=\sqrt{1-t}\,Y_1
+\] satisfies \[
+\mathscr QV_1=\frac4{\sqrt{1-t}},
+\qquad
+V_1(0)=0,\quad V_1'(0)=1.
+\tag{K2.9}
+\]
+
+The factored equation for \(R_0\), after \(Y=4t\), gives \[
+\mathscr Q R_0(4t)=\frac1{2\sqrt{1-t}}.
+\tag{K2.10}
+\]
+
+Since Section E gives \[
+R_0(Y)=\frac Y{32}+O(Y^2),
+\] the function \(8R_0(4t)\) has the same initial data as \(V_1\). Hence
+\[
+\boxed{
+\frac18\sqrt{1-t}\,Y_1(t)=R_0(4t).
+}
+\tag{K2.11}
+\]
+
+Consequently \[
+\boxed{
+A_{\rm mod}(\zeta)
+=
+P\!\left(64\zeta(1-4\zeta)\right),
+}
+\tag{K2.12}
+\] \[
+\boxed{
+2B_{\rm mod}(\zeta)
+=
+R_0\!\left(64\zeta(1-4\zeta)\right).
+}
+\tag{K2.13}
+\]
+
+Thus Section A's fixed projective fibre is literally a quadratic
+pullback of the same \((P,R_0)\)-source.
+
+Set \[
+z=\zeta(1-4\zeta).
+\] Because \[
+z=\zeta+O(\zeta^2),
+\] composition by this map on every finite jet space is triangular with
+diagonal \(1\). Its determinant is therefore \(1\).
+
+The only non-unit coordinate scale is \[
+Y=64z.
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{K3. The common saturated transverse quotient
+at
+\(p=2\)}{K3. The common saturated transverse quotient at p=2}}\label{k3.-the-common-saturated-transverse-quotient-at-p2}
+
+Work over \(\mathbf Q_2\) in \[
+z=\frac Y{64}.
+\]
+
+Define \[
+\beta(z)=\frac{R_0(64z)}{P(64z)}.
+\]
+
+Since \[
+P(64z)=1+O(z),
+\] division by \(P(64z)\) is a lower-triangular \(2\)-adic unit
+operation on jets.
+
+Using the source basis \[
+1,z,\ldots,z^{D-1},
+\qquad
+\beta,z\beta,\ldots,z^{D-1}\beta,
+\] Section E gives \[
+\begin{pmatrix}
+I_D&T_D\\
+0&M_D^{(z)}
+\end{pmatrix}.
+\tag{K3.1}
+\]
+
+Hence \[
+\Lambda_D^{\rm pol}
+=
+\langle1,z,\ldots,z^{D-1}\rangle_{\mathbf Z_2}
+\] is primitive and saturated, and \[
+\boxed{
+\mathcal Q_D
+=
+\Lambda_D^{(z)}/\Lambda_D^{\rm pol}
+}
+\tag{K3.2}
+\] is an explicit rank-\(D\) transverse lattice with basis represented
+by \[
+\beta,z\beta,\ldots,z^{D-1}\beta.
+\]
+
+Choose the consecutive CD pivots \[
+1,2,\ldots,D.
+\] The CD sum in row \(i\) contains the modes \(0,\ldots,i\). The
+selected modes are \(1,\ldots,i\), so the only nonselected mode is \[
+q_0=1,
+\] which lies in the polynomial block.
+
+Thus Section B's common-complement hypothesis is satisfied by the
+explicit saturated polynomial complement. No separate polynomial-witness
+conjecture is needed.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{K4. Exact CD
+factorization}\label{k4.-exact-cd-factorization}
+
+For \(i,j=1,\ldots,D\), define \[
+h_j=4^j(j!)^2.
+\tag{K4.1}
+\]
+
+Section B proves \[
+h_jq_j\!\left(\frac12-i\right)\in\mathbf Z_2^\times,
+\qquad
+h_jq_j\!\left(\frac12\right)\in\mathbf Z_2^\times.
+\tag{K4.2}
+\]
+
+Put \[
+r_{ij}=h_jq_j\!\left(\frac12-i\right),
+\qquad
+c_j=h_jq_j\!\left(\frac12\right),
+\] and \[
+L_D=(\mathbf1_{j\le i}r_{ij}),
+\qquad
+C_D^{(0)}=\operatorname{diag}(c_1,\ldots,c_D),
+\qquad
+H_D=\operatorname{diag}(h_1,\ldots,h_D).
+\tag{K4.3}
+\]
+
+Then \[
+L_D,C_D^{(0)}\in GL_D(\mathbf Z_2).
+\tag{K4.4}
+\]
+
+The unweighted selected-mode matrix is \[
+\boxed{
+\mathcal C_D
+=
+L_DC_D^{(0)}H_D^{-2}.
+}
+\tag{K4.5}
+\]
+
+Since \[
+v_2(h_j)=4j-2s_2(j)
+\] and \[
+v_2(\Delta_j)=8j-4s_2(j),
+\] we can write \[
+\Delta_j=u_jh_j^2,
+\qquad
+u_j\in\mathbf Z_2^\times.
+\tag{K4.6}
+\]
+
+Hence \[
+\boxed{
+\mathcal C_D
+\operatorname{diag}(\Delta_1,\ldots,\Delta_D)
+=
+L_DC_D^{(0)}
+\operatorname{diag}(u_1,\ldots,u_D)
+\in GL_D(\mathbf Z_2).
+}
+\tag{K4.7}
+\]
+
+This is the exact no-backflow statement on the explicit quotient
+\(\mathcal Q_D\).
+
+Put \[
+A_D=v_2(\det H_D).
+\] Then \[
+A_D
+=
+2D(D+1)-2S_D
+\tag{K4.8}
+\] and therefore \[
+\boxed{
+\Omega_D=2A_D.
+}
+\tag{K4.9}
+\]
+
+The literal \(W_n\) row normalization contributes only \(O(\log D)\) for
+these consecutive pivots.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{K5. Exact reflected Hermite
+factorization}\label{k5.-exact-reflected-hermite-factorization}
+
+After column reversal, Section E's scaled transverse Hermite matrix is
+\[
+(b_{i+j+1})_{0\le i,j<D}.
+\]
+
+Write \[
+(b_{i+j+1})=2V_D,
+\qquad
+V_D\in GL_D(\mathbf Z_2).
+\tag{K5.1}
+\]
+
+Here \(V_D\) is unrelated to Section C's reflection matrix.
+
+Set \[
+A_{64}
+=
+\operatorname{diag}
+(1,64^{-1},\ldots,64^{-(D-1)}).
+\tag{K5.2}
+\]
+
+Returning to the unscaled coordinate \(Y=64z\), the transverse matrix is
+exactly \[
+\boxed{
+\mathcal H_D
+=
+\frac1{32}A_{64}V_DA_{64}.
+}
+\tag{K5.3}
+\]
+
+Put \[
+B_D=-v_2(\det A_{64})
+=3D(D-1).
+\tag{K5.4}
+\]
+
+Therefore \[
+v_2(\det\mathcal H_D)
+=
+-5D-2B_D
+=
+-6D^2+D,
+\] and \[
+\boxed{
+H_D^{\rm ref}=6D^2-D.
+}
+\tag{K5.5}
+\]
+
+The entire quadratic \(Y/64\) cost is visible in (K5.3), and must not be
+charged again.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{K6. K-COMPAT: explicit common determinant-line
+comparison}\label{k6.-k-compat-explicit-common-determinant-line-comparison}
+
+For the Hermite presentation define \[
+S_H=A_{64}^{-1}V_D^{-1},
+\qquad
+T_H=A_{64}.
+\tag{K6.1}
+\]
+
+Then \[
+\boxed{
+T_H^{-1}\mathcal H_DS_H
+=
+\frac1{32}I_D.
+}
+\tag{K6.2}
+\]
+
+For the CD presentation define \[
+S_C
+=
+\frac1{32}H_D(C_D^{(0)})^{-1}L_D^{-1},
+\tag{K6.3}
+\] \[
+T_C
+=
+L_DH_D^{-1}L_D^{-1}.
+\tag{K6.4}
+\]
+
+Then \[
+\boxed{
+T_C^{-1}\mathcal C_DS_C
+=
+\frac1{32}I_D.
+}
+\tag{K6.5}
+\]
+
+Set \[
+S=S_HS_C^{-1},
+\qquad
+T=T_HT_C^{-1}.
+\tag{K6.6}
+\]
+
+It follows that \[
+\boxed{
+\mathcal C_D=T^{-1}\mathcal H_DS.
+}
+\tag{K6.7}
+\]
+
+Thus the CD and reflected Hermite matrices are explicit local
+presentations of the same rational transverse isomorphism.
+
+\subsubsection{K6.1 Source transition}\label{k6.1-source-transition}
+
+We have \[
+v_2(\det S_H)=B_D,
+\] and \[
+v_2(\det S_C)=A_D-5D.
+\]
+
+Therefore \[
+\begin{aligned}
+v_2(\det S)
+&=B_D-A_D+5D\\
+&=\boxed{D^2+2S_D}.
+\end{aligned}
+\tag{K6.8}
+\]
+
+Hence \[
+\boxed{
+v_2(\det S)
+=
+R_D+O(D\log D).
+}
+\tag{K6.9}
+\]
+
+\subsubsection{K6.2 Target transition}\label{k6.2-target-transition}
+
+Similarly, \[
+v_2(\det T_C)=-A_D,
+\qquad
+v_2(\det T_H)=-B_D,
+\] so \[
+\boxed{
+v_2(\det T)
+=
+-D^2+5D-2S_D.
+}
+\tag{K6.10}
+\]
+
+Therefore the adverse target mass is \[
+\boxed{
+-v_2(\det T)
+=
+R_D+O(D\log D).
+}
+\tag{K6.11}
+\]
+
+These are the two actual quadratic compatibility costs. They are not
+asserted to be literally Section C's reflection matrix.
+
+\subsubsection{K6.3 Reconciliation
+identity}\label{k6.3-reconciliation-identity}
+
+From K1 and (K6.7), \[
+v_2(\det\mathcal C_D)-v_2(\det\mathcal H_D)
+=
+v_2(\det S)-v_2(\det T).
+\]
+
+Hence \[
+\boxed{
+H_D^{\rm ref}-\Omega_D
+=
+2D^2-5D+4S_D.
+}
+\tag{K6.12}
+\]
+
+Subtracting two reflection masses, \[
+\boxed{
+H_D^{\rm ref}-\Omega_D-2R_D
+=
+4S_D-5D+2\lceil D/2\rceil
+=
+O(D\log D).
+}
+\tag{K6.13}
+\]
+
+This is now a consequence of the explicit determinant-line comparison,
+not merely a numerical coincidence.
+
+Thus \textbf{K-COMPAT is proved}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{K7. The \(p=2\) reflection
+budget}{K7. The p=2 reflection budget}}\label{k7.-the-p2-reflection-budget}
+
+Section A supplies \[
+\Omega_D\log2
+=
+4\log2\,D^2+o(D^2).
+\]
+
+K6 accounts for two actual compatibility transitions with total adverse
+mass \[
+2R_D\log2+o(D^2).
+\]
+
+Retain one additional complete mass \[
+R_D\log2
+\] as conservative reserve for any eliminated/free complement
+normalization not used in the transverse comparison.
+
+Therefore \[
+\boxed{
+\text{total reflection-scale charge}
+\le
+3R_D\log2+o(D^2).
+}
+\tag{K7.1}
+\]
+
+Since \[
+R_D=D^2+O(D),
+\] \[
+\Omega_D-3R_D
+=
+D^2+o(D^2),
+\] and hence \[
+\boxed{
+C_{2,\mathrm{eff}}=\log2.
+}
+\tag{K7.2}
+\]
+
+No fourth quadratic \(2\)-adic transition appears.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Section G --- Odd-prime denominator
+theorem}\label{section-g-odd-prime-denominator-theorem}
+
+\subsubsection{G1. The depth-zero
+direction}\label{g1.-the-depth-zero-direction}
+
+Since \[
+p_n=\binom{2n}{n}^2\in\mathbf Z,
+\] the coefficients of \(P(64z)\) are integral.
+
+Passing from \(z\) to \(Y=64z\) introduces only powers of \(2\). Hence
+at every odd prime \(p\), \[
+P(Y)
+\] has denominator depth \(0\).
+
+Thus the first source direction has odd-prime profile \[
+\boxed{\sigma_1=0.}
+\]
+
+\subsubsection{\texorpdfstring{G2. Exact odd-prime denominator theorem
+for
+\(R_0\)}{G2. Exact odd-prime denominator theorem for R\_0}}\label{g2.-exact-odd-prime-denominator-theorem-for-r_0}
+
+Put \[
+d_n=\operatorname{lcm}(1,\dots,n).
+\]
+
+We prove directly from (G.1) that \[
+\boxed{
+d_n^2r_n\in\mathbf Z_{(2)}
+}
+\] for every \(n\), where \(\mathbf Z_{(2)}\) denotes the rationals
+integral at every odd prime.
+
+Fix an odd prime \(p\), and put \[
+e=e_p(n):=v_p(d_n)
+=\max\{j:p^j\le n\}.
+\]
+
+For \(0\le m<n\), write \[
+a=v_p(2m+1),
+\] and let \[
+c_p(t)
+=
+v_p\binom{2t}{t}.
+\] By Kummer's theorem, \(c_p(t)\) is the number of carries occurring
+when \(t+t\) is added in base \(p\).
+
+The \(m\)-th summand of \(r_n\) has \(p\)-adic valuation \[
+2c_p(n)-2a-c_p(m),
+\] because \(2\) and \(4\) are \(p\)-adic units. Thus after
+multiplication by \(d_n^2\) its valuation is \[
+2e+2c_p(n)-2a-c_p(m).
+\tag{G.3}
+\]
+
+It remains to prove that (G.3) is nonnegative.
+
+Since \[
+p^a\mid 2m+1,
+\] we have \[
+m\equiv\frac{p^a-1}{2}\pmod{p^a}.
+\] Therefore the lowest \(a\) base-\(p\) digits of \(m\) are all \[
+\frac{p-1}{2}.
+\] Adding \(m+m\) produces no carry in any of these lowest \(a\)
+positions.
+
+Since \[
+m<n<p^{e+1},
+\] there are at most \(e+1-a\) remaining positions in which a carry can
+occur. Hence \[
+c_p(m)\le e+1-a.
+\tag{G.4}
+\]
+
+Also \[
+2m+1<2p^{e+1}<p^{e+2},
+\] because \(p\ge3\), and therefore \[
+a\le e+1.
+\]
+
+If \[
+a\le e-1,
+\] then by (G.4) \[
+2a+c_p(m)
+\le
+2a+e+1-a
+=
+e+a+1
+\le2e.
+\] Thus (G.3) is nonnegative.
+
+Suppose next that \[
+a=e.
+\] Then \(c_p(m)\le1\). If \(c_p(m)=0\), the claim is immediate. If
+\(c_p(m)=1\), the only possible carry is in the top base-\(p\) digit.
+Writing \[
+m
+=
+d\,p^e+\frac{p^e-1}{2},
+\] that carry implies \[
+2d\ge p.
+\] Consequently \[
+m>\frac{p^{e+1}}2.
+\] Since \(n>m\), \[
+n>\frac{p^{e+1}}2,
+\] so \(n+n\) has a carry out of its top digit and therefore \[
+c_p(n)\ge1.
+\] Hence \[
+2e+2c_p(n)\ge2e+2>2e+1
+\ge2a+c_p(m).
+\]
+
+Finally suppose \[
+a=e+1.
+\] Because \(0\le m<p^{e+1}\), \[
+m=\frac{p^{e+1}-1}{2}.
+\] There are no carries in \(m+m\), so \[
+c_p(m)=0.
+\] Again \(n>m\) implies \[
+n>\frac{p^{e+1}}2,
+\] and hence \[
+c_p(n)\ge1.
+\] Therefore \[
+2e+2c_p(n)
+\ge
+2e+2
+=
+2a.
+\]
+
+All cases give \[
+2e+2c_p(n)-2a-c_p(m)\ge0.
+\] Thus each summand of \(d_n^2r_n\) is \(p\)-integral, and so \[
+\boxed{
+d_n^2r_n\in\mathbf Z_p
+\qquad(p\text{ odd}).
+}
+\tag{G.5}
+\]
+
+Since \(p\) was arbitrary, \[
+\boxed{
+d_n^2r_n\in\mathbf Z_{(2)}.
+}
+\]
+
+\paragraph{Sharpness}\label{sharpness}
+
+Take \(n=p\) for an odd prime \(p\). Then \[
+v_p\binom{2p}{p}=0.
+\]
+
+For \[
+m_0=\frac{p-1}{2},
+\] one has \[
+v_p(2m_0+1)=1,
+\qquad
+v_p\binom{2m_0}{m_0}=0.
+\] Hence the \(m_0\)-summand in (G.1) has valuation exactly \[
+-2.
+\]
+
+For every other \(0\le m<p\), \[
+v_p(2m+1)=0,
+\] while \[
+v_p\binom{2m}{m}\le1.
+\] Thus every other summand has valuation at least \(-1\).
+
+The valuation \(-2\) is therefore attained uniquely and cannot cancel.
+Hence \[
+\boxed{
+v_p(r_p)=-2
+\qquad(p\text{ odd prime}).
+}
+\tag{G.6}
+\]
+
+Thus the second source direction has genuine odd-prime depth exactly
+\(2\): \[
+\boxed{\sigma_2=2.}
+\]
+
+Because \(Y=64z\) differs from \(z\) only by a power of \(2\),
+(G.5)--(G.6) are unchanged in the unscaled \(Y\)-coordinate.
+
+Consequently the reflected rank-two source has the exact odd-prime
+denominator profile \[
+\boxed{(0,2).}
+\]
+
+\subsubsection{G3. Compatibility with the reflection quotient and
+rationality
+basis}\label{g3.-compatibility-with-the-reflection-quotient-and-rationality-basis}
+
+Section D gives \[
+W_D
+=
+R_D[A]\oplus R_D[B]
+\] as the integral coinvariant quotient.
+
+The invariant lattice maps to \(W_D\) with cokernel \[
+(\mathbf Z/2\mathbf Z)^D.
+\] Therefore for every odd prime \(p\), invariants and coinvariants
+define the same \(\mathbf Z_p\)-lattice.
+
+Under \[
+G=\frac ab,
+\qquad
+\gcd(a,b)=1,
+\] Section D gives \[
+[H_+]=2b[B]-a[A].
+\] The corresponding one-slot transition matrix has determinant \(2b\),
+so across \(D\) polynomial slots its determinant is \[
+(2b)^D.
+\] Its logarithmic contribution is \[
+D\log(2b)=O(D)=o(D^2).
+\]
+
+Equivalently, after descent, \[
+[H_+]\longmapsto bK,
+\qquad
+bK=bR_0-aP.
+\] Since \(P\) has depth \(0\) and \(R_0\) has depth \(2\), \[
+bK
+\] has depth at most \(2\). At every odd prime not dividing the fixed
+integer \(b\), (G.6) shows that the depth-\(2\) layer remains sharp. The
+finitely many primes dividing \(b\) affect only the \(O(D)\) fixed-basis
+term and do not alter the \(D^2\)-coefficient.
+
+Hence the rationality-adapted rank-two source has asymptotic odd-prime
+profile \[
+\boxed{(0,2).}
+\]
+
+\subsubsection{G4. CDT denominator
+rearrangement}\label{g4.-cdt-denominator-rearrangement}
+
+Represent the denominator type by two identical columns \[
+\mathbf b
+=
+\begin{pmatrix}
+0&0\\
+1&1
+\end{pmatrix}.
+\] The row sums are \[
+(\sigma_1,\sigma_2)=(0,2).
+\]
+
+For \(m=2\), (G.2) gives \[
+\tau
+=
+\frac{1\cdot0+3\cdot2}{4}
+=
+\boxed{\frac32}.
+\]
+
+In the polynomial-source filtration used here, there are \(mD=2D\)
+source directions. The standard CDT/Bost \(D^2\)-normalization converts
+the rearranged denominator rate by \[
+\frac{m^2}{2}\tau.
+\] For \(m=2\), \[
+\frac{m^2}{2}\tau
+=
+2\tau
+=
+2\cdot\frac32
+=
+\boxed3.
+\]
+
+Equivalently, the relevant filtration has \(2D\) successive orders,
+whose total size is \[
+0+1+\cdots+(2D-1)
+=
+2D^2-D,
+\] so the normalized leading scale carries the factor \(m^2/2=2\).
+
+Thus the odd-prime denominator term charged in the global slopes ledger
+is \[
+\boxed{
+3D^2+o(D^2).
+}
+\]
+
+This is the CDT denominator \textbf{upper cost}. No assertion that every
+actual determinant has precisely this denominator is required.
+
+\subsubsection{\texorpdfstring{G5. Exclusion of
+\(p=2\)}{G5. Exclusion of p=2}}\label{g5.-exclusion-of-p2}
+
+Define the odd part of the lcm by \[
+d_n^{\rm odd}
+=
+\frac{d_n}{2^{\lfloor\log_2n\rfloor}}.
+\] Then \[
+\log d_n^{\rm odd}
+=
+\log d_n
+-
+\lfloor\log_2n\rfloor\log2.
+\]
+
+Since \[
+\log d_n=\psi(n)=n+o(n),
+\] removing the prime \(2\) changes the logarithm at order \(n\) by only
+\[
+O(\log n).
+\] Across \(O(D)\) coefficient orders this contributes \[
+O(D\log D)=o(D^2).
+\]
+
+Therefore deleting \(p=2\) does not alter the leading odd-prime
+denominator coefficient.
+
+All \(2\)-adic reflection, Smith, averaging, Hermite, and no-backflow
+terms are to be charged separately in Sections A--F. There is no double
+counting.
+
+\section{Section H --- Analytic continuation of the actual fold
+channel}\label{section-h-analytic-continuation-of-the-actual-fold-channel}
+
+\subsubsection{H0. Local coefficient
+lemma}\label{h0.-local-coefficient-lemma}
+
+Put \[
+z=\frac{Y}{64}.
+\] The conditional \(K\)-germ at \(Y=0\) has the exact expansion \[
+\boxed{
+K(64z)
+=
+\sum_{n\ge0}\binom{2n}{n}^2
+\left[
+-G+
+\frac12\sum_{m=0}^{n-1}
+\frac{4^m}{(2m+1)^2\binom{2m}{m}}
+\right]z^n .
+}
+\tag{H0.1}
+\]
+
+This is the only extra local datum not contained in Section D.
+
+We will also need the classical inverse-central-binomial identity \[
+\boxed{
+\sum_{m=0}^{\infty}
+\frac{4^m}{(2m+1)^2\binom{2m}{m}}
+=2G.
+}
+\tag{H0.2}
+\]
+
+For completeness, (H0.2) has a short direct proof. Since \[
+\frac{1}{(2m+1)\binom{2m}{m}}
+=
+\int_0^1 t^m(1-t)^m\,dt
+\] and \[
+\frac1{2m+1}=\int_0^1x^{2m}\,dx,
+\] monotone convergence gives \[
+\begin{aligned}
+\sum_{m\ge0}
+\frac{4^m}{(2m+1)^2\binom{2m}{m}}
+&=
+\int_0^1\!\!\int_0^1
+\frac{dt\,dx}{1-4t(1-t)x^2}\\
+&=
+\int_0^1
+\frac{\arcsin x}{x\sqrt{1-x^2}}\,dx\\
+&=
+\int_0^{\pi/2}\frac{\theta}{\sin\theta}\,d\theta\\
+&=
+-2\int_0^{\pi/4}\log(\tan u)\,du\\
+&=2G.
+\end{aligned}
+\]
+
+Subtracting (H0.2) from the finite sum in (H0.1) therefore gives the
+exact tail form \[
+\boxed{
+K(64z)
+=
+-\frac12\sum_{n\ge0}
+\binom{2n}{n}^2
+\left(
+\sum_{m=n}^{\infty}
+\frac{4^m}{(2m+1)^2\binom{2m}{m}}
+\right)z^n .
+}
+\tag{H0.3}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{H1. Differential
+equation}\label{h1.-differential-equation}
+
+Let \[
+c_n=[z^n]K(64z).
+\] Using \[
+\frac{\binom{2n+2}{n+1}}{\binom{2n}{n}}
+=
+\frac{2(2n+1)}{n+1}
+\] together with the first-difference relation for the partial sums in
+(H0.1), direct elimination gives \[
+\boxed{
+(n+1)(n+2)^2c_{n+2}
+-
+4(n+1)(8n^2+18n+11)c_{n+1}
++
+32(2n+1)^3c_n
+=0.
+}
+\tag{H1.1}
+\]
+
+Equivalently, if \[
+K(Y)=\sum_{n\ge0}k_nY^n,
+\qquad c_n=64^nk_n,
+\] then \[
+128(n+1)(n+2)^2k_{n+2}
+-
+8(n+1)(8n^2+18n+11)k_{n+1}
++
+(2n+1)^3k_n
+=0.
+\tag{H1.2}
+\]
+
+Coefficient extraction is equivalent to \[
+\boxed{
+8Y(Y-4)^2K'''
++4(Y-4)(9Y-16)K''
++2(13Y-44)K'
++K=0.
+}
+\tag{H1.3}
+\]
+
+As an independent algebraic check, the operator factors exactly as \[
+\boxed{
+\bigl[-2(Y-4)D_Y-1\bigr]
+\circ
+\bigl[
+4Y(4-Y)D_Y^2+(16-8Y)D_Y-1
+\bigr].
+}
+\tag{H1.4}
+\]
+
+Hence the only finite singular points of the scalar equation are \[
+Y=0,\qquad Y=4.
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{H2. Local exponents at
+\(Y=4\)}{H2. Local exponents at Y=4}}\label{h2.-local-exponents-at-y4}
+
+Put \(t=Y-4\) and insert \[
+K\sim t^\rho.
+\] The lowest-order terms are \[
+32t^2K'''+80tK''+16K',
+\] so the indicial coefficient is \[
+\begin{aligned}
+&32\rho(\rho-1)(\rho-2)
++80\rho(\rho-1)
++16\rho\\
+&\qquad=
+16\rho^2(2\rho-1).
+\end{aligned}
+\] After removing the nonzero scalar \(16\), the indicial polynomial is
+\[
+\boxed{\rho^2(2\rho-1)}.
+\] Thus the local exponents are \[
+\boxed{0,\quad0,\quad\frac12}.
+\]
+
+Because the exponent \(0\) is repeated, a logarithmic Frobenius solution
+is possible a priori.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{H3. Exact coefficient asymptotic and exclusion of the
+logarithm}\label{h3.-exact-coefficient-asymptotic-and-exclusion-of-the-logarithm}
+
+Write \[
+q_m=
+\frac{4^m}{(2m+1)^2\binom{2m}{m}}.
+\] Stirling's formula gives \[
+\binom{2m}{m}
+=
+\frac{4^m}{\sqrt{\pi m}}
+\left(1+O(m^{-1})\right),
+\] and hence \[
+q_m
+=
+\frac{\sqrt\pi}{4}\,m^{-3/2}
+\left(1+O(m^{-1})\right).
+\] Therefore \[
+\sum_{m=n}^{\infty}q_m
+=
+\frac{\sqrt\pi}{2}\,n^{-1/2}
+\left(1+O(n^{-1})\right).
+\tag{H3.1}
+\]
+
+Also \[
+\binom{2n}{n}^2
+=
+\frac{16^n}{\pi n}
+\left(1+O(n^{-1})\right).
+\tag{H3.2}
+\] Combining (H0.3), (H3.1), and (H3.2) gives \[
+\boxed{
+[z^n]K(64z)
+=
+-\frac{16^n}{4\sqrt\pi\,n^{3/2}}
+\left(1+O(n^{-1})\right).
+}
+\tag{H3.3}
+\]
+
+In particular, \[
+\limsup_{n\to\infty}|[z^n]K(64z)|^{1/n}=16,
+\] so the radius of convergence in \(z\) is \(1/16\), equivalently the
+radius in the unscaled \(Y\)-coordinate is \(4\).
+
+By H1 the only nonzero finite singular point of the differential
+equation is \(Y=4\). Thus \(Y=4\) is the unique possible dominant finite
+singularity of the germ centered at \(Y=0\).
+
+Now suppose the chosen \(K\)-solution had a nonzero logarithmic
+connection coefficient at \(Y=4\). A Frobenius logarithmic term has the
+form \[
+c\,H(Y)\log(1-Y/4),
+\qquad H(4)\ne0,\quad c\ne0.
+\] In the \(z\)-coordinate \(Y=64z\), singularity analysis gives \[
+[z^n]\bigl(cH(64z)\log(1-16z)\bigr)
+=
+-cH(4)\frac{16^n}{n}
++O\!\left(\frac{16^n}{n^2}\right).
+\tag{H3.4}
+\] Because \(Y=4\) is the unique dominant finite singularity, there is
+no second same-modulus singularity from which such an \(n^{-1}\)
+contribution could cancel.
+
+But (H3.3) is of exact order \[
+16^n n^{-3/2},
+\] which is strictly smaller than \(16^n n^{-1}\). Hence \(c=0\).
+
+Therefore the logarithmic connection coefficient vanishes, and in a
+neighborhood of \(Y=4\) \[
+\boxed{
+K(Y)
+=
+A_0(Y)
++
+\sqrt{1-Y/4}\,A_1(Y),
+}
+\tag{H3.5}
+\] with \(A_0,A_1\) holomorphic there.
+
+This proves the required connection statement exactly.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{H4. Quadratic
+desingularization}\label{h4.-quadratic-desingularization}
+
+Set \[
+\boxed{
+F(U)=4U-U^2=4-(U-2)^2.
+}
+\] Then \[
+1-\frac{F(U)}4
+=
+\frac{(U-2)^2}{4}.
+\] Consequently the square-root term in (H3.5) becomes holomorphic after
+composition with \(F\).
+
+Define, initially as a germ at \(U=0\), \[
+g(U)=K(F(U)).
+\] Using the chain rule in (H1.3) gives exactly \[
+\boxed{
+U(U-2)(U-4)g'''
++
+2(3U^2-12U+8)g''
++
+7(U-2)g'
++
+g
+=0.
+}
+\tag{H4.1}
+\]
+
+The finite singular points of this pulled-back scalar equation are \[
+U=0,\qquad U=2,\qquad U=4.
+\]
+
+For the particular solution \(g\):
+
+\begin{itemize}
+\tightlist
+\item
+  \(U=0\) is removable because \(F(0)=0\) and the chosen \(K\)-germ is
+  holomorphic at \(Y=0\);
+\item
+  \(U=2\) is removable by (H3.5) and \[
+  \sqrt{1-F(U)/4}=\pm\frac{U-2}{2}
+  \] locally;
+\item
+  no claim about regularity at \(U=4\) is required.
+\end{itemize}
+
+Thus the chosen germ \(g\) analytically continues holomorphically
+throughout \[
+\boxed{
+\Omega_U=\mathbf C\setminus[4,\infty).
+}
+\tag{H4.2}
+\] Indeed, the only potential interior singularities of the pulled-back
+equation in this simply connected domain are \(0\) and \(2\), and both
+are removable for \(g\).
+
+This is the precise continuation statement needed below.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{H5. Base and fold maps}\label{h5.-base-and-fold-maps}
+
+Define \[
+\boxed{
+\phi_b(z)=\frac{16z}{(1+z)^2}.
+}
+\] This uniformizes the slit plane \(\Omega_U\). One convenient
+verification is to put \[
+q=\frac{1-z}{1+z}.
+\] For \(|z|<1\), \(\Re q>0\), and \[
+\phi_b(z)=4(1-q^2).
+\] Since squaring maps the right half-plane biholomorphically onto
+\(\mathbf C\setminus(-\infty,0]\), \[
+\boxed{
+\phi_b(\mathbb D)=\mathbf C\setminus[4,\infty).
+}
+\tag{H5.1}
+\]
+
+Now set \[
+\phi_f=F\circ\phi_b.
+\] A direct calculation gives \[
+\boxed{
+\phi_f(z)
+=
+\frac{64z(1-z)^2}{(1+z)^4}.
+}
+\tag{H5.2}
+\] Also \[
+\boxed{
+\phi_b'(0)=16,
+\qquad
+\phi_f'(0)=64.
+}
+\tag{H5.3}
+\]
+
+Because \(g\) is holomorphic on \(\Omega_U\), (H5.1) implies \[
+g(\phi_b(z))
+\] is holomorphic for \(|z|<1\). As germs at \(z=0\), \[
+g(\phi_b(z))
+=
+K(F(\phi_b(z)))
+=
+K(\phi_f(z)).
+\] Hence, with the right-hand side interpreted by analytic continuation
+from the germ at \(z=0\), \[
+\boxed{
+K(\phi_f(z))
+=
+g(\phi_b(z))
+\quad\text{is holomorphic for }|z|<1.
+}
+\tag{H5.4}
+\]
+
+This proves that the fold is carried by the actual conditional
+\(K\)-channel.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{H6. Coordinate and normalization
+warning}\label{h6.-coordinate-and-normalization-warning}
+
+The construction above must not be confused with the older fixed-fold
+modular quotient.
+
+Here \[
+U\longmapsto Y=F(U)=4U-U^2
+\] is introduced only as an auxiliary quadratic cover that removes the
+square-root monodromy of the \textbf{already constructed
+reflection-channel function \(K(Y)\)}.
+
+No assertion is made that \(U\) is a modular quotient coordinate, nor
+that \(F\) identifies the reflection quotient with the older fixed-fold
+quotient.
+
+Accordingly, the previously identified common-coordinate obstruction for
+the old fixed-fold construction is avoided: the present statement is
+simply the analytic pullback \[
+K(Y)\longmapsto K(F(U))
+\] inside the same \(Y\)-channel.
+
+There is also no \(Y\mapsto Y/4\) rescaling here. For the unscaled
+reflection coordinate the base slit map itself is \[
+Y=\frac{16z}{(1+z)^2},
+\] with derivative \(16\) at the origin. Therefore the value
+\(\phi_f'(0)=64\) must be compared with the unscaled base derivative
+\(16\), not with the obsolete derivative-\(4\) normalization.
+
+This proves that the displayed fold map is a valid analytic map for the
+\(K\)-channel. No assertion of uniqueness or maximality of the
+continuation map is needed.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Section I --- Mixed Bost energies and evaluation
+heights}\label{section-i-mixed-bost-energies-and-evaluation-heights}
+
+\subsubsection{I1. Uniformization and exact first
+contact}\label{i1.-uniformization-and-exact-first-contact}
+
+Put \[
+q=\frac{1-z}{1+z}.
+\] The unit disk is mapped by \(q\) to the right half-plane, and \[
+\phi_b(z)=4(1-q^2).
+\] Since squaring maps the right half-plane biholomorphically onto
+\(\mathbf C\setminus(-\infty,0]\), it follows that \[
+\phi_b(\mathbb D)=\mathbf C\setminus[4,\infty).
+\] On \(\mathbb T\), \(q\) is purely imaginary, so
+\(\phi_b(\mathbb T)=[4,\infty]\).
+
+For the fold, define \[
+a(t)=\frac{4t}{(1-t)^2}.
+\] A direct calculation gives the stronger identity \[
+\boxed{\phi_f(t)=\phi_b(a(t)).}
+\] Indeed, \[
+\phi_b\!\left(\frac{4t}{(1-t)^2}\right)
+=\frac{64t(1-t)^2}{(1+t)^4}.
+\] For \(|t|=r<1\), \[
+|a(t)|\le \frac{4r}{(1-r)^2},
+\] with equality at the positive real point \(t=r\). Hence the fold
+image stays in the base slit complement exactly while \[
+\frac{4r}{(1-r)^2}<1.
+\] First contact therefore occurs at the unique root in \((0,1)\) of \[
+4r=(1-r)^2,
+\] namely \[
+\boxed{r_0=3-2\sqrt2=(\sqrt2-1)^2.}
+\] At that point \(a(r_0)=1\), so \[
+\phi_f(r_0)=\phi_b(1)=4.
+\] This proves that the contact at the positive real point is genuinely
+the first contact; there is no earlier off-axis contact.
+
+Since \[
+r_0=(1+\sqrt2)^{-2},
+\] we obtain on the positive real branch \[
+L=-\log r_0
+=2\log(1+\sqrt2)
+=\log(3+2\sqrt2)
+=\boxed{\operatorname{arcosh}3}.
+\]
+
+Equivalently, eliminating \(a\) gives \[
+16r(1-r)^2=(1+r)^4,
+\] whose reciprocal quartic reduces after \(u=r+r^{-1}\) to
+\((u-6)^2=0\).
+
+\subsubsection{I2. Exact first-contact mixed
+energy}\label{i2.-exact-first-contact-mixed-energy}
+
+Define \[
+T(r)=\iint_{\mathbb T^2}
+\log|\phi_b(z)-\phi_f(rw)|\,d\mu(z)d\mu(w).
+\] For \(|a|\le1\), the exact factorization \[
+\phi_b(z)-\phi_b(a)
+=
+\frac{16(z-a)(1-az)}{(1+z)^2(1+a)^2}
+\] and Jensen's/Haar mean identities give \[
+\int_{\mathbb T}
+\log|\phi_b(z)-\phi_b(a)|\,d\mu(z)
+=\log16-2\log|1+a|.
+\tag{I.1}
+\] (The boundary case \(|a|=1\) is obtained directly by the same
+integrable logarithmic means.)
+
+For \(0\le r\le r_0\), put \(t=rw\) and use \(\phi_f(t)=\phi_b(a(t))\).
+Moreover \[
+1+a(t)
+=1+\frac{4t}{(1-t)^2}
+=\frac{(1+t)^2}{(1-t)^2}.
+\] Therefore \[
+\int_{\mathbb T}\log|1+a(rw)|\,d\mu(w)
+=2\int_{\mathbb T}\log|1+rw|\,d\mu(w)
+-2\int_{\mathbb T}\log|1-rw|\,d\mu(w)
+=0,
+\] because \(r<1\). Averaging (I.1) gives the stronger statement \[
+\boxed{T(r)=\log16\qquad(0\le r\le r_0).}
+\] In particular, \[
+\boxed{T(r_0)=\log16=4\log2.}
+\]
+
+\subsubsection{I3. Exact endpoint
+energy}\label{i3.-exact-endpoint-energy}
+
+Write \[
+z=e^{2ia},\qquad w=e^{2ib},
+\] with \(a,b\) uniform modulo \(\pi\). Then \[
+\phi_b(e^{2ia})=4\sec^2a,
+\] and \[
+\phi_f(e^{2ib})=-16\tan^2b\,\sec^2b.
+\] Let \[
+X=\tan a,\qquad Y=\tan b.
+\] Then \(X,Y\) are independent standard Cauchy variables, so \[
+T(1)
+=\log4+
+\mathbf E\log\!\left(1+X^2+4Y^2+4Y^4\right).
+\] Since \[
+1+4Y^2+4Y^4=(1+2Y^2)^2,
+\] this is \[
+T(1)
+=\log4+
+\mathbf E\log\!\left(X^2+(1+2Y^2)^2\right).
+\] For \(A>0\), \[
+\frac1\pi\int_{-\infty}^{\infty}
+\frac{\log(x^2+A^2)}{1+x^2}\,dx
+=2\log(1+A).
+\tag{I.2}
+\] Applying (I.2) first in \(X\), with \(A=1+2Y^2\), gives \[
+\mathbf E_X\log\!\left(X^2+(1+2Y^2)^2\right)
+=2\log(2+2Y^2)
+=2\log2+2\log(1+Y^2).
+\] Applying (I.2) again with \(A=1\) gives \[
+\mathbf E\log(1+Y^2)=2\log2.
+\] Hence \[
+\boxed{T(1)=8\log2.}
+\]
+
+For the base self-energy, use the same factorization with
+\(a=w\in\mathbb T\). Averaging first in \(z\) and then in \(w\), \[
+\iint_{\mathbb T^2}
+\log|\phi_b(z)-\phi_b(w)|\,d\mu(z)d\mu(w)
+=\log16,
+\] so \[
+\boxed{\overline L_b^{\,2}=\log16.}
+\]
+
+\subsubsection{I4. Mixed Poincaré--Lelong
+formula}\label{i4.-mixed-poincaruxe9lelong-formula}
+
+Let
+\(\alpha,\beta:(\overline{\mathbb D},0)\to(\mathbf P^1(\mathbf C),0)\)
+be holomorphic as projective maps, with \(\alpha'(0),\beta'(0)\ne0\),
+and put \[
+\beta_r(w)=\beta(rw),\qquad 0<r\le1.
+\] Let \(\overline L_\alpha\) and \(\overline L_{\beta,r}\) be the
+Bost--Charles metrics on \(O(1)\) induced by \(\alpha\) and \(\beta_r\).
+Then \[
+\boxed{
+\overline L_\alpha\cdot\overline L_{\beta,r}
+=
+\iint_{\mathbb T^2}
+\log|\alpha(z)-\beta(rw)|\,d\mu(z)d\mu(w).
+}
+\tag{I.3}
+\]
+
+Here is the two-map proof. With \[
+dd^c=\frac{i}{\pi}\partial\bar\partial,
+\qquad
+g(w)=\log^+|w|^{-1},
+\] one has \[
+dd^c g=\mu-\delta_0,
+\qquad
+c_1(\overline L_\alpha)=\alpha_*\mu.
+\] For fixed \(z\in\mathbb T\), Poincaré--Lelong gives \[
+\beta_r^*\delta_{\alpha(z)}
+=dd^c\log|\beta_r(w)-\alpha(z)|.
+\] Green--Stokes therefore yields \[
+\int_{\mathbb D}g(w)\,\beta_r^*\delta_{\alpha(z)}
+=
+\int_{\mathbb T}\log|\beta(rw)-\alpha(z)|\,d\mu(w)
+-\log|\alpha(z)|,
+\] because \(\beta_r(0)=0\). Integrating in \(z\), and using
+Poisson--Jensen for the fiber degree term \[
+\widehat{\deg}(\overline L_\alpha|_{0})
+=\int_{\mathbb T}\log|\alpha(z)|\,d\mu(z),
+\] the last term cancels exactly. This gives (I.3). The proof is
+bilinear and nowhere requires \(\alpha=\beta\).
+
+The possible poles of the displayed rational maps on \(\mathbb T\) are
+harmless here: as maps to \(\mathbf P^1\) they are holomorphic, and the
+resulting logarithmic boundary singularities are integrable.
+
+\subsubsection{I5. Two-radius evaluation-height
+inequality}\label{i5.-two-radius-evaluation-height-inequality}
+
+For a degree-\(D\) source section of source norm at most one whose
+pullback through \(\beta_r\) vanishes to exact order \(n\) at the
+origin, Poisson--Jensen applied to the normalized pullback gives, under
+the usual Bost--Charles admissibility hypotheses, \[
+\boxed{
+h_\infty(\operatorname{ev}_n;r)
+\le
+-n\log|r\beta'(0)|
++D\bigl(\overline L_\alpha\cdot\overline L_{\beta,r}\bigr)
++o(D).
+}
+\tag{I.4}
+\] For any fixed finite set of radii, the \(o(D)\) term is uniform; in
+particular this applies to the \(O(D)\)-range pivots used in the
+filtration.
+
+Now take \[
+\alpha=\phi_b,\qquad \beta=\phi_f,
+\qquad \beta'(0)=64.
+\] At \(r=1\), (I.4) gives \[
+h_{\infty,f}(n)
+\le -n\log64+DT(1)+o(D).
+\] At \(r=r_0\), using \(-\log r_0=L\), \[
+h_{\infty,f}(n)
+\le -n\log64+nL+DT(r_0)+o(D).
+\] Taking the better of the two bounds gives \[
+\boxed{
+h_{\infty,f}(n)
+\le
+-n\log64
++DT(1)
+-\bigl(D\Delta-nL\bigr)_+
++o(D),
+}
+\] where \[
+\Delta=T(1)-T(r_0)=4\log2.
+\]
+
+\section{Section J --- Half-fold
+optimization}\label{section-j-half-fold-optimization}
+
+\subsubsection{J1. Normalized pivot order and the discrete fold
+set}\label{j1.-normalized-pivot-order-and-the-discrete-fold-set}
+
+Put \[
+s=\frac nD.
+\] Since the first \(2D\) coefficient evaluations are independent, the
+pivot orders lie in \[
+0\le n\le 2D-1,
+\qquad
+0\le s<2.
+\]
+
+After the endpoint/source-intersection terms are separated in the global
+ledger, the order-dependent gain obtained by treating a pivot of order
+\(n\) as a fold pivot rather than a base pivot is \[
+ n\log\frac{64}{16}
+ +(D\Delta-nL)_+
+ +o(D).
+\] Thus, with \[
+d=\log4,
+\] this is \[
+\boxed{
+Dg(s)+o(D),
+\qquad
+g(s)=ds+(\Delta-Ls)_+.
+}
+\]
+
+Let \[
+S_D\subset\{0,1,\dots,2D-1\}
+\] be the pivot orders assigned to fold directions. Since there are
+exactly \(D\) fold source directions, \[
+|S_D|=D.
+\] No assumption on how these \(D\) indices are distributed is made.
+
+\subsubsection{J2. Exact discrete-to-continuous
+reduction}\label{j2.-exact-discrete-to-continuous-reduction}
+
+For each \(n\in S_D\), thicken the normalized grid point \(n/D\) to the
+cell \[
+\left[\frac nD,\frac{n+1}{D}\right),
+\] and set \[
+F_D=
+\bigcup_{n\in S_D}
+\left[\frac nD,\frac{n+1}{D}\right)
+\subset[0,2].
+\] Then \[
+|F_D|=1
+\] exactly.
+
+The function \(g\) is Lipschitz on \([0,2]\). Hence, uniformly in the
+choice of \(S_D\), \[
+\int_{F_D}g(s)\,ds
+=
+\frac1D\sum_{n\in S_D}g\!\left(\frac nD\right)
++O\!\left(\frac1D\right).
+\] Equivalently, \[
+D\sum_{n\in S_D}g\!\left(\frac nD\right)
+=
+D^2\int_{F_D}g(s)\,ds+O(D).
+\] Therefore it is enough to minimize \[
+\int_Fg(s)\,ds
+\] over measurable \(F\subset[0,2]\) with \(|F|=1\).
+
+This step removes any need to assume that the discrete fold sets possess
+a limiting density or a canonical limiting distribution.
+
+\subsubsection{J3. Rearrangement
+minimization}\label{j3.-rearrangement-minimization}
+
+Let \[
+c=\frac{\Delta}{L}.
+\] For the present constants, \[
+d=2\log2,
+\qquad
+\Delta=4\log2=2d.
+\] Moreover \[
+d<L,
+\] because \[
+e^d=4<3+2\sqrt2=e^L.
+\] Thus \[
+0<\frac dL<1.
+\]
+
+The function \(g\) is affine with slope \[
+d-L<0
+\] on \([0,c]\), and affine with slope \[
+d>0
+\] on \([c,2]\). Hence \(g\) is strictly V-shaped and its sublevel sets
+are intervals.
+
+By the standard bathtub/rearrangement principle, a measurable set of
+fixed measure minimizing the integral of \(g\) is a sublevel set of
+\(g\). Since \(g\) is strictly monotone on the two sides of its unique
+minimum, the measure-one minimizer is an interval \[
+F_*=[a,a+1]
+\] whose endpoints have equal \(g\)-value.
+
+Since the left endpoint lies before the kink and the right endpoint
+after it, \[
+\Delta+(d-L)a=d(a+1).
+\] Therefore \[
+\boxed{
+a=\frac{\Delta-d}{L}
+=\frac{2\log2}{\operatorname{arcosh}3}.
+}
+\] Because \(\Delta-d=d\) and \(0<d/L<1\), one has \[
+0<a<1,
+\] so \(F_*\subset[0,2]\). Also \[
+c-a=\frac dL>0,
+\qquad
+a+1-c=1-\frac dL>0,
+\] so the kink indeed lies strictly inside the minimizing interval.
+
+\subsubsection{J4. Exact minimum}\label{j4.-exact-minimum}
+
+Write again \(c=\Delta/L\). Then \[
+\int_{a}^{a+1}g(s)\,ds
+=
+\int_a^{a+1} d\,s\,ds
++
+\int_a^c(\Delta-Ls)\,ds.
+\] The first term is \[
+d\left(a+\frac12\right),
+\] and the second is the area of a triangle of base \(d/L\) and height
+\(d\): \[
+\frac{d^2}{2L}.
+\] Consequently \[
+I_*
+=
+\frac d2+
+\frac{d\Delta-d^2/2}{L}.
+\] Substituting \(d=2\log2\) and \(\Delta=4\log2\) gives \[
+\boxed{
+I_*
+=
+\log2+
+\frac{6(\log2)^2}{\operatorname{arcosh}3}.
+}
+\] Numerically, \[
+I_*\approx2.328502565588796.
+\]
+
+\subsubsection{J5. Discrete total bound}\label{j5.-discrete-total-bound}
+
+For every assignment of the \(D\) fold source directions to \(D\) of the
+first \(2D\) Hermite pivot orders, \[
+\begin{aligned}
+\text{total fold-flag gain}
+&\ge
+D\sum_{n\in S_D}
+ g\!\left(\frac nD\right)
++o(D^2)\\
+&\ge
+I_*D^2+o(D^2).
+\end{aligned}
+\] Here the first \(o(D^2)\) follows from the uniform \(o(D)\) per-pivot
+remainder imported from Section I (or from any equivalent aggregate
+\(o(D^2)\) estimate).
+
+Hence \[
+\boxed{
+\text{total fold flag contributes at least }
+I_*D^2+o(D^2),
+\qquad
+I_*=\log2+
+\frac{6(\log2)^2}{\operatorname{arcosh}3}.
+}
+\]
+
+No conjecture about a canonical or limiting pivot distribution is
+required.
+
+\section{Section K-Global --- Adelic
+assembly}\label{section-k-global-adelic-assembly}
+
+\subsection{K8. Odd-prime denominator
+cost}\label{k8.-odd-prime-denominator-cost}
+
+Section G works only at odd finite primes and gives \[
+\boxed{
+C_{\rm odd}=3.
+}
+\tag{K8.1}
+\]
+
+Prime \(2\) is excluded, so there is no overlap with K7.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{K9. Archimedean constants}\label{k9.-archimedean-constants}
+
+Section I gives \[
+\boxed{
+b_\infty=\log16,
+\qquad
+T(1)=8\log2.
+}
+\tag{K9.1}
+\]
+
+Section J gives \[
+\boxed{
+I_*
+=
+\log2+
+\frac{6(\log2)^2}{\operatorname{arcosh}3}.
+}
+\tag{K9.2}
+\]
+
+All pivots satisfy \[
+0\le n<2D,
+\] so every CD normalization estimate requiring \(n=O(D)\) is
+\(o(D^2)\).
+
+The global basis change \[
+(P,R_0)\longleftrightarrow(P,K)
+\] has determinant \(1\), so the Archimedean base/fold decomposition is
+on the same rational determinant line.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{K10. Complete determinant/basis-change
+ledger}\label{k10.-complete-determinantbasis-change-ledger}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Transition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Determinant / size
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Quadratic?
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Charged where
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Coinvariants \(\to\) invariants & \(2^D\) & No & D \\
+Integral rationality-adapted basis & \((2b)^D\) & No & D \\
+\((P,R_0)\to(P,K)\) & \(1\) & No & global \\
+Divide jets by \(P(64z)\) & determinant \(1\) & No & E/K3 \\
+\(\zeta\mapsto\zeta(1-4\zeta)\) on full jets & determinant \(1\) & No &
+K2 \\
+Column reversal & sign only & No & E \\
+CD unit matrices & units & No & K4 \\
+Literal CD \(W_n\)-normalization & \(O(\log D)\) & No & B/K4 \\
+\(Y=64z\) Hermite scaling & explicit in K5.3 & \textbf{Yes} & K5 only \\
+Source transition \(S\) & \(v_2\det S=D^2+2S_D\) & \textbf{Yes} & K6 \\
+Target transition \(T\) & \(-v_2\det T=D^2-5D+2S_D\) & \textbf{Yes} &
+K6 \\
+Canonical reflection Smith mass & \(R_D\) & \textbf{Yes} & C \\
+Third reflection-scale reserve & \(R_D\) & \textbf{Reserve} & K7 \\
+Odd-prime denominator lattice & \(3D^2+o(D^2)\) & \textbf{Yes} & G,
+\(p\ne2\) \\
+\end{longtable}
+
+The first two \(R_D\)-scale contributions are the actual source and
+target compatibility transitions. The third is deliberately unused
+slack.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{K11. Quadratic adelic
+ledger}\label{k11.-quadratic-adelic-ledger}
+
+After cancellation of the common all-base source/derivative
+contribution, rationality implies \[
+\boxed{
+C_{2,\mathrm{eff}}
++
+2b_\infty
+-
+C_{\rm odd}
++
+I_*
+\le
+T(1).
+}
+\tag{K11.1}
+\]
+
+Substituting, \[
+\boxed{
+\log2+2\log16-3+
+\log2+
+\frac{6(\log2)^2}{\operatorname{arcosh}3}
+\le8\log2.
+}
+\tag{K11.2}
+\]
+
+Every omitted contribution is \(o(D^2)\).
+
+Numerically, \[
+\mathrm{LHS}\approx5.566827190628304,
+\qquad
+\mathrm{RHS}\approx5.545177444479562,
+\] so the inequality fails by approximately \[
+0.021649746148742.
+\]
+
+The rigorous final contradiction is delegated to Section L.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Section L --- Certified scalar
+contradiction}\label{section-l-certified-scalar-contradiction}
+
+\subsubsection{L1. Scalar inequality}\label{l1.-scalar-inequality}
+
+Section K-Global gives, under the assumption \(G\in\mathbf Q\), \[
+\log2+2\log16-3+I_*
+\le8\log2,
+\] where \[
+I_*=
+\log2+
+\frac{6(\log2)^2}{\operatorname{arcosh}3}.
+\]
+
+Since \[
+2\log16=8\log2,
+\] cancelling the common \(8\log2\) terms gives \[
+\boxed{
+2\log2-3+
+\frac{6(\log2)^2}{\operatorname{arcosh}3}
+\le0.
+}
+\]
+
+\subsubsection{L2. Certified positivity}\label{l2.-certified-positivity}
+
+Set \[
+\ell=\log2,
+\qquad
+A=\operatorname{arcosh}3.
+\] Define \[
+F(\ell,A)=2\ell-3+\frac{6\ell^2}{A}.
+\] For \(\ell,A>0\), \[
+\frac{\partial F}{\partial\ell}
+=
+2+\frac{12\ell}{A}>0,
+\qquad
+\frac{\partial F}{\partial A}
+=
+-\frac{6\ell^2}{A^2}<0.
+\] Thus a lower bound for \(\ell\) and an upper bound for \(A\) give a
+lower bound for \(F\).
+
+First, \[
+\log2
+=
+2\operatorname{artanh}\frac13
+=
+2\sum_{k=0}^{\infty}
+\frac1{(2k+1)3^{2k+1}}.
+\] Since all terms are positive, \[
+\log2
+>
+2\sum_{k=0}^{5}
+\frac1{(2k+1)3^{2k+1}}
+=
+\frac{15757912}{22733865}.
+\] Direct rational comparison gives \[
+\frac{15757912}{22733865}
+-
+\frac{693147}{10^6}
+=
+\frac{335369}{4546773000000}>0.
+\] Hence \[
+\boxed{\log2>\frac{693147}{10^6}.}
+\]
+
+Next, if \(A=\operatorname{arcosh}3\), then \[
+\tanh\frac A2
+=
+\sqrt{\frac{\cosh A-1}{\cosh A+1}}
+=
+\frac1{\sqrt2}.
+\] Therefore \[
+A
+=
+2\operatorname{artanh}\frac1{\sqrt2}
+=
+\sqrt2\sum_{k=0}^{\infty}
+\frac1{2^k(2k+1)}.
+\]
+
+We have \[
+\sqrt2<\frac{707107}{500000},
+\] since \[
+\left(\frac{707107}{500000}\right)^2-2
+=
+\frac{309449}{250000000000}>0.
+\]
+
+Moreover, \[
+\sum_{k=12}^{\infty}
+\frac1{2^k(2k+1)}
+<
+\frac1{25}\sum_{k=12}^{\infty}2^{-k}
+=
+\frac1{51200}.
+\] Consequently \[
+\begin{aligned}
+A
+&<
+\frac{707107}{500000}
+\left(
+\sum_{k=0}^{11}\frac1{2^k(2k+1)}
++\frac1{51200}
+\right)\\
+&=
+\frac{215729472659027303}
+{122382374400000000}\\
+&<
+\frac{7051}{4000}.
+\end{aligned}
+\] Thus \[
+\boxed{
+\operatorname{arcosh}3<\frac{7051}{4000}.
+}
+\]
+
+By the monotonicity established above, \[
+\begin{aligned}
+2\log2-3+
+\frac{6(\log2)^2}{\operatorname{arcosh}3}
+&>
+2\frac{693147}{10^6}-3
++
+\frac{
+6(693147/10^6)^2
+}{
+7051/4000
+}\\
+&=
+\frac{19078165077}{881375000000}.
+\end{aligned}
+\] Finally, \[
+\frac{19078165077}{881375000000}
+-
+\frac{27}{1250}
+=
+\frac{40465077}{881375000000}>0.
+\] Hence \[
+\boxed{
+2\log2-3+
+\frac{6(\log2)^2}{\operatorname{arcosh}3}
+>
+\frac{27}{1250}
+=0.0216>0.
+}
+\]
+
+This contradicts L1.
+
+Therefore the assumption \(G\in\mathbf Q\) is impossible.
+
+\subsubsection{Exported conclusion}\label{exported-conclusion}
+
+\[
+\boxed{G=\beta(2)\notin\mathbf Q.}
+\]
+
+\section{Proof of the main theorem}\label{proof-of-the-main-theorem}
+
+Assume for contradiction that \(G\in\mathbf Q\). The exact arithmetic
+theorem of Section A gives \[
+\Omega_D=4D^2+4D-4S_D,
+\qquad
+S_D=\sum_{m=1}^D s_2(m).
+\] The common-source comparison of Section K-Finite shows that the two
+actual source/target compatibility transitions each have one-sided size
+\(R_D+O(D\log D)\), where Section C gives \[
+R_D=D^2-\lceil D/2\rceil.
+\] Retaining one further complete \(R_D\) as a conservative reserve
+leaves \[
+(\Omega_D-3R_D)\log2
+=\log2\,D^2+o(D^2).
+\] Thus the effective \(2\)-adic coefficient is \(\log2\).
+
+Section G proves directly in the final \(Y\)-coordinate that the
+odd-prime source has denominator profile \((0,2)\), whose rearranged
+cost is \(3D^2+o(D^2)\). Sections H and I construct the actual
+conditional fold and establish \[
+\phi_b'(0)=16,
+\qquad
+\phi_f'(0)=64,
+\qquad
+T(r_0)=4\log2,
+\qquad
+T(1)=8\log2,
+\] with \[
+r_0=3-2\sqrt2,
+\qquad
+L=-\log r_0=\operatorname{arcosh}3.
+\] Section J proves, without assuming any limiting pivot distribution,
+that the \(D\) fold directions among the \(2D\) independent Hermite
+pivots contribute at least \[
+I_*D^2+o(D^2),
+\qquad
+I_*=\log2+\frac{6(\log2)^2}{\operatorname{arcosh}3}.
+\]
+
+The determinant-line/product-formula identity of Section K-Global
+therefore forces \[
+\log2+2\log16-3+I_*\le8\log2.
+\] Since \(2\log16=8\log2\), this is \[
+2\log2-3+\frac{6(\log2)^2}{\operatorname{arcosh}3}\le0.
+\] Section L proves by rational interval estimates that \[
+2\log2-3+\frac{6(\log2)^2}{\operatorname{arcosh}3}
+>\frac{27}{1250}>0,
+\] a contradiction. Hence \(G\notin\mathbf Q\). \(\square\)
+
+\section{Remarks on verification
+status}\label{remarks-on-verification-status}
+
+The assembled text above is intentionally more conservative than the
+sharpest intermediate estimates. In particular, it retains three
+complete reflection-scale masses although the explicit compatibility
+theorem exhibits only two actual quadratic source/target transitions. It
+also keeps the prime \(2\) separate from the odd-prime denominator
+asymptotic, charges the full \(Y=64z\) coordinate factor exactly once,
+and uses a distribution-free fold optimization.
+
+The source modules supplied for this manuscript were returned as
+individually audited/corrected units. Because Theorem \ref{thm:main}
+would resolve a classical open problem, the present manuscript should
+nevertheless be independently checked as a whole before being treated as
+an established result. In particular, the most important global
+verification target is the exact determinant-line factorization in
+Section K, since that is where the independently proved local modules
+are joined.
+
+\section{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  F. Beukers, \emph{Irrationality of some p-adic L-values},
+  arXiv:math/0603277.
+\item
+  T. Rivoal, \emph{Nombres d'Euler, approximants de Padé et constante de
+  Catalan}, Ramanujan Journal \textbf{11} (2006), 199--214.
+\item
+  T. Rivoal and W. Zudilin, \emph{Diophantine properties of numbers
+  related to Catalan's constant}, Mathematische Annalen \textbf{326}
+  (2003), 705--721.
+\item
+  W. Zudilin, \emph{An Apéry-like difference equation for Catalan's
+  constant}, Electronic Journal of Combinatorics \textbf{10} (2003),
+  R14.
+\item
+  Yu. V. Nesterenko, \emph{On Catalan's Constant}, Proceedings of the
+  Steklov Institute of Mathematics \textbf{292} (2016), 153--170.
+\item
+  F. Calegari, V. Dimitrov and Y. Tang, \emph{The linear independence of
+  1, \(\zeta(2)\), and \(L(2,\chi_{-3})\)}, arXiv:2408.15403.
+\item
+  J.-B. Bost and F. Charles, \emph{Quasi-projective and formal-analytic
+  arithmetic surfaces}, arXiv:2206.14242.
+\end{enumerate}
+
+\end{document}
