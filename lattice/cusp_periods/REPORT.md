@@ -470,5 +470,9 @@ F's, to all 100 digits, extending the Conjecture-D family `ξ^B = ξ^C = ξ^{s�
 | `11_g15.gp` | the `Γ₁(5)` census rows with identification | `11_g15.out` |
 | `12_imid.gp` | attempted identification of the width-5-cusp imaginary parts (negative) | `12_imid.out` |
 
+The `.out` files are present in this directory but are **not** tracked by git
+(`*.out` is in the repository `.gitignore`, as for `lattice/hostscan/`); regenerate any of
+them with `gp -q <script> > <script-basename>.out`.
+
 Run with `gp -q <file>` from this directory (`05`, `06`, `09` want a large stack; they set
 `parisizemax` themselves).
