@@ -1,0 +1,26 @@
+default(parisizemax, 20000000000);
+NA = 90; NQ = NA+3;
+leg5(n) = kronecker(n,5);
+re4(n) = my(r=n%5); if(r==1, 1, if(r==4, -1, 0));
+im4(n) = my(r=n%5); if(r==2, 1, if(r==3, -1, 0));
+Ap(n) = sum(k=0, n, binomial(n,k)^2*binomial(n+k,k));
+xser(nq) = q*prod(n=1, nq-1, (1 - q^n + O(q^nq))^(5*leg5(n)));
+Dinv2(s) = my(m=serprec(s,q)); sum(k=1, m-1, polcoeff(s,k)/k^2*q^k) + O(q^m);
+peel2(Fs, xs, na, nq) = my(a=vector(na+1), G=Fs, xp=1+O(q^nq)); for(n=0, na, my(c=polcoeff(G,n)); a[n+1]=c; if(c!=0, G=G-c*xp); xp=xp*xs); a;
+xs = xser(NQ); Fs = sum(n=0, NQ-1, Ap(n)*xs^n) + O(q^NQ);
+mk(f) = sum(n=1, NQ-1, f(n)*q^n) + O(q^NQ);
+R1 = 2*mk(n->sumdiv(n,d,re4(d)*d^2));
+R2 = -2*mk(n->sumdiv(n,d,im4(d)*d^2));
+Lc(bb, n) = my(b0=bb[n+1]); my(b1=if(n>=1, bb[n], 0)); my(b2=if(n>=2, bb[n-1], 0)); n^2*b0 - (11*n^2-11*n+3)*b1 - (n-1)^2*b2;
+ser(Ph) = my(B=peel2(Fs*Dinv2(Ph), xs, NA, NQ)); sum(i=1,NA, Lc(B,i)*x^(i-1)) + O(x^NA);
+S1 = ser(R1); S2 = ser(R2);
+print("S1 coeffs      : ", vector(12,i,polcoeff(S1,i-1)));
+print("S1*(1-11x-x^2) : ", vector(12,i,polcoeff(S1*(1-11*x-x^2),i-1)));
+print("S1*(1-11x-x^2)^2: ", vector(12,i,polcoeff(S1*(1-11*x-x^2)^2,i-1)));
+print("S1*(1-11x-x^2)*(1-x): ", vector(12,i,polcoeff(S1*(1-11*x-x^2)*(1-x),i-1)));
+print("S1/2+S2 = ", vector(8,i,polcoeff(S1/2+S2,i-1)));
+/* the tail T := S1 - 2  (rest) : is it a modular/algebraic series?  ratio test */
+T = S1 - 2;
+print("T = S1-2 coeffs: ", vector(12,i,polcoeff(T,i-1)));
+print("ratios T_{n+1}/T_n near n=80: ", vector(5,i,polcoeff(T,80+i)*1.0/polcoeff(T,79+i)));
+quit;

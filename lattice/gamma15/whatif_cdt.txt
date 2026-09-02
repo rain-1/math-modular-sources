@@ -1,0 +1,4 @@
+Same what-if applied to CDT's OWN host (Y = -1/72, s = 1), as a plausibility check:
+  drop 0 deepest: R=0.80 c=6.5 #cut=8 |psi'|=0.639856 L=5.098666 BC=12.05951  margin=+0.0254
+  drop 2 deepest: R=0.77 c=6.5 #cut=4 |psi'|=0.711669 L=5.205035 BC=12.92250  margin=+0.6516
+  drop 4 deepest: R=0.77 c=6.5 #cut=2 |psi'|=0.734238 L=5.236255 BC=13.29845  margin=+0.7127

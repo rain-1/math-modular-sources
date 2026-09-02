@@ -30,6 +30,8 @@ No margin is ever rounded in the favourable direction.*
 | **Place v₂ is entirely responsible.** With the per-place score s_v = 13 log\|ψ_v′(0)\| − shape_v (margin = 13 log 256 + mean(s_v) − 14τ): s₁ = **−12.1905**, s₂ = **−16.2761**, CDT's own = −12.7700. So v₁ *gains* 0.579 nats over CDT and v₂ *loses* 3.506; halved, that is **−1.463** nats of margin against CDT's +0.021. | **[verified]** §5 |
 | **No inventory rescues it.** Adding functions to CDT's fourteen forces max eᵢ ≥ 2, and τ jumps 4.2355 → 4.4482; the bound goes from 16.13 to 23.5 and the margin from −1.44 to −3.96. Every m ≠ 14 is worse. (`INVENTORY_BOUND.md` R1/R4 already proves 14 is the complete supply at max eᵢ ≤ 1.) | **[verified]** §6 |
 
+| **The one loophole, quantified.** We exclude *every* non-principal h-preimage of Y_v, as CDT do. If the single conjugate pair at \|z\| = 0.213693 at place v₂ turned out to be a point where the continued conditional function is *not* singular, the margin would be **+0.51** and the theorem would follow. Nothing else in the construction has that leverage. Against it: the same refinement would take CDT's own margin from +0.025 to +0.65, and they spent an appendix tuning a contour for a margin of 0.005. | **[open]** §6(b) |
+
 **One sentence.** *Everything arithmetic about the target is as good as CDT's own — the same
 Apéry-perfect host, the same k = 2, the same fourteen functions, the same τ = 16603/3920, a
 genuinely new period ξ, and (by CDT's own Remark BCboundK) a legitimate two-place bound whose
@@ -208,8 +210,58 @@ keep coefficients in ℤ[φ] and the denominator types of the descent are CDT's,
 [1..n]^k ↦ [1..2n]^k. Normalised coordinate **Y := y/s**, so the ℤ/2 point is at Y = 4 and CDT's
 own series for B₁,…,B₇ apply verbatim.
 
-*(The measured denominator array, the K(y)-independence rank tables at a split and at an inert
-prime, and the sharp type of G = Sym⁺H over ℤ[φ] are computed in `task3/` — see §7.)*
+### 3.1 The measured denominator array  **[verified, exact rationals, n ≤ 80]** (`task3/`)
+
+Every clause of CDT's Lemma `bdenominators` was re-measured on the exact rational series in
+Y (n ≤ 80) and every one is **valid and sharp**:
+
+| | measured minimal type | CDT's claim |
+|---|---|---|
+| B₁ | trivial | trivial ✔ |
+| B₂ | [1..2n] | ✔ |
+| B₃ | [1..2n]·n | ✔ |
+| B₄ | [1..2n]² (and [1..n][1..2n] **fails**) | ✔ |
+| B₅ | [1..2n]², sharper [1..2n](2n−1) | ✔ |
+| B₆ | [1..2n]n² (a fortiori [1..2n]²n) | ✔ |
+| B₇ | [1..2n]²n (and [1..2n]² alone **fails**) | ✔ |
+
+s = −φ⁵ is a unit (s⁻¹ = (11−5√5)/2), and D_n c_n s^{−n} ∈ ℤ[φ] was verified coefficientwise
+for all seven, n ≤ 80. For the full fourteen (n ≤ 50) the measured array is
+**u₁ = 1** (only B₁), **u₂ = 3** (B₁, B₂, B₃), **b₁ = b₂ = 2**,
+**e = (0,0,1; 0⁶; 1,1,1,1,1)**, Σe = 6, max e = 1 — **identical to CDT's**, hence
+
+$$\boxed{\;\tau=\tau^\flat+\tau^\sharp=\tfrac{191}{49}+\tfrac{27}{80}=\tfrac{16603}{3920}\;\text{unchanged.}}$$
+
+The one genuine alternative — demoting B₆ to a single layer with e = 2, giving u₂ = 4,
+τ♭ = 375/98 — loses, because τ♯ rises to 0.54018: net **+0.13125** on τ.
+
+### 3.2 The conditional side over K  **[verified]** (`task3/`)
+
+The symmetrisation recurrence for a general s is P₀ = 2, P₁ = y, **Pₙ = y P_{n−1} − s y P_{n−2}**
+(x + w = y, x·w = s y), proved and verified as exact K[[x]] identities to order 42; the
+substitution Qₙ(Y) = s^{−n}Pₙ(sY) cancels s exactly, so CDT's integer polynomials apply
+verbatim in the normalised coordinate. End-to-end, G(Y(x)) = H(x) + H(w(x)) exactly to order 42.
+**G = Sym⁺H has sharp denominator type [1..2n]² over ℤ[φ]** (n ≤ 60; [1..n][1..2n] fails), for
+the generic (a,b,c) = (1, −3+φ, 5−2φ) and for (0,1,0), (0,0,1), (φ,φ²,φ³) separately.
+Apéry limits reconfirmed independently: ζ(2)/5 to 60 digits, ξ to all 40 digits given.
+
+### 3.3 K(y)-linear independence of the fourteen  **[verified]** (`task3/`)
+
+Rank of {Yʲf_i : i ≤ 14, j ≤ D} at a **split** prime p = 2305843009213694009 (≡ 4 mod 5,
+ℤ[φ]/𝔭 = 𝔽_p) and at an **inert** prime p = 2305843009213693967 (≡ 2 mod 5, 𝔽_p[t]/(t²−5)):
+
+| deg P_i ≤ | 0 | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|---|
+| rank / needed (both primes) | 14/14 | 28/28 | 42/42 | 56/56 | 70/70 | 84/84 |
+
+series orders 26…96. Certified: **no K(y)-relation of degree ≤ 5**. Unbounded-degree
+independence (CDT's Lemma 12.1.1, a monodromy argument) is **[assumed]**, not transported.
+The same code path reproduces `CDT_FINDER.md` §2 on CDT's own host exactly.
+
+*Two incidental discrepancies, neither affecting τ:* CDT's Remark `central binomial`
+(replacing [1..2n] by n(n−1)C(2n,n)) holds for B₂,B₃,B₅,B₆ but **fails for B₄ and B₇** —
+only one of the two layers relaxes; and `lattice/cdt_finder/indep_check2.py` items 13–14 carry
+an index shift relative to CDT's definitions (both conventions give full rank).
 
 ---
 
@@ -370,13 +422,36 @@ and every m < 14 is worse (m = 13: −1.906; m = 12: −2.275; m = 10: −3.180;
 benchmarks; a non-injective ψ cannot beat the Riemann map of the extremal domain (Schwarz); the
 exclusion set is forced by the conservative reading of CDT's Lemma A.4.4; lunes are strictly
 worse than slits for excluding single points (0.409 vs 0.580 at |p| = 0.2137); extra lunes at the
-q = 3, 5 cusps lose. The only identified loophole is a **monodromy refinement**: CDT (and we)
-exclude *every* non-principal preimage, whereas only those at which the analytically continued
-conditional function actually acquires its log need be excluded. If, say, the two deepest
-preimages at v₂ (|z| = 0.2137) turned out to be harmless, the cap would move from 0.5803 to
-4(0.499)/(1.499)² = 0.888 and the picture would change completely. **[open]** — this is the one
-thing in this report that could reverse the verdict, and it is a monodromy computation, not a
-contour computation.
+q = 3, 5 cusps lose.
+
+**The one identified loophole, quantified** (`whatif.py` → `whatif.txt`, `whatif_cdt.txt`).
+CDT — and this report — exclude *every* non-principal h-preimage of Y_v. In fact only those at
+which the analytically continued conditional function actually acquires its logarithm need be
+excluded: the lift is singular at the preimage γ·z₀ iff ρ(γ)⁻¹v ∉ ker(M−1), where M is the local
+monodromy at the fold and v the conditional vector — a codimension-one condition, generically
+but not necessarily violated. Recomputing the optimum with the k deepest preimages *assumed
+harmless*:
+
+| dropped at v₁ | dropped at v₂ | \|ψ₁′\| | \|ψ₂′\| | **margin** |
+|---|---|---|---|---|
+| 0 | 0 | 0.6912 | 0.3955 | **−1.446** |
+| 0 | **2** | 0.6912 | **0.6725** | **+0.512** |
+| 0 | 4 | 0.6912 | 0.7227 | +0.651 |
+| 2 | 0 | 0.7125 | 0.3955 | −1.403 |
+| 4 | 4 | 0.7243 | 0.7227 | +0.711 |
+
+So **everything turns on the single conjugate pair of preimages at \|z\| = 0.213693 at place v₂**
+(bottom rows (2,±1), i.e. the images of the principal preimage under
+$\left(\begin{smallmatrix}1&0\\ \pm2&1\end{smallmatrix}\right)$): if they are harmless the
+margin is **+0.51** and the theorem follows; if not, it is **−1.44**. Dropping preimages at v₁
+buys almost nothing (+0.04), because v₁'s geometry is already better than CDT's. **[open]**
+
+*Plausibility.* The same what-if on CDT's **own** host takes their margin from +0.025 to
+**+0.652** (drop 2) and +0.713 (drop 4). CDT won their theorem by 0.0053 and spent an appendix
+tuning the contour; had this refinement been available they would have used it. That is not a
+proof, but it is strong evidence that the refinement is unavailable, i.e. that the conservative
+exclusion is the right one. Settling it is a monodromy computation on the rank-4 local system of
+G_A over Γ₀(2), not a contour computation.
 
 **(c) Not descending at v₂.** Using the Y(2) (λ-)uniformisation instead of Y₀(2) doubles both
 log|φ′(0)| and BC while leaving τ alone — CDT's own Basic Remark (equivalently: τ halves and the
@@ -439,6 +514,7 @@ place and the K(y)-independence of the fourteen are computed in `task2/`, `task3
 | `two_places.py` → `two_places.txt` | Task 4: geometry, trade-off curves, optimum, certified contours, the averaged bound |
 | `verdict.py` → `verdict.txt` | cross-validation of the two BC evaluators, hard caps, attribution, inventory sweep, convexity |
 | `curves.json` | the measured (R, #bad, \|ψ′\|, L, BC) curves at both places |
+| `whatif.py` → `whatif.txt`, `whatif_cdt.txt` | the monodromy loophole, quantified at both places and on CDT's own host |
 | `saturation.txt` | the R → 1 saturation of the conformal radii at both places |
 | `task2/` | sources, companions, conditional ODE, fold-regularity at both places (agent report) |
 | `task3/` | pure module over K, measured denominator array, K(y)-independence (agent report) |

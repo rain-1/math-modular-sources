@@ -1,0 +1,23 @@
+Baseline (nothing dropped): J1 = 91.17577 (v1, R=0.78, c=6.5), J2 = 24.53386 (v2, R=0.76, c=7.5)
+margin = (J1+J2)/2 - 14 tau = -1.44161
+
+=== v1 ===
+  drop 0 deepest: best R=0.76 c=6.5  #cut=6  |psi'|=0.691158  L=7.581850  BC=14.97914  14L-BC=91.16676
+  drop 2 deepest: best R=0.76 c=6.5  #cut=4  |psi'|=0.712478  L=7.612230  BC=15.31888  14L-BC=91.25234
+  drop 4 deepest: best R=0.76 c=6.5  #cut=2  |psi'|=0.724317  L=7.628711  BC=15.51568  14L-BC=91.28628
+
+=== v2 ===
+  drop 0 deepest: best R=0.76 c=7.5  #cut=6  |psi'|=0.395505  L=2.211527  BC=6.42747  14L-BC=24.53391
+  drop 2 deepest: best R=0.76 c=6.5  #cut=4  |psi'|=0.672526  L=2.742404  BC=9.94295  14L-BC=28.45071
+  drop 4 deepest: best R=0.76 c=6.5  #cut=2  |psi'|=0.722687  L=2.814340  BC=10.67301  14L-BC=28.72774
+
+resulting averaged margins:
+  drop 0 at v1, 0 at v2:  margin = -1.44610
+  drop 0 at v1, 2 at v2:  margin = +0.51230
+  drop 0 at v1, 4 at v2:  margin = +0.65082
+  drop 2 at v1, 0 at v2:  margin = -1.40331
+  drop 2 at v1, 2 at v2:  margin = +0.55509
+  drop 2 at v1, 4 at v2:  margin = +0.69361
+  drop 4 at v1, 0 at v2:  margin = -1.38634
+  drop 4 at v1, 2 at v2:  margin = +0.57206
+  drop 4 at v1, 4 at v2:  margin = +0.71058
