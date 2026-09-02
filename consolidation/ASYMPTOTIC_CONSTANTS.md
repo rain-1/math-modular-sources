@@ -1,12 +1,16 @@
-# Asymptotic constants of modular Apéry sequences: elementary unless the companion vanishes at the fold
+# Asymptotic constants of modular Apéry sequences: elementary in weight two, Chowla–Selberg periods above
 
-*Fable, 2026-09-02. Theory here; census numbers in `scratchpad/asymK/REPORT.md` (agent, pending) and then in §4. Generalises the closed form of the level-12 $\zeta(5)$ constant $K$ (`ZETA5_K_CLOSED_FORM.md`).*
+*Fable, 2026-09-02. Theory in §§1–3, census in §4. The census was run by an agent (report `REPORT.md` and 20 GP scripts in `lattice/asymptotic_constants/`; every number there is recomputed from the recurrences and from eta quotients, with the repository used only as a cross-check). The structural identities it found are stated as Theorem 3.4 and re-derived by hand in §3. Generalises the closed form of the level-12 $\zeta(5)$ constant $K$ (`ZETA5_K_CLOSED_FORM.md`).*
+
+**Summary.** For a row whose dominant singularity is a simple fold at the Fricke point, the constant $K$ in $a_n\sim K\,x_+^{-n}n^{-3/2}$ is the derivative of the row's modular form at a CM point (1.1). Two independent mechanisms decide its nature: the weight $k$ of the form and whether the form vanishes at the fold. $K$ is elementary ($\overline{\mathbf Q}\cdot\pi^{-3/2}$) iff $k=2$ and $F(\tau_c)\ne0$; otherwise a Chowla–Selberg period survives, $\Omega^{k-2}$ when $F(\tau_c)\ne0$ and $\Omega^{k}$ when $F(\tau_c)=0$. In weight two everything collapses to one formula with no modular input beyond the level,
+$$\boxed{\ K=\frac{\sqrt N}{2\pi^{3/2}}\sqrt{\frac{\lambda_1}{\lambda_1-\lambda_2}}\ ,\qquad K^2\pi^3=\frac{N\lambda_1}{4(\lambda_1-\lambda_2)}\ }$$
+with $\lambda_1,\lambda_2$ the characteristic roots of the recurrence (Theorem 3.4). Apéry's classical $(1+\sqrt2)^2/(2^{9/4}\pi^{3/2})$ is the case $N=6$; Domb's row gives $2/\pi^{3/2}$; Cooper's $s_7,s_{10},s_{18}$ give $\tfrac34\sqrt3\,\pi^{-3/2}$, $\sqrt2\,\pi^{-3/2}$, $3\sqrt2\,\pi^{-3/2}$. The three higher-weight rows in the repository ($\zeta(5)$ at levels $12$ and $16$, $\zeta(7)$ at level $12$) all carry a Chowla–Selberg period, and two of them do so *without* vanishing at the fold — which corrects the first version of this note.
 
 ## 1. Setting
 
 A modular Apéry row $(x,F)$: $x(q)=q+O(q^2)$ an integral Hauptmodul-type coordinate on a genus-zero group $\Gamma\supseteq\Gamma_0(N)$, $F$ a modular form of weight $k$ (integral $q$-expansion, $F=1+O(q)$), $A(x)=F(q(x))=\sum a_nx^n$. Suppose the dominant singularity of $A$ is a **simple fold** of $x$ at the Fricke point $\tau_c=i/\sqrt N$: $x'(q_c)=0\ne x''(q_c)$, $q_c=e^{-2\pi/\sqrt N}$, $x_+=x(q_c)$, and $F$ is analytic at $q_c$ with $F'(q_c)\ne0$. Then (fold lemma, `paper/sections/02_sources.tex` Lemma fold) $A=g+h\sqrt{1-x/x_+}$ near $x_+$ with $g,h$ analytic, and singularity analysis gives
-$$a_n\sim-\frac{h(x_+)}{2\sqrt\pi}\,x_+^{-n}n^{-3/2},\qquad h(x_+)=F'(q_c)\sqrt{\frac{2x_+}{-x''(q_c)}} .$$
-With $D=q\,d/dq$ (so $F'(q_c)=DF(\tau_c)/q_c$ and $x''(q_c)=D^2x(\tau_c)/q_c^2$ at the fold):
+$$a_n\sim-\frac{h(x_+)}{2\sqrt\pi}\,x_+^{-n}n^{-3/2},\qquad h(x_+)=-F'(q_c)\sqrt{\frac{2x_+}{-x''(q_c)}}$$
+(the sign: along $q\uparrow q_c$ one has $q-q_c=-\sqrt{2x_+/(-x'')}\sqrt{1-x/x_+}$, so $a_n$ has the sign of $F'(q_c)$; all seven weight-two rows of §4 have $DF(\tau_c)>0$ and $a_n>0$). With $D=q\,d/dq$ (so $F'(q_c)=DF(\tau_c)/q_c$ and $x''(q_c)=D^2x(\tau_c)/q_c^2$ at the fold):
 $$\boxed{\ K:=\lim_n|a_n|\,x_+^{\,n}n^{3/2}=\frac{|DF(\tau_c)|}{2\sqrt\pi}\sqrt{\frac{2x_+}{-D^2x(\tau_c)}},\qquad K^2=\frac{x_+\,DF(\tau_c)^2}{2\pi\,(-D^2x(\tau_c))}\ }\tag{1.1}$$
 (For a companion-type sequence $U=RF/S$ with $R,S$ rational functions of $x$, replace $F$ by $G=R(x)F/S(x)$; at the fold $x'=0$ so $DG(\tau_c)=R(x_+)DF(\tau_c)/S(x_+)$.)
 
@@ -16,25 +20,81 @@ $$\boxed{\ K:=\lim_n|a_n|\,x_+^{\,n}n^{3/2}=\frac{|DF(\tau_c)|}{2\sqrt\pi}\sqrt{
 $$i^k\varepsilon=+1\ \Longrightarrow\ Df(\tau_c)=\frac{k\sqrt N}{4\pi}\,f(\tau_c);\qquad i^k\varepsilon=-1\ \Longrightarrow\ f(\tau_c)=0 .$$
 *Proof.* $f|_kW_N=\varepsilon f$ reads $f(-1/(N\tau))=\varepsilon(\sqrt N\tau)^kf(\tau)$. Differentiate in $\tau$ and put $\tau=\tau_c$ (a fixed point, $\sqrt N\tau_c=i$, $1/(N\tau_c^2)=-1$): $-f'(\tau_c)=\varepsilon\bigl[k\sqrt N\,i^{k-1}f(\tau_c)+i^kf'(\tau_c)\bigr]$. If $i^k\varepsilon=1$ this is $2f'(\tau_c)=-k\sqrt N\,i^{k-1}\varepsilon f(\tau_c)=ik\sqrt N f(\tau_c)$, and $Df=f'/(2\pi i)$. If $i^k\varepsilon=-1$ it is $k\sqrt N\,i^{k-1}\varepsilon f(\tau_c)=0$. $\square$
 
-(For weight $2$ and $\varepsilon=-1$, or weight $4$ and $\varepsilon=+1$: the value is free and the derivative is elementary times it. For weight $4$ and $\varepsilon=-1$: the form vanishes at the Fricke point — this is the level-12 $\zeta(5)$ companion $E$, and also the mechanism of the Domb apparatus in `paper/main.tex` Thm oldspace.)
+(For weight $2$ and $\varepsilon=-1$, or weight $4$ and $\varepsilon=+1$, or weight $6$ and $\varepsilon=-1$: the value is free and the derivative is an elementary multiple of it. For weight $4$ and $\varepsilon=-1$: the form vanishes at the Fricke point — the level-12 $\zeta(5)$ companion $E$, and the mechanism of the Domb apparatus in `paper/main.tex` Thm oldspace.)
 
 ## 3. The dichotomy
 
-**Theorem 3.1 [proved modulo the fold hypotheses of §1].** (a) *Elementary case.* If $i^k\varepsilon_F=+1$ then
-$$K=\frac{k\sqrt N}{8\pi^{3/2}}\;\bigl|F(\tau_c)\bigr|\sqrt{\frac{2x_+}{-D^2x(\tau_c)}} .$$
-If moreover $x=r(h)$ is a rational function of a weight-$0$ Hauptmodul $h$ of $\Gamma_0(N)$ (so that $D^2x(\tau_c)=r''(h_c)\,(Dh(\tau_c))^2$ at the fold $r'(h_c)=0$, $h_c=h(\tau_c)$) and $k=2$, then $F/Dh$ is a modular function and
-$$K=\frac{\sqrt N}{4\pi^{3/2}}\Bigl|\frac{F}{Dh}(\tau_c)\Bigr|\sqrt{\frac{2x_+}{-r''(h_c)}}\ \in\ \overline{\mathbf Q}\cdot\pi^{-3/2},$$
-with all three factors $(F/Dh)(\tau_c)$, $x_+$, $r''(h_c)$ algebraic (values of modular functions and of rational functions at a CM point).
-(b) *CM case.* If $i^k\varepsilon_F=-1$ then $F(\tau_c)=0$, $DF(\tau_c)=\vartheta_kF(\tau_c)$ is a genuine weight-$(k+2)$ CM value (no $E_2$ anomaly), $D^2x(\tau_c)$ a weight-$4$ CM value, and by Chowla–Selberg
-$$K\in\overline{\mathbf Q}\cdot\frac{\Omega_{\tau_c}^{\,k}}{\sqrt\pi},$$
-where $\Omega_{\tau_c}^2$ is the weight-$2$ period of the CM point ($\Gamma(1/3)^6/\pi^4$ for $\mathbf Q(\sqrt{-3})$, $\Gamma(1/4)^4/\pi^3$ for $\mathbf Q(i)$, …). For the level-12 $\zeta(5)$ companion ($k=4$, $\tau_c=i/\sqrt{12}$): $K\in\overline{\mathbf Q}\,\Gamma(1/3)^{12}\pi^{-17/2}$, as found.
+Throughout, $x=r(h)$ with $r$ a rational function and $h$ a Hauptmodul of $\Gamma_0(N)$ (so that at the fold, where $r'(h_c)=0$, $D^2x(\tau_c)=r''(h_c)\,(Dh(\tau_c))^2$, $h_c=h(\tau_c)$), and $\Omega^2$ denotes the weight-two Chowla–Selberg period of the CM point $\tau_c$ ($\Gamma(1/3)^6/\pi^4$ for $\mathbf Q(\sqrt{-3})$, $\Gamma(1/4)^4/\pi^3$ for $\mathbf Q(i)$, …), so that a meromorphic modular form of weight $k$ with algebraic Fourier coefficients, analytic and non-vanishing at $\tau_c$, takes there a value in $\overline{\mathbf Q}\cdot\Omega^{k}$; in particular $Dh(\tau_c)\in\overline{\mathbf Q}\cdot\Omega^2$ ($Dh$ is a genuine weight-two meromorphic form because $\sum_dr_d=0$ for a weight-zero eta quotient).
 
-*Proof.* (1.1) with Lemma 2.1; in (a) the anomaly of $DF$ is absorbed into the elementary factor $k\sqrt N/(4\pi)$, and $Dh$ is a genuine weight-$2$ meromorphic form because $\sum_dr_d=0$ for a weight-$0$ eta quotient; in (b) $F(\tau_c)=0$ removes the anomaly term $\frac k{12}E_2F$ from $DF=\vartheta_kF+\frac k{12}E_2F$. $\square$
+**Theorem 3.1 [proved modulo the fold hypotheses of §1].**
+(a) *Non-vanishing case.* If $i^k\varepsilon_F=+1$ then
+$$K=\frac{k\sqrt N}{8\pi^{3/2}}\;\Bigl|\frac{F}{Dh}(\tau_c)\Bigr|\sqrt{\frac{2x_+}{-r''(h_c)}}\ \in\ \overline{\mathbf Q}\cdot\Omega^{\,k-2}\cdot\pi^{-3/2}.$$
+For $k=2$ the form $F/Dh$ is a modular *function*, and $K=\frac{\sqrt N}{4\pi^{3/2}}|F/Dh(\tau_c)|\sqrt{2x_+/(-r''(h_c))}\in\overline{\mathbf Q}\cdot\pi^{-3/2}$ with all three factors algebraic.
+(b) *Vanishing (CM) case.* If $i^k\varepsilon_F=-1$ then $F(\tau_c)=0$, $DF(\tau_c)=\vartheta_kF(\tau_c)$ is a genuine weight-$(k+2)$ CM value (no $E_2$ anomaly), and
+$$K\in\overline{\mathbf Q}\cdot\Omega^{\,k}\cdot\pi^{-1/2}.$$
+*Proof.* (1.1) with Lemma 2.1. In (a) the anomaly of $DF$ is absorbed into the elementary factor $k\sqrt N/(4\pi)$, and $|F(\tau_c)|/\sqrt{-D^2x(\tau_c)}=|F/Dh|(\tau_c)/\sqrt{-r''(h_c)}$ with $F(\tau_c)\in\overline{\mathbf Q}\Omega^k$, $Dh(\tau_c)\in\overline{\mathbf Q}\Omega^2$. In (b) $F(\tau_c)=0$ removes the anomaly term $\frac k{12}E_2F$ from $DF=\vartheta_kF+\frac k{12}E_2F$, so $DF(\tau_c)\in\overline{\mathbf Q}\Omega^{k+2}$, divided by $|Dh(\tau_c)|\in\overline{\mathbf Q}\Omega^2$ and by $\sqrt{2\pi}$. $\square$
 
-**Remark 3.2.** The classical asymptotic of Apéry's numbers, $a_n\sim(1+\sqrt2)^{4n+2}/(2^{9/4}\pi^{3/2}n^{3/2})$, is case (a) at $N=6$; the $\pi^{-3/2}$ is the $1/(4\pi)$ of Lemma 2.1 times the $1/(2\sqrt\pi)$ of singularity analysis, and $(1+\sqrt2)^2/2^{9/4}$ is $\frac{\sqrt6}{4}\,|F/Dh|(\tau_c)\sqrt{2x_+/(-r''(h_c))}$ — to be confirmed by the census. The same fold lemma gives the Apéry limit (Theorem B$^*$: $\xi=\Theta(q_c)+F\Theta'/F'$) and the asymptotic constant: both are values at the Fricke point, the limit of the Eichler integral and the constant of the form's derivative.
+**Corollary 3.2.** $K$ is elementary, i.e. in $\overline{\mathbf Q}\cdot\pi^{-3/2}$, if and only if $k=2$ and $F(\tau_c)\ne0$. (The "only if" uses Chudnovsky's theorem that $\pi$ and $\Gamma(1/3)$, resp. $\pi$ and $\Gamma(1/4)$, are algebraically independent, so a non-zero algebraic multiple of $\Omega^{j}\pi^{m}$, $j\ge1$, is never in $\overline{\mathbf Q}\pi^{-3/2}$.) Vanishing at the fold costs $\Omega^2$ and each unit of weight above two costs $\Omega$; both costs are visible in the census (§4.2).
 
-**Remark 3.3 (what decides the case).** For the second-order sporadic rows the fold is a cusp (log singularity) and the constant is elementary for a different reason (cusp width and the constant term of $F|S$). For the third-order rows $F$ has weight $2$; a fold at the Fricke point with $F(\tau_c)\ne0$ forces $\varepsilon_F=-1$ (Fricke-odd), case (a). CM periods can only enter through companions whose Fricke sign is "wrong" for their weight: weight $4$ anti-Fricke ($\zeta(5)$ constructions, Domb's $f^*$), weight $2$ Fricke-even, weight $6$ Fricke-even, etc.
+**Remark 3.3 (the first version of this note).** The first version stated (a) with "$k=2$" as a *moreover* clause and carried the title "elementary unless the companion vanishes at the fold". That is correct inside the weight-two world but false above it: the level-16 $\zeta(5)$ row and the level-12 $\zeta(7)$ parent both have $i^k\varepsilon_F=+1$, $F(\tau_c)\ne0$, and non-elementary $K$ (with $\Gamma(1/4)^4\pi^{-9/2}$ and $\Gamma(1/3)^{12}\pi^{-19/2}$ respectively, §4.2). The clean statement is Corollary 3.2.
+
+**Theorem 3.4 (weight two: structure and closed formula) [proved from the displayed hypotheses; the hypotheses verified exactly for the seven weight-two rows, §4.1].** Let $u=q+O(q^2)$ be a Hauptmodul of $\Gamma_0(N)$ given by an eta quotient $u=\prod_d\eta_d^{r_d}$ with $\sum_dr_d=0$ and
+$$\prod_d(N/d)^{r_d}=C^{-2}\quad\text{for some }C>0,\qquad\text{equivalently}\qquad u\big|W_N=\frac1{Cu}$$
+(since $u\circ W_N=\prod_d(N/d)^{r_d/2}\prod_d\eta_{N/d}^{r_d}$ and $\prod_d\eta_{N/d}^{r_d}=1/u$ when the exponent vector is $W_N$-symmetric). Put, for $B\in\mathbf Z$,
+$$x=\frac{u}{1+Bu+Cu^2}=\frac1{B+Cu+u^{-1}},\qquad F=D\log u=\frac1{24}\sum_dr_d\,d\,E_2(d\tau),\qquad a_n=[x^n]F,\qquad\lambda_{1,2}=B\pm2\sqrt C .$$
+Then:
+1. $F\in M_2(\Gamma_0(N))$ is holomorphic (the $E_2$ anomaly cancels because $\sum_dr_d=0$) with $\varepsilon_F=-1$, and $x\circ W_N=x$. Moreover $D\log x=\sqrt{P(x)}\,F$ with $P(x)=(1-\lambda_1x)(1-\lambda_2x)=1-2Bx+(B^2-4C)x^2$, the familiar "$Dx/x=F\sqrt P$" of the modular parametrisations, because $dx/du=(1-Cu^2)/(1+Bu+Cu^2)^2$ and $(1-Cu^2)/(1+Bu+Cu^2)=\sqrt{P(x)}$.
+2. The finite singular points of the row are $x=1/\lambda_1,1/\lambda_2$, the images of the two fixed points $u=\pm1/\sqrt C$ of $u\mapsto1/(Cu)$. The Fricke point $\tau_c=i/\sqrt N$ has $u(\tau_c)=+1/\sqrt C$ (an eta quotient is positive on the imaginary axis), hence is a fold of $x$ with $x_+=1/\lambda_1$, simple as soon as $Du(\tau_c)\ne0$.
+3. $(F/Du)(\tau_c)=\sqrt C$, $r''(u_c)=-2C^{3/2}/\lambda_1^2$, $2x_+/(-r''(u_c))=\lambda_1C^{-3/2}$, and therefore
+$$K=\frac{\sqrt N}{4\pi^{3/2}}\sqrt C\sqrt{\frac{\lambda_1}{C^{3/2}}}=\frac{\sqrt N}{4\pi^{3/2}}\sqrt{\lambda_1}\,C^{-1/4}=\frac{\sqrt N}{2\pi^{3/2}}\sqrt{\frac{\lambda_1}{\lambda_1-\lambda_2}}\qquad(C^{1/4}=\tfrac12\sqrt{\lambda_1-\lambda_2}).$$
+*Proof.* (1) $\log u\circ W_N=-\log u-\log C$; differentiating, $F(-1/(N\tau))=-N\tau^2F(\tau)$, i.e. $F|_2W_N=-F$. $Cu+u^{-1}$ is $W_N$-invariant, so $x$ is. The derivative identity is the computation displayed. (2) $r'(u)=(1-Cu^2)/(1+Bu+Cu^2)^2$ vanishes exactly at $u=\pm1/\sqrt C$; $u(\tau_c)^2=u(\tau_c)u(W_N\tau_c)=1/C$. (3) $F=Du/u$ gives $(F/Du)(\tau_c)=1/u_c=\sqrt C$; $r''(u_c)=-2Cu_c/(1+Bu_c+Cu_c^2)^2=-2C^{3/2}/(B+2\sqrt C)^2$; then Theorem 3.1(a) with $k=2$, $h=u$. $\square$
+
+So in weight two $K$ depends on the row only through $(N,\lambda_1,\lambda_2)$: the level and the characteristic polynomial of the recurrence. Geometrically, $x$ is a Hauptmodul of the Fricke group $\Gamma_0(N)^+$, the row's two finite singularities are the two Fricke fixed points, and $F=D\log u$ is the weight-two Eisenstein series attached to the degree-two cover $u$ — the identity behind "$F$ is an Eisenstein series" for Apéry's numbers ($u=\eta_2\eta_6^5/(\eta_1^5\eta_3)$, $F=\frac1{24}(-5E_2(\tau)+2E_2(2\tau)-3E_2(3\tau)+30E_2(6\tau))$).
+
+**Remark 3.5 (what decides the case).** For the second-order sporadic rows the fold is a cusp (log singularity) and the constant is elementary for a different reason (cusp width and the constant term of $F|S$). For the third-order rows $F$ has weight $2$, and a fold at the Fricke point with $F(\tau_c)\ne0$ forces $\varepsilon_F=-1$ — now with the one-line proof $F=D\log u$, $u|W_N=1/(Cu)$. Chowla–Selberg periods enter only through weight above two: companions of weight $4$ (the $\zeta(5)$ constructions, Domb's $f^*$), weight $6$ (the $\zeta(7)$ parent), and so on, with an extra $\Omega^2$ when the Fricke sign is "wrong" for the weight and the companion vanishes at the fold.
 
 ## 4. Census
 
-*(to be filled from the agent report: rows α, γ, ε, ζ, Cooper's s₇, s₁₀, s₁₈; the level-12 and level-16 ζ(5) systems; the level-12 ζ(7) parent.)*
+Every entry recomputed by the agent from the recurrence (mirror map $q=x\exp(g/y_0)$ from the Frobenius deformation, no modular input) *and* from the eta quotients, with Richardson extrapolation of the exact sequence ($n\le6000$ for the weight-two rows, 20 nodes, 400-digit arithmetic) as the independent check. "verified" = digits of agreement between the Richardson value and the closed form; the fold formula (1.1) and the closed forms agree to $\ge148$ digits throughout. Ten closed forms were re-evaluated independently here (`lattice/asymptotic_constants/check_forms.py`) against the report's 30-digit values.
+
+### 4.1 Weight two: the seven rows satisfy Theorem 3.4
+
+The identities $x=u/(1+Bu+Cu^2)$, $F=D\log u$, $P(x)=((1-Cu^2)/(1+Bu+Cu^2))^2$ hold **exactly to $O(q^{300})$** for all seven rows (`main3.gp`), far beyond the Sturm bound; $\prod_d(N/d)^{r_d}=C^{-2}$ holds **exactly as rationals** (`alconst.gp`); $u|W_N=1/(Cu)$, $F|_2W_N=-F$, $x\circ W_N=x$ to $\ge90$–$100$ digits (`fricke.gp`); $q_c=e^{-2\pi/\sqrt N}$ is the dominant fold to $\ge200$ digits — this had to be checked for Cooper's three rows and is new for them. ($\alpha$: the level-6 coordinate $(\eta_2\eta_6/\eta_1\eta_3)^6$ of `SPORADIC_SEARCH.md` is the $q\mapsto-q$ twist parametrising $(-1)^na_n$; the untwisted Domb row lives at level $12$, where the fold is.)
+
+| row | $N$ | $u$ | $B$ | $C$ | $\lambda_1$ | $\lambda_2$ | $K$ | $K^2\pi^3$ | verified |
+|---|---|---|---|---|---|---|---|---|---|
+| $\alpha$ Domb $(10,4,64)$ | 12 | $(\eta_2\eta_3\eta_{12}/\eta_1\eta_4\eta_6)^4$ | 10 | 9 | 16 | 4 | $2\,\pi^{-3/2}$ | $4$ | 60 |
+| $\gamma$ Apéry $(17,5,1)$ | 6 | $\eta_2\eta_6^5/(\eta_1^5\eta_3)$ | 17 | 72 | $17+12\sqrt2$ | $17-12\sqrt2$ | $(1+\sqrt2)^2\,2^{-9/4}\pi^{-3/2}$ | $\tfrac{24+17\sqrt2}{32}$ | 73 |
+| $\varepsilon$ $(12,4,16)$ | 8 | $\eta_2^2\eta_8^4/(\eta_1^4\eta_4^2)$ | 12 | 32 | $12+8\sqrt2$ | $12-8\sqrt2$ | $\tfrac12\sqrt{4+3\sqrt2}\,\pi^{-3/2}$ | $\tfrac{4+3\sqrt2}{4}$ | 68 |
+| $\zeta$ $(9,3,-27)$ | 9 | $(\eta_9/\eta_1)^3$ | 9 | 27 | $9+6\sqrt3$ | $9-6\sqrt3$ | $\tfrac38(\sqrt2+\sqrt6)\,\pi^{-3/2}$ | $\tfrac{9(2+\sqrt3)}{16}$ | 69 |
+| Cooper $s_7$ | 7 | $(\eta_7/\eta_1)^4$ | 13 | 49 | 27 | $-1$ | $\tfrac34\sqrt3\,\pi^{-3/2}$ | $\tfrac{27}{16}$ | 71 |
+| Cooper $s_{10}=\sum\binom nk^4$ | 10 | $(\eta_5\eta_{10}/\eta_1\eta_2)^2$ | 6 | 25 | 16 | $-4$ | $\sqrt2\,\pi^{-3/2}$ | $2$ | 67 |
+| Cooper $s_{18}$ | 18 | $(\eta_2\eta_3^2\eta_{18}/\eta_1\eta_6^2\eta_9)^6$ | 14 | 1 | 16 | 12 | $3\sqrt2\,\pi^{-3/2}$ | $18$ | 46 |
+
+Thirty-digit values: $0.359174244250333123378163967255$, $0.220043767112643037850689759810$, $0.257797308917838939757311495404$, $0.260201758994440992303217903862$, $0.233290514929399000627453098124$, $0.253974543736963879143053219739$, $0.761923631210891637429159659216$. Minimal polynomials of $K\pi^{3/2}$: $x-2$; $512x^4-768x^2-1$; $8x^4-16x^2-1$; $256x^4-576x^2+81$; $16x^2-27$; $x^2-2$; $x^2-18$ (degree $4$ exactly when $\lambda_1\notin\mathbf Q$), each returned by `algdep` on the Richardson value alone. Apéry's $a_n\sim(1+\sqrt2)^{4n+2}/(2^{9/4}\pi^{3/2}n^{3/2})$ is confirmed exactly as classically stated ($x_+^{-1}=(1+\sqrt2)^4$).
+
+### 4.2 Weight above two: the three $\zeta(5)$, $\zeta(7)$ rows
+
+| row | $N$ | $k$ | $\varepsilon$ | $i^k\varepsilon$ | $F(\tau_c)=0$? | $K$ | class | verified |
+|---|---|---|---|---|---|---|---|---|
+| $\zeta(5)$ level 12 ($E$, $Q$) | 12 | 4 | $-1$ | $-1$ | yes | $0.685371848490534405951430044881$ | $\overline{\mathbf Q}\,\Gamma(1/3)^{12}\pi^{-17/2}=\overline{\mathbf Q}\,\Omega^4\pi^{-1/2}$ | 62 |
+| $\zeta(5)$ level 16 | 16 | 4 | $+1$ | $+1$ | no | $2.04997125634010629357510092802$ | $\overline{\mathbf Q}\,\Gamma(1/4)^{4}\pi^{-9/2}=\overline{\mathbf Q}\,\Omega^2\pi^{-3/2}$ | 41 |
+| $\zeta(7)$ level 12 | 12 | 6 | $-1$ | $+1$ | no | $31.7215208279640907727003835703$ | $\overline{\mathbf Q}\,\Gamma(1/3)^{12}\pi^{-19/2}=\overline{\mathbf Q}\,\Omega^4\pi^{-3/2}$ | 42 |
+
+* **Level-12 $\zeta(5)$ (control, case (b)).** Rebuilt from scratch: $v:=1/h_{12}=q+3q^2+7q^3+\cdots$, $x=v/(1+7v+12v^2)$ [exact, $O(q^{903})$] — the $(B,C)=(7,12)$ instance of the Theorem 3.4 shape, $\lambda_{1,2}=7\pm4\sqrt3$; companion $G=7E/Q(x)$ of weight $4$ with $E|_4W_{12}=-E$, $E(\tau_c)=0$ to $10^{-230}$. New exact structure: $R:=v^2G/(Dv)^2=\dfrac{(1+3v)(1+4v)(1-12v^2)}{(1+6v)^2(1+2v)^2}$ [exact, $O(q^{502})$], so the CM vanishing is *visible* in the factor $1-12v^2$ ($v_c=1/\sqrt{12}$) and $R'(v_c)=-3/2$ exactly, whence $DG(\tau_c)=-18\,(Dv(\tau_c))^3$ and, with $(Dv(\tau_c)/\Omega^2)^3=3(45+26\sqrt3)/2^{17}$ [156 digits],
+$$K=9\Bigl(\frac{3(45+26\sqrt3)}{2^{17}}\Bigr)^{2/3}\sqrt{\frac{7+4\sqrt3}{24\sqrt3}}\;\frac{\Gamma(1/3)^{12}}{\pi^{17/2}},$$
+equal to the closed form of `ZETA5_K_CLOSED_FORM.md` (the two expressions agree to 47 digits, `check_forms.py`; the fold formula and Richardson to $n=4200$ agree with it to 62 digits).
+* **Level-16 $\zeta(5)$ (case (a), $k=4$).** $x=\eta_2\eta_{16}^2/(\eta_1^2\eta_8)$, $t=x/(8x^2+2x+1)$, $(B,C)=(2,8)$, $\lambda_{1,2}=2\pm4\sqrt2$, $\tau_c=i/4$; $\Phi_{16}=-\frac1{504}(E_6-85E_6(2\tau)+1428E_6(4\tau)-5440E_6(8\tau)+4096E_6(16\tau))$, $F=\Phi_{16}/Dt$ of weight $4$ with $F|_4W_{16}=+F$ (proved from $E_k(d\tau)|_kW_N=(N/d^2)^{k/2}E_k((N/d)\tau)$: the coefficient vector is $W_{16}$-symmetric). $F(\tau_c)=-5.8337\ldots\ne0$ and $DF(\tau_c)=\frac{4\cdot4}{4\pi}F(\tau_c)$ to $10^{-230}$. $R:=x^2F/(Dx)^2$ is rational in $x$ of degree $12$ [exact fit], $R(x_c)=\frac{7083\sqrt2-10021}{2}$ at $x_c=1/(2\sqrt2)$, $Dx(\tau_c)=\frac{2+\sqrt2}{32}\Gamma(1/4)^4/\pi^3$ [213 digits], and
+$$K=\frac{(10021-7083\sqrt2)(2+\sqrt2)\sqrt{4+\sqrt2}}{16}\cdot\frac{\Gamma(1/4)^4}{\pi^{9/2}} .$$
+Not the CM-vanishing mechanism: $\Omega^{k-2}=\Omega^2=\Gamma(1/4)^4/\pi^3$ survives purely because $k=4$.
+* **Level-12 $\zeta(7)$ parent (case (a), $k=6$).** $\Phi^-_{12}=\frac1{480}\sum_{d\mid12}c_dE_8(d\tau)$, $c=(1,-572,11583,-36608,46332,-20736)$, $F=\Phi^-_{12}/Dt$ of weight $6$, $\varepsilon_F=-1$, $F(\tau_c)=66.76\ldots\ne0$. Exact CM ratios at the same point $\tau_c=i/\sqrt{12}$ (same $Dv$ as the $\zeta(5)$ control): $F/(Dv)^3=2025(490730\sqrt3-849969)$, $D^2t/(Dv)^2=(1152\sqrt3-2016)/25$, $Dx/\Omega^2=3^{3/2}/2^{17/3}$, giving
+$$K=\frac{3\sqrt3}{2}\cdot2025\bigl(490730\sqrt3-849969\bigr)\Bigl(\frac{3(45+26\sqrt3)}{2^{17}}\Bigr)^{2/3}\sqrt{\frac{5}{2016-1152\sqrt3}}\;\frac{\Gamma(1/3)^{12}}{\pi^{19/2}} .$$
+
+### 4.3 Two corrections to the repository
+
+1. **The level-12 $\zeta(7)$ host has degree two.** $x=\eta_4^2\eta_{12}^2/(\eta_1^2\eta_3^2)$ has (Ligozat) two simple zeros ($\infty$ and the cusp $1/4$) and two simple poles ($0$ and $1/3$) on $X_0(12)$, so it is not a Hauptmodul — which is why $F/(Dx)^3$ admits no rational expression in $x$ (searched to degree $26$) and why the repository found "no recurrence of order $\le20$" for that system. In the genuine Hauptmodul $v=1/h_{12}$ of the $\zeta(5)$ control, $x=v(1+3v)/(1+4v)$ [exact, $O(q^{953})$] and $v^3F/(Dv)^3$ is rational of degree $20$. The level-12 $\zeta(5)$ and $\zeta(7)$ systems therefore live on **one** coordinate and share **one** CM period $Dv(i/\sqrt{12})$, differing only in the companion's weight and Fricke sign — hence $\pi^{-17/2}$ against $\pi^{-19/2}$.
+2. **Cooper's rows have a Fricke fold** at $e^{-2\pi/\sqrt N}$, $N=7,10,18$, and satisfy the Theorem 3.4 structure; this was not recorded anywhere in the repository. For $s_{18}$ the $x(q)$-expansion from the recurrence converges only for $|q|\lesssim1/4$ (pole at $u=-7\pm4\sqrt3$), barely outside $q_c=0.2274$; the eta quotient $u$ removes the difficulty.
+
+### 4.4 Reproduction
+
+`lattice/asymptotic_constants/`: `lib.gp` (mirror map from a MUM recurrence), `main1.gp`–`main4.gp` (fold, structure identities, Richardson, closed forms; seven rows), `etaid.gp`/`alconst.gp`/`fricke.gp` (eta identification, the rational identity $\prod(N/d)^{r_d}=C^{-2}$, Fricke checks), `cm1.gp`–`cm8.gp` (the three higher-weight rows), `fits.gp`, `fits2.gp`, `final.gp`, `table.gp`, `check_forms.py`; full report in `REPORT.md`. Each script runs under ten minutes; `gp -q <file>`.

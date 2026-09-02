@@ -6,6 +6,31 @@ Newest entries on top.
 
 ---
 
+## 2026-09-02 — Two censuses: asymptotic constants, and the arithmetic of the companion sequences
+
+**Asymptotic constants** (`consolidation/ASYMPTOTIC_CONSTANTS.md`, scripts `lattice/asymptotic_constants/`).
+All seven weight-two rows with a Fricke fold (Domb α, Apéry γ, ε, ζ, Cooper s₇, s₁₀, s₁₈) have
+`K = √N/(2π^{3/2}) · √(λ₁/(λ₁−λ₂))`, λ₁,₂ the characteristic roots — proved from the structure
+`x = u/(1+Bu+Cu²)`, `F = D log u`, `u|W_N = 1/(Cu)` (verified exactly to O(q^300)). Apéry's
+`(1+√2)²/(2^{9/4}π^{3/2})` confirmed to 73 digits; Cooper's rows give `3√3/(4π^{3/2})`, `√2/π^{3/2}`,
+`3√2/π^{3/2}`. Above weight two a Chowla–Selberg period Ω^{k−2} (or Ω^k if the companion vanishes at
+the fold) survives: level-16 ζ(5) has `K ∈ Q̄·Γ(1/4)⁴π^{−9/2}`, level-12 ζ(7) has
+`K ∈ Q̄·Γ(1/3)^{12}π^{−19/2}`, both in closed form. Correction: the level-12 ζ(7) host
+`η₄²η₁₂²/(η₁²η₃²)` has degree 2 on X₀(12); the Hauptmodul is `v = 1/h₁₂` (shared with the level-12
+ζ(5) system), `x = v(1+3v)/(1+4v)` — which explains the missing order-≤20 recurrence.
+
+**Companion arithmetic** (`consolidation/COMPANION_ARITHMETIC.md`, scripts `lattice/companion_arithmetic/`).
+Companion formula `b_n = Σ c(m) m^{−r} e_{n,m}` verified exactly for all twelve Eisenstein rows.
+Refined denominator `R_n` is exact at every bad prime but only an upper bound at good primes
+(mechanism: `v_p(den b_n) = max(0, r − v_p(c(p) e_{n,p}))` for n/2 < p ≤ n). `v_p(b_n) − v_p(a_n) = v_p(ξ_p)`
+constant wherever ξ_p ≠ 0. New exact digit laws `v₂(a_n) = s₂(n)` for s₁₀ and s₁₈ (identical
+valuation vectors), with companion laws `v₂(b_n) = s₂(n) − 2⌊log₂n⌋ − 1`. A Lucas law for companions at
+every good prime, `β_{np+m} ≡ ψ(p) β_n a_m (mod p)` with `β_n = p^{r⌊log_p n⌋} b_n`, holding in all 199
+(row, prime) cells, which determines ψ for Cooper's meromorphic sources: ψ(s₇) = ψ(s₁₀) = 1,
+ψ(s₁₈) = χ₋₃ (previously conjectural).
+
+---
+
 ## 2026-08-21 — Recovered: full leading asymptotics of the ζ(5) linear form (level-12 CM-isogeny construction)
 
 **Status:** proved exact, up to one constant left numerical (not yet closed form).

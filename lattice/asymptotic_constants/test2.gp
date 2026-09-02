@@ -1,0 +1,12 @@
+default(parisize,"6G");
+read("lib.gp");
+gettime();
+NT=200;
+M = mirror((n+1)^3, (2*n+1)*(17*n^2+17*n+5), -1*n^3, NT);
+print("time NT=200: ", gettime(), " ms");
+print("t integral: ", denominator(content(truncate(M[1]))), "  F integral: ", denominator(content(truncate(M[2]))));
+NT=400;
+M = mirror((n+1)^3, (2*n+1)*(17*n^2+17*n+5), -1*n^3, NT);
+print("time NT=400: ", gettime(), " ms");
+print("t integral: ", denominator(content(truncate(M[1]))), "  F integral: ", denominator(content(truncate(M[2]))));
+quit;
