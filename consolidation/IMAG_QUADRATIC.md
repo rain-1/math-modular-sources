@@ -1,0 +1,21 @@
+# Imaginary quadratic fields: the number-field bound is free, and there is nothing to spend it on
+
+*Fable, 2026-09-02. Closure of top-9 item 2. Full report and 11 scripts: `lattice/imag_quadratic/REPORT.md`.*
+
+## 1. The no-tax statement [exact]
+
+For $K$ imaginary quadratic there is one archimedean place, complex, with $d_v=2=n_K$. Theorem 2.1 of `NUMBER_FIELD_HOLONOMY.md` reads $m\le2M/(2L-2\tau)=M/(L-\tau)$, letter for letter the rational bound: Siegel's lemma doubles unknowns and equations alike, Liouville is $|N(\beta)|=|\sigma\beta|^2\ge1$, the finite places charge $n_K\log|L(n)|_p$, and the conjugate embedding is the *same* place, so the disc, the contour, the Bost–Charles integral and fold-regularity at the conjugate are all shared. There is no hypothesis tax either, because complex conjugation is the only Galois element and it acts on the single place. Consequently a $K$-rational system is new only if its period is **non-real** (a real period gives back the $\mathbf Q$-statement, since $K\cap\mathbf R=\mathbf Q$), and "$\lambda_2$ a unit" means "$\lambda_2$ a root of unity" because $\mathcal O_K^\times=\mu_K$.
+
+## 2. Why nothing exists [exact + verified]
+
+* A non-real period needs a nebentypus of order $\ge3$, hence a group $\Gamma_{H'}$ strictly between $\Gamma_1(N)$ and $\Gamma_0(N)$ with $H'\subseteq\ker\varepsilon$; this is impossible on any $\Gamma_0$-type host.
+* Exhaustively over all subgroups $H\le(\mathbf Z/N)^\times$, $N\le60$: 25 genus-zero curves, exactly six with four special points ($X_0(5),\ldots,X_0(9)$, $X_1(5)$), an independent re-derivation of `hostscan` §2 over the full intermediate lattice. Exactly one of the six carries a character of order $>2$: $X_1(5)$ with the odd quartic $\psi_4$, over $\mathbf Q(i)$.
+* On $X_1(5)$, $\dim M_3^{\rm Eis}(\Gamma_1(5),\psi_4)=2$ and the two constant-term functionals (at $\infty$ and at the near cusp, `CUSP_PERIODS.md` §3.3) have rank $2$ on that component: the fold-regular part of the $\psi_4$-component is **zero**. The fold-regular space of the full Eisenstein space is the conjugation-stable diagonal, whose interesting line is $\Phi_{\rm new}$ over the real field $\mathbf Q(\sqrt5)$, with its $1.46$-nat tax (`GAMMA15_CLOSURE.md`). The reason is that $\operatorname{cond}\psi_4=5=N$ leaves no oldform shift and no mixed direction.
+* Supply of $\mathbf Q(i)$- or $\mathbf Q(\zeta_3)$-rational fold-regular sources with non-real periods begins at $N=7$ ($N=7,9,10,13,14,15,16,18,\ldots$; e.g. $\Phi=E_3^{\psi_4,\mathbf 1}(\tau)-8E_3^{\psi_4,\mathbf 1}(2\tau)\in\mathbf Z[i][[q]]$ at $N=10$, period $-\tfrac12L(2,\psi_4)$), but every such level has at least six special points, so no CDT-shape host.
+* Hosts defined over $K$ rather than $\mathbf Q$: conjugate pairs of singularities occur only on $X_0(5)$, $X_0(7)$, $X_0(9)$; with the pole at the cusp $0$ they have $|\lambda_1|=|\lambda_2|$ (dead: no geometric convergence, which is the real reason the three "complex fold" rows of `hostscan` carry no period); with the pole at a conjugate point the rows are five-term ($X_0(5)/\mathbf Q(i)$), four-term ($X_0(7)/\mathbf Q(\sqrt{-3})$) or equilateral ($X_0(9)$, $|\lambda_1|=|\lambda_2|=3\sqrt3$). Atkin–Lehner quotients kill characters of order $\ge3$ ($\varepsilon\mapsto\bar\varepsilon$); weight-4 trivial-nebentypus products $E_4^{\psi,\bar\psi}$ need $\operatorname{cond}(\psi)^2\mid N$, i.e. $N\ge25$.
+
+## 3. Verdict
+
+Best margin over everything imaginary quadratic: $-18.0$ nats (and that entry is hypothetical; the honest value is $-42.4$). The prize that does not exist would have scored exactly CDT's numbers with zero tax and proved $L(2,\psi_4)\notin\mathbf Q(i)$. The obstruction is purely geometric and quantitatively sharp: the four-point genus-zero geometry ends at level 9, the imaginary-quadratic supply starts at level 7, and the single overlap, $X_1(5)$, has its quartic component annihilated by the two regularity conditions.
+
+By-products: the elliptic-point lemma (a bare order-$e$ elliptic point among the finite singularities lengthens the recurrence; characteristic polynomials $(y^2+22y+125)^2$, $(y^2+13y+49)^2$) and the equilateral criterion $|\lambda_1|=|\lambda_2|\iff\arg\mu=\pm150^\circ$ for conjugate-pair placements.

@@ -6,6 +6,10 @@ Newest entries on top.
 
 ---
 
+## 2026-09-02 — Imaginary quadratic fields: the holonomy bound is free, but no host exists
+
+`consolidation/IMAG_QUADRATIC.md` + `lattice/imag_quadratic/`. Over K imaginary quadratic the number-field bound is letter-for-letter the rational one (one complex place, d_v = 2 = n_K; no second place, no hypothesis tax). But a non-real period needs a nebentypus of order ≥ 3, and over all subgroups H ≤ (Z/N)^× with N ≤ 60 the only four-point genus-zero host carrying one is X₁(5) with ψ₄, whose fold-regular ψ₄-component is zero (constant-term functionals have rank 2 there because cond ψ₄ = N). Supply starts at level 7 with ≥ 6 special points; K-rational hosts with conjugate singularities are dead (|λ₁| = |λ₂|) or not three-term. Best margin −18. The would-be prize (L(2,ψ₄) ∉ Q(i)) would have scored exactly CDT's numbers.
+
 ## 2026-09-02 — Cooper's magnetic congruence: two cells proved, the rest reduced, and a master conjecture
 
 `consolidation/COOPER_CONGRUENCE.md` + `lattice/cooper_congruence/`.
