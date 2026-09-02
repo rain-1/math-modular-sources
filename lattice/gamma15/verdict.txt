@@ -1,0 +1,57 @@
+=== BC: Jensen reduction vs the model-free double sum ===
+  (a) concentric discs  phi = -h on |Q| < r  (host C of lattice/catalan_mu4)
+     r=0.05: log|phi'(0)|=2.549445  Jensen=2.608294  direct(2048)=2.608294
+     r=0.20: log|phi'(0)|=3.935740  Jensen=5.798606  direct(2048)=5.798607
+     r=0.30: log|phi'(0)|=4.341205  Jensen=7.250667  direct(2048)=7.250667
+     r=0.50: log|phi'(0)|=4.852030  Jensen=9.843176  direct(2048)=9.843188
+  (b) the place-v2 designs (deep slits, boundary near the h -> 0 cusps)
+     R=0.75: log|phi'(0)|=2.208268  Jensen=6.38763  direct 2048/4096 = 6.40124 6.39436
+     R=0.83: log|phi'(0)|=2.223552  Jensen=6.62287  direct 2048/4096 = 6.64600 6.63807
+     R=0.90: log|phi'(0)|=2.232338  Jensen=6.81751  direct 2048/4096 = 6.83911 6.83011
+
+=== hard cap on |psi_v'(0)| from the single deepest bad preimage ===
+  (classical: among simply connected Omega in D with 0 in Omega and p not in Omega,
+   the radial-slit domain is extremal, conformal radius 4|p|/(1+|p|)^2)
+  v1: deepest bad preimage |p| = 0.536032 -> |psi'(0)| <= 0.908762, log(256|s|.cap) = 7.855565
+  v2: deepest bad preimage |p| = 0.213693 -> |psi'(0)| <= 0.580274, log(256|s|.cap) = 2.594864
+
+=== attribution of the shortfall ===
+  margin = 13 log256 + 13 * mean(log|psi_v'(0)|) - mean(shape_v) - 14 tau
+    13 log 256                 = +72.08731
+    13 * mean log|psi'|        = -8.32200   (log|psi_1'| = -0.351284, log|psi_2'| = -0.929024)
+    - mean shape               = -5.91131   (shape_1 = 7.62381, shape_2 = 4.19880)
+    - 14 tau                   = -59.29643
+    ------------------------------------
+    margin                     = -1.44243
+  CDT's own host, same accounting (their optimum in this family, R = 0.80):
+    13 log256 + 13 log|psi'| - shape - 14 tau = +0.02091
+  per-place score  s_v := 13 log|psi_v'| - shape_v  (margin = 13 log256 + mean(s_v) - 14 tau):
+    v1 : -12.19050      v2 : -16.27611      CDT (single place) : -12.76997
+    v1 is BETTER than CDT by +0.57947 nats, v2 is WORSE by +3.50615 nats;
+    halved and summed this is -1.46334 nats of margin relative to CDT's own +0.0209.
+
+  what place v2 would have to deliver for margin 0 (v1 held at its optimum):
+    need 14 L_2 - BC_2 >= 27.4173 ; achieved 24.5324 ; deficit 2.8849
+    at fixed BC_2 that is |psi_2'(0)| = 0.485312 (achieved 0.394939, hard cap 0.580273)
+
+=== inventory optimisation (u_1 = 1 forced by INVENTORY_BOUND Cor. 2.2) ===
+  adding k two-layer functions of exponent 2 to CDT's fourteen:
+   k    m       tau      entry     bound     margin
+    0   14    4.23546   0.67643   16.1337   -1.4433
+    1   15    4.44815   0.46585   23.4914   -3.9558
+    2   16    4.47487   0.44830   24.7193   -3.9089
+    3   17    4.49031   0.44355   25.3820   -3.7178
+    4   18    4.49846   0.44381   25.7078   -3.4208
+    5   19    4.50172   0.44225   25.8701   -3.0383
+    6   20    4.50165   0.44384   25.8433   -2.5935
+    7   21    4.49926   0.45562   25.5920   -2.0923
+  dropping conditional or pure functions (m < 14) only lowers m*entry:
+   m= 8 tau=4.11719 entry=0.67122 bound=14.3838 margin=-4.2849
+   m=10 tau=4.14833 entry=0.70325 bound=14.5216 margin=-3.1798
+   m=12 tau=4.19387 entry=0.69839 bound=15.2580 margin=-2.2753
+   m=13 tau=4.21943 entry=0.68287 bound=15.7906 margin=-1.9056
+
+=== CDT's convexity improvements, transported ===
+  On their own host CDT improve the bound 13.9938 -> 13.730, 13.7206, 13.678, 13.621
+  (four radii), i.e. a factor 13.621/13.9938 = 0.973360 on the bound.
+  Our bound 16.15428 * 0.973360 = 15.7239, still > 14; equivalent margin -1.1543.
