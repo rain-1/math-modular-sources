@@ -1,10 +1,9 @@
-# Cooper's magnetic congruence, round 2: $\gamma$ identified as a twisted CM trace, and the
-# master conjecture shown to be a general property of Shimura–Borcherds lifts
+# Cooper's magnetic congruence, round 2: $\gamma$ identified as a twisted CM trace, and the master conjecture shown to be a general property of Shimura–Borcherds lifts
 
 *Working note, 2026-09-02.  PARI/GP 2.15.4; all divisibility claims are exact integer
 arithmetic, all CM evaluations are floating point with the precision quoted.  Scripts
-`01_*`–`59_*` with matching `.log` files in this directory; three companion verdict files
-`FINDINGS_MODP.md`, `FINDINGS_XSIDE.md`, `FINDINGS_ROWS.md`; two working notes
+`01_*`–`70_*` with matching `.log` files in this directory; four companion verdict files
+`FINDINGS_PZ.md`, `FINDINGS_MODP.md`, `FINDINGS_XSIDE.md`, `FINDINGS_ROWS.md`; two working notes
 `NOTES_IDENT.md`, `NOTES_TRACE.md`.  Background: `consolidation/COOPER_CONGRUENCE.md`,
 `lattice/cooper_congruence/REPORT.md` (round 1), `lattice/cooper_sources/REPORT.md` §2,
 `lattice/cooper_sources/pz.txt` (Paşol–Zudilin).  Nothing outside
