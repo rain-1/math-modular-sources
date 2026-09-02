@@ -313,7 +313,14 @@ collinearity). Calibration: the same construction at the **near** cusp t₁ retu
 
 $$\boxed{\;\pi_{B_D}^{(t_2)}=-\tfrac{11}{5}\zeta(2)\quad(\text{ratio to }\zeta(2)/5\ \text{is}\ -11.0000000000),\qquad \pi_{B'_{\rm new}}^{(t_2)}=\xi'=-\mathrm{Re}\,L-\varphi^{-5}\mathrm{Im}\,L=-0.971841789639\;}$$
 
-(ratio to ξ′ equal to 1.000000000000). Both ratios are stable to **12 digits** across base points 0.05, 0.02, −0.03, loop radii 4, 5, 7, path heights 1.5, 2, 3 and tolerances 10⁻¹², 10⁻¹³ (`farcusp_robust.txt`). So the two conditions the architecture needs are
+(ratio to ξ′ equal to 1.000000000000). Both ratios are stable to **12 digits** across base
+points 0.05, 0.02, −0.03, loop radii 4, 5, 7, path heights 1.5, 2, 3 and tolerances 10⁻¹², 10⁻¹³
+(`farcusp_robust.txt`), and were independently recomputed in `task2/` to **174 digits** by
+adaptive Taylor continuation at 200-digit precision (residuals |π_D + 11ζ(2)/5| = 2.1·10⁻¹⁷⁴,
+|π′ − ξ′| = 1.6·10⁻¹⁷⁴; `lindep` certificates [−5,0,−11,0,0,0,0,0] and [−2,0,0,−2,11,0,0,−5]),
+with the near-cusp calibration returning ζ(2)/5 and ξ to 2·10⁻²¹² and a third, wholly different
+confirmation to 5–6 digits by Abel summation of the Eichler integral at the cusps
+(`task2/19_abel.gp`). So the two conditions the architecture needs are
 
   **(i)** a + (b/5)·ζ(2) + c·ξ = 0  (the target hypothesis — regularity of H at the v₁-fold t₁);
   **(ii)** σ(a) − (11σ(b)/5)·ζ(2) + σ(c)·ξ′ = 0  (regularity of σH at the v₂-fold t₂).
@@ -321,8 +328,25 @@ $$\boxed{\;\pi_{B_D}^{(t_2)}=-\tfrac{11}{5}\zeta(2)\quad(\text{ratio to }\zeta(2
 With ξ = −Re L + φ⁵ Im L and ξ′ = −Re L + σ(φ⁵) Im L, condition (ii) is σ applied to the
 K-coefficients of (i) **except** in the ζ(2) slot, where +1/5 becomes −11/5:
   (ii) = σ(i) − (12/5)σ(b)·ζ(2).
-Hence **(i) does not imply (ii)** (they coincide only when b = 0), and one K-linear relation
-among 1, ζ(2), ξ gives a conditional function at **one place only**. **[verified, 12 digits]**
+Hence **(i) does not imply (ii)**. More: in the K-basis (1, ζ(2)/5, Re L, Im L) the two
+coefficient vectors are Λ = (a, b, −c, cφ⁵) and Λ′ = (σa, −11σb, −σc, σ(cφ⁵)), and
+Λ′ = μΛ for μ ∈ K^× forces (3rd and 4th entries) σ(φ⁵) = φ⁵ unless c = 0, while Λ′ = Λ forces
+b = −11σ(b) ⇒ b = 0 and cφ⁵ = −cφ⁻⁵ ⇒ c = 0. **The two relations are never the same relation
+whenever ξ is actually involved.** Splitting Λ = Λ₀ + √5 Λ₁ over ℚ, "(i) and (ii)" says
+
+  Λ₀·v = (6/5)σ(b)ζ(2)  **and**  √5 Λ₁·v = −(6/5)σ(b)ζ(2),  v = (1, ζ(2)/5, Re L, Im L),
+
+two independent ℚ-relations among 1, ζ(2), Re L, Im L, √5, √5ζ(2), √5 Re L, √5 Im L, where one
+K-relation supplies one. (In the clean sub-case b = 0 — irrationality of ξ over K — it says the
+rational part and the √5 part of the single K-relation a + cξ = 0 must vanish *separately*.)
+So one K-linear relation among 1, ζ(2)/5, ξ gives a conditional function at **one place only**.
+**[verified, 174 digits]**
+
+*Where the −11 comes from, partially.* The diamond ⟨2⟩ (R₁ ↦ R₂ ↦ −R₁, R₃ ↦ R₄ ↦ −R₃, with
+⟨2⟩Φ_new = −φ⁵Φ′_new) swaps the cusps 0 ↔ 1/2 and induces x ↦ −1/x, consistent with t₁t₂ = −1;
+but it does **not** preserve the normalisation c₀(∞) = 0 — ⟨2⟩⁻¹Φ_D = R₁ − R₂/2 has
+c₀(∞) = −1, while the inner directions stay inside c₀(∞) = 0. That is why the ζ(2) slot picks up
+a factor and the ξ slot does not. That −11 = t₁ + t₂ is **not** explained. **[open]**
 
 Two ways out, both priced in §5.2:
 * assume the *doubled* hypothesis (i) ∧ (ii) — two ℚ-linear relations among

@@ -29,7 +29,8 @@ Scripts (all in this directory, all PARI/GP 2.15):
 `01_build.gp` (exact construction, writes `build.txt`), `02_limits.gp`, `03_ode.gp`,
 `04_ode_verify.gp`, `05_coeffs.gp`, `06_denoms.gp`, `07_foldreg.gp`, `08_outer.gp`,
 `09_outerfit.gp`, `10_cusps.gp`, `11_cusps2.gp`, `12_cusptable.gp`, `13_haupt.gp`,
-`14_rates.gp`, `15_checks.gp`, `16_summary.gp`.
+`14_rates.gp`, `15_checks.gp`, `16_summary.gp`, `17_farperiods.gp` (monodromy at $t_2$),
+`18_nearperiods.gp` (validation at $t_1$ + `lindep`), `19_abel.gp` (independent Abel-summation check).
 All exact data (200 coefficients of $A$, $B_D$, $B_3$, $B_4$ as exact rationals) is in `build.txt`.
 
 Throughout: $\varphi^5=\tfrac{11+5\sqrt5}{2}=11.0901699\ldots$, $\varphi^{-5}=\tfrac{5\sqrt5-11}{2}=0.0901699\ldots$,
@@ -181,7 +182,11 @@ the *non-fold* finite singular point ($x=1$ there, $x=t_2$ here). $H\in K\llbrac
 with denominators of shape $d_n^2$ in $\mathbb Z[\varphi]$ (§2).
 
 The $\sigma$-conjugate satisfies
-$$\mathcal L H^\sigma \;=\;\sigma(b)+\frac{2\sigma(c)}{1-\varphi^5x}\;=\;\sigma(b)+\frac{2\sigma(c)}{1-x/t_1}.$$
+$$\mathcal L H^\sigma \;=\;\sigma(b)+\frac{2\sigma(c)}{1-\varphi^5x}\;=\;\sigma(b)+\frac{2\sigma(c)}{1-x/\sigma(t_2)}
+\qquad(\sigma(t_2)=t_1),$$
+i.e. the pole is again at the $K$-point $s=t_2$ *read at the second place*: $v_2(s)=+0.0902$. So
+at $v_2$ the inhomogeneity pole again sits on the pure module's puncture, and the point to be
+removed is $v_2(t_1)=-11.09$. See §4(c).
 
 ### 3(d) Aside: the two outer directions individually  **[computed]**
 $R_1$ and $R_2$ separately do **not** give a rational right-hand side (their
@@ -237,7 +242,11 @@ $s=x-t_1$, $c_1=-t_1(t_1-t_2)$; solving $(sy')'=r/(c_1s)$ with $r=-2t_1$ gives a
 solution
 $$y_p=\frac{r}{2c_1}\log^2 s=\frac{1}{t_1-t_2}\log^2(x-t_1)=\frac{1}{5\sqrt5}\log^2(x-t_1),$$
 an **irremovable $\log^2$**: no homogeneous solution (span $\{1,\log\}$ locally) and no multiple
-of $B_D$ (whose RHS $\equiv1$ is analytic everywhere) can cancel it. Hence for **every**
+of $B_D$ (whose RHS $\equiv1$ is analytic everywhere) can cancel it. *(This is a true statement
+about the point $x=+0.0902$. Per §4(c) that point is the **allowed** puncture $v_2(s)$ at the
+second place, so the $\log^2$ there is harmless — it mirrors the $\log^2$ that $B_{\rm new}$ has
+at $x=-11.09=v_1(s)$. It does mean $B'_{\rm new}$ has no Apéry limit, which is a genuine
+correction to the task's expectation.)* Hence for **every**
 $\lambda,\mu\in\mathbb C$,
 $$\big(B'_{{\rm new},n}-\lambda A_n-\mu B_{D,n}\big)\,t_1^{\,n}\,n \;=\;\frac{2}{5\sqrt5}\big(\log n+O(1)\big).$$
 Verified numerically: with $\lambda=\xi'$, $g_nt_1^nn/\log n$ = $0.27953\ (n{=}200)$,
@@ -249,85 +258,42 @@ $\lim n\varphi^{-5n}A_n=0.3544426$ against $\varphi^{5/2}/(2\pi5^{1/4})=0.354443
 **[verified, 6 digits]**, and $\kappa=\frac{2}{5\sqrt5}/0.3544433=0.504687$, matching the measured
 $0.504693$ to 5 digits.)
 
-### 4(c) **THE KEY TEST — verdict: FAILS, and is unrepairable**
+### 4(c) The key test — what I got wrong, and the correct question
 
-**What actually changes between the two places.** The operator $\mathcal L$ has *rational*
-coefficients, so its singular set $\{0,\;0.0901699\ldots,\;-11.0901699\ldots,\;\infty\}\subset\mathbb C$
-is Galois-stable and is **the same at both places**; in particular the *fold* (the finite
-non-zero singularity nearest $0$) is the complex number $0.0901699\ldots$ at both places.
-What moves is the labelling by $K$-numbers, and with it the pole of the inhomogeneity:
+**The error (recorded for the ledger).** $\mathcal L$ has *rational* coefficients, so its
+singular set $\{0,\;0.0901699\ldots,\;-11.0901699\ldots,\;\infty\}\subset\mathbb C$ is the same at
+both places, and in particular the singularity *nearest $0$* is $0.0901699$ at both places. I took
+that to be "the fold" at both places, concluded that $\mathcal L H^\sigma=\sigma(b)+2\sigma(c)/(1-x/t_1)$
+has its pole on the $v_2$-fold, and declared the architecture dead. **That identification is
+wrong.** Which singularity has to be *removed* is not "the nearest one"; it is the one that is
+**not** a puncture of the pure module. The pure module lives on
+$\mathbf P^1\setminus\{0,s,\infty\}$ with $s=1/\lambda_2=t_2=-\varphi^5$ (`REPORT.md` §10.5 item 2),
+and $s\in K$ **moves under $\sigma$**:
 
-| $K$-number | realisation at $v_1$ | realisation at $v_2$ |
-|---|---|---|
-| $t_1=\varphi^{-5}$ | $+0.0901699$ — **inner (the fold)** | $-11.0901699$ — outer |
-| $t_2=-\varphi^{5}$ | $-11.0901699$ — outer | $+0.0901699$ — **inner (the fold)** |
+| $K$-point | realisation at $v_1$ | realisation at $v_2$ | role |
+|---|---|---|---|
+| $s=t_2=-\varphi^5$ | $-11.0901699$ | $+0.0901699$ | **puncture of the pure module: singularities allowed** |
+| $t_1=\varphi^{-5}$ | $+0.0901699$ | $-11.0901699$ | **the fold: must be removed** |
 
-$\mathcal L B_{\rm new}=2/(1-x/t_2)$: the pole is at the $K$-number $t_2$, which is **outer at
-$v_1$** (harmless — this is fold-regularity) and **inner at $v_2$** (fatal).
+So at $v_1$ the fold is the complex point $+0.0902$ and at $v_2$ it is the complex point
+$-11.09$. The $\log^2$ of §4(b), which sits at $+0.0902$ for $H^\sigma$, is at the **allowed**
+puncture at $v_2$, exactly as it is for $H$ at $-11.09$ at $v_1$. The picture is symmetric.
 
-**Numerical verification at the second embedding** (`07_foldreg.gp`, `14_rates.gp`).
-Evaluating the $K$-coefficients of $B_{\rm new}$ under $v_2$ is the same as evaluating
-$B'_{\rm new}=\sigma(B_{\rm new})$ under $v_1$. For $g_n=B'_{{\rm new},n}-\xi'A_n$:
+**The correct requirement at $v_2$.** Writing $H^\sigma=\sigma(a)A+\sigma(b)B_D+\sigma(c)B'_{\rm new}$
+(a real power series, the $v_2$-realisation of $H$), one needs $H^\sigma$ to extend
+holomorphically across $x=-11.0901699$. Since neither $B_D$ ($\mathcal L B_D=1$) nor $B'_{\rm new}$
+($\mathcal L B'_{\rm new}=2/(1-x/t_1)$) has an inhomogeneity pole there, each has a well-defined
+log-coefficient at that point, and the requirement is one linear condition — see §4(e), §4(f).
 
-$$g_n/g_{n-1}\big|_{n=200}=+11.0414635\ldots,\qquad n\,(g_n/g_{n-1}-\varphi^5)=-9.741\ \ (\text{bounded}),$$
-
-so $g_n/g_{n-1}=+\varphi^{5}\big(1+O(1/n)\big)$ with $\varphi^5=11.0901699\ldots$. The rate is
-$\varphi^{+5n}$, **not** $\varphi^{-5n}$, and the **positive** ratio locates the singularity at
-$x=+\varphi^{-5}=t_1^{v_1}$ — i.e. exactly at the fold. The same holds for $\lambda=0$ and for
-every other $\lambda$ tried; and by §4(b) it holds for every $(\lambda,\mu)$ as a theorem.
-The radius of convergence of the conjugated conditional form at the second place is therefore
-$\varphi^{-5}=0.0902$: it does not reach the fold, let alone overconverge past it to $|x|=\varphi^5$.
-
-**The precise answer to the question posed.** Over $K$ the whole inner supply is
-$c_3B_3+c_4B_4$, $c_3,c_4\in K$, with
-$\mathcal L(c_3B_3+c_4B_4)=\dfrac{2(c_3-c_4x)}{1-11x-x^2}=\dfrac{-2(c_3-c_4x)}{(x-t_1)(x-t_2)}$.
-
-* fold-regular at $v_1$ $\iff$ the numerator kills the $t_1$ pole $\iff c_3=c_4\,t_1=c_4\varphi^{-5}$
-  (the line $\langle B_{\rm new}\rangle$, period $\xi$);
-* fold-regular at $v_2$ $\iff$ $\sigma(c_3)=\sigma(c_4)t_1$ $\iff c_3=c_4\,\sigma(t_1)=c_4\,t_2=-c_4\varphi^{5}$
-  (the line $\langle B'_{\rm new}\rangle$).
-
-These two $K$-lines are distinct (their "slopes" $t_1$ and $t_2$ differ by $t_1-t_2=5\sqrt5\ne0$),
-so
-$$\boxed{\;c_3=c_4t_1\ \text{and}\ c_3=c_4t_2\ \Longrightarrow\ c_4(t_1-t_2)=0\ \Longrightarrow\ c_3=c_4=0.\;}$$
-
-**Therefore: the second place's fold-regularity is *not* Galois-equivariant, and it is not merely
-"an independent relation away" — it is impossible.** Two separate failures, in increasing order
-of severity:
-
-1. *(arithmetic)* From one hypothesised relation $a+b\frac{\zeta(2)}5+c\xi=0$ over $K$ one does
-   **not** get $\sigma(a)+\sigma(b)\frac{\zeta(2)}5+\sigma(c)\xi'=0$: $\zeta(2)$, ${\rm Re}L$,
-   ${\rm Im}L$ are not in $K$, so $\sigma$ does not act on the relation. A $K$-relation among
-   $1,\zeta(2),{\rm Re}L,{\rm Im}L$ is *one* $\mathbb Q$-relation among the eight numbers
-   $\{1,\zeta(2),{\rm Re}L,{\rm Im}L\}\cdot\{1,\sqrt5\}$; the conjugate relation is a genuinely
-   second, independent one. So even the *hypothesis* would have to be doubled.
-2. *(analysis — the fatal one)* Grant the doubled hypothesis anyway. The conjugate function
-   $H^\sigma=\sigma(a)A+\sigma(b)B_D+\sigma(c)B'_{\rm new}$ satisfies
-   $\mathcal L H^\sigma=\sigma(b)+2\sigma(c)/(1-x/t_1)$, whose pole is **at the fold**. Whenever
-   $\sigma(c)\neq0$ (equivalently $c\neq0$, i.e. whenever the relation involves $\xi$ at all)
-   $H^\sigma$ carries the $\log^2(x-t_1)$ of §4(b) and has radius of convergence $\varphi^{-5}$.
-   The CDT architecture needs a conditional function holomorphic past the fold **at every
-   archimedean place of $K$**; at $v_2$ no such function exists. This is not a bounded
-   "second-place tax" that the $+0.0053$ margin might absorb — the object the argument requires
-   does not exist at $v_2$.
-
-**Consequence for the target.** The only $K$-rational sources fold-regular at *both* places are
-those whose companion has no inhomogeneity pole at $t_1$ or $t_2$, i.e. (by §4(d)) whose constant
-term vanishes at $\infty$, at cusp $0$ **and** at cusp $1/2$ — a **one-dimensional** space,
-$\langle\Phi_D\rangle$, carrying the single period $\zeta(2)/5$. The mixed pair
-$\{\zeta(2)/5,\;\xi\}$, which is the entire point of the §10.4 hit, is **2-dimensional at each
-place separately but 1-dimensional at both places simultaneously**, and the surviving direction
-is the old one. If the target was "run CDT at $\Gamma_1(5)$ with the new quartic period",
-this kills it, and it kills it for a reason internal to the source space, before any entropy
-budgeting.
-
-*(Escapes considered and closed: the host $F$ is $\mathbb Q$-rational and the geometry
-$\mathbf P^1\setminus\{0,t_1,t_2,\infty\}$ is defined over $\mathbb Q$, so there is no
-"conjugate host" to move to at $v_2$; the module in the holonomy bound is $K$-rational, so its
-$v_2$-realisation is forced to be $\sigma(H)$; and a hypothetical second companion converging
-to $\xi'$ with $d_n^2$ denominators would have to be fold-regular at $v_1$ with period $\xi'$,
-which §4(d) excludes — the fold-regular space at $v_1$ is $\langle\Phi_D,\Phi_{\rm new}\rangle$,
-periods $\zeta(2)/5$ and $\xi$ only.)*
+**Source-side equivariance is exact.** Over $K$ the inner supply is $c_3B_3+c_4B_4$ with
+$\mathcal L(c_3B_3+c_4B_4)=-2(c_3-c_4x)/((x-t_1)(x-t_2))$. Killing the $t_1$-pole needs
+$c_3=c_4t_1$ (the line $\langle B_{\rm new}\rangle$, since $(1,\varphi^5)$ satisfies
+$c_4t_1=\varphi^5\varphi^{-5}=1=c_3$); killing the $t_2$-pole needs $c_3=c_4t_2$ (the line
+$\langle B'_{\rm new}\rangle$, since $(1,-\varphi^{-5})$ gives $c_4t_2=(-\varphi^{-5})(-\varphi^5)=1$).
+These two $K$-lines are exchanged by $\sigma$, and $\sigma(\Phi_{\rm new})=\Phi'_{\rm new}$: the
+$v_1$-fold-regular source conjugates to the $v_2$-fold-regular source. **There is no obstruction
+on the source side.** (My earlier "$c_4(t_1-t_2)=0$" argument answered the wrong question — it asked
+for a single $K$-source killing *both* poles, which is not what the two places require.)
 
 ### 4(d) Cusp data — exact constant terms, and the dictionary  **[verified]**
 
@@ -380,16 +346,133 @@ $$x(1/2)=t_2=-\varphi^{5}=-11.0901699437\ldots,\qquad x(2/5)=\infty.$$
 | $\Phi'_{\rm new}$ | $0$ only | $x=t_1$ | $2/(1-x/t_1)$ | $v_2$ only |
 
 So: *a $K$-rational source is fold-regular at the place $v$ exactly when its constant term
-vanishes at the cusp lying over the $v$-inner singularity* — cusp $0$ (over $t_1$) for $v_1$,
-cusp $1/2$ (over $t_2$) for $v_2$. Being fold-regular at both places therefore forces
-$c_0=0$ at three of the four cusps ($\infty$, $0$, $1/2$), which by the isomorphism above cuts
-the 4-dimensional space down to the **line $\langle\Phi_D\rangle$**. This is the same conclusion
-as §4(c), obtained by exact constant-term linear algebra rather than by the ODE — the two routes
-agree, and they also agree with `eis/EIS_REPORT.md`'s "$\dim(\text{annihilated at }0,\infty)=2$"
-(that census imposes vanishing at two cusps, hence gets 2; imposing the *second place* adds the
-third cusp and drops it to 1).
+vanishes at the cusp lying over the fold at $v$* — the fold at $v_1$ is $t_1$ (cusp $0$), the fold
+at $v_2$ is $t_2$ (cusp $1/2$) (§4(c)). The table therefore reads: $\Phi_{\rm new}$ is
+fold-regular at $v_1$, and its $\sigma$-conjugate $\Phi'_{\rm new}$ is fold-regular at $v_2$.
+**The cusp data is exactly Galois-equivariant, and it is what the corrected §4(c) rests on.**
+$\Phi_D$, which vanishes at $\infty$, $0$ and $1/2$ alike, is fold-regular at both places
+simultaneously — that is a property of the old $\zeta(2)$ direction, not a constraint on the new
+one. This agrees with `eis/EIS_REPORT.md`'s "$\dim(\text{annihilated at }0,\infty)=2$": the
+$v_1$-fold-regular space is $\langle\Phi_D,\Phi_{\rm new}\rangle$ and the $v_2$-fold-regular
+space is $\langle\Phi_D,\Phi'_{\rm new}\rangle$, both $2$-dimensional over $K$ and exchanged
+by $\sigma$.
+
+*(An earlier draft drew the opposite conclusion here — "$c_0=0$ at three cusps, hence the line
+$\langle\Phi_D\rangle$" — by demanding that a **single** source be fold-regular at both places.
+That is not what the two places require: they require a source and its conjugate. The three-cusp
+computation is correct as stated, it just answers a question nobody asked.)*
 
 ---
+
+### 4(e) The far-cusp periods $\pi_D$, $\pi'$  **[verified, 174+ digits, two independent methods]**
+
+Let $\ell_t(\cdot)$ be the log-coefficient at the regular singular point $t$ (equivalently: the
+monodromy around $t$ sends $y\mapsto y+2\pi i\,\ell_t(y)\,u$, $u$ the analytic local solution).
+For a solution whose inhomogeneity has no pole at $t$, $\ell_t$ is well defined and linear, and
+$y-\lambda A$ is regular at $t$ exactly for $\lambda=\ell_t(y)/\ell_t(A)$.
+
+*Method 1 (`17_farperiods.gp`, `18_nearperiods.gp`).* Numerical analytic continuation of the ODE
+by adaptive Taylor stepping (420 terms/step, step $\le0.35\times$ distance to the nearest
+singularity, 200-digit working precision), starting from 700 exact rational Taylor coefficients at
+$x=0$ generated by the recurrences $n^2y_n=(11n^2-11n+3)y_{n-1}+(n-1)^2y_{n-2}+R_{n-1}$. Loops:
+a 32-gon on $|x-t_2|=5$ (base point $t_2+5$) and, for validation, a 64-gon on $|x-t_1|=0.05$
+(base point $t_1+0.05$, reached via $0\to0.05i\to0.10+0.05i$).
+
+*Validation at $t_1$*: the same code returns
+$$\ell_{t_1}(B_D)/\ell_{t_1}(A)=\zeta(2)/5,\qquad \ell_{t_1}(B_{\rm new})/\ell_{t_1}(A)=\xi$$
+each agreeing with the known value to **$2\times10^{-212}$** (i.e. all 200 working digits), and
+$\ell_{t_1}(B'_{\rm new})$ is *not* a multiple of $u$ (the $\log^2$ of §4(b)) — exactly as it must be.
+
+*Results at $t_2$*, with $\ell_{t_2}(A)=-1.96\ldots i\neq0$ (so $A$ is genuinely singular at $t_2$):
+$$\boxed{\;\pi_D:=\frac{\ell_{t_2}(B_D)}{\ell_{t_2}(A)}=-\frac{11\,\zeta(2)}{5},\qquad
+\pi':=\frac{\ell_{t_2}(B'_{\rm new})}{\ell_{t_2}(A)}=\xi'=-\varphi^{-5}\mathrm{Im}L-\mathrm{Re}L\;}$$
+Numerically $\pi_D=-3.618854947066098160239313366621255416281689782654956563018228\ldots$ and
+$\pi'=-0.971841789638437582036104642602905464314224904873205013631451\ldots$; the residuals
+$\pi_D+\tfrac{11\zeta(2)}5$ and $\pi'-\xi'$ are $2.1\times10^{-174}$ and $1.6\times10^{-174}$.
+Both values were obtained independently from $y$ and from $y'$ (agreement to 190 digits).
+`lindep` at 60-digit tolerance:
+$$\texttt{lindep}[\pi_D,1,\zeta(2),\mathrm{Re}L,\mathrm{Im}L,\sqrt5,\sqrt5\mathrm{Re}L,\sqrt5\mathrm{Im}L]=[-5,0,-11,0,0,0,0,0],$$
+$$\texttt{lindep}[\pi',\,\ldots\,]=[-2,0,0,-2,11,0,0,-5],$$
+i.e. $5\pi_D+11\zeta(2)=0$ and $2\pi'+2\mathrm{Re}L-(11-5\sqrt5)\mathrm{Im}L=0$. $\ell_{t_2}(B_{\rm new})$
+is *not* a multiple of $u$ ($\log^2$ at $t_2$), so $B_{\rm new}$ has no $t_2$-period — the mirror
+image of $B'_{\rm new}$ at $t_1$.
+
+*Method 2 (`19_abel.gp`), independent.* The $t$-period at a cusp $\mathfrak c$ is
+$\lim_{\tau\to\mathfrak c}D^{-2}\Phi(\tau)$. With $x(0)=t_1$, $x(1/2)=t_2$, this is the Abel limit
+of $\sum_n c_n(\pm1)^ne^{-2\pi ny}/n^2$ as $y\to0^+$ ($+$ for cusp $0$, $-$ for cusp $1/2$), summed
+to $n=60000$. Values at $y=0.0025,\,0.00125$ with one Richardson step ($2S(y/2)-S(y)$):
+
+| source, cusp | $S(0.0025)$ | $S(0.00125)$ | Richardson | target |
+|---|---|---|---|---|
+| $\Phi_D$, cusp $1/2$ | $-3.55836$ | $-3.58861$ | $-3.61886$ | $-11\zeta(2)/5=-3.618855$ |
+| $\Phi_{\rm new}$, cusp $0$ | $0.65197$ | $0.65380$ | $0.65563$ | $\xi=0.6556342$ |
+| $\Phi'_{\rm new}$, cusp $1/2$ | $-0.96457$ | $-0.96821$ | $-0.97185$ | $\xi'=-0.9718418$ |
+
+**[verified, 5–6 digits]** — three independent confirmations of the monodromy computation.
+
+*Remark on the $-11$.* $\pi'=\sigma(\xi)$ exactly, but $\pi_D=-11\,\sigma(\zeta(2)/5)$: the
+far-cusp period functional agrees with $\sigma$ on the $\xi$-line and is $-11$ times $\sigma$ on the
+$\zeta(2)$-line. Galois cannot explain this ($\sigma$ fixes both $\Phi_D$ and $\zeta(2)$); the two
+functionals $\pi^{(t_1)}$ and $\pi^{(t_2)}$ are simply different linear forms on different
+$2$-dimensional source spaces ($\langle\Phi_D,\Phi_{\rm new}\rangle$ and
+$\langle\Phi_D,\Phi'_{\rm new}\rangle$). Structurally, the diamond $\langle2\rangle$ (which acts by
+$R_1\mapsto R_2\mapsto-R_1$, $R_3\mapsto R_4\mapsto-R_3$, and satisfies
+$\langle2\rangle\Phi_{\rm new}=-\varphi^5\Phi'_{\rm new}$) exchanges the cusps $0\leftrightarrow1/2$
+and induces $x\mapsto-1/x$ (consistent with $t_1t_2=-1$), but it does **not** preserve the
+constraint $c_0(\infty)=0$: $\langle2\rangle^{-1}\Phi_D=R_1-\tfrac12R_2$ has $c_0(\infty)=-1$. That
+is why the $\zeta(2)$-slot picks up a factor while the $\xi$-slot does not. *(The value $-11$ is
+$t_1+t_2$; I have not proved that this is more than a coincidence.)*
+
+### 4(f) The two conditions, and whether one implies the other  **[proved]**
+
+$$\textbf{(i) at }v_1:\quad a+b\,\frac{\zeta(2)}5+c\,\xi=0,\qquad a,b,c\in K$$
+$$\textbf{(ii) at }v_2:\quad \sigma(a)+\sigma(b)\,\pi_D+\sigma(c)\,\pi'=0
+\;\Longleftrightarrow\;\sigma(a)-11\,\sigma(b)\,\frac{\zeta(2)}5+\sigma(c)\,\xi'=0.$$
+
+In the $K$-basis $v=(1,\ \zeta(2)/5,\ \mathrm{Re}L,\ \mathrm{Im}L)$, using
+$\xi=-\mathrm{Re}L+\varphi^5\mathrm{Im}L$ and $\xi'=-\mathrm{Re}L+\sigma(\varphi^5)\mathrm{Im}L$:
+$$\text{(i)}\ \leftrightarrow\ \Lambda=(a,\ b,\ -c,\ c\varphi^5),\qquad
+\text{(ii)}\ \leftrightarrow\ \Lambda'=(\sigma a,\ -11\sigma b,\ -\sigma c,\ \sigma(c\varphi^5))
+=\sigma(\Lambda)-12\sigma(b)\,e_{\zeta(2)/5}.$$
+So **(ii) is the coefficientwise $\sigma$-conjugate of (i) except that the $\zeta(2)$ coefficient is
+multiplied by $-11$.**
+
+*Does (i) imply (ii)?* **No.** Each of (i), (ii) is one $\mathbb Q$-linear relation among the eight
+real numbers $\{1,\zeta(2),\mathrm{Re}L,\mathrm{Im}L\}\cdot\{1,\sqrt5\}$; they define the same
+relation only if $\Lambda'=\mu\Lambda$ for some $\mu\in K^\times$. Comparing the third and fourth
+entries, $\sigma(c)=\mu c$ and $\sigma(c)\sigma(\varphi^5)=\mu c\varphi^5$ force
+$\sigma(\varphi^5)=\varphi^5$ (false) unless $c=0$; and $\Lambda'=\Lambda$ forces $b=-11\sigma(b)$,
+i.e. $b=0$, and $c\varphi^5=-c\varphi^{-5}$, i.e. $c=0$. Hence:
+
+> **For every hypothesised relation that actually involves $\xi$ (i.e. $c\neq0$), (ii) is a
+> second, $\mathbb Q$-linearly independent relation, not a consequence of (i).**
+
+Equivalently, writing $\Lambda=\Lambda_0+\sqrt5\Lambda_1$ with $\Lambda_i\in\mathbb Q^4$, the pair
+(i)$\wedge$(ii) is equivalent to
+$$\Lambda_0\!\cdot\!v=\tfrac{6}{5}\sigma(b)\,\zeta(2)\quad\text{and}\quad
+\sqrt5\,\Lambda_1\!\cdot\!v=-\tfrac{6}{5}\sigma(b)\,\zeta(2),$$
+i.e. to **two** independent $\mathbb Q$-linear relations among
+$1,\zeta(2),\mathrm{Re}L,\mathrm{Im}L,\sqrt5,\sqrt5\zeta(2),\sqrt5\mathrm{Re}L,\sqrt5\mathrm{Im}L$
+— where one $K$-relation gives only one. In the cleanest sub-case $b=0$ (pure irrationality of
+$\xi$ over $K$), (i)$\wedge$(ii) says precisely that **both the rational part and the $\sqrt5$-part
+of the single $K$-relation $a+c\xi=0$ vanish separately**, i.e. two $\mathbb Q$-relations among
+$1,\mathrm{Re}L,\mathrm{Im}L$ instead of one.
+
+**Honest structural statement.**
+> One $K$-linear relation among $1$, $\zeta(2)/5$ and $\xi$ produces a conditional function that is
+> fold-regular at **one** archimedean place of $K=\mathbb Q(\sqrt5)$ only. The two-place
+> construction that the arithmetic-holonomy bound over $K$ requires needs, in addition, the
+> independent relation $\sigma(a)-11\sigma(b)\zeta(2)/5+\sigma(c)\xi'=0$ at the second place —
+> equivalently, it needs the *pair* of $\mathbb Q$-relations obtained by splitting the $K$-relation
+> into its rational and $\sqrt5$ parts (after the $-11$ twist on the $\zeta(2)$ coefficient). So the
+> method as it stands would refute the *stronger* hypothesis (i)$\wedge$(ii), not the single
+> relation (i). Closing that gap — getting a second conditional function out of one relation — is
+> an additional requirement on top of items 2–5 of `REPORT.md` §10.5, and it is a statement about
+> the **hypothesis**, not about the sources: the sources are perfectly Galois-equivariant.
+
+*What is not settled here:* whether the CDT machine can be run with the weaker input (e.g. by
+using $H$ at $v_1$ and accepting a non-fold-regular $H^\sigma$ at $v_2$ with a quantified
+entropy penalty), and whether the $-11$ has a conceptual explanation. Both are open.
 
 ## 5. Ledger
 
@@ -407,12 +490,19 @@ third cusp and drops it to 1).
 | $\xi'=-\varphi^{-5}{\rm Im}L-{\rm Re}L$ is $\sigma(\xi)$ | **[verified]** via `lindep` $[-2,0,0,-2,11,0,0,-5]$ |
 | $\xi'$ is **not** an Apéry limit; $B'_{{\rm new},n}/A_n\sim0.50469\log n$ | **[verified numerically; proved from $\mathcal LB'_{\rm new}$]** — **corrects the expected statement** |
 | $\log^2$ coefficient $=1/(t_1-t_2)=1/(5\sqrt5)$ | **[proved from the local analysis; verified to 3 significant figures at 3 values of $n$]** |
-| second-place rate is $+\varphi^{5n}$ (singularity at the fold), not $\varphi^{-5n}$ | **[verified, 200 coefficients]** |
-| no $K$-rational inner source is fold-regular at both places | **[proved]** (two ways: ODE pole, and cusp constant terms) |
+| $B'_{\rm new}$ has coefficient growth $+\varphi^{5n}$, singularity at $+0.0902=v_2(s)$ (the **allowed** puncture at $v_2$) | **[verified, 200 coefficients]** |
+| $\pi_D=\ell_{t_2}(B_D)/\ell_{t_2}(A)=-11\zeta(2)/5$ | **[verified, 174 digits (monodromy) + 6 digits (Abel)]** |
+| $\pi'=\ell_{t_2}(B'_{\rm new})/\ell_{t_2}(A)=\xi'=\sigma(\xi)$ | **[verified, 174 digits + 6 digits]** |
+| continuation code validated: it returns $\zeta(2)/5$ and $\xi$ at $t_1$ to 210 digits | **[verified]** |
+| (i) does **not** imply (ii); for $c\ne0$ they are independent $\mathbb Q$-relations | **[proved]** |
+| ~~no $K$-rational inner source is fold-regular at both places~~ — true but answers the **wrong question**; the two places need two *different* sources, related by $\sigma$, and those exist | **[retracted as a verdict]** |
 | exact constant terms at all four cusps | **[verified, $\ge78$ digits; exact closed forms given]** |
 | $x(\infty,0,1/2,2/5)=(0,\varphi^{-5},-\varphi^5,\infty)$ | **[verified, 38 digits]** |
 | $A_n\sim\varphi^{5n+5/2}/(2\pi5^{1/4}n)$ | **[verified, 6 digits]** (auxiliary only) |
 
 **Not settled / not attempted:** the $d_n^2$ denominator claim is exhaustive to $N=200$ only, not
-proved for all $n$; the entropy/holonomy accounting itself was not recomputed (it is moot, since
-the second-place object does not exist); nothing here bears on items 2, 3, 5 of `REPORT.md` §10.5.
+proved for all $n$; the entropy/holonomy accounting at the second place was not computed (the
+$v_2$ geometry $\mathbf P^1\setminus\{0,+0.0902,\infty\}$ has its puncture very close to $0$, so the
+"tax" of `NUMBER_FIELD_HOLONOMY` §3.1 needs an actual number against the $+0.0053$ margin);
+the conceptual origin of the $-11$ in $\pi_D$ is unexplained; nothing here bears on items 2, 3, 5
+of `REPORT.md` §10.5.
