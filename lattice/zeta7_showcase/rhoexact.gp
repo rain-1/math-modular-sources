@@ -1,0 +1,18 @@
+default(realprecision,120);
+P=Pol([2985984,-99035136,-80870400,165680640,306913536,216563328,82569024,18046944,2131344,95880,-3900,-398,1],'v);
+Q=Pol([2985984,11446272,19761408,20307456,13828608,6571776,2234464,547648,96032,11752,953,46,1],'v);
+print("Q - (2v+1)^4(3v+1)^2(4v+1)^2(6v+1)^4 = ",Q-(2*'v+1)^4*(3*'v+1)^2*(4*'v+1)^2*(6*'v+1)^4);
+w=Mod('t,'t^2-3);
+vc=1/(2*w);
+Rc=subst(P,'v,vc)/subst(Q,'v,vc);
+print("v_c = 1/(2 sqrt3) = ",lift(vc));
+print("R(v_c) exact = ",lift(Rc));
+print("  numeric = ",subst(lift(Rc),'t,sqrt(3)));
+print("U(tau_c) = 24 sqrt3 R(v_c) (Dv)^3 ; 24 sqrt3 R(v_c) = ",lift(24*w*Rc));
+print("  numeric = ",subst(lift(24*w*Rc),'t,sqrt(3)));
+Dv=0.482890362550602961319682112871458337278433283966525257918800;
+print("  times Dv^3 = ",subst(lift(24*w*Rc),'t,sqrt(3))*Dv^3);
+print("P irreducible? ",polisirreducible(P));
+print("P(0)=",subst(P,'v,0),"  Q(0)=",subst(Q,'v,0));
+print("disc-ish: P at v=-1/2,-1/3,-1/4,-1/6: ",[subst(P,'v,-1/2),subst(P,'v,-1/3),subst(P,'v,-1/4),subst(P,'v,-1/6)]);
+quit;

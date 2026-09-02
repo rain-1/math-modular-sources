@@ -1,0 +1,15 @@
+BASE="/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/";
+CN=read(concat(BASE,"cn.txt"));
+NC=900;
+CR=0;
+EXROWS=0;
+mkprimes(np)=my(v=List(),q=2^61);for(i=1,np,q=precprime(q-1);listput(v,q));Vec(v);
+setC(p)=CR=vector(NC+1,i,lift(Mod(CN[i],p)));
+buildM(r,D,p)=my(n0=r+1,nr=NC-n0+1,sz=(r+1)*(D+1),PW=matrix(NC-r,D+1,a,b,lift(Mod(r+a,p)^(b-1))));matrix(nr,sz,a,b,my(j=(b-1)\(D+1),k=(b-1)%(D+1),n=n0+a-1);PW[a,k+1]*CR[n-j+1]%p);
+rrefm(A)=my(m=matsize(A)[1],N=matsize(A)[2],rr=1,piv=List(),i,t);for(j=1,N,if(rr<=m,i=rr;while(i<=m&&A[i,j]==0,i++);if(i<=m,t=A[rr,];A[rr,]=A[i,];A[i,]=t;A[rr,]=A[rr,]/A[rr,j];for(k=1,m,if(k!=rr,A[k,]=A[k,]-A[k,j]*A[rr,]));listput(piv,j);rr++)));[A,Vec(piv)];
+canon(r,D,p)=my(M=buildM(r,D,p),K,res);if(type(EXROWS)=="t_MAT",M=matconcat([M;EXROWS]));K=matker(M*Mod(1,p));if(#K==0,return([0,0]));res=rrefm(mattranspose(K));[lift(res[1]),res[2]];
+prim(v)=my(dd=1,g);for(i=1,#v,dd=lcm(dd,denominator(v[i])));v=v*dd;g=0;for(i=1,#v,g=gcd(g,v[i]));if(g==0,return(v));v/g;
+tovec2pol(v,r,D)=vector(r+1,jj,sum(k=0,D,v[(jj-1)*(D+1)+k+1]*n^k));
+maxdig(v)=my(m=0);for(i=1,#v,m=max(m,#Str(abs(v[i]))));m;
+verifyrec(PV,r)=my(bad=0);for(nn=r+1,NC,my(s=0);for(j=0,r,s=s+subst(PV[j+1],n,nn)*CN[nn-j+1]);if(s!=0,bad=bad+1));bad;
+chipol(v,r,D)=sum(jj=0,r,v[jj*(D+1)+D+1]*L^(r-jj));

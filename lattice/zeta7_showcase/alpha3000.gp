@@ -1,0 +1,27 @@
+default(parisize,"48G");
+default(realprecision,3600);
+C=read("cn3000.txt");
+DN=read("dn3000.txt");
+NN=3000;
+xi=(209/1728)*zeta(7);
+cp=vector(NN,i,C[i+1]+C[i]);
+dp=vector(NN,i,DN[i+1]+DN[i]);
+ep=vector(NN,i,dp[i]-xi*cp[i]);
+print("c'_1..c'_6 = ",vector(6,i,cp[i]));
+print("d'_1..d'_3 = ",vector(3,i,dp[i]));
+A=vector(8);
+A[1]=vector(NN+1,i,if(i==1,1,0));
+mk(j)=my(v=vector(NN+1));v[1]=0;for(k=1,NN,v[k+1]=(j*A[j][k]-(k-1)*v[k])/k);v;
+for(j=1,7,A[j+1]=mk(j));
+print("check [x^n]log(1+x): ",vector(5,i,A[2][i+1])," vs 1,-1/2,1/3,-1/4,1/5");
+print("check [x^7]log^7(1+x) = ",A[8][8]," (should be 1)");
+bas(i,j)=vector(NN,nn,sum(k=0,i,binomial(i,k)*if(nn-k>=0,A[j+1][nn-k+1],0)));
+BB=List();
+LAB=List();
+for(i=0,4,for(j=1,7,listput(BB,bas(i,j));listput(LAB,[i,j])));
+BB=Vec(BB);LAB=Vec(LAB);
+run(II,nodes)=my(sel=select(k->LAB[k][1]<=II,vector(#LAB,k,k)));my(nb=#sel);my(M=matrix(nb,nb,a,b,BB[sel[b]][nodes[a]]));my(rhs=vector(nb,a,ep[nodes[a]])~);my(so=matsolve(M,rhs));my(res=0);for(k=1,nb,if(LAB[sel[k]]==[0,7],res=so[k]));res;
+geo(nb,lo,hi)=vector(nb,k,round(lo*(hi/lo)^((k-1)/(nb-1))));
+print("target alpha' = 14161/5040 = ",precision(14161/5040.,25));
+{foreach([0,1,2,3,4],II,my(nb=7*(II+1));foreach([200,400,800,1500],lo,my(nd=geo(nb,lo,NN));if(#Set(nd)==nb,print("  I=",II," nodes ",lo,"..3000 : alpha' = ",precision(run(II,nd),25)))));}
+quit;

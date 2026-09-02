@@ -1,0 +1,13 @@
+read("rec_19_13.gp");
+print("r = ",#PV-1);
+P0=PV[1];
+print("deg P_0 = ",poldegree(P0));
+print("P_0 factored: ",factor(P0));
+print("P_0 / n^7 = ",P0/'n^7);
+c=content(P0);
+print("content(P_0) digits = ",#Str(c));
+print("P_0/content = ",P0/c);
+print("max coeff digits over all P_j: ",vecmax(vector(#PV,i,vecmax(vector(poldegree(PV[i])+1,j,#Str(abs(polcoeff(PV[i],j-1))))))));
+print("degrees of P_j: ",vector(#PV,i,poldegree(PV[i])));
+print("n^7 divides P_j for which j? ",vector(#PV,i,(PV[i]%'n^7)==0));
+quit;

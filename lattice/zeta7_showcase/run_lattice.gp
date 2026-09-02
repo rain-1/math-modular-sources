@@ -1,0 +1,13 @@
+default(parisize,"20G");
+read("/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/lattice_sym.gp");
+gettime();
+R1=doshape("rec_23_10_raw.gp",23,10);
+print("  time ",gettime());
+R2=doshape("rec_17_15_raw.gp",17,15);
+print("  time ",gettime());
+R3=doshape("rec_19_13_raw.gp",19,13);
+print("  time ",gettime());
+write(concat(BASE,"lat_23_10.gp"),Str("L2310=",vector(matsize(R1)[2],i,R1[,i]~)));
+write(concat(BASE,"lat_17_15.gp"),Str("L1715=",vector(matsize(R2)[2],i,R2[,i]~)));
+write(concat(BASE,"lat_19_13.gp"),Str("L1913=",vector(matsize(R3)[2],i,R3[,i]~)));
+quit;

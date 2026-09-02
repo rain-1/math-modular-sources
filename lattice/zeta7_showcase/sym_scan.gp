@@ -1,0 +1,14 @@
+default(parisize,"20G");
+read("/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/analyze_lib.gp");
+PP=2^61-1;
+refmat(A,D)=matrix(D+1,D+1,mm,kk,my(m=mm-1,k=kk-1);if(k>=m,binomial(k,m)*(-1)^m*Mod(A,PP)^(k-m),0));
+refvec(v,r,D,TT)=my(w=vector((r+1)*(D+1)));for(j=0,r,my(blk=TT*vector(D+1,i,v[j*(D+1)+i])~);for(m=0,D,w[(r-j)*(D+1)+m+1]=blk[m+1]));w;
+scan(fn,r,D,lo,hi)=my(B,k,N,Bp,hits=List());read(concat(BASE,fn));B=BVL;k=#B;N=#B[1];Bp=matrix(k,N,a,b,Mod(B[a][b],PP));for(twoA=lo,hi,my(A=twoA/2,TT=refmat(A,D),W=matrix(k,N,a,b,0));for(a=1,k,my(rv=refvec(Bp[a,],r,D,TT));for(b=1,N,W[a,b]=rv[b]));if(matrank(matconcat([Bp;W]))==k,listput(hits,A)));print("shape (",r,",",D,") preserved-space A values: ",Vec(hits));return(Vec(hits));
+gettime();
+h1=scan("rec_23_10_raw.gp",23,10,-160,160);
+print(" t=",gettime());
+h2=scan("rec_17_15_raw.gp",17,15,-160,160);
+print(" t=",gettime());
+h3=scan("rec_19_13_raw.gp",19,13,-160,160);
+print(" t=",gettime());
+quit;

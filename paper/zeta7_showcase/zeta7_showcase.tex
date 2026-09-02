@@ -1,0 +1,63 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper,margin=1.25cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,microtype}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}\setlength{\parskip}{2.5pt}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\begin{document}
+\begin{center}
+{\Large\bfseries An explicit modular approximation to $\zeta(7)$, with its exact asymptotics}\\[3pt]
+{\small River \& Claude (Fable) --- modular Ap\'ery project, level $12$, the same host as the $\zeta(5)$ page --- 2 September 2026}
+\end{center}
+
+\textbf{The host} is the one of the $\zeta(5)$ page: on $X_0(12)$ the Hauptmodul $h=\eta_1^3\eta_4\eta_6^2/(\eta_2^2\eta_3\eta_{12}^3)=q^{-1}-3+2q+\cdots$ and the Fricke-invariant coordinate
+\[
+x=\frac{h}{(h+3)(h+4)}=q-4q^2+2q^3+12q^4-17q^5-\cdots,\qquad x\bigl(i/\sqrt{12}\bigr)=x_+=7-4\sqrt3,
+\]
+with a fold at $\tau_*=i/\sqrt{12}$ and finite singularities only at $x=-1$ (the cusps $\tfrac12,\tfrac16$) and $x=7\mp4\sqrt3$.
+
+\textbf{The source and its companions.} The weight-$8$ Eisenstein combination
+$\Phi=\tfrac1{480}\bigl(E_8-572E_8(2\tau)+11583E_8(3\tau)-36608E_8(4\tau)+46332E_8(6\tau)-20736E_8(12\tau)\bigr)=q-443q^2+13771q^3-\cdots$
+has Dirichlet polynomial $P(s)=1-572\cdot2^{-s}+11583\cdot3^{-s}-36608\cdot4^{-s}+46332\cdot6^{-s}-20736\cdot12^{-s}$ with $P(0)=P(2)=P(4)=P(6)=P(8)=0$; since $L(\Phi,s)=P(s)\zeta(s)\zeta(s-7)$ and $\zeta(s-7)$ vanishes at $s=3,5$, every period except $\zeta(7)$ is annihilated, and $L(\Phi,7)=P(7)\zeta(7)\zeta(0)=\tfrac{209}{1728}\zeta(7)$. $\Phi$ is Fricke-odd, so $\Phi(\tau_*)=0$ and $U=\Phi/Dx$ is a holomorphic weight-$6$ form (Fricke-odd, $U(\tau_*)\neq0$). Let $\Psi=\sum A_mm^{-7}q^m$ be the seventh Eichler integral ($\Phi=\sum A_mq^m$) and set
+\[
+U'=(1+x)\,\frac{\Phi}{Dx}=\sum_{n\ge0}c_n'x^n,\qquad V'=U'\cdot\Psi=\sum_{n\ge0}d_n'x^n
+\]
+(the factor $1+x$ removes a simple pole of $\Phi/Dx$ at the cusp $x=-1$). Then $c_n'\in\Z$ and $D_n^7d_n'\in\Z$ with $D_n=\mathrm{lcm}(1,\dots,n)$, sharp:
+\[
+c_n':\ 1,\,-434,\,8110,\,68734,\,581830,\,5357278,\,53776054,\,\dots\qquad
+\tfrac{1728}{209}\tfrac{d_n'}{c_n'}:\ -\tfrac{864}{45353},\ -\tfrac{1498041}{3389980},\ \tfrac{1103599549}{1163597886},\ \tfrac{497662108235}{504309763584},\ \dots
+\]
+Both sequences satisfy one explicit $19$-term recurrence $\sum_{j=0}^{18}M_j(n)\,y_{n-j}=0$ (resp.\ $=(-1)^nW(n)$, $\deg W=6$, for $d_n'$) with $\deg M_j=13$, $n^7\mid M_0$, characteristic polynomial $(\lambda+1)^6(\lambda^2-14\lambda+1)^6$; $c_n'$ alone satisfies a $13$-term recurrence with coefficients of degree $49$ and characteristic polynomial $(\lambda+1)^6(\lambda^2-14\lambda+1)^3$, the fewest terms possible. The coefficients run to hundreds of digits (the order-$7$ minimal operator carries an apparent-singularity divisor of degree $42$) and are kept in \texttt{lattice/zeta7\_showcase/}.
+
+\textbf{Theorem (limit, rate, and all three constants).}
+\[
+\frac{1728}{209}\,\frac{d_n'}{c_n'}\ \longrightarrow\ \zeta(7),\qquad
+\frac{d_n'}{c_n'}-\frac{209}{1728}\zeta(7)\ \sim\ \frac{14161}{720\,K_7'}\,(-1)^{n+1}\,(7-4\sqrt3)^n\,n^{1/2}(\log n)^6,\qquad
+c_n'\sim K_7'\,(7+4\sqrt3)^n n^{-3/2},
+\]
+\[
+\boxed{\ K_7'=(8-4\sqrt3)\,\frac{3^{27/4}\,(739-356\sqrt3)}{2^{77/6}}\cdot\frac{\Gamma(1/3)^{12}}{\pi^{19/2}}=77.239145578434321892713944136629364\ldots\ }
+\]
+\emph{Why.} Fricke invariance makes $V'-\frac{209}{1728}\zeta(7)U'$ regular at the fold, so the linear form is driven by the cusp $x=-1$, where it behaves as $\alpha'\log^7(1+x)$. The new cusp-constant theorem gives $\alpha'$ as a product of two constant terms at that cusp (width $w=3$): $\alpha'=\varphi_0a_0\,w^7/7!$ with $a_0(\Phi)=-\tfrac{119}{81}$ and $\varphi_0(U')=-\tfrac{119}{27}$, i.e.
+\[
+\alpha'=\frac{119^2}{7!}=\frac{14161}{5040},\qquad d_n'-\tfrac{209}{1728}\zeta(7)\,c_n'\ \sim\ \frac{14161}{720}\,(-1)^{n+1}\frac{(\log n)^6}{n}
+\]
+(the same theorem returns the $\tfrac{13}{480}$ of the $\zeta(5)$ page; verified here by direct evaluation near the cusp to $8$ digits). The fold constant comes from $K_7'^2=x_+(1+x_+)^2(DU)(\tau_*)^2/\bigl(2\pi(-D^2x)(\tau_*)\bigr)$ with the differentiated Fricke law $DU(\tau_*)=\frac{6\sqrt{12}}{4\pi}U(\tau_*)$: $U(\tau_*)$ is a genuine weight-$6$ CM value, made exact by the identity $v^3U/(Dv)^3=\mathcal N(v)/\bigl((1{+}2v)^4(1{+}3v)^2(1{+}4v)^2(1{+}6v)^4\bigr)$, $v=1/h$, $\mathcal N$ of degree $12$, giving $U(\tau_*)/Dv(\tau_*)^3=17123724-9885726\sqrt3$; the transcendental part is the same CM period as for $\zeta(5)$, $(Dv(\tau_*)/\Omega^2)^3=3(45+26\sqrt3)/2^{17}$, $\Omega^2=\Gamma(1/3)^6/\pi^4$. The number $K_7'\pi^{19/2}/\Gamma(1/3)^{12}$ has degree $12$ over $\Q$; the closed form agrees with the fold formula to $700$ digits and with Richardson extrapolation of the exact $c_n'$ ($n\le3000$) to $91$ digits.
+
+\textbf{Numbers.} Exact $c_n',d_n'$ to $n=3000$ from the recurrence, $3600$-digit arithmetic:
+\begin{center}\footnotesize
+\begin{tabular}{@{}rccc@{}}\toprule
+$n$ & digits of $\zeta(7)$ in $\frac{1728}{209}\frac{d_n'}{c_n'}$ & $\lvert d_n'/c_n'-\tfrac{209}{1728}\zeta(7)\rvert^{1/n}$ & error / leading asymptotic \\\midrule
+5 & 2.25 & 0.2322 & 35.8\\
+20 & 17.9 & 0.1149 & 14.8\\
+100 & 108.2 & 0.0811 & 8.31\\
+400 & 450.5 & 0.0744 & 5.95\\
+900 & 1022.0 & 0.0730 & 5.12\\
+3000 & 3423.6 & 0.0722 & 4.26\\\bottomrule
+\end{tabular}
+\end{center}
+The $n$-th root of the error tends to $7-4\sqrt3=0.07180$; the ratio to the leading term tends to $1$ only logarithmically.
+
+\textbf{What it does and does not do.} The rate $\log\frac1{7-4\sqrt3}=2.634$ against $\log D_n^7\sim7n$ gives no irrationality proof ($2.63<7$; Ap\'ery's $\zeta(3)$ form has $3.53>3$). What is new is a $\zeta(7)$ system as explicit as the $\zeta(5)$ one, on the same host with the same CM period, differing only in the weight of the source; the project's earlier level-$12$ construction, on the coordinate $t=x'/(16x'^2+2x'+1)$ with $x'=\eta_4^2\eta_{12}^2/(\eta_1^2\eta_3^2)$, has a non-modular branch point at $t=-\tfrac16$ and converges only at rate $0.6$ per term. Files: \texttt{consolidation/ASYMPTOTIC\_CONSTANTS.md} (\S5, the cusp-constant and Casoratian theorems), \texttt{lattice/zeta7\_showcase/}.
+\end{document}

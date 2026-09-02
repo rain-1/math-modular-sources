@@ -1,0 +1,23 @@
+default(parisize,"48G");
+default(realprecision,3600);
+C=read("cn3000.txt");
+DN=read("dn3000.txt");
+NN=3000;
+xi=(209/1728)*zeta(7);
+cp=vector(NN,i,C[i+1]+C[i]);
+dp=vector(NN,i,DN[i+1]+DN[i]);
+ep=vector(NN,i,dp[i]-xi*cp[i]);
+A=vector(10);
+A[1]=vector(NN+1,i,if(i==1,1,0));
+mk(j)=my(v=vector(NN+1));v[1]=0;for(k=1,NN,v[k+1]=(j*A[j][k]-(k-1)*v[k])/k);v;
+for(j=1,7,A[j+1]=mk(j));
+bas(i,j)=vector(NN,nn,sum(k=0,i,binomial(i,k)*if(nn-k>=0,A[j+1][nn-k+1],0)));
+BB=List();LAB=List();
+for(i=0,8,for(j=1,7,listput(BB,bas(i,j));listput(LAB,[i,j])));
+BB=Vec(BB);LAB=Vec(LAB);
+run(II,nodes)=my(sel=select(k->LAB[k][1]<=II,vector(#LAB,k,k)));my(nb=#sel);my(M=matrix(nb,nb,a,b,BB[sel[b]][nodes[a]]));my(rhs=vector(nb,a,ep[nodes[a]])~);my(so=matsolve(M,rhs));my(res=0);for(k=1,nb,if(LAB[sel[k]]==[0,7],res=so[k]));res;
+geo(nb,lo,hi)=vector(nb,k,round(lo*(hi/lo)^((k-1)/(nb-1))));
+tgt=14161/5040.;
+print("target alpha' = ",precision(tgt,30));
+{foreach([4,5,6,7,8],II,my(nb=7*(II+1));foreach([1000,1500,2000],lo,my(nd=geo(nb,lo,NN));if(#Set(nd)==nb,my(v=run(II,nd));print("  I=",II," nodes ",lo,"..3000 : alpha' = ",precision(v,25),"   rel.err = ",precision(v/tgt-1,6)))));}
+quit;

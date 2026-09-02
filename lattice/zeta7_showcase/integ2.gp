@@ -1,0 +1,11 @@
+default(parisize,"24G");
+dn=read("dn900.txt");
+NC=900;
+DD=vector(NC+1); DD[1]=1;
+for(n=1,NC,DD[n+1]=lcm(DD[n],n));
+L=List();
+for(i=1,NC+1, if(denominator(DD[i]^6*dn[i])==1, listput(L,i-1)));
+print("n<=900 with D_n^6 d_n integral: ",Vec(L));
+print("ratio den(d_900)/D_900^7 = ",denominator(dn[NC+1])/DD[NC+1]^7);
+print("den(d_n)*? : for n=2..12, D_n^7/den(d_n) = ",vector(11,i,my(n=i+1); DD[n+1]^7/denominator(dn[n+1])));
+quit;

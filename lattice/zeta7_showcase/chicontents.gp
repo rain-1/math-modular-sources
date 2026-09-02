@@ -1,0 +1,13 @@
+default(parisize,"6G");
+default(linewrap,0);
+BASE="/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/";
+ch(QV,r,D)=sum(jj=0,r,polcoeff(QV[jj+1],D,n)*L^(r-jj));
+read(concat(BASE,"rec_23_10.gp"));
+print("(23,10) chi content = ",content(ch(PV,23,10)));
+read(concat(BASE,"rec_17_15.gp"));
+print("(17,15) PV chi content = ",content(ch(PV,17,15)));
+print("(17,15) PVALT chi content = ",content(ch(PVALT,17,15)));
+read(concat(BASE,"rec_19_13_constres.gp"));
+print("(19,13) constres chi content = ",content(ch(PV,19,13)),"  = ",factor(content(ch(PV,19,13))));
+print("6273 = ",factor(6273));
+quit;

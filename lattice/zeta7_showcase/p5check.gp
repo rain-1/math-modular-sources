@@ -1,0 +1,11 @@
+default(realprecision,400);
+fv=read("foldvals.txt");
+s3=sqrt(3);
+DPhi=fv[3]; Dv=fv[5];
+P5=276169531104-159446553408*s3;
+print("DPhi/(Dv)^5 - P5 = ",precision(DPhi/Dv^5-P5,10));
+print("relative        = ",precision(DPhi/Dv^5/P5-1,10));
+print("P5 numeric      = ",precision(P5,45));
+print("DPhi/(Dv)^5     = ",precision(DPhi/Dv^5,45));
+print("census form 2025(490730 s3-849969)(1152 s3-2016)/25 - P5 = ",precision(2025*(490730*s3-849969)*(1152*s3-2016)/25-P5,10));
+quit;

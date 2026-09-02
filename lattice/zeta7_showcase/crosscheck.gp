@@ -1,0 +1,26 @@
+w=Mod('t,'t^2-3);
+P5=276169531104-159446553408*w;
+xpp=(168-97*w)/3;
+Uc_over_Dv3=P5/(144*xpp);
+print("U(tau_c)/(Dv)^3 from census P5   = ",lift(Uc_over_Dv3));
+print("U(tau_c)/(Dv)^3 from R(v) fit    = ",lift(24*w*(475659*w/2-1647621/4)));
+print("difference                       = ",lift(Uc_over_Dv3-24*w*(475659*w/2-1647621/4)));
+\\ now rebuild K7 from the R-fit route only
+Uc=24*w*(475659*w/2-1647621/4);
+xp=7-4*w;
+D2x=144*xpp;
+K2=xp*(Uc)^2/(2*(-D2x));
+print("K7^2 = (6 sqrt12/(4 pi))^2 * x_+ * U_c^2/(2 pi (-D2x)) ; algebraic part:");
+print("  x_+ U_c^2/(-D2x) [in units of (Dv)^6/(Dv)^2 = (Dv)^4] = ",lift(xp*Uc^2/(-D2x)));
+default(realprecision,400);
+s3=sqrt(3);
+Om2=gamma(1/3)^6/Pi^4;
+Dv=s3*(2+s3)/2^(17/3)*Om2;
+Ucn=subst(lift(Uc),'t,s3)*Dv^3;
+D2xn=subst(lift(D2x),'t,s3)*Dv^2;
+K7=6*sqrt(12)/(8*Pi^(3/2))*abs(Ucn)*sqrt(2*(7-4*s3)/(-D2xn));
+print("K7 (from R-fit route) = ",precision(K7,60));
+K7c=3^(27/4)*(739-356*s3)/2^(77/6)*gamma(1/3)^12/Pi^(19/2);
+print("K7 (closed form)      = ",precision(K7c,60));
+print("ratio-1               = ",precision(K7/K7c-1,10));
+quit;

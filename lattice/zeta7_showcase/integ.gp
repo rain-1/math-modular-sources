@@ -1,0 +1,17 @@
+default(parisize,"24G");
+cn=read("cn.txt");
+dn=read("dn900.txt");
+NC=900;
+print("c_n integral for all n<=900? ",vecmax(vector(NC+1,i,denominator(cn[i])))==1);
+DD=vector(NC+1); DD[1]=1;
+for(n=1,NC,DD[n+1]=lcm(DD[n],n));
+b7=vector(NC+1,i,denominator(DD[i]^7*dn[i])==1);
+b6=vector(NC+1,i,denominator(DD[i]^6*dn[i])==1);
+print("D_n^7 d_n integral for all n<=900? ",vecmin(b7));
+print("D_n^6 d_n integral: count over n=0..900 = ",sum(i=1,NC+1,b6[i]),"  (only n = ",select(i->b6[i],vector(NC+1,i,i),1)-vector(sum(i=1,NC+1,b6[i]),j,1),")");
+print("  so D_n^7 is sharp for every n>=2");
+print("largest denominator digits: d_900 den has ",#Str(denominator(dn[NC+1]))," digits; D_900^7 has ",#Str(DD[NC+1]^7)," digits");
+print("log10|c_900| = ",log(abs(1.0*cn[NC+1]))/log(10));
+print("signs c_n n=896..900: ",vector(5,i,sign(cn[895+i])));
+print("c_1..c_10 = ",vector(10,i,cn[i+1]));
+quit;

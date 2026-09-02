@@ -1,0 +1,13 @@
+default(realprecision,60);
+s3=sqrt(3);
+K7=3^(27/4)*(739-356*s3)/2^(77/6)*gamma(1/3)^12/Pi^(19/2);
+K7p=(8-4*s3)*K7;
+al=14161/5040;
+print("K7  = ",precision(K7,50));
+print("K7' = ",precision(K7p,50));
+print("alpha' = 14161/5040 = ",precision(al*1.,30));
+print("7 alpha' = 14161/720 = ",precision(7*al*1.,30));
+print("7 alpha'/K7' = ",precision(7*al/K7p,30));
+print("alpha'/K7    = ",precision(al/K7,30));
+print("(8-4sqrt3) = ",precision(8-4*s3,20));
+quit;

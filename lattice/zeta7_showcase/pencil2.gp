@@ -1,0 +1,12 @@
+default(parisize,"20G");
+read("/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/analyze_lib.gp");
+pencil(fn,r,D)=my(B,k,CH,G,res=List());read(concat(BASE,fn));B=BVL;k=#B;CH=vector(k,i,chiof(B[i],r,D));print("---- (",r,",",D,") dim ",k," ----");G=CH[1];for(i=2,k,G=gcd(G,CH[i]));G=G/content(G);print("  gcd(chi) = ",factor(G));for(a=0,r,for(b=0,(r-a)\2,my(md=(L+1)^a*(L^2-14*L+1)^b,MM,kk);if(a+2*b<=r&&a+2*b>0,MM=matrix(a+2*b,k,x,y,polcoeff(CH[y]%md,x-1));kk=matker(MM);if(#kk>0,listput(res,[a,b,a+2*b,#kk])))));return([B,CH,Vec(res)]);
+show(R)=my(res=R[3],mx=0);for(i=1,#res,mx=max(mx,res[i][3]));print("  all (a,b,a+2b,dim) with divisibility, total>=12: ");for(i=1,#res,if(res[i][3]>=12,print("     ",res[i])));print("  MAX total = ",mx);
+gettime();
+R1=pencil("rec_23_10_raw.gp",23,10);
+show(R1);
+print("time ",gettime());
+R2=pencil("rec_17_15_raw.gp",17,15);
+show(R2);
+print("time ",gettime());
+quit;

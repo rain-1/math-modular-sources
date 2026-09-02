@@ -1,0 +1,16 @@
+default(parisize,"20G");
+read("/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/analyze_lib.gp");
+read(concat(BASE,"rec_19_13_raw.gp"));
+RR=19;
+DD=13;
+v=prim(BVL[1]);
+PV=tovec2pol(v,RR,DD);
+print("valuation of P_0 at n=0: ",valuation(PV[1],n));
+print("valuation of P_19 at n: ",valuation(PV[20],n));
+gettime();
+F0=factor(PV[1]);
+print("P_0 factored (time ",gettime()," ms):");
+print(F0);
+print("");
+print("P_19 root structure: ",factor(PV[20]));
+quit;

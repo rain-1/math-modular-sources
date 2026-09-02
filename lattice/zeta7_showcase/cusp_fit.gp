@@ -1,0 +1,35 @@
+default(parisize,3000000000);
+default(realprecision,700);
+N=420;
+et(k)=eta(q^k+O(q^(N+3)));
+d12=[1,2,3,4,6,12]; c12=[1,-572,11583,-36608,46332,-20736];
+g=vector(N,m,sum(i=1,6,if(m%d12[i]==0,c12[i]*sigma(m\d12[i],7),0)));
+Phi=sum(m=1,N,g[m]*q^m)+O(q^(N+1));
+Psi=sum(m=1,N,(g[m]/m^7)*q^m)+O(q^(N+1));
+xi=(209/1728)*zeta(7);
+h=et(1)^3*et(4)*et(6)^2/(et(2)^2*et(3)*et(12)^3)/q;
+x=h/((h+3)*(h+4));
+Dx=q*deriv(x,q);
+U=Phi/Dx; Qx=serreverse(x);
+A=subst(U,q,Qx); B=A*subst(Psi,q,Qx);
+M=N-10;
+cn=vector(M+1,i,polcoeff(A,i-1)); dn=vector(M+1,i,polcoeff(B,i-1));
+cp=vector(M+1,i,cn[i]+if(i>1,cn[i-1],0)); dp=vector(M+1,i,dn[i]+if(i>1,dn[i-1],0));
+w=vector(M+1,i,dp[i]-xi*cp[i]);
+\\ basis: [x^n] log^j(1+x), j=1..7 and [x^n] (1+x) log^j(1+x), j=1..7, and (1+x)^2 log^j
+L=log(1+t+O(t^(M+2)));
+bas=vector(21); for(j=1,7,bas[j]=L^j; bas[7+j]=(1+t)*L^j; bas[14+j]=(1+t)^2*L^j);
+n0=150; n1=M; nn=n1-n0+1;
+Mt=matrix(nn,21,i,j,polcoeff(bas[j],n0+i-1));
+v=vector(nn,i,w[n0+i]);
+sol=matsolve(Mt~*Mt,Mt~*v~);
+print("alpha_7 fitted = ",sol[7]*1.0);
+print("prediction 14161/5040 = ",14161/5040*1.0);
+print("alpha_6 fitted = ",sol[6]*1.0,"  alpha_5 = ",sol[5]*1.0);
+print("residual rms = ",sqrt(norml2(Mt*sol-v~)/nn));
+\\ also: direct check of the pole claim: w_n for the canonical row grows like (log n)^7?
+wc=vector(M+1,i,dn[i]-xi*cn[i]);
+print("canonical |d_n - xi c_n| at n=100,200,300,400: ",vector(4,i,abs(wc[100*i+1])*1.0));
+print("modified  |d'_n - xi c'_n| at n=100,200,300,400: ",vector(4,i,abs(w[100*i+1])*1.0));
+print("modified ratio to (14161/720)(log n)^6/n: ",vector(4,i,my(n=100*i);abs(w[n+1])/((14161/720)*log(n)^6/n)*1.0));
+quit;

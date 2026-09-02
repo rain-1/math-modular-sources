@@ -1,0 +1,15 @@
+default(parisize,"48G");
+read("rec_19_13.gp");
+r=19;
+alt=sum(j=0,r,(-1)^j*PV[j+1]);
+print("alternating sum sum_j (-1)^j P_j(n) == 0 ? ",alt==0);
+if(alt!=0,print("  it is a polynomial of degree ",poldegree(alt)));
+M=vector(r);
+M[1]=PV[1];
+for(j=2,r,M[j]=PV[j]-M[j-1]);
+print("consistency: P_19 - M_18 == 0 ? ",PV[r+1]-M[r]==0);
+print("M has ",#M," coefficients, degrees ",vector(#M,i,poldegree(M[i])));
+PVP=M;
+write("rec_prime_18_13.gp",Str("PVP=",PVP,";"));
+print("written rec_prime_18_13.gp");
+quit;

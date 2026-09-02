@@ -1,0 +1,22 @@
+default(parisize,"40G");
+cn=read("cn.txt");
+NC=900;
+p=2^61-1;
+cp=vector(NC+1,i,Mod(cn[i],p));
+r=13; D=49;
+sz=(r+1)*(D+1);
+nrows=min(NC-r+1,sz+25);
+M=matrix(nrows,sz,a,b,my(n=r+a-1, j=(b-1)\(D+1), k=(b-1)%(D+1)); Mod(n,p)^k*cp[n-j+1]);
+K=matker(M)[,1];
+nrm=K[D+1];
+PJ=vector(r+1,jj,sum(k=0,D, (K[(jj-1)*(D+1)+k+1]/nrm)*n^k));
+print("deg P_j: ",vector(r+1,i,poldegree(PJ[i])));
+print("P_0 = n^7 * (deg 42)?  valuation: ",valuation(PJ[1],n));
+found=List();
+{for(A=-80,120, for(e=0,1, my(ep=if(e==0,1,-1), ok=1);
+  for(j=0,r, if(PJ[r-j+1]-ep*subst(PJ[j+1],n,A-n)!=0, ok=0; break));
+  if(ok, listput(found,[A,ep]))));}
+print("symmetries P_{r-j}(n) = eps*P_j(A-n): ",Vec(found));
+print("leading coeffs p_j (lifted, centred): ",vector(r+1,i,my(z=lift(polcoeff(PJ[i],D)));if(z>p/2,z-p,z)));
+print("P_0 monic-normalised low coeffs [n^7..n^13]: ",vector(7,k,my(z=lift(polcoeff(PJ[1],6+k)));if(z>p/2,z-p,z)));
+quit;

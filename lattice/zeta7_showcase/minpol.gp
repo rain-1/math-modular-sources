@@ -1,0 +1,17 @@
+w=Mod(x,x^2-3);
+k6=3^40*w*(739-356*w)^6/2^77;
+T=lift(k6+3^40*(-w)*(739+356*w)^6/2^77);
+N=lift(k6*(3^40*(-w)*(739+356*w)^6/2^77));
+print("kappa^6 = ",lift(k6));
+print("T = Tr(kappa^6) = ",T);
+print("  T as fraction: ",T,"  = ",factor(numerator(T))," / ",factor(denominator(T)));
+print("N = Nm(kappa^6) = ",N);
+print("  N = -3^81*165913^6/2^154 ? ",N==-3^81*165913^6/2^154);
+print("minimal polynomial of kappa (monic over Q): y^12 - (",T,") y^6 + (",N,")");
+print("cleared:  ",lift(Mod(0,1))+0);
+p=(y^12-T*y^6+N)*denominator(T)*1;
+print("times 2^154*3^? : ");
+c=lcm(denominator(T),denominator(N));
+print("common denom = ",factor(c));
+print("primitive integer minpoly: ",c*(y^12-T*y^6+N));
+quit;

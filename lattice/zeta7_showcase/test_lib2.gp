@@ -1,0 +1,11 @@
+default(parisize,"20G");
+read("/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/lift_lib.gp");
+p=2^61-1;
+setC(p);
+res=canon(23,10,p);
+AA=res[1]*Mod(1,p);
+print("size AA = ",matsize(AA));
+BB=bestappr(AA);
+print("size BB = ",matsize(BB),"  type ",type(BB));
+print("row1 cols 1..14: ",vector(14,i,BB[1,i]));
+quit;

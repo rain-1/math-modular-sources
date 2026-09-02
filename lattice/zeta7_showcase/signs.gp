@@ -1,0 +1,17 @@
+default(parisize,"24G");
+default(realprecision,1200);
+cn=read("cn.txt");
+dn=read("dn900.txt");
+xi=(209/1728)*zeta(7);
+NC=900;
+neg=List();
+for(n=2,NC, if(cn[n+1]<0, listput(neg,n)));
+print("n>=2 with c_n<0: ",if(#neg==0,"none",Vec(neg)));
+bad=List();
+for(n=2,NC, my(e=dn[n+1]-xi*cn[n+1]); if(sign(e)!=(-1)^(n+1), listput(bad,n)));
+print("n>=2 where sign(d_n - xi c_n) != (-1)^(n+1): ",if(#bad==0,"none",Vec(bad)));
+print("K7 to 70 digits: ");
+s3=sqrt(3);
+print(precision(3^(27/4)*(739-356*s3)/2^(77/6)*gamma(1/3)^12/Pi^(19/2),70));
+print("kappa to 70 digits: ",precision(3^(27/4)*(739-356*s3)/2^(77/6),70));
+quit;

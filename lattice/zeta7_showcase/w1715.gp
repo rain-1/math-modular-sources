@@ -1,0 +1,10 @@
+default(parisize,"8G");
+default(linewrap,0);
+BASE="/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/";
+DN=read(concat(BASE,"dn.txt"));
+ND=400;
+chk(QV,r,nm)=my(R,S,W,ok=1,deg=-1,DIF);R=vector(ND-r,i,my(nn=r+i,s=0);for(j=0,r,s=s+subst(QV[j+1],n,nn)*DN[nn-j+1]);s);S=vector(#R,i,(-1)^(r+i)*R[i]);DIF=S;for(m=1,30,DIF=vector(#DIF-1,i,DIF[i+1]-DIF[i]);my(z=1);for(i=1,#DIF,if(DIF[i]!=0,z=0;break));if(z,deg=m-1;break));W=polinterpolate(vector(deg+1,i,r+i),vector(deg+1,i,S[i]),n);for(i=1,#S,if(S[i]!=subst(W,n,r+i),ok=0));print(nm,": deg W=",deg,"  exact for n=",r+1,"..400: ",ok,"  content(W)=",factor(content(W)));
+read(concat(BASE,"rec_17_15.gp"));
+chk(PV,17,"(17,15) PV [chi=(L+1)^7(L2-14L+1)^4]");
+chk(PVALT,17,"(17,15) PVALT [chi=(L+1)^9(L2-14L+1)^3]");
+quit;

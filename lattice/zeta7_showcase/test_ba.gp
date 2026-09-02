@@ -1,0 +1,11 @@
+m=10^40+7;
+x=Mod(3,m)/Mod(17,m);
+print("scalar bestappr: ",bestappr(x));
+v=[x,Mod(5,m)/Mod(9,m)];
+print("vec bestappr: ",iferr(bestappr(v),E,concat("ERR ",E)));
+M=matrix(2,2,i,j,Mod(i,m)/Mod(j+10,m));
+print("mat bestappr: ",iferr(bestappr(M),E,concat("ERR ",E)));
+print("type ",type(bestappr(M)));
+y=Mod(123456789012345678901234567890,m);
+print("hopeless: ",iferr(bestappr(y),E,concat("ERR ",E)));
+quit;

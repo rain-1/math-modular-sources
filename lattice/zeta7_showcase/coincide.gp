@@ -1,0 +1,18 @@
+default(parisize,"8G");
+default(linewrap,0);
+read("/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/analyze_lib.gp");
+DN=read(concat(BASE,"dn.txt"));
+resid(QV,r,nmax)=vector(nmax-r,i,my(nn=r+i,s=0);for(j=0,r,s=s+subst(QV[j+1],n,nn)*DN[nn-j+1]);s);
+read(concat(BASE,"rec_23_10_raw.gp"));
+B=BVL;
+CH=vector(2,i,chiof(B[i],23,10));
+md=(L+1)^8*(L^2-14*L+1)^3;
+MM=matrix(14,2,x,y,polcoeff(CH[y]%md,x-1));
+kk=matker(MM);
+vA=prim(vector(#B[1],i,sum(y=1,2,kk[y,1]*B[y][i])));
+WL=vector(2,i,my(R=resid(tovec2pol(B[i],23,10),23,120),S=vector(#R,j,(-1)^(23+j)*R[j]));polinterpolate(vector(4,j,23+j),vector(4,j,S[j]),n));
+MM2=matrix(1,2,x,y,polcoeff(WL[y],3,n));
+kk2=matker(MM2);
+vB=prim(vector(#B[1],i,sum(y=1,2,kk2[y,1]*B[y][i])));
+print("(23,10): chi-distinguished element == minimal-residual element (up to sign)? ",(vA==vB)||(vA==-vB));
+quit;

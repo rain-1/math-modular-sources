@@ -1,0 +1,16 @@
+default(parisize,"16G");
+default(linewrap,0);
+read("/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/analyze_lib.gp");
+brief(P,nm)=my(F=factor(P));print(nm,": deg ",poldegree(P,n)," content-digits ",#Str(abs(numerator(content(P))))," factors:");for(i=1,matsize(F)[1],my(f=F[i,1]);print("   [deg ",poldegree(f,n)," exp ",F[i,2]," maxcoefdig ",vecmax(vector(poldegree(f,n)+1,z,#Str(abs(numerator(polcoeff(f,z-1,n))))))," ] ",if(poldegree(f,n)<=1&&#Str(abs(numerator(polcoeff(f,0,n))))<12,f,"(big)")));
+read(concat(BASE,"rec_23_10.gp"));
+brief(PV[1],"(23,10) P_0");
+brief(PV[24],"(23,10) P_23");
+print("(23,10) P_1 maxcoefdig ",vecmax(vector(11,z,#Str(abs(numerator(polcoeff(PV[2],z-1,n)))))));
+read(concat(BASE,"rec_17_15.gp"));
+brief(PV[1],"(17,15) P_0");
+brief(PV[18],"(17,15) P_17");
+print("(17,15) P_1 maxcoefdig ",vecmax(vector(16,z,#Str(abs(numerator(polcoeff(PV[2],z-1,n)))))));
+read(concat(BASE,"rec_19_13.gp"));
+brief(PV[1],"(19,13) P_0");
+brief(PV[20],"(19,13) P_19");
+quit;

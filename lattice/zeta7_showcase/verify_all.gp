@@ -1,0 +1,15 @@
+default(parisize,"48G");
+cn=read("cn.txt");
+dn=read("dn900.txt");
+read("rec_17_15.gp"); PA=PV;
+read("rec_23_10.gp"); PB=PV;
+bad=0; for(nn=18,900, my(s=sum(j=0,17,subst(PA[j+1],n,nn)*cn[nn-j+1])); if(s!=0,bad++));
+print("(17,15) c-annihilation failures n=18..900: ",bad);
+bad=0; for(nn=24,900, my(s=sum(j=0,23,subst(PB[j+1],n,nn)*cn[nn-j+1])); if(s!=0,bad++));
+print("(23,10) c-annihilation failures n=24..900: ",bad);
+W=vector(10,i,my(nn=23+i); (-1)^nn*sum(j=0,23,subst(PB[j+1],n,nn)*dn[nn-j+1]));
+m=4; V=matrix(m,m,a,b,(23+a)^(b-1)); co=matsolve(V,vector(m,a,W[a])~);
+P=sum(k=1,m,co[k]*n^(k-1));
+bad=0; for(nn=24,900, my(s=sum(j=0,23,subst(PB[j+1],n,nn)*dn[nn-j+1])); if(s!=(-1)^nn*subst(P,n,nn),bad++));
+print("(23,10) R_n=(-1)^n W(n) failures n=24..900: ",bad,"  deg W=",poldegree(P),"  content=",factor(content(P)));
+quit;

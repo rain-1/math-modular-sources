@@ -1,0 +1,13 @@
+default(parisize,"24G");
+default(linewrap,0);
+BASE="/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/";
+DN=read(concat(BASE,"dn900.txt"));
+ND=900;
+gettime();
+chk(fn,r,nm)=my(PV,R,S,W,ok=1,deg);read(concat(BASE,fn));PV=PV;R=vector(ND-r,i,my(nn=r+i,s=0);for(j=0,r,s=s+subst(PV[j+1],n,nn)*DN[nn-j+1]);s);S=vector(#R,i,(-1)^(r+i)*R[i]);deg=-1;my(DIF=S);for(m=1,30,DIF=vector(#DIF-1,i,DIF[i+1]-DIF[i]);my(z=1);for(i=1,#DIF,if(DIF[i]!=0,z=0;break));if(z,deg=m-1;break));W=polinterpolate(vector(max(deg+1,1),i,r+i),vector(max(deg+1,1),i,S[i]),n);for(i=1,#S,if(S[i]!=subst(W,n,r+i),ok=0));print(nm,": deg W=",deg,"  R_n=(-1)^n W(n) EXACT for all n=",r+1,"..900 : ",ok,"   content(W)=",factor(content(W)),"   t=",gettime());return(W);
+W1=chk("rec_19_13.gp",19,"(19,13) canonical");
+W2=chk("rec_23_10.gp",23,"(23,10) distinguished");
+W3=chk("rec_19_13_constres.gp",19,"(19,13) const-residual");
+W4=chk("rec_17_15.gp",17,"(17,15) distinguished");
+print("W3 (should be a constant) digits: ",#Str(abs(W3)),"  sign ",sign(W3));
+quit;

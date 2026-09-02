@@ -1,0 +1,13 @@
+default(parisize,"20G");
+read("/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/lift_lib.gp");
+print("primes: ",mkprimes(5));
+p=2^61-1;
+setC(p);
+gettime();
+res=canon(23,10,p);
+print("basis rows: ",matsize(res[1])," pivots: ",res[2]," t=",gettime());
+A=res[1]*Mod(1,p);
+print("bestappr vectorizes? ",iferr(matsize(bestappr(A)),E,concat("ERR ",E)));
+B=matrix(2,3,i,j,Mod(i+j,101));
+print("chinese vectorizes? ",iferr(chinese(B,matrix(2,3,i,j,Mod(i-j,103))),E,concat("ERR ",E)));
+quit;

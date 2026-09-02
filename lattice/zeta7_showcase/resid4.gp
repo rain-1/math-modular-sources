@@ -1,0 +1,15 @@
+default(parisize,"24G");
+default(linewrap,0);
+read("/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/analyze_lib.gp");
+DN=read(concat(BASE,"dn.txt"));
+CN=read(concat(BASE,"cn.txt"));
+resid(PV,r,nmax)=vector(nmax-r,i,my(nn=r+i,s=0);for(j=0,r,s=s+subst(PV[j+1],n,nn)*DN[nn-j+1]);s);
+Wof(v,r,D)=my(PV=tovec2pol(v,r,D),R=resid(PV,r,400),S=vector(#R,i,(-1)^(r+i)*R[i]),W,ok=1);W=polinterpolate(vector(D-6,i,r+i),vector(D-6,i,S[i]),n);for(i=1,#S,if(S[i]!=subst(W,n,r+i),ok=0));if(!ok,error("W fit failed"));W;
+verifyc(PV,r)=my(bad=0);for(nn=r+1,900,my(s=0);for(j=0,r,s=s+subst(PV[j+1],n,nn)*CN[nn-j+1]);if(s!=0,bad=bad+1));bad;
+doit(fn,r,D)=my(B,k,WL,MM,kk,dd);read(concat(BASE,fn));B=BVL;k=#B;print("---- (",r,",",D,") dim ",k," ----");WL=vector(k,i,Wof(B[i],r,D));print("  deg W of basis: ",vector(k,i,poldegree(WL[i],n)));for(dd=0,D-7,MM=matrix(D-7-dd,k,x,y,polcoeff(WL[y],D-7-x+1,n));kk=if(D-7-dd>0,matker(MM),matid(k));if(#kk>0,print("  min deg residual achievable <= ",dd,"  with ",#kk,"-dim family");my(v=vector(#B[1],i,sum(y=1,k,kk[y,1]*B[y][i])));v=prim(v);print("     element: maxdig ",maxdig(v)," chi/content=",factor(chiof(v,r,D)/content(chiof(v,r,D))));my(WW=Wof(v,r,D));print("     W = ",if(poldegree(WW,n)<=0,WW,concat("degree ",Str(poldegree(WW,n)))));print("     c-verify residual count ",verifyc(tovec2pol(v,r,D),r));break));
+gettime();
+doit("rec_23_10_raw.gp",23,10);
+print("t=",gettime());
+doit("rec_17_15_raw.gp",17,15);
+print("t=",gettime());
+quit;

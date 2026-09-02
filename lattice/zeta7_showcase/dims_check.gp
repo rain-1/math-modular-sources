@@ -1,0 +1,13 @@
+default(parisize,"20G");
+cn=read("/tmp/claude-1000/-home-ubuntu-code-math-modular-sources/9a849c0a-95f8-4d19-b342-98033d0d9c03/scratchpad/zeta7/cn.txt");
+NC=900;
+p=2^61-1;
+CR=vector(NC+1,i,lift(Mod(cn[i],p)));
+buildM(r,D,n0)=my(nr=NC-n0+1,sz=(r+1)*(D+1),PW);PW=matrix(nr,D+1,a,b,lift(Mod(n0+a-1,p)^(b-1)));matrix(nr,sz,a,b,my(j=(b-1)\(D+1),k=(b-1)%(D+1),n=n0+a-1);PW[a,k+1]*CR[n-j+1]%p);
+kdim(r,D,n0)=my(M=buildM(r,D,n0));#matker(M*Mod(1,p));
+gettime();
+print("shape (23,10): n>=r+1 dim=",kdim(23,10,24),"  n>=r dim=",kdim(23,10,23),"  t=",gettime());
+print("shape (17,15): n>=r+1 dim=",kdim(17,15,18),"  n>=r dim=",kdim(17,15,17),"  t=",gettime());
+print("shape (19,13): n>=r+1 dim=",kdim(19,13,20),"  n>=r dim=",kdim(19,13,19),"  t=",gettime());
+print("shape (18,14): n>=r+1 dim=",kdim(18,14,19),"  t=",gettime());
+quit;
