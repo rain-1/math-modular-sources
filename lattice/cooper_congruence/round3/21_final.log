@@ -21,3 +21,4 @@ kappa=1 n=3 t=1  dim=24  eqs=30  rank=25  kernel=0
 kappa=1 n=4 t=0  dim=30  eqs=30  rank=30  kernel=1
 kappa=1 n=4 t=1  dim=30  eqs=30  rank=30  kernel=1
 kappa=5 n=0 t=0  dim=8  eqs=30  rank=9  kernel=0
+kappa=5 n=0 t=1  dim=8  eqs=30  rank=9  kernel=0
