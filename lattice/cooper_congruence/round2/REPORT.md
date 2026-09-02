@@ -47,7 +47,7 @@ range), **[num, digits]**, **[refuted, range]**, **[conjectural]**.
 | **W3–W7** | Its correct form is a real reduction: $f|U_p\equiv f_0+\sum_{n\ge1}[x^{pn}](fH)x^n\pmod p$ with $H=(\sqrt PF)^{p-1}\equiv P^{(p-1)/2}/F_{<p}$, where $F_{<p}=\sum_{n<p}A_nx^n$ is the **supersingular polynomial** of $X_0(N)/\mathbf F_p$ in the coordinate $x$ ($\deg F_{<p}=\lfloor\mu(N)(p-1)/(6\deg x)\rfloor$ exactly).  Round 1's smallest missing brick becomes $[x^{pn}]\bigl(l\,P^{(p-1)/2}/F_{<p}\bigr)\equiv\psi(p)L_n\pmod p$ | **[proved]** (equivalence) + **[verified, $p\le53$]** `FINDINGS_XSIDE.md` |
 | **W11** | **New supercongruence** $A_{p-1}\equiv\kappa\,\psi(p)\,p\pmod{p^2}$, $\kappa=-2,-3,-3$; for $s_{18}$ it manufactures $\chi_{-3}$ from the Apéry-like recurrence alone | **[verified, $5\le p\le300$]**, **[proved for $s_{10}$]** `FINDINGS_XSIDE.md` |
 | **W20** | The **$\psi$-twisted Dieudonné–Dwork tower** $a_{pn-1}\equiv\psi(p)a_{n-1}\pmod{p^{1+v_p(n)}}$ holds for all three rows, extending round 1's V19 to the character row | **[verified, $p\le31$]** `FINDINGS_XSIDE.md` |
-| **P6** | **THE CLEAN FORM.**  With $c(d)$ the twisted CM trace coefficients of §2.8, $$\boxed{\ d\ \bigm|\ c(d)\ }\qquad\text{for every admissible }d,$$ verified for **all $690$ admissible $d\le2500$, zero failures**.  Conjecture 4.1 is the case $d=m^2$, since $c(m^2)=\beta_{s_7}(m)$ and $m^2\mid\beta(m)$ is $m^2\mid c(m^2)$; and $G(d):=c(d)/d$ extends $\gamma$ from the squares to all discriminants, $G(m^2)=\gamma_{s_7}(m)$ **[verified]**.  $G=1,-2,2,1,2,0,-5,0,5,6,6,4,4,15,0,14,20,-18,10,14,\dots$ at $d=1,4,8,9,16,21,25,28,29,32,36,37,44,53,\dots$  **Sharp**: $\min_{p\mid d}v_p(G(d))=0$ at $p=3,11,13,17,19,23,29$ and $=1$ at $p=2,5$ — exactly round 1's two anomalous cells $(s_7,2)$, $(s_7,5)$ | **[verified, $d\le2500$]** §5.5 |
+| **P6** | **THE CLEAN FORM.**  With $c(d)$ the twisted CM trace coefficients of §2.8, $$\boxed{\ d\ \bigm|\ c(d)\ }\qquad\text{for every admissible }d,$$ verified for **all $690$ admissible $d\le2500$, zero failures**.  Conjecture 4.1 is the case $d=m^2$, since $c(m^2)=\beta_{s_7}(m)$ and $m^2\mid\beta(m)$ is $m^2\mid c(m^2)$; and $G(d):=c(d)/d$ extends $\gamma$ from the squares to all discriminants, $G(m^2)=\gamma_{s_7}(m)$ **[verified]**.  $G=1,-2,2,1,2,0,-5,0,5,6,6,4,4,15,0,14,20,-18,10,14,\dots$ at $d=1,4,8,9,16,21,25,28,29,32,36,37,44,53,\dots$  **Sharp**: $\min_{p\mid d}v_p(G(d))=0$ at $p=3,11,13,17,19,23,29$ and $=1$ at $p=2,5$ — exactly round 1's two anomalous cells $(s_7,2)$, $(s_7,5)$.  Also $G(d)=0$ **exactly** when $7\mid d$ | **[verified, $d\le2500$]** §5.5 |
 | **P3** | Equivalently, on the $p$-parts: $p^{2a}\mid c(p^{2a}d)$ for every prime $p$, $a\ge1$, admissible $d$ — **295 tests, $0$ failures**, $p\le29$, $a\le4$, $p^{2a}d\le2500$, including the $118$ cells with $p\mid d$ | **[verified]** §5.5 |
 | **P4** | **Uniqueness survives at level $28$.**  $\dim S_4(\Gamma_0(7))=1$, its eigenform has $a_7=-7$ hence Fricke eigenvalue $+1$, so $\dim S_4(\Gamma_0(7))^{W_7=-1}=0$ — and $\Phi|_4W_7=-\Phi$ lives exactly there.  This replaces $\dim S_4(\mathrm{SL}_2(\mathbf Z))=0$ in the level-one proof.  ($\dim M_4(\Gamma_0(7))=3$, so one also needs that $\Phi$ vanishes at both cusps, which it does) | **[proved]** §5.5 |
 | **P5** | **The Hecke eigenvalue is right on the nose.**  Fitting $c(p^2d)+p\,c(d)+p^3c(d/p^2)=\lambda\,c(d)$ over all admissible $d$ gives $\lambda\equiv p\pmod{p^2}$, **constant in $d$**, with a **trivial** middle character ($\chi_{-3}(p)^2=1$), for $p=2,3,5,11,13,17,19$.  In the $c$-normalisation the target exponent is $2a$ (not $3a$), for which $\lambda\equiv p\ (p^2)$ is exactly what is needed | **[verified, $p\le19$]** `FINDINGS_PZ.md` §4.5 |
@@ -569,6 +569,16 @@ at $d=1,4,8,9,16,21,25,28,29,32,36,37,44,53,56,57,60,64,65,72,77,81,\dots$  It i
 $\min_{p\mid d}v_p(G(d))=0$ for $p=3,11,13,17,19,23,29$ and $=1$ for $p=2,5$ — precisely
 round 1's two anomalous cells $(s_7,p=2)$ and $(s_7,p=5)$, now explained as a property of
 the whole trace sequence rather than an accident at $\beta(2),\beta(5)$.
+
+Two further properties of $G$ (`76_Gmod.gp/.log`, $690$ entries):
+
+* **$G(d)=0$ exactly when $7\mid d$** — the perfect extension of round 1's Atkin–Lehner cell
+  $\gamma_{s_7}(n)=0\iff7\mid n$ from the squares to all discriminants (checked in both
+  directions on all $690$ entries: $154$ zeros, all with $7\mid d$, and every admissible $d$
+  with $7\mid d$ is a zero).
+* $G\bmod p$ is **not** periodic in $d$ for $p=2,3,5,7$ (no period $\le600$), so the mod-$2$
+  law of `FINDINGS_MODP.md` (which makes $\gamma\bmod2$ multiplicative and $K\bmod2$
+  rational) is a *square-index* phenomenon and does not extend to $G$.
 
 *Caveat on generality.*  "$d\mid c(d)$" is a statement about the **one-$\beta$-class**
 (vector-valued component) trace.  At level one the full trace at non-square $d$ is an
