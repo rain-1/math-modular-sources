@@ -1,8 +1,8 @@
 # Cooper's magnetic congruence: reduction, mechanism, and two unconditional cells
 
 *Working note, 2026-09-02.  All computations in PARI/GP 2.15.4, exact over $\mathbf Q$
-unless a precision is quoted.  Scripts `lib.gp`, `01_beta.gp` … `10_exp.gp` with logs
-`0*.log`, `10_exp.log`; data `beta_s*.txt`, `gamma_s*.txt`.  Background:
+unless a precision is quoted.  Scripts `lib.gp`, `01_beta.gp` … `12_Gx.gp` with matching
+`.log` files; data `beta_s*.txt`, `gamma_s*.txt`.  Background:
 `lattice/cooper_sources/REPORT.md`, `consolidation/COMPANION_ARITHMETIC.md` §§4.5, 5,
 `paper/companions/main.tex` Thm `cooper`.  Nothing outside this directory was modified.*
 
@@ -30,9 +30,10 @@ stated range), **[num, digits]**, or **[conjectural]**.
 | V13 | For $p\,\|\,N$: $\Phi\|U_p=\varepsilon_p\,p\,(\operatorname{Tr}^N_{N/p}\Phi-\Phi)$, so eq:magnetic at $p$ $\iff$ $\operatorname{Tr}^N_{N/p}\Phi\equiv(1+\varepsilon_p\psi(p))\Phi\pmod{p^2}$ | **[proved]** §6.2 |
 | V14 | **THEOREM.** $\Phi_{s_7}\|U_7=7\,\Phi_{s_7}$ and $\Phi_{s_{10}}\|U_5=5\,\Phi_{s_{10}}$ *identically*. Hence eq:magnetic, $(S)$, V4 all hold **unconditionally** at $p=7$ for $s_7$ and at $p=5$ for $s_{10}$, for every $n$ and every $m$ | **[proved]** §6.3 |
 | V15 | The exact cells are exactly the cells with $\varepsilon_p\psi(p)=-1$; equivalently $p\mid N$ and $p$ split in the CM order with class number one | **[proved]** ($\Leftarrow$), **[verified]** ($\Rightarrow$) §6.3–6.4 |
-| V16 | $n\mid\beta(n)$, so $\Xi=D\log g$ with $g=\prod_n(1-q^n)^{-\beta(n)/n}\in\mathbf Z[[q]]$ ($\psi=\mathbf1$ rows), and $\Xi=\tfrac1{\sqrt{-3}}D\log G$, $G=\prod_n\bigl(\tfrac{1-\omega^2q^n}{1-\omega q^n}\bigr)^{\beta(n)/n}\in\mathbf Z[\omega][[q]]$ for $s_{18}$ | **[proved]** (the identity), **[verified, $n\le400$]** (integrality) §7 |
+| V16 | $n\mid\beta(n)$, so $\Xi=D\log\mathfrak g$ with $\mathfrak g=\prod_n(1-q^n)^{-\beta(n)/n}\in\mathbf Z[[q]]$ ($\psi=\mathbf1$ rows), and $\Xi=\tfrac1{\sqrt{-3}}D\log\widetilde g$, $\widetilde g=\prod_n\bigl(\tfrac{1-\omega^2q^n}{1-\omega q^n}\bigr)^{\beta(n)/n}\in\mathbf Z[\omega][[q]]$ for $s_{18}$ | **[proved]** (the identity), **[verified, $n\le400$]** (integrality) §7 |
 | V17 | $s_{18}$ at $p=3$ ($\psi(3)=0$) degenerates much further: $v_3(c(3^nm))\ge3n$, i.e. $v_3(c'(3^nm))\ge2n$, sharp | **[verified, $3^n m\le994$]** §6.5 |
 | V18 | The exceptional cells $(s_7,p=2)$ and $(s_7,p=5)$ come from the accident $\gamma(p):=\beta(p)/p^2=-p$ (so $\beta(p)=-p^3$), not from a structural extra congruence | **[proved]** given the values, §6.6 |
+| V19 | For the $\psi=\mathbf1$ rows the mod-$p$ mechanism V8 is **exactly** the $p$-integrality of the purely $x$-side exponential $\mathcal G(x)=\exp\!\int_0^x\!\frac{l(t)\,dt}{t\sqrt{P(t)}F(t)}$, and $\mathfrak g(q)=\mathcal G(x(q))$; $\mathcal G\in\mathbf Z[[x]]$.  No modularity enters | **[proved]** (equivalence) + **[verified, $x^{200}$]** §7.2 |
 | **GAP** | A proof of V8 (equivalently of $(S)\bmod p$) at a general prime, and its lift to $\bmod\,p^2$ | **open** §8 |
 
 **Headline.** The task's target reduces exactly (V1–V3) to a divisibility of one integer
@@ -41,8 +42,10 @@ statement that implies Cooper's free integration, the strong $p$-magnetic proper
 companion Lucas law simultaneously.  The mechanism is **not** modular-generic: it fails for
 Paşol–Zudilin's level-one magnetic forms (V6).  It lives on the $x$-side, where it is a
 Cartier-eigenvector congruence for one explicit differential $\eta$ built from the
-Apéry-like series (V8), with the character $\psi$ appearing as $a_{p-1}\bmod p$ (V9).  Two
-cells of the target are proved outright (V14), by an Atkin–Lehner trace plus rigidity.
+Apéry-like series (V8), with the character $\psi$ appearing as $a_{p-1}\bmod p$ (V9); for the
+two rows with $\psi=\mathbf1$ that congruence is *exactly* the integrality of one explicit
+exponential of a power series, with no modularity in the statement at all (V19).  Two cells of
+the target are proved outright (V14), by an Atkin–Lehner trace plus a rigidity argument.
 
 ---
 
@@ -442,32 +445,54 @@ not an extra theorem.
 
 ---
 
-## 7. The $q$-product, and Cartier's theorem as a sanity check
+## 7. The $q$-product, and Cartier's theorem
+
+### 7.1 The Lambert product
 
 **Lemma 7.1 [proved].**  With $e_n:=\beta(n)/n$,
 $$\sum_{m\ge1}\frac{c'(m)}{m}q^m=\sum_{n\ge1}e_n\sum_{k\ge1}\frac{\psi(k)}{k}q^{nk}.$$
-For $\psi=\mathbf1$ this says $\Xi=D\log g$ with $g=\prod_{n\ge1}(1-q^n)^{-e_n}$; for
-$\psi=\chi_{-3}$, $\Xi=\tfrac1{\sqrt{-3}}D\log G$ with
-$G=\prod_{n\ge1}\bigl((1-\omega^2q^n)/(1-\omega q^n)\bigr)^{e_n}$, $\omega=e^{2\pi i/3}$.
+For $\psi=\mathbf1$ this says $\Xi=D\log\mathfrak g$ with $\mathfrak g=\prod_{n\ge1}(1-q^n)^{-e_n}$; for
+$\psi=\chi_{-3}$, $\Xi=\tfrac1{\sqrt{-3}}D\log\widetilde g$ with
+$\widetilde g=\prod_{n\ge1}\bigl((1-\omega^2q^n)/(1-\omega q^n)\bigr)^{e_n}$, $\omega=e^{2\pi i/3}$.
 
 **[verified, $n\le400$]** $n\mid\beta(n)$, so all $e_n\in\mathbf Z$, in all three rows; and
-directly, $g=\exp\bigl(\sum c'(m)q^m/m\bigr)\in\mathbf Z[[q]]$ for $s_7$ and $s_{10}$
+directly, $\mathfrak g=\exp\bigl(\sum c'(m)q^m/m\bigr)\in\mathbf Z[[q]]$ for $s_7$ and $s_{10}$
 ($n\le80$), while for $s_{18}$ it is *not* integral (first failure $n=3$) — exactly as the
 character predicts.  Examples:
 $$e^{s_7}=1,-4,3,8,-25,36,0,-144,351,-300,\dots;\quad
 e^{s_{10}}=1,-2,-3,8,0,-18,21,32,-99,0,\dots;\quad
 e^{s_{18}}=1,-2,6,-16,35,-84,217,-560,\dots$$
-$$g_{s_7}=1+q-3q^2+0q^3+14q^4-23q^5-17q^6+125q^7-\cdots,\qquad
-g_{s_{10}}=1+q-q^2-4q^3+5q^4+11q^5-\cdots$$
+$$\mathfrak g_{s_7}=1+q-3q^2+0q^3+14q^4-23q^5-17q^6+125q^7-\cdots,\qquad
+\mathfrak g_{s_{10}}=1+q-q^2-4q^3+5q^4+11q^5-\cdots$$
 
 **Why this matters.**  Over $\mathbf F_p$, Cartier's theorem says $\mathcal C\omega=\omega$
-iff $\omega$ is logarithmic, $\omega=dg/g$.  So for the $\psi=\mathbf1$ rows the mod-$p$
+iff $\omega$ is logarithmic, $\omega=df/f$.  So for the $\psi=\mathbf1$ rows the mod-$p$
 mechanism V8 is *equivalent* to the assertion that $\Xi\,dq/q$ is a logarithmic differential
 mod $p$, and by Dieudonné–Dwork this is equivalent to the $p$-integrality of the $q$-product
-$g$.  This is one more independent avatar of the same congruence, and it identifies the
+$\mathfrak g$.  This is one more independent avatar of the same congruence, and it identifies the
 statement to prove as an **integrality of a $q$-product** — the same flavour as the
 integrality theorems for mirror maps.  ($n\mid\beta(n)$ and $\operatorname{rad}(n)^2\mid\beta(n)$
 are independent; both follow from $n^2\mid\beta(n)$.)
+
+### 7.2 The same product on the $x$-line: a modularity-free conjecture **[proved (equivalence); verified $x^{200}$]**
+
+**Proposition 7.2 [proved].**  Let $\mathcal G(x):=\exp\bigl(\int_0^x a(t)\,dt\bigr)=\exp\bigl(\sum_{j\ge0}a_jx^{j+1}/(j+1)\bigr)$,
+$a=\sum a_jx^j$ as in §4.1.  Then $\mathfrak g(q)=\mathcal G(x(q))$ **[verified, $36$ coefficients, all rows]**,
+and by Dieudonné–Dwork applied on the $x$-line,
+$$\mathcal G\in\mathbf Z_p[[x]]\ \iff\ a_{pn-1}\equiv a_{n-1}\pmod{p^{\,1+v_p(n)}}\ \ \forall n\ge1 .$$
+The case $v_p(n)=0$ is precisely the Cartier congruence V8 with $\psi(p)=1$.
+
+**[verified, $j\le200$]** (`12_Gx.log`) $\mathcal G\in\mathbf Z[[x]]$ for $s_7$ and $s_{10}$:
+$$\mathcal G_{s_7}=1+x+6x^2+78x^3+1289x^4+24067x^5+483478x^6+10199008x^7+\cdots,$$
+$$\mathcal G_{s_{10}}=1+x+3x^2+26x^3+249x^4+2780x^5+33070x^6+413846x^7+\cdots$$
+(and, as the character predicts, $\mathcal G_{s_{18}}\notin\mathbf Z[[x]]$: denominators $3,6,10,45,90,\dots$
+from $j=3$ on).  $\log\mathcal G/\log(1-\lambda_1x)$ is not constant, so $\mathcal G$ is not a power of
+$1-\lambda_1x$ or of $P$; no algebraic closed form was found.
+
+This is the cleanest form of the missing brick, and it contains **no modularity at all**: it
+is a Dwork-type integrality statement about the exponential of the antiderivative of one
+explicit power series manufactured from the Apéry-like recurrence — the same shape as the
+integrality theorems for mirror maps (Lian–Yau, Krattenthaler–Rivoal, Kontsevich–Zagier).
 
 ---
 
@@ -491,6 +516,9 @@ identification of the mechanism as a Cartier/Frobenius eigenvector statement (§
    series built from the Apéry-like recurrence, it implies $(S)\bmod p$, and $(2)\Rightarrow(3)$
    is a one-line expansion.  Its $j=0$ case, $a_{p-1}\equiv\psi(p)\pmod p$, is already the
    statement that determines the character.
+3'. **(Mod $p$, modularity-free form, $\psi=\mathbf1$ rows)**
+   $\exp\bigl(\int_0^x l(t)\,dt/(t\sqrt{P(t)}F(t))\bigr)\in\mathbf Z[[x]]$ (Prop. 7.2).
+   [verified to $x^{200}$]  This is the single most concrete open statement in this note.
 4. Given (3), the lift to $\bmod\ p^2$ needs exactly one further identity mod $p$:
    $\eta_1\equiv D\bigl(\mathcal C(\eta h)\bigr)$, where
    $\mathcal C(\eta)=\psi(p)\eta+p\eta_1$ and $q(x)^p=q(x^p)(1+ph)$ (§4.4).
@@ -515,11 +543,13 @@ identification of the mechanism as a Cartier/Frobenius eigenvector statement (§
 
 ## 9. Consequences for the repository
 
-1. `paper/companions/main.tex`, Theorem `cooper`: hypothesis eq:magnetic can be replaced by
-   the *single* congruence $(S)$ (Prop. 2.1) — the "one congruence per prime power" caveat in
-   the current proof of (i) is unnecessary once one works with $\Xi$ rather than $\Phi$.  The
-   verification block can be strengthened to $p\le199$, $m\le1500$, and can quote the sharp
-   form $n^2\mid\beta(n)$.
+1. `paper/companions/main.tex`, Theorem `cooper`: the whole family eq:magnetic ($n\ge1$) can
+   be replaced by the *single* congruence $(S)$ on $\Xi$ (Prop. 2.1).  The parenthetical in
+   the current proof of (i) — "the case $n=1$ alone does not imply the general case by
+   iterating $U_p$" — is correct for $\Phi$ but disappears for $\Xi$: $(S)$ is very slightly
+   stronger than eq:magnetic at $n=1$ (it asks for $p^2$ also when $p\mid m$) and implies the
+   whole family, because $U_p$ preserves $p^2\mathbf Z_p[[q]]$.  The verification block can be
+   strengthened to $p\le199$, $m\le1500$, and can quote the sharp form $n^2\mid\beta(n)$.
 2. The two exact cells are now **theorems**, not verifications: eq:magnetic holds
    unconditionally at $p=7$ for $s_7$ and $p=5$ for $s_{10}$ (Theorem 6.3), with the
    structural reason $\varepsilon_p=-\psi(p)$.  `cooper_sources/REPORT.md` §1 and §7's third
@@ -547,8 +577,10 @@ identification of the mechanism as a Cartier/Frobenius eigenvector statement (§
 | `07_lucas.gp/.log` | $a_{p-1}\equiv\psi(p)$; failure of the full Lucas/Dwork factorisation |
 | `08_al.gp/.log` | Atkin–Lehner action on $u$, 60 digits |
 | `09_frob.gp/.log` | $p$-integrality of the Frobenius lift $X_\sigma$; $s_{18}$ at $p=3$ |
-| `10_exp.gp/.log` | $n\mid\beta(n)$, the $q$-product $g$, the refined $(S{+}{+})$ |
+| `10_exp.gp/.log` | $n\mid\beta(n)$, the $q$-product $\mathfrak g$, the refined $(S{+}{+})$ |
 | `11_cartier_wide.gp/.log` | the Cartier congruence for all $p\le101$ ($\eta$ to $x^{1200}$); $a_{p-1}\equiv\psi(p)$ for $p\le199$ |
+| `12_Gx.gp/.log` | $\mathcal G(x)=\exp\int_0^x a$, its integrality ($x^{200}$), and $\mathfrak g(q)=\mathcal G(x(q))$ |
 | `beta_s*.txt`, `gamma_s*.txt` | $\beta(n)$ ($n\le600$), $\gamma(n)=\beta(n)/n^2$ ($n\le800$) |
 
-Run with `gp -q <file>`; total runtime under one minute.
+Run with `gp -q <file>`; total runtime a few minutes (the two long ones are
+`11_cartier_wide.gp` and `12_Gx.gp`).
