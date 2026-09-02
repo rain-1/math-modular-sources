@@ -313,7 +313,7 @@ collinearity). Calibration: the same construction at the **near** cusp t₁ retu
 
 $$\boxed{\;\pi_{B_D}^{(t_2)}=-\tfrac{11}{5}\zeta(2)\quad(\text{ratio to }\zeta(2)/5\ \text{is}\ -11.0000000000),\qquad \pi_{B'_{\rm new}}^{(t_2)}=\xi'=-\mathrm{Re}\,L-\varphi^{-5}\mathrm{Im}\,L=-0.971841789639\;}$$
 
-(ratio to ξ′ equal to 1.0000000000). So the two conditions the architecture needs are
+(ratio to ξ′ equal to 1.000000000000). Both ratios are stable to **12 digits** across base points 0.05, 0.02, −0.03, loop radii 4, 5, 7, path heights 1.5, 2, 3 and tolerances 10⁻¹², 10⁻¹³ (`farcusp_robust.txt`). So the two conditions the architecture needs are
 
   **(i)** a + (b/5)·ζ(2) + c·ξ = 0  (the target hypothesis — regularity of H at the v₁-fold t₁);
   **(ii)** σ(a) − (11σ(b)/5)·ζ(2) + σ(c)·ξ′ = 0  (regularity of σH at the v₂-fold t₂).
@@ -644,7 +644,7 @@ monodromy argument — is **[assumed]**, not transported.
 | `whatif.py` → `whatif.txt`, `whatif_cdt.txt` | the monodromy loophole, quantified at both places and on CDT's own host |
 | `monodromy.py` → `monodromy.txt`, `monodromy_robust.txt` | the monodromy computation that CLOSES the loophole for the decisive (2,±1) pair |
 | `worstcase.py` → `worstcase.txt` | the relaxed problem: only the proved (2,±1) exclusions enforced |
-| `farcusp_data.gp`, `farcusp.py` | the far-cusp periods −11ζ(2)/5 and ξ′, with the near-cusp calibration |
+| `farcusp_data.gp`, `farcusp.py` → `farcusp_robust.txt` | the far-cusp periods −11ζ(2)/5 and ξ′, with the near-cusp calibration and a robustness sweep |
 | `single_hypothesis.py` → `single_hypothesis.txt` | branch B: the variant needing only the single hypothesis |
 | `saturation.txt` | the R → 1 saturation of the conformal radii at both places |
 | `task2/` | sources, companions, conditional ODE, fold-regularity at both places (agent report) |
