@@ -6,6 +6,16 @@ Newest entries on top.
 
 ---
 
+## 2026-09-02 — Bucket 4 closed: inventory, host sweep, two-variable systems, and the Γ₁(5) theorem attempt
+
+Four tracks (`consolidation/GAMMA15_CLOSURE.md` §6 for the table; `INVENTORY_BOUND.md` §4, `lattice/hostscan/REPORT.md`, `TWO_VARIABLE_HOLONOMY.md` §6, `lattice/gamma15/REPORT.md`).
+
+- **Inventory.** Pólya–Carlson + θ-trick: lcm-free admissible functions are polynomials, so u₁ = 1 on every Apéry-perfect host. CDT's fourteen functions are the complete supply at max eᵢ ≤ 1; the single-layer module is the arcsine tower Σ yⁿ/(nʲC(2n,n)). Entry passes on Catalan and X₁(5), but the best margin over all inventories is −8.04 / −6.99.
+- **Hosts.** No new Apéry-perfect host for N ≤ 120. One new period on Zagier D's host Γ₁(5): ξ = φ⁵ Im L(2,ψ₄) − Re L(2,ψ₄) = 0.6556341888…, ψ₄ the odd quartic character mod 5, k = 2, source in Z[φ][[q]].
+- **Two variables.** Split-denominator companions do not exist (tail obstruction; Landau ceiling ℓ₁+ℓ₂ ≤ log 256|u₀|).
+- **Γ₁(5) theorem (1, ζ(2), ξ independent over Q(√5)).** Does not follow. Same host, k, fourteen functions and τ = 16603/3920 as CDT, entry +0.67, but the averaged bound gives m ≤ 16.15 against 14 (margin −1.44), and that is on a *doubled* hypothesis: the far-cusp period of Zagier D's companion is −11ζ(2)/5, so the second real place needs a relation the first does not imply (an orientation effect: Li₂ parity at q = −1; on the ξ-line equivariance is exact). On the honest hypothesis the margin is −4.40. Second real place responsible for both.
+- **By-products.** Two corrections to CDT's Appendix A (published slit parameters miss a preimage pair at |z| = 0.7539; BC of the published φ is 12.12 not 11.845; their constants and theorem are nevertheless right); a Jensen reduction of the Bost–Charles integral (excess over log|φ′(0)| is a pure multivalency term); the identity Re L(3,ψ₄) = φ⁵ Im L(3,ψ₄); a monodromy criterion showing the decisive bad preimages can never be dropped (fixed lines at distinct cusps differ).
+
 ## 2026-09-02 — Two censuses: asymptotic constants, and the arithmetic of the companion sequences
 
 **Asymptotic constants** (`consolidation/ASYMPTOTIC_CONSTANTS.md`, scripts `lattice/asymptotic_constants/`).
