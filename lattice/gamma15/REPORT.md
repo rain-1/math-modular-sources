@@ -702,3 +702,47 @@ the Eichler integral", verified here at the near cusp to 212 digits; it is not p
 | `saturation.txt` | the R → 1 saturation of the conformal radii at both places |
 | `task2/` | sources, companions, conditional ODE, fold-regularity at both places (agent report) |
 | `task3/` | pure module over K, measured denominator array, K(y)-independence (agent report) |
+
+---
+
+## 9. The final statement
+
+**What the construction would refute, if the margin were positive.** Not
+
+> *(T) 1, ζ(2), ξ are linearly independent over K = ℚ(√5)*
+
+but the strictly stronger
+
+> *(T′) there is no (a,b,c) ∈ K³∖{0} with **both** a + b·ζ(2)/5 + c·ξ = 0 **and**
+> σ(a) − 11σ(b)·ζ(2)/5 + σ(c)·ξ′ = 0,  where ξ′ = −Re L(2,ψ₄) − φ⁻⁵ Im L(2,ψ₄),*
+
+because a single K-relation supplies a conditional function at the first place only: the
+far-cusp period of B_D is −11ζ(2)/5, not ζ(2)/5, so the second place's fold-regularity
+condition is *not* the Galois conjugate of the hypothesis (§3.4, verified to 174 digits).
+Equivalently, (T′) asks for two ℚ-linear relations among 1, ζ(2), Re L, Im L, √5, √5ζ(2),
+√5 Re L, √5 Im L where (T) gives one; in the sub-case b = 0 it says the rational part and the
+√5 part of the single K-relation a + cξ = 0 must vanish separately.
+
+**And the margins.**
+
+| | hypothesis refuted | L̄ | B̄C | entry | bound | **margin** |
+|---|---|---|---|---|---|---|
+| **A** | (T′) — the doubled hypothesis | 4.90502 | 10.81633 | +0.66956 | 16.154 | **−1.4424** |
+| **B** | (T) — the honest single hypothesis, paid for at v₂ by also excluding the principal preimage of Y₂ | 4.59778 | 9.47631 | +0.36232 | 26.154 | **−4.4038** |
+
+Both entry tests pass; both margins are negative; m = 14 is the optimal inventory in both cases;
+the verdict survives dropping every unproved exclusion (§6(b′)) and the transported convexity
+improvements (§5). **The theorem does not follow.** The shortfall is **1.44 nats** on the
+doubled hypothesis and **4.40 nats** on the target hypothesis, and in both cases the responsible
+ingredient is the **second real place of ℚ(√5)**: it puts the removed fold at
+|Y₂|/4 = 30.5 orbifold radii rather than CDT's 1/288, its deepest bad h-preimage at |z| = 0.2137
+rather than 0.4019, and — separately — it asks for a relation the hypothesis does not give.
+
+**What is left.** (a) A host on which the *far*-cusp period data is the Galois conjugate of the
+near-cusp data would remove the hypothesis tax; the −11 measured here is a property of Γ₁(5)'s
+cusp 1/2, not a general obstruction, and its structural origin is unexplained (§3.4). (b) The
+place-v₂ geometry is a motivic invariant of the pair (host, s): |Y₂| = φ¹⁵/(5√5) is forced by
+t₁t₂ = −1, so no choice of contour or inventory can repair it — a different host would be
+needed, and by `lattice/hostscan/REPORT.md` §10.5 there is no other Apéry-perfect k = 2 host
+carrying a new period. (c) The two corrections to CDT's Appendix A (§1.3) are worth reporting to
+the authors independently of all of this.
