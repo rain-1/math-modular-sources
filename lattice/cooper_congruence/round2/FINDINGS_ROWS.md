@@ -603,3 +603,23 @@ intrinsic to $s_{18}$, not a calibration artefact — unlike in $s_{10}$.
 `58_s18beta.gp/.log` (all $\beta$ classes), `58_s18scan.gp/.log`, `58_s18id.gp/.log` (field
 identification), `58_s18fib2.gp/.log` (fibre control), `58_s18m4.gp/.log` (the $-4d$ family),
 `58_s18rule.gp/.log` (**the classification**).
+
+---
+
+## Correction to ADDENDUM II (added by the coordinating session, `80_s10min.gp`, `81_s10zero.gp`)
+
+The claim "the $s_{10}$ zeros are exactly $5\mid d$" is **wrong**.  Recomputed independently
+with minimal-$A$ Heegner representatives (`heegmin.gp`, `heegminA`), over all admissible
+$d\le700$:
+$$c_{s_{10}}(d)=0\iff 5\mid d\ \ \text{or}\ \ d\equiv5\pmod8 .$$
+Every one of the $90$ zeros is of that form, and every non-degenerate admissible $d$ of that
+form is a zero (the $104-90=14$ predicted-but-absent values are exactly the degenerate
+$25\mid d$).  The extra family — $d=21,29,61,69,101,109,141,149,181,189,\dots$, i.e.
+$d\equiv21,29\pmod{40}$ — is stable under recomputation with minimal $A$ (smallest
+$\operatorname{Im}\alpha$ over all $d\le700$: $0.0076$), so it is not the `heegrep` artefact
+it first looked like.
+
+Everything else in ADDENDUM II is confirmed here: $d\mid c(d)$ with $\lambda=2i$ has **zero
+failures** over the $196$ non-degenerate admissible $d\le700$ (of which $106$ are non-zero,
+so the test is not vacuous); the degeneracies are exactly $25\mid d$; and on the squares
+$c(m^2)=\beta(m)$ for $m$ even and $2\beta(m)$ for $m$ odd, checked to $m=26$.
