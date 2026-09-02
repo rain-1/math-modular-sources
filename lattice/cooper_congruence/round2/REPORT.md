@@ -28,6 +28,8 @@ range), **[num, digits]**, **[refuted, range]**, **[conjectural]**.
 | **R2** | $f$ is weight $-2$, weakly holomorphic, holomorphic on $\mathbf H$ (vanishing to order $1$ at the polar CM points), $f|W_N=-f$; unique with pole order $\le1$ at both cusps.  The construction $f=1/(xF)$ is uniform across the three rows | **[proved]** §2.1 |
 | **R3** | $\widehat f$ is $\Gamma_0(N)$-invariant of weight $0$; computed two independent ways (closed form via $E_2^*,E_4$ and $\mathrm{SL}_2(\mathbf Z)$-reduction; $q$-series with $\Gamma_0(N)+N$-reduction) agreeing to $50$ digits | **[proved]** (invariance) + **[num, 50]** §2.2 |
 | **R4** | **The trace formula is general.**  With $f=E_4E_6/\Delta=q^{-1}-240-\cdots$ on $\mathrm{SL}_2(\mathbf Z)$ and the same $\widehat f$: $\beta_{F_{4a}}(m)=\mathrm{Tr}_{-3m^2}(\widehat f)/192$ and $\beta_{F_{4b}}(m)=-\mathrm{Tr}_{-4m^2}(\widehat f)/432$ (both with $\psi=\mathbf1$; the untwisted trace gives $\beta_{\chi_{D_0}}$ instead, so the genus character in the trace and the character $\psi$ are dual) | **[verified, $m\le12$, 50 digits]** §2.5 |
+| **R1b** | The same law for $s_{10}$: $\beta(m)=i\,T(m)$ ($m$ odd), $2i\,T(m)$ ($m$ even), $\beta$-class $6m\ (20)$, twist $\chi_{-4}$; the factor $2$ is the Atkin–Lehner $W_2$, under which $\widehat f$ is invariant and which double-counts the classes at odd $m$ | **[verified, $m\le30$, 130 digits]** §2.4 |
+| **R1c** | And for $s_{18}$: $\beta(m)=-\tfrac1{4\sqrt3}T^*(m)$ ($3\nmid m$), $-\tfrac1{2\sqrt3}T^*(m)$ ($3\mid m$), $m$ odd, with $\beta$-class $18m\ (36)$, the content-corrected character $\chi^*=\chi_{-3}\cdot(\tfrac{-4}{\operatorname{cont}})$, and the classes with $3\mid\operatorname{cont}$ excluded (**[proved]**: they have no Heegner representative).  Even $m$ degenerate | **[verified, odd $m\le29$, 135 digits]** §2.4 |
 | **R4b** | **The theta lift in full.**  $a(d)=\dfrac{\sqrt d}{192}\operatorname{Tr}_{-3d}(\widehat f)$ for **every** $d\equiv0,1\ (4)$, checked against Paşol–Zudilin's explicitly constructed $f_{4a}=\tfrac1{64}q^{-3}+q-506q^4+\tfrac{131565}{64}q^5-\cdots$, including the non-square $d$.  So the weight-$5/2$ Shimura–Borcherds input **is** the generating function of the twisted CM traces of $\widehat f$ | **[verified, $d\le40$, 45 digits]** §2.7 |
 | **R4c** | **The $s_7$ weight-$5/2$ input, computed.**  $c(d)=\sqrt{-3}\operatorname{Tr}_{-3d}(\widehat f)$ is an **integer** for every admissible $d$ (those with $-3d$ a square mod $28$: $d\equiv0,1\ (4)$ and $d\equiv0,1,2,4\ (7)$), with $c(m^2)=\beta_{s_7}(m)$; table in §2.8.  This gives the level-$28$ input constructively | **[verified, $d\le88$, 50 digits]** §2.8 |
 | **R5** | **The constant is the polar coefficient.**  If $\Phi=A_2(\tau-\tau_0)^{-2}+\cdots$ then $\lambda=4\pi^2A_2$ up to sign: $4\pi^2A_2=1/192,\ -1/432$ for $F_{4a},F_{4b}$ (exactly the observed constants), and $|4\pi^2A_2|=\nu^2/|g'(u_0)|=\sqrt3,\,2,\,2/\sqrt3$ for $s_7,s_{10},s_{18}$, matching $|\sqrt{-3}|=\sqrt3$ | **[proved]** (level one) + **[verified]** §2.5 |
@@ -148,16 +150,52 @@ a(m^2)=m\,\sqrt{-3}\operatorname{Tr}_m(\widehat f).$$
 For $7\mid m$ the two $\beta$-classes $\pm5m$ merge, the trace becomes real, and
 $\beta(m)=0$ by round 1's Theorem 6.3.
 
-### 2.4 The other two rows
+### 2.4 The other two rows **[verified, 130–135 digits]**
 
-See `FINDINGS_ROWS.md`.  The same law holds for $s_{10}$ ($N=10$, $D_0=-4$, $\beta$-class
-$6m\bmod20$, genus character $\chi_{-4}$) with the trace producing clean integers
-$2i\operatorname{Tr}(m)=2,-4,-18,32,\ast,-108,294,256,-1782,\ast,6534,-3744,-14534,22148,
-\ast,-79872$ against $\beta=1,-4,-9,32,0,-108,147,256,-891,0,3267,-3744,-7267,22148,0,-79872$
-($\ast$ at $5\mid m$, where $\beta=0$ by the second Atkin–Lehner cell) — i.e. the identity
-with $|\lambda|=2$ once the Heegner-set convention at even/odd $m$ is normalised (§2.5
-predicts $|\lambda|=2$; see `FINDINGS_ROWS.md` for the resolution).  $s_{18}$ is more
-delicate because $D_0=-36$ is not fundamental.
+`FINDINGS_ROWS.md` (ADDENDUM), scripts `58_`, `59_`.  The same law holds, with the
+Atkin–Lehner group of the level intervening.
+
+**$s_{10}$** ($N=10$, $D_0=-4$, $\beta$-class $6m\bmod20$ — *not* $3m$, since
+$3^2\not\equiv-4\ (40)$ — genus character $\chi_{-4}$, $f=1/(xF)$).  With
+$T(m)=\sum_Q\chi_{-4}(Q)\widehat f(\alpha_Q)/\omega_Q$,
+$$\beta_{s_{10}}(m)=i\,T(m)\ (m\text{ odd}),\qquad \beta_{s_{10}}(m)=2i\,T(m)\ (m\text{ even}),$$
+**[verified to 130 digits, every $m\le30$ with $5\nmid m$]**.  The factor $2$ is the extra
+Atkin–Lehner involution: $\Phi|W_2=+\Phi$ gives $f|W_2=+f$, so $\widehat f$ is
+$W_2$-invariant; for **odd** $m$, $W_2$ preserves the $\beta$-class and both $\chi_{-4}$ and
+$\widehat f$ termwise, acts as an involution on the classes with exactly one fixed class, so
+$T$ double-counts every free orbit (the trace over a $W_2$-transversal gives the ratio
+$2.0137,2.00225,2.00061,2.00028,1.999978,1.9999962$ at $m=7,9,11,13,17,19$).  For **even**
+$m$, $\chi_{-4}$ vanishes exactly on the even-content forms, which are exactly the classes
+whose $\Gamma_0(10)$-Heegner fibre has size $3$ rather than $1$ — so the GKZ bijection
+genuinely fails there, the $W_2$-doubling does not happen, and $|\lambda|=2$ as §2.5
+predicts.
+
+**$s_{18}$** ($N=18$, $D_0=-36$, $\beta$-class $18m\bmod36$).  Three corrections were needed:
+1. **[proved]** forms of discriminant $-36m^2$ with $3\mid\operatorname{cont}(Q)$ have **no**
+   $\Gamma_0(18)$-Heegner representative at all ($Q=3Q'$ needs $6\mid Q'(p,r)$, and
+   $3\mid p^2+r^2$ forces $3\mid p,3\mid r$ against $\gcd(p,r)=1$); restricting to
+   $3\nmid\operatorname{cont}$ makes the class counts match for every $m\le30$;
+2. a **bug in `heeg.gp`**: `heegrep` tries only one completion $(q,s)$ of a first column
+   $(p,r)$, whereas the general matrix is $\binom{p\ \ q+tp}{r\ \ s+tr}$, shifting $B$ by
+   $2At$ — so valid, in particular *smallest-$A$*, representatives were silently discarded
+   (it returned $A=5634$ instead of $A=18$ for $[1,0,9]$, making $\operatorname{Im}\alpha$
+   tiny and both evaluations of $\widehat f$ fail).  Fixed in `59_final3.gp` (`heegmin2`),
+   which solves $B_0+2At\equiv\beta$ and always takes the minimal-$A$ representative.  *This
+   affected none of the $s_7$ results*, where `#found = #classes` throughout and the
+   closed-form evaluation of $\widehat f$ is insensitive to the height;
+3. the genus character needs a **content factor**: with $\chi_{-3}$ alone the identity holds
+   at $m=1,3,5,9,13,15,17,25$ and fails at $m=7,11,19,21,23$ — exactly the $m$ with a prime
+   factor $\equiv3\ (4)$ other than $3$, i.e. inert in $\mathbf Q(i)$ — by exactly
+   $\pm8\sqrt3$.  Since $-36$ is not fundamental, the character that works is
+   $$\chi^*(Q)=\chi_{-3}(Q)\cdot\Bigl(\tfrac{-4}{\operatorname{cont}Q}\Bigr),$$
+   trivial on primitive forms, which is why it is invisible for small $m$.
+
+With those, and $T^*=\sum_Q\chi^*(Q)\widehat f(\alpha_Q)/\omega_Q$,
+$$\beta_{s_{18}}(m)=-\tfrac1{4\sqrt3}T^*(m)\ \ (m\text{ odd},\ 3\nmid m),\qquad
+\beta_{s_{18}}(m)=-\tfrac1{2\sqrt3}T^*(m)\ \ (m\text{ odd},\ 3\mid m),$$
+**[verified to 135 digits, $m=1,3,5,\dots,29$]**.  For **even** $m$, $18m\equiv0\ (36)$, the
+$\pm\beta$-classes merge and the family degenerates — the $s_{18}$ analogue of $7\mid m$ for
+$s_7$ and $5\mid m$ for $s_{10}$; that half remains open.
 
 ### 2.5 The formula is general; the constant is the polar coefficient **[verified]**
 
@@ -182,8 +220,14 @@ $$\lambda=4\pi^2A_2 .$$
 For Cooper's rows `cooper_sources` §2.3 gives $A_2=\nu^2/(4\pi^2g'(u_0))$, hence
 $$|\lambda|=\frac{\nu^2}{|g'(u_0)|}=\sqrt3\ (s_7),\qquad 2\ (s_{10}),\qquad
 \tfrac2{\sqrt3}\ (s_{18}),$$
-and $|\sqrt{-3}|=\sqrt3$ confirms $s_7$.  (The sign, and a possible factor $2$, depend on
-which of the two Fricke-conjugate CM points the $\beta$-class selects.)
+**[verified]** the rule is exact for $s_7$ ($|\lambda|=\sqrt3$) and for $s_{10}$ at even $m$
+($|\lambda|=2$); at odd $m$ for $s_{10}$ it is off by the factor $2$ explained in §2.4 by
+$W_2$.  For $s_{18}$ it is off by $8$ (resp. $4$) — the observed constants are
+$1/(4\sqrt3)$ and $1/(2\sqrt3)$ against the predicted $2/\sqrt3$.  All the discrepancies are
+powers of $2$ and follow the same $2\mid m$ / $3\mid m$ splits, so they are presumably the
+same Atkin–Lehner phenomenon compounded by the non-fundamental conductor of $-36$, but this
+has **not** been derived; it is recorded as an open point.  (The sign depends on which of
+the two Fricke-conjugate CM points the $\beta$-class selects.)
 
 **This is the decisive structural point.**  The trace identity is a *theta lift* — it is the
 Bruinier–Funke/Katok–Sarnak correspondence "integral weight $2-2k$ $\to$ half-integral weight
@@ -498,6 +542,29 @@ Full details in `FINDINGS_MODP.md` (scripts `20_`–`29_`).  Summary of what is 
   half **proved** from round 1's exact cells; $\gamma_{s_{18}}$ never vanishes and has sign
   $(-1)^{n-1}$.
 
+### 6.1 Further verifications (all three rows, `FINDINGS_ROWS.md`)
+
+* $n^2\mid\beta(n)$ exactly to $n\le12000$; $\gamma(n)=0$ exactly for $7\mid n$ ($s_7$),
+  $5\mid n$ ($s_{10}$), never ($s_{18}$).
+* Sharpness: $\min_n v_p(\gamma(n))=0$ for every $p\le60$ in every row; the minimum over
+  $p\mid n$ is $1$ only at $(s_7,p=2)$ and $(s_7,p=5)$ — round 1's two anomalous cells.
+* The refined supercongruences of `COOPER_CONGRUENCE.md` §4:
+  $c'(p^k)\equiv\psi(p)c'(p^{k-1})\pmod{p^{2k}}$, **no failures** over $1493$ pairs $(p,k)$
+  with $p^k\le12000$ per row; and
+  $c'(pq)-\psi(p)c'(q)-\psi(q)c'(p)+\psi(pq)\equiv0\pmod{p^2q^2}$, **no failures** over
+  $3101$ pairs $pq\le12000$ per row.  The modulus $p^{2k}$ is sharp for every $p$ **except**
+  $p=2,3,5$, where $v_p$ of the difference grows like $3k-1$ or $2k+1$ uniformly up to
+  $k=13$ — a stronger congruence at the small primes, not previously recorded.
+* **Borcherds-product test refuted**: $\prod_n(1-q^n)^{\tau_\chi(n)}$, with $\tau_\chi$ the
+  weight-$0$ twisted trace of §3.1, is **not** a meromorphic modular form on $\Gamma_0(N)$
+  with divisor supported on the cusps and the CM points, in any of the three rows (exact
+  linear algebra on its logarithmic derivative against
+  $\{1\}\cup\{E_2(d\tau)\}\cup\{Fu^i/g^j\}$, with a positive control that recovers $E_2-1$).
+* The weight-$0$ obstruction of §3.1 is measured independently in **all three** rows: the
+  residual $\sup_m|(r-L)R^{m/2}|$ is $5.4\cdot10^5,\,2.6\cdot10^4,\,3.2\cdot10^4$ **without**
+  the $\kappa$-correction against $0.29,\,0.39,\,0.0028$ **with** it, and the $1/m$
+  coefficient equals $-L\kappa$ to $11$–$13$ significant digits.
+
 ---
 
 ## 7. The $x$-side: what became of round 1's "smallest missing brick"
@@ -587,7 +654,7 @@ space of half-integral weight forms, and the level-one case is already a theorem
 | file | contents |
 |---|---|
 | `lib.gp` | rows, eta quotients, $F$, $x$, $\Phi$, $c$, $c'$, $\beta$ (copied from round 1) |
-| `heeg.gp` | reduced forms of a discriminant, $\Gamma_0(N)$-Heegner representatives with a fixed $\beta$-class, stabiliser orders, genus characters |
+| `heeg.gp` | reduced forms of a discriminant, $\Gamma_0(N)$-Heegner representatives with a fixed $\beta$-class, stabiliser orders, genus characters.  **Caveat:** `heegrep` tries only one completion $(q,s)$ per first column $(p,r)$ and so can return a non-minimal $A$; harmless for $s_7$ and $s_{10}$ (class counts match and the closed-form $\widehat f$ is height-insensitive) but fatal for $s_{18}$ — use `heegmin2` of `59_final3.gp` instead |
 | `e2.gp` | $E_2^*$ by reduction to the $\mathrm{SL}_2(\mathbf Z)$ fundamental domain |
 | `wt2.gp`, `wt2b.gp` | first versions of $f=1/(xF)$ and $\widehat f$ for $s_7$ (closed form; $q$-series) |
 | `maass.gp`, `maass2.gp` | $\widehat f$ for all three rows, two independent evaluations, with the $q$-series fallback at the zeros of $F$ |

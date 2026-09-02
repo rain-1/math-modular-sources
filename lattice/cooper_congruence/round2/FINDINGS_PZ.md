@@ -427,11 +427,23 @@ So the pipeline is validated end to end.
 |---|---|---|---|---|
 | $1$ | $56$ | $17$ (all with pole order exactly $3$) | $m\le20$ | **no solution** |
 | $2$ | $104$ | $31$ | $m\le20$ | a solution exists — but $31$ parameters against $20$ equations, so the test is **underdetermined and proves nothing** |
+| $1$ | $56$ | $17$ | $m\le40$ | **no solution**; rank $17$ of the $40\times17$ system and the longest matchable prefix is exactly $k=17=\dim$, i.e. the system behaves like a generic one — no near-miss |
 | $2$ | $104$ | $31$ | $m\le40$ | DECISIVE_PLACEHOLDER |
 
 The $r=1$ answer is the honest one at that pole bound; the $r=2$/$m\le20$ "match" must not
 be read as a positive identification.  The decisive run ($40$ equations, $31$ unknowns) is
 `38_wh40.gp`/`38_wh40_out.txt`.
+
+**The support law settles it.**  The companion strand's twisted-trace computation of the
+$s_7$ input shows that its coefficients are supported exactly on
+$$d\equiv0,1\ (4)\quad\text{and}\quad d\equiv0,1,2,4\ (7),\qquad\text{i.e. } -3d \text{ a square mod }28 .$$
+That is *strictly stronger* than the scalar Kohnen plus condition $d\equiv0,1\ (4)$: it is
+the "$n$ a square mod $4N$" law that cuts the Heegner / vector-valued component out of the
+scalar plus space at level $4N$.  So the $s_7$ input does **not** live in the scalar plus
+space of $\Gamma_0(28)$; it lives in the proper subspace $V'_r\subset V_r$ defined by that
+support law.  This is independent confirmation of §3, and it explains the $r=1$ negative:
+$V_1$ is simultaneously too big (it contains forms with the wrong support) and does not
+contain the right object.  `39_v28.gp` redoes the search inside $V'_r$.
 
 **Caveat on any negative answer.**  $W_r$ bounds the pole order at *every* cusp of
 $\Gamma_0(28)$, so a failure at $r=1,2$ does not by itself exclude a preimage with larger

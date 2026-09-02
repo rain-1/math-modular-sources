@@ -385,3 +385,106 @@ $c'(n)=\sum_{d\mid n}\psi(n/d)d^2\gamma(d)$ holds for all $n\le12000$ in all thr
 | `55_ratios.gp/.log` | consolidated ratio test, all three rows |
 | `56_borcherds.gp/.log` | Task 4, with positive control |
 | `57_master_big.gp/.log` | Task 3 extended to $n\le12000$ |
+
+---
+
+# ADDENDUM (same session): the $\widehat f$ identification for $s_{10}$ and $s_{18}$
+
+*After the above was written, the parallel session identified $\gamma_{s_7}$ as a twisted CM
+trace of $\widehat f=Df+f/(2\pi y)$, $f=1/(xF)$ the weight-$(-2)$ weakly holomorphic form with
+$f=q^{-1}+O(1)$.  That confirms §5 above from the other side: $\widehat f$'s leading term at the
+top Heegner point is $q^{-1}(1-1/(2\pi y))=q^{-1}(1-\kappa/m)$ — exactly the $1/m$ tail that
+§5 measured and that no modular **function** can supply.  Scripts `58_`, `59_`.*
+
+## A. Row $s_{10}$: the factor 2 is the Atkin–Lehner involution $W_2$
+
+**A.1 The identity. [num, 130 digits, $m\le30$]**  With $d=-4m^2$, $\beta\equiv6m\ (20)$,
+$T(m)=\sum_Q\chi_{-4}(Q)\,\widehat f(\alpha_Q)/\omega_Q$ over the $\Gamma_0(10)$-Heegner classes:
+$$\beta_{s_{10}}(m)=i\,T(m)\ (m\ \text{odd}),\qquad \beta_{s_{10}}(m)=2i\,T(m)\ (m\ \text{even}),$$
+verified to **130 digits** for every $m\le30$ with $5\nmid m$ (`59_final2.log`), with
+`#classes found = #reduced forms` in every case.
+
+**A.2 The mechanism.**  $\Phi|_4W_2=+\Phi\Rightarrow f|W_2=+f\Rightarrow\widehat f$ is
+$W_2$-invariant.  I computed the $W_2$-permutation of the Heegner set explicitly
+($W_2=\binom{6\ 1}{10\ 2}$, det 2; `59_w2s10.gp`, `.log`):
+
+* **$m$ odd:** $W_2$ preserves the $\beta$-class, acts as an involution on the set of classes,
+  and **preserves both $\chi_{-4}$ and $\widehat f$** (checked term by term), with **exactly one
+  fixed class** — verified $m=1,3,7,9,11,13,17,19$.  So every free $W_2$-orbit is counted twice
+  in $T$.  Consistently, $\beta/(i\,T_{W_2})\to2$ where $T_{W_2}$ is the sum over a
+  $W_2$-transversal: $2.0137,\,2.00225,\,2.00061,\,2.00028,\,1.999978,\,1.9999962$ at
+  $m=7,9,11,13,17,19$ (the defect is the fixed class, whose term is $O(1)$).
+* **$m$ even:** $\chi_{-4}$ **vanishes** exactly on the even-content forms (which exist only for
+  even $m$: content 2 needs $-m^2\equiv0,1\bmod4$), and those are exactly the classes whose
+  $\Gamma_0(10)$-Heegner fibre is **3, not 1** — the Gross–Kohnen–Zagier bijection genuinely
+  fails there (`59_fibre10.log`: three distinct $\widehat f$ values over one $\mathrm{SL}_2(\mathbf Z)$-class,
+  for every even-content class at $m=12,14,16$; every content-odd class has fibre 1).  The
+  $W_2$-doubling therefore does not occur and $T$ is already "correct".
+
+**A.3 Consequence for $\lambda$.**  $|\lambda|=\nu^2/|g'(u_0)|=16/8=2$ is the value realised for
+even $m$; for odd $m$ the sum over $\mathrm{SL}_2(\mathbf Z)$-classes double-counts $W_2$-orbits,
+which is why $|\lambda|$ reads as 1 there.  So the parallel session's revised guess (that the
+**odd**-$m$ traces are the ones that are twice too large) is **correct**, and the cause is $W_2$.
+*Caveat: the factor is exactly 2 empirically; $T=2S_{\text{free}}+t_{\text{fix}}$ is not exactly
+$2T_{W_2}$, so "the trace on $X_0(10)/W_2$" is the mechanism but not yet a clean restatement.*
+
+## B. Row $s_{18}$: two fixes, then an exact identity
+
+**B.1 The admissible set. [proved]**  Forms of discriminant $-36m^2$ with $3\mid\mathrm{cont}(Q)$
+have **no** $\Gamma_0(18)$-Heegner representative: $Q=3Q'$ needs $6\mid Q'(p,r)$, and
+$3\mid p^2+r^2$ forces $3\mid p,3\mid r$, contradicting $\gcd(p,r)=1$.  (First instance:
+$[3,0,3]$ at $m=1$.)  With the admissible set $\{3\nmid\mathrm{cont}\}$, **all** classes are
+found for every $m\le30$.  This is the whole of the class-count mismatch reported earlier.
+
+**B.2 A bug in `heeg.gp`. [proved]**  `heegrep` tests only **one** completion $(q,s)$ of a first
+column $(p,r)$.  The general matrix is $\binom{p\ \ q+tp}{r\ \ s+tr}$, which shifts $B$ by $2At$;
+so valid representatives (in particular the ones with **smallest $A$**, i.e. largest
+$\operatorname{Im}\alpha$) are silently discarded.  Fixed in `heegmin2` (`59_final3.gp`) by solving
+$B_0+2At\equiv\beta\pmod{2N}$ for $t$.  Choosing the **minimal-$A$** representative is what makes
+the evaluation of $\widehat f$ numerically safe; the earlier blow-ups (values $\sim10^{36}$) were
+`heegrep` returning e.g. $A=5634$ instead of $A=18$ for $[1,0,9]$, so that
+$\operatorname{Im}\alpha=3m/A$ was tiny and both routes for $\widehat f$ failed.
+
+**B.3 The genus character must be corrected on imprimitive classes. [num, 135 digits]**
+With $\chi_{-3}$ alone the identity failed at $m=7,11,19,21,23$ — and *only* there among odd
+$m\le29$; those are exactly the $m$ having a prime factor $p\equiv3\ (4)$ other than 3, i.e. a
+prime **inert in $\mathbf Q(i)$** other than the conductor.  The defect is exactly
+$\pm8\sqrt3$ (and $-72\sqrt3$ at $m=21$), and `59_s18diag.log` localises it: it is exactly
+**twice the content-$p$ part** of the trace.  Since $-36$ is **not fundamental**,
+$-36=(-3)\cdot12=(-4)\cdot9$, and the character that works is
+$$\boxed{\ \chi^*(Q)=\chi_{-3}(Q)\cdot\Bigl(\tfrac{-4}{\mathrm{cont}(Q)}\Bigr)\ }$$
+i.e. the $\chi_{-3}$ genus character of the form times the $\chi_{-4}$ symbol of its content
+(trivial on primitive forms, hence invisible at small $m$).  With it, and with
+$T^*(m)=\sum_Q\chi^*(Q)\widehat f(\alpha_Q)/\omega_Q$ over the admissible Heegner classes,
+$\beta\equiv18m\ (36)$:
+$$\beta_{s_{18}}(m)=-\frac{1}{4\sqrt3}\,T^*(m)\quad(3\nmid m),\qquad
+\beta_{s_{18}}(m)=-\frac{1}{2\sqrt3}\,T^*(m)\quad(3\mid m),$$
+**verified to 135 digits for every odd $m\le29$** (`59_s18fix.log`).  Even $m$ remain anomalous:
+$\beta\equiv18m\equiv0\ (36)$, so the $\pm\beta$ classes merge (the $s_{18}$ analogue of $7\mid m$
+for $s_7$ and $5\mid m$ for $s_{10}$) — half the family, and still open.
+
+**B.4 $\lambda$ versus the polar coefficient. [refuted for $s_{18}$]**
+$|\lambda_{s_{18}}|=\frac1{4\sqrt3}$ (resp. $\frac1{2\sqrt3}$), whereas
+$\nu^2/|g'(u_0)|=2/\sqrt3$.  The polar rule is therefore off by a factor **8** (resp. **4**) for
+$s_{18}$, although it is exact for $s_7$ ($\sqrt3$) and for $s_{10}$ on even $m$ (2).  The
+discrepancy is a power of 2 and depends on $3\mid m$ exactly as $s_{10}$'s depends on $2\mid m$,
+so it is presumably the same phenomenon (extra dominant Heegner classes produced by the
+Atkin–Lehner group and by the non-fundamental conductor), but I have **not** derived it.
+
+## C. Summary of the constants
+
+| row | $\nu^2/|g'(u_0)|$ | observed $\lambda$ | ratio |
+|---|---|---|---|
+| $s_7$ | $\sqrt3$ | $i\sqrt3$ | 1 |
+| $s_{10}$, $m$ even | 2 | $2i$ | 1 |
+| $s_{10}$, $m$ odd | 2 | $i$ | 2 ($W_2$) |
+| $s_{18}$, $3\nmid m$ odd | $2/\sqrt3$ | $-1/(4\sqrt3)$ | 8 |
+| $s_{18}$, $3\mid m$ odd | $2/\sqrt3$ | $-1/(2\sqrt3)$ | 4 |
+
+## D. Addendum file list
+
+`58_diag10.gp/.log` (per-form s10 diagnostic), `59_fibre10.gp/.log` (Heegner fibre test, s10),
+`59_w2s10.gp/.log` ($W_2$ action), `59_s18ident.gp/.log`, `59_s18b.gp/.log` (min-$A$ fix),
+`59_fibre18.gp/.log`, `59_final.gp/.log`, `59_final2.gp/.log` (s10 to 130 digits),
+`59_final3.gp/.log` (corrected rep search), `59_s18diag.gp/.log` (defect localisation),
+`59_s18fix.gp/.log` (**the corrected s18 identity**).
