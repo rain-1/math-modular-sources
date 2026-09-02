@@ -6,6 +6,10 @@ Newest entries on top.
 
 ---
 
+## 2026-09-02 — Magnetic sources on Apéry's host: exist, keep k = 2, and are killed by a unit
+
+`consolidation/MAGNETIC_APERY.md` + `lattice/magnetic_apery/`. Complete census of weight-4 meromorphic forms Φ = F²ρ(u) on Γ₀(6): three magnetic families. Φ₋₈ (double pole at the disc −8 CM point, Fricke sign −1, the canonical source of the (C,B) = (81,14) host) transplanted to Apéry's host keeps the free integration (k = 2) and gives B_n/A_n → ζ(2)/8 (185 digits). Theorem U: 1/x = W + B with W a Hauptmodul with integral expansion, so the pole coordinate satisfies |N(W₀+B)| ≥ 1 and the companion has a singularity at |x| ≥ 1 (here x(τ₀) = 1 exactly): A_nξ − B_n ≍ n⁻², no irrationality. A magnetic source only helps its native host (Cooper's poles sit at x = ∞). By-products: free integration ⟺ meromorphy on all 12 Fricke hosts; L(D⁻¹(Δ/E₄²), 2) = 0.0610392510075379919… apparently a new constant.
+
 ## 2026-09-02 — Imaginary quadratic fields: the holonomy bound is free, but no host exists
 
 `consolidation/IMAG_QUADRATIC.md` + `lattice/imag_quadratic/`. Over K imaginary quadratic the number-field bound is letter-for-letter the rational one (one complex place, d_v = 2 = n_K; no second place, no hypothesis tax). But a non-real period needs a nebentypus of order ≥ 3, and over all subgroups H ≤ (Z/N)^× with N ≤ 60 the only four-point genus-zero host carrying one is X₁(5) with ψ₄, whose fold-regular ψ₄-component is zero (constant-term functionals have rank 2 there because cond ψ₄ = N). Supply starts at level 7 with ≥ 6 special points; K-rational hosts with conjugate singularities are dead (|λ₁| = |λ₂|) or not three-term. Best margin −18. The would-be prize (L(2,ψ₄) ∉ Q(i)) would have scored exactly CDT's numbers.
