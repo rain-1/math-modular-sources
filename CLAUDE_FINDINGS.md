@@ -46,10 +46,8 @@ d_n/c_n - C_5  ~  (13/(96K)) (-1)^n (7-4√3)^n n^{1/2} (log n)^4
 
 Numerically, `K ≈ 0.6853718484905344059...`, so `13/(96K) ≈ 0.19758130854792016...`.
 
-**Open piece:** `K` is identified as expressible via the CM elliptic period at
-discriminant `-48`, but no closed form has been derived yet — that's the one thing
-standing between "exact up to one constant" and a fully closed asymptotic.
+**Open piece — CLOSED 2026-09-02** (see `consolidation/ZETA5_K_CLOSED_FORM.md`): `K = Γ(1/3)^12 π^{-17/2} · 3^{8/3}(15√3−23)√((12+7√3)/2) / (2^{37/3}(2205−1273√3)(45+26√3)^{1/3})`, verified to 51 digits, via `K² = 49 x₊ (DE)(τ*)² / (2π Q(x₊)² (−D²x)(τ*))` with `E(τ*) = 0` at the Fricke point.
 
 **Possible next steps (not yet started):**
-- Derive the closed form for `K` from the discriminant `-48` CM period.
+- ~~Derive the closed form for `K` from the discriminant `-48` CM period.~~ Done 2026-09-02.
 - Add this as a formal row to the xlsx ledger (Fable's file) once wording is agreed.

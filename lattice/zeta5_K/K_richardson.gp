@@ -1,0 +1,26 @@
+default(parisize,"4G");
+default(realprecision,80);
+M=40;
+et(k)=prod(n=1,M+1,1-q^(k*n)+O(q^(M+2)));
+h=et(1)^3*et(4)*et(6)^2/(et(2)^2*et(3)*et(12)^3)/q;
+X=h/((h+3)*(h+4));
+E4(k)=1+240*sum(n=1,M+1,sigma(n,3)*q^(k*n))+O(q^(M+2));
+E=(-9*E4(3)+16*E4(4))/7;
+U=7*subst(E,q,serreverse(X))/(143*q^3+189*q^2+21*q+7);
+N=4200;
+c=vector(N+1); for(n=0,20,c[n+1]=polcoeff(U,n));
+print("c_0..c_11 = ",vector(12,i,c[i]));
+PV=[t^5, -66*t^5+305*t^4-570*t^3+550*t^2-269*t+53, 1691*t^5-15755*t^4+58690*t^3-109690*t^2+103501*t-39449,  -2*(10138*t^5-143895*t^4+811390*t^3-2278860*t^2+3194133*t-1793904),  98601*t^5-1951090*t^4+15151580*t^3-58091120*t^2+110326362*t-83128088,  40226*t^5+59995*t^4-8141710*t^3+66849470*t^2-211362875*t+240466709,  -3*(365207*t^5-9646165*t^4+101670510*t^3-535626050*t^2+1412477927*t-1493095605),  -12*(2*t-11)*(84601*t^4-1861222*t^3+15473374*t^2-57603183*t+80995994)];
+Pj(j,n)=if(j<=7, subst(PV[j+1],t,n), -subst(PV[15-j],t,11-n));
+print("recurrence check n=14..20: ",vector(7,i,my(nn=13+i);sum(j=0,14,Pj(j,nn)*c[nn-j+1])));
+for(nn=21,N, my(s=sum(j=1,14,Pj(j,nn)*c[nn-j+1])); if(s%(nn^5)!=0,print("NONINTEGRAL at ",nn);break); c[nn+1]=-s/nn^5);
+print("log10|c_N| = ",log(abs(c[N+1]))/log(10));
+xp=7-4*sqrt(3);
+r(n)=-c[n+1]*xp^n*n^(3/2);
+rich(ns)={my(m=#ns,V=matrix(m,m,i,j,1/ns[i]^(j-1)),b=vector(m,i,r(ns[i])));(V^-1*b~)[1];}
+for(m=4,16, print("m=",m,": K ~ ",rich(vector(m,i,N-150*(i-1)))));
+K=rich(vector(16,i,N-150*(i-1)));
+print("K = ",K);
+print("lindep [logK, logGamma(1/3), log pi, log2, log3, log(2+sqrt3)]: ",lindep([log(K),lngamma(1/3),log(Pi),log(2),log(3),log(2+sqrt(3))]));
+print("lindep incl. logGamma(1/4): ",lindep([log(K),lngamma(1/3),lngamma(1/4),log(Pi),log(2),log(3),log(2+sqrt(3))]));
+quit;
