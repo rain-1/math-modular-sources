@@ -9,7 +9,7 @@ All arithmetic exact (PARI/GP 2.15.4).  Tags: **[proved]** = proof written out b
 
 ## 0.  Summary of what changed
 
-Three things came out of this that bear directly on `consolidation/COOPER_CONGRUENCE.md`:
+Four things came out of this that bear directly on `consolidation/COOPER_CONGRUENCE.md`:
 
 1. **The "negative control" in §3 of the ledger is wrong.**  Paşol–Zudilin's level-one
    magnetic forms *do* satisfy Cooper's congruence $(S)$ — one just has to use the
@@ -27,14 +27,24 @@ Three things came out of this that bear directly on `consolidation/COOPER_CONGRU
    cancellation $A(p^2n)\equiv \lambda A(pn) \bmod p^{6}$.  Together they give exactly
    Cooper's `eq:magnetic` hierarchy $\Phi\mid U_{p^n}\equiv(\psi(p)p)^n\Phi \bmod p^{n+2}$.
 
-3. **The answer to "what gives $n^3\mid a(n^2)$" is $\lambda\equiv p \pmod{p^3}$**, and
-   under that hypothesis one gets the *exact* formula $a(p^{2j}m^2)=p^{3j}c\,g_{m_0p^{2j}}(m^2)$.
-   For a single-index principal part $c\,q^{-m_0}$ the eigenvalue is forced to be
-   $\lambda=\chi_{-m_0}(p)\,p$, so the level-one forms have the $n^3$ divisibility at
-   *exactly the split primes* $\chi_{-m_0}(p)=+1$ and fail (with $v_p$ exactly $1$) at the
-   inert ones.  Cooper's rows need it at every prime; that forces $\psi\equiv\mathbf 1$,
-   which a single-index principal part cannot deliver.  This is a concrete obstruction to
-   the naive "level $4N$, principal part $q^{-3}$" model of §4 of the ledger.
+3. **The answer to "what gives $n^3\mid a(n^2)$" is $\lambda\equiv p\pmod{p^3}$**, and under
+   that hypothesis one gets the *exact* formula $a(p^{2j}m^2)=p^{3j}c\,g_{m_0p^{2j}}(m^2)$.
+   Since a single-index principal part $c\,q^{-m_0}$ forces $\lambda=\chi_{-m_0}(p)\,p$, the
+   level-one forms have $p^{3j}\mid a(p^{2j}m^2)$ at *exactly the split primes*
+   $\chi_{-m_0}(p)=+1$, and $v_p$ exactly $j+v_p(a(m^2))$ at the inert ones.
+
+4. **Cooper's Conjecture 4.1 is a theorem at level one.**  §2.7 proves, for every
+   $f=c\,q^{-m_0}+O(q)\in S^{!,+}_{5/2}(\Gamma_0(4))$ and every prime $p$ with $c\in\mathbf Z_p$,
+   $$a(p^{2a}m^2)+\bigl(1-\psi(p)\bigr)\sum_{j=0}^{a-1}p^{\,a-j}a(p^{2j}m^2)=p^{3a}\,c\,g_{m_0p^{2a}}(m^2)
+     \qquad(p\nmid m,\ \psi=\chi_{-m_0}),$$
+   hence $n^2\mid\beta_\psi(n)$ for all $n$ — Conjecture 4.1 for $\Psi(f)$.  The
+   $(1-\psi(p))$ correction terms, which are exactly what the $\psi$-twisted Möbius
+   inversion supplies, are what repairs the inert primes.  This covers **every entry of
+   PZ's Table 1**, and explains the companion strand's numerical sweep over that table.
+   It does *not* cover Cooper's rows: at level $4N$ the two inputs of the proof
+   ($\dim S_4=0$, and the integral basis $\{g_M\}$) both fail, and the character comes out
+   as $\chi_{-3}$ rather than $\mathbf 1$ — which is precisely why the correct level-$4N$
+   model must be the **twisted** (genus-character) lift.
 
 ---
 
@@ -266,6 +276,60 @@ Ingredients and their status:
 
 The last two rows are where a level-$4N$ proof would have to do genuinely new work.
 
+### 2.7  A THEOREM: Conjecture 4.1 holds for every level-one strongly magnetic weight-4 form
+
+The double induction of §2.5 in fact closes *unconditionally* at level one, for every
+prime, split or inert or ramified.  Fix an odd prime $p$ (or $p=2$ with $T'_4=K^+\!\circ T_4$)
+and $m$ with $p\nmid m$, and write
+$$x_{r,j}:=c\,g_{m_0p^{2r}}\bigl(p^{2j}m^2\bigr)\in\mathbf Z_p\qquad (r,j\ge0),\qquad x_{0,j}=a(p^{2j}m^2),$$
+with the convention $x_{r,-1}=0$.  Reading off the $n=p^{2j}m^2$ coefficient of (T1) and (T2),
+and using $\chi_p(p^{2j}m^2)=[\,j=0\,]$, gives
+$$x_{0,j+1}+p[\,j{=}0\,]x_{0,0}+p^3x_{0,j-1}=\psi(p)p\,x_{0,j}+p^3x_{1,j},$$
+$$x_{r,j+1}+p[\,j{=}0\,]x_{r,0}+p^3x_{r,j-1}=x_{r-1,j}+p^3x_{r+1,j}\qquad(r\ge1).$$
+
+> **Lemma.**  For $r\ge1$, $k\ge1$: $\;x_{r,k}-x_{r-1,k-1}=p^{3k}x_{r+k,0}-p^{3k-2}x_{r+k-1,0}$.
+>
+> *Proof.*  $k=1$: the $r$-recursion at $j=0$ gives $x_{r,1}=x_{r-1,0}-p\,x_{r,0}+p^3x_{r+1,0}$,
+> i.e. $x_{r,1}-x_{r-1,0}=p^{3}x_{r+1,0}-p\,x_{r,0}$.  For $k\ge1$ the $r$-recursion at $j=k$ gives
+> $x_{r,k+1}-x_{r-1,k}=p^3\bigl(x_{r+1,k}-x_{r,k-1}\bigr)$, so the claim propagates from $k$ to $k+1$
+> with $r\mapsto r+1$.  $\square$
+
+> **Theorem.**  Let $f=c\,q^{-m_0}+O(q)\in S^{!,+}_{5/2}(\Gamma_0(4))$, $-m_0$ a discriminant,
+> $\psi=\chi_{-m_0}$, and let $p$ be a prime with $c\in\mathbf Z_p$ (and $p$ odd, or $p=2$ with $T'_4$).
+> Then for every $a\ge0$ and every $m$ with $p\nmid m$,
+> $$\boxed{\;a\bigl(p^{2a}m^2\bigr)\;+\;\bigl(1-\psi(p)\bigr)\sum_{j=0}^{a-1}p^{\,a-j}\,a\bigl(p^{2j}m^2\bigr)\;=\;p^{3a}\,c\;g_{m_0p^{2a}}\bigl(m^2\bigr).\;}$$
+> Consequently $v_p(\beta_\psi(n))\ge2\,v_p(n)$ for all $n$, where $\beta_\psi=(A/n)\star(\mu\psi)$;
+> and hence, over all $p$, $\;n^2\mid\beta_\psi(n)$ — **Cooper's Conjecture 4.1 for $\Psi(f)$.**
+
+*Proof.*  Write $S_a:=x_{0,a}+(1-\psi(p))\sum_{j=0}^{a-1}p^{a-j}x_{0,j}$; the claim is $S_a=p^{3a}x_{a,0}$.
+Separating the top term, $S_a=x_{0,a}-\psi(p)p\,x_{0,a-1}+p\,S_{a-1}$ for $a\ge1$, with $S_0=x_{0,0}$.
+For $a=1$ the $r=0$ recursion at $j=0$ gives $x_{0,1}=(\psi(p)p-p)x_{0,0}+p^3x_{1,0}$, so
+$S_1=p^3x_{1,0}$.  For $a\ge2$ the $r=0$ recursion at $j=a-1$ gives
+$x_{0,a}-\psi(p)p\,x_{0,a-1}=-p^3x_{0,a-2}+p^3x_{1,a-1}$, whence, by the inductive hypothesis,
+$$S_a=p\cdot p^{3(a-1)}x_{a-1,0}+p^3\bigl(x_{1,a-1}-x_{0,a-2}\bigr)
+     =p^{3a-2}x_{a-1,0}+p^3\bigl(p^{3a-3}x_{a,0}-p^{3a-5}x_{a-1,0}\bigr)=p^{3a}x_{a,0},$$
+using the Lemma with $r=1$, $k=a-1$.  For the consequence: $A/n=\mathbf 1\star\alpha$ with
+$\alpha(e)=a(e^2)/e$ (§1), so $\beta_\psi=\alpha\star\nu$ with $\nu=\mathbf 1\star\mu\psi$,
+$\nu(e)=\prod_{p\mid e}(1-\psi(p))\in\mathbf Z$.  Writing $n=p^am$, $p\nmid m$, and splitting
+$e=p^ie'$,
+$$\beta_\psi(n)=\sum_{e'\mid m}\nu(e')\Bigl[\alpha(p^a m')+(1-\psi(p))\sum_{j=0}^{a-1}\alpha(p^jm')\Bigr]
+ =\sum_{e'\mid m}\nu(e')\,\frac{S_a(m')}{p^a m'},\qquad m'=m/e',$$
+and $v_p(S_a)\ge3a$ gives $v_p(\beta_\psi(n))\ge2a$. $\square$
+
+**Verification** (`37_thm.log`): $v_p(S_a(m))\ge3a$ for all $a\ge1$ and all $m$ with
+$p^{2a}m^2\le3000$, for every $2\le p\le53$ **except** the single prime dividing the
+denominator of $c$ ($p=2$ for $f_{4a}$, $p=3$ for $f_{4b}$).  Minimal excess $0$, so the
+theorem is sharp.  The quotients $64S_a(1)/p^{3a}$ come out as integers as predicted
+(e.g. $p=7,a=1$: $230840825570752=g_{147}(1)$).
+
+**Scope.**  The proof uses only: (i) $\dim S_4(\mathrm{SL}_2(\mathbf Z))=0$, so a weakly
+holomorphic plus form is determined by its principal part; (ii) the integral basis
+$\{g_M=q^{-M}+O(q)\}$ of $S^{!,+}_{5/2}(\Gamma_0(4))$; (iii) $p^2>m_0$ and $c\in\mathbf Z_p$.
+So it covers **every** entry of PZ's Table 1 (all of them are $\Psi(\kappa f_{m_0})$ for an
+explicit rational $\kappa$), and in particular explains the companion strand's numerical
+finding that $n^2\mid\beta_\psi(n)$ holds across the whole table.  It does **not** cover
+Cooper's rows, because at level $4N$ hypotheses (i) and (ii) both fail.
+
 ---
 
 ## 3.  Where Cooper's rows differ from Paşol–Zudilin's  **[verified]**
@@ -346,7 +410,28 @@ Results are in `38_wh_out.txt`; see §4.3.
 
 ### 4.3  Outcome
 
-RESULTS_PLACEHOLDER
+**Control (level 4).**  $\dim V_1(1)=1$, spanned by $g_3=q^{-3}+O(q)$, and the unique
+solution of the $20$ equations is the multiple $\tfrac1{64}g_3$ — i.e. **exactly $f_{4a}$**:
+$$a(-3)=\tfrac1{64},\ a(0)=0,\ a(1)=1,\ a(4)=-506,\ a(8)=\tfrac{131565}{64},\ a(9)=180249,\ a(12)=-66516,\ \dots$$
+So the pipeline is validated end to end.
+
+**Level 28.**
+
+| $r$ | $\dim M_{5/2+12r}(\Gamma_0(28))$ | $\dim V_r(7)$ | constraints | verdict |
+|---|---|---|---|---|
+| $1$ | $56$ | $17$ (all with pole order exactly $3$) | $m\le20$ | **no solution** |
+| $2$ | $104$ | $31$ | $m\le20$ | a solution exists — but $31$ parameters against $20$ equations, so the test is **underdetermined and proves nothing** |
+| $2$ | $104$ | $31$ | $m\le40$ | DECISIVE_PLACEHOLDER |
+
+The $r=1$ answer is the honest one at that pole bound; the $r=2$/$m\le20$ "match" must not
+be read as a positive identification.  The decisive run ($40$ equations, $31$ unknowns) is
+`38_wh40.gp`/`38_wh40_out.txt`.
+
+**Caveat on any negative answer.**  $W_r$ bounds the pole order at *every* cusp of
+$\Gamma_0(28)$, so a failure at $r=1,2$ does not by itself exclude a preimage with larger
+poles at the other five cusps.  What makes the negative reading credible is §2.7 + §3:
+at level $4N$ the scalar single-index model would force $\lambda_p=\chi_{-3}(p)p$, i.e.
+$\psi=\chi_{-3}$, which is **refuted** by the verified $\psi_{s_7}=\mathbf 1$.
 
 ---
 
@@ -406,3 +491,21 @@ no published theorem that gives the exact-eigenvalue statement; that is the gap.
 | 19 | the twisted (genus-character) lift restores $\lambda_p=p$ at every $p$ | **[conjectural]**, but forced by 16–18 |
 | 20 | PARI can build $M_{5/2}(\Gamma_0(28))$, $S_{5/2}$, `mfkohnenbasis`, and $M_{5/2+12r}(\Gamma_0(28))$ for $r=1,2$ | **[verified]** — no obstruction |
 | 21 | existence in $V_r(28)$ of a form with $a(m^2)=m\beta_{s_7}(m)$, $r=1,2$ | see §4.3 |
+
+---
+
+## 7.  Files
+
+| file | what it does |
+|---|---|
+| `30_calib.gp/.log` | Task 1: $A(n)$, $\beta$, $a(m^2)$ for $F_{4a},F_{4b},F_6$, $m\le300$; exact power of $m$ dividing $a(|D|m^2)$; $v_p(\beta(p^e))$ tables.  Data in `30_A_*.txt`, `30_beta_*.txt` |
+| `31_congr.gp/.log` | Cooper's $(S)$ for the three level-one forms with $\psi=\chi_{D_0}$ and with $\psi=\mathbf1$; $\mathrm{rad}(n)^2\mid\beta_\psi$.  Data in `31_betapsi_*.txt` |
+| `32_nsq.gp/.log` | the strong divisibility $v_p(\beta_\psi(n))\ge w\,v_p(n)$, per prime |
+| `33_halfint.gp/.log`, `33_coeffs.gp` | Task 2: independent construction of $g_0,g_1,g_2,f_{4a},f_{4b}$ at level 4; dictionary check.  Data in `33_f4a.txt`, `33_f4b.txt` |
+| `34_hecke.gp/.log` | Task 3: numerical proof of the exact eigen-identity (T1), with a wrong-$\lambda$ control |
+| `35_tower.gp/.log`, `39_c3.gp/.log` | consequences (C1),(C2),(C3) of (T1)+(T2), and the split/inert dichotomy |
+| `36_mf28.gp/.log` | Task 4: what PARI's `mf` package can do at level 28 |
+| `37_thm.gp/.log` | verification of the §2.7 theorem: $v_p(S_a(m))\ge3a$ and $64S_a(1)/p^{3a}\in\mathbf Z$ |
+| `38_wh.gp` → `38_wh_out.txt`, `38_wh40.gp` → `38_wh40_out.txt` | Task 4: the weakly holomorphic search in $V_r(28)$, with the level-4 control |
+
+Nothing outside this directory was touched, and nothing was committed.

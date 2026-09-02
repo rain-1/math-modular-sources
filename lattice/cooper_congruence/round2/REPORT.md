@@ -19,6 +19,7 @@ range), **[num, digits]**, **[refuted, range]**, **[conjectural]**.
 
 | # | statement | status |
 |---|---|---|
+| **A0** | **THEOREM (level one).**  Let $f=c\,q^{-m_0}+O(q)\in S^{!,+}_{5/2}(\Gamma_0(4))$ with $-m_0$ a discriminant, $\Phi=\Psi(f)$, $\psi=\chi_{-m_0}$, $\beta_\psi=(A/n)\star(\mu\psi)$.  Then $n^2\mid\beta_\psi(n)$ for every $n$, at every prime $p$ with $c\in\mathbf Z_p$ — split, inert **and** ramified.  Proof: an exact $T_{p^2}$ eigen-identity plus a tower, giving $$a(p^{2a}m^2)+(1-\psi(p))\sum_{j<a}p^{a-j}a(p^{2j}m^2)=p^{3a}c\,g_{m_0p^{2a}}(m^2)$$ | **[proved]** `FINDINGS_PZ.md` §2.7, §5.3 |
 | **A1** | **THE MASTER CONJECTURE IS NOT SPECIAL TO COOPER'S ROWS.**  Round 1's negative control (V6, `COOPER_CONGRUENCE.md` §3) used the *wrong character*.  With $\psi=\chi_{D_0}$, $D_0$ the discriminant of the pole, and with Paşol–Zudilin's own integralising constants, $n^2\mid\beta_\psi(n)$ holds for $64\,\Delta/E_4^2$ ($\psi=\chi_{-3}$) and $108\,E_4\Delta/E_6^2$ ($\psi=\chi_{-4}$) at **every** prime | **[verified, $n\le500$]** §5.1 |
 | **A2** | The same holds across **all** of Paşol–Zudilin's Table 1 of strong magnetic weight-$4$ forms $\Psi(f_m)$: $m=7,8,11,19,43,67,163,15$ and the two $T_4$-twisted entries — magnetism $m\mid c(m)$ and $n^2\mid\beta_{\chi_{-m}}(n)$ in every case, and **sharp** ($\min_n\bigl(v_p(\beta(n))-2v_p(n)\bigr)=0$ for $p\ge7$) | **[verified, $n\le150$]** §5.2 |
 | **A3** | So Conjecture 4.1 should be restated as a statement about **Shimura–Borcherds lifts**: if $\Phi=\Psi(f)$ with $f\in S^{!,+}_{5/2}$ having a single-index principal part $c\,q^{-m_0}$, then with $\psi=\chi_{-m_0}$ one has $n^2\mid\beta_\psi(n)$.  Route (D), closed by round 1 on the strength of the negative control, is **reopened** and is now the main route | **[conjectural]**, mechanism in `FINDINGS_PZ.md` §5.3 |
@@ -27,6 +28,7 @@ range), **[num, digits]**, **[refuted, range]**, **[conjectural]**.
 | **R2** | $f$ is weight $-2$, weakly holomorphic, holomorphic on $\mathbf H$ (vanishing to order $1$ at the polar CM points), $f|W_N=-f$; unique with pole order $\le1$ at both cusps.  The construction $f=1/(xF)$ is uniform across the three rows | **[proved]** §2.1 |
 | **R3** | $\widehat f$ is $\Gamma_0(N)$-invariant of weight $0$; computed two independent ways (closed form via $E_2^*,E_4$ and $\mathrm{SL}_2(\mathbf Z)$-reduction; $q$-series with $\Gamma_0(N)+N$-reduction) agreeing to $50$ digits | **[proved]** (invariance) + **[num, 50]** §2.2 |
 | **R4** | **The trace formula is general.**  With $f=E_4E_6/\Delta=q^{-1}-240-\cdots$ on $\mathrm{SL}_2(\mathbf Z)$ and the same $\widehat f$: $\beta_{F_{4a}}(m)=\mathrm{Tr}_{-3m^2}(\widehat f)/192$ and $\beta_{F_{4b}}(m)=-\mathrm{Tr}_{-4m^2}(\widehat f)/432$ (both with $\psi=\mathbf1$; the untwisted trace gives $\beta_{\chi_{D_0}}$ instead, so the genus character in the trace and the character $\psi$ are dual) | **[verified, $m\le12$, 50 digits]** §2.5 |
+| **R4b** | **The theta lift in full.**  $a(d)=\dfrac{\sqrt d}{192}\operatorname{Tr}_{-3d}(\widehat f)$ for **every** $d\equiv0,1\ (4)$, checked against Paşol–Zudilin's explicitly constructed $f_{4a}=\tfrac1{64}q^{-3}+q-506q^4+\tfrac{131565}{64}q^5-\cdots$, including the non-square $d$.  So the weight-$5/2$ Shimura–Borcherds input **is** the generating function of the twisted CM traces of $\widehat f$ | **[verified, $d\le40$, 45 digits]** §2.7 |
 | **R5** | **The constant is the polar coefficient.**  If $\Phi=A_2(\tau-\tau_0)^{-2}+\cdots$ then $\lambda=4\pi^2A_2$ up to sign: $4\pi^2A_2=1/192,\ -1/432$ for $F_{4a},F_{4b}$ (exactly the observed constants), and $|4\pi^2A_2|=\nu^2/|g'(u_0)|=\sqrt3,\,2,\,2/\sqrt3$ for $s_7,s_{10},s_{18}$, matching $|\sqrt{-3}|=\sqrt3$ | **[proved]** (level one) + **[verified]** §2.5 |
 | **R6** | **The master conjecture is a divisibility of traces of singular moduli:** $n^2\mid\beta(n)\iff n^2\mid\lambda\,\mathrm{Tr}_{D_0n^2}(\widehat f)$ — the Ahlgren–Ono/Edixhoven setting, for the first Shimura–Maass derivative of a weight $-2$ form rather than for a modular function.  Route (B) is now precisely stated | **[proved, given R1]** §2.6 |
 | **R7** | **Why the naive route (A)(1) fails.**  $\beta(m)$ is **not** a $\mathbf Q$-linear combination of twisted CM traces of modular *functions* at the discriminants $D_0m^2$: those are exponential polynomials with constant coefficients, whereas $\beta(m)$ carries a $1/m$ tail, $\beta(m)=\lambda_0(1-\kappa/m)R^m\sin(\cdot)+O(R^{\theta m})$, $\kappa=1/(2\pi\operatorname{Im}\tau_0)\notin\mathbf Q$.  Numerically $m\beta(m)/((m-\kappa)\tau_H(m))\to3$ to $11$ digits at $m=33$ | **[proved]** + **[verified, $m\le40$, all rows]** §3.1 |
@@ -51,14 +53,18 @@ $\gamma(m)=\lambda m^{-2}\mathrm{Tr}_{D_0m^2}(\widehat f)$, where $\widehat f=-R
 is the first Shimura–Maass derivative of the weight-$(-2)$ weakly holomorphic form
 $f=1/(xF)$ and $\mathrm{Tr}$ is the genus-character-twisted Heegner trace; the master
 conjecture becomes an Ahlgren–Ono/Edixhoven divisibility of traces of singular moduli.
-*Second, and more consequential*: the congruence is **not** special to Cooper's rows.
+*Second, and more consequential*: the congruence is **not** special to Cooper's rows, **and
+at level one it is now a theorem**.
 Round 1's negative control tested the wrong character; with $\psi=\chi_{D_0}$ the master
 congruence holds for Paşol–Zudilin's level-one magnetic forms and for every entry of their
 Table 1 that we could transcribe.  Conjecture 4.1 is therefore a general statement about
-Shimura–Borcherds lifts of weight-$5/2$ forms, route (D) is reopened, and
-`FINDINGS_PZ.md` supplies a candidate mechanism (an exact $T_{p^2}$ eigen-identity plus a
-tower, with $n^3\mid a(n^2)$ equivalent to the eigenvalue being $\equiv p\bmod p^3$; the
-genus-character twist is exactly what turns $\chi_{D_0}(p)p$ into $p$ for Cooper's rows).
+Shimura–Borcherds lifts of weight-$5/2$ forms; route (D) is reopened; and for
+$f\in S^{!,+}_{5/2}(\Gamma_0(4))$ with a single-index principal part the statement is
+**proved** (A0), covering every entry of Paşol–Zudilin's Table 1.  Cooper's rows are the
+level-$4N$, genus-character-twisted analogue: the $\chi_{D_0}(Q)$ twist inside the trace is
+exactly what turns the Hecke eigenvalue $\chi_{D_0}(p)p$ into $p$, hence $\psi=\mathbf1$
+and divisibility at *every* prime, and the remaining gap is the level-$4N$ analogue of the
+two eigen-identities.
 
 ---
 
@@ -198,6 +204,31 @@ locus $R_{-2}$ agrees at CM points with the Katz $\theta$-operator under the Kat
 period comparison, so the "one derivative" of $R_{-2}$ is expected to contribute the extra
 factor $p$ on top of the factor $p$ that Edixhoven's argument gives for a weight-$0$ input —
 which is precisely the observed $p^2$.
+
+### 2.7 The theta lift, verified in full **[verified, $d\le40$, 45 digits]**
+
+`66_thetalift.gp`.  Building Paşol–Zudilin's weight-$5/2$ form
+$f_{4a}=\tfrac78g_0+\tfrac1{768}g_1-\tfrac1{768}g_2=\tfrac1{64}q^{-3}+q-506q^4+
+\tfrac{131565}{64}q^5-66516q^8+180249q^9-\cdots$ from their §4 and comparing with the
+twisted traces of $\widehat f$ at **all** admissible discriminants:
+$$\boxed{\ a(d)=\frac{\sqrt d}{192}\,\operatorname{Tr}_{-3d}(\widehat f)\qquad
+\text{for every }d\equiv0,1\pmod4,\ d>0.\ }$$
+Verified for $d=1,4,5,8,9,12,13,16,17,20,21,24,25,28,29,32,33,36,37,40$ to $45$ decimals,
+including the *non-square* $d$ (where both sides are irrational multiples of $\sqrt d$:
+e.g. $a(5)=131565/64$, $a(13)=189072723/32$).
+
+This is the Bruinier–Funke/Katok–Sarnak theta lift "integral weight $2-2k\to$
+half-integral weight $k+1/2$" at $k=2$, written out explicitly and checked against the
+literature: **the weight-$5/2$ Shimura–Borcherds input of a magnetic weight-$4$ form is the
+generating function of the twisted CM traces of the Maass-raised weight-$(-2)$ form.**  Two
+consequences:
+
+* the square-index case $d=m^2$ is exactly $a(m^2)=m\beta(m)$ of §4.1, so the master
+  conjecture $m^3\mid a(m^2)$ **is** $m^2\mid\operatorname{Tr}_{D_0m^2}(\widehat f)$;
+* it gives a *constructive* handle on the level-$4N$ weight-$5/2$ input for Cooper's rows,
+  which `FINDINGS_PZ.md` found hard to reach with PARI's `mf` package directly: its
+  coefficients are $\sqrt d\,\lambda\operatorname{Tr}_{D_0d}(\widehat f)$, computable from
+  $\widehat f=Df+f/(2\pi y)$, $f=1/(xF)$.
 
 ---
 
@@ -381,6 +412,41 @@ $$\beta_{s_7}(m)=\sqrt{-3}\sum_Q\chi_{-3}(Q)\,\omega_Q^{-1}\widehat f(\alpha_Q)$
 is not cosmetic: it is exactly what converts the eigenvalue $\chi_{-3}(p)p$ into $p$ and so
 delivers the divisibility at *every* prime rather than only at the split ones.
 
+### 5.4 The level-one case is a theorem **[proved]**
+
+`FINDINGS_PZ.md` §2.7, numerics `37_thm.gp/.log`.  Let
+$f=c\,q^{-m_0}+O(q)\in S^{!,+}_{5/2}(\Gamma_0(4))$ with $-m_0$ a discriminant, let
+$\{g_M=q^{-M}+O(q)\}$ be Borcherds–Zagier's integral basis of the Kohnen plus space, put
+$\Phi=\Psi(f)=\sum A(n)q^n$, $\psi=\chi_{-m_0}$, $\beta_\psi=(A/n)\star(\mu\psi)$.  Fix a
+prime $p$ with $c\in\mathbf Z_p$ and $p^2>m_0$, and $m$ prime to $p$; write
+$x_{r,j}=c\,g_{m_0p^{2r}}(p^{2j}m^2)$.  Because $\dim S_4(\mathrm{SL}_2(\mathbf Z))=0$, a
+weakly holomorphic plus form is determined by its principal part, which forces the two
+**exact** identities
+$$f|T_{p^2}=\chi_{-m_0}(p)\,p\,f+p^3c\,g_{m_0p^2},\qquad
+g_{m_0p^{2r}}|T_{p^2}=g_{m_0p^{2r-2}}+p^3g_{m_0p^{2r+2}}\ (r\ge1).$$
+A two-step induction (the key lemma being
+$x_{r,k}-x_{r-1,k-1}=p^{3k}x_{r+k,0}-p^{3k-2}x_{r+k-1,0}$) yields the closed formula
+$$\boxed{\ a(p^{2a}m^2)+\bigl(1-\psi(p)\bigr)\sum_{j=0}^{a-1}p^{a-j}a(p^{2j}m^2)
+= p^{3a}\,c\,g_{m_0p^{2a}}(m^2)\ }$$
+uniformly in $\psi(p)=+1,-1,0$.  Since $A/n=\mathbf1\star\alpha$ with $\alpha(e)=a(e^2)/e$
+and $\beta_\psi=\alpha\star\nu$, $\nu=\mathbf1\star\mu\psi$, $\nu(e)=\prod_{p\mid e}(1-\psi(p))\in\mathbf Z$,
+the left-hand side is exactly what $\beta_\psi$ assembles, and $v_p\ge3a$ gives
+$v_p(\beta_\psi(n))\ge2v_p(n)$; over all $p$, $n^2\mid\beta_\psi(n)$.  $\square$
+
+At split $p$ the correction terms vanish and one gets $p^{3a}\mid a(p^{2a}m^2)$ outright; at
+inert $p$ ($1-\psi=2$) and ramified $p$ ($1-\psi=1$) the correction terms are precisely what
+the $\psi$-twisted Möbius inversion supplies — which is *why* $\beta_\psi$ and not
+$a(m^2)/m$ is the right object.  **[verified]** $v_p(S_a)\ge3a$ for all $a\ge1$ and all
+$p^{2a}m^2\le3000$, every $2\le p\le53$, except the single prime dividing the denominator of
+$c$ ($p=2$ for $f_{4a}$, $c=1/64$; $p=3$ for $f_{4b}$, $c=-1/108$) — exactly the constants
+$64$ and $108$ of §5.1; and the excess is $0$, so the result is sharp.
+
+The theorem covers every entry of Table 1 (all are $\Psi(\kappa f_{m_0})$), so §5.2 is
+explained.  It does **not** cover Cooper's rows: at level $4N$ (i) $\dim S^+_{5/2}(\Gamma_0(28))=1$,
+so the principal part no longer determines the form; (ii) there are six cusps, so the
+principal-part datum is a vector, not a single index, and $T_{p^2}$ mixes them; (iii)
+Borcherds–Zagier's integral basis $\{g_M\}$ is a level-$4$ statement.  See §8.
+
 ---
 
 ## 6. The mod-$p$ structure of $\gamma$
@@ -453,9 +519,15 @@ $n^2\mid\beta(n)$ is still open.  It is now equivalent to each of:
    (the published results are weight $3/2$, untwisted, and give a congruence mod $p$
    conditional on splitting).
 2. **(Hecke)** the weight-$5/2$ input $f_{5/2}$ satisfies $f|T_{p^2}=\lambda f+p^3h_1$ with
-   $\lambda\equiv p\pmod{p^3}$, together with the tower
-   $h_r|T_{p^2}=h_{r-1}+p^3h_{r+1}$.  At level $4$ with a single-index principal part both
-   are **proved** (`FINDINGS_PZ.md`); the open part is the level-$4N$ / twisted analogue.
+   $\lambda\equiv p\pmod{p^3}$, together with the tower $h_r|T_{p^2}=h_{r-1}+p^3h_{r+1}$
+   and $p$-integrality of the tower.  At level $4$ with a single-index principal part this
+   is now a **theorem** (§5.4), so the *entire* remaining gap for Cooper's rows is the
+   level-$4N$, genus-character-twisted analogue of those two identities: (i) a uniqueness
+   statement replacing $\dim S_4=0$ (at level $28$ the plus space is $1$-dimensional, so one
+   must bound the extra cusp-form component $p$-adically), (ii) control of the
+   principal-part *vector* at the six cusps of $X_0(28)$ under $T_{p^2}$, and (iii) an
+   integral basis of $S^{!,+}_{5/2}(\Gamma_0(4N))$ indexed by principal-part vectors.
+   Everything after that is the induction of §5.4 verbatim.
 3. **($x$-line, mod $p$ only)**
    $[x^{pn}]\bigl(l\,P^{(p-1)/2}/F_{<p}\bigr)\equiv\psi(p)L_n\pmod p$, with $F_{<p}$ the
    supersingular polynomial; plus the round-1 lift to mod $p^2$, which is now the single

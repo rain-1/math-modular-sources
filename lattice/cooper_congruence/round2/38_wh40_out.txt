@@ -1,0 +1,3 @@
+############ CONTROL: level 4 (the answer must be proportional to f4a) ############
+######## CONTROL level 4 r=1 : level 4, r=1, weight 29/2 ########
+  dim M_29/2(Gamma_0(4)) = 8
