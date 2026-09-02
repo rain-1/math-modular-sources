@@ -121,7 +121,7 @@ Verified to $22$ digits on eight rows (`casoratian.gp`: the recessive solution b
 |---|---|---|---|---|
 | Apéry $\gamma$ ($b_1=1$) | $\zeta(3)/6$ | $(1+\sqrt2)^22^{-9/4}\pi^{-3/2}$ | $0.133895101579301399\ldots$ | $\pi^{3/2}(\sqrt2-1)^2/(6\cdot2^{1/4})$ |
 | Domb $\alpha$ | $7\zeta(3)/24$ | $2\pi^{-3/2}$ | $0.232013666534654493\ldots$ | $\pi^{3/2}/24$ |
-| $\varepsilon$ | $0.26294994756616\ldots$ | $\tfrac12\sqrt{4+3\sqrt2}\,\pi^{-3/2}$ | $0.171429926905265271\ldots$ | $\pi^{3/2}/(4\sqrt2\sqrt{4+3\sqrt2})$ |
+| $\varepsilon$ | $0.26294994756616\ldots$ | $\tfrac12\sqrt{4+3\sqrt2}\,\pi^{-3/2}$ | $0.171429926905265271\ldots$ | $\pi^{3/2}/(8\sqrt2\sqrt{4+3\sqrt2})$ |
 | $\zeta$ | $0.29467460391669\ldots$ | $\tfrac38(\sqrt2+\sqrt6)\pi^{-3/2}$ | $0.184904677886888152\ldots$ | $2\pi^{3/2}/(9\sqrt3(\sqrt2+\sqrt6))$ |
 | Cooper $s_7$ | $0.23499058097831\ldots$ | $\tfrac34\sqrt3\,\pi^{-3/2}$ | $0.126603846493251144\ldots$ | $\sqrt\pi/14$ |
 | Cooper $s_{10}$ | $0.32898681336964\ldots$ | $\sqrt2\,\pi^{-3/2}$ | $0.177245385090551602\ldots$ | $\sqrt\pi/10$ |

@@ -1,0 +1,306 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,array}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{verification}[theorem]{Computer-assisted verification}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}\newcommand{\HH}{\mathbb H}
+\newcommand{\Zp}{\mathbb Z_p}\newcommand{\Ob}{\overline{\Q}}
+\newcommand{\lcm}[1]{[1..#1]}
+\DeclareMathOperator{\lcmop}{lcm}\DeclareMathOperator{\den}{den}\DeclareMathOperator{\ord}{ord}
+\title[Explicit companions of modular Ap\'ery sequences]{Explicit companions of modular Ap\'ery sequences:\\ arithmetic, Lucas congruences, and exact asymptotics}
+\author{Claude (Fable), with River}
+\date{2 September 2026 --- draft}
+\begin{document}
+\begin{abstract}
+An Ap\'ery-like sequence $a_n$ with a modular parametrization $(x,F)$ has a companion $b_n$, the second solution of its recurrence, and $b_n/a_n$ tends to an $L$-value $\xi$. The companion has an explicit finite formula, $b_n=\sum_{m\le n}c(m)m^{-r}e_{n,m}$, in terms of the Fourier coefficients $c(m)$ of a source form $\Phi$ of weight $r+1$ and the integer change-of-basis matrix $e_{n,m}=[x^n](F(q)q^m)$. We use the formula to determine the arithmetic and the asymptotics of the companions of the fifteen sporadic rows and of the $\zeta(5)$ and $\zeta(7)$ systems of level $12$. Arithmetic: a uniform integrality theorem whose denominator bound is exact at the bad primes and an explicit mechanism at the good ones; valuation transfer $v_p(b_n)=v_p(a_n)+v_p(\xi_p)$ at bad primes; new exact digit laws $v_2(a_n)=s_2(n)$ for Cooper's $s_{10}$ and $s_{18}$; and a Lucas congruence for the companion, $\beta_{np+m}\equiv\psi(p)\beta_na_m\pmod p$ with $\beta_n=p^{r\lfloor\log_pn\rfloor}b_n$, proved from the companion formula, the Hecke structure of the source and the Malik--Straub Lucas congruences of the row, which determines the character of Cooper's three meromorphic sources ($\mathbf 1,\mathbf 1,\chi_{-3}$). Those sources are shown to be Pa\c sol--Zudilin magnetic forms with a double pole at a CM point, and one congruence, $\Phi|U_p\equiv\psi(p)p\Phi\pmod{p^3}$, is both their free integration and their Lucas law. Asymptotics: the constant $K_+$ in $a_n\sim K_+\lambda_1^nn^{-3/2}$ is elementary iff the row's form has weight $2$ and does not vanish at the fold, and for the seven weight-two rows $K_+=\frac{\sqrt N}{2\pi^{3/2}}\sqrt{\lambda_1/(\lambda_1-\lambda_2)}$; above weight two a Chowla--Selberg period survives, and we give closed forms for the level-$12$ and level-$16$ $\zeta(5)$ systems and the level-$12$ $\zeta(7)$ system. The constant of the linear form $a_n\xi-b_n$ is obtained for every three-term row from the Casoratian, $K_+K_-(\lambda_1-\lambda_2)=\prod_j(1+d/(cj^2))$, so that $a_n\zeta(3)-b_n\sim2^{-1/4}\pi^{3/2}(\sqrt2-1)^{4n+2}n^{-3/2}$ for Ap\'ery's numbers and $K_-=\sqrt\pi/14,\sqrt\pi/10,\sqrt\pi/6$ for Cooper's rows, and for the cusp-driven higher-order systems from a product of two constant terms at the far cusp, $\phi_0a_0w^{k-1}/(k-1)!$, which gives $13/480$ for $\zeta(5)$ and $14161/5040$ for $\zeta(7)$.
+\end{abstract}
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Ap\'ery's proof of the irrationality of $\zeta(3)$ rests on two integer sequences $a_n,b_n$ satisfying one recurrence, with $b_n/a_n\to\zeta(3)$ exponentially fast. Beukers \cite{Beukers1987} explained the pair modularly: $a_n$ are the Taylor coefficients of a weight-$2$ form $F$ on $\Gamma_0(6)$ in a Hauptmodul $x$, and $b_n$ those of $F$ times an Eichler integral of a weight-$4$ Eisenstein series. Zagier's sporadic second-order rows \cite{Zagier}, the Almkvist--Zudilin third-order rows \cite{AZ} and Cooper's three \cite{Cooper} all have this structure, and the accompanying paper \cite{ProjSources} proves that in every case the \emph{source} $\Phi=F\cdot Dx$ is a modular form of weight $w+2$ ($w$ the weight of $F$), holomorphic Eisenstein for the twelve rows of Zagier and Almkvist--Zudilin and meromorphic for Cooper's, and that the Ap\'ery limit is the critical value $\xi=L(\Phi,w+1)$.
+
+The companion $B=F\cdot D^{-r}\Phi$, $r=w+1$, is thereby an explicit object, and its coefficients are given by a finite formula, \eqref{eq:formula} below. This paper is about what that formula makes accessible: the exact arithmetic of the companion (denominators, valuations, congruences) and the complete leading asymptotics of the row, the companion and the linear form $a_n\xi-b_n$, with every constant in closed form. All theorems are proved; where a statement rests on a finite computation we say so and give the range.
+
+\subsection*{Results} Section \ref{sec:setting} fixes notation and lists the fifteen rows. Section \ref{sec:arith} contains the arithmetic: Theorem \ref{thm:int} (uniform integrality, with the refined bound $R_n$), Proposition \ref{prop:transfer} (valuation transfer at bad primes), the digit laws (Verification \ref{ver:digit}), and the main arithmetic result, Theorem \ref{thm:lucas}: a Lucas congruence for the companion. Its proof uses only the companion formula, the Hecke relation $c(p^im)\equiv\psi(p)^ic(m)\pmod{p^r}$ of the source, and the Lucas congruences $a_{np+m}\equiv a_na_m$ of the row \cite{MalikStraub}. For Cooper's rows the source is meromorphic; Theorem \ref{thm:cooper} shows that a single congruence $\Phi|U_p\equiv\psi(p)p\Phi\pmod{p^3}$, verified for all $p\le43$, is simultaneously the ``free integration'' $d_n^{\,2}b_n\in\Z$ discovered by Cooper and the companion Lucas law, and we locate the poles of the three sources at CM points. Sections \ref{sec:fold} and \ref{sec:form} contain the asymptotics: Theorem \ref{thm:dichotomy} (when is the fold constant elementary), Theorem \ref{thm:w2} (the weight-two formula $K_+=\frac{\sqrt N}{2\pi^{3/2}}\sqrt{\lambda_1/(\lambda_1-\lambda_2)}$), the higher-weight closed forms of \S\ref{sec:higher}, Theorem \ref{thm:cas} (the Casoratian and the constant of the linear form for every three-term row) and Theorem \ref{thm:cusp} (the cusp constant for the higher-order systems). Section \ref{sec:examples} assembles the two worked examples, explicit approximations to $\zeta(5)$ and $\zeta(7)$ on one host with all three constants closed. Section \ref{sec:dioph} says what these results do and do not mean for irrationality.
+
+\section{Modular Ap\'ery systems and the companion formula}\label{sec:setting}
+
+\subsection{Rows, companions, sources}
+A \emph{row} is an integer sequence $a_n$ ($a_0=1$) satisfying a three-term recurrence of one of the two sporadic shapes
+\begin{align}
+(n+1)^2A_{n+1}&=(an^2+an+b)A_n-c\,n^2A_{n-1},\tag{R2}\\
+(n+1)^3A_{n+1}&=(2n+1)(an^2+an+b)A_n-n(cn^2+d)A_{n-1},\tag{R3}
+\end{align}
+with $a_1=b$, or more generally a higher-order recurrence coming from a modular parametrization as below. The \emph{companion} $b_n$ is the solution with $b_0=0$, $b_1=1$; $w_n:=a_n\xi-b_n$ is the \emph{linear form}, where $\xi=\lim b_n/a_n$ is the \emph{Ap\'ery limit}. The characteristic roots $\lambda_1,\lambda_2$ ($\lambda_1\lambda_2=c$, $|\lambda_1|\ge|\lambda_2|$) are the reciprocals of the finite singularities of $A(x)=\sum a_nx^n$.
+
+A \emph{modular parametrization} is a pair $(x,F)$: $x=q+O(q^2)\in\Z[[q]]$ a modular function on a group $\Gamma\supseteq\Gamma_0(N)$, $F=1+O(q)\in\Z[[q]]$ a modular form of weight $w$ on $\Gamma_0(N)$, with $A(x)=F(q(x))$, where $q(x)\in x+x^2\Z[[x]]$ is the inverse series (integral by Lagrange inversion). The \emph{source} is $\Phi:=F\cdot Dx$, $D=q\,d/dq$, a form of weight $w+2$ with $\Phi=q+O(q^2)$, and with $r:=w+1$ the companion is
+\begin{equation}\label{eq:companion}
+B(x)=F\cdot\Psi,\qquad \Psi:=D^{-r}\Phi=\sum_{m\ge1}\frac{c(m)}{m^r}q^m,\qquad \Phi=\sum_{m\ge1}c(m)q^m .
+\end{equation}
+That $B$ is the companion solution of the row's recurrence, and that $\xi=L(\Phi,r)$ when the dominant singularity of $A$ is a Fricke fold, are the inversion theorem and Theorem B of \cite{ProjSources}; we use both as input. Writing $e_{n,m}:=[x^n]\bigl(F(q)\,q^m\bigr)\in\Z$ (the change of basis between $\{Fq^m\}$ and $\{x^n\}$; $e_{n,m}=0$ for $m>n$, $e_{n,n}=1$), \eqref{eq:companion} reads
+\begin{equation}\label{eq:formula}
+\boxed{\ b_n=\sum_{m=1}^{n}\frac{c(m)}{m^r}\,e_{n,m}\ }
+\end{equation}
+This is the \emph{companion formula}. It was checked exactly, as an identity of rationals, for all twelve Eisenstein rows and $n\le60$, and for Cooper's rows and $n\le45$, against the companion computed from the recurrence.
+
+\subsection{The fifteen sporadic rows}
+Table \ref{tab:rows} lists the data. For the twelve Eisenstein rows the source is $\Phi=\sum_d\lambda_dE(d\tau)$ with $E$ an Eisenstein series of weight $r+1$ with characters $(\psi,\chi)$: $c(m)=\sum_{e\mid m}\chi(e)\psi(m/e)e^{r}$ up to the oldform combination, and $L(\Phi,s)=P(s)L(s,\psi)L(s-r,\chi)$ with $P$ a Dirichlet polynomial in the $d^{-s}$; the character $\psi$ attached to $m/e$, i.e. to the \emph{first} $L$-factor, is the one that matters below. The bad primes are those dividing $c$; at each bad prime the row has a $p$-adic Ap\'ery limit $\xi_p$ (a Kubota--Leopoldt value, \cite{ProjSources} Theorem F) with $v_p(b_n-\xi_pa_n)\ge\sigma_pn-O(\log n)$, $\sigma_p>0$, except in the cells marked ``no limit''.
+
+\begin{table}[ht]
+\caption{The fifteen sporadic rows: recurrence data, level of the parametrization, Ap\'ery limit, first character $\psi$ of the source, bad primes. $G$ is Catalan's constant. ``complex'': the characteristic roots are complex and there is no real Ap\'ery limit.}\label{tab:rows}
+\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}llcclcl@{}}\toprule
+row & type & $(a,b,c,d)$ & $N$ & $\xi$ & $\psi$ & bad $p$\\\midrule
+$\mathbf A$ (Franel) & R2 & $(7,2,-8)$ & 6 & $\zeta(2)/4$ & $\mathbf 1$ & 2\\
+$\mathbf B$ & R2 & $(9,3,27)$ & 36 & complex & $\chi_{-3}$ & 3\\
+$\mathbf C$ & R2 & $(10,3,9)$ & 6 & $L(2,\chi_{-3})/2$ & $\chi_{-3}$ & 3\\
+$\mathbf D$ & R2 & $(11,3,-1)$ & 5 & $\zeta(2)/5$ & $\mathbf 1$ & ---\\
+$\mathbf E$ & R2 & $(12,4,32)$ & 8 & $G/2$ & $\chi_{-4}$ & 2\\
+$\mathbf F$ & R2 & $(17,6,72)$ & 12 & $\tfrac58L(2,\chi_{-3})$ & $\chi_{-3}$ & 2, 3\\
+$\alpha$ (Domb) & R3 & $(10,4,64,0)$ & 12 & $7\zeta(3)/24$ & $\mathbf 1$ & 2\\
+$\gamma$ (Ap\'ery) & R3 & $(17,5,1,0)$ & 6 & $\zeta(3)/6$ & $\mathbf 1$ & ---\\
+$\delta$ & R3 & $(7,3,81,0)$ & 12 & complex & $\mathbf 1$ & 3\\
+$\varepsilon$ & R3 & $(12,4,16,0)$ & 8 & $7\zeta(3)/32$ & $\mathbf 1$ & 2\\
+$\zeta$ & R3 & $(9,3,-27,0)$ & 9 & $L(3,\chi_{-3})/3$ & $\chi_{-3}$ & 3\\
+$\eta$ & R3 & $(11,5,125,0)$ & 20 & complex & $\chi_5$ & 5\\
+$s_7$ (Cooper) & R3 & $(13,4,-27,3)$ & 7 & $\zeta(2)/7$ & $\mathbf 1$ & 3\\
+$s_{10}=\sum_k\binom nk^4$ & R3 & $(6,2,-64,4)$ & 10 & $\zeta(2)/5$ & $\mathbf 1$ & 2\\
+$s_{18}$ (Cooper) & R3 & $(14,6,192,-12)$ & 18 & $\tfrac12L(2,\chi_{-3})$ & $\chi_{-3}$ & 2, 3\\\bottomrule
+\end{tabular}
+\end{table}
+
+For the seven third-order rows with a real Fricke fold we shall also use the following structure, verified exactly to $O(q^{300})$ in each case: there is an eta quotient $u=\prod_d\eta_d^{r_d}=q+O(q^2)$ with $\sum_dr_d=0$ and $u|W_N=1/(Cu)$ (equivalently $\prod_d(N/d)^{r_d}=C^{-2}$, an identity of rationals), such that
+\begin{equation}\label{eq:w2structure}
+x=\frac{u}{1+Bu+Cu^2},\qquad F=D\log u=\frac1{24}\sum_dr_d\,d\,E_2(d\tau),\qquad \lambda_{1,2}=B\pm2\sqrt C,
+\end{equation}
+with $(N,B,C)=(12,10,9)$ for $\alpha$, $(6,17,72)$ for $\gamma$, $(8,12,32)$ for $\varepsilon$, $(9,9,27)$ for $\zeta$, $(7,13,49)$ for $s_7$, $(10,6,25)$ for $s_{10}$, $(18,14,1)$ for $s_{18}$; the eta quotients are $(\eta_2\eta_3\eta_{12}/\eta_1\eta_4\eta_6)^4$, $\eta_2\eta_6^5/(\eta_1^5\eta_3)$, $\eta_2^2\eta_8^4/(\eta_1^4\eta_4^2)$, $(\eta_9/\eta_1)^3$, $(\eta_7/\eta_1)^4$, $(\eta_5\eta_{10}/\eta_1\eta_2)^2$, $(\eta_2\eta_3^2\eta_{18}/\eta_1\eta_6^2\eta_9)^6$. Consequently $D\log x=\sqrt{P(x)}\,F$ with $P(x)=(1-\lambda_1x)(1-\lambda_2x)$, and the source is $\Phi=x\sqrt{P(x)}\,F^2$.
+
+\section{Arithmetic of the companion}\label{sec:arith}
+
+\subsection{Denominators}
+Let $d_n=\lcmop(1,\dots,n)$.
+\begin{theorem}[uniform integrality]\label{thm:int}
+For every row with an integral source, $d_n^{\,r}b_n\in\Z$; more precisely
+$$\den(b_n)\ \Bigm|\ R_n:=\lcmop_{m\le n}\frac{m^r}{\gcd(m^r,c(m))}.$$
+\end{theorem}
+\begin{proof} Each term of \eqref{eq:formula} has denominator dividing $m^r/\gcd(m^r,c(m))$.\end{proof}
+This recovers in one line the integrality statements of \cite{Zagier,AZ} ($r=2$, $r=3$) and locates Cooper's free integration: $d_n^{\,r-1}b_n\in\Z$ as soon as $m\mid c(m)$ for all $m$ (a \emph{magnetic} source in the sense of \cite{PasolZudilin}), which never happens for a holomorphic Eisenstein source, since $c(p)=\psi(p)+\chi(p)p^r\not\equiv0\pmod p$, and does happen for Cooper's three (\S\ref{sec:cooper}). Theorem \ref{thm:int} is sharp in the following precise sense.
+
+\begin{verification}[the denominator of $b_n$, twelve Eisenstein rows, $n\le3000$]\label{ver:den}
+(i) The least $k$ with $d_n^{\,k}b_n\in\Z$ for all $n\le3000$ is $r$ for the twelve Eisenstein rows and $2$ for Cooper's three. (ii) $R_n=d_n^{\,r}$ identically for the two rows without bad primes ($\mathbf D,\gamma$) and is a proper divisor otherwise. (iii) $\den(b_n)=R_n$ for at most $306$ of the $n\le3000$; but $v_p(\den b_n)=v_p(R_n)$ \emph{at every bad prime} $p\mid c$ for eleven rows, the one exception being $\varepsilon$ at $p=2$, explained by the digit law below. (iv) At good primes $p$ with $n/2<p\le n$, only $m=p$ contributes and
+$$v_p(\den b_n)=\max\bigl(0,\ r-v_p(c(p)\,e_{n,p})\bigr)\qquad(\text{all twelve rows, all }3\le n\le120),$$
+so $R_n$ over-predicts exactly when $p\mid e_{n,p}$: the defect is a property of the nome, not of the source.
+\end{verification}
+
+\subsection{Bad primes: valuation transfer}
+\begin{proposition}\label{prop:transfer}
+Let $p\mid c$ with $\xi_p\ne0$. Then $v_p(b_n)=v_p(a_n)+v_p(\xi_p)$ for all large $n$; if $\xi_p=0$ then $v_p(b_n)-v_p(a_n)\ge\sigma_pn-O(\log n)$.
+\end{proposition}
+\begin{proof} $b_n=\xi_pa_n+(b_n-\xi_pa_n)$, and $v_p(b_n-\xi_pa_n)\ge\sigma_pn-O(\log n)$ exceeds $v_p(\xi_pa_n)=O(\log n)$ for large $n$.\end{proof}
+In the census the difference $v_p(b_n)-v_p(a_n)$ is constant on the whole range $1\le n\le3000$ (at worst one exceptional $n\le2$) wherever $\xi_p\ne0$: it equals $-1$ for $\mathbf B,\mathbf C,\mathbf F{@}3,\delta,\eta,s_{18}{@}3$; $-2$ for $\mathbf E,\alpha$; $-4$ for $\varepsilon$; $0$ for $\mathbf F{@}2$ — and these values are consistent across rows sharing a Kubota--Leopoldt value ($v_2(\zeta_2(3))=-2$ from both $\alpha$ and $\varepsilon$, $v_3(\zeta_3(2))=-1$ from $\mathbf B,\mathbf C,\mathbf F,s_{18}$). For the two rows with $\xi_p=0$ ($\mathbf A$ at $2$, $\zeta$ at $3$, exactly the rows with a non-trivial co-divisor character) the difference grows as $3n+O(1)$, and $\xi_p=0$ to $p^{8954}$.
+
+\subsection{Exact digit laws}
+Let $s_p(n)$ be the base-$p$ digit sum.
+\begin{verification}[digit laws, $n\le10^4$]\label{ver:digit}
+Among all fifteen rows and all $p\le43$, the exact laws $v_p(a_n)=\lambda s_p(n)+\mu$ with $\lambda>0$ are
+$$v_3(a^{\mathbf B}_n)=s_3(n),\quad v_2(a^{\mathbf E}_n)=2s_2(n),\quad v_2(a^{s_{10}}_n)=v_2(a^{s_{18}}_n)=s_2(n),\quad v_2(a^{\varepsilon}_n)=3s_2(n)-[n\text{ odd}],$$
+the two Cooper laws being new; the valuation vectors of $s_{10}$ and $s_{18}$ coincide, for $a_n$ and for $b_n$. The companion laws implied by Proposition \ref{prop:transfer} hold exactly for $n\le6000$: $v_3(b^{\mathbf B}_n)=s_3(n)-1$, $v_2(b^{\mathbf E}_n)=2s_2(n)-2$, $v_2(b^\varepsilon_n)=3s_2(n)-[n\text{ odd}]-4$ ($n\ge2$), and $v_2(b_n)=s_2(n)-2\lfloor\log_2n\rfloor-1$ for $s_{10},s_{18}$, the free integration made exact.
+\end{verification}
+
+\subsection{The companion Lucas law}
+Malik and Straub \cite{MalikStraub} proved that every sporadic row satisfies the Lucas congruences $a_{np+m}\equiv a_na_m\pmod p$, $0\le m<p$, for all primes $p$; equivalently $F(x)\equiv F_{<p}(x)\,F(x^p)\pmod p$ with $F_{<p}=\sum_{m<p}a_mx^m$. The companion has its own Lucas law.
+
+\begin{theorem}[companion Lucas law]\label{thm:lucas}
+Let a row have an integral modular parametrization $(x,F)$ and a source whose coefficients satisfy, at a prime $p\nmid N$,
+\begin{equation}\label{eq:hecke}
+c(p^im)\equiv\psi(p)^i\,c(m)\pmod{p^r}\qquad(p\nmid m,\ i\ge1)
+\end{equation}
+for a character $\psi$; this holds for every Eisenstein source of Table \ref{tab:rows}, with $\psi$ the first character, by multiplicativity and $c(p^i)=\sum_{a\le i}\chi(p)^a\psi(p)^{i-a}p^{ra}$. Suppose the row satisfies the Lucas congruences. Put $\beta_n:=p^{r\lfloor\log_pn\rfloor}b_n$. Then, for $n=(n_j\cdots n_0)_p$,
+$$\beta_n\equiv\psi(p)^{\,j}\,b_{n_j}\prod_{i<j}a_{n_i}\pmod p,\qquad\text{and hence}\qquad \beta_{np+m}\equiv\psi(p)\,\beta_na_m\pmod p\ \ (n\ge1,\ 0\le m<p).$$
+\end{theorem}
+\begin{proof}
+Group the terms of $\Psi=\sum_mc(m)m^{-r}q^m$ by the exact power of $p$ dividing $m$: $\Psi=\sum_{i\ge0}p^{-ri}\Psi_i(q^{p^i})$ with $\Psi_i(q)=\sum_{p\nmid m}c(p^im)m^{-r}q^m\in\Zp[[q]]$, and $\Psi_i\equiv\psi(p)^i\Psi_0\pmod{p^r}$ by \eqref{eq:hecke}. In $b_n=[x^n](F\Psi)$ only $i\le j$ contribute, so
+$$\beta_n=\sum_{i\le j}p^{r(j-i)}[x^n]\bigl(F\Psi_i(q^{p^i})\bigr)\equiv[x^n]\bigl(F\Psi_j(q^{p^j})\bigr)\equiv\psi(p)^j[x^n]\bigl(F(x)\Psi_0(q(x)^{p^j})\bigr)\pmod{p^r}.$$
+Now reduce modulo $p$: $q(x)^{p^j}\equiv q(x^{p^j})$ (Frobenius on $\Z[[x]]$) and, iterating the Lucas congruence, $F(x)\equiv\prod_{i<j}F_{<p}(x^{p^i})\cdot F(x^{p^j})$. Hence
+$\beta_n\equiv\psi(p)^j[x^n]\bigl(\prod_{i<j}F_{<p}(x^{p^i})\cdot(F\Psi_0)(x^{p^j})\bigr)$; the first product has degree $<p^j$ and the second factor is a series in $x^{p^j}$, so the coefficient factors as $\prod_{i<j}a_{n_i}\cdot[y^{n_j}](F\Psi_0)(y)$, and $[y^{n_j}](F\Psi_0)=b_{n_j}$ because every $m\le n_j<p$ is prime to $p$. The two-step form follows by comparing digit expansions.
+\end{proof}
+
+\begin{verification}[$199$ cells]\label{ver:lucas}
+The law $\beta_{np+m}\equiv\psi(p)\beta_na_m$ was tested as a search for $u\in\mathbb F_p$ over all $(n,m)$ with $np+m\le2000$, for all fifteen rows and all good $p\le43$: a unique $u$ in every cell, equal to $\psi(p)$ ($\equiv1$ for $\mathbf A,\mathbf D,\alpha,\gamma,\delta,\varepsilon$; $\chi_{-3}(p)$ for $\mathbf B,\mathbf C,\mathbf F,\zeta$; $\chi_{-4}(p)$ for $\mathbf E$; $\chi_5(p)$ for $\eta$). The congruence is modulo $p$ and no better in $187$ of the $199$ cells. The unnormalized $d_n^rb_n$ satisfies neither a Lucas nor an Atkin--Swinnerton-Dyer congruence (hit rates at chance). For Cooper's rows the search returns $\psi=\mathbf 1,\mathbf 1,\chi_{-3}$ with the normalization $\beta_n=p^{2\lfloor\log_pn\rfloor}b_n$, at good \emph{and} nominally bad primes.
+\end{verification}
+
+\begin{remark}
+The intermediate statement in the proof holds modulo $p^r$; only the two Frobenius reductions cost precision, which is why the law is modulo $p$ and no better. The character that survives is $\psi$, attached to $e^{-r}$ in the Lambert form $D^{-r}\Phi=\sum_e\psi(e)e^{-r}g_\chi(q^e)$, $g_\chi(q)=\sum_k\chi(k)q^k$; it is the same $\psi$ whose value $\psi(p)p^{-w}$ governs the good-prime towers $b_{np^k}/a_{np^k}$ of \cite{ProjSources}, and Theorem \ref{thm:lucas} extends that statement from $n=ap^s$ to all $n$. The consequence for Diophantine approximation is discussed in \S\ref{sec:dioph}.
+\end{remark}
+
+\subsection{Cooper's rows: meromorphic magnetic sources}\label{sec:cooper}
+For $s_7,s_{10},s_{18}$ the source $\Phi=x\sqrt{P(x)}F^2=u(1-Cu^2)F^2/(1+Bu+Cu^2)^2$ has poles where $1+Bu+Cu^2=0$. These are CM points, never cusps: the two elliptic points of order $3$ of $X_0(7)$, $\tau_0=(5\pm\sqrt{-3})/14$ (discriminant $-3$); the two elliptic points of order $2$ of $X_0(10)$, $(3+i)/10$ and $(7+i)/10$ (discriminant $-4$); and for $s_{18}$ the fixed point $\tau_0=(3+i)/6$ of the Atkin--Lehner involution $W_9$ (discriminant $-36$; $X_0(18)$ has no elliptic points). In each case $\Phi$ has a double pole $A_2(\tau-\tau_0)^{-2}+A_1(\tau-\tau_0)^{-1}+\cdots$ with $A_2=\nu^2/(4\pi^2g'(u_0))$, $g(u)=1+Bu+Cu^2$, $\nu=\ord_{\tau_0}(u-u_0)=3,4,4$, and non-zero residue $A_1=iA_2/\operatorname{Im}\tau_0$; the resulting asymptotic $c(m)=-\nu^2\bigl(q_0^{-m}/g'(u_0)+\text{c.c.}\bigr)\bigl(m-\frac1{2\pi\operatorname{Im}\tau_0}\bigr)+O(R_2^m)$ matches the exact coefficients to $60$ digits at $m\approx400$, with growth rates $e^{2\pi\operatorname{Im}\tau_0}=2.175682\ldots,\ 1.874456\ldots,\ 2.849653\ldots$. So the sources are genuinely meromorphic, and Pa\c sol--Zudilin's folklore conjecture that no holomorphic form is magnetic \cite{PasolZudilin} is the conceptual reason: the free integration forces magnetism.
+
+\begin{theorem}[Cooper's rows]\label{thm:cooper}
+Let $\Phi=\sum c(m)q^m$ be the source of one of $s_7,s_{10},s_{18}$, $\psi=\mathbf 1,\mathbf 1,\chi_{-3}$ respectively, and suppose that at a prime $p$, for every $n\ge1$,
+\begin{equation}\label{eq:magnetic}
+\Phi\,|\,U_{p^n}\ \equiv\ (\psi(p)\,p)^n\,\Phi\pmod{p^{n+2}},\qquad\text{i.e.}\qquad c(p^nm)\equiv\psi(p)^np^n\,c(m)\pmod{p^{n+2}}\ \ \forall m .
+\end{equation}
+Then (i) $p^n\mid m\Rightarrow p^n\mid c(m)$ (the strong $p$-magnetic property of \cite{PasolZudilin}); (ii) writing $c(m)=m\,c'(m)$, one has $c'(p^im)\equiv\psi(p)^ic'(m)\pmod{p^2}$ for $p\nmid m$, i.e. \eqref{eq:hecke} with $r-1=2$ in place of $r$ for the series $\Psi=\sum c'(m)m^{-2}q^m$, and therefore the companion Lucas law $\beta_{np+m}\equiv\psi(p)\beta_na_m\pmod p$ with $\beta_n=p^{2\lfloor\log_pn\rfloor}b_n$. If \eqref{eq:magnetic} holds at all primes, then $m\mid c(m)$ for all $m$, equivalently $D^{-1}\Phi\in\Z[[q]]$, equivalently $(n+1)\mid a_n$ for all $n$, and $d_n^{\,2}b_n\in\Z$.
+\end{theorem}
+\begin{proof}
+(i) The coefficient of $q^m$ in $\Phi|U_{p^n}$ is $c(p^nm)\equiv(\psi(p)p)^nc(m)\pmod{p^{n+2}}$, whence $p^n\mid c(p^nm)$. (The case $n=1$ alone does not imply the general case by iterating $U_p$: the error term is only multiplied by $p$ once per step, so the hypothesis is genuinely one congruence per prime power.) (ii) Divide $c(p^im)\equiv\psi(p)^ip^ic(m)\pmod{p^{i+2}}$ by $p^im$. The Lucas law is then the proof of Theorem \ref{thm:lucas} with $\Psi=D^{-3}\Phi=\sum c'(m)m^{-2}q^m$, $r$ replaced by $2$. The equivalences in the last sentence are elementary: $D^{-1}\Phi=\int A(x)\,dx$ as series, and $q(x)\in x+x^2\Z[[x]]$.
+\end{proof}
+
+\begin{verification}[$42$ cells]\label{ver:cooper}
+Congruence \eqref{eq:magnetic} holds for $n=1$, all $m\le400/p$ and every prime $p\le43$, good and nominally bad alike, with the modulus $p^3$ sharp in $38$ cells, $p^4$ for $s_7$ at $p=2,5$, and the relation exact ($c(pm)=p\,c(m)$) at $p=7$ for $s_7$ and $p=5$ for $s_{10}$; and for $n=2,3$ and every $p\le19$ with the modulus $p^{n+2}$ exactly (except the same special cells). The consequence $p^n\mid m\Rightarrow p^n\mid c(m)$ was checked directly for all $m\le400$. Exact multiplicativity of $c'$ fails for almost all coprime pairs, and $(c'(p)-\psi(p))/p^2\bmod p$ is not a character: the mod-$p^2$ statement is exactly as much Eisenstein structure as these meromorphic sources carry. $(n+1)\mid a_n$ was re-verified for $n\le3000$; the critical-slot values $L(D^{-1}\Phi,2)=\zeta(2)/7,\ \zeta(2)/5,\ \tfrac12L(2,\chi_{-3})$ (60 digits) confirm $\psi$ independently. Cooper's sources are thus the level-$N$ analogues of Pa\c sol--Zudilin's level-one magnetic forms $\Delta/E_4^2$ (double pole at the point of discriminant $-3$) and $E_4\Delta/E_6^2$ (discriminant $-4$); proving \eqref{eq:magnetic}, presumably by a Shimura--Borcherds lift as in their work, would make Theorem \ref{thm:cooper} unconditional.
+\end{verification}
+
+\section{The fold constant}\label{sec:fold}
+
+\subsection{Setting}
+Suppose the dominant singularity of $A(x)=F(q(x))$ is a simple fold of $x$ at the Fricke point $\tau_c=i/\sqrt N$: $x'(q_c)=0\ne x''(q_c)$, $q_c=e^{-2\pi/\sqrt N}$, $x_+=x(q_c)=1/\lambda_1$, $F$ analytic at $q_c$ with $F'(q_c)\ne0$. Then $A=g+h\sqrt{1-x/x_+}$ near $x_+$ with $g,h$ analytic, and singularity analysis gives $a_n\sim K_+\lambda_1^nn^{-3/2}$ with
+\begin{equation}\label{eq:fold}
+K_+=\frac{|DF(\tau_c)|}{2\sqrt\pi}\sqrt{\frac{2x_+}{-D^2x(\tau_c)}},\qquad K_+^2=\frac{x_+\,DF(\tau_c)^2}{2\pi(-D^2x(\tau_c))}.
+\end{equation}
+(For a row of the form $G=R(x)F/S(x)$ with $R,S$ rational, replace $F$ by $G$; at the fold $DG(\tau_c)=R(x_+)DF(\tau_c)/S(x_+)$.)
+
+\begin{lemma}[differentiated Fricke law]\label{lem:fricke}
+Let $f$ be a meromorphic modular form of weight $k$ on $\Gamma_0(N)$ with $f|_kW_N=\varepsilon f$, $\varepsilon=\pm1$, analytic at $\tau_c$. Then $i^k\varepsilon=+1$ implies $Df(\tau_c)=\frac{k\sqrt N}{4\pi}f(\tau_c)$, and $i^k\varepsilon=-1$ implies $f(\tau_c)=0$.
+\end{lemma}
+\begin{proof}
+$f(-1/(N\tau))=\varepsilon(\sqrt N\tau)^kf(\tau)$; differentiate at the fixed point $\tau_c$, where $\sqrt N\tau_c=i$ and $1/(N\tau_c^2)=-1$: $-f'(\tau_c)=\varepsilon[k\sqrt N\,i^{k-1}f(\tau_c)+i^kf'(\tau_c)]$. If $i^k\varepsilon=1$ this is $f'(\tau_c)=\frac{ik\sqrt N}2f(\tau_c)$, and $Df=f'/(2\pi i)$; if $i^k\varepsilon=-1$ it is $k\sqrt N i^{k-1}\varepsilon f(\tau_c)=0$.
+\end{proof}
+
+\subsection{The dichotomy}
+Let $x=r(h)$ with $r$ rational and $h$ a Hauptmodul of $\Gamma_0(N)$, so that at the fold $D^2x(\tau_c)=r''(h_c)(Dh(\tau_c))^2$, and let $\Omega^2$ be the weight-two Chowla--Selberg period of the CM point $\tau_c$ ($\Gamma(1/3)^6/\pi^4$ for $\Q(\sqrt{-3})$, $\Gamma(1/4)^4/\pi^3$ for $\Q(i)$), so that a meromorphic form of weight $k$ with algebraic coefficients, analytic and non-vanishing at $\tau_c$, takes there a value in $\Ob\cdot\Omega^k$, and $Dh(\tau_c)\in\Ob\cdot\Omega^2$.
+
+\begin{theorem}[fold constant]\label{thm:dichotomy}
+Let $F$ have weight $k$ and Fricke sign $\varepsilon$. (a) If $i^k\varepsilon=+1$ then
+$$K_+=\frac{k\sqrt N}{8\pi^{3/2}}\Bigl|\frac F{Dh}(\tau_c)\Bigr|\sqrt{\frac{2x_+}{-r''(h_c)}}\ \in\ \Ob\cdot\Omega^{k-2}\cdot\pi^{-3/2},$$
+and for $k=2$ the function $F/Dh$ is a modular function, so $K_+\in\Ob\,\pi^{-3/2}$. (b) If $i^k\varepsilon=-1$ then $F(\tau_c)=0$, $DF(\tau_c)=\vartheta_kF(\tau_c)$ is a weight-$(k+2)$ CM value, and $K_+\in\Ob\cdot\Omega^{k}\cdot\pi^{-1/2}$. Consequently $K_+$ is elementary, i.e. in $\Ob\pi^{-3/2}$, if and only if $k=2$ and $F(\tau_c)\ne0$.
+\end{theorem}
+\begin{proof}
+Insert Lemma \ref{lem:fricke} into \eqref{eq:fold}. In (a) the $E_2$-anomaly of $DF$ is absorbed into the factor $k\sqrt N/(4\pi)$, and $F(\tau_c)/\sqrt{-D^2x(\tau_c)}=(F/Dh)(\tau_c)/\sqrt{-r''(h_c)}$ with $F(\tau_c)\in\Ob\Omega^k$, $Dh(\tau_c)\in\Ob\Omega^2$ (the latter because $Dh$ is a genuine weight-two form: $\sum_dr_d=0$ for a weight-zero eta quotient). In (b) $F(\tau_c)=0$ removes the anomaly term $\frac k{12}E_2F$ from $DF=\vartheta_kF+\frac k{12}E_2F$. The ``only if'' uses Chudnovsky's theorem that $\pi$ and $\Gamma(1/3)$, resp.\ $\pi$ and $\Gamma(1/4)$, are algebraically independent \cite{Chudnovsky}.
+\end{proof}
+
+\subsection{Weight two: a closed formula}
+\begin{theorem}[weight-two rows]\label{thm:w2}
+Let $u=q+O(q^2)$ be an eta quotient with $\sum_dr_d=0$ and $u|W_N=1/(Cu)$, and define $x,F,\lambda_{1,2}$ by \eqref{eq:w2structure}. Then $F\in M_2(\Gamma_0(N))$ with $\varepsilon_F=-1$, $x\circ W_N=x$, the finite singularities of the row are $1/\lambda_1,1/\lambda_2$ (the images of the two fixed points $u=\pm1/\sqrt C$ of $u\mapsto1/(Cu)$), the Fricke point is a fold with $x_+=1/\lambda_1$, and
+$$\boxed{\ K_+=\frac{\sqrt N}{2\pi^{3/2}}\sqrt{\frac{\lambda_1}{\lambda_1-\lambda_2}}\ },\qquad K_+^2\pi^3=\frac{N\lambda_1}{4(\lambda_1-\lambda_2)} .$$
+\end{theorem}
+\begin{proof}
+$\log u\circ W_N=-\log u-\log C$, and differentiating gives $F(-1/(N\tau))=-N\tau^2F(\tau)$, i.e. $F|_2W_N=-F$; the anomaly cancels in $D\log u$ because $\sum_dr_d=0$. Since $x=1/(B+Cu+u^{-1})$ and $Cu+u^{-1}$ is invariant, $x\circ W_N=x$. With $r(u)=u/(1+Bu+Cu^2)$, $r'(u)=(1-Cu^2)/(1+Bu+Cu^2)^2$ vanishes exactly at $u=\pm1/\sqrt C$; $u(\tau_c)^2=u(\tau_c)u(W_N\tau_c)=1/C$ and $u>0$ on the imaginary axis, so $u_c=1/\sqrt C$ and $x_+=r(u_c)=1/(B+2\sqrt C)=1/\lambda_1$. Then $(F/Du)(\tau_c)=1/u_c=\sqrt C$, $r''(u_c)=-2Cu_c/(1+Bu_c+Cu_c^2)^2=-2C^{3/2}/\lambda_1^2$, and Theorem \ref{thm:dichotomy}(a) with $k=2$, $h=u$ gives $K_+=\frac{\sqrt N}{4\pi^{3/2}}\sqrt C\sqrt{\lambda_1C^{-3/2}}=\frac{\sqrt N}{4\pi^{3/2}}\sqrt{\lambda_1}\,C^{-1/4}$, and $C^{1/4}=\frac12\sqrt{\lambda_1-\lambda_2}$.
+\end{proof}
+
+So in weight two the asymptotic constant depends on the row only through the level and the characteristic polynomial of its recurrence. The seven rows of \eqref{eq:w2structure} satisfy the hypotheses (exactly, to $O(q^{300})$; the identity $\prod_d(N/d)^{r_d}=C^{-2}$ exactly as rationals), and Table \ref{tab:w2} gives the constants; each closed form agrees with a Richardson extrapolation of the exact sequence ($n\le6000$, $20$ nodes, $400$-digit arithmetic) to between $46$ and $73$ digits, and the minimal polynomial of $K_+\pi^{3/2}$ is returned by \texttt{algdep} from the extrapolated value alone. Ap\'ery's classical $a_n\sim(1+\sqrt2)^{4n+2}/(2^{9/4}\pi^{3/2}n^{3/2})$ is the case $N=6$, and Cooper's three rows, whose dominant singularity is verified here to be a Fricke fold, give the three simplest values.
+
+\begin{table}[ht]
+\caption{Weight-two rows: fold constant $K_+$ (Theorem \ref{thm:w2}) and error constant $K_-$ (Theorem \ref{thm:cas}), $a_n\sim K_+\lambda_1^nn^{-3/2}$, $a_n\xi-b_n\sim K_-\lambda_2^nn^{-3/2}$ in the normalization $b_1=1$.}\label{tab:w2}
+\small\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lcccccc@{}}\toprule
+row & $N$ & $\lambda_1$ & $\lambda_2$ & $K_+$ & $\kappa$ & $K_-$\\\midrule
+$\alpha$ Domb & 12 & 16 & 4 & $2\,\pi^{-3/2}$ & 1 & $\pi^{3/2}/24$\\
+$\gamma$ Ap\'ery & 6 & $17+12\sqrt2$ & $17-12\sqrt2$ & $(1+\sqrt2)^2\,2^{-9/4}\pi^{-3/2}$ & 1 & $\pi^{3/2}(\sqrt2-1)^2/(6\cdot2^{1/4})$\\
+$\varepsilon$ & 8 & $12+8\sqrt2$ & $12-8\sqrt2$ & $\tfrac12\sqrt{4+3\sqrt2}\,\pi^{-3/2}$ & 1 & $\pi^{3/2}/(8\sqrt2\sqrt{4+3\sqrt2})$\\
+$\zeta$ & 9 & $9+6\sqrt3$ & $9-6\sqrt3$ & $\tfrac38(\sqrt2+\sqrt6)\,\pi^{-3/2}$ & 1 & $2\pi^{3/2}/(9\sqrt3(\sqrt2+\sqrt6))$\\
+$s_7$ & 7 & 27 & $-1$ & $\tfrac34\sqrt3\,\pi^{-3/2}$ & $3\sqrt3/(2\pi)$ & $\sqrt\pi/14$\\
+$s_{10}$ & 10 & 16 & $-4$ & $\sqrt2\,\pi^{-3/2}$ & $2\sqrt2/\pi$ & $\sqrt\pi/10$\\
+$s_{18}$ & 18 & 16 & 12 & $3\sqrt2\,\pi^{-3/2}$ & $2\sqrt2/\pi$ & $\sqrt\pi/6$\\\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Above weight two}\label{sec:higher}
+Three systems in the repository have companions of higher weight; all three carry a Chowla--Selberg period, and two of them do so \emph{without} vanishing at the fold. Throughout, $v=1/h_{12}$ with $h_{12}=\eta_1^3\eta_4\eta_6^2/(\eta_2^2\eta_3\eta_{12}^3)$ the Hauptmodul of $\Gamma_0(12)$, and $\Omega^2=\Gamma(1/3)^6/\pi^4$.
+
+\emph{Level-$12$ $\zeta(5)$ (case (b)).} $x=v/(1+7v+12v^2)$, the $(B,C)=(7,12)$ instance of \eqref{eq:w2structure}, $\lambda_{1,2}=7\pm4\sqrt3$; companion row $G=7E/Q(x)$ with $E=\frac17(-9E_4(3\tau)+16E_4(4\tau))$ (weight $4$, $\varepsilon=-1$, so $E(\tau_c)=0$) and $Q(x)=143x^3+189x^2+21x+7$; source $\widetilde\Phi=-\frac1{504}(E_6-176E_6(2\tau)+2079E_6(3\tau)-4928E_6(4\tau)+4752E_6(6\tau)-1728E_6(12\tau))$ with $L(\widetilde\Phi,5)=\frac{11}{144}\zeta(5)$. The exact identity $v^2G/(Dv)^2=(1+3v)(1+4v)(1-12v^2)/((1+6v)^2(1+2v)^2)$ makes the vanishing visible ($v_c=1/\sqrt{12}$) and gives $DG(\tau_c)=-18(Dv(\tau_c))^3$; with $(Dv(\tau_c)/\Omega^2)^3=3(45+26\sqrt3)/2^{17}$,
+$$K_+=9\Bigl(\frac{3(45+26\sqrt3)}{2^{17}}\Bigr)^{2/3}\sqrt{\frac{7+4\sqrt3}{24\sqrt3}}\;\frac{\Gamma(1/3)^{12}}{\pi^{17/2}}=0.68537184849053440595\ldots$$
+(agreeing with the fold formula to $148$ digits and with Richardson to $62$).
+
+\emph{Level-$16$ $\zeta(5)$ (case (a), $k=4$).} $x=\eta_2\eta_{16}^2/(\eta_1^2\eta_8)$, $t=x/(8x^2+2x+1)$, $\lambda_{1,2}=2\pm4\sqrt2$, $\tau_c=i/4$; source $\Phi_{16}=-\frac1{504}(E_6-85E_6(2\tau)+1428E_6(4\tau)-5440E_6(8\tau)+4096E_6(16\tau))$, row $F=\Phi_{16}/Dt$ of weight $4$ with $F|_4W_{16}=+F$, $F(\tau_c)\ne0$. With $x^2F/(Dx)^2$ rational of degree $12$ in $x$ and $Dx(\tau_c)=\frac{2+\sqrt2}{32}\Gamma(1/4)^4/\pi^3$,
+$$K_+=\frac{(10021-7083\sqrt2)(2+\sqrt2)\sqrt{4+\sqrt2}}{16}\cdot\frac{\Gamma(1/4)^4}{\pi^{9/2}}=2.04997125634010629\ldots,$$
+non-elementary purely because $k=4$: $\Omega^{k-2}=\Gamma(1/4)^4/\pi^3$ survives.
+
+\emph{Level-$12$ $\zeta(7)$ (case (a), $k=6$).} On the same host $x=v/(1+7v+12v^2)$ as the $\zeta(5)$ system, with the weight-$8$ source $\Phi=\frac1{480}\sum_{d\mid12}c_dE_8(d\tau)$, $c=(1,-572,11583,-36608,46332,-20736)$, $L(\Phi,7)=\frac{209}{1728}\zeta(7)$, $\Phi|W_{12}=-\Phi$ (so $\Phi(\tau_c)=0$ and $U=\Phi/Dx$ is holomorphic of weight $6$, $\varepsilon_U=-1$, $U(\tau_c)\ne0$). The exact identity $v^3U/(Dv)^3=\mathcal N(v)/((1+2v)^4(1+3v)^2(1+4v)^2(1+6v)^4)$, $\mathcal N$ of degree $12$, gives $U(\tau_c)/Dv(\tau_c)^3=17123724-9885726\sqrt3$ by algebra alone, and
+$$K_+=\frac{3^{27/4}(739-356\sqrt3)}{2^{77/6}}\cdot\frac{\Gamma(1/3)^{12}}{\pi^{19/2}}=72.06510390798147222680824590\ldots,$$
+a number of degree $12$ over $\Q$ (minimal polynomial $2^{154}y^{12}+2^{81}\cdot8167691949042512779895308753260859635\,y^6-3^{81}\cdot165913^6$), agreeing with the fold formula to $712$ digits and with Richardson on the exact coefficients ($n\le3000$) to $125$.
+
+\section{The linear form}\label{sec:form}
+
+\subsection{Three-term rows: the Casoratian}
+\begin{lemma}\label{lem:cas}
+For (R3) and (R2), with $a_0=1$, $b_0=0$, $b_1=1$ and $w_n=a_n\xi-b_n$,
+$$a_{n+1}w_n-a_nw_{n+1}=\frac{c^n\kappa_n}{(n+1)^w},\qquad \kappa_n=\prod_{j=1}^n\Bigl(1+\frac d{cj^2}\Bigr)\ \ (\kappa_n\equiv1\text{ for (R2) and for }d=0),$$
+$w=3$ for (R3), $2$ for (R2).
+\end{lemma}
+\begin{proof}
+With $C_n=a_{n+1}b_n-a_nb_{n+1}$ the recurrence gives $(n+1)^wC_n=Q(n)C_{n-1}$, $Q(n)=n(cn^2+d)$ resp. $cn^2$, and $C_0=-1$; so $C_n=-\prod_{j\le n}Q(j)/(j+1)^w=-c^n\kappa_n/(n+1)^w$, and $a_{n+1}w_n-a_nw_{n+1}=-C_n$.
+\end{proof}
+
+\begin{theorem}[error constant]\label{thm:cas}
+Let $a_n\sim K_+\lambda_1^nn^{-s}$ and $w_n\sim K_-\lambda_2^nn^{-s}$ ($s=w/2$; Birkhoff--Trjitzinsky asymptotics of the dominant and recessive solutions, $K_-$ signed if $\lambda_2<0$). Then
+$$\boxed{\ K_+K_-(\lambda_1-\lambda_2)=\kappa:=\prod_{j\ge1}\Bigl(1+\frac d{cj^2}\Bigr)=\frac{\sinh(\pi\sqrt{d/c})}{\pi\sqrt{d/c}}\ }$$
+($=1$ if $d=0$, $=\sin(\pi\sqrt{-d/c})/(\pi\sqrt{-d/c})$ if $d/c<0$), and for the weight-two rows $K_-=2\pi^{3/2}\kappa/\bigl(\sqrt N\sqrt{\lambda_1(\lambda_1-\lambda_2)}\bigr)$.
+\end{theorem}
+\begin{proof}
+Insert the asymptotics into Lemma \ref{lem:cas}: $a_{n+1}w_n-a_nw_{n+1}\sim K_+K_-(\lambda_1\lambda_2)^nn^{-2s}(\lambda_1-\lambda_2)$, and $2s=w$, $\lambda_1\lambda_2=c$. The identity also forces the recessive exponent to equal the dominant one.
+\end{proof}
+The last column of Table \ref{tab:w2} follows; all eight entries (the seven weight-two rows and the Franel row $\mathbf A$, for which $K_+=2/(\pi\sqrt3)$ and $K_-=\pi\sqrt3/18$) were confirmed to $22$ digits by computing the recessive solution directly (Miller's backward recursion from $n=6000$, normalized by $a_1w_0-a_0w_1=1$, which also returns $\xi=w_0$). In Ap\'ery's own normalization ($b_1=6$) the classical statement becomes exact:
+$$a_n\zeta(3)-b_n\ \sim\ \frac{\pi^{3/2}}{2^{1/4}}\,(\sqrt2-1)^{4n+2}\,n^{-3/2},\qquad a_n\sim\frac{(1+\sqrt2)^{4n+2}}{2^{9/4}\pi^{3/2}n^{3/2}} .$$
+For Cooper's rows the $\pi^{-3/2}$ of $K_+$ and the $1/\pi$ of $\kappa$ combine into $K_-\in\Ob\sqrt\pi$; for the weight-one rows the cusp fold gives $K_+\in\Ob/\pi$ and $K_-\in\Ob\pi$.
+
+\subsection{Higher-order systems: the cusp constant}
+For the $\zeta(5)$ and $\zeta(7)$ systems the recurrence has order $>2$ and Lemma \ref{lem:cas} is unavailable. There the linear form $W=B-\xi A$ is regular at the fold (this is the content of Theorem B of \cite{ProjSources}: the period polynomial of $\Psi$ under $W_N$ equals $\xi((\sqrt N\tau)^{k-2}-\varepsilon)$ once all other periods are annihilated), and its dominant singularity is the nearest far singularity, a cusp in both examples.
+
+\begin{theorem}[cusp constant]\label{thm:cusp}
+Let $\Phi$ have weight $k$ and vanishing constant term at $\infty$, $\Psi=D^{1-k}\Phi$, $F$ a row's form of weight $k-2$, $A=F$, $B=F\Psi$ (as functions of $x$), and $W=B-\xi A$ for any constant $\xi$. Let $\mathfrak c=\gamma(\infty)$, $\gamma\in SL_2(\Z)$, be a cusp of width $w$ with local parameter $q_{\mathfrak c}=e^{2\pi i\tau'/w}$, $\tau=\gamma\tau'$, at which $x$ takes a finite value $x_{\mathfrak c}$ with $x-x_{\mathfrak c}=a_1q_{\mathfrak c}+O(q_{\mathfrak c}^2)$, $a_1\ne0$; let $a_0$ and $\phi_0$ be the constant terms of $\Phi|_k\gamma$ and $F|_{k-2}\gamma$, and assume $F|_{k-2}\gamma$ holomorphic at the cusp. Then, as $x\to x_{\mathfrak c}$,
+$$\boxed{\ W=\frac{\phi_0\,a_0\,w^{k-1}}{(k-1)!}\,\log^{k-1}(x-x_{\mathfrak c})+O\bigl(\log^{k-2}(x-x_{\mathfrak c})\bigr)\ },$$
+independently of $\xi$ and $a_1$; hence, when $x_{\mathfrak c}$ is the nearest far singularity and $x_{\mathfrak c}=-1$,
+$$d_n-\xi c_n\ \sim\ \frac{\phi_0a_0w^{k-1}}{(k-2)!}\,(-1)^{n+k-1}\,\frac{(\log n)^{k-2}}n .$$
+If instead $F|\gamma=\phi_{-1}q_{\mathfrak c}^{-1}+\cdots$ — which is the case for the canonical row $F=\Phi/Dx$ whenever $a_0\ne0$, since $D(x\circ\gamma)=O(q_{\mathfrak c})$ — then $W\sim\phi_{-1}a_0a_1w^{k-1}\log^{k-1}(x-x_{\mathfrak c})/((k-1)!\,(x-x_{\mathfrak c}))$ and the linear form does not decay; the row $(x-x_{\mathfrak c})F$, still integral, restores the first case with $\phi_0=a_0w$.
+\end{theorem}
+\begin{proof}
+Since the constant term at $\infty$ vanishes, $\Psi(\tau)=\frac{(2\pi i)^{k-1}}{(k-2)!}\int_{i\infty}^\tau(\tau-u)^{k-2}\Phi(u)\,du$. Substitute $u=\gamma u'$, $\tau=\gamma\tau'$: $\tau-u=(\tau'-u')/((c\tau'+d)(cu'+d))$, $du=du'/(cu'+d)^2$ and $\Phi(\gamma u')=(cu'+d)^k(\Phi|\gamma)(u')$, so the automorphy factors in $u'$ cancel (this is where $r=k-1$ enters) and
+$$\Psi(\gamma\tau')=(c\tau'+d)^{2-k}\,\frac{(2\pi i)^{k-1}}{(k-2)!}\int_{-d/c}^{\tau'}(\tau'-u')^{k-2}(\Phi|\gamma)(u')\,du' .$$
+Split $\Phi|\gamma=a_0+\widehat\Phi$: the constant contributes $a_0(\tau'+d/c)^{k-1}/(k-1)$, the rest the Eichler integral of $\widehat\Phi$ (holomorphic, $O(q_{\mathfrak c})$) plus a polynomial of degree $\le k-2$ in $\tau'$ (the periods $\int_{i\infty}^{-d/c}u'^j\widehat\Phi\,du'$). Multiply by $F(\gamma\tau')=(c\tau'+d)^{k-2}(\phi_0+O(q_{\mathfrak c}))$: the automorphy factors cancel, and $-\xi F(\gamma\tau')$ has degree $k-2$ in $\tau'$. So the coefficient of $\tau'^{k-1}$ in $W$ is $\phi_0a_0(2\pi i)^{k-1}/(k-1)!$, and $\tau'=\frac w{2\pi i}\log q_{\mathfrak c}=\frac w{2\pi i}\log(x-x_{\mathfrak c})+O(1)$. The transfer to coefficients is $[x^n]\log^m(1-x/x_{\mathfrak c})\sim(-1)^mm\,x_{\mathfrak c}^{-n}(\log n)^{m-1}/n$ \cite{FS}.
+\end{proof}
+
+The constant terms of $E_k(d\tau)$ at a cusp $a/c$ are $(\gcd(d,c)/d)^k$, so $a_0$ is a rational number computed from the source's coefficient vector, and $\phi_0$ likewise from the row.
+
+\section{Two worked examples: $\zeta(5)$ and $\zeta(7)$ on one host}\label{sec:examples}
+
+Both systems live on the Fricke-invariant coordinate $x=h_{12}/((h_{12}+3)(h_{12}+4))=q-4q^2+2q^3+\cdots$ of $\Gamma_0(12)^+$, with fold $x_+=7-4\sqrt3$ at $\tau_c=i/\sqrt{12}$ and finite singularities at $x=-1$ (the cusp pair $\{\tfrac12,\tfrac16\}$) and $7\mp4\sqrt3$; the far singularity of the linear form is the cusp $x=-1$, at distance $1$, whereas the second fold sits at $7+4\sqrt3$.
+
+\emph{$\zeta(5)$.} Row $U=7E/Q(x)=\sum c_nx^n$ and companion $V=U\cdot D^{-5}\widetilde\Phi=\sum d_nx^n$ as in \S\ref{sec:higher}: $c_n\in\Z$, $d_n^5$ integral. Limit $\frac{144}{11}d_n/c_n\to\zeta(5)$. Fold constant $K_+$ as displayed there. Cusp constant: at the cusp $\tfrac12$ (width $3$), $a_0(\widetilde\Phi)=\frac{13}{27}$ and $\phi_0=7\cdot\frac{8}{63}/Q(-1)=\frac1{36}$, so Theorem \ref{thm:cusp} gives $\frac1{36}\cdot\frac{13}{27}\cdot\frac{3^5}{5!}=\frac{13}{480}$ — exactly the constant found in \cite{ProjSources} from the regularized local solution — and
+$$d_n-\tfrac{11}{144}\zeta(5)c_n\sim\frac{13}{96}(-1)^{n+1}\frac{(\log n)^4}n,\qquad \frac{d_n}{c_n}-\frac{11}{144}\zeta(5)\sim\frac{13}{96K_+}(-1)^n(7-4\sqrt3)^nn^{1/2}(\log n)^4 .$$
+The cusp $\tfrac16$ (width $1$, $a_0=-13$, $\phi_0=-\tfrac14$) returns the same $13/480$, as it must.
+
+\emph{$\zeta(7)$.} The canonical row $U=\Phi/Dx$ has a simple pole at $x=-1$ because $a_0(\Phi,\tfrac12)=-\tfrac{119}{81}\ne0$; the showcase row is $U'=(1+x)U=\sum c_n'x^n$, $V'=U'\cdot D^{-7}\Phi=\sum d_n'x^n$, with $c_n'=1,-434,8110,68734,\dots\in\Z$, $d_n^7d_n'\in\Z$ sharp, $\frac{1728}{209}d_n'/c_n'\to\zeta(7)$. Fold constant $K_+'=(8-4\sqrt3)K_+$ with $K_+$ as in \S\ref{sec:higher}. Cusp constant $\phi_0=a_0w=-\frac{119}{27}$, so
+$$\alpha'=\frac{119^2}{7!}=\frac{14161}{5040},\qquad d_n'-\tfrac{209}{1728}\zeta(7)c_n'\sim\frac{14161}{720}(-1)^{n+1}\frac{(\log n)^6}n,$$
+confirmed to $9$ digits by fitting the exact sequences to $n=3000$ and to $7$ digits by evaluating $W'$ directly on $\tau=\tfrac12+iy$, $y\in[0.002,0.02]$ (the coefficient side converges only logarithmically: $W'/\log^7(1+x)$ is still $2.97$ where $\log(1+x)=-260$). The approximants carry $108$ correct digits of $\zeta(7)$ at $n=100$, $450$ at $n=400$ and $3424$ at $n=3000$; $|d_n'/c_n'-\xi|^{1/n}\to7-4\sqrt3$. Both sequences satisfy an exact $19$-term recurrence with coefficients of degree $13$ (inhomogeneous term $(-1)^nW(n)$, $\deg W=6$, for the companion), and $c_n'$ alone a $13$-term one of degree $49$ with characteristic polynomial $(\lambda+1)^6(\lambda^2-14\lambda+1)^3$; unlike $\zeta(5)$, the minimal operator of order $7$ carries an apparent-singularity divisor of degree $42$, and the coefficients run to hundreds of digits. The project's earlier level-$12$ $\zeta(7)$ construction used the coordinate $t=x'/(16x'^2+2x'+1)$ with $x'=\eta_4^2\eta_{12}^2/(\eta_1^2\eta_3^2)$; $x'$ has degree $2$ on $X_0(12)$ and its non-modular deck involution puts a branch point at $t=-\tfrac16$, limiting the rate to $0.6$ per term against $7-4\sqrt3=0.072$ here.
+
+\section{What this does and does not do for irrationality}\label{sec:dioph}
+
+None of the above changes an irrationality budget, and it is worth saying precisely why. (i) Theorem \ref{thm:lucas} says that at a good prime $p$ the row and the companion's numerator are divisible by $p$ under the same condition on the base-$p$ digits of $n$; for $n/2<p\le n$ this is $p\mid a_{n-p}$. Common prime factors of the two coefficients of a linear form can be cancelled, which is the classical ``$\Phi_n$'' mechanism behind improved irrationality measures in hypergeometric constructions; but there the row vanishes modulo $p$ systematically on a range of indices, whereas here the condition concerns a single small index and holds with density about $1/p$, so the expected gain $\sum_{p\in(n/2,n]}1/p\approx\log2/\log n$ vanishes. (ii) Proposition \ref{prop:transfer} and the digit laws control valuations of size $s_p(n)$, logarithmic in $n$; nothing exponential moves. (iii) The constants $K_\pm$ never enter an irrationality criterion; only the exponential rates do, and those are geometric invariants of the host (for a three-term row $|x_{\rm far}|=\lambda_1/|c|$), fixed long before the constants are known. What the results do give is the complete leading asymptotics of every system in the repository with all three constants closed, and, for Cooper's rows, the identification of the free integration with a magnetic congruence.
+
+\section{Computations}\label{sec:comp}
+All exact computations were done in PARI/GP 2.15 and are reproducible from the scripts in the project repository: \texttt{lattice/companion\_arithmetic/} (the fifteen-row census: denominators, valuations, digit laws, the Lucas search), \texttt{lattice/cooper\_sources/} (the three sources, their poles, the congruences \eqref{eq:magnetic}), \texttt{lattice/asymptotic\_constants/} (fold data, the structure identities \eqref{eq:w2structure}, Richardson extrapolations, the Casoratian check, the direct evaluation of the $\zeta(7)$ cusp constant), \texttt{lattice/zeta5\_K/} and \texttt{lattice/zeta7\_showcase/} (the two examples, including the exact recurrences). The one-page summaries \texttt{paper/zeta5\_showcase} and \texttt{paper/zeta7\_showcase} display the two examples.
+
+\begin{thebibliography}{99}
+\bibitem{Apery} R. Ap\'ery, Irrationalit\'e de $\zeta(2)$ et $\zeta(3)$, Ast\'erisque 61 (1979), 11--13.
+\bibitem{AZ} G. Almkvist, W. Zudilin, Differential equations, mirror maps and zeta values, in: Mirror Symmetry V, AMS/IP Stud. Adv. Math. 38 (2006), 481--515.
+\bibitem{Beukers1987} F. Beukers, Irrationality proofs using modular forms, Ast\'erisque 147--148 (1987), 271--283.
+\bibitem{Chudnovsky} G. V. Chudnovsky, Contributions to the theory of transcendental numbers, Math. Surveys Monogr. 19, AMS, 1984.
+\bibitem{Cooper} S. Cooper, Sporadic sequences, modular forms and new series for $1/\pi$, Ramanujan J. 29 (2012), 163--183.
+\bibitem{FS} P. Flajolet, R. Sedgewick, Analytic Combinatorics, Cambridge University Press, 2009.
+\bibitem{MalikStraub} A. Malik, A. Straub, Divisibility properties of sporadic Ap\'ery-like numbers, Res. Number Theory 2 (2016), Art. 5.
+\bibitem{PasolZudilin} V. Pa\c sol, W. Zudilin, Magnetic (quasi-)modular forms, Nagoya Math. J. 248 (2022), 815--837.
+\bibitem{ProjSources} River, Claude, Modular Ap\'ery systems: sources, companions and $p$-adic limits (in preparation; \texttt{paper/main.tex} of the project repository).
+\bibitem{Zagier} D. Zagier, Integral solutions of Ap\'ery-like recurrence equations, in: Groups and Symmetries, CRM Proc. Lecture Notes 47 (2009), 349--366.
+\end{thebibliography}
+\end{document}
