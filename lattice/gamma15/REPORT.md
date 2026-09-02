@@ -29,16 +29,20 @@ No margin is ever rounded in the favourable direction.*
 | **The margin is NEGATIVE.** B̄C = 10.816331, bound **m ≤ 16.1543** against the exhibited m = 14: **margin = 14(L̄−τ) − B̄C = −1.4424**. Transporting CDT's best convexity improvement (a factor 0.97336 on the bound) still leaves **m ≤ 15.72**, margin −1.15. | **[verified]** §5 |
 | **Place v₂ is entirely responsible.** With the per-place score s_v = 13 log\|ψ_v′(0)\| − shape_v (margin = 13 log 256 + mean(s_v) − 14τ): s₁ = **−12.1905**, s₂ = **−16.2761**, CDT's own = −12.7700. So v₁ *gains* 0.579 nats over CDT and v₂ *loses* 3.506; halved, that is **−1.463** nats of margin against CDT's +0.021. | **[verified]** §5 |
 | **No inventory rescues it.** Adding functions to CDT's fourteen forces max eᵢ ≥ 2, and τ jumps 4.2355 → 4.4482; the bound goes from 16.13 to 23.5 and the margin from −1.44 to −3.96. Every m ≠ 14 is worse. (`INVENTORY_BOUND.md` R1/R4 already proves 14 is the complete supply at max eᵢ ≤ 1.) | **[verified]** §6 |
-
+| **The second place also taxes the HYPOTHESIS, not just the geometry.** The far-cusp periods are computed exactly: the homogeneous-solution obstruction at t₂ gives π(B_D) = **−(11/5)ζ(2)** and π(B′_new) = **ξ′ = −Re L − φ⁻⁵ Im L** (both to 12 digits; the same construction at the near cusp returns ζ(2)/5 and ξ, calibrating it). So regularity of σH at the v₂-fold t₂ is **(ii)** σ(a) − (11σ(b)/5)ζ(2) + σ(c)ξ′ = 0, which is σ applied to (i) *except* in the ζ(2) slot (+1/5 ↦ −11/5): **(i) ⇏ (ii)**. One K-relation gives a conditional function at one place only. The *sources* are nevertheless perfectly Galois-equivariant (L B_new = 2/(1−x/t₂), L B′_new = 2/(1−x/t₁); Φ_new kills the cusp over t₁, Φ′_new the cusp over t₂). | **[verified, 12 digits]** §3.4 |
+| **Both branches are negative.** Assuming the *doubled* hypothesis (i)∧(ii): margin **−1.4424**. Keeping the single, correct hypothesis and letting Ω₂ avoid *every* preimage of Y₂ (principal included, at \|z\| = 0.074191, cap 0.2572): margin **−4.4038**. | **[verified]** §5.2 |
 | **The one loophole, and its closure.** We exclude *every* non-principal h-preimage of Y_v, as CDT do; only the ones at which the continued conditional function is really singular need go. If the single conjugate pair at \|z\| = 0.213693 at v₂ were harmless the margin would be **+0.51**. It is not harmless: those two preimages are the images of z₀ under the parabolic generator (2,±1) of Γ₀(2) at the cusp y = ∞, whose loop on the x-line encircles the outer cusp t₂, so the continuation changes H by a nonzero multiple of u_{t₂}, the homogeneous solution holomorphic at t₂; and **u_{t₁} and u_{t₂} are distinct lines** (numerically \|u_{t₁} ∧ u_{t₂}\| = 0.318 on Γ₁(5), 0.737 on CDT's Γ₀(6); both monodromies unipotent to 10⁻¹³). So the continued H is singular at the fold: the pair must be excluded. | **[verified]** §6(b) |
 
 **One sentence.** *Everything arithmetic about the target is as good as CDT's own — the same
 Apéry-perfect host, the same k = 2, the same fourteen functions, the same τ = 16603/3920, a
-genuinely new period ξ, and (by CDT's own Remark BCboundK) a legitimate two-place bound whose
-entry test passes with 0.67 nats to spare — but the second real place of ℚ(√5) puts the removed
-fold at hyperbolic depth 30 orbifold-radii instead of CDT's 1/72, its deepest bad preimage at
-\|z\| = 0.214 instead of 0.402, and that single geometric fact costs 3.5 nats at that place,
-1.46 nats on the average, and turns CDT's +0.02 into **−1.44**.*
+genuinely new period ξ, Galois-equivariant sources, and (by CDT's own Remark BCboundK) a
+legitimate two-place bound whose entry test passes with 0.67 nats to spare — but the second real
+place of ℚ(√5) charges twice: it puts the removed fold at 30 orbifold radii instead of CDT's
+1/72 and its deepest bad preimage at \|z\| = 0.214 instead of 0.402, which costs 3.5 nats there
+and 1.46 on the average and turns CDT's +0.02 into **−1.44**; and its fold-regularity condition
+is not the Galois conjugate of the hypothesis (the far-cusp period of B_D is −11ζ(2)/5, not
+ζ(2)/5), so a single K-relation buys a conditional function at one place only, and the variant
+that survives on the honest hypothesis is worse still, at **−4.40**.*
 
 ---
 
@@ -263,6 +267,54 @@ The same code path reproduces `CDT_FINDER.md` §2 on CDT's own host exactly.
 only one of the two layers relaxes; and `lattice/cdt_finder/indep_check2.py` items 13–14 carry
 an index shift relative to CDT's definitions (both conventions give full rank).
 
+### 3.4 What the second real place demands of the *hypothesis* — the far-cusp periods
+**[verified, 12 digits]** (`farcusp_data.gp`, `farcusp.py`)
+
+At v₂ the pure module is B_i(y/σ(s)) = B_i(y/t₁), so **x = t₁ = σ(s) is where singularities are
+allowed** (it maps to y = ∞) and **x = t₂ is the point that must be removed** — t₂ is the
+v₂-fold. Two checks that this is the right bookkeeping, and that the *sources* are perfectly
+Galois-equivariant:
+
+* the right-hand sides. L(c₃B₃+c₄B₄) = 2(c₃−c₄x)/(−(x−t₁)(x−t₂)); the pole at t₁ cancels iff
+  c₃ = c₄t₁, at t₂ iff c₃ = c₄t₂. For Φ_new, (c₃,c₄) = (1, φ⁵) = (1, −t₂) and c₄t₁ = −t₁t₂ = 1:
+  the t₁-pole cancels, leaving **L B_new = 2/(1−x/t₂)**, a pole at t₂ = s ↦ y = ∞ — harmless at
+  v₁. For the conjugate, (σc₃,σc₄) = (1, −t₁) and σ(c₄)t₂ = −t₁t₂ = 1: the **t₂**-pole cancels,
+  leaving **L B′_new = 2/(1−x/t₁)**, a pole at t₁ = σ(s) ↦ y = ∞ — harmless at v₂. Verified to
+  8 coefficients against 2(1/t₂)ⁿ resp. 2(1/t₁)ⁿ. **[verified]**
+* the cusps. With x(∞, 0, 1/2, 2/5) = (0, φ⁻⁵, −φ⁵, ∞), the cusp over t₁ is 0 and over t₂ is 1/2;
+  the constant terms are Φ_D = (0,−1,0,0), Φ_new = (0,0,0,∗), Φ′_new = (0,0,∗,0). So Φ_new
+  vanishes at the cusp over t₁ (the v₁-fold) and **Φ′_new vanishes at the cusp over t₂ (the
+  v₂-fold)**. **[verified, `task2/`]**
+
+**The periods.** For f ∈ {A, B_D, B′_new} the monodromy difference Δ_f = (M_{t₂}−1)f solves the
+homogeneous equation and is M_{t₂}-fixed, hence spans the line ⟨u_{t₂}⟩; the far-cusp periods are
+π_f := Δ_f/Δ_A. Computed by numerical continuation around t₂ (base point x = 0.05, 221 exact
+series coefficients, DOP853 rtol 10⁻¹²; the two components of Δ agree to 5·10⁻¹⁴, confirming
+collinearity). Calibration: the same construction at the **near** cusp t₁ returns
++0.328986813370 = ζ(2)/5 for B_D and +0.655634188841 = ξ for B_new, exactly the Apéry limits
+(and an *inconsistent* pair of ratios for B′_new, which is the log² at t₁). Then
+
+$$\boxed{\;\pi_{B_D}^{(t_2)}=-\tfrac{11}{5}\zeta(2)\quad(\text{ratio to }\zeta(2)/5\ \text{is}\ -11.0000000000),\qquad \pi_{B'_{\rm new}}^{(t_2)}=\xi'=-\mathrm{Re}\,L-\varphi^{-5}\mathrm{Im}\,L=-0.971841789639\;}$$
+
+(ratio to ξ′ equal to 1.0000000000). So the two conditions the architecture needs are
+
+  **(i)** a + (b/5)·ζ(2) + c·ξ = 0  (the target hypothesis — regularity of H at the v₁-fold t₁);
+  **(ii)** σ(a) − (11σ(b)/5)·ζ(2) + σ(c)·ξ′ = 0  (regularity of σH at the v₂-fold t₂).
+
+With ξ = −Re L + φ⁵ Im L and ξ′ = −Re L + σ(φ⁵) Im L, condition (ii) is σ applied to the
+K-coefficients of (i) **except** in the ζ(2) slot, where +1/5 becomes −11/5:
+  (ii) = σ(i) − (12/5)σ(b)·ζ(2).
+Hence **(i) does not imply (ii)** (they coincide only when b = 0), and one K-linear relation
+among 1, ζ(2), ξ gives a conditional function at **one place only**. **[verified, 12 digits]**
+
+Two ways out, both priced in §5.2:
+* assume the *doubled* hypothesis (i) ∧ (ii) — two ℚ-linear relations among
+  1, √5, ζ(2), √5ζ(2), Re L, √5 Re L, Im L, √5 Im L. The conclusion is then weaker than
+  "1, ζ(2), ξ independent over K";
+* keep the single hypothesis and make Ω₂ avoid **every** preimage of Y₂, the principal one
+  included — then σG pulls back holomorphically whatever it does at Y₂, and no second relation
+  is needed. The principal preimage sits at |z| = 0.074191, so the cap drops to 0.257187.
+
 ---
 
 ## 4. The contours at the two real places [Task 4]  **[exact geometry / verified contours]**
@@ -306,6 +358,13 @@ cap |ψ_v′(0)| ≤ 4|p|/(1+|p|)²:
 |---|---|---|---|
 | v₁ | 0.536032 | **0.908762** | 7.855565 |
 | v₂ | 0.213693 | **0.580274** | 2.594864 |
+
+*A consistency check the unit property provides.* One may equally run the bound in the
+normalised coordinate Y = y/s, in which the pure functions have **rational** coefficients and
+the ceiling is log 256 at *each* place; the two coordinates rescale φ_v by |s_v|, changing both
+L_v and BC_v by log|s_v|. Since s = t₂ is a **unit**, |s₁s₂| = 1 and the two changes cancel in
+the average: L̄ and B̄C — hence the bound — are the same in the y- and Y-coordinates.
+(Numerically: L̄^{(Y)} = ½(log(256·0.703784) + log(256·0.394939)) = 4.90505 = L̄^{(y)}.)
 
 ### 4.3 The trade-off and the optimum
 
@@ -393,6 +452,18 @@ pushing both conformal radii to saturation, the margin only rises to
 −1.442 + 13·½(log(0.4068/0.39494) + log(0.82276/0.70378)) = **−0.235**: still negative. Since
 the shape terms in fact grow with R (the 14L−BC columns above *fall*), the true optimum over the
 family is the decoupled one of §4.3, margin **−1.4416**. The verdict is not marginal.
+
+### 5.2 The two branches, and which hypothesis is being contradicted
+
+| branch | hypothesis assumed | L̄ | B̄C | bound | **margin** |
+|---|---|---|---|---|---|
+| **A** | (i) ∧ (ii) — the *doubled* hypothesis (§3.4) | 4.90502 | 10.81633 | 16.154 | **−1.4424** |
+| **B** | (i) alone, Ω₂ avoiding *all* preimages of Y₂ | 4.59778 | 9.47631 | 26.154 | **−4.4038** |
+
+Branch B (`single_hypothesis.py` → `single_hypothesis.txt`): the extra excluded point at
+|z| = 0.074191 caps |ψ₂′(0)| at 0.257187 and the best achieved is 0.213384, L₂ = 1.594459,
+BC₂ = 3.71292, 14L₂−BC₂ = 18.6095 against v₁'s 91.1758. So the variant that survives on the
+single, *correct* hypothesis is three nats worse still. **Both branches are negative.**
 
 **Convexity.** CDT's convexity improvements take their own bound 13.9938 → 13.730 → 13.7206 →
 13.678 → 13.621 (four radii), a factor 0.97336. Remark BCboundK says these "extend in the
@@ -555,6 +626,8 @@ monodromy argument — is **[assumed]**, not transported.
 | `whatif.py` → `whatif.txt`, `whatif_cdt.txt` | the monodromy loophole, quantified at both places and on CDT's own host |
 | `monodromy.py` → `monodromy.txt`, `monodromy_robust.txt` | the monodromy computation that CLOSES the loophole for the decisive (2,±1) pair |
 | `worstcase.py` → `worstcase.txt` | the relaxed problem: only the proved (2,±1) exclusions enforced |
+| `farcusp_data.gp`, `farcusp.py` | the far-cusp periods −11ζ(2)/5 and ξ′, with the near-cusp calibration |
+| `single_hypothesis.py` → `single_hypothesis.txt` | branch B: the variant needing only the single hypothesis |
 | `saturation.txt` | the R → 1 saturation of the conformal radii at both places |
 | `task2/` | sources, companions, conditional ODE, fold-regularity at both places (agent report) |
 | `task3/` | pure module over K, measured denominator array, K(y)-independence (agent report) |

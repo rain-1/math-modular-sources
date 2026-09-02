@@ -1,14 +1,29 @@
 # Task 2 — the Γ₁(5) new period ξ at **both** real places of ℚ(√5)
 
-**Verdict up front (item 4c): the second archimedean place FAILS, and it fails
-unconditionally.** The Galois conjugate of the fold-regular inner source has its ODE
-inhomogeneity pole *exactly at the fold*, so the conjugated conditional function is not merely
-non-overconvergent — it has an irremovable $\log^2$ singularity there and its radius of
-convergence at the second place is $\varphi^{-5}=0.0902$, i.e. it does not even reach the fold.
-No choice of $(a,b,c)\in K^3$ with $c\neq 0$ repairs this. The doubly-fold-regular
-$K$-subspace of $M_3^{\rm Eis}(\Gamma_1(5))$ is the **one-dimensional** line $\langle\Phi_D\rangle$,
-whose period is $\zeta(2)/5$ — the mixed pair $\{\zeta(2)/5,\ \xi\}$ does **not** survive
-the second place. Details and the exact certificates are below.
+**Verdict up front (item 4c), CORRECTED.** *An earlier draft of this file said the second
+place fails unconditionally. That was wrong, and the error is recorded in §4(c) below: I
+identified "the fold at $v_2$" with the singularity of $\mathcal L$ nearest $0$, which is
+place-independent because $\mathcal L$ is defined over $\mathbb Q$. But which singularity must be
+removed is fixed by the **pure module**, whose puncture $s=1/\lambda_2=t_2=-\varphi^5$ lies in $K$
+and **does** move under $\sigma$. At $v_2$ the allowed puncture is $v_2(s)=+0.0902$ and the point
+to be removed is $v_2(t_1)=-11.09$.*
+
+**Corrected verdict.** The *source side is fully Galois-equivariant*: $\Phi_{\rm new}$ is
+fold-regular at the $v_1$-fold $t_1$ and its conjugate $\Phi'_{\rm new}=\sigma(\Phi_{\rm new})$ is
+fold-regular at the $v_2$-fold $t_2$ (§4(d) already showed this: the constant terms vanish at
+cusp $0$ and at cusp $1/2$ respectively). The far-cusp periods exist and are (§4(e), two
+independent methods, 174+ digits):
+$$\pi_D=-\frac{11\,\zeta(2)}5,\qquad \pi'=\xi'=-\varphi^{-5}\mathrm{Im}L(2,\psi_4)-\mathrm{Re}L(2,\psi_4).$$
+**The obstruction is therefore not analytic but arithmetic, and it lives entirely in the
+hypothesis.** One $K$-linear relation
+$a+b\frac{\zeta(2)}5+c\,\xi=0$ supplies a conditional function at $v_1$ **only**; the two-place
+construction additionally needs the *independent* relation
+$\sigma(a)-11\,\sigma(b)\frac{\zeta(2)}5+\sigma(c)\,\xi'=0$, and for every hypothesis actually
+involving $\xi$ (i.e. $c\ne0$) these two are non-proportional $\mathbb Q$-linear functionals on
+$\{1,\zeta(2),\mathrm{Re}L,\mathrm{Im}L\}\cdot\{1,\sqrt5\}$. Note also the **$-11$**: the
+far-cusp period datum is *literally* $\sigma$-conjugate on the $\xi$-slot ($\pi'=\sigma(\xi)$) but
+is $-11\times$ on the $\zeta(2)$-slot, so the second condition is not even the naive $\sigma$-image
+of the first. Full statement in §4(c)/§4(f).
 
 Scripts (all in this directory, all PARI/GP 2.15):
 `01_build.gp` (exact construction, writes `build.txt`), `02_limits.gp`, `03_ode.gp`,
