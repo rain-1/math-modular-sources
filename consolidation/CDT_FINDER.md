@@ -325,6 +325,9 @@ $0.629$ against the ceiling $64$.
 
 **(C2) $X_1(5)\ \mathrm{Sym}^2$ over $\mathbb Q(\sqrt5)$ → $1,\zeta(3),L(3,\chi_5)$
 independent over $\mathbb Q(\sqrt5)$.** Missing pieces, in order of difficulty:
+
+> **Addendum 2026-09-02 (Fable).** Item 1 below is settled in `NUMBER_FIELD_HOLONOMY.md`: the bound over $K$ is the *average* over archimedean places, $m\le\overline{\mathrm{BC}}/(\overline{\log|\varphi'(0)|}-\tau)$, because the rational LCM denominators have norm $d^{[K:Q]}$. The "unnormalised (sum over places)" row of the verdict table ($+4.183$) is therefore not available; the normalised entries ($-0.435$ ceiling, $-0.898$ CDT contour, $+0.244$ best inventory) stand.
+
 1. *the number-field holonomy bound* — CDT state the plain bound (Thm 2.5.1/7.0.1) over
    $\mathbb Q$ only; arXiv:2510.04156 Thm 2.5 is adelic but is an approximation-measure
    statement. A clean "$m\le\mathrm{BC}/(\overline{\log|\varphi'(0)|}-\tau)$ over $K$" with
