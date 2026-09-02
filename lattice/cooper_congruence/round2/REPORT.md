@@ -47,7 +47,7 @@ range), **[num, digits]**, **[refuted, range]**, **[conjectural]**.
 | **W3–W7** | Its correct form is a real reduction: $f|U_p\equiv f_0+\sum_{n\ge1}[x^{pn}](fH)x^n\pmod p$ with $H=(\sqrt PF)^{p-1}\equiv P^{(p-1)/2}/F_{<p}$, where $F_{<p}=\sum_{n<p}A_nx^n$ is the **supersingular polynomial** of $X_0(N)/\mathbf F_p$ in the coordinate $x$ ($\deg F_{<p}=\lfloor\mu(N)(p-1)/(6\deg x)\rfloor$ exactly).  Round 1's smallest missing brick becomes $[x^{pn}]\bigl(l\,P^{(p-1)/2}/F_{<p}\bigr)\equiv\psi(p)L_n\pmod p$ | **[proved]** (equivalence) + **[verified, $p\le53$]** `FINDINGS_XSIDE.md` |
 | **W11** | **New supercongruence** $A_{p-1}\equiv\kappa\,\psi(p)\,p\pmod{p^2}$, $\kappa=-2,-3,-3$; for $s_{18}$ it manufactures $\chi_{-3}$ from the Apéry-like recurrence alone | **[verified, $5\le p\le300$]**, **[proved for $s_{10}$]** `FINDINGS_XSIDE.md` |
 | **W20** | The **$\psi$-twisted Dieudonné–Dwork tower** $a_{pn-1}\equiv\psi(p)a_{n-1}\pmod{p^{1+v_p(n)}}$ holds for all three rows, extending round 1's V19 to the character row | **[verified, $p\le31$]** `FINDINGS_XSIDE.md` |
-| **P6** | **THE CLEAN FORM.**  With $c(d)$ the twisted CM trace coefficients of §2.8, $$\boxed{\ d\ \bigm|\ c(d)\ }\qquad\text{for every admissible }d,$$ verified for **all $690$ admissible $d\le2500$, zero failures**.  Conjecture 4.1 is the case $d=m^2$, since $c(m^2)=\beta_{s_7}(m)$ and $m^2\mid\beta(m)$ is $m^2\mid c(m^2)$; and $G(d):=c(d)/d$ extends $\gamma$ from the squares to all discriminants, $G(m^2)=\gamma_{s_7}(m)$ **[verified]**.  $G=1,-2,2,1,2,0,-5,0,5,6,6,4,4,15,0,14,20,-18,10,14,\dots$ at $d=1,4,8,9,16,21,25,28,29,32,36,37,44,53,\dots$  **Sharp**: $\min_{p\mid d}v_p(G(d))=0$ at $p=3,11,13,17,19,23,29$ and $=1$ at $p=2,5$ — exactly round 1's two anomalous cells $(s_7,2)$, $(s_7,5)$.  Also $G(d)=0$ **exactly** when $7\mid d$ | **[verified, $d\le2500$]** §5.5 |
+| **P6** | **THE CLEAN FORM — but it is a per-row statement.**  With $c(d)$ the twisted CM trace coefficients of §2.8, $$\boxed{\ d\ \bigm|\ c(d)\ }\qquad\text{for every admissible }d,$$ **holds** for $s_7$ (all $690$ admissible $d\le2500$, $0$ failures) and for $s_{10}$ with $\lambda=2i$ (all $196$ non-degenerate admissible $d\le700$, $0$ failures, of which $106$ non-zero; independently $420$ values $d\le1500$), and is **refuted** for $s_{18}$, where the trace is not even rational off the squares.  Conjecture 4.1 is the case $d=m^2$ in the two rows where it holds.  The dividing line is that the CM discriminant is **fundamental** ($-3$, $-4$) and fails for the row whose discriminant has conductor ($-36=-4\cdot3^2$) | **[verified / refuted]** §5.6 |
 | **P3** | Equivalently, on the $p$-parts: $p^{2a}\mid c(p^{2a}d)$ for every prime $p$, $a\ge1$, admissible $d$ — **295 tests, $0$ failures**, $p\le29$, $a\le4$, $p^{2a}d\le2500$, including the $118$ cells with $p\mid d$ | **[verified]** §5.5 |
 | **P4** | **Uniqueness survives at level $28$.**  $\dim S_4(\Gamma_0(7))=1$, its eigenform has $a_7=-7$ hence Fricke eigenvalue $+1$, so $\dim S_4(\Gamma_0(7))^{W_7=-1}=0$ — and $\Phi|_4W_7=-\Phi$ lives exactly there.  This replaces $\dim S_4(\mathrm{SL}_2(\mathbf Z))=0$ in the level-one proof.  ($\dim M_4(\Gamma_0(7))=3$, so one also needs that $\Phi$ vanishes at both cusps, which it does) | **[proved]** §5.5 |
 | **P5** | **The Hecke eigenvalue is right on the nose.**  Fitting $c(p^2d)+p\,c(d)+p^3c(d/p^2)=\lambda\,c(d)$ over all admissible $d$ gives $\lambda\equiv p\pmod{p^2}$, **constant in $d$**, with a **trivial** middle character ($\chi_{-3}(p)^2=1$), for $p=2,3,5,11,13,17,19$.  In the $c$-normalisation the target exponent is $2a$ (not $3a$), for which $\lambda\equiv p\ (p^2)$ is exactly what is needed | **[verified, $p\le19$]** `FINDINGS_PZ.md` §4.5 |
@@ -76,10 +76,12 @@ with a trivial middle character (P5) — so the single genuinely missing ingredi
 integral basis of $M^!_{5/2}(\rho_L)$.  *Third*, the statement to aim at is cleaner than
 Conjecture 4.1: with $c(d)$ the twisted CM trace coefficients,
 $$d\mid c(d)\qquad\text{for every admissible }d$$
-(all $690$ admissible $d\le2500$, zero failures), of which Conjecture 4.1 is the case
-$d=m^2$; the quotient $G(d)=c(d)/d$ extends Cooper's kernel $\gamma$ from the squares to all
-discriminants, and its sharpness fingerprint picks out exactly round 1's two anomalous cells
-$(s_7,2)$ and $(s_7,5)$ (P6).
+— **but per row**.  It holds for $s_7$ (all $690$ admissible $d\le2500$) and for $s_{10}$
+with the polar constant $\lambda=2i$ (zero failures, $d\le1500$), and is **refuted** for
+$s_{18}$, where the trace is not even rational off the squares; the dividing line is that
+the CM discriminant be fundamental.  Conjecture 4.1 is the case $d=m^2$ in the two good
+rows, and $G(d)=c(d)/d$ extends Cooper's kernel $\gamma$ from the squares to all
+discriminants (P6, §5.6).
 
 ---
 
@@ -586,6 +588,54 @@ irrational multiple of $\sqrt d$, so the statement does not even parse there; it
 $\Gamma_0(N)$, $N>1$ phenomenon.  Whether it holds for $s_{10}$ and $s_{18}$ has not been
 tested and is the natural next check.
 
+### 5.6 $d\mid c(d)$: the two rows where it holds, and the one where it fails
+
+`75_dcd.gp` ($s_7$), `80_s10min.gp`, `81_s10zero.gp` ($s_{10}$), `FINDINGS_ROWS.md`
+ADDENDUM II ($s_{10}$, $s_{18}$; scripts `56_`–`58_`).
+
+**$s_7$ [verified].**  $d\mid c(d)$ for all $690$ admissible $d\le2500$, zero failures;
+$c(m^2)=\beta_{s_7}(m)$; $G(d)=c(d)/d$ extends $\gamma$; $G(d)=0$ exactly when $7\mid d$;
+the trace degenerates exactly when $49\mid d$.
+
+**$s_{10}$ [verified].**  Admissible $d$: $d\equiv0,1\pmod4$ **and** $d\equiv0,1,4\pmod5$.
+With the **polar** constant $\lambda=2i=-\nu^2/g'(u_0)$, $d\mid c(d)$ with zero failures —
+$196$ non-degenerate admissible $d\le700$ in our run (of which $106$ are non-zero, so the
+test is not vacuous), $420$ values $d\le1500$ in the agent's.  With $\lambda=i$ instead there
+are failures, the first at $d=4$: **the parity split of §2.4 is an artefact of calibrating on
+the squares, not of the arithmetic.**  What survives on the squares is
+$$c(m^2)=\beta_{s_{10}}(m)\ (m\text{ even}),\qquad c(m^2)=2\beta_{s_{10}}(m)\ (m\text{ odd})$$
+**[verified, all squares $\le700$]**, so one cannot have both $c(m^2)=\beta(m)$ and
+$d\mid c(d)$ with a single $\lambda$; the divisibility is the uniform statement.  *The master
+conjecture is still contained*: for $m$ odd, $m^2\mid2\beta(m)\iff m^2\mid\beta(m)$ since
+$m^2$ is odd.  Fingerprints: the trace degenerates exactly when $25\mid d$ (the analogue of
+$49\mid d$), and
+$$c_{s_{10}}(d)=0\iff 5\mid d\ \text{ or }\ d\equiv5\pmod 8$$
+**[verified, $d\le700$: every zero is of this form, and every non-degenerate $d$ of this form
+is a zero]** — the second family is ours and *corrects* the agent's "zeros are exactly
+$5\mid d$"; it survives recomputation with minimal-$A$ representatives.
+
+**$s_{18}$ [refuted].**  For $d\le120$ the trace $T(d)/\sqrt3$ falls into exactly three
+classes: $0$ on precisely the $40$ values $d\equiv2\ (3)$; a non-zero integer on precisely
+the $10$ perfect squares; and **not rational at all** on the remaining $70$ (e.g.
+$T(41)=1373.0625196715\ldots$, $T(5)=9.29516003089\ldots$; `lindep` finds no relation with
+$\{1,\sqrt3\}$ at $30$ digits with coefficients up to $10^{11}$, and several values are not
+even real).  So $c(d)$ does not exist off the squares and $d\mid c(d)$ is vacuous.  Two
+controls rule out machinery error: (a) at $d=5,7,13,41$ and at the squares $9,25$ every class
+of content coprime to $6$ has $\Gamma_0(18)$-Heegner fibre exactly $1$, so no classes are
+missing; (b) the alternative family $\mathrm{disc}=-4d$ on $\Gamma_0(18)$ with $\chi_{-4}$
+(which would put Cooper's squares at $d=9m^2$) is worse — the Cooper squares themselves give
+$T=0$ at $d=9,36,144$.  On the squares no single constant works either:
+$T(m^2)/\sqrt3=-4\beta_{s_{18}}(m)/2^{[2\mid m]+[3\mid m]}$, so the $2$-adic split in
+$s_{18}$ is intrinsic, unlike $s_{10}$'s.
+
+**A methodological warning.**  These evaluations are worthless unless the Heegner
+representative has *minimal* $A$: `heegrep` of `heeg.gp` returns the first $(p,r)$ it finds,
+which for $s_{10}$ at $d=21$ gives $A=15530$, $\operatorname{Im}\alpha\approx3\cdot10^{-4}$.
+`heegminA` of `heegmin.gp` (minimise $A$ over the search box) and `heegmin2` of
+`59_final3.gp` fix this; with minimal $A$ the smallest $\operatorname{Im}\alpha$ over all
+$d\le700$ is $0.0076$.  All conclusions above were re-derived with minimal $A$ and are
+unchanged.
+
 ---
 
 ## 6. The mod-$p$ structure of $\gamma$
@@ -765,9 +815,10 @@ space of half-integral weight forms, and the level-one case is already a theorem
    are $f_{4a}=\tfrac1{64}q^{-3}+q-506q^4+\cdots$ and $f_{4b}=-\tfrac1{108}q^{-4}+q+\cdots$
    (the $1/64$ and $1/108$ sit on the denominator line of the two-line display and read as
    part of the linear combination).
-9. Conjecture 4.1 should be superseded by P6: **$d\mid c(d)$** for the twisted CM trace
-   coefficients $c(d)$ of §2.8, of which it is the case $d=m^2$; the quotient $G(d)=c(d)/d$
-   extends $\gamma$ to all discriminants.
+9. Conjecture 4.1 should be superseded, **for $s_7$ and $s_{10}$ only**, by P6:
+   $d\mid c(d)$ for the twisted CM trace coefficients $c(d)$ of §2.8, of which it is the case
+   $d=m^2$.  It must be stated per row: it is refuted for $s_{18}$, whose CM discriminant
+   $-36$ is not fundamental.
 
 ---
 

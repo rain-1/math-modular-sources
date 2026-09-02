@@ -488,3 +488,118 @@ Atkin–Lehner group and by the non-fundamental conductor), but I have **not** d
 `59_fibre18.gp/.log`, `59_final.gp/.log`, `59_final2.gp/.log` (s10 to 130 digits),
 `59_final3.gp/.log` (corrected rep search), `59_s18diag.gp/.log` (defect localisation),
 `59_s18fix.gp/.log` (**the corrected s18 identity**).
+
+---
+
+# ADDENDUM II: does $d\mid c(d)$ hold over ALL discriminants, in $s_{10}$ and $s_{18}$?
+
+*Answering the parallel session's follow-up: it found, for $s_7$, that the twisted CM trace
+$c(d)=\sqrt{-3}\sum_Q\chi_{-3}(Q)\omega_Q^{-1}\widehat f(\alpha_Q)$ over the whole family
+$\mathrm{disc}=-3d$ satisfies $d\mid c(d)$, with $c(m^2)=\beta_{s_7}(m)$ — a strict
+generalisation of Conjecture 4.1.  Scripts `56_cdlib.gp`, `56_cd_s7chk`, `57_cd_s10*`,
+`58_ana_s10*`, `58_s18*`.*
+
+**Answer in one line: YES for $s_{10}$ (420 tests, zero failures, with the single polar
+constant $\lambda=2i$); NO for $s_{18}$ — there the trace is not even rational off the squares.**
+
+## E.0 Pipeline validation
+
+Using `heegmin2` (corrected completion search, minimal $A$) I reproduced the parallel session's
+$s_7$ table **exactly, signs included, at all 16 test values** — $c(8)=16$, $c(29)=145$,
+$c(37)=148$, $c(53)=795$, $c(65)=650$, $c(109)=9919$, $c(113)=9266$, $c(1)=1$, $c(4)=-8$,
+$c(9)=9$, $c(16)=32$, $c(25)=-125$, $c(21)=0$, $c(57)=798$, $c(85)=2975$, $c(93)=2325$
+(`56_cd_s7chk.log`).
+
+## E.1 Row $s_{10}$ — the statement holds, and it fixes the normalisation
+
+**Admissible $d$:** $\mathrm{disc}=-4d$ with $D_1=d$ a discriminant and $\beta^2\equiv-4d\ (40)$
+solvable, i.e.
+$$d\equiv0,1\ (\mathrm{mod}\ 4)\qquad\text{and}\qquad d\equiv0,1,4\ (\mathrm{mod}\ 5).$$
+450 such $d\le1500$.  Of these, 30 are degenerate (the trace is not purely imaginary) and they
+are **exactly the $d$ with $25\mid d$** — the analogue of $s_7$'s $49\mid d$.  420 usable.
+
+**A single constant works, and it is the polar one.**  With $A(d):=T(d)/i$ and
+$$c(d):=2i\,T(d)=-2A(d)\qquad(\lambda=2i=-\nu^2/g'(u_0)),$$
+$$\boxed{\,d\mid c(d)\ \text{ for all 420 admissible } d\le1500,\ \textbf{zero failures}.}$$
+With $\lambda=i$ instead there are **20 failures**, and they are exactly the even-$m$ squares
+(first: $d=4$, $c=-2$).  So the parity split of Addendum §A is an artefact of the *calibration*,
+not of the arithmetic: the constant that makes the divisibility work is the one predicted by the
+polar data, uniformly in $d$.
+
+**What survives of the split.**  On squares, $c(m^2)=\beta_{s_{10}}(m)$ for $m$ **even** and
+$2\beta_{s_{10}}(m)$ for $m$ **odd** (verified at all 31 squares $\le1500$).  So one cannot have
+both $c(m^2)=\beta(m)$ and $d\mid c(d)$ with a single $\lambda$ in this row; the divisibility
+statement is the one that is uniform.
+
+**The kernel $G(d)=c(d)/d$** (extending $\gamma_{s_{10}}$ from the squares: $G(m^2)=\gamma(m)$
+for $m$ even, $2\gamma(m)$ for $m$ odd):
+
+| $d$ | 1 | 4 | 5 | 9 | 16 | 20 | 21 | 24 | 29 | 36 | 40 | 41 | 44 | 45 | 49 | 56 | 60 | 61 | 64 | 65 | 69 | 76 | 80 | 81 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| $G$ | 2 | $-1$ | 0 | $-2$ | 2 | 0 | 0 | 2 | 0 | $-3$ | 0 | 8 | 2 | 0 | 6 | 6 | 0 | 0 | 4 | 0 | 0 | 10 | 0 | $-22$ |
+
+**Sharpness.**  $\min_{p\mid d,\ G(d)\ne0}v_p(G(d))=\mathbf 0$ for **every** prime $p\le59$
+(150 tests at $p=2$, 75 at $p=3$, …), with the single exception $p=5$, where there are **no**
+tests at all because $G(d)=0$ for every $d$ with $5\mid d$.  This is exactly the fingerprint
+predicted by round 1: $s_{10}$ has **no** anomalous $p^2\to p^3$ cell (its round-1 table had
+$B_p=0$ for all $p$), and $p=5$ is its *exact* cell $\Xi|U_5=\Xi$, which shows up here as
+$G\equiv0$ on $5\mid d$ rather than as a raised valuation.  The parallel session's guess that
+$s_{10}$ would show "1 at $p=5$" is therefore **not** what happens — the exact cell shows as a
+vanishing, which is the stronger statement.
+
+**$p$-part form.**  $p^{2a}\mid c(p^{2a}d)$: **178 tests, no failures**, $p\le37$.
+
+## E.2 Row $s_{18}$ — the extension does not exist  [refuted, $d\le120$]
+
+Take the family that works on the squares: $\mathrm{disc}=-36d$, admissible forms
+$3\nmid\mathrm{cont}$, $\chi^*=\chi_{-3}\cdot(-4|\mathrm{cont})$, and the square-rule
+$\beta$ ($\beta=18$ for $d$ odd, $0$ for $d$ even, which is $18m\bmod36$ at $d=m^2$).  Then for
+$d\le120$ (`58_s18rule.log`), $T(d)/\sqrt3$ is:
+
+| class | count | which $d$ |
+|---|---|---|
+| **exactly 0** | 40 | precisely the $d\equiv2\ (\mathrm{mod}\ 3)$ — all of them |
+| **a non-zero integer** | 10 | precisely the perfect squares $1,4,9,\dots,100$ — all of them |
+| **not rational at all** | 70 | precisely the non-squares with $d\equiv0,1\ (\mathrm{mod}\ 3)$ |
+
+So $c(d)$ is *defined* only on $d\equiv2\ (3)$ (where it is 0) and on the squares.  On the other
+70 values of $d\le120$ the trace is a genuine irrational (e.g. $T(41)=1373.0625196715\ldots$ at
+$\beta=6$, $T(5)=9.2951600308\ldots$ at $\beta=30$); `lindep` finds no relation with $1,\sqrt3$
+at 30 digits with coefficients up to $10^{11}$, and some values are not even real.
+**$d\mid c(d)$ is therefore vacuous for $s_{18}$**, and the parallel session's statement does
+**not** extend to all three rows.
+
+Two controls rule out the obvious explanations:
+* **Not a missing-class artefact.**  I ran the fibre test at $d=5,7,13,41$ (and the squares
+  $9,25$): every class with $\mathrm{cont}$ coprime to 6 has $\Gamma_0(18)$-Heegner fibre exactly
+  **1** (`58_s18fib2.log`), so the sum is over the complete set.  (The content-$p$ classes at
+  $d=25$ show spurious multiplicity — those are the polar-CM numerical blow-ups of Addendum §B.2.)
+* **Not the wrong family.**  Since $-36$ is not fundamental I also ran the family
+  $\mathrm{disc}=-4d$ on $\Gamma_0(18)$ with $\chi_{-4}$ (so that Cooper's squares sit at
+  $d=9m^2$), $d\le200$: it is worse — the Cooper squares themselves give $T=0$
+  ($d=9,36,144$) (`58_s18m4.log`).
+
+Finally, on the squares no single constant relates $T$ to $\beta$ either:
+$T(m^2)/\sqrt3=-4\,\beta_{s_{18}}(m)\big/2^{[2\mid m]+[3\mid m]}$ for $m=1,\dots,10$
+($-4,8,-36,128,-700,504,-6076,8960,-25596,73400$ against
+$\beta=1,-4,18,-64,175,-504,1519,-4480,12798,-36700$).  The $2$-adic split of Addendum §C is
+intrinsic to $s_{18}$, not a calibration artefact — unlike in $s_{10}$.
+
+## E.3 Verdict for the ledger
+
+> $d\mid c(d)$ over the full twisted-CM-trace family is **proved-by-computation in $s_7$ (the
+> parallel session, 690 values $d\le2500$) and in $s_{10}$ (420 values $d\le1500$, with the
+> polar constant $\lambda=2i$), and is REFUTED as a general statement by $s_{18}$**, where the
+> trace is irrational for 70 of the 120 smallest $d$ and the sequence $c(d)$ does not exist.
+> So the generalisation of Conjecture 4.1 is real but is **not** uniform across Cooper's rows:
+> it holds exactly where the CM discriminant is **fundamental** ($-3$ and $-4$) and fails for the
+> one row whose CM discriminant has conductor ($-36=-4\cdot3^2$).
+
+## E.4 Addendum II file list
+
+`56_cdlib.gp` (shared core: `heegmin2`, admissible $\beta$, the trace), `56_cd_s7chk.gp/.log`
+(validation against the $s_7$ table), `57_cd_s10.gp/.log/.txt`, `57_cd_s10big.gp/.log`,
+`57_cd_s10_big.txt`, `58_ana_s10.gp/.log`, `58_ana_s10big.gp/.log`, `57_cd_s18.gp/.log/.txt`,
+`58_s18beta.gp/.log` (all $\beta$ classes), `58_s18scan.gp/.log`, `58_s18id.gp/.log` (field
+identification), `58_s18fib2.gp/.log` (fibre control), `58_s18m4.gp/.log` (the $-4d$ family),
+`58_s18rule.gp/.log` (**the classification**).
