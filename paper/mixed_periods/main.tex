@@ -1,0 +1,276 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}
+\newcommand{\PP}{\mathbb P}\newcommand{\D}{\mathbb D}\newcommand{\T}{\mathbb T}\newcommand{\Cl}{\mathrm{Cl}_2}\newcommand{\Li}{\mathrm{Li}_2}
+\newcommand{\lcm}[1]{[1..#1]}
+\title[Mixed dilogarithm periods on $1/\sqrt{1\mp4mx}$]{Mixed dilogarithm periods on the hosts $1/\sqrt{1\mp4mx}$\\ from the Calegari--Dimitrov--Tang holonomy bound}
+\author{Claude (Fable), with River}
+\date{1 September 2026 --- draft}
+\begin{document}
+\begin{abstract}
+Calegari, Dimitrov and Tang proved that a power series $f\in\Q[[x]]$ whose $n$-th coefficient has denominator dividing $[1,\dots,n][1,\dots,n/2]$, which is holomorphic on $\C\setminus[1,\infty)$ and continues meromorphically along all paths in $\PP^1\setminus\{0,\delta,1,\infty\}$, has no monodromy at the fourth puncture $\delta$; they applied it with $\delta=\tfrac14$ to prove that $1$, $\pi/\sqrt3$ and $3L(2,\chi_{-3})-\frac{\pi}{\sqrt3}\log3$ are linearly independent over $\Q$. We observe that $\delta$ is arbitrary in their theorem, and that an elementary $p$-adic lemma (``half-integration'': $\int h\,k$ has the required denominator type whenever $h\in\Z[[t]]$ and $k$ has denominators $[1,\dots,j]$) supplies the needed functions on every host $H_A=1/\sqrt{1-4mx}$, $m\in\Z\setminus\{0\}$. This gives, for every $m\ge1$, the $\Q$-linear independence of $1$, $\theta_m/\sqrt{4m-1}$ and $\bigl(\theta_m\log\frac{4m-1}m-2\Cl(\pi-\theta_m)\bigr)/\sqrt{4m-1}$, where $\theta_m=2\arctan(4m-1)^{-1/2}$ and $\Cl$ is Clausen's function, i.e.\ the Bloch--Wigner dilogarithm at a point of $\Q(\sqrt{-(4m-1)})$; and, for $4m+1=c^2$, the independence of $1$, $\log\frac{c+1}{c-1}$ and $2\Li\bigl(\frac{c-1}{2c}\bigr)-\frac{\pi^2}6+(\text{products of logarithms})$, in particular $2\Li(\tfrac13)-\frac{\pi^2}6+\log^23-\frac12\log^22\notin\Q+\Q\log2$. The same argument runs on the Kummer hosts $(1-Nx)^{-1/k}$, $k\,\mathrm{rad}(k)\mid N$, with scalar monodromy $\zeta_k$, and yields for each sector $a<k$ the $\Q$-linear independence of $1$, $k\int_0^1v^{a-1}dv/(D+v^k)$ and $k\int_0^1v^{a-1}\log\frac{D+v^k}{N}\,dv/(D+v^k)$, $D=N-1$: mixed dilogarithm periods over $\Q(\zeta_{2k},D^{1/k})$. We also record that the function $H_C$ of CDT's Lemma on the $\delta=\frac14$ host has denominator type $[1,\dots,n]^2$ rather than the stated $[1,\dots,n][1,\dots,n/2]$, so that the $\pi^2$ clause of their mixed theorem is not covered by their argument.
+\end{abstract}
+\maketitle
+
+\section{Statement}
+Write $\lcm n=\operatorname{lcm}(1,\dots,n)$ and $\lcm{n/2}=\lcm{\lfloor n/2\rfloor}$. A series $\sum a_nx^n\in\Q[[x]]$ \emph{has type} $T(n)$ if $T(n)a_n\in\Z$ for all $n$. $\Cl(\phi)=\sum_{n\ge1}\sin(n\phi)/n^2$ is Clausen's function and $D(z)=\operatorname{Im}\Li(z)+\arg(1-z)\log|z|$ the Bloch--Wigner dilogarithm, so that $\Cl(\phi)=D(e^{i\phi})$.
+
+The input is the following theorem of Calegari, Dimitrov and Tang \cite[Theorem \texttt{noextrassmall}, part $(\ast)$]{CDT}, proved there from their basic holonomy bound with the bivalent map $\varphi(z)=8(z+z^3)/(1+z)^4$, $\varphi'(0)=8$, Bost--Charles integral $\log8+4G/\pi$, and the five functions $1,\log(1-x),\log^2(1-x),f,f(x/(x-1))$ of denominator rate $\tau=69/50$, for which the bound reads $5\le4.640\ldots$.
+
+\begin{theorem}[CDT]\label{cdt}
+Let $\delta\in(-\infty,1)$. Let $f\in\Q[[x]]$ have type $\lcm n\lcm{n/2}$, be holomorphic in $\C\setminus[1,\infty)$, and continue as a meromorphic function along all paths in $\PP^1\setminus\{0,\delta,1,\infty\}$. Then $f$ continues meromorphically along all paths in $\PP^1\setminus\{0,1,\infty\}$.
+\end{theorem}
+
+Nothing in the proof depends on the value of $\delta$ (only $\delta\ne2$ is used, so that $\delta$ and $\delta/(\delta-1)$ are distinct). For the reader's convenience, and because we shall need two small extensions, here is that proof reduced to its inputs. \emph{Input 1} (CDT Theorem \texttt{basic main}): for an $m\times r$ array $\mathbf b$ of denominator rates with row sums $\sigma_i$ (columns of the form $0=\dots=0<b_j=\dots=b_j$), $\tau(\mathbf b)=m^{-2}\sum_i(2i-1)\sigma_i$, and a holomorphic $\varphi\colon(\D,0)\to(\C,0)$ with $|\varphi'(0)|>e^{\sigma_m}$, any $\Q(x)$-linearly independent $f_1,\dots,f_m\in\Q[[x]]$ of types $\prod_j\lcm{b_{i,j}n}$ with meromorphic pullbacks $f_i\circ\varphi$ on $\D$ satisfy $m\le\iint_{\T^2}\log|\varphi(z)-\varphi(w)|\,d\mu\,d\mu\big/(\log|\varphi'(0)|-\tau(\mathbf b))$. \emph{Input 2}: $\varphi(z)=8(z+z^3)/(1+z)^4$ maps $\D$ onto $\C\setminus\{1\}$, is a bijection $(-1,1)\to(-\infty,1)$ and a conformal isomorphism of each open half-disc onto $\C\setminus(-\infty,1]$, has $\varphi'\ne0$ on $\D$, $\varphi'(0)=8$, and Bost--Charles integral $\log8+4G/\pi$ (CDT Lemma \texttt{bivalent BC integral}, via Smyth's $m(1+x+y-xy)=2G/\pi$). \emph{Input 3} (CDT Proposition \texttt{overconvergence}): if $g$ is holomorphic on $\varphi(\Omega)$ for a contractible $\Omega\ni0$ on which $\varphi$ is univalent with $\varphi^{-1}(\Sigma^0)\subset\Omega$, and $\varphi$ omits $\Sigma^1$, then $g\circ\varphi$ converges on $\D$; for the bivalent map and $\Sigma^0\subset(-\infty,1)$ a thin neighbourhood of the diameter serves as $\Omega$, since real $w<1$ has a single preimage in $\D$. \emph{Proof of Theorem \ref{cdt}}: if $f$ had monodromy at $\delta$ on some sheet, then with $\iota(x)=x/(x-1)$ (which fixes $0$, swaps $1\leftrightarrow\infty$, preserves $(-\infty,1)$ and the type $\lcm n\lcm{n/2}$) the five functions $1,\log(1-x),\log^2(1-x),f,f\circ\iota$ would be $\C(x)$-independent, of types $1,\lcm n,\lcm n\lcm{n/2},\lcm n\lcm{n/2},\lcm n\lcm{n/2}$, so $\tau=(0+3+\frac32(5+7+9))/25=69/50$, with holomorphic pullbacks by Input 3 ($\Sigma^1=\{1,\infty\}$, $\Sigma^0=\{0,\delta,\iota\delta\}$); Input 1 gives $5\le3.2452/(\log8-1.38)=4.64$. Two extensions come for free: (a) $\delta$ may be replaced by any finite $S\subset(-\infty,1)$, $f$ being required to be holomorphic on $\C\setminus[1,\infty)$ and meromorphically continuable on $\PP^1\setminus(\{0,1,\infty\}\cup S)$ (take $\Sigma^0=\{0\}\cup S\cup\iota S$); (b) the contradiction persists for $f$ of any type of rate $\sigma\le1.579$, e.g.\ $\lcm n\lcm{n/2}\lcm{n/13}$.
+
+CDT apply the theorem once, with $\delta=\frac14$. We apply it to every host
+\begin{equation}\label{host}
+H_A(x)=\frac1{\sqrt{1-4mx}}=\sum_{n\ge0}\binom{2n}nm^nx^n\in\Z[[x]],\qquad m\in\Z\setminus\{0\},\qquad\delta=\frac1{4m},
+\end{equation}
+with the puncture at $1$ introduced by the kernels $\frac1{1-t}$ and $\frac{\log(1-t)}{1-t}$:
+\[
+H_B=H_A(x)\int_0^x\frac{H_A(t)\,dt}{1-t},\qquad H_D=H_A(x)\int_0^x\frac{H_A(t)\log(1-t)}{1-t}\,dt .
+\]
+
+\begin{theorem}\label{A}
+Let $m\ge1$, $D'=4m-1$, $\theta_m=2\arctan(1/\sqrt{D'})$, so that $\pi-\theta_m=2\arctan\sqrt{4m-1}$. The three numbers
+\[
+1,\qquad\frac{\theta_m}{\sqrt{D'}},\qquad\frac{\theta_m\log\frac{4m-1}m-2\,\Cl(\pi-\theta_m)}{\sqrt{D'}}
+\]
+are linearly independent over $\Q$. Equivalently, $2\Cl(2\arctan\sqrt{4m-1})-\theta_m\log\frac{4m-1}m\notin\Q\sqrt{4m-1}+\Q\theta_m$.
+\end{theorem}
+
+For $m=1$ this is the three-element part of CDT's Theorem \texttt{mixed}: $\theta_1=\pi/3$ and $2\Cl(2\pi/3)=\sqrt3\,L(2,\chi_{-3})$. For $m\ge2$ the angle $\theta_m$ is not a rational multiple of $\pi$: $e^{i\theta_m}=w_m:=\frac{(\sqrt{D'}+i)^2}{4m}=\frac{2m-1+\sqrt{-D'}}{2m}\in\Q(\sqrt{-(4m-1)})$, and $\Cl(\pi-\theta_m)=D(-\bar w_m)$ is the volume of the ideal hyperbolic tetrahedron of shape $-\bar w_m$. The discriminants $-(4m-1)$ run through $-3,-7,-11,-15,-19,\dots$; for $m=2,3,5,11,17,41$ the field is a Heegner field. Only $m=1$ produces an $L$-value: for $m\ge2$ one checks $w_m\wedge(1-w_m)\ne0$ in $\Lambda^2\Q(\sqrt{-D'})^\times\otimes\Q$ (for $m=2$: $w_2=-\bar\pi/\pi$ and $1-w_2=1/\pi$ with $\pi=\frac{1+\sqrt{-7}}2$, so $w_2\wedge(1-w_2)=-\bar\pi\wedge\pi\ne0$), so $w_m$ is not in the Bloch group and its dilogarithm is not expected to be a rational multiple of $\sqrt{D'}L(2,\chi_{-D'})$; numerically it is not.
+
+\begin{theorem}\label{B}
+Let $m\ge1$, $c=\sqrt{4m+1}$, $\varepsilon=\frac{c+1}{c-1}$, and
+\[
+R_m=2\Li\Bigl(\frac{c-1}{2c}\Bigr)-\frac{\pi^2}6+\log(2c)\log\varepsilon+\log\frac{c+1}{2c}\log\frac{c-1}{2c}-\frac12\log^2(c+1)+\frac12\log^2(c-1).
+\]
+Then $1$, $\frac1c\log\varepsilon$, $\frac1cR_m$ are linearly independent over $\Q$. In particular, for $4m+1=c^2$ a square:
+\begin{align*}
+c=3:&\quad 2\Li(\tfrac13)-\tfrac{\pi^2}6+\log^23-\tfrac12\log^22\ \notin\ \Q+\Q\log2,\\
+c=5:&\quad 2\Li(\tfrac25)-\tfrac{\pi^2}6+\log10\log\tfrac32+\log\tfrac35\log\tfrac25-\tfrac12\log^26+\tfrac12\log^24\ \notin\ \Q+\Q\log\tfrac32,
+\end{align*}
+and similarly with $\Li(\frac37),\Li(\frac49),\dots$ for $c=7,9,\dots$.
+\end{theorem}
+
+The irrationality of $\Li(1/n)$ is known for all integers $n$ outside $\{-4,-3,-2,2,3,4,5\}$ (Hata, Rhin--Viola) and open inside; CDT \cite[\S\ ``Integral holonomic modules'']{CDT} single out these values. Theorem \ref{B} at $c=3$ is, to our knowledge, the first statement of this kind about $\Li(1/3)$.
+
+\section{Denominators: the half-integration lemma}
+
+\begin{lemma}\label{half}
+Let $h\in\Z[[t]]$ and $k=\sum_{j\ge0}k_jt^j\in\Q[[t]]$ with $\lcm j\,k_j\in\Z$ for all $j$ (where $\lcm0=1$). Then $J(x)=\int_0^xh(t)k(t)\,dt$ has type $\lcm n\lcm{n/2}$, and so does $hJ$.
+\end{lemma}
+
+\begin{proof}
+$[x^n]J=\frac1n\sum_{j=0}^{n-1}h_{n-1-j}k_j$. Fix a prime $p$; put $e=\lfloor\log_pn\rfloor$, $e'=\lfloor\log_p(n/2)\rfloor$, $f=v_p(n)$, $g=\lfloor\log_p(n-1)\rfloor$. As $j\le n-1$, $v_p(k_j)\ge-g$, so $v_p([x^n]J)\ge-(f+g)$, and we must show $f+g\le e+e'$; note $e'\ge e-1$ always. If $n=p^e$ then $f=e$, $g=e-1=e'$, and equality holds. If $n\ne p^e$ then $g=e$; if moreover $f=e$ then $p^e\mid n$, $n\ne p^e$ force $n\ge2p^e$, so $e'=e$ and $f+g=2e=e+e'$; if $f\le e-1$ then $f+g\le2e-1\le e+e'$. Multiplication by $h\in\Z[[t]]$ preserves the type because $\lcm{n'}\lcm{n'/2}$ divides $\lcm n\lcm{n/2}$ for $n'\le n$.
+\end{proof}
+
+\begin{corollary}\label{types}
+On every host \eqref{host}, $H_A$ has type $1$, $H_B$ has type $\lcm n$, and $H_D$ has type $\lcm n\lcm{n/2}$; more generally $H[k]:=H_A\int_0^xH_Ak\,dt$ has type $\lcm n\lcm{n/2}$ for $k=r(t)\log(1-t)$ and type $\lcm n$ for $k=r(t)$, whenever $r\in\Z[t,\frac1{1-t}]$.
+\end{corollary}
+
+\begin{proof}
+$\frac{\log(1-t)}{1-t}=-\sum_{j\ge1}\mathcal H_jt^j$ with harmonic numbers $\mathcal H_j$, and $\lcm j\mathcal H_j\in\Z$; multiplying $k$ by $r\in\Z[t,\frac1{1-t}]\subset\Z[[t]]$ preserves the hypothesis of Lemma \ref{half}. For $k=r$ the coefficient of $x^n$ in $\int_0^xH_Ar$ is $\frac1n$ times an integer.
+\end{proof}
+
+The lemma is sharp in the following sense. For $k=\frac{\log(1-t)}t=-\sum_{j\ge0}\frac{t^j}{j+1}$ the hypothesis fails exactly at $j=p-1$, where the $\frac1p$ of $k_{p-1}$ meets the $\frac1p$ of the outer $\frac1n$ at $n=p$. Accordingly CDT's function $H_C=H_A\int_0^xH_A\log(1-t)/t\,dt$ on the $m=1$ host has $H_C=-x-\frac{13}4x^2-\frac{197}{18}x^3-\cdots$, its excess over $\lcm n\lcm{n/2}$ is unbounded (it is $2\cdot7$ at $n=8$ and $2\cdot11\cdot13$ at $n=16$), and its true type is $\lcm n^2$; see Remark \ref{erratum}.
+
+\section{The fold and the sheets}
+Fix $m\ge1$ (the real family $m<0$ is identical, with $\sqrt{1-4mx}=\sqrt{1+4|m|x}$; we spell out the periods in \S4). On a neighbourhood of $[0,\delta]$ put $u=\sqrt{1-4mx}$, so $x=\frac{1-u^2}{4m}$, $H_A=\frac1u$, $1-x=\frac{D'+u^2}{4m}$.
+
+\begin{lemma}[fold decomposition]\label{fold}
+Let $k\in\Q[[t]]$ extend holomorphically to $\C\setminus\{1\}$ and put $\kappa(v)=k\bigl(\frac{1-v^2}{4m}\bigr)$, an even function holomorphic on $|v|<\sqrt{D'}$. Then
+\[
+H[k](x)=\frac1{2mu}\int_u^1\kappa(v)\,dv=c[k]\,H_A(x)+E_k(x),\qquad c[k]=\frac1{2m}\int_0^1\kappa(v)\,dv=\int_0^\delta H_A(t)k(t)\,dt,
+\]
+where $E_k=-\frac1{2m}\cdot\frac1u\int_0^u\kappa$ is an even holomorphic function of $u$ on $|u|<\sqrt{D'}$, hence a holomorphic function of $x$ on the disc $|x-\delta|<D'/(4m)=1-\delta$, which contains $0$ and has $1$ on its boundary.
+\end{lemma}
+
+\begin{proof}
+Substituting $t=\frac{1-v^2}{4m}$ in $\int_0^xH_Ak\,dt$ gives $H_A(t)\,dt=-\frac{dv}{2m}$ and $v\colon1\to u$. Since $\kappa$ is even, $\int_0^u\kappa$ is odd in $u$.
+\end{proof}
+
+Hence the local monodromy $T_\delta$ at the fold satisfies $T_\delta H_A=-H_A$ and $T_\delta H[k]=H[k]-2c[k]H_A$.
+
+\begin{corollary}\label{cond}
+If $a_0+\sum_ia_ic[k_i]=0$ with $a_i\in\Q$ then $f=a_0H_A+\sum_ia_iH[k_i]=\sum_ia_iE_{k_i}$ is holomorphic on $|x-\delta|<1-\delta$, hence on the simply connected slit plane $\C\setminus[1,\infty)$; it continues holomorphically along all paths in $\PP^1\setminus\{0,\delta,1,\infty\}$; and after clearing the denominators of the $a_i$ it has type $\lcm n\lcm{n/2}$. So Theorem \ref{cdt} applies to $f$.
+\end{corollary}
+
+Let $T_1$ denote continuation along a loop based near $0$ encircling $1$ once and not $\delta$, with orientation $\epsilon=\pm1$. The loop does not change the branch of $H_A$, and $H_A(1)^2=1/(1-4m)$, so $H_A(1)\ne0$.
+
+\begin{lemma}\label{sheets}
+$T_1H_A=H_A$; $T_1H_B=H_B+r_BH_A$ with $r_B=-2\pi i\epsilon H_A(1)\ne0$; and $T_1H_D=H_D+2\pi i\epsilon H_B+c_1H_A$ for a constant $c_1$.
+\end{lemma}
+
+\begin{proof}
+Write $I_B=\int_0^xH_A/(1-t)$ and $I_D=\int_0^xH_A\log(1-t)/(1-t)$. Near $t=1$, $H_A(t)=H_A(1)+(t-1)\tilde H(t)$ with $\tilde H$ analytic, so $I_B=-H_A(1)\log(1-x)+(\text{analytic at }1)$ and $I_D=-\frac12H_A(1)\log^2(1-x)+B(x)\log(1-x)+A(x)$ with $A,B$ analytic at $1$. Continuation replaces $\log(1-x)$ by $\log(1-x)+2\pi i\epsilon$, giving $T_1I_B=I_B+r_B$ and $T_1I_D=I_D-2\pi i\epsilon H_A(1)\log(1-x)+(\text{analytic})=I_D+2\pi i\epsilon I_B+(\text{analytic})$. Since $\{1,I_B,I_D\}$ is a basis of solutions of the third-order operator annihilating $I_D$ (its homogeneous part annihilates $H_A/(1-t)$ and $H_A\log(1-t)/(1-t)$), and monodromy preserves this solution space with constant coefficients, the analytic remainder is a constant. Multiply by $H_A$.
+\end{proof}
+
+\begin{proposition}\label{twosheets}
+Let $f=aH_A+bH_B+dH_D$ with $a,b,d\in\Q$ and $a+bc_B+dc_D=0$, where $c_B=c[\frac1{1-t}]$, $c_D=c[\frac{\log(1-t)}{1-t}]$. Then for every $k\ge1$
+\[
+(T_\delta-1)T_1^kf=-2H_A\Bigl[k\bigl(br_B+dc_1+2\pi i\epsilon\,dc_B\bigr)+\pi i\epsilon\,d\,r_B\,k(k-1)\Bigr].
+\]
+If $(a,b,d)\ne0$, this is nonzero for $k=1$ or $k=2$.
+\end{proposition}
+
+\begin{proof}
+Iterating Lemma \ref{sheets}, $T_1^kH_B=H_B+kr_BH_A$ and $T_1^kH_D=H_D+2\pi i\epsilon kH_B+\bigl(kc_1+2\pi i\epsilon r_B\binom k2\bigr)H_A$; apply $T_\delta-1$, which kills $f$, sends $H_A\mapsto-2H_A$ and $H_B\mapsto-2c_BH_A$. If the bracket vanishes for $k=1,2$ then its $k(k-1)$-coefficient $\pi i\epsilon dr_B$ vanishes, so $d=0$ ($r_B\ne0$), then $br_B=0$ so $b=0$, then $a=0$.
+\end{proof}
+
+\begin{theorem}\label{main}
+On every host \eqref{host} the numbers $1$, $c_B$, $c_D$ are linearly independent over $\Q$.
+\end{theorem}
+
+\begin{proof}
+A relation $a+bc_B+dc_D=0$ with $(a,b,d)\in\Q^3\setminus0$ gives, by Corollary \ref{cond}, a function $f$ to which Theorem \ref{cdt} applies; so $f$ continues meromorphically along every path in $\PP^1\setminus\{0,1,\infty\}$, in particular along $k$ loops around $1$ followed by a loop around $\delta$, which must return to the same germ. Proposition \ref{twosheets} produces instead a nonzero multiple of $H_A$, which has a genuine branch point at $\delta$.
+\end{proof}
+
+\section{The periods}
+\subsection{Imaginary family, $m\ge1$ (Theorem \ref{A})}
+With $a=\sqrt{D'}$ and $\phi=\arctan(1/a)=\theta_m/2$, Lemma \ref{fold} gives
+\[
+c_B=\frac1{2m}\int_0^1\frac{4m\,dv}{D'+v^2}=\frac{\theta_m}a,\qquad
+c_D=2\int_0^1\frac{\log\frac{D'+v^2}{4m}}{D'+v^2}\,dv=\frac2a\Bigl[\phi\log\frac{D'}{4m}+\int_0^\phi\log(1+\tan^2\psi)\,d\psi\Bigr].
+\]
+Since $\int_0^\phi\log(2\cos\psi)\,d\psi=\frac12\Cl(\pi-2\phi)$, the last integral equals $2\phi\log2-\Cl(\pi-2\phi)$, and
+\[
+c_D=\frac{\theta_m\log\frac{D'}m-2\Cl(\pi-\theta_m)}{\sqrt{D'}}.
+\]
+Theorem \ref{A} is Theorem \ref{main} with these values. (Both closed forms were checked to $50$ digits for $m=1,2,3,5,11$.)
+
+\subsection{Real family, $m\le-1$ (Theorem \ref{B})}
+Write $m=-m'$ with $m'\ge1$, $\delta=-\frac1{4m'}<0$, $u=\sqrt{1+4m'x}$, $1-x=\frac{c^2-u^2}{4m'}$ with $c^2=4m'+1$. Lemma \ref{fold} and Proposition \ref{twosheets} hold verbatim (now $H_A(1)=1/c$ and $r_B=-2\pi i\epsilon/c\ne0$), and
+\[
+c_B=2\int_0^1\frac{dv}{c^2-v^2}=\frac1c\log\frac{c+1}{c-1},\qquad
+c_D=2\int_0^1\frac{\log\frac{c^2-v^2}{4m'}}{c^2-v^2}\,dv=\frac{R_{m'}}c ,
+\]
+using $\frac1{c^2-v^2}=\frac1{2c}\bigl(\frac1{c-v}+\frac1{c+v}\bigr)$, $\int\frac{\log(2c-w)}w\,dw=\log(2c)\log w-\Li\bigl(\frac w{2c}\bigr)$ and the reflection formula $\Li(z)+\Li(1-z)=\frac{\pi^2}6-\log z\log(1-z)$ to merge $\Li(\frac{c+1}{2c})$ into $\Li(\frac{c-1}{2c})$. (Checked to $50$ digits for $m'=1,2,3,6,12$.) Theorem \ref{B} follows. For $c=3$: $\log\varepsilon=\log2$ and $R=2\Li(\frac13)-\frac{\pi^2}6+\log6\log2+\log\frac23\log\frac13-\frac12\log^24+\frac12\log^22=2\Li(\frac13)-\frac{\pi^2}6-\frac12\log^22+\log^23$.
+
+\subsection{The period space of the whole $\tau=\frac32$ layer}
+Let $k=r(t)\log(1-t)$ or $k=r(t)$ with $r\in\Q[t,\frac1{1-t}]$ (Corollary \ref{types}). Then $c[k]=\frac1{2m}\int_0^1\tilde r(v^2)[\log(D'+v^2)-\log4m]\,dv$ with $\tilde r(v^2)=r(\frac{1-v^2}{4m})\in\Q[v^2,\frac1{D'+v^2}]$. Splitting $\tilde r$ into a polynomial part and pole parts $(D'+v^2)^{-j}$: the polynomial part contributes $\Q+\Q\sqrt{D'}\theta_m$ (the stand-alone $\log(D'+1)=\log4m$ produced by $\int v^{2i}\log(D'+v^2)$ cancels against $-\log(4m)\int v^{2i}$); $j=1$ contributes $\Q\,c_D+\Q\,c_B$; and $j\ge2$ is handled by differentiating $G(s)=\int_0^1\frac{\log(s+v^2)}{s+v^2}dv=\frac1{\sqrt s}[\phi\log s+2\phi\log2-\Cl(\pi-2\phi)]$, $\phi=\arctan s^{-1/2}$, in $s$: as $\frac{d}{ds}\Cl(\pi-2\phi)=2\phi'\log(2\cos\phi)$ and $\log s-2\log\cos\phi=\log(s+1)$, the derivative reproduces the same bracket up to rational factors plus a stand-alone $\log(s+1)=\log4m$ that again cancels. Hence every period of the layer lies in
+\[
+V_m=\Q\oplus\Q\frac{\theta_m}{\sqrt{D'}}\oplus\Q\sqrt{D'}\theta_m\oplus\Q\frac{Q_m}{\sqrt{D'}},\qquad Q_m=2\Cl(\pi-\theta_m)-\theta_m\log\frac{D'}m ,
+\]
+($k=\log(1-t)$ realises $c=\frac{\sqrt{D'}\theta_m-2}{2m}$), and since $\Q\frac{\theta_m}{\sqrt{D'}}+\Q\sqrt{D'}\theta_m=\theta_m\Q(\sqrt{D'})$, Theorem \ref{A} is the strongest statement the $\tau=\frac32$ layer can give: the pure Clausen value cannot be separated from $\theta_m\log\frac{D'}m$ at this level. Kernels containing $H_A^{2s}$, $s\ge1$, have divergent fold integrals; their $H[k]$ acquires a pole at $\delta$ after subtracting the finite-part multiple of $H_A$, $(1-4mx)^sH[k]$ is again admissible, and the periods stay in $V_m$.
+
+\begin{remark}[on CDT's Lemma ``around $1/4$'' and Theorem ``mixed'']\label{erratum}
+CDT (Lemma 2.11.13 and Theorem 2.11.17 in the arXiv v2 numbering; the type condition is (2.5.3) in their Theorem 2.8.4, with no $A^{n+1}$ slack) define $H_C=\frac1{\sqrt{1-4x}}\int_0^x\frac{\log(1-t)}{t\sqrt{1-4t}}dt$ and state that $H_C$ and $H_D$ have type $\lcm n\lcm{n/2}$. For $H_D$ this is Corollary \ref{types}; for $H_C$ it is false (its coefficient of $x^2$ is $-\frac{13}4$, and its excess over $\lcm n\lcm{n/2}$ grows without bound, while its type $\lcm n^2$ is exact), see \S2. Their Theorem ``mixed'' asserts the $\Q$-linear independence of $1$, $\pi/\sqrt3$, $\pi^2$, $3L(2,\chi_{-3})-\frac\pi{\sqrt3}\log3$; the argument via Theorem \ref{cdt} covers the three-element statement without $\pi^2$ (Theorem \ref{A} at $m=1$, where $c_B=\frac\pi{3\sqrt3}$, $c_D=\frac\pi{3\sqrt3}\log3-L(2,\chi_{-3})$), and by \S4.3 no $\lcm n\lcm{n/2}$-function of the layer has fold period $\pi^2$; the value $\int_0^{1/4}\frac{\log(1-t)}{t\sqrt{1-4t}}dt=-\frac{\pi^2}{18}$ is correct but belongs to a $\tau=2$ function. The $\pi^2$ clause therefore needs a different input.
+\end{remark}
+
+\begin{remark}[why these are the hosts]
+The mechanism of \S3 needs a function with scalar monodromy $-1$ at the fold and integral coefficients, with the second singular point at $1$ after a Möbius change of variable that preserves integrality. On the modular hosts of the sporadic Apéry rows the fold is either a cusp (second-order rows), where the monodromy of the modular form $F$ is unipotent and $T(F\!\int\!Fk)-F\!\int\!Fk$ involves the two new functions $y_1\!\int_\delta^xFk$ and $F\!\int_\delta^xy_1k$, so that no rational combination of $F$ and finitely many $F\!\int\!Fk_i$ is fold-regular; or an order-two elliptic point (third-order rows), where a Fricke-odd $F$ does have monodromy $-1$ but the second singular point is either the Galois conjugate of the fold ($(\sqrt2\pm1)^4$ for Apéry's $\zeta(3)$ row) or sits at $\frac14$ against a fold at $\frac1{16}$ (Domb), and moving it to $1$ costs $4^n$ in the denominators. Lemma \ref{half} itself holds for any $h\in\Z[[t]]$. The hosts $1/\sqrt{(1-x)(1-c^2x)}$, integral for odd $c$, have sign monodromy at both $\frac1{c^2}$ and $1$ and reproduce the real family.
+\end{remark}
+
+\begin{corollary}[Mahler measures]\label{mahler}
+Let $P_m=m(1+x)^2-(4m-1)y^2\in\Z[x,y]$ and $m(P)$ the logarithmic Mahler measure. Then
+\[
+2\Cl(\pi-\theta_m)-\theta_m\log\frac{4m-1}m=\pi\Bigl[m(P_m)-\log(4m-1)\Bigr],
+\]
+so Theorem \ref{A} says that $1$, $\theta_m/\sqrt{4m-1}$ and $\pi\bigl(m(P_m)-\log(4m-1)\bigr)/\sqrt{4m-1}$ are linearly independent over $\Q$.
+\end{corollary}
+
+\begin{proof}
+The Cassaigne--Maillot formula gives $\pi\,m(a+bx+cy)=\alpha\log a+\beta\log b+\gamma\log c+D\bigl(\frac bae^{i\gamma}\bigr)$ for a triangle with sides $a,b,c$ and opposite angles $\alpha,\beta,\gamma$. The isosceles triangle $(1,1,\sqrt{(4m-1)/m})$ has apex angle $\gamma$ with $\cos\gamma=1-\frac{4m-1}{2m}=-\frac{2m-1}{2m}=-\cos\theta_m$, i.e.\ $\gamma=\pi-\theta_m$, and base angles $\theta_m/2$; hence $\pi\,m\bigl(1+x+\sqrt{(4m-1)/m}\,y\bigr)=\frac{\pi-\theta_m}2\log\frac{4m-1}m+\Cl(\pi-\theta_m)$. Now $2\,m(1+x+ty)=m\bigl((1+x)^2-t^2y^2\bigr)$ (substitute $y\mapsto-y$ and multiply) and $m(\lambda P)=\log\lambda+m(P)$. (Checked to $10^{-121}$ for $m=1,2,3,5,7,11,25$.) For $m=1$ this is Smyth's $\pi m(1+x+y)=\Cl(\pi/3)$ and CDT's $m((1+x+y)^4/3)=4m(1+x+y)-\log3$.
+\end{proof}
+
+For $m\ge2$ the apex angle is not a rational multiple of $\pi$ and no integer-sided triangle realises it (none among the $31\,079$ triples $a\le b\le c\le60$); the algebraic triple is the natural one.
+
+\section{From square roots to $k$-th roots}
+Sections 2--3 used only that $H_A$ has rank one with scalar monodromy at the fold. The same holds for
+\[
+H(x)=(1-k^kmx)^{-1/k},\qquad k\ge2,\ m\in\Z\setminus\{0\},\qquad\delta=\frac1{k^km},\qquad D:=k^km-1,
+\]
+with monodromy $\zeta_k^{-1}$ at $\delta$.
+
+\begin{lemma}\label{intk}
+$(1-Nx)^{-j/k}\in\Z[[x]]$ for $N=k^km$, $m\in\Z$, $j\ge0$.
+\end{lemma}
+\begin{proof}
+$[x^n](1-Nx)^{-j/k}=\frac{(j/k)_n}{n!}N^n=\frac{\prod_{i<n}(j+ki)}{n!}k^{(k-1)n}m^n$. For $p\nmid k$ the progression $j,j+k,\dots,j+(n-1)k$ has difference prime to $p$, so any $p^e$ consecutive terms contain a multiple of $p^e$ and $v_p(\prod)\ge\sum_e\lfloor n/p^e\rfloor=v_p(n!)$. For $p\mid k$, $v_p(n!)<\frac n{p-1}\le n\le(k-1)n\,v_p(k)$.
+\end{proof}
+
+For a sector $a\in\{1,\dots,k-1\}$ and a kernel $\kappa$ put $H^{(a)}[\kappa]=H^a\int_0^xH^{k-a}\kappa\,dt$ and $c^{(a)}[\kappa]=\int_0^\delta H^{k-a}\kappa\,dt$. By Lemma \ref{half} with $h=H^{k-a}$ and outer factor $H^a$ (both in $\Z[[t]]$), $H^{(a)}[\frac1{1-t}]$ has type $\lcm n$ and $H^{(a)}[\frac{\log(1-t)}{1-t}]$ type $\lcm n\lcm{n/2}$ (verified exactly for $k\le6$, $n\le150$). With $u=(1-k^kmx)^{1/k}$, $dt=-u^{k-1}du/(k^{k-1}m)$, $H^{k-a}=u^{-(k-a)}$ and $\tilde\kappa(v)=\kappa\bigl(\frac{1-v^k}{k^km}\bigr)$, a function of $v^k$ holomorphic for $|v|<D^{1/k}$,
+\[
+H^{(a)}[\kappa]=\frac{u^{-a}}{k^{k-1}m}\int_u^1v^{a-1}\tilde\kappa(v)\,dv=c^{(a)}[\kappa]H^a-\frac{u^{-a}}{k^{k-1}m}\int_0^uv^{a-1}\tilde\kappa(v)\,dv,
+\]
+and the last term is a holomorphic function of $u^k$, hence of $x$, on $|x-\delta|<1-\delta$. So $T_\delta H^{(a)}[\kappa]=H^{(a)}[\kappa]+(\zeta_k^{-a}-1)c^{(a)}[\kappa]H^a$, Corollary \ref{cond} holds with $H_A$ replaced by $H^a$, and Lemma \ref{sheets} and Proposition \ref{twosheets} go through verbatim ($H$ is analytic at $1$ with $H^{k-a}(1)=(-D)^{-(k-a)/k}\ne0$, and $\zeta_k^{-a}-1\ne0$). Since $1-t=(D+v^k)/(k^km)$:
+
+\begin{theorem}\label{D}
+For every $k\ge2$, $m\in\Z\setminus\{0\}$ and $a\in\{1,\dots,k-1\}$, the numbers
+\[
+1,\qquad k\int_0^1\frac{v^{a-1}\,dv}{k^km-1+v^k},\qquad k\int_0^1\frac{v^{a-1}\log\frac{k^km-1+v^k}{k^km}}{k^km-1+v^k}\,dv
+\]
+are linearly independent over $\Q$.
+\end{theorem}
+
+The proof of Lemma \ref{intk} only used $v_p(N/k)\ge1$ for $p\mid k$, so Theorem \ref{D} holds verbatim with $k^km$ replaced by any $N\in k\,\mathrm{rad}(k)\Z\setminus\{0\}$ and $D=N-1$ (hosts $(1-9mx)^{-1/3}$, $(1-8mx)^{-1/4}$, $(1-25mx)^{-1/5}$, \dots). Since the power sums $\sum_j\alpha_j^i$ of the roots of $v^k+D$ vanish for $1\le i\le k-1$, partial fractions give the closed form (principal branches, verified to $111$ digits)
+\[
+k\int_0^1\frac{v^{a-1}dv}{D+v^k}=-\frac1D\sum_{j=0}^{k-1}\alpha_j^{\,a}\log\Bigl(1-\frac1{\alpha_j}\Bigr),
+\]
+and the period space of each sector is again exactly $\Q+\Q c_B^{(a)}+\Q c_D^{(a)}$ (with elementary identities such as $c^{(a)}[\log(1-t)]=\frac{kD}{Na}c_B^{(a)}-\frac{k^2}{Na^2}$), while different sectors of one host are arithmetically independent (PSLQ, $140$ digits). When $D=n^k$ is a perfect $k$-th power the roots are $n$ times roots of unity and the dilogarithm points lie in $\Q(\zeta_{2k})$; the fold-type points $\zeta_l/(\zeta_l-\zeta_j)$ are Bloch-group elements, but they depend only on $\zeta_j/\zeta_l$ and their aggregate coefficient is proportional to $\sum_l\zeta_l^a=0$, so they cancel identically. Thus \emph{no} Catalan constant appears on the $k=4$ hosts $(1+80x)^{-1/4}$, $(1+624x)^{-1/4}$ (its coefficient is exactly $0$, checked to $320$ digits); the only collapse host in our list retaining an $L$-value is $(1-9x)^{-1/3}$, where the Bloch--Wigner part of $c_D^{(1)}$ is $-\frac{15}{32}L(2,\chi_{-3})$. In every collapse host the surviving Bloch--Wigner points are the Cassaigne--Maillot points of the triangles with vertices $1,n\zeta_l,n\zeta_j$, so their content is Mahler-measure content, while an irreducible $\operatorname{Re}\mathrm{Li}_2$ part remains.
+
+For $k=2$, $a=1$ this is Theorems \ref{A} ($m>0$) and \ref{B} ($m<0$). By partial fractions over the roots $\alpha_j=D^{1/k}e^{i\pi(2j+1)/k}$ of $v^k=-D$, the second number is a $\Q(\zeta_{2k},D^{1/k})$-linear combination of $\pi$ and logarithms of elements of that field, and the third a combination of dilogarithms at the points $\alpha_j/(\alpha_j-\alpha_l)$, $(\alpha_j-1)/(\alpha_j-\alpha_l)$ and products of such logarithms; for $k=3$, $m=1$ the field is $\Q(\omega,\sqrt[3]{26})$. The $k-1$ sectors of one host give $k-1$ separate statements (a relation mixing sectors is not fold-regular, the fold monodromies being multiples of the independent functions $H^a$).
+
+\begin{lemma}[classification of rank-one hosts]\label{class}
+Let $f\in\Z[[x]]$ be algebraic with a single finite singular point $\delta\ne0$ and scalar local monodromy of exact order $k\ge2$ there. Then $\delta=1/N$ with $N\in\Z$, $k\,\mathrm{rad}(k)\mid N$, and $f=R(x)(1-Nx)^{j/k}$ with $\gcd(j,k)=1$ and $R\in\Q(x)$ having poles only at $\delta$.
+\end{lemma}
+\begin{proof}
+$f^k$ is single-valued and algebraic on $\PP^1\setminus\{\delta,\infty\}$, hence a rational function with zeros and poles only at $\delta,\infty$, so $f=cR_0(x)(1-x/\delta)^{j/k}$. If $\delta=p/q$ in lowest terms, the coefficient of $x^n$ in $(1-x/\delta)^{j/k}$ is $\binom{j/k}n(-q/p)^n$, whose $\ell$-adic valuation for $\ell\mid p$ is $-n\,v_\ell(p)+O(\log n)$, which no fixed rational factor can compensate; so $p=1$. For a prime $p\mid k$ (hence $p\nmid j$), $[x^n](1-Nx)^{j/k}=\pm\prod_{i<n}(j-ki)(N/k)^n/n!$ has $p$-adic valuation $n(v_p(N)-v_p(k))-v_p(n!)$, negative at $n=p^e$ unless $v_p(N)\ge v_p(k)+1$. The converse is Lemma \ref{intk} (whose proof only used $v_p(N/k)\ge1$).
+\end{proof}
+
+So the hosts of this paper are all the rank-one hosts: the $\tau=\frac32$ theory is complete.
+
+\section{Effective measures}
+CDT's quantitative refinement of the bound \cite[Proposition \texttt{theomainreprise}]{ICM} reads: if $\eta$ is realised as an Ap\'ery limit by pairs $(A_i,B_i)$ of series of the given type, $g_i=B_i-\eta A_i$ ($i\le m$) are independent with meromorphic pullbacks, $\gamma m$ of them unconditional ($A_i=0$), and $\varphi^*A_i,\varphi^*B_i$ converge on $|z|<\rho$, then, with $\mu=\mu_{\rm eff}(\eta)$,
+\[
+m\le\frac{\mathrm{BC}(\varphi)}{\log|\varphi'(0)|-\tau(\mathbf b)-(1-\gamma)\bigl(\tfrac2\mu-\tfrac{1-\gamma}{\mu^2}\bigr)\log\tfrac1\rho}
+\]
+whenever the denominator is positive. On a host \eqref{host} (or a Kummer host, any sector) take $(A,B)=(H_A,H_D)$, so $\eta=c_D$, and the tuple $\{1,\log(1-x),\log^2(1-x),g,g\circ\iota\}$: $m=5$, $\gamma=\frac35$ (the unconditional part is exactly $\{1,\log,\log^2\}$ by CDT's Theorem 2.11.11), $\tau=\frac{69}{50}$, $\mathrm{BC}=\log8+4G/\pi$, and $\rho$ defined by $8\rho(1+\rho^2)/(1-\rho)^4=1/N$ (the convergence radius of $H_A,H_B,H_D$). Solving for $\mu$ gives $\mu_*=(1-\gamma)/(1-\sqrt{1-\mathrm{gap}/L})$ with $\mathrm{gap}=\log8-\tau-\mathrm{BC}/m$, $L=\log(1/\rho)$; a larger true dimension only lowers the threshold. The pairs $(H_A,H_B)$ ($\eta=c_B$; tuple $\{1,\log(1-x),g,g\circ\iota\}$, $m=4$, $\gamma=\frac12$, $\tau=\frac{15}{16}$) and $(H_D,H_B)$ ($\eta=c_B/c_D$) are treated identically.
+
+\begin{theorem}\label{E}
+$\mu_{\rm eff}(c_D)\le\kappa_D(N)$, $\mu_{\rm eff}(c_B/c_D)\le\kappa_D(N)$ and $\mu_{\rm eff}(c_B)\le\kappa_B(N)$, where
+\begin{center}\begin{tabular}{@{}lccccc@{}}\toprule
+host & $N$ & $\rho$ & $\log(1/\rho)$ & $\kappa_D$ & $\kappa_B$\\\midrule
+$k=2$, $m=1$ & 4 & 0.02789 & 3.580 & 56.73 & 10.57\\
+$k=2$, $m=2$ & 8 & 0.01472 & 4.218 & 66.89 & 12.51\\
+$k=2$, $m=3$ & 12 & 0.01001 & 4.605 & 73.03 & 13.68\\
+$k=2$, $m=5$ & 20 & 0.00610 & 5.100 & 80.90 & 15.18\\
+$k=2$, $m=11$ & 44 & 0.00281 & 5.875 & 93.23 & 17.52\\
+$k=3$, $N=9$ & 9 & 0.01317 & 4.330 & 68.66 & 12.85\\
+$k=4$, $N=80$ & 80 & 0.00155 & 6.468 & 102.7 & 19.31\\\bottomrule
+\end{tabular}\end{center}
+In particular $\mu_{\rm eff}\bigl(L(2,\chi_{-3})-\frac{\pi}{3\sqrt3}\log3\bigr)\le56.73$ and $\mu_{\rm eff}\bigl(\frac2{\sqrt7}\arctan\frac1{\sqrt7}\bigr)\le12.51$.
+\end{theorem}
+
+CDT's measure for the pure $L(2,\chi_{-3})$ is $24781$; for the mixed number and for the periods with $m\ge2$ no explicit measure seems to have been recorded. For $m=1$ the elementary number is $\pi/(3\sqrt3)$, where Salikhov's $\mu(\pi/\sqrt3)\le4.6016$ is much better. The real family and all Kummer sectors share these values, which depend only on $N$.
+
+\section{Two folds: elliptic hosts}
+Extension (a) of Theorem \ref{cdt} allows hosts $H=1/\sqrt{P(x)}\in\Z[[x]]$ with several real folds $\delta_1,\dots,\delta_s\in(0,1)$; for $\deg P=3$ with all roots in $(0,1]$ the curve $y^2=P$ is elliptic. Lemma \ref{half} is unchanged, and near each fold $H$ is odd in the local uniformiser $s=\sqrt{t-\delta_i}$, so $H[k]=c_i[k]H+(\text{even in }s)$ and $T_{\delta_i}H[k]=H[k]-2c_i[k]H$ as before; the loop around $1$ acts as in Lemma \ref{sheets} with $r_B$ replaced by $-2\,\mathrm{FP}\!\int_0^1\frac{H\,dt}{1-t}$ (a Hadamard finite part when $1$ is a branch point), which is nonzero on every host examined. Hence, for kernels $k_1,\dots,k_r$, the $s\times(r+1)$ matrix $(1\mid c_i[k_j])$ has no nonzero rational vector in its kernel.
+
+For $s=2$ this is a statement about the $2\times2$ minors, i.e.\ about the \emph{difference periods} $\int_{\delta_1}^{\delta_2}k\,dt/y$. In genus $0$ (two branch points, $P$ quadratic) these are elementary — for $P=(1-4m_1x)(1-4m_2x)$ the substitution $t=\frac{\delta_1+\delta_2}2-\frac{\delta_2-\delta_1}2\cos\phi$ gives $\Delta_B=\pi/\sqrt{D_1D_2}$ and $\Delta_D=\Delta_B\log\frac{2s^2}{a+s}$ with $s=\sqrt{D_1D_2}/(4\sqrt{m_1m_2})$, $a=1-\frac{m_1+m_2}{8m_1m_2}$ — so the two-fold statement is empty there. In genus $1$, for the hosts $P=(1-x)(1-ax)(1-bx)$ with $\{a,b\}=\{9,4m\}$ or $\{25,4m\}$ (conductors $30,42,198,210,\dots$), where $1$ is a Weierstrass point, the difference periods are identified numerically to $10^{-90}$: with $\Delta=(a-1)(b-1)$, $f=ab/\Delta$, $c=1/f$, and $\Omega=\int_{r_1}^{r_2}dx/y$, $\eta=\int_{r_1}^{r_2}x\,dx/y$,
+\[
+\Delta_B=f(\Omega-\eta),\qquad \Delta_L:=\int_{r_1}^{r_2}\frac{\log(1-x)\,dx}y=\tfrac12\Omega\log c,\qquad \Delta_D=\frac{(a+b)\Omega-2ab\,\eta}\Delta+\tfrac f2(\Omega-\eta)\log c .
+\]
+The mechanism is translation by the $2$-torsion point $(1,0)$, an involution $\sigma$ exchanging the two folds with $(1-x)(1-\sigma x)=c$; $dx/((1-x)y)$ is of the second kind (double pole without residue at the Weierstrass point). The near-fold periods $\int_0^{r_1}\log(1-x)\,dx/((1-x)y)$ are new transcendentals, not in the span of $1,\Omega_{01},\eta_{01},\Omega,\eta,\Omega\log c,\eta\log c$. The two-fold theorem then reduces to a dichotomy: either $\log\frac{(a-1)(b-1)}{ab}\ne\frac{p\Omega+4\eta}{\Omega-\eta}$ for every $p\in\Q$, or the near-fold combination $A_D-\bigl(\frac{p_0}2+\frac{a+b}{ab}\bigr)A_B$ is irrational for the unique real $p_0$ (which is not a rational of height $\le10^{12}$ on any of the ten hosts). One cannot force the far-fold condition by a rational choice of kernels: among $(1-t)^{-j}$, $j\le3$, the only combination with vanishing far-fold difference is the exact differential. So in genus one the method produces structure (the identities above) but no unconditional statement about the new elliptic mixed periods; the host $(1-4x)(1-8x)(1-12x)$ (conductor $24$, isogenous to Boyd's $k=2,8$ curves), where $1$ is not a branch point, has no linear identifications at all, only the Riemann bilinear relation $B_B\Omega_{23}-C_B\Omega_{12}=-2\pi u/\sqrt{231}$ with $u$ the elliptic logarithm of the point over $x=1$.
+
+\begin{thebibliography}{9}
+\bibitem{CDT} F.~Calegari, V.~Dimitrov, Y.~Tang, \emph{The linear independence of $1$, $\zeta(2)$, and $L(2,\chi_{-3})$}, arXiv:2408.15403v2.
+\bibitem{ICM} F.~Calegari, V.~Dimitrov, Y.~Tang, \emph{Arithmetic holonomy bounds and their applications} (survey), Prop.\ \texttt{theomainreprise} and Remark \texttt{withintegrationsremark}.
+\bibitem{HRV} M.~Hata, \emph{Rational approximations to the dilogarithm}, Trans.\ AMS 336 (1993); G.~Rhin, C.~Viola, \emph{The permutation group method for the dilogarithm}, Ann.\ Sc.\ Norm.\ Sup.\ Pisa (2005).
+\bibitem{CM} J.~Cassaigne, V.~Maillot, in V.~Maillot, \emph{G\'eom\'etrie d'Arakelov des vari\'et\'es toriques et fibr\'es en droites int\'egrables}, M\'em.\ SMF 80 (2000), Prop.\ 7.3.1 (the Mahler measure of $a+bx+cy$).
+\bibitem{Smyth} C.~J.~Smyth, \emph{On measures of polynomials in several variables}, Bull.\ Austral.\ Math.\ Soc.\ 23 (1981).
+\bibitem{Zagier} D.~Zagier, \emph{The dilogarithm function}, in \emph{Frontiers in Number Theory, Physics and Geometry II}, Springer (2007).
+\end{thebibliography}
+\end{document}
