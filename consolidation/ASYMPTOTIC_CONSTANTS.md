@@ -6,6 +6,8 @@
 $$\boxed{\ K=\frac{\sqrt N}{2\pi^{3/2}}\sqrt{\frac{\lambda_1}{\lambda_1-\lambda_2}}\ ,\qquad K^2\pi^3=\frac{N\lambda_1}{4(\lambda_1-\lambda_2)}\ }$$
 with $\lambda_1,\lambda_2$ the characteristic roots of the recurrence (Theorem 3.4). Apéry's classical $(1+\sqrt2)^2/(2^{9/4}\pi^{3/2})$ is the case $N=6$; Domb's row gives $2/\pi^{3/2}$; Cooper's $s_7,s_{10},s_{18}$ give $\tfrac34\sqrt3\,\pi^{-3/2}$, $\sqrt2\,\pi^{-3/2}$, $3\sqrt2\,\pi^{-3/2}$. The three higher-weight rows in the repository ($\zeta(5)$ at levels $12$ and $16$, $\zeta(7)$ at level $12$) all carry a Chowla–Selberg period, and two of them do so *without* vanishing at the fold — which corrects the first version of this note.
 
+**The third constant (§5).** A modular Apéry linear form has three constants: the limit $\xi$ (an $L$-value, Theorem B$^*$), the fold constant $K_+$ of the row (§3), and the constant of the linear form itself, $w_n=a_n\xi-b_n\sim K_-\lambda_2^nn^{-s}$. For every three-term row the exact Casoratian gives $K_+K_-=\kappa/(\lambda_1-\lambda_2)$ with $\kappa=\prod_{j\ge1}(1+d/(cj^2))$ (Theorem 5.1): Apéry's $a_n\zeta(3)-b_n\sim2^{-1/4}\pi^{3/2}(\sqrt2-1)^{4n+2}n^{-3/2}$, Cooper's rows have $K_-=\sqrt\pi/14,\ \sqrt\pi/10,\ \sqrt\pi/6$. For the higher-order systems whose linear form is driven by a cusp, the constant is a product of two constant terms at that cusp (Theorem 5.2): $\phi_0a_0w^{k-1}/(k-1)!$, which reproduces the $13/480$ of the $\zeta(5)$ showcase and predicts $14161/5040$ for the $\zeta(7)$ system.
+
 ## 1. Setting
 
 A modular Apéry row $(x,F)$: $x(q)=q+O(q^2)$ an integral Hauptmodul-type coordinate on a genus-zero group $\Gamma\supseteq\Gamma_0(N)$, $F$ a modular form of weight $k$ (integral $q$-expansion, $F=1+O(q)$), $A(x)=F(q(x))=\sum a_nx^n$. Suppose the dominant singularity of $A$ is a **simple fold** of $x$ at the Fricke point $\tau_c=i/\sqrt N$: $x'(q_c)=0\ne x''(q_c)$, $q_c=e^{-2\pi/\sqrt N}$, $x_+=x(q_c)$, and $F$ is analytic at $q_c$ with $F'(q_c)\ne0$. Then (fold lemma, `paper/sections/02_sources.tex` Lemma fold) $A=g+h\sqrt{1-x/x_+}$ near $x_+$ with $g,h$ analytic, and singularity analysis gives
@@ -98,3 +100,52 @@ $$K=\frac{3\sqrt3}{2}\cdot2025\bigl(490730\sqrt3-849969\bigr)\Bigl(\frac{3(45+26
 ### 4.4 Reproduction
 
 `lattice/asymptotic_constants/`: `lib.gp` (mirror map from a MUM recurrence), `main1.gp`–`main4.gp` (fold, structure identities, Richardson, closed forms; seven rows), `etaid.gp`/`alconst.gp`/`fricke.gp` (eta identification, the rational identity $\prod(N/d)^{r_d}=C^{-2}$, Fricke checks), `cm1.gp`–`cm8.gp` (the three higher-weight rows), `fits.gp`, `fits2.gp`, `final.gp`, `table.gp`, `check_forms.py`; full report in `REPORT.md`. Each script runs under ten minutes; `gp -q <file>`.
+
+## 5. The third constant: the linear form itself
+
+Write $\xi$ for the Apéry limit, $b_n$ for the companion ($b_0=0,b_1=1$) and $w_n:=a_n\xi-b_n$ for the linear form, the recessive solution of the recurrence.
+
+### 5.1 Three-term rows: the Casoratian
+
+**Lemma 5.0 [proved].** For the recurrences $(n+1)^3A_{n+1}=(2n+1)(an^2+an+b)A_n-n(cn^2+d)A_{n-1}$ (R3) and $(n+1)^2A_{n+1}=(an^2+an+b)A_n-cn^2A_{n-1}$ (R2), with $a_0=1$, $b_0=0$, $b_1=1$,
+$$a_{n+1}w_n-a_nw_{n+1}=-(a_{n+1}b_n-a_nb_{n+1})=\frac{c^n\kappa_n}{(n+1)^w},\qquad\kappa_n=\prod_{j=1}^n\Bigl(1+\frac d{cj^2}\Bigr)\ \ (\kappa_n\equiv1\text{ for R2 and for }d=0),$$
+$w=3$ (R3) or $2$ (R2). *Proof.* With $C_n=a_{n+1}b_n-a_nb_{n+1}$, the recurrence gives $(n+1)^wC_n=Q(n)C_{n-1}$ where $Q(n)=n(cn^2+d)$ resp. $cn^2$, and $C_0=a_1b_0-a_0b_1=-1$; so $C_n=-\prod_{j\le n}Q(j)/(j+1)^w=-c^n\kappa_n/(n+1)^w$. $\square$
+
+**Theorem 5.1 [proved].** Let $\lambda_1,\lambda_2$ be the characteristic roots ($\lambda_1\lambda_2=c$), $s=w/2$, and $a_n\sim K_+\lambda_1^nn^{-s}$, $w_n\sim K_-\lambda_2^nn^{-s}$ (Birkhoff–Trjitzinsky asymptotics of the dominant and recessive solutions; $K_-$ is signed if $\lambda_2<0$). Then
+$$\boxed{\ K_+K_-\,(\lambda_1-\lambda_2)=\kappa:=\prod_{j\ge1}\Bigl(1+\frac d{cj^2}\Bigr)=\frac{\sinh(\pi\sqrt{d/c})}{\pi\sqrt{d/c}}\ }\qquad(=1\text{ if }d=0;\ =\tfrac{\sin(\pi\sqrt{-d/c})}{\pi\sqrt{-d/c}}\text{ if }d/c<0),$$
+and for the weight-two rows of Theorem 3.4, $K_-=\dfrac{2\pi^{3/2}\kappa}{\sqrt N\sqrt{\lambda_1(\lambda_1-\lambda_2)}}$. *Proof.* Insert the asymptotics into Lemma 5.0: $a_{n+1}w_n-a_nw_{n+1}\sim K_+K_-(\lambda_1\lambda_2)^nn^{-2s}(\lambda_1-\lambda_2)$, and $2s=w$. $\square$ The recessive exponent $s$ is forced to equal the dominant one by the same identity.
+
+Verified to $22$ digits on eight rows (`casoratian.gp`: the recessive solution by Miller's backward recursion from $n=6000$, normalised by $a_1w_0-a_0w_1=1$, which also returns $\xi=w_0$; Richardson in $1/n$):
+
+| row | $\xi$ | $K_+$ | $K_-$ | closed form of $K_-$ |
+|---|---|---|---|---|
+| Apéry $\gamma$ ($b_1=1$) | $\zeta(3)/6$ | $(1+\sqrt2)^22^{-9/4}\pi^{-3/2}$ | $0.133895101579301399\ldots$ | $\pi^{3/2}(\sqrt2-1)^2/(6\cdot2^{1/4})$ |
+| Domb $\alpha$ | $7\zeta(3)/24$ | $2\pi^{-3/2}$ | $0.232013666534654493\ldots$ | $\pi^{3/2}/24$ |
+| $\varepsilon$ | $0.26294994756616\ldots$ | $\tfrac12\sqrt{4+3\sqrt2}\,\pi^{-3/2}$ | $0.171429926905265271\ldots$ | $\pi^{3/2}/(4\sqrt2\sqrt{4+3\sqrt2})$ |
+| $\zeta$ | $0.29467460391669\ldots$ | $\tfrac38(\sqrt2+\sqrt6)\pi^{-3/2}$ | $0.184904677886888152\ldots$ | $2\pi^{3/2}/(9\sqrt3(\sqrt2+\sqrt6))$ |
+| Cooper $s_7$ | $0.23499058097831\ldots$ | $\tfrac34\sqrt3\,\pi^{-3/2}$ | $0.126603846493251144\ldots$ | $\sqrt\pi/14$ |
+| Cooper $s_{10}$ | $0.32898681336964\ldots$ | $\sqrt2\,\pi^{-3/2}$ | $0.177245385090551602\ldots$ | $\sqrt\pi/10$ |
+| Cooper $s_{18}$ | $0.39065120644824\ldots$ | $3\sqrt2\,\pi^{-3/2}$ | $0.295408975150919337\ldots$ | $\sqrt\pi/6$ |
+| Franel $\mathbf A$ (R2) | $0.41123351671205\ldots$ | $2/(\pi\sqrt3)$ | $0.302299894039036308\ldots$ | $\pi\sqrt3/18$ |
+
+In Apéry's own normalisation ($b_1=6$) this is the classical statement made exact:
+$$a_n\zeta(3)-b_n\ \sim\ \frac{\pi^{3/2}}{2^{1/4}}\,(\sqrt2-1)^{4n+2}\,n^{-3/2},\qquad a_n\sim\frac{(1+\sqrt2)^{4n+2}}{2^{9/4}\pi^{3/2}n^{3/2}},$$
+the two constants being reciprocal up to $4\sqrt2\cdot6$. For Cooper's rows the $\pi^{-3/2}$ of $K_+$ and the $1/\pi$ of $\kappa$ combine into $K_-\in\overline{\mathbf Q}\sqrt\pi$; for the weight-one (R2) rows the cusp fold gives $K_+\in\overline{\mathbf Q}/\pi$ and hence $K_-\in\overline{\mathbf Q}\,\pi$ (Franel: $a_n\sim2\cdot8^n/(\pi\sqrt3\,n)$ and $K_-=1/(9K_+)$).
+
+### 5.2 Higher-order systems: the cusp constant
+
+For the $\zeta(5)$, $\zeta(7)$ systems the recurrence has order $>2$ and the Casoratian argument is unavailable; there the linear form $W=B-\xi A$ is regular at the fold (Fricke invariance) and its dominant singularity is the far cusp. The following gives its constant exactly.
+
+**Theorem 5.2 (cusp constant) [proved].** Let $\Phi$ be the source, of weight $k$ with vanishing constant term at $\infty$, $\Psi=D^{1-k}\Phi=\sum c(n)n^{1-k}q^n$, $F$ the row's form of weight $k-2$, $A=F$, $B=F\Psi$, $W=B-\xi A$ for any constant $\xi$. Let $\mathfrak c=\gamma(\infty)$, $\gamma\in SL_2(\mathbf Z)$, be a cusp of width $w$ with local parameter $q_{\mathfrak c}=e^{2\pi i\tau'/w}$, $\tau=\gamma\tau'$, at which $x$ takes the finite value $x_{\mathfrak c}$ with $x-x_{\mathfrak c}=a_1q_{\mathfrak c}+O(q_{\mathfrak c}^2)$, $a_1\ne0$. Write $a_0:=a_0(\Phi|_k\gamma)$ and $\phi_0:=a_0(F|_{k-2}\gamma)$ for the constant terms at $\mathfrak c$, and assume $F|_{k-2}\gamma$ is holomorphic at the cusp. Then, as $x\to x_{\mathfrak c}$,
+$$\boxed{\ W=\frac{\phi_0\,a_0\,w^{k-1}}{(k-1)!}\,\log^{k-1}(x-x_{\mathfrak c})+O\bigl(\log^{k-2}(x-x_{\mathfrak c})\bigr)\ },\qquad\text{hence}\qquad d_n-\xi c_n\sim\frac{\phi_0a_0w^{k-1}}{(k-2)!}\,(-1)^{k-1}\,x_{\mathfrak c}^{-n}\,\frac{(\log n)^{k-2}}n$$
+(for $x_{\mathfrak c}=-1$; in general the $(\log n)^{k-3}$ term also carries $\log(-x_{\mathfrak c})$). The constant is independent of $\xi$ and of $a_1$. If instead $F|\gamma=\phi_{-1}q_{\mathfrak c}^{-1}+\cdots$ (the canonical row $F=\Phi/Dx$ has this simple pole whenever $a_0\ne0$, because $D(x\circ\gamma)=O(q_{\mathfrak c})$), then $W\sim\phi_{-1}a_0a_1w^{k-1}/((k-1)!\,(x-x_{\mathfrak c}))\cdot\log^{k-1}(x-x_{\mathfrak c})$ and the linear form does not decay: $d_n-\xi c_n\asymp x_{\mathfrak c}^{-n}(\log n)^{k-1}$; the remedy is the row $(x-x_{\mathfrak c})F$, which is integral, has the same fold constant up to the factor $(x_+-x_{\mathfrak c})$, and constant term $\phi_0'=\phi_{-1}a_1=a_0w$.
+
+*Proof.* Since the constant term of $\Phi$ at $\infty$ vanishes, $\Psi(\tau)=\frac{(2\pi i)^{k-1}}{(k-2)!}\int_{i\infty}^\tau(\tau-u)^{k-2}\Phi(u)\,du$. Substituting $u=\gamma u'$, $\tau=\gamma\tau'$ and using $\tau-u=(\tau'-u')/((c\tau'+d)(cu'+d))$, $du=du'/(cu'+d)^2$, $\Phi(\gamma u')=(cu'+d)^k(\Phi|\gamma)(u')$, the automorphy factors of $u'$ cancel exactly (this is where $r=k-1$ enters) and
+$$\Psi(\gamma\tau')=(c\tau'+d)^{2-k}\,\frac{(2\pi i)^{k-1}}{(k-2)!}\int_{-d/c}^{\tau'}(\tau'-u')^{k-2}(\Phi|\gamma)(u')\,du' .$$
+Split $\Phi|\gamma=a_0+\widehat{\Phi}$: the constant contributes $a_0(\tau'+d/c)^{k-1}/(k-1)$; the rest contributes the Eichler integral of $\widehat\Phi$ (holomorphic, $O(q_{\mathfrak c})$) plus a polynomial in $\tau'$ of degree $\le k-2$ (the periods $\int_{i\infty}^{-d/c}u'^j\widehat\Phi\,du'$). Multiplying by $F(\gamma\tau')=(c\tau'+d)^{k-2}(\phi_0+O(q_{\mathfrak c}))$ the two automorphy factors cancel, and $-\xi F(\gamma\tau')$ has degree $k-2$ in $\tau'$. So the $\tau'^{k-1}$ coefficient of $W$ is $\phi_0a_0(2\pi i)^{k-1}/(k-1)!$, and $\tau'=\frac w{2\pi i}\log q_{\mathfrak c}=\frac w{2\pi i}\log(x-x_{\mathfrak c})+O(1)$. The coefficient transfer is $[x^n]\log^m(1-x/x_{\mathfrak c})\sim(-1)^mm\,x_{\mathfrak c}^{-n}(\log n)^{m-1}/n$. $\square$
+
+**Checks.** (i) The level-12 $\zeta(5)$ showcase: $k=6$, far cusp $x=-1$ = cusp $1/2$ of $\Gamma_0(12)$ of width $3$ (equivalently $1/6$ of width $1$). Constant terms of $E_k(d\tau)$ at the cusp $a/c$ are $(\gcd(d,c)/d)^k$, so $a_0(\widetilde F,1/2)=-\frac1{504}\bigl[1-176+2079\cdot3^{-6}-4928\cdot2^{-6}+4752\cdot3^{-6}-1728\cdot6^{-6}\bigr]=\frac{13}{27}$; the row $U=7E/Q(x)$ with $E=\frac17(-9E_4(3\tau)+16E_4(4\tau))$ has $a_0(E,1/2)=\frac17(-9\cdot3^{-4}+16\cdot2^{-4})=\frac8{63}$ and $Q(-1)=32$, so $\phi_0=\frac1{36}$. Theorem 5.2: $\frac1{36}\cdot\frac{13}{27}\cdot\frac{3^5}{5!}=\frac{13}{480}$ — exactly the constant of `ZETA5_K_CLOSED_FORM.md`/the showcase, obtained there from the regularised local solution; and $d_n-\tfrac{11}{144}\zeta(5)c_n\sim\frac{13}{96}(-1)^{n+1}(\log n)^4/n$ as stated there. From the cusp $1/6$ ($w=1$): $a_0(\widetilde F,1/6)=-13$, $a_0(E,1/6)=-\frac87$, $\phi_0=-\frac14$, and $(-\frac14)(-13)\cdot1/5!=\frac{13}{480}$ again — the product $\phi_0a_0w^{k-1}$ is cusp-independent, as it must be. (ii) The $\zeta(7)$ system on the same host (`paper/zeta7_showcase/`, in progress): $k=8$, $a_0(\Phi^-_{12},1/2)=\frac1{480}\bigl[1-572+(11583+46332)3^{-8}-36608\cdot2^{-8}-20736\cdot6^{-8}\bigr]=-\frac{119}{81}$ (and $119$ at the cusp $1/6$), so the canonical row has a pole at $x=-1$ and the showcase row is $U'=(1+x)\Phi/Dx$ with $\phi_0'=a_0w=-\frac{119}{27}$; prediction $\alpha'=\frac{119^2}{81^2}\cdot\frac{3^8}{7!}=\frac{14161}{5040}$ from either cusp, i.e. $d_n'-\tfrac{209}{1728}\zeta(7)c_n'\sim\frac{14161}{720}(-1)^{n+1}(\log n)^6/n$. To be confirmed numerically by the $\zeta(7)$ agent.
+
+**Remark 5.3 (the complete leading asymptotics).** For every system in this repository the leading behaviour of the row, of the limit and of the linear form is now closed-form: $\xi$ is an $L$-value (Theorem B$^*$), $K_+$ is given by §3, and $K_-$ by Theorem 5.1 (three-term rows: an algebraic multiple of $\pi^{3/2}$, $\sqrt\pi$ or $\pi$) or Theorem 5.2 (cusp-driven systems: a rational number, the product of two constant terms). The only case not covered is a higher-order system whose nearest far singularity is a second fold rather than a cusp; there the fold formula (1.1) applied to $W$ at the second Fricke point gives the constant as a period-polynomial value times a CM value, which we have not needed.
+
+`casoratian.gp` (§5.1: the eight-row verification of Theorem 5.1) is in the same directory.
