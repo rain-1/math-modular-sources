@@ -1,0 +1,20 @@
+default(parisizemax,12000000000);
+read("lib.gp");
+NQ = 405;
+HH = HOSTS[3]; C=HH[2]; B=HH[3]; dv=HH[4]; rv=HH[5];
+us = useries(dv,rv,NQ); Fs = Fseries(dv,rv,NQ); F2 = Fs^2;
+rho = subst(-x*(72*x^2+18*x+1)*(72*x^2-1), x, us)/subst((72*x^2+16*x+1)^2*(72*x^2+17*x+1), x, us);
+Phi = F2*rho;
+write("data_D8_c.txt", "# c(m), m=1..400, for Phi_{-8} = F^2 * (-u(1+18u+72u^2)(72u^2-1))/((1+16u+72u^2)^2(1+17u+72u^2))");
+write("data_D8_cp.txt", "# c'(m) = c(m)/m, m=1..400, same source (Xi = D^{-1}Phi = sum c'(m) q^m)");
+for(m=1, 400, write("data_D8_c.txt", m, " ", polcoeff(Phi,m)); write("data_D8_cp.txt", m, " ", polcoeff(Phi,m)/m));
+\\ the Apery-host row
+xs = us/(1+B*us+C*us^2);
+Av = peel2(Fs, xs, 200, NQ);
+Xi = Dinv(Phi, NQ-2);
+Th = sum(m=1, NQ-2, polcoeff(Xi,m)/m^2*q^m) + O(q^(NQ-1));
+Bv = peel2(Fs*Th, xs, 200, NQ);
+write("data_D8_row.txt", "# n  A_n  B_n   for the Apery host x = u/(1+17u+72u^2) with the disc(-8) magnetic source; k = 2; B_n/A_n -> zeta(2)/8");
+for(n=0, 200, write("data_D8_row.txt", n, " ", Av[n+1], " ", Bv[n+1]));
+print("written");
+quit;
