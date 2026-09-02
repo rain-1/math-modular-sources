@@ -1,3 +1,13 @@
 ############ CONTROL: level 4 (the answer must be proportional to f4a) ############
 ######## CONTROL level 4 r=1 : level 4, r=1, weight 29/2 ########
   dim M_29/2(Gamma_0(4)) = 8
+  q-expansions built
+  #homogeneous conditions = 854   dim V_r = 1
+  pole orders of the V_r basis: [-3]
+  a(-3) on the V_r basis: [1]
+  ==> *** EXACT MATCH on m=1..40 *** coeff vector = [1/64]~
+      a(n), n=-4..40 : [0, 1/64, 0, 0, 0, 1, 0, 0, -506, 131565/64, 0, 0, -66516, 180249, 0, 0, -2623656, 189072723/32, 0, 0, -56363984, 113688624, 0, 0, -826810320, 98995277955/64, 0, 0, -9275039480, 16415391865, 0, 0, -85043761824, 9226850020155/64, 0, 0, -665325016992, 1089452490896, 0, 0, -4574618693994, 465857380747965/64, 0, 0, -28243358918040]
+
+############ TARGET: level 28, Cooper row s7 (psi=1) ############
+######## s7 r=1 : level 28, r=1, weight 29/2 ########
+  dim M_29/2(Gamma_0(28)) = 56

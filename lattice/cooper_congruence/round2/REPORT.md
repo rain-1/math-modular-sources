@@ -29,6 +29,7 @@ range), **[num, digits]**, **[refuted, range]**, **[conjectural]**.
 | **R3** | $\widehat f$ is $\Gamma_0(N)$-invariant of weight $0$; computed two independent ways (closed form via $E_2^*,E_4$ and $\mathrm{SL}_2(\mathbf Z)$-reduction; $q$-series with $\Gamma_0(N)+N$-reduction) agreeing to $50$ digits | **[proved]** (invariance) + **[num, 50]** §2.2 |
 | **R4** | **The trace formula is general.**  With $f=E_4E_6/\Delta=q^{-1}-240-\cdots$ on $\mathrm{SL}_2(\mathbf Z)$ and the same $\widehat f$: $\beta_{F_{4a}}(m)=\mathrm{Tr}_{-3m^2}(\widehat f)/192$ and $\beta_{F_{4b}}(m)=-\mathrm{Tr}_{-4m^2}(\widehat f)/432$ (both with $\psi=\mathbf1$; the untwisted trace gives $\beta_{\chi_{D_0}}$ instead, so the genus character in the trace and the character $\psi$ are dual) | **[verified, $m\le12$, 50 digits]** §2.5 |
 | **R4b** | **The theta lift in full.**  $a(d)=\dfrac{\sqrt d}{192}\operatorname{Tr}_{-3d}(\widehat f)$ for **every** $d\equiv0,1\ (4)$, checked against Paşol–Zudilin's explicitly constructed $f_{4a}=\tfrac1{64}q^{-3}+q-506q^4+\tfrac{131565}{64}q^5-\cdots$, including the non-square $d$.  So the weight-$5/2$ Shimura–Borcherds input **is** the generating function of the twisted CM traces of $\widehat f$ | **[verified, $d\le40$, 45 digits]** §2.7 |
+| **R4c** | **The $s_7$ weight-$5/2$ input, computed.**  $c(d)=\sqrt{-3}\operatorname{Tr}_{-3d}(\widehat f)$ is an **integer** for every admissible $d$ (those with $-3d$ a square mod $28$: $d\equiv0,1\ (4)$ and $d\equiv0,1,2,4\ (7)$), with $c(m^2)=\beta_{s_7}(m)$; table in §2.8.  This gives the level-$28$ input constructively | **[verified, $d\le88$, 50 digits]** §2.8 |
 | **R5** | **The constant is the polar coefficient.**  If $\Phi=A_2(\tau-\tau_0)^{-2}+\cdots$ then $\lambda=4\pi^2A_2$ up to sign: $4\pi^2A_2=1/192,\ -1/432$ for $F_{4a},F_{4b}$ (exactly the observed constants), and $|4\pi^2A_2|=\nu^2/|g'(u_0)|=\sqrt3,\,2,\,2/\sqrt3$ for $s_7,s_{10},s_{18}$, matching $|\sqrt{-3}|=\sqrt3$ | **[proved]** (level one) + **[verified]** §2.5 |
 | **R6** | **The master conjecture is a divisibility of traces of singular moduli:** $n^2\mid\beta(n)\iff n^2\mid\lambda\,\mathrm{Tr}_{D_0n^2}(\widehat f)$ — the Ahlgren–Ono/Edixhoven setting, for the first Shimura–Maass derivative of a weight $-2$ form rather than for a modular function.  Route (B) is now precisely stated | **[proved, given R1]** §2.6 |
 | **R7** | **Why the naive route (A)(1) fails.**  $\beta(m)$ is **not** a $\mathbf Q$-linear combination of twisted CM traces of modular *functions* at the discriminants $D_0m^2$: those are exponential polynomials with constant coefficients, whereas $\beta(m)$ carries a $1/m$ tail, $\beta(m)=\lambda_0(1-\kappa/m)R^m\sin(\cdot)+O(R^{\theta m})$, $\kappa=1/(2\pi\operatorname{Im}\tau_0)\notin\mathbf Q$.  Numerically $m\beta(m)/((m-\kappa)\tau_H(m))\to3$ to $11$ digits at $m=33$ | **[proved]** + **[verified, $m\le40$, all rows]** §3.1 |
@@ -229,6 +230,26 @@ consequences:
   which `FINDINGS_PZ.md` found hard to reach with PARI's `mf` package directly: its
   coefficients are $\sqrt d\,\lambda\operatorname{Tr}_{D_0d}(\widehat f)$, computable from
   $\widehat f=Df+f/(2\pi y)$, $f=1/(xF)$.
+
+### 2.8 The weight-$5/2$ input of $s_7$, computed **[verified, $d\le88$]**
+
+`68_f52_s7.gp`, `69_f52_s7b.gp`.  Running the trace at *all* admissible discriminants rather
+than only at $D_0m^2$ produces the weight-$5/2$ input of Cooper's row $s_7$ directly.  Put
+$$c(d):=\sqrt{-3}\sum_Q\chi_{-3}(Q)\,\frac{\widehat f(\alpha_Q)}{\omega_Q},$$
+the sum over $\Gamma_0(7)$-classes of Heegner forms of discriminant $-3d$ with $7\mid A$ and
+$B\equiv\beta\ (14)$, $\beta$ the class $\equiv5\sqrt d$ when $d$ is a square.  Then
+**$c(d)\in\mathbf Z$ for every admissible $d$** and $c(m^2)=\beta_{s_7}(m)$:
+
+| $d$ | 1 | 4 | 8 | 9 | 16 | 21 | 25 | 28 | 29 | 32 | 36 | 37 | 44 | 49 | 53 | 56 | 57 | 60 | 64 | 65 | 72 | 77 | 81 | 84 | 85 | 88 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| $\pm c(d)$ | 1 | 8 | 16 | 9 | 32 | 0 | 125 | 0 | 145 | 192 | 216 | 148 | 176 | $\ast$ | 795 | 0 | 798 | 1200 | 1152 | 650 | 1008 | 0 | 3159 | 0 | 2975 | 4224 |
+
+($\ast$: at $d=49$ the two $\beta$-classes merge and the trace degenerates, as at $7\mid m$
+in the square case, where $\beta=0$ by the Atkin–Lehner cell; the other multiples of $7$ give
+$0$.)  The admissible $d$ are exactly $d\equiv0,1\pmod4$ **and** $d\equiv0,1,2,4\pmod7$
+(i.e. $-3d$ a square mod $28$) — the extra condition mod $7$ being the level-$28$ analogue of
+the Kohnen plus condition.  This gives a *constructive* route to the level-$4N$ input, which
+`FINDINGS_PZ.md` found inaccessible to a blind search in $\{g/\Delta(4\tau)^r\}$.
 
 ---
 

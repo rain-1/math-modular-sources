@@ -104,11 +104,11 @@ Writing $m^{t}\,\|\,a(|D|m^2)$ (`30_calib.log`):
 
 | form | $t=1$ | $t=2$ | $t=3$ | $t=4$ | $t\ge5$ |
 |---|---|---|---|---|---|
-| $F_{4a}$ | 224 | 43 | 32 | 0 | 0 |
+| $F_{4a}$ | 220 | 44 | 35 | 0 | 0 |
 | $F_{4b}$ | 212 | 47 | 39 | 1 | 0 |
 | $F_6$ ($t$ counted against $m^2$) | 0 | 234 | 16 | 14 | 32 |
 
-$\gcd_{2\le m\le300}\beta(m)=1$ in all three cases, so PZ's $m\mid a(m^2)$ is sharp **on average**
+$\gcd_{2\le m\le300}\beta(m)=1$ in all three cases, so PZ's $m\mid a(m^2)$ is sharp
 — but not uniformly.  The $m$ with $t\ge2$ are governed by the *split* primes dividing $m$: $t\ge2$ needs
 $v_p(\beta(m))\ge e_p$ at every $p^{e_p}\|m$, and at an inert $p$ one has $v_p(\beta(m))=0$.
 (The exact set is not clean at ramified or bad $p$ — e.g. for $F_{4a}$, $m=3,21,39,\dots$
@@ -159,16 +159,18 @@ integral basis.  For $p$ odd (or $p=2$ with $T'_4=K^+\!\circ T_4$):
 
 Hence, by uniqueness,
 $$\textbf{(T1)}\qquad f\mid T_{p^2}\;=\;\psi(p)\,p\,f\;+\;p^{3}\,c\,g_{m_0p^2}.$$
-Applying the *same* computation to $g_{m_0p^{2r}}$ ($r\ge1$) — where now
-$p^2\cdot(-1)=-p^2$ is $\ne$ the pole order but $U_{p^2}$ **does** hit it, giving $q^{-m_0p^{2r-2}}$,
-while $\chi_p(-m_0p^{2r})=0$ — gives the missing relation
+Applying the *same* computation to $g_M$, $M=m_0p^{2r}$ ($r\ge1$) — where now $p^2>M$ **fails**,
+so $U_{p^2}$ *does* reach the pole and contributes $q^{-M/p^2}=q^{-m_0p^{2r-2}}$, while the
+$\chi_p$ term dies because $\chi_p(-M)=\bigl(\tfrac{-m_0p^{2r}}{p}\bigr)=0$ — gives the
+relation PZ never need:
 $$\textbf{(T2)}\qquad g_{m_0p^{2r}}\mid T_{p^2}\;=\;g_{m_0p^{2r-2}}\;+\;p^{3}\,g_{m_0p^{2r+2}},\qquad r\ge1 .$$
 
 **Numerical verification of (T1)** (`34_hecke.log`): for $p=2,3,5,7,11,13,17$ the residual
 $E=f\mid T_{p^2}-\psi(p)p\,f$ has principal part *exactly* $p^3c\,q^{-m_0p^2}$, constant term $0$,
 and $64E/p^3$ (resp. $-108E/p^3$) integral over the whole tested range.  The single exception
-is $f_{4b}$ at $p=2$, where the residual acquires a term at $n=-1\not\equiv0,1\ (4)$ — exactly
-PZ's remark that $T_4$ does not preserve the plus space.  A control shows $\lambda=0$ and
+is $f_{4b}$ at $p=2$: there $p^2=4=m_0$, so the hypothesis $p^2>m_0$ fails, $U_{p^2}$ reaches the
+pole and contributes $a(-4)q^{-1}$, and the residual acquires a term at $n=-1\not\equiv0,1\ (4)$
+— which is exactly PZ's remark that $T_4$ does not preserve the plus space, in this instance.  A control shows $\lambda=0$ and
 $\lambda=-\psi(p)p$ both leave a nonzero $q^{-m_0}$ residual, so $\lambda$ is unique.
 
 ### 2.3  Consequences  **[proved from (T1)+(T2)], [verified]**
@@ -219,6 +221,10 @@ is **[refuted]** as stated: it fails only because $\psi=\mathbf1$ was used.  Wit
 character of the *pole discriminant* it holds everywhere the input is $p$-integral.
 
 ### 2.5  The strong divisibility, and the answer to the Task-3 question
+
+*(§2.7 below upgrades this to an unconditional theorem at level one, valid at split, inert
+and ramified primes alike, once one works with the $\psi$-twisted $\beta_\psi$ rather than
+with $a(m^2)/m$.)*
 
 Set $\alpha_j=a(p^{2j}m^2)$ with $p\nmid m$, $\eta_{r,j}=c\,g_{m_0p^{2r}}(p^{2j}m^2)$.
 The Hecke identity $(f\mid T_{p^2})(n)=a(p^2n)+p\bigl(\tfrac np\bigr)a(n)+p^3a(n/p^2)$ at
@@ -476,7 +482,7 @@ no published theorem that gives the exact-eigenvalue statement; that is the gap.
 | 4 | dictionary $a(m^2)=m\beta(m)$ for $F_{4a},F_{4b}$ | **[verified]**, $m\le20$, exact |
 | 5 | lift formula reproduces $\Delta/E_4^2$, $E_4\Delta/E_6^2$ | **[verified]**, $n\le50$ |
 | 6 | the plain-text `pz.txt` mangles Lemma 1's leading coefficients ($q^{-3}$ should be $\tfrac1{64}q^{-3}$) | **[established]** |
-| 7 | $m\mid a(m^2)$ is sharp for $224/299$ (resp. $212/299$) of $m\le300$; $\gcd_m\beta(m)=1$ | **[verified]** |
+| 7 | $m\mid a(m^2)$ is sharp for $220/299$ (resp. $212/299$) of $m\le300$; $\gcd_m\beta(m)=1$ | **[verified]** |
 | 8 | $v_p(\beta(p^e))=2e$ if $\chi_{D_0}(p)=+1$ and $=0$ if $\chi_{D_0}(p)=-1$ (good $p$); so $v_p(a(p^{2e}))=3e$ resp. $e$ | **[verified]** $n\le1250$ |
 | 9 | (T1) $f\mid T_{p^2}=\chi_{D_0}(p)\,p\,f+p^{3}c\,g_{m_0p^2}$, exactly | **[proved]** (§2.2, level 1), **[verified]** $p\le17$ |
 | 10 | (T2) $g_{m_0p^{2r}}\mid T_{p^2}=g_{m_0p^{2r-2}}+p^{3}g_{m_0p^{2r+2}}$ | **[proved]** (§2.2) |
