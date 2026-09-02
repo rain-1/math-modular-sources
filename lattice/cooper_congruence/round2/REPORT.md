@@ -47,7 +47,8 @@ range), **[num, digits]**, **[refuted, range]**, **[conjectural]**.
 | **W3–W7** | Its correct form is a real reduction: $f|U_p\equiv f_0+\sum_{n\ge1}[x^{pn}](fH)x^n\pmod p$ with $H=(\sqrt PF)^{p-1}\equiv P^{(p-1)/2}/F_{<p}$, where $F_{<p}=\sum_{n<p}A_nx^n$ is the **supersingular polynomial** of $X_0(N)/\mathbf F_p$ in the coordinate $x$ ($\deg F_{<p}=\lfloor\mu(N)(p-1)/(6\deg x)\rfloor$ exactly).  Round 1's smallest missing brick becomes $[x^{pn}]\bigl(l\,P^{(p-1)/2}/F_{<p}\bigr)\equiv\psi(p)L_n\pmod p$ | **[proved]** (equivalence) + **[verified, $p\le53$]** `FINDINGS_XSIDE.md` |
 | **W11** | **New supercongruence** $A_{p-1}\equiv\kappa\,\psi(p)\,p\pmod{p^2}$, $\kappa=-2,-3,-3$; for $s_{18}$ it manufactures $\chi_{-3}$ from the Apéry-like recurrence alone | **[verified, $5\le p\le300$]**, **[proved for $s_{10}$]** `FINDINGS_XSIDE.md` |
 | **W20** | The **$\psi$-twisted Dieudonné–Dwork tower** $a_{pn-1}\equiv\psi(p)a_{n-1}\pmod{p^{1+v_p(n)}}$ holds for all three rows, extending round 1's V19 to the character row | **[verified, $p\le31$]** `FINDINGS_XSIDE.md` |
-| **P3** | **THE SHARPEST FORM, and a strict generalisation of Conjecture 4.1.**  With $c(d)$ the trace coefficients of §2.8, $$p^{2a}\ \Bigm|\ c\bigl(p^{2a}d\bigr)\qquad\text{for every prime }p,\ a\ge1,\ \text{every admissible }d,$$ which contains $n^2\mid\beta_{s_7}(n)$ as the case $d=1$ (since $\beta(n)=c(n^2)$).  Verified in $193$ tests, $0$ failures, $p\le23$, $a\le4$, $p^{2a}d\le1600$ — **including the $76$ cells with $p\mid d$**, and sharp (minimal excess $0$ at $p=3,11,13,17,19,23$) | **[verified]** §5.5 |
+| **P6** | **THE CLEAN FORM.**  With $c(d)$ the twisted CM trace coefficients of §2.8, $$\boxed{\ d\ \bigm|\ c(d)\ }\qquad\text{for every admissible }d,$$ verified for **all $690$ admissible $d\le2500$, zero failures**.  Conjecture 4.1 is the case $d=m^2$, since $c(m^2)=\beta_{s_7}(m)$ and $m^2\mid\beta(m)$ is $m^2\mid c(m^2)$; and $G(d):=c(d)/d$ extends $\gamma$ from the squares to all discriminants, $G(m^2)=\gamma_{s_7}(m)$ **[verified]**.  $G=1,-2,2,1,2,0,-5,0,5,6,6,4,4,15,0,14,20,-18,10,14,\dots$ at $d=1,4,8,9,16,21,25,28,29,32,36,37,44,53,\dots$  **Sharp**: $\min_{p\mid d}v_p(G(d))=0$ at $p=3,11,13,17,19,23,29$ and $=1$ at $p=2,5$ — exactly round 1's two anomalous cells $(s_7,2)$, $(s_7,5)$ | **[verified, $d\le2500$]** §5.5 |
+| **P3** | Equivalently, on the $p$-parts: $p^{2a}\mid c(p^{2a}d)$ for every prime $p$, $a\ge1$, admissible $d$ — **295 tests, $0$ failures**, $p\le29$, $a\le4$, $p^{2a}d\le2500$, including the $118$ cells with $p\mid d$ | **[verified]** §5.5 |
 | **P4** | **Uniqueness survives at level $28$.**  $\dim S_4(\Gamma_0(7))=1$, its eigenform has $a_7=-7$ hence Fricke eigenvalue $+1$, so $\dim S_4(\Gamma_0(7))^{W_7=-1}=0$ — and $\Phi|_4W_7=-\Phi$ lives exactly there.  This replaces $\dim S_4(\mathrm{SL}_2(\mathbf Z))=0$ in the level-one proof.  ($\dim M_4(\Gamma_0(7))=3$, so one also needs that $\Phi$ vanishes at both cusps, which it does) | **[proved]** §5.5 |
 | **P5** | **The Hecke eigenvalue is right on the nose.**  Fitting $c(p^2d)+p\,c(d)+p^3c(d/p^2)=\lambda\,c(d)$ over all admissible $d$ gives $\lambda\equiv p\pmod{p^2}$, **constant in $d$**, with a **trivial** middle character ($\chi_{-3}(p)^2=1$), for $p=2,3,5,11,13,17,19$.  In the $c$-normalisation the target exponent is $2a$ (not $3a$), for which $\lambda\equiv p\ (p^2)$ is exactly what is needed | **[verified, $p\le19$]** `FINDINGS_PZ.md` §4.5 |
 | **P2** | An **exact** $T_{p^2}$ eigen-identity behind Paşol–Zudilin's Theorem 1, with a tower: $f|T_{p^2}=\chi_{-m_0}(p)pf+p^3c\,g_{m_0p^2}$ and $g_{m_0p^{2r}}|T_{p^2}=g_{m_0p^{2r-2}}+p^3g_{m_0p^{2r+2}}$; and $v_p(a(p^{2j}m^2))\ge3j+v_p(a(m^2))$ $\iff$ $\lambda\equiv p\pmod{p^3}$ | **[proved / verified $p\le17$]** `FINDINGS_PZ.md` |
@@ -543,14 +544,33 @@ predicted mechanism.  In the $c$-normalisation $c(m^2)=\beta(m)$ (no extra facto
 the level-one $a(m^2)=m\beta(m)$), so the target is $v_p(c(p^{2a}m^2))\ge2a$, for which
 $\lambda\equiv p\ (p^2)$ is the exact requirement.
 
-**The sharpest statement [verified, 193 tests, 0 failures].**  Independently of any Hecke
-normalisation, the table gives
-$$\boxed{\ p^{2a}\ \bigm|\ c\bigl(p^{2a}d\bigr)\ }\qquad p\ \text{prime},\ a\ge1,\ d\ \text{admissible},$$
-verified for $p\le23$, $a\le4$, $p^{2a}d\le1600$ (458 entries of the table), sharp
-(minimal excess $0$ at $p=3,11,13,17,19,23$).  **This strictly generalises Conjecture 4.1**,
-which is the case $d=1$, since $\beta_{s_7}(n)=c(n^2)$.  The $76$ cells with $p\mid d$ —
-which `FINDINGS_PZ.md` could not reach — are included and pass (minimal excess $3$ at $p=2$,
-$2$ at $p=3,5$), so the divisibility is not an artefact of restricting to $d$ prime to $p$.
+**The sharpest statement.**  Independently of any Hecke normalisation, the table gives
+$$p^{2a}\ \bigm|\ c\bigl(p^{2a}d\bigr)\qquad p\ \text{prime},\ a\ge1,\ d\ \text{admissible},$$
+**[verified: $295$ tests, $0$ failures, $p\le29$, $a\le4$, $p^{2a}d\le2500$]**, sharp
+(minimal excess $0$ at $p=3,11,13,17,19,23,29$), and including the $118$ cells with
+$p\mid d$ — which `FINDINGS_PZ.md` could not reach — which pass with minimal excess $3$ at
+$p=2$ and $2$ at $p=3,5$.  So the divisibility is not an artefact of restricting to $d$
+prime to $p$.
+
+Collecting the primes, this is the single clean assertion
+$$\boxed{\ d\ \bigm|\ c(d)\ \text{ for every admissible }d\ }
+\qquad\textbf{[verified: all 690 admissible }d\le2500\textbf{, 0 failures]}$$
+(`75_dcd.gp/.log`), of which **Conjecture 4.1 is the case $d=m^2$**: $c(m^2)=\beta_{s_7}(m)$,
+and $m^2\mid\beta(m)$ *is* $m^2\mid c(m^2)$.  The quotient
+$$G(d):=c(d)/d\in\mathbf Z$$
+extends Cooper's kernel from the squares to all discriminants, $G(m^2)=\gamma_{s_7}(m)$
+**[verified, $m\le20$]**:
+$$G=1,\,-2,\,2,\,1,\,2,\,0,\,-5,\,0,\,5,\,6,\,6,\,4,\,4,\,15,\,0,\,14,\,20,\,-18,\,10,\,14,\,0,\,39,\dots$$
+at $d=1,4,8,9,16,21,25,28,29,32,36,37,44,53,56,57,60,64,65,72,77,81,\dots$  It is **sharp**:
+$\min_{p\mid d}v_p(G(d))=0$ for $p=3,11,13,17,19,23,29$ and $=1$ for $p=2,5$ — precisely
+round 1's two anomalous cells $(s_7,p=2)$ and $(s_7,p=5)$, now explained as a property of
+the whole trace sequence rather than an accident at $\beta(2),\beta(5)$.
+
+*Caveat on generality.*  "$d\mid c(d)$" is a statement about the **one-$\beta$-class**
+(vector-valued component) trace.  At level one the full trace at non-square $d$ is an
+irrational multiple of $\sqrt d$, so the statement does not even parse there; it is the
+$\Gamma_0(N)$, $N>1$ phenomenon.  Whether it holds for $s_{10}$ and $s_{18}$ has not been
+tested and is the natural next check.
 
 ---
 
@@ -731,8 +751,9 @@ space of half-integral weight forms, and the level-one case is already a theorem
    are $f_{4a}=\tfrac1{64}q^{-3}+q-506q^4+\cdots$ and $f_{4b}=-\tfrac1{108}q^{-4}+q+\cdots$
    (the $1/64$ and $1/108$ sit on the denominator line of the two-line display and read as
    part of the linear combination).
-9. Conjecture 4.1 should be superseded by the sharper P3: $p^{2a}\mid c(p^{2a}d)$ for the
-   trace coefficients $c(d)$ of §2.8, of which it is the case $d=1$.
+9. Conjecture 4.1 should be superseded by P6: **$d\mid c(d)$** for the twisted CM trace
+   coefficients $c(d)$ of §2.8, of which it is the case $d=m^2$; the quotient $G(d)=c(d)/d$
+   extends $\gamma$ to all discriminants.
 
 ---
 
