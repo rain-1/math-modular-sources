@@ -30,6 +30,8 @@ No margin is ever rounded in the favourable direction.*
 | **Place v₂ is entirely responsible.** With the per-place score s_v = 13 log\|ψ_v′(0)\| − shape_v (margin = 13 log 256 + mean(s_v) − 14τ): s₁ = **−12.1905**, s₂ = **−16.2761**, CDT's own = −12.7700. So v₁ *gains* 0.579 nats over CDT and v₂ *loses* 3.506; halved, that is **−1.463** nats of margin against CDT's +0.021. | **[verified]** §5 |
 | **No inventory rescues it.** Adding functions to CDT's fourteen forces max eᵢ ≥ 2, and τ jumps 4.2355 → 4.4482; the bound goes from 16.13 to 23.5 and the margin from −1.44 to −3.96. Every m ≠ 14 is worse. (`INVENTORY_BOUND.md` R1/R4 already proves 14 is the complete supply at max eᵢ ≤ 1.) | **[verified]** §6 |
 | **The second place also taxes the HYPOTHESIS, not just the geometry.** The far-cusp periods are computed exactly: the homogeneous-solution obstruction at t₂ gives π(B_D) = **−(11/5)ζ(2)** and π(B′_new) = **ξ′ = −Re L − φ⁻⁵ Im L** (both to 12 digits; the same construction at the near cusp returns ζ(2)/5 and ξ, calibrating it). So regularity of σH at the v₂-fold t₂ is **(ii)** σ(a) − (11σ(b)/5)ζ(2) + σ(c)ξ′ = 0, which is σ applied to (i) *except* in the ζ(2) slot (+1/5 ↦ −11/5): **(i) ⇏ (ii)**. One K-relation gives a conditional function at one place only. The *sources* are nevertheless perfectly Galois-equivariant (L B_new = 2/(1−x/t₂), L B′_new = 2/(1−x/t₁); Φ_new kills the cusp over t₁, Φ′_new the cusp over t₂). | **[verified, 12 digits]** §3.4 |
+| **The −11 is explained, and equivariance holds on the ξ-line.** It is the *orientation*, not Galois: the outer (ζ(2)) direction is a sum of dilogarithms, and Li₂ evaluates to ζ(2) at q → +1 but to −ζ(2)/2 on odd d at q → −1, turning the character sum Σ j·w(j) = −1 (factor 1/5) into Σ j·(wg)(j) = 22 (factor −11/5). The inner (ξ) direction is a Lambert series whose cusp weight is −1/2 *uniformly* at both cusps, so there π^{(t₂)}(σΦ) = σ(π^{(t₁)}(Φ)) exactly. | **[proved]** §3.5 |
+| **By-product: a new weight-three identity.** The convergence condition behind that computation is **Re L(3,ψ₄) = φ⁵·Im L(3,ψ₄)** — verified to 212 digits, `lindep` = [−2, 11, 5] — the s = 3 shadow of the weight-two fold-regularity ratio −φ⁵. | **[verified, 212 digits]** §3.5 |
 | **Both branches are negative.** Assuming the *doubled* hypothesis (i)∧(ii): margin **−1.4424**. Keeping the single, correct hypothesis and letting Ω₂ avoid *every* preimage of Y₂ (principal included, at \|z\| = 0.074191, cap 0.2572): margin **−4.4038**. | **[verified]** §5.2 |
 | **The verdict does not rest on any unproved exclusion.** Enforcing *only* the two exclusions proved necessary in §6(b) and letting every other bad preimage be kept or cut, whichever is better, the optimum still cuts them all (they sit near the boundary, cost almost nothing, and lower BC): relaxed margin **−1.4577**, against −1.4416 fully constrained. | **[verified]** §6(b′) |
 | **The one loophole, and its closure.** We exclude *every* non-principal h-preimage of Y_v, as CDT do; only the ones at which the continued conditional function is really singular need go. If the single conjugate pair at \|z\| = 0.213693 at v₂ were harmless the margin would be **+0.51**. It is not harmless: those two preimages are the images of z₀ under the parabolic generator (2,±1) of Γ₀(2) at the cusp y = ∞, whose loop on the x-line encircles the outer cusp t₂, so the continuation changes H by a nonzero multiple of u_{t₂}, the homogeneous solution holomorphic at t₂; and **u_{t₁} and u_{t₂} are distinct lines** (numerically \|u_{t₁} ∧ u_{t₂}\| = 0.318 on Γ₁(5), 0.737 on CDT's Γ₀(6); both monodromies unipotent to 10⁻¹³). So the continued H is singular at the fold: the pair must be excluded. | **[verified]** §6(b) |
@@ -343,11 +345,55 @@ rational part and the √5 part of the single K-relation a + cξ = 0 must vanish
 So one K-linear relation among 1, ζ(2)/5, ξ gives a conditional function at **one place only**.
 **[verified, 174 digits]**
 
-*Where the −11 comes from, partially.* The diamond ⟨2⟩ (R₁ ↦ R₂ ↦ −R₁, R₃ ↦ R₄ ↦ −R₃, with
-⟨2⟩Φ_new = −φ⁵Φ′_new) swaps the cusps 0 ↔ 1/2 and induces x ↦ −1/x, consistent with t₁t₂ = −1;
-but it does **not** preserve the normalisation c₀(∞) = 0 — ⟨2⟩⁻¹Φ_D = R₁ − R₂/2 has
-c₀(∞) = −1, while the inner directions stay inside c₀(∞) = 0. That is why the ζ(2) slot picks up
-a factor and the ξ slot does not. That −11 = t₁ + t₂ is **not** explained. **[open]**
+### 3.5 Where the −11 comes from — the orientation, not the Galois action
+**[proved; character sums verified exactly]** (`task2/20_minus11.gp`, `L3_identity.gp`)
+
+The asymmetry is elementary and lives entirely in the *outer* (ζ(2)) direction.
+
+**Outer orientation (1, ψ): dilogarithms.** With w := Re ψ₄ − 2 Im ψ₄ (period 5, values
+1, −2, 2, −1, 0, mean zero), Φ_D = Σ_n (Σ_{d|n} w(d)d²)qⁿ and, summing over n = de,
+D⁻²Φ_D = Σ_{d≥1} w(d)·Li₂(q^d). For a P-periodic mean-zero sequence,
+lim_{x→1⁻} Σ a(d)x^d = −(1/P)Σ_{j=1}^{P} j·a(j). Hence
+
+* **cusp 0** (q → +1): Li₂(q^d) → ζ(2) for *every* d; Σ_{j≤5} j·w(j) = 1−4+6−4 = **−1**, so the
+  factor is −(−1)/5 = **1/5** and π^{(t₁)}(Φ_D) = **ζ(2)/5**;
+* **cusp 1/2** (q → −1): Li₂((−1)^d) = ζ(2) for d even but **−ζ(2)/2** for d odd — the weight is
+  *parity-dependent*. w·g (g = 1 on evens, −1/2 on odds) has period 10, values
+  (−1/2, −2, −1, −1, 0, 1, 1, 2, 1/2, 0), still mean zero, and Σ_{j≤10} j·(wg)(j) = **22**, so the
+  factor is −22/10 = **−11/5** and π^{(t₂)}(Φ_D) = **−11ζ(2)/5**.
+
+Both sums reproduced exactly here (`L3_identity.txt`). **Nothing in this involves σ** — which is
+precisely why π_D is not σ(ζ(2)/5).
+
+**Inner orientation (ψ, 1): Lambert series, and equivariance is a theorem there.** With
+v := 2Re ψ₄ − 2φ⁵ Im ψ₄, D⁻²Φ_new = Σ_{k≥1} (v(k)/k²)·q^k/(1−q^k). Using
+1/(e^t−1) = 1/t − 1/2 + t/12 − … with t = 2πyk: at cusp 0 every k contributes weight **−1/2**;
+at cusp 1/2 the even k give −1/2 and the odd k give −x^k/(1+x^k) → **−1/2** as well. The weight
+is *uniform in k at both cusps*, so the inner period is −½L(2,v), **K-linear in the source's
+K-coefficients**, and therefore
+
+$$\pi^{(t_2)}(\sigma\Phi)=\sigma\bigl(\pi^{(t_1)}(\Phi)\bigr)\quad\text{on the inner directions, with no twist.}$$
+
+So the equivariance predicted in §3.4 **is a theorem on the ξ-line**; the failure is confined to
+the ζ(2)-line and is a feature of Zagier D's orientation, not of the arithmetic of K.
+(The diamond ⟨2⟩ observation — c₀(∞) = 0 is not ⟨2⟩-stable — is the same phenomenon seen
+qualitatively; this is the proof.) That 11 = φ⁵ − φ⁻⁵ = L₅ = Tr_{K/ℚ}(φ⁵) also equals −(t₁+t₂)
+is **not** claimed to be more than the value of a character sum at level 5.
+
+**A by-product: a weight-three companion to the fold-regularity ratio.**
+Both convergence conditions above (Σ_k v(k)/k³ = 0 at cusp 0, Σ_{k even} v′(k)/k³ = 0 at cusp
+1/2) reduce to the *same* statement via Re ψ₄(2j) = −Im ψ₄(j), Im ψ₄(2j) = Re ψ₄(j) (because
+ψ₄(2) = i), namely
+
+$$\boxed{\ \mathrm{Re}\,L(3,\psi_4)\;=\;\varphi^5\,\mathrm{Im}\,L(3,\psi_4)\ }$$
+
+Verified here independently to **212 digits**: Re L(3,ψ₄) = 0.98819168162405719379746955…,
+Im L(3,ψ₄) = 0.08910518834573959516382505…, ratio − φ⁵ = 0 to 2.4·10⁻²¹²; `lindep` on
+[Re L₃, Im L₃, √5 Im L₃] returns **[−2, 11, 5]**, i.e. 2Re L₃ = (11+5√5)Im L₃. This is the s = 3
+(critical, for odd ψ) shadow of the weight-two fold-regularity ratio d(R₃)/d(R₄) = −φ⁵ of
+`hostscan` §10.3 — the cusp constant-term vanishing re-read on the L-value side. By contrast
+Φ_new at cusp 1/2 would need Re L₃ = −φ⁻⁵ Im L₃, and −2Im L₃ − 2φ⁵Re L₃ = −22.0966… ≠ 0: that
+non-vanishing **is** the log² of §3.4. **[verified, 212 digits]**
 
 Two ways out, both priced in §5.2:
 * assume the *doubled* hypothesis (i) ∧ (ii) — two ℚ-linear relations among
@@ -669,8 +715,9 @@ for the shallower ones: §6(b′) shows that granting them all changes the margi
 0.02, because the optimiser slits them anyway.
 (iv) Unbounded-degree K(y)-independence of the fourteen — CDT's Lemma 12.1.1, a monodromy
 argument — is **[assumed]**, not transported; only degree ≤ 5 is certified (§3.3).
-(v) The factor **−11 = t₁ + t₂** in the far-cusp period of B_D is measured, not explained; the
-diamond ⟨2⟩ observation of §3.4 is a partial structural reason only. **[open]**
+(v) *(closed)* The factor −11 is explained in §3.5 by an exact character-sum computation
+(dilogarithm parity at the two cusps); the numerical coincidence with −(t₁+t₂) is not claimed to
+be more than that.
 (vi) The identification of the analytic conditions (i), (ii) with fold-regularity at the two
 places rests on the standard dictionary "Apéry limit = period at the cusp = log coefficient of
 the Eichler integral", verified here at the near cusp to 212 digits; it is not proved.
@@ -698,6 +745,7 @@ the Eichler integral", verified here at the near cusp to 212 digits; it is not p
 | `monodromy.py` → `monodromy.txt`, `monodromy_robust.txt` | the monodromy computation that CLOSES the loophole for the decisive (2,±1) pair |
 | `relaxed.py` → `relaxed.txt` | the relaxed problem: only the proved (2,±1) exclusions enforced |
 | `farcusp_data.gp`, `farcusp.py` → `farcusp_robust.txt` | the far-cusp periods −11ζ(2)/5 and ξ′, with the near-cusp calibration and a robustness sweep |
+| `L3_identity.gp` → `L3_identity.txt` | Re L(3,ψ₄) = φ⁵ Im L(3,ψ₄) to 212 digits, and the two character sums behind −11/5 |
 | `single_hypothesis.py` → `single_hypothesis.txt` | branch B: the variant needing only the single hypothesis |
 | `saturation.txt` | the R → 1 saturation of the conformal radii at both places |
 | `task2/` | sources, companions, conditional ODE, fold-regularity at both places (agent report) |
@@ -718,7 +766,9 @@ but the strictly stronger
 
 because a single K-relation supplies a conditional function at the first place only: the
 far-cusp period of B_D is −11ζ(2)/5, not ζ(2)/5, so the second place's fold-regularity
-condition is *not* the Galois conjugate of the hypothesis (§3.4, verified to 174 digits).
+condition is *not* the Galois conjugate of the hypothesis (§3.4, verified to 174 digits;
+§3.5 proves the discrepancy is the dilogarithm parity of the **outer** orientation and that on
+the **inner** (ξ) line equivariance does hold exactly).
 Equivalently, (T′) asks for two ℚ-linear relations among 1, ζ(2), Re L, Im L, √5, √5ζ(2),
 √5 Re L, √5 Im L where (T) gives one; in the sub-case b = 0 it says the rational part and the
 √5 part of the single K-relation a + cξ = 0 must vanish separately.
@@ -738,9 +788,11 @@ ingredient is the **second real place of ℚ(√5)**: it puts the removed fold a
 |Y₂|/4 = 30.5 orbifold radii rather than CDT's 1/288, its deepest bad h-preimage at |z| = 0.2137
 rather than 0.4019, and — separately — it asks for a relation the hypothesis does not give.
 
-**What is left.** (a) A host on which the *far*-cusp period data is the Galois conjugate of the
-near-cusp data would remove the hypothesis tax; the −11 measured here is a property of Γ₁(5)'s
-cusp 1/2, not a general obstruction, and its structural origin is unexplained (§3.4). (b) The
+**What is left.** (a) The hypothesis tax is confined to the **outer** (ζ(2)) direction: on the
+inner (ξ) line equivariance is a theorem (§3.5). A host whose *outer* direction also had uniform
+cusp weights — i.e. a Lambert rather than a dilogarithm orientation — would remove the tax
+entirely and put branch A's hypothesis back to (T). That is a concrete search criterion, and it
+is orthogonal to the geometry. (b) The
 place-v₂ geometry is a motivic invariant of the pair (host, s): |Y₂| = φ¹⁵/(5√5) is forced by
 t₁t₂ = −1, so no choice of contour or inventory can repair it — a different host would be
 needed, and by `lattice/hostscan/REPORT.md` §10.5 there is no other Apéry-perfect k = 2 host

@@ -23,14 +23,19 @@ involving $\xi$ (i.e. $c\ne0$) these two are non-proportional $\mathbb Q$-linear
 $\{1,\zeta(2),\mathrm{Re}L,\mathrm{Im}L\}\cdot\{1,\sqrt5\}$. Note also the **$-11$**: the
 far-cusp period datum is *literally* $\sigma$-conjugate on the $\xi$-slot ($\pi'=\sigma(\xi)$) but
 is $-11\times$ on the $\zeta(2)$-slot, so the second condition is not even the naive $\sigma$-image
-of the first. Full statement in §4(c)/§4(f).
+of the first. Full statement in §4(c)/§4(f); **§4(g) explains the $-11$**: the outer (Zagier-D)
+orientation has $D^{-2}\Phi_D=\sum_dw(d)\mathrm{Li}_2(q^d)$ and $\mathrm{Li}_2$ takes different
+values at $+1$ and $-1$, so the regularised character sum changes from $1/5$ to $22/(-10)=-11/5$;
+the inner orientation is a Lambert series whose cusp weight is the same $-\tfrac12$ for every $k$
+at both cusps, which is *why* $\pi'=\sigma(\xi)$ exactly.
 
 Scripts (all in this directory, all PARI/GP 2.15):
 `01_build.gp` (exact construction, writes `build.txt`), `02_limits.gp`, `03_ode.gp`,
 `04_ode_verify.gp`, `05_coeffs.gp`, `06_denoms.gp`, `07_foldreg.gp`, `08_outer.gp`,
 `09_outerfit.gp`, `10_cusps.gp`, `11_cusps2.gp`, `12_cusptable.gp`, `13_haupt.gp`,
 `14_rates.gp`, `15_checks.gp`, `16_summary.gp`, `17_farperiods.gp` (monodromy at $t_2$),
-`18_nearperiods.gp` (validation at $t_1$ + `lindep`), `19_abel.gp` (independent Abel-summation check).
+`18_nearperiods.gp` (validation at $t_1$ + `lindep`), `19_abel.gp` (independent Abel-summation check),
+`20_minus11.gp` (character-sum explanation of the $-11$).
 All exact data (200 coefficients of $A$, $B_D$, $B_3$, $B_4$ as exact rationals) is in `build.txt`.
 
 Throughout: $\varphi^5=\tfrac{11+5\sqrt5}{2}=11.0901699\ldots$, $\varphi^{-5}=\tfrac{5\sqrt5-11}{2}=0.0901699\ldots$,
@@ -419,9 +424,12 @@ $\langle\Phi_D,\Phi'_{\rm new}\rangle$). Structurally, the diamond $\langle2\ran
 $R_1\mapsto R_2\mapsto-R_1$, $R_3\mapsto R_4\mapsto-R_3$, and satisfies
 $\langle2\rangle\Phi_{\rm new}=-\varphi^5\Phi'_{\rm new}$) exchanges the cusps $0\leftrightarrow1/2$
 and induces $x\mapsto-1/x$ (consistent with $t_1t_2=-1$), but it does **not** preserve the
-constraint $c_0(\infty)=0$: $\langle2\rangle^{-1}\Phi_D=R_1-\tfrac12R_2$ has $c_0(\infty)=-1$. That
-is why the $\zeta(2)$-slot picks up a factor while the $\xi$-slot does not. *(The value $-11$ is
-$t_1+t_2$; I have not proved that this is more than a coincidence.)*
+constraint $c_0(\infty)=0$: $\langle2\rangle^{-1}\Phi_D=R_1-\tfrac12R_2$ has $c_0(\infty)=-1$.
+**§4(g) settles this completely** by an elementary character-sum computation: the outer
+orientation gives $D^{-2}\Phi_D=\sum_dw(d)\mathrm{Li}_2(q^d)$, whose cusp weight is
+parity-dependent at $q\to-1$, while the inner orientation gives a Lambert series whose cusp
+weight is the *same* $-\tfrac12$ for every $k$ at both cusps — hence exact $\sigma$-equivariance
+on the $\xi$-line and a factor $22/(-10)=-11/5$ on the $\zeta(2)$-line.
 
 ### 4(f) The two conditions, and whether one implies the other  **[proved]**
 
@@ -474,6 +482,64 @@ $1,\mathrm{Re}L,\mathrm{Im}L$ instead of one.
 using $H$ at $v_1$ and accepting a non-fold-regular $H^\sigma$ at $v_2$ with a quantified
 entropy penalty), and whether the $-11$ has a conceptual explanation. Both are open.
 
+### 4(g) Where the $-11$ comes from  **[proved; L-value identity verified to 76 digits]**
+
+The asymmetry is between the two **orientations**, not between the two places, and it is
+elementary. (`20_minus11.gp`.)
+
+**Outer orientation $(\mathbf 1,\psi)$ — dilogarithms.** With
+$w:=\mathrm{re}_4-2\,\mathrm{im}_4$ (period $5$, values $1,-2,2,-1,0$, mean $0$),
+$\Phi_D=\sum_n\big(\sum_{d\mid n}w(d)d^2\big)q^n$ and hence, summing $n=de$,
+$$D^{-2}\Phi_D=\sum_{d\ge1}w(d)\,\mathrm{Li}_2(q^d).$$
+The cusp value is therefore $\zeta(2)$ times an Abel-regularised character sum
+$\sum_d w(d)\lambda_d$, and for a $P$-periodic mean-zero sequence
+$\lim_{x\to1^-}\sum_d a(d)x^d=\big(\sum_{j=1}^P j\,a(j)\big)/(-P)$.
+
+* **cusp $0$** ($q\to+1$): $\mathrm{Li}_2(q^d)\to\zeta(2)$, so $\lambda_d\equiv1$ and
+  $\sum_{j=1}^5 jw(j)=1-4+6-4=-1$, giving $-1/(-5)=\tfrac15$: $\;\pi^{(t_1)}(\Phi_D)=\zeta(2)/5$.
+* **cusp $1/2$** ($q\to-1$): $\mathrm{Li}_2((-1)^d)=\zeta(2)$ for $d$ even but $-\tfrac12\zeta(2)$
+  for $d$ odd. The weight is now **parity-dependent**; $wg$ has period $10$ with values
+  $(-\tfrac12,-2,-1,-1,0,1,1,2,\tfrac12,0)$, still mean $0$, and $\sum_{j=1}^{10}j\,(wg)(j)=22$,
+  giving $22/(-10)=-\tfrac{11}5$: $\;\pi^{(t_2)}(\Phi_D)=-11\zeta(2)/5$.
+
+**That parity split is the entire source of the $-11$.** It has nothing to do with $\sigma$ —
+which is exactly why $\pi_D\ne\sigma(\zeta(2)/5)$.
+
+**Inner orientation $(\psi,\mathbf 1)$ — Lambert series.** With
+$v:=2\,\mathrm{re}_4-2\varphi^5\mathrm{im}_4$ (so $\Phi_{\rm new}=\sum_n(\sum_{d\mid n}v(n/d)d^2)q^n$)
+and $v'=\sigma(v)=2\,\mathrm{re}_4+2\varphi^{-5}\mathrm{im}_4$,
+$$D^{-2}\Phi=\sum_{k\ge1}\frac{v(k)}{k^2}\cdot\frac{q^k}{1-q^k}.$$
+Using $\frac1{e^t-1}=\frac1t-\frac12+\frac t{12}-\cdots$ with $t=2\pi yk$:
+
+* **cusp $0$**: every $k$ contributes $\frac1{2\pi yk}-\frac12+O(y)$; the divergence cancels iff
+  $\sum_kv(k)/k^3=0$, and the finite part is $-\tfrac12\sum_kv(k)/k^2=-(\mathrm{Re}L_2-\varphi^5\mathrm{Im}L_2)=\xi$.
+* **cusp $1/2$** ($q=-x$): even $k$ give $\frac1{2\pi yk}-\frac12$, odd $k$ give
+  $-x^k/(1+x^k)\to-\tfrac12$ — **the same weight $-\tfrac12$**. Divergence cancels iff
+  $\sum_{k\ \rm even}v'(k)/k^3=0$, and the finite part is
+  $-\tfrac12\sum_kv'(k)/k^2=-(\mathrm{Re}L_2+\varphi^{-5}\mathrm{Im}L_2)=\xi'$.
+
+Because the weight $-\tfrac12$ is **uniform in $k$ at both cusps**, the inner period is
+$-\tfrac12L(2,v)$, which is $K$-linear in the source's $K$-coefficients. Hence
+$$\pi^{(t_2)}(\sigma\Phi)=\sigma\big(\pi^{(t_1)}(\Phi)\big)\quad\text{on the inner directions,}$$
+i.e. exactly the equivariance observed, with **no** twisting factor. The outer direction breaks it
+because $\mathrm{Li}_2$ evaluates differently on $+1$ and $-1$ whereas $1/(e^t-1)$ does not.
+
+**Bonus identity.** Both convergence conditions ($\sum_kv(k)/k^3=0$ and
+$\sum_{k\,\rm even}v'(k)/k^3=0$; note $\mathrm{re}_4(2j)=-\mathrm{im}_4(j)$,
+$\mathrm{im}_4(2j)=\mathrm{re}_4(j)$ since $\psi_4(2)=i$) reduce to the *same* statement
+$$\boxed{\ \mathrm{Re}\,L(3,\psi_4)=\varphi^5\,\mathrm{Im}\,L(3,\psi_4)\ }$$
+**[verified, 76 digits]**: $0.988191681624057193797\ldots/0.089105188345739595163\ldots=\varphi^5$ to
+$5\times10^{-77}$. This is the $s=3$ (critical for odd $\psi$) shadow of the fold-regularity ratio
+$-\varphi^5$ at $s=2$ — equivalently the vanishing of the cusp constant terms of §4(d), re-read on
+the $L$-value side. By contrast $\Phi_{\rm new}$ at cusp $1/2$ would need
+$\mathrm{Re}L_3=-\varphi^{-5}\mathrm{Im}L_3$, and $-2\mathrm{Im}L_3-2\varphi^5\mathrm{Re}L_3=-22.0966\ne0$
+— that non-vanishing *is* the $\log^2$ of §4(b).
+
+**Is $11=-(t_1+t_2)$ meaningful?** $11=\varphi^5-\varphi^{-5}=L_5$ (Lucas)
+$=\mathrm{Tr}_{K/\mathbb Q}(\varphi^5)=-(t_1+t_2)$, so the number is ubiquitous at level $5$. The
+derivation above makes $-\tfrac{11}5=22/(-10)$ a plain character-sum computation with $w$; **I do
+not claim** that its coincidence with $-(t_1+t_2)$ is more than that.
+
 ## 5. Ledger
 
 | claim | status |
@@ -498,11 +564,14 @@ entropy penalty), and whether the $-11$ has a conceptual explanation. Both are o
 | ~~no $K$-rational inner source is fold-regular at both places~~ — true but answers the **wrong question**; the two places need two *different* sources, related by $\sigma$, and those exist | **[retracted as a verdict]** |
 | exact constant terms at all four cusps | **[verified, $\ge78$ digits; exact closed forms given]** |
 | $x(\infty,0,1/2,2/5)=(0,\varphi^{-5},-\varphi^5,\infty)$ | **[verified, 38 digits]** |
+| $\pi_D=-11\zeta(2)/5$ explained: $D^{-2}\Phi_D=\sum_dw(d)\mathrm{Li}_2(q^d)$, parity-split weight $(\zeta(2),-\zeta(2)/2)$ at $q\to-1$, regularised sum $22/(-10)$ | **[proved]** |
+| inner periods are exactly $\sigma$-equivariant because $1/(e^t-1)$ contributes the same $-\tfrac12$ for every $k$ at both cusps | **[proved]** |
+| $\mathrm{Re}L(3,\psi_4)=\varphi^5\mathrm{Im}L(3,\psi_4)$ | **[verified, 76 digits]** |
 | $A_n\sim\varphi^{5n+5/2}/(2\pi5^{1/4}n)$ | **[verified, 6 digits]** (auxiliary only) |
 
 **Not settled / not attempted:** the $d_n^2$ denominator claim is exhaustive to $N=200$ only, not
 proved for all $n$; the entropy/holonomy accounting at the second place was not computed (the
 $v_2$ geometry $\mathbf P^1\setminus\{0,+0.0902,\infty\}$ has its puncture very close to $0$, so the
 "tax" of `NUMBER_FIELD_HOLONOMY` §3.1 needs an actual number against the $+0.0053$ margin);
-the conceptual origin of the $-11$ in $\pi_D$ is unexplained; nothing here bears on items 2, 3, 5
+the conceptual origin of the $-11$ is now settled (§4(g)) except for whether $-11/5=22/(-10)$ coinciding with $-(t_1+t_2)$ is structural; nothing here bears on items 2, 3, 5
 of `REPORT.md` §10.5.
