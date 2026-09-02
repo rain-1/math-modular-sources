@@ -30,7 +30,7 @@ No margin is ever rounded in the favourable direction.*
 | **Place v₂ is entirely responsible.** With the per-place score s_v = 13 log\|ψ_v′(0)\| − shape_v (margin = 13 log 256 + mean(s_v) − 14τ): s₁ = **−12.1905**, s₂ = **−16.2761**, CDT's own = −12.7700. So v₁ *gains* 0.579 nats over CDT and v₂ *loses* 3.506; halved, that is **−1.463** nats of margin against CDT's +0.021. | **[verified]** §5 |
 | **No inventory rescues it.** Adding functions to CDT's fourteen forces max eᵢ ≥ 2, and τ jumps 4.2355 → 4.4482; the bound goes from 16.13 to 23.5 and the margin from −1.44 to −3.96. Every m ≠ 14 is worse. (`INVENTORY_BOUND.md` R1/R4 already proves 14 is the complete supply at max eᵢ ≤ 1.) | **[verified]** §6 |
 
-| **The one loophole, quantified.** We exclude *every* non-principal h-preimage of Y_v, as CDT do. If the single conjugate pair at \|z\| = 0.213693 at place v₂ turned out to be a point where the continued conditional function is *not* singular, the margin would be **+0.51** and the theorem would follow. Nothing else in the construction has that leverage. Against it: the same refinement would take CDT's own margin from +0.025 to +0.65, and they spent an appendix tuning a contour for a margin of 0.005. | **[open]** §6(b) |
+| **The one loophole, and its closure.** We exclude *every* non-principal h-preimage of Y_v, as CDT do; only the ones at which the continued conditional function is really singular need go. If the single conjugate pair at \|z\| = 0.213693 at v₂ were harmless the margin would be **+0.51**. It is not harmless: those two preimages are the images of z₀ under the parabolic generator (2,±1) of Γ₀(2) at the cusp y = ∞, whose loop on the x-line encircles the outer cusp t₂, so the continuation changes H by a nonzero multiple of u_{t₂}, the homogeneous solution holomorphic at t₂; and **u_{t₁} and u_{t₂} are distinct lines** (numerically \|u_{t₁} ∧ u_{t₂}\| = 0.318 on Γ₁(5), 0.737 on CDT's Γ₀(6); both monodromies unipotent to 10⁻¹³). So the continued H is singular at the fold: the pair must be excluded. | **[verified]** §6(b) |
 
 **One sentence.** *Everything arithmetic about the target is as good as CDT's own — the same
 Apéry-perfect host, the same k = 2, the same fourteen functions, the same τ = 16603/3920, a
@@ -446,12 +446,47 @@ $\left(\begin{smallmatrix}1&0\\ \pm2&1\end{smallmatrix}\right)$): if they are ha
 margin is **+0.51** and the theorem follows; if not, it is **−1.44**. Dropping preimages at v₁
 buys almost nothing (+0.04), because v₁'s geometry is already better than CDT's. **[open]**
 
-*Plausibility.* The same what-if on CDT's **own** host takes their margin from +0.025 to
-**+0.652** (drop 2) and +0.713 (drop 4). CDT won their theorem by 0.0053 and spent an appendix
-tuning the contour; had this refinement been available they would have used it. That is not a
-proof, but it is strong evidence that the refinement is unavailable, i.e. that the conservative
-exclusion is the right one. Settling it is a monodromy computation on the rank-4 local system of
-G_A over Γ₀(2), not a contour computation.
+**Closure of the loophole** (`monodromy.py` → `monodromy.txt`, `monodromy_robust.txt`).
+Let ρ be the monodromy of the rank-4 system ⟨A, A₂, B_D, B_new⟩ on **P**¹∖{0,t₁,t₂,∞}. For any
+deck element γ, ρ(γ)H − H is a solution of the *homogeneous* equation (H and ρ(γ)H satisfy the
+same inhomogeneous equation with single-valued rational right-hand side), and ρ(γ)H is regular
+at the fold iff that difference lies in the line ⟨u_{t₁}⟩ of homogeneous solutions holomorphic
+at t₁. For γ = the parabolic generator at the cusp y = ∞ — bottom row (2,±1), which is exactly
+the deepest bad pair at **all three** configurations — the fibre of y = x²/(x−s) over y = ∞ is
+{s, ∞} (unramified), so the loop lifts to a loop around t₂ and
+
+  ρ(γ)H − H = (M_{t₂} − 1)H ∈ ker(M_{t₂} − 1) ∩ ⟨homogeneous⟩ = ⟨u_{t₂}⟩,
+
+nonzero because H is singular at t₂ (its radius of convergence is exactly |t₂|: that is what
+overconvergence *at t₁* means). Hence the (2,±1) preimages are harmless **iff ⟨u_{t₁}⟩ = ⟨u_{t₂}⟩**.
+Computing the monodromy numerically (DOP853, rtol 10⁻¹², loops of several radii and base points):
+
+| host | tr M_{t₁} | tr M_{t₂} | \|u_{t₁} ∧ u_{t₂}\| |
+|---|---|---|---|
+| CDT, x(1−x)(1−9x)y″+(1−20x+27x²)y′+3(3x−1)y = 0 | 2 ± 5·10⁻¹⁴ | 2 ± 5·10⁻¹⁴ | **0.7366** |
+| Zagier D, x(1−11x−x²)y″+(1−22x−3x²)y′−(3+x)y = 0 | 2 ± 5·10⁻¹³ | 2 ± 7·10⁻¹³ | **0.3184** |
+
+stable to 6 digits over base points 0.5, 0.3+0.2i, 1 and loop radii 0.03–0.06 / 3–7. Both local
+monodromies are unipotent, each with a one-dimensional fixed line, and **the two lines are
+distinct**. (Structurally this is forced: the monodromy group is the image of a congruence
+group and M_{t₁}, M_{t₂} are parabolic generators at *distinct cusps*, whose fixed points on
+∂**H** — hence whose fixed lines — differ.) The refinement is therefore **not available for the
+pair that matters**, and the margin stays −1.44. **[verified]**
+
+*Why the question was host-independent.* In **all three** configurations the
+deepest non-principal preimages are the images of the principal one under the **same** two group
+elements, the bottom rows (2, ±1), i.e. $\left(\begin{smallmatrix}1&0\\ \pm2&1\end{smallmatrix}\right)\in\Gamma_0(2)$
+— CDT's at |z| = 0.401921, ours at |z| = 0.536032 (v₁) and 0.213693 (v₂). These are parabolic,
+fixing the cusp τ = 0 of Γ₀(2), i.e. the loop around y = ∞; so "is the lift regular at the
+(2,±1)-preimage?" is the *same* question about the *same* group element for CDT's row **C** on
+Γ₀(6) and for row **D** on Γ₁(5) — both weight-one k = 2 rows on four-cusp genus-zero hosts
+descended by the same involution. The same what-if on CDT's **own** host would have taken their
+margin from +0.025 to **+0.652**; they won by 0.0053 and still demanded a *unique* preimage in
+Lemma A.4.4 — consistent with the computation above, which says the refinement does not exist
+for this pair on either host. **What remains genuinely open** is only the status of the
+*other*, shallower preimages (bottom rows (4,±1), (6,±1), (2,±3), …): each is a separate
+cocycle condition Δ_γ ∈ ⟨u_{t₁}⟩. Dropping every one of them while keeping the proved (2,±1)
+exclusions is the relaxed problem of §6(b′).
 
 **(c) Not descending at v₂.** Using the Y(2) (λ-)uniformisation instead of Y₀(2) doubles both
 log|φ′(0)| and BC while leaving τ alone — CDT's own Basic Remark (equivalently: τ halves and the
@@ -492,8 +527,11 @@ frozen shapes at the caps would give +2.7. What settles it is the *saturation* o
 the family's own frontier — together with the exact decoupled optimisation of §4.3.
 A domain outside the family "disc ∖ (one lune ∪ slits)" is not excluded by anything proved here.
 
-(iii) The monodromy refinement of §6(b) is genuinely open. (iv) Fold-regularity at the second
-place and the K(y)-independence of the fourteen are computed in `task2/`, `task3/`.
+(iii) The monodromy refinement of §6(b) is **closed for the decisive (2,±1) pair** by the
+computation of §6(b), and remains open for the shallower preimages — bounded by §6(b′).
+(iv) Fold-regularity at the second place is analysed in `task2/`; the K(y)-independence of the
+fourteen (degree ≤ 5) in `task3/`. Unbounded-degree K(y)-independence — CDT's Lemma 12.1.1, a
+monodromy argument — is **[assumed]**, not transported.
 
 ---
 
@@ -515,6 +553,8 @@ place and the K(y)-independence of the fourteen are computed in `task2/`, `task3
 | `verdict.py` → `verdict.txt` | cross-validation of the two BC evaluators, hard caps, attribution, inventory sweep, convexity |
 | `curves.json` | the measured (R, #bad, \|ψ′\|, L, BC) curves at both places |
 | `whatif.py` → `whatif.txt`, `whatif_cdt.txt` | the monodromy loophole, quantified at both places and on CDT's own host |
+| `monodromy.py` → `monodromy.txt`, `monodromy_robust.txt` | the monodromy computation that CLOSES the loophole for the decisive (2,±1) pair |
+| `worstcase.py` → `worstcase.txt` | the relaxed problem: only the proved (2,±1) exclusions enforced |
 | `saturation.txt` | the R → 1 saturation of the conformal radii at both places |
 | `task2/` | sources, companions, conditional ODE, fold-regularity at both places (agent report) |
 | `task3/` | pure module over K, measured denominator array, K(y)-independence (agent report) |

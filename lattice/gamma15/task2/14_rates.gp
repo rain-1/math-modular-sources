@@ -1,0 +1,27 @@
+/* 14_rates.gp -- coefficient decay/growth ratios, both places. */
+default(parisizemax, 20000000000);
+default(realprecision, 700);
+read("build.txt");
+s5 = sqrt(5); ph5 = (11+5*s5)/2; phm5 = (5*s5-11)/2;
+Lchi(s) = 5^(-s)*(zetahurwitz(s,1/5) + I*zetahurwitz(s,2/5) - I*zetahurwitz(s,3/5) - zetahurwitz(s,4/5));
+LL = Lchi(2); LR = real(LL); LI = imag(LL); z = zeta(2)/5;
+xi = ph5*LI - LR; xip = -phm5*LI - LR;
+Bnew  = vector(NA+1, i, B3[i] + ph5*B4[i]);
+Bnewp = vector(NA+1, i, B3[i] - phm5*B4[i]);
+cD = vector(NA+1, i, BD[i] - z*A[i]);
+cN = vector(NA+1, i, Bnew[i] - xi*A[i]);
+gN = vector(NA+1, i, Bnewp[i] - xip*A[i]);
+pr(v, nm) = print("  ", nm, " : ", concat(vector(5, k, my(n=[200,190,180,150,100][k]); [n, v[n+1]/v[n]])));
+print("=== coefficient ratios c_n/c_{n-1} (target -phi^-5 = ", -phm5, ") ===");
+pr(cD, "B_D - (zeta2/5)A");
+pr(cN, "B_new - xi A    ");
+print("");
+print("=== conjugate: g_n/g_{n-1} for g = B_new' - xi' A  (target +phi^5 = ", ph5, ") ===");
+pr(gN, "B_new' - xi' A  ");
+print("  and for lambda = 0 : ");
+pr(Bnewp, "B_new'          ");
+print("");
+print("Richardson: n*(c_n/c_{n-1} + phi^-5) for B_D at n=200,150,100: ", vector(3,k, my(n=[200,150,100][k]); n*(cD[n+1]/cD[n] + phm5)));
+print("Richardson: n*(c_n/c_{n-1} + phi^-5) for B_new at n=200,150,100: ", vector(3,k, my(n=[200,150,100][k]); n*(cN[n+1]/cN[n] + phm5)));
+print("Richardson: n*(g_n/g_{n-1} - phi^5) for B_new'-xi'A at n=200,150,100: ", vector(3,k, my(n=[200,150,100][k]); n*(gN[n+1]/gN[n] - ph5)));
+quit;

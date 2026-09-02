@@ -1,0 +1,25 @@
+/* 11_cusps2.gp -- exact identification of the cusp-0 and cusp-1/2 constant terms */
+default(realprecision, 80);
+G5 = znstar(5,1); ps4 = [G5,2]; ps4b = [G5,3];
+P1 = mfeisenstein(3, ps4, 1); P2 = mfeisenstein(3, ps4b, 1);
+P3 = mfeisenstein(3, 1, ps4); P4 = mfeisenstein(3, 1, ps4b);
+mf1 = mfinit([5,3,ps4], 4); mf2 = mfinit([5,3,ps4b], 4);
+g0 = [0,-1;1,0]; gh = [1,0;2,1];
+c30 = mfslashexpansion(mf1, P3, g0, 1, 0)[1];
+c40 = mfslashexpansion(mf2, P4, g0, 1, 0)[1];
+c3h = mfslashexpansion(mf1, P3, gh, 1, 0)[1];
+c4h = mfslashexpansion(mf2, P4, gh, 1, 0)[1];
+print("c0(P3, cusp 0)   = ", c30);
+print("c0(P4, cusp 0)   = ", c40);
+print("c0(P3, cusp 1/2) = ", c3h);
+print("c0(P4, cusp 1/2) = ", c4h);
+s5 = sqrt(5); ph5 = (11+5*s5)/2;
+print("ratio Im/Re of c0(P3,0) : ", imag(c30)/real(c30), "   -phi^5 = ", -ph5);
+print("125*c30 = ", 125*c30, "   |125*c30| = ", abs(125*c30));
+print("lindep Re: ", lindep([real(c30), 1, s5, 1/5^3, s5/5^3], 30));
+print("algdep(c30, 4) = ", algdep(c30, 4));
+print("algdep(125*c30, 4) = ", algdep(125*c30, 4));
+print("algdep(c3h, 4) = ", algdep(c3h, 4));
+print("c30/c40 = ", c30/c40, "   c3h/c4h = ", c3h/c4h);
+print("c3h/c30 = ", c3h/c30);
+quit;
