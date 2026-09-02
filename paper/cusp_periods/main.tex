@@ -1,0 +1,404 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,array,multirow}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{verification}[theorem]{Computer-assisted verification}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}\newcommand{\HH}{\mathbb H}
+\newcommand{\Ob}{\overline{\Q}}\newcommand{\Li}{\operatorname{Li}}
+\newcommand{\ct}{a_0}\renewcommand{\Re}{\operatorname{Re}}\renewcommand{\Im}{\operatorname{Im}}
+\DeclareMathOperator{\lcmop}{lcm}\DeclareMathOperator{\ord}{ord}\DeclareMathOperator{\Res}{Res}\DeclareMathOperator{\Gal}{Gal}
+\newcommand{\cc}{\mathfrak c}\newcommand{\Pc}{\Pi_{\cc}}\newcommand{\Pq}{\Pi^{q}}
+\newcommand{\Phinew}{\Phi_{\rm new}}\newcommand{\Phican}{\Phi_{\rm can}}
+\title[Cusp periods of modular Ap\'ery systems]{Cusp periods of modular Ap\'ery systems:\\ one recurrence, many periods}
+\author{Claude (Fable), with River}
+\date{2 September 2026 --- draft}
+\begin{document}
+\begin{abstract}
+A modular Ap\'ery system $(x,F,\Phi)$ --- a Hauptmodul $x$, a form $F=\sum A_nx^n$ of weight $r-1$ and an Eisenstein source $\Phi$ of weight $r+1$ --- has a companion $B=F\cdot D^{-r}\Phi=\sum B_nx^n$ with $d_n^{\,r}B_n$ integral, and $B_n/A_n$ tends to an $L$-value, the period of $B$ at the singularity of the Picard--Fuchs operator nearest the origin. Every singular point of that operator is the image of a cusp or of a fold, and at every cusp image the companion has, under a regularity condition, a period of its own. We prove that the period at the cusp $a/c$ is the constant term of the Eichler integral $D^{-r}\Phi$ along the radial path to $e(a/c)$, give it in closed form as a finite $\Q(\zeta_M)$-combination of values $L(r,\chi)$, and prove that the polar coefficient of that expansion is exactly $(2\pi i)^{r+1}\ct(\Phi|\gamma)/(r!\,c^{r+1})$, so that regularity at a cusp is the vanishing of the constant term of $\Phi$ there, together with the vanishing of its constant term at $\infty$. The main structural result is an orientation dichotomy: for sources of \emph{inner} orientation $(\psi,\mathbf 1)$ the real part of the period is $L(\Phi,r)$ at every cusp, because $\Re\,z/(1-z)=-\tfrac12$ on the whole unit circle, whereas for the \emph{outer} orientation $(\mathbf 1,\varphi)$ the far-cusp period is $L(\Phi,r)$ times a rational factor which is $-11$ for Ap\'ery's $\zeta(2)$ row and $-3$ for the Franel row. On $\Gamma_1(5)$ the inner line carries the $\Q(\sqrt5)$-period $\xi=\varphi^5\Im L(2,\psi_4)-\Re L(2,\psi_4)$ at the near cusp and its Galois conjugate at the far cusp of the conjugate source, and its regularity condition is the identity $\Re L(3,\psi_4)=\varphi^5\Im L(3,\psi_4)$, which we prove from generalized Bernoulli numbers. A census over the fifteen sporadic rows, verified against the monodromy of the row operators to $100$--$135$ digits, a Fricke-sign criterion for cusp-form sources on Fricke hosts, and the consequence for linear-independence proofs over real quadratic fields --- the hypothesis tax of the two-place construction is an orientation theorem --- complete the picture.
+\end{abstract}
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Ap\'ery's sequences $A_n=\sum_k\binom nk^2\binom{n+k}k$ and their companions $B_n$ satisfy one recurrence, $(n+1)^2y_{n+1}=(11n^2+11n+3)y_n+n^2y_{n-1}$, and $B_n/A_n\to\zeta(2)/5$. Beukers \cite{Beukers1987} read this modularly: $\sum A_nx^n$ is a weight-one form $F$ on $\Gamma_1(5)$ expanded in the Hauptmodul $x=q\prod(1-q^n)^{5(\frac n5)}$, and $\sum B_nx^n$ is $F$ times the Eichler integral $D^{-2}\Phi$ of a weight-three Eisenstein series $\Phi$. The same structure underlies every sporadic row of Zagier \cite{Zagier}, Almkvist--Zudilin \cite{AZ} and Cooper \cite{Cooper}: a \emph{source} $\Phi=F\cdot Dx$ of weight $r+1$ ($r$ one more than the weight of $F$), a companion $B=F\cdot D^{-r}\Phi$ whose coefficients $B_n=\sum_{m\le n}c(m)m^{-r}e_{n,m}$ have denominators dividing $d_n^{\,r}=\lcmop(1,\dots,n)^r$, and an Ap\'ery limit which is the critical value $L(\Phi,r)$. The arithmetic and the asymptotics of these companions are the subject of the companion paper \cite{Companions}, whose notation we keep.
+
+The Ap\'ery limit is a statement about \emph{one} singular point of the Picard--Fuchs operator $\mathcal L$ of the row: the point $x_1$ nearest the origin, where $B-\xi F$ is analytic exactly for $\xi=\lim B_n/A_n$. But $\mathcal L$ has other singular points, and on the \emph{weight-one hosts} (the second-order rows) every one of them is the image of a cusp of $\Gamma$. At each such point the local solutions of $\mathcal L$ are $u,\ u\log(x-x_{\cc})$, and there is again a unique $\Pc$ with $B-\Pc F$ analytic whenever the inhomogeneity of $B$ is regular there. This paper is about these \emph{cusp periods}: what they are, when they exist, and how they are related to each other.
+
+The question arose in a concrete Diophantine situation \cite[\S5]{Companions}. The fold-regular source space of Ap\'ery's $\zeta(2)$ host is two-dimensional over $K=\Q(\sqrt5)$: besides Ap\'ery's $\Phi_D$, with limit $\zeta(2)/5$, it contains a source $\Phinew\in\Z[\varphi][[q]]$ whose limit is the new period
+$$\xi=\varphi^5\,\Im L(2,\psi_4)-\Re L(2,\psi_4)=0.65563418884065676633\ldots,$$
+$\psi_4$ the odd quartic character mod $5$. A linear-independence proof over $K$ in the style of Calegari--Dimitrov--Tang \cite{CDT} needs a conditional function at \emph{both} real places of $K$, hence needs to know the periods at the \emph{far} singular point $x_2=-\varphi^5$ as well as at $x_1=\varphi^{-5}$. Numerically the far period of Ap\'ery's companion is $-\tfrac{11}5\zeta(2)$, not $\zeta(2)/5$, while the far period of the conjugate source $\sigma\Phinew$ is exactly $\sigma(\xi)$. The explanation is the orientation of the source, and it is the main theorem of this paper.
+
+\subsection*{Results} Section \ref{sec:setting} sets up the objects and defines the period at a cusp. Section \ref{sec:expansion} contains the analytic core: Theorem \ref{thm:expansion} expands the Eichler integral along the radial path to a cusp, with an absolutely convergent closed formula for the constant term $\Pq_{\cc}$ and the polar coefficient $\rho_{\cc}$; Theorem \ref{thm:polar} identifies $\rho_{\cc}$ with the constant term of $\Phi$ at the cusp, by Bol's identity; Proposition \ref{prop:third} shows that a non-zero constant term of $\Phi$ at $\infty$ destroys every cusp period. Section \ref{sec:period} proves that $\Pq_{\cc}$ is the monodromy period (Theorem \ref{thm:period}) and that every cusp period lies in the $\Q(\zeta_M)$-span of the $L(r,\chi)$ (Corollary \ref{cor:field}). Section \ref{sec:dichotomy} proves the orientation dichotomy (Theorem \ref{thm:dichotomy}), derives the Galois equivariance of inner sources (Corollary \ref{cor:galois}) and treats $\Gamma_1(5)$ in full, including the identity $\Re L(3,\psi_4)=\varphi^5\Im L(3,\psi_4)$ (Proposition \ref{prop:L3}). Section \ref{sec:census} is the census of the fifteen rows and its confirmation by monodromy. Section \ref{sec:fricke} proves the Fricke-sign criterion for cusp-form sources (Theorem \ref{thm:fricke}). Section \ref{sec:folds} records what is known at folds, Section \ref{sec:dioph} the consequence for independence proofs, and Section \ref{sec:open} the open questions. All statements called theorems are proved here; numerical statements carry their digit count and the directory of the scripts that produced them.\footnote{Two of the numbers were re-derived independently for this paper by short PARI/GP scripts in \texttt{paper/cusp\_periods/check/}: the far-cusp period $-\tfrac{11}5\zeta(2)$ of Ap\'ery's $\zeta(2)$ companion and the factor $-3$ of the Franel row (\texttt{01\_cuspformula.gp}, $76$ digits, with an independent Abel-summation cross-check to $21$ digits), and the identity $\Re L(3,\psi_4)=\varphi^5\Im L(3,\psi_4)$ (\texttt{02\_L3identity.gp}, $76$ digits against \texttt{lfun}, and the generalized-Bernoulli formula to $77$ digits). The showcase numbers are in \texttt{03\_showcase.gp}.}
+
+\section{Modular Ap\'ery systems and the period at a cusp}\label{sec:setting}
+
+\subsection{Systems, sources, companions}
+Let $\Gamma\supseteq\Gamma_1(N)$ be a congruence subgroup of genus zero, $x=q+O(q^2)$ a Hauptmodul of $\Gamma$ with integral $q$-expansion, and $F=1+O(q)$ a holomorphic modular form of weight $k\ge1$ on $\Gamma$ (with character if $\Gamma=\Gamma_1(N)$). Put $r:=k+1$ and write $D=q\,d/dq=\frac1{2\pi i}\frac d{d\tau}$. The \emph{row} is $A(x)=\sum A_nx^n:=F$ as a function of $x$; the \emph{canonical source} is $\Phican:=F\cdot Dx$, a form of weight $k+2=r+1$ with $\Phican=q+O(q^2)$. A \emph{source} is any $\Phi\in M_{r+1}(\Gamma)$, holomorphic at all cusps, with expansion $\Phi=c_0+\sum_{m\ge1}c(m)q^m$. Its \emph{Eichler integral} and \emph{companion} are
+\begin{equation}\label{eq:companion}
+\Theta:=D^{-r}(\Phi-c_0)=\sum_{m\ge1}\frac{c(m)}{m^r}q^m,\qquad B:=F\cdot\Theta=\sum_{n\ge1}B_nx^n,\qquad B_n=\sum_{m=1}^n\frac{c(m)}{m^r}e_{n,m},
+\end{equation}
+where $e_{n,m}=[x^n](F(q)q^m)\in\Z$ \cite[\S2]{Companions}; thus $d_n^{\,r}B_n\in\Z$ whenever $c(m)\in\Z$, and $d_n^{\,r}B_n\in\mathcal O_K$ whenever $c(m)\in\mathcal O_K$. ($\Theta$ is the series called $\Psi$ in \cite{Companions}; we reserve $\psi$ for characters.)
+
+\subsection{The Picard--Fuchs operator}
+For a function $y$ on $\HH$ set
+\begin{equation}\label{eq:L}
+\mathcal Ly:=\frac{1}{\Phican}\,D^{r}\Bigl(\frac yF\Bigr).
+\end{equation}
+Recall Bol's identity \cite{Bol}: if $g$ transforms like a form of weight $1-r$ under $\gamma\in SL_2(\Z)$, then $D^rg$ transforms like a form of weight $r+1$, $D^r(g|_{1-r}\gamma)=(D^rg)|_{r+1}\gamma$.
+
+\begin{lemma}\label{lem:L}
+(i) $\mathcal L$ is a linear differential operator of order $r$ in $x$ with coefficients in $\C(x)$; its solution space is spanned by $F\tau^j$, $0\le j<r$, so $\mathcal LA=0$. (ii) For every source $\Phi$,
+$$\mathcal LB=\frac{\Phi-c_0}{\Phican},$$
+and $R_\Phi:=\Phi/\Phican$ is a rational function of $x$; in particular $\mathcal LB_{\rm can}=1$ for the canonical companion. (iii) $R_\Phi$ is regular at the image $x_{\cc}$ of a cusp $\cc$ if and only if $\ord_{\cc}\Phi\ge\ord_{\cc}\Phican$, and regular at a fold $\tau_0$ (a critical point of $x$) if and only if $\Phi$ vanishes at $\tau_0$ to the order of $Dx$.
+\end{lemma}
+\begin{proof}
+(ii) is $D^r\Theta=\Phi-c_0$. $\Phi/\Phican$ has weight $0$ and is $\Gamma$-invariant, hence a rational function of the Hauptmodul; $\Phican$ vanishes exactly where $Dx$ does, which gives (iii). For (i), $D=Dx\cdot\frac d{dx}$ shows that $\mathcal L=\sum_{j\le r}a_j(\tau)\frac{d^j}{dx^j}$ with $a_r=(Dx)^{r-1}/F^2$. For $0\le i\le r$ the function $x^i/F$ has weight $-k=1-r$, so by Bol's identity $D^r(x^i/F)$ has weight $r+1$ and $\mathcal L(x^i)$ has weight $0$: it is a rational function of $x$. The triangular system $\mathcal L(x^i)=\sum_ja_j\,i(i-1)\cdots(i-j+1)\,x^{i-j}$, $i=0,\dots,r$, then determines $a_0,\dots,a_r$ as rational functions of $x$. Finally $D^r(\tau^j)=0$ for $j<r$.
+\end{proof}
+
+For the rows of this paper $\mathcal L$, cleared of denominators, is the operator of the recurrence, normalized by $\mathcal LB_{\rm can}=1$; e.g.\ for Ap\'ery's $\zeta(2)$ row $\mathcal L=x(1-11x-x^2)\partial^2+(1-22x-3x^2)\partial-(3+x)$, and the finite singular points of $\mathcal L$ are $x=0$, the images $x_{\cc}$ of the cusps at which $x$ is finite, and the images of the folds. On the weight-one hosts (rows $\mathbf A$--$\mathbf F$ of Zagier and $\Gamma_1(5)$) all finite singular points other than $0$ are cusp images; on the Fricke hosts of the third-order rows the nearest one is the fold $x(i/\sqrt N)$ and the far one is a cusp or a second fold.
+
+\subsection{The local picture at a cusp, and the period}
+Let $\cc=\gamma\infty$ with $\gamma=\begin{psmallmatrix}a&b\\c&d\end{psmallmatrix}\in SL_2(\Z)$, $c>0$, be a cusp of $\Gamma$ of width $w$, with local parameter $q_{\cc}=e(\tau'/w)$, $\tau=\gamma\tau'$. We assume throughout that $x$ is finite at $\cc$ and that the cusp is \emph{simple} for $x$: $x-x_{\cc}=a_1q_{\cc}+O(q_{\cc}^2)$, $a_1\ne0$. Write
+$$u:=F|_k\gamma=\phi_0+O(q_{\cc}),\qquad \Phi|_{r+1}\gamma=\ct(\Phi|\gamma)+\sum_{m\ge1}a_m(\gamma)q_{\cc}^m,$$
+and assume $\phi_0\ne0$ ($F$ does not vanish at the cusp). Then $u$ is an analytic function of $x$ near $x_{\cc}$, and $\tau'=\frac w{2\pi i}\log q_{\cc}=\frac w{2\pi i}\bigl(\log(x-x_{\cc})+\text{analytic}\bigr)$.
+
+\begin{lemma}[Bol expansion of the companion]\label{lem:bol}
+Suppose $c_0=\ct(\Phi,\infty)=0$. There is a polynomial $P_\gamma$ of degree $\le r-1$ such that, with $\Theta_\gamma:=\sum_{m\ge1}a_m(\gamma)(w/m)^rq_{\cc}^m$,
+\begin{equation}\label{eq:bol}
+F(\gamma\tau')=(c\tau'+d)^{r-1}u(\tau'),\qquad
+B(\gamma\tau')=u(\tau')\Bigl[\ct(\Phi|\gamma)\frac{(2\pi i\tau')^r}{r!}+P_\gamma(\tau')+\Theta_\gamma(\tau')\Bigr].
+\end{equation}
+If $c_0\ne0$, the second formula acquires the additional term $-c_0\,u(\tau')(c\tau'+d)^{r-1}(2\pi i\,\gamma\tau')^r/r!$.
+\end{lemma}
+\begin{proof}
+$D^r\Theta=\Phi-c_0$. If $c_0=0$, Bol's identity gives $D^r(\Theta|_{1-r}\gamma)=\Phi|_{r+1}\gamma$, and $D^{-r}$ of $\ct(\Phi|\gamma)+\sum a_mq_{\cc}^m$ is $\ct(\Phi|\gamma)(2\pi i\tau')^r/r!+\Theta_\gamma$ (since $Dq_{\cc}^m=(m/w)q_{\cc}^m$) up to a polynomial of degree $<r$; so $(c\tau'+d)^{r-1}\Theta(\gamma\tau')=\ct(\Phi|\gamma)(2\pi i\tau')^r/r!+P_\gamma+\Theta_\gamma$. Multiply by $F(\gamma\tau')=(c\tau'+d)^{k}u=(c\tau'+d)^{r-1}u$. If $c_0\ne0$, apply this to $\Theta+c_0(2\pi i\tau)^r/r!$, whose $r$-th derivative is $\Phi$.
+\end{proof}
+
+Since $u(x_{\cc})=\phi_0\ne0$ and $\log(x-x_{\cc})$ is transcendental over the analytic functions at $x_{\cc}$, \eqref{eq:bol} says that near a cusp image every solution of $\mathcal Ly=R$ with $R$ regular is $y_{\rm part}+u\cdot Q(\tau')$, $\deg Q\le r-1$, $y_{\rm part}$ analytic, and $A=F=u\cdot(c\tau'+d)^{r-1}$.
+
+\begin{definition}\label{def:period}
+$\Phi$ (or $B$) \emph{has a period at $x_{\cc}$} if there is $\Pi\in\C$ with $B-\Pi F$ analytic at $x_{\cc}$; $\Pi$ is then unique and is denoted $\Pc(\Phi)$. The \emph{log-coefficient ratio} $\ell_{\cc}(B)/\ell_{\cc}(A)$ is the quotient of the coefficients of $u\,\tau'^{\,r-1}$ in $B$ and in $A$, i.e.\ of the top coefficients of the polynomials in \eqref{eq:bol}; equivalently, it is the ratio of the monodromy differences $(M_{\cc}-1)B$ and $(M_{\cc}-1)A$ when $r=2$.
+\end{definition}
+
+\begin{proposition}\label{prop:exist}
+Let $c_0=0$. (i) If $\ct(\Phi|\gamma)\ne0$ there is no period at $x_{\cc}$. (ii) If $\ct(\Phi|\gamma)=0$ and $r=2$ there is a period, $\Pc=\ell_{\cc}(B)/\ell_{\cc}(A)=p_1/c$ where $P_\gamma(\tau')=p_1\tau'+p_0$. (iii) If $\ct(\Phi|\gamma)=0$ and $r\ge3$ there is a period iff $P_\gamma(\tau')-\Pi(c\tau'+d)^{r-1}$ is constant for some $\Pi$, and then $\Pc=\Pi=\ell_{\cc}(B)/\ell_{\cc}(A)$. At the singularity $x_1$ nearest the origin the period is the Ap\'ery limit $\lim B_n/A_n$, and $A_n\Pi-B_n$ decays geometrically.
+\end{proposition}
+\begin{proof}
+$B-\Pi F=u\bigl[\ct(\Phi|\gamma)(2\pi i\tau')^r/r!+P_\gamma(\tau')-\Pi(c\tau'+d)^{r-1}\bigr]+u\Theta_\gamma$, and $u\Theta_\gamma$ is analytic; the bracket is a polynomial in $\tau'$, and $u\cdot(\text{polynomial in }\tau')$ is analytic at $x_{\cc}$ iff the polynomial is constant. Only for $r=2$ is every linear polynomial of the form $\Pi(c\tau'+d)+\text{const}$. The last sentence is the transfer theorem for a function analytic in $|x|<|x_1|+\varepsilon$ except for a single logarithmic singularity at $x_1$ \cite{FS}.
+\end{proof}
+
+For $r\ge3$ the condition in (iii) is the statement that the \emph{period polynomial} of $\Phi$ at $\cc$ is proportional to $(c\tau'+d)^{r-1}$; on the Fricke hosts of the third-order rows it is automatic at the near fold once $\ct=0$ (Theorem \ref{thm:fricke} below and \cite[Thm.~B]{ProjSources}).
+
+\begin{remark}
+Lemma \ref{lem:L}(iii) says when $R_\Phi$ is regular at $x_{\cc}$. On a weight-one host $\Phican=F\,Dx$ vanishes to order exactly $1$ at a simple cusp where $F\ne0$, so $R_\Phi$ is regular there iff $\ct(\Phi|\gamma)=0$: the regularity of the inhomogeneity and condition (i) of Proposition \ref{prop:exist} coincide. If $R_\Phi$ has a simple pole at $x_{\cc}$, $B$ contains a $\log^2(x-x_{\cc})$ term and no period exists, as in \eqref{eq:bol} with $\ct\ne0$.
+\end{remark}
+
+\section{The expansion at a cusp}\label{sec:expansion}
+
+\subsection{Orientation}
+The sources of the sporadic rows are finite combinations $\Phi=\sum_dc_dE^{\psi,\varphi}_{r+1}(d\tau)$ of the Eisenstein series
+$$E^{\psi,\varphi}_{r+1}=c_0+\sum_{m\ge1}\Bigl(\sum_{e\mid m}\psi(m/e)\varphi(e)e^r\Bigr)q^m,$$
+$\psi,\varphi$ Dirichlet characters (or, on $\Gamma_1(5)$, real combinations of characters, i.e.\ periodic functions) with $\psi\varphi(-1)=(-1)^{r+1}$ \cite{DS}; $\varphi$ is the character called $\chi$ in \cite{Companions}, and $L(\Phi,s)=\sum_dc_dd^{-s}L(s,\psi)L(s-r,\varphi)$. Writing $m=fe$,
+\begin{equation}\label{eq:lambert}
+\Theta=\sum_dc_dd^{-r}\sum_{f\ge1}\frac{\psi(f)}{f^r}\Lambda_\varphi(q^{df}),\qquad
+\Lambda_\varphi(z):=\sum_{e\ge1}\varphi(e)z^e=\frac{N_\varphi(z)}{1-z^Q},\quad N_\varphi(z)=\sum_{a=1}^Q\varphi(a)z^a,
+\end{equation}
+$Q$ the period of $\varphi$. We call the source \emph{inner} if $\varphi=\mathbf 1$, when $\Lambda(z)=z/(1-z)$ and $\Theta$ is a twisted Lambert series, and \emph{outer} if $\psi=\mathbf 1$, when $\Theta=\sum_dc_dd^{-r}\sum_e\varphi(e)\Li_r(q^{de})$ is a combination of polylogarithms. The poles of $\Lambda_\varphi$ are the $Q$-th roots of unity $z_0$ with $N_\varphi(z_0)\ne0$, all simple; for $\varphi\ne\mathbf 1$ the point $z_0=1$ is removable, $\Lambda_\varphi(1)=-\frac1Q\sum_aa\varphi(a)=-B_{1,\varphi}$. Put
+$$w_\varphi(z_0):=\begin{cases}\tfrac12N_\varphi(z_0)-\tfrac1Qz_0N_\varphi'(z_0)&z_0^Q=1,\\ \Lambda_\varphi(z_0)&\text{otherwise},\end{cases}\qquad
+n_\varphi(z_0):=\begin{cases}N_\varphi(z_0)/Q&z_0^Q=1,\\0&\text{otherwise};\end{cases}$$
+for $\varphi=\mathbf 1$ this is $w(1)=-\tfrac12=\zeta(0)$, $n(1)=1$.
+
+\begin{theorem}[expansion at a cusp]\label{thm:expansion}
+Let $r\ge2$, $\cc=a/c$ with $\gcd(a,c)=1$, $\zeta=e(a/c)$, and $q=\zeta e^{-t}$, $t\to0^+$. Then
+\begin{equation}\label{eq:expansion}
+\Theta(\zeta e^{-t})=\frac{\rho_{\cc}}t+\Pq_{\cc}+O(t\log\tfrac1t),\qquad
+\rho_{\cc}=\sum_dc_dd^{-r-1}\sum_{f\ge1}\frac{\psi(f)}{f^{r+1}}\,n_\varphi(\zeta^{df}),\qquad
+\Pq_{\cc}=\sum_dc_dd^{-r}\sum_{f\ge1}\frac{\psi(f)}{f^{r}}\,w_\varphi(\zeta^{df}),
+\end{equation}
+both series converging absolutely. Equivalently, for the twisted Dirichlet series $A_{\cc}(s)=\sum_mc(m)e(am/c)m^{-s}$ one has $\Pq_{\cc}=A_{\cc}(r)$ and $\rho_{\cc}=\Res_{s=r+1}A_{\cc}(s)$.
+\end{theorem}
+\begin{proof}
+Fix $d$ and $f$ and put $z_0=\zeta^{df}$, $u=dft$, so $q^{df}=z_0e^{-u}$. If $z_0^Q\ne1$, $\Lambda_\varphi(z_0e^{-u})=\Lambda_\varphi(z_0)+O(u)$, and $|\Lambda_\varphi(z_0e^{-u})|$ is bounded uniformly in $u>0$ and in $z_0$, because $z_0$ runs over the finitely many $c$-th roots of unity and, for $0<s\le1$ and a root of unity $\zeta'\ne1$, $|1-s\zeta'|\ge\min(1,|\Im\zeta'|)>0$. If $z_0^Q=1$, then $N_\varphi(z_0e^{-u})=N_\varphi(z_0)-uz_0N_\varphi'(z_0)+O(u^2)$ and $1-e^{-Qu}=Qu(1-\tfrac12Qu+O(u^2))$, whence
+$$\Lambda_\varphi(z_0e^{-u})=\frac{N_\varphi(z_0)}{Qu}+\Bigl[\frac{N_\varphi(z_0)}2-\frac{z_0N'_\varphi(z_0)}Q\Bigr]+O(u)=\frac{n_\varphi(z_0)}u+w_\varphi(z_0)+O(u),$$
+and $\Lambda_\varphi(z_0e^{-u})-n_\varphi(z_0)/u$ is bounded uniformly in $u>0$ (it is a combination of $1/(e^{Qu}-1)-1/(Qu)$ and bounded terms). Insert in \eqref{eq:lambert}: the sum over $f$ of $\psi(f)f^{-r}[\Lambda_\varphi(\zeta^{df}e^{-dft})-n_\varphi(\zeta^{df})/(dft)]$ converges absolutely and uniformly, so by dominated convergence it tends to $\sum_f\psi(f)f^{-r}w_\varphi(\zeta^{df})$, with error $\sum_ff^{-r}\min(ft,1)\ll t\log\frac1t$ for $r=2$ and $\ll t$ for $r\ge3$; the subtracted terms give $\rho_{\cc}/t$. The Mellin form: $\Theta(\zeta e^{-t})=\frac1{2\pi i}\int\Gamma(s)A_{\cc}(s+r)t^{-s}ds$, and shifting the contour past the pole of $A_{\cc}(s+r)$ at $s=1$ (of residue $\rho_{\cc}$, from the pole of $L(s-r,\cdot)$ at $s=r+1$) and the pole of $\Gamma$ at $s=0$ identifies $\Pq_{\cc}=A_{\cc}(r)$.
+\end{proof}
+
+\begin{corollary}[finite form]\label{cor:finite}
+$w_\varphi(\zeta^{df})$ depends on $f$ only modulo $c_d:=c/\gcd(c,d)$ and $\psi(f)$ only modulo the period $Q_\psi$; with $M=\lcmop(c_d,Q_\psi)$,
+\begin{equation}\label{eq:hurwitz}
+\sum_{f\ge1}\frac{\psi(f)w_\varphi(\zeta^{df})}{f^{s}}=M^{-s}\sum_{j=1}^{M}\psi(j)\,w_\varphi\bigl(e(adj/c)\bigr)\,\zeta_H(s,j/M),
+\end{equation}
+so $\Pq_{\cc}$ and $\rho_{\cc}$ are finite combinations of Hurwitz values. In the outer orientation ($\psi=\mathbf 1$, $Q$ the period of $\varphi$) this reads
+$$\Pq_{a/c}=\sum_{j=1}^{P}\varphi(j)\Li_r\bigl(e(aj/c)\bigr)\Bigl(\frac12-\frac jP\Bigr),\qquad \rho_{a/c}=\frac1P\sum_{j=1}^{P}\varphi(j)\Li_{r+1}\bigl(e(aj/c)\bigr),\qquad P=\lcmop(c,Q),$$
+for a single block $d=1$; the polar condition involves $\Li_{r+1}$, and $\Pq$ reduces to the Abel-type expression $-\frac1P\sum_jj\varphi(j)\Li_r(e(aj/c))$ only when $\sum_j\varphi(j)\Li_r(e(aj/c))=0$.
+\end{corollary}
+\begin{proof}
+Periodicity is clear; \eqref{eq:hurwitz} is the definition of $\zeta_H$. For the outer form write $A_{a/c}(s)=\sum_{e,f}\varphi(e)e^{r}e(aef/c)(ef)^{-s}=P^{r-s}\sum_{j=1}^P\varphi(j)\Li_s(e(aj/c))\zeta_H(s-r,j/P)$ (group $e$ modulo $P$) and use $\zeta_H(0,x)=\tfrac12-x$, $\Res_{s=1}\zeta_H(s,x)=1$.
+\end{proof}
+
+\begin{verification}[\texttt{lattice/cusp\_periods/01\_check.gp}, \texttt{check/01\_cuspformula.gp}]
+For Ap\'ery's $\Phi_D$ ($\varphi=(1,-2,2,-1,0)$ mod $5$, $r=2$), \eqref{eq:expansion} gives $\Pq_0=\zeta(2)/5$ and $\Pq_{1/2}=-\tfrac{11}5\zeta(2)$ to $76$ digits; direct Abel summation of $\sum_{m\le4\cdot10^4}c(m)m^{-2}(-1)^me^{-mt}$ at $t=0.0025,0.00125$ with one Richardson step reproduces the second to $21$ digits. For $\Phinew$ the formula gives $\xi$ at the cusps $0$ and $1/2$ to $76$ digits.
+\end{verification}
+
+\subsection{The polar part is the constant term}
+\begin{theorem}\label{thm:polar}
+Let $c_0=0$ and $\gamma=\begin{psmallmatrix}a&b\\c&d\end{psmallmatrix}\in SL_2(\Z)$ with $\gamma\infty=a/c$, $c>0$. Then
+\begin{equation}\label{eq:polar}
+\rho_{a/c}=\frac{(2\pi i)^{r+1}}{r!\,c^{r+1}}\,\ct\bigl(\Phi|_{r+1}\gamma\bigr),\qquad\text{and}\qquad
+\Pq_{a/c}=\frac{p_{r-1}}{c^{r-1}}-\frac{(2\pi i)^r\,d}{(r-1)!\,c^{r}}\,\ct\bigl(\Phi|_{r+1}\gamma\bigr),
+\end{equation}
+where $p_{r-1}$ is the leading coefficient of the polynomial $P_\gamma$ of Lemma \ref{lem:bol}. The error term in \eqref{eq:expansion} is in fact $O(t)$.
+\end{theorem}
+\begin{proof}
+Along $\tau=a/c+iy$ one has $\tau=\gamma\tau'$ with $X:=c\tau'+d=i/(cy)$ and $\tau'=(X-d)/c$; here $t=2\pi y$, so $X=2\pi i/(ct)$, and $q_{\cc}=e(\tau'/w)$ is exponentially small in $1/t$. By Lemma \ref{lem:bol},
+$$\Theta(\gamma\tau')=X^{1-r}\Bigl[\ct(\Phi|\gamma)\frac{(2\pi i)^r(X-d)^r}{c^r\,r!}+P_\gamma\Bigl(\frac{X-d}c\Bigr)+\Theta_\gamma\Bigr]
+=\ct(\Phi|\gamma)\frac{(2\pi i)^r}{c^r\,r!}\,(X-rd)+\frac{p_{r-1}}{c^{r-1}}+O(X^{-1}),$$
+since $(X-d)^rX^{1-r}=X-rd+O(X^{-1})$, $P_\gamma((X-d)/c)X^{1-r}=p_{r-1}c^{1-r}+O(X^{-1})$, and $\Theta_\gamma X^{1-r}$ is exponentially small. Substituting $X=2\pi i/(ct)$ and comparing with \eqref{eq:expansion} gives both formulas and the error term $O(X^{-1})=O(t)$.
+\end{proof}
+
+\begin{corollary}\label{cor:innerpolar}
+(i) In the inner orientation, $\rho_{a/c}=\sum_dc_dd^{-r-1}\psi(c_d)c_d^{-r-1}L(r+1,\psi)$, $c_d=c/\gcd(c,d)$; it vanishes automatically if $\gcd(c,\operatorname{cond}\psi)>1$ and otherwise is a critical-value condition. (ii) In the outer orientation $\rho_{a/c}\ne0$ requires $\zeta^{df}$ to reach a pole of $\Lambda_\varphi$, i.e.\ $N_\varphi(\zeta^{df})\ne0$ for some $d,f$.
+\end{corollary}
+\begin{proof}
+(i) $n(\zeta^{df})=1$ iff $c\mid df$ iff $c_d\mid f$; write $f=c_dg$. (ii) is the definition of $n_\varphi$.
+\end{proof}
+
+\begin{verification}[\texttt{lattice/cusp\_periods/04\_polar.gp}, $77$ digits]
+Identity \eqref{eq:polar} was checked against PARI's \texttt{mfslashexpansion} at every cusp of $\Gamma_0(N_\Phi)$ for the sources of rows $\mathbf A,\mathbf C,\mathbf E,\gamma,\zeta$ (e.g.\ $\mathbf A$ at $1/3$: $\ct=-\tfrac18$, $\rho=0.57419030889444\ldots i$; $\mathbf E$ at $1/2$: $\ct=-i/16$; $\gamma$ at $1/2,1/3$: $\ct=-\tfrac19,\tfrac14$), all differences $\le5.6\cdot10^{-77}$. On $\Gamma_1(5)$ the constant-term table of $\Phi_D,\Phinew$ (\texttt{lattice/gamma15/task2/}, $\ge78$ digits) reproduces the polar coefficients of \eqref{eq:expansion} cusp for cusp.
+\end{verification}
+
+\subsection{The third regularity condition}
+\begin{proposition}\label{prop:third}
+If $c_0=\ct(\Phi,\infty)\ne0$, then $B$ has no period at any cusp image $x_{\cc}$ with $\cc\ne\infty$: for every $\Pi$, $B-\Pi F$ contains the non-analytic term $(-1)^{r+1}c_0\,(2\pi i)^rc^{-r}\,u(\tau')/(r!\,(c\tau'+d))$, which behaves like $u/\log(x-x_{\cc})$, and $B_n/A_n$ converges at best logarithmically. Consequently the space of sources with a period at a given cusp image on a weight-one host is $\{\ct(\Phi,\infty)=0\}\cap\{\ct(\Phi|\gamma)=0\}$.
+\end{proposition}
+\begin{proof}
+By Lemma \ref{lem:bol} the extra term is $-c_0u\,(c\tau'+d)^{r-1}(2\pi i\gamma\tau')^r/r!$, and $\gamma\tau'=a/c-1/(c(c\tau'+d))$, so $(c\tau'+d)^{r-1}(\gamma\tau')^r=\sum_{j=0}^r\binom rj(a/c)^{r-j}(-1/c)^j(c\tau'+d)^{r-1-j}$: a polynomial of degree $r-1$ in $\tau'$ plus the term $j=r$, $(-1)^rc^{-r}(c\tau'+d)^{-1}$. The polynomial part can be absorbed into $P_\gamma$; the $(c\tau'+d)^{-1}$ term cannot be cancelled by $\Pi F=\Pi u(c\tau'+d)^{r-1}$ nor by an analytic function. Coefficientwise, $[x^n]\,u/\log(1-x/x_{\cc})\asymp x_{\cc}^{-n}/(n\log^2n)$ against $A_n\asymp x_{\cc}^{-n}/n$ at the nearest singularity.
+\end{proof}
+
+The reason, in the language of Lemma \ref{lem:L}: $\mathcal LB=(\Phi-c_0)/\Phican$, and while $\Phi/\Phican$ is a modular function, $c_0/\Phican$ has weight $-(r+1)$ and is not; it is singular at every cusp image where $\Phican$ vanishes. On $\Gamma_1(5)$ this settles a discrepancy noticed in the census: the two outer directions $R_1=2E_3^{\mathbf 1,\Re\psi_4}$ and $R_2=-2E_3^{\mathbf 1,\Im\psi_4}$ have $\rho=0$ at the cusps $0$ and $1/2$ and $q$-side values $\tfrac65\zeta(2)$, $-\tfrac25\zeta(2)$ at $0$, yet $B_n/A_n$ misses these values by defects in the exact ratio $-2=c_0(R_1)/c_0(R_2)$ (\texttt{lattice/cusp\_periods/00\_disc.gp}, exact rationals to $n=300$, ratio to $80$ digits), the inhomogeneity of the recurrence grows like $\varphi^{5n}$, and only the combination $\tfrac12R_1+R_2=\Phi_D$ with $c_0=0$ has a period. The fold-regular subspace of $M_3^{\rm Eis}(\Gamma_1(5))$ is therefore two-dimensional ($4$ Eisenstein directions, $2$ independent constant-term functionals).
+
+\section{The period formula and the field of the periods}\label{sec:period}
+
+\begin{theorem}[cusp periods]\label{thm:period}
+Let $\ct(\Phi,\infty)=0$ and let $\cc=a/c$ be a simple cusp with $x_{\cc}$ finite and $\rho_{\cc}=0$, i.e.\ $\ct(\Phi|\gamma)=0$. Then the log-coefficient ratio of $B$ at $x_{\cc}$ is the constant term of Theorem \ref{thm:expansion},
+$$\frac{\ell_{\cc}(B)}{\ell_{\cc}(A)}=\Pq_{\cc}=A_{\cc}(r)=\sum_dc_dd^{-r}\sum_{f\ge1}\frac{\psi(f)}{f^r}w_\varphi(\zeta^{df}),$$
+and whenever $B$ has a period at $x_{\cc}$ (always for $r=2$), $\Pc(\Phi)=\Pq_{\cc}$. If $\rho_{\cc}\ne0$ the number $A_{\cc}(r)$ still exists but is not a period.
+\end{theorem}
+\begin{proof}
+By \eqref{eq:polar} with $\ct(\Phi|\gamma)=0$, $\Pq_{\cc}=p_{r-1}/c^{r-1}$, and $p_{r-1}/c^{r-1}$ is the log-coefficient ratio by \eqref{eq:bol}: the coefficient of $u\tau'^{\,r-1}$ is $p_{r-1}$ in $B$ and $c^{r-1}$ in $A$. Proposition \ref{prop:exist} identifies it with the period.
+\end{proof}
+
+\begin{corollary}[field of the periods]\label{cor:field}
+Every cusp period of an Eisenstein source with characters $\psi,\varphi$ is a $\Q(\zeta_M)$-linear combination of the values $L(r,\chi)$, $\chi$ ranging over the Dirichlet characters of conductor dividing $M=\lcmop(c,\operatorname{cond}\varphi,\operatorname{cond}\psi)$. For $\varphi=\mathbf 1$ the imaginary part of the period is an algebraic multiple of $\pi^r$.
+\end{corollary}
+\begin{proof}
+By \eqref{eq:hurwitz} the period is a combination, with coefficients in $\Q(\zeta_M)$ (the values $w_\varphi(e(adj/c))$ and $\psi(j)$), of $M^{-r}\zeta_H(r,j/M)$, and $\zeta_H(r,j/M)=\frac{M^r}{\phi(M')}\sum_{\chi\bmod M'}\bar\chi(j')L(r,\chi)$ with $j/M=j'/M'$ in lowest terms; imprimitive $L$-values differ from primitive ones by rational Euler factors. The second sentence is Theorem \ref{thm:dichotomy}(i) below: the imaginary part is a cotangent sum, and $\sum_f\psi(f)f^{-r}\cot(\pi f\theta)$ over a residue class is a combination of $\zeta_H(r,\cdot)$ with coefficients in $\Q(\zeta_M)$ whose real and imaginary parts are, by the parity of $\psi$ and $r$, multiples of $\pi^r$ times algebraic numbers (they are values of the Bernoulli-polynomial formula for $L(r,\chi)$ with $\chi(-1)=(-1)^r$).
+\end{proof}
+
+\begin{remark}[representatives]\label{rem:rep}
+$\Pq_{a/c}$ is a function of the rational number $a/c$, not of its $\Gamma$-orbit: $1/N\sim\infty$ under $\Gamma_0(N)$, yet $\Pq_{1/N}=L(\Phi,r)$ (for $c=N$ all $\zeta^{df}=1$ when $N\mid d f$\dots; the census gives $\Pq_{1/N}=L(\Phi,r)$ for every row, \texttt{lattice/cusp\_periods/07\_ident.gp}, $60$ digits) while $\Pq_\infty=0$. This is not a contradiction: $\Theta$ is not modular, and $P_\gamma$ changes by a period polynomial under $\gamma\mapsto\gamma\delta$, $\delta\in\Gamma$. The monodromy period selects the representative that the radial path in the $x$-disc actually reaches, and the dictionary of Section \ref{sec:census} records which one that is. The natural statement $\Pq_{\gamma\cc}-\Pq_{\cc}=$ (period polynomial of $\Phi$ under $\gamma$, evaluated at the cusp) is untested.
+\end{remark}
+
+\section{The orientation dichotomy}\label{sec:dichotomy}
+
+\begin{theorem}[orientation dichotomy]\label{thm:dichotomy}
+(i) \emph{Inner sources} ($\varphi=\mathbf 1$). At every cusp $a/c$,
+$$\Re\,\Pq_{a/c}=-\frac12\sum_dc_dd^{-r}L(r,\psi)=L(\Phi,r),\qquad
+\Im\,\Pq_{a/c}=\frac12\sum_dc_dd^{-r}\sum_{f\ge1,\ c\nmid df}\frac{\psi(f)}{f^r}\cot\frac{\pi adf}c .$$
+In particular $\Pq_0=\Pq_{1/2}=L(\Phi,r)$: the orientation factor $\Re\Pq_{\cc}/L(\Phi,r)$ is $+1$ at every cusp.
+(ii) \emph{Outer sources} ($\psi=\mathbf 1$, $\varphi$ of period $Q$).
+$$\Pq_0=\zeta(r)\sum_dc_dd^{-r}\Lambda_\varphi(1),\qquad
+\Pq_{1/2}=\zeta(r)\sum_dc_dd^{-r}\bigl[2^{-r}\Lambda_\varphi(1)+(1-2^{-r})\Lambda_\varphi((-1)^d)\bigr],$$
+where $\Lambda_\varphi(1)$ means $w_\varphi(1)=-B_{1,\varphi}$ and $\Lambda_\varphi(-1)=N_\varphi(-1)/(1-(-1)^Q)$ for $Q$ odd. The ratio $\Pq_{1/2}/\Pq_0$ is a rational number, in general $\ne1$.
+\end{theorem}
+\begin{proof}
+(i) $w(z)=z/(1-z)=1/(z^{-1}-1)$. For $z=e^{i\theta}$, $\theta\not\equiv0$, $w=\frac{(\cos\theta-1)+i\sin\theta}{2-2\cos\theta}=-\frac12+\frac i2\cot\frac\theta2$, and the regularized value at $z=1$ is $w(1)=-\frac12$ too. Insert into \eqref{eq:expansion} with $\theta=2\pi adf/c$: the real part is $-\frac12\sum_dc_dd^{-r}\sum_f\psi(f)f^{-r}$, and $L(\Phi,s)=\sum_dc_dd^{-s}L(s,\psi)\zeta(s-r)$ has the value $\sum_dc_dd^{-r}L(r,\psi)\zeta(0)$ at $s=r$. At $c=1$ every term has $c\mid df$; at $c=2$ the terms with $df$ odd have $\cot(\pi df/2)=0$. (ii) For $\psi=\mathbf 1$, $\zeta=1$: every $\zeta^{df}=1$ and $\Pq_0=\sum_dc_dd^{-r}\zeta(r)w_\varphi(1)$. For $\zeta=-1$: $\zeta^{df}=1$ when $df$ is even and $-1$ when $df$ is odd; $\sum_{f\text{ even}}f^{-r}=2^{-r}\zeta(r)$ and $\sum_{f\text{ odd}}f^{-r}=(1-2^{-r})\zeta(r)$. When $Q$ is odd, $(-1)^Q\ne1$, so $z_0=-1$ is not a pole and $w_\varphi(-1)=\Lambda_\varphi(-1)$.
+\end{proof}
+
+\begin{example}[the $-11$ and the $-3$]\label{ex:11}
+\emph{Ap\'ery's $\zeta(2)$ row} $\mathbf D$: $\Phi_D=E_3^{\mathbf 1,\varphi}$ with $\varphi=\Re\psi_4-2\Im\psi_4=(1,-2,2,-1,0)$ mod $5$, $r=2$ \cite[Table 1]{Companions}. Here $N_\varphi(z)=z-2z^2+2z^3-z^4$, $N_\varphi(1)=0$, $N'_\varphi(1)=-1$, so $\Lambda_\varphi(1)=\tfrac15$; and $N_\varphi(-1)=-6$, $\Lambda_\varphi(-1)=-6/2=-3$. Hence $\Pq_0=\zeta(2)/5$ and
+$$\Pq_{1/2}=\zeta(2)\bigl[\tfrac14\cdot\tfrac15+\tfrac34\cdot(-3)\bigr]=-\tfrac{11}5\zeta(2),\qquad \frac{\Pq_{1/2}}{\Pq_0}=-11 .$$
+In polylogarithm language: $D^{-2}\Phi_D=\sum_e\varphi(e)\Li_2(q^e)$, and $\Li_2(1)=\zeta(2)$ while $\Li_2(-1)=-\frac12\zeta(2)$, so the weight at $q\to-1$ is parity-dependent; the regularized character sums are $-\frac15\sum_{j\le5}j\varphi(j)=\frac15$ and $-\frac1{10}\sum_{j\le10}j(\varphi g)(j)=-\frac{11}5$ with $g=(-\frac12$ on odd, $1$ on even$)$. Nothing here involves $\Q(\sqrt5)$; that $11=\varphi^5-\varphi^{-5}=\operatorname{Tr}(\varphi^5)$ is not claimed to be structural.
+\emph{The Franel row} $\mathbf A$: $\Phi_A=E_3^{\mathbf 1,\chi_{-3}}(\tau)-E_3^{\mathbf 1,\chi_{-3}}(2\tau)$. $\Lambda_{\chi_{-3}}(1)=L(0,\chi_{-3})=\tfrac13$, $\Lambda_{\chi_{-3}}(-1)=\frac{-2}{2}=-1$; so $\Pq_0=\zeta(2)(1-\tfrac14)\tfrac13=\zeta(2)/4$ and $\Pq_{1/2}=\zeta(2)\bigl[(\tfrac1{12}-\tfrac34)-\tfrac14\cdot\tfrac13\bigr]=-\tfrac34\zeta(2)$: factor $-3$. Both factors are reproduced by the general formula (Verification above) and by monodromy (Section \ref{sec:census}).
+\end{example}
+
+\subsection{Galois equivariance of inner sources}
+Let $K\subset\R$ be a number field and $\Phi=\sum_j\kappa_j\Phi_j$ with $\kappa_j\in K$ and $\Phi_j$ inner sources with rational Fourier coefficients (for instance $\Phi_j=E^{\psi,\mathbf 1}_{r+1}+E^{\bar\psi,\mathbf 1}_{r+1}$ and $i(E^{\psi,\mathbf 1}_{r+1}-E^{\bar\psi,\mathbf 1}_{r+1})$). For an embedding $\sigma:K\to\R$ put $\sigma\Phi:=\sum_j\sigma(\kappa_j)\Phi_j$.
+
+\begin{corollary}\label{cor:galois}
+$\Re\,\Pq_{\cc}(\sigma\Phi)=\sum_j\sigma(\kappa_j)L(\Phi_j,r)$ for every cusp $\cc$. In words: the real cusp period of $\sigma\Phi$ at any cusp is obtained from the real cusp period of $\Phi$ at any other cusp by applying $\sigma$ to the $K$-coefficients in its expression through the fixed numbers $L(\Phi_j,r)$.
+\end{corollary}
+\begin{proof}
+$\Pq_{\cc}$ is linear in the source, and by Theorem \ref{thm:dichotomy}(i) $\Re\Pq_{\cc}(\Phi_j)=L(\Phi_j,r)$ is independent of $\cc$.
+\end{proof}
+
+For outer sources this fails: the real periods carry a cusp-dependent rational factor, $-11$ on the $\zeta(2)$-line of $\Gamma_1(5)$, and a $K$-rational outer source would conjugate to a source whose far period is $\sigma$ of the near period times that factor.
+
+\subsection{The example $\Gamma_1(5)$ in full}
+The cusps of $\Gamma_1(5)$ are $\infty,\,2/5$ (width $1$) and $0,\,1/2$ (width $5$), with $x(\infty)=0$, $x(0)=t_1=\varphi^{-5}$, $x(1/2)=t_2=-\varphi^5$, $x(2/5)=\infty$ (\texttt{lattice/gamma15/task2/13\_haupt.gp}, $38$ digits); $t_1t_2=-1$. The weight-three Eisenstein space is four-dimensional, spanned by the outer $E_3^{\mathbf 1,\psi_4},E_3^{\mathbf 1,\bar\psi_4}$ and the inner $E_3^{\psi_4,\mathbf 1},E_3^{\bar\psi_4,\mathbf 1}$, $\psi_4$ the quartic character with $\psi_4(2)=i$. The source with a period at $t_1$ must have $\ct=0$ at $\infty$ and at $0$ (Proposition \ref{prop:third}, Theorem \ref{thm:polar}); in the inner pair this forces, by Corollary \ref{cor:innerpolar}(i) at $c=1$,
+\begin{equation}\label{eq:foldreg}
+\alpha L(3,\psi_4)+\bar\alpha L(3,\bar\psi_4)=0\quad\text{for }\Phi=\alpha E_3^{\psi_4,\mathbf 1}+\bar\alpha E_3^{\bar\psi_4,\mathbf 1},
+\end{equation}
+which by Proposition \ref{prop:L3} below has the solution $\alpha=1+i\varphi^5$: $\Phinew=(1+i\varphi^5)E_3^{\psi_4,\mathbf 1}+(1-i\varphi^5)E_3^{\bar\psi_4,\mathbf 1}=2q+(2-10\varphi)q^2+(24+10\varphi)q^3+\cdots\in\Z[\varphi][[q]]$. Its periods, by Theorem \ref{thm:dichotomy}(i):
+$$\Pq_0(\Phinew)=\Pq_{1/2}(\Phinew)=-\tfrac12\bigl[(1+i\varphi^5)L(2,\psi_4)+(1-i\varphi^5)L(2,\bar\psi_4)\bigr]=\varphi^5\Im L(2,\psi_4)-\Re L(2,\psi_4)=\xi .$$
+The conjugate source $\sigma\Phinew=(1-i\varphi^{-5})E_3^{\psi_4,\mathbf 1}+(1+i\varphi^{-5})E_3^{\bar\psi_4,\mathbf 1}$ has $\Pq_0=\Pq_{1/2}=-\Re L(2,\psi_4)-\varphi^{-5}\Im L(2,\psi_4)=\sigma(\xi)$. Which of these are monodromy periods is decided by the polar coefficients: $\rho_0(\Phinew)=0$ by \eqref{eq:foldreg}, while $\rho_{1/2}(\Phinew)=\tfrac18\bigl[i(1+i\varphi^5)L(3,\psi_4)-i(1-i\varphi^5)L(3,\bar\psi_4)\bigr]=-2.7620797186\ldots\ne0$; for $\sigma\Phinew$ the roles are exchanged (since $\psi_4(2)=i$ turns $\alpha\mapsto i\alpha$, and $\sigma(\varphi^5)=-\varphi^{-5}$). So
+\begin{equation}\label{eq:g15}
+\Pi_{t_1}(\Phinew)=\xi,\qquad \Pi_{t_2}(\sigma\Phinew)=\sigma(\xi),\qquad\text{and}\qquad \Pi_{t_1}(\Phi_D)=\tfrac15\zeta(2),\quad\Pi_{t_2}(\Phi_D)=-\tfrac{11}5\zeta(2),
+\end{equation}
+while $B_{\rm new}$ has a $\log^2$ at $t_2$ and $\sigma B_{\rm new}$ a $\log^2$ at $t_1$ (Lemma \ref{lem:L}(ii): $\mathcal LB_{\rm new}=2/(1-x/t_2)$, $\mathcal L\sigma B_{\rm new}=2/(1-x/t_1)$, exact identities of rational functions verified on $198$ coefficients, \texttt{lattice/gamma15/task2/}). All four values in \eqref{eq:g15} were confirmed by numerical monodromy of the row operator to $174$ digits at $t_2$ and $212$ digits at $t_1$ (\texttt{lattice/gamma15/task2/17\_farperiods.gp}, \texttt{18\_nearperiods.gp}) and to $77$ digits from the cusp formula at all four cusps (\texttt{lattice/cusp\_periods/08\_galois.gp}).
+
+\begin{proposition}[the $L(3,\psi_4)$ identity]\label{prop:L3}
+$\Re L(3,\psi_4)=\varphi^5\,\Im L(3,\psi_4)$; equivalently \eqref{eq:foldreg} holds for $\alpha=1+i\varphi^5$.
+\end{proposition}
+\begin{proof}
+For a primitive odd character $\chi$ modulo $N$, $L(3,\chi)=-i(2\pi)^3\tau(\chi)B_{3,\bar\chi}/(12N^3)$ with $B_{3,\bar\chi}=N^2\sum_{b=1}^N\bar\chi(b)B_3(b/N)$, $B_3(x)=x^3-\tfrac32x^2+\tfrac12x$; this follows from $\sum_{m\ge1}\sin(2\pi mx)/m^3=(2\pi)^3B_3(x)/12$ for $0\le x\le1$ and finite Fourier inversion $\chi(m)=\frac{\tau(\chi)}N\sum_b\bar\chi(b)e(-mb/N)$. For $N=5$: $B_3(\tfrac15,\tfrac25,\tfrac35,\tfrac45)=\frac1{125}(6,3,-3,-6)$, and $\bar\psi_4=(1,-i,i,-1)$ on $1,2,3,4$ gives $B_{3,\bar\psi_4}=25\cdot\frac{12-6i}{125}=\frac{12-6i}5$; and $\tau(\psi_4)=e(\tfrac15)+ie(\tfrac25)-ie(\tfrac35)-e(\tfrac45)=2is_1-2s_2$ with $s_1=\sin\frac{2\pi}5$, $s_2=\sin\frac\pi5$. Multiplying out,
+$$\Re L(3,\psi_4)=\frac{16\pi^3}{7500}(12s_1+6s_2),\qquad \Im L(3,\psi_4)=\frac{16\pi^3}{7500}(12s_2-6s_1),$$
+so the ratio is $(2s_1+s_2)/(2s_2-s_1)$. Since $s_1/s_2=2\cos\frac\pi5=\varphi$, this is $(2\varphi+1)/(2-\varphi)=\varphi^3/\varphi^{-2}=\varphi^5$, using $\varphi^3=2\varphi+1$ and $\varphi^{-2}=2-\varphi$. For the equivalence, $\alpha L(3,\psi_4)+\bar\alpha\overline{L(3,\psi_4)}=2\Re(\alpha L(3,\psi_4))=2(\Re L-\varphi^5\Im L)$.
+\end{proof}
+Note that the naive ratio $B_{3,\Re\psi_4}/B_{3,\Im\psi_4}=2$ is \emph{not} $\varphi^5$: the Gauss sum does not commute with real and imaginary parts. Numerically the identity holds to $76$ digits (\texttt{check/02\_L3identity.gp}), $96$ digits (\texttt{lattice/cusp\_periods/03\_L3exact.gp}) and $212$ digits (\texttt{lattice/gamma15/L3\_identity.gp}). It is the $s=3$ shadow of the fold-regularity ratio $-\varphi^5$ between the inner directions at $s=2$, and it is what makes the $\sqrt5$ in $\Phinew$ unavoidable.
+
+\begin{remark}[weight four on $\Gamma_1(5)$]
+At weight four the four Eisenstein directions $E_4(\tau),E_4(5\tau),E_4^{\chi_5,\mathbf 1},E_4^{\mathbf 1,\chi_5}$ have real cusp periods $-\zeta(3)/2,-\zeta(3)/250,-L(3,\chi_5)/2,0$ and constant terms $\frac1{240},\frac1{240},0,1$ at $\infty$: everything, including the fold-regular subspace, is $\Q$-rational (\texttt{lattice/cusp\_periods/08\_galois.gp}, $60$ digits). Beukers' $\sqrt5$ in $8\zeta(3)-5\sqrt5L(3,\chi_5)$ \cite{Beukers1987} is thus geometry, not Eisenstein bookkeeping; weight three is the only weight on $\Gamma_1(5)$ where $\varphi^5$ is forced.
+\end{remark}
+
+\section{The census, and its confirmation by monodromy}\label{sec:census}
+
+\subsection{Near periods and all cusps}
+Table \ref{tab:census} lists, for the twelve Eisenstein rows of \cite[Table 1]{Companions}, the near period $L(\Phi,r)=\Pq_0$ computed from \eqref{eq:expansion} alone, and at every cusp of $\Gamma_0(N_\Phi)$ (the level of the source) whether $\rho_{\cc}=0$ (\emph{fr}), the orientation factor $\Re\Pq_{\cc}/L(\Phi,r)$, and $\Im\Pq_{\cc}$. The near periods reproduce the Ap\'ery-limit column of \cite{ProjSources} in every case; this is an independent derivation of that column from the cusp side. Every cusp value is $(\text{rational})\cdot L(\Phi,r)+(\text{rational})\cdot\pi^r/\sqrt D\cdot i$, and a factor $\ne1$ occurs only for $\mathbf A$ ($-3$), $\mathbf D$ ($-11$) and $\zeta$ ($-\tfrac12$, at non-regular cusps) --- exactly the three sources with $\varphi\ne\mathbf 1$, as Theorem \ref{thm:dichotomy} predicts. Rows $\mathbf B$ (level $36$, eleven cusps), $\delta$ and $\eta$ have factor $1$ at every cusp with imaginary parts in $\Q\pi^2/\sqrt3$, $\Q\pi^3$, $\Q\pi^3/\sqrt5$ respectively.
+
+\begin{table}[ht]
+\caption{Cusp census (\texttt{lattice/cusp\_periods/02\_census.gp}, \texttt{07\_ident.gp}, $60$ digits). Columns: near period; then for each cusp $\cc$ of $\Gamma_0(N_\Phi)$: fold-regular?, factor $\Re\Pq_{\cc}/L(\Phi,r)$, $\Im\Pq_{\cc}$.}\label{tab:census}
+\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}llll@{}}\toprule
+row & $L(\Phi,r)$ & orientation & cusps: $\cc$ (fr, factor, $\Im$) \\\midrule
+$\mathbf A$ & $\zeta(2)/4$ & outer $\chi_{-3}$ & $0\,(\checkmark,1,0)$; $\tfrac12\,(\checkmark,\mathbf{-3},0)$; $\tfrac13\,(\times,-\tfrac13,0)$; $\tfrac16\,(\checkmark,1,0)$\\
+$\mathbf C$ & $L(2,\chi_{-3})/2$ & inner $\chi_{-3}$ & $0\,(\checkmark,1,0)$; $\tfrac12\,(\times,1,0)$; $\tfrac13\,(\checkmark,1,\tfrac{2\pi^2}{9\sqrt3})$; $\tfrac16\,(\checkmark,1,0)$\\
+$\mathbf D$ & $\zeta(2)/5$ & outer & $0\,(\checkmark,1,0)$; $\tfrac12\,(\checkmark,\mathbf{-11},0)$; $\tfrac25\,(\times,-\tfrac75,0)$ [on $\Gamma_1(5)$]\\
+$\mathbf E$ & $G/2$ & inner $\chi_{-4}$ & $0\,(\checkmark,1,0)$; $\tfrac12\,(\times,1,0)$; $\tfrac14\,(\checkmark,1,\tfrac{\pi^2}{16})$; $\tfrac18\,(\checkmark,1,0)$\\
+$\mathbf F$ & $\tfrac58L(2,\chi_{-3})$ & inner $\chi_{-3}$ & $0\,(\checkmark,1,0)$; $\tfrac12\,(\times,1,0)$; $\tfrac13\,(\checkmark,1,\tfrac{\pi^2}{6\sqrt3})$; $\tfrac14\,(\checkmark,1,\tfrac{\pi^2}{12\sqrt3})$; $\tfrac16\,(\checkmark,1,\tfrac{\pi^2}{18\sqrt3})$; $\tfrac1{12}\,(\checkmark,1,0)$\\
+$\alpha$ & $7\zeta(3)/24$ & trivial & $0\,(\checkmark,1,0)$; $\tfrac12\,(\times,1,0)$; $\tfrac13\,(\checkmark,1,\tfrac{\pi^3}{36})$; $\tfrac14\,(\checkmark,1,\tfrac{\pi^3}{48})$; $\tfrac16\,(\times,1,\tfrac{\pi^3}{108})$; $\tfrac1{12}\,(\checkmark,1,0)$\\
+$\gamma$ & $\zeta(3)/6$ & trivial & $0\,(\checkmark,1,0)$; $\tfrac12\,(\times,1,0)$; $\tfrac13\,(\times,1,\tfrac{\pi^3}{27})$; $\tfrac16\,(\checkmark,1,0)$\\
+$\varepsilon$ & $7\zeta(3)/32$ & trivial & $0\,(\checkmark,1,0)$; $\tfrac12\,(\times,1,0)$; $\tfrac14\,(\times,1,\tfrac{\pi^3}{64})$; $\tfrac18\,(\checkmark,1,0)$\\
+$\zeta$ & $L(3,\chi_{-3})/3$ & $\chi_{-3}$ both & $0\,(\checkmark,1,0)$; $\tfrac13,\tfrac23\,(\times,\mathbf{-\tfrac12},0)$; $\tfrac19\,(\checkmark,1,0)$\\
+$\mathbf B,\delta,\eta$ & $\tfrac12L(2,\chi_{-3}),\ \tfrac{13}{54}\zeta(3),\ \tfrac12L(3,\chi_5)$ & inner, trivial, inner & factor $1$ at every cusp\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On $\Gamma_1(5)$ the full table is: $\Phi_D$: $0,\ \zeta(2)/5,\ -\tfrac{11}5\zeta(2),\ -\tfrac7{25}\zeta(2)$ at $\infty,0,\tfrac12,\tfrac25$ (fold-regular at the first three); $\Phinew$: $0,\ \xi,\ \xi,\ \xi+7.0335782\ldots i$ (fold-regular at $\infty,0,\tfrac25$); $\sigma\Phinew$: $0,\ \sigma\xi,\ \sigma\xi,\ \sigma\xi+0.3171086\ldots i$ (fold-regular at $\infty,\tfrac12,\tfrac25$); the imaginary parts at the width-one cusp $2/5$, which maps to $x=\infty$, were not identified (\texttt{12\_imid.gp}).
+
+\subsection{The monodromy dictionary}
+The claim that $\Pq_{\cc}$ is the period was tested directly: the row operator $\mathcal L$ (second order, $P(x)=1-ax+cx^2$: $xPy''+(P+xP')y'+(cx-b)y=R$; third order analogously) was continued numerically from $520$--$620$ exact rational Taylor coefficients at $x=0$ around each finite singular point (adaptive Taylor stepping, $260$ terms per step, $100$--$120$-digit working precision, \texttt{lattice/cusp\_periods/mono.gp}), and the ratio $\ell(B)/\ell(A)$ of the monodromy differences $(M-1)B$, $(M-1)A$ was computed independently from $y$ and $y'$. Table \ref{tab:mono} gives the results and the cusp that the $q$-side formula must be evaluated at to match.
+
+\begin{table}[ht]
+\caption{Monodromy periods at both finite singular points against the cusp formula (\texttt{05\_mono.gp}, \texttt{06\_mono3.gp}).}\label{tab:mono}
+\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lllll@{}}\toprule
+row & singular point & monodromy period & cusp & $|$difference$|$\\\midrule
+$\mathbf A$ & $\tfrac18$ / $-1$ & $\zeta(2)/4$ / $-\tfrac34\zeta(2)$ & $0$ / $\tfrac12$ & $3.5\cdot10^{-135}$ / $6.0\cdot10^{-134}$\\
+$\mathbf C$ & $\tfrac19$ / $1$ & $\tfrac12L(2,\chi_{-3})$ / $\tfrac12L(2,\chi_{-3})+\tfrac{2\pi^2}{9\sqrt3}i$ & $0$ / $\tfrac13$ & $1.6\cdot10^{-135}$ / $1.1\cdot10^{-119}$\\
+$\mathbf E$ & $\tfrac18$ / $\tfrac14$ & $G/2$ / $G/2+\tfrac{\pi^2}{16}i$ & $0$ / $\tfrac14$ & $3.3\cdot10^{-135}$ / $6.7\cdot10^{-120}$\\
+$\mathbf F$ & $\tfrac19$ / $\tfrac18$ & $\tfrac58L(2,\chi_{-3})$ / $\tfrac58L(2,\chi_{-3})+\tfrac{\pi^2}{18\sqrt3}i$ & $0$ / $\tfrac16$ & $4.1\cdot10^{-120}$ / $4.0\cdot10^{-120}$\\
+$\mathbf D$ & $\varphi^{-5}$ / $-\varphi^5$ & $\zeta(2)/5$ / $-\tfrac{11}5\zeta(2)$ & $0$ / $\tfrac12$ & $1.6\cdot10^{-135}$ / $2.9\cdot10^{-121}$\\
+$\alpha$ & $\tfrac1{16}$ / $\tfrac14$ & $7\zeta(3)/24$ / $7\zeta(3)/24+\tfrac{\pi^3}{48}i$ & $0$ / $\tfrac14$ & $<10^{-100}$ / $<10^{-100}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The imaginary parts are reproduced too: they are the cotangent sums of Theorem \ref{thm:dichotomy}(i), not artefacts. Note that for $\mathbf F$ the far singularity $x=\tfrac18$ is the cusp $\tfrac16$, not $\tfrac12$: this is the representative caveat of Remark \ref{rem:rep} in action. Rows $\mathbf B,\delta,\eta$ have complex conjugate finite singularities and were not continued.
+
+\subsection{Cooper's meromorphic rows}
+The sources of $s_7,s_{10},s_{18}$ are meromorphic (double poles at CM points, \cite[\S3.5]{Companions}), so Theorem \ref{thm:expansion} does not apply; continuation alone gives (\texttt{09\_cooper.gp}, $100$ digits) near periods $\zeta(2)/7,\ \zeta(2)/5,\ \tfrac12L(2,\chi_{-3})$ at $\tfrac1{27},\tfrac1{16},\tfrac1{16}$ and far-fold periods $-\tfrac57\zeta(2)$ at $-1$, $-\tfrac25\zeta(2)$ at $-\tfrac14$, and $\tfrac12L(2,\chi_{-3})+\tfrac{\pi^2}{18\sqrt3}i$ at $\tfrac1{12}$: factors $-5,-2,+1$. The two rows whose companion character is $\psi=\mathbf 1$ \cite[Thm.~3.3]{Companions} behave like outer rows and the one with $\psi=\chi_{-3}$ like an inner row; and $s_{18}$'s far imaginary part coincides with Zagier $\mathbf F$'s to all $100$ digits.
+
+\section{Cusp-form sources on Fricke hosts}\label{sec:fricke}
+
+The companion formula \eqref{eq:companion} gives $d_n^{\,r}B_n\in\Z$ for \emph{any} integral source; Eisenstein sources are needed only for regularity. On the Fricke hosts of the third-order rows the regularity condition at the near singularity, which is a fold, has a clean answer. Let $u=q+O(q^2)$ be an eta quotient with $u|W_N=1/(Cu)$, $x=u/(1+Bu+Cu^2)$, $F=D\log u$ (weight $2$, $F|_2W_N=-F$), as in \cite[(2.5)]{Companions}; $x$ is $W_N$-invariant and has a simple critical point at $\tau_c=i/\sqrt N$ with $x(\tau_c)=1/\lambda_1$ the nearest singularity, and $r=3$.
+
+\begin{theorem}[Fricke criterion]\label{thm:fricke}
+Let $\Phi\in M_4(\Gamma_0(N))$ with $\ct(\Phi,\infty)=0$ and $\Theta=D^{-3}\Phi$. Then $B=F\Theta$ has a period at $x(\tau_c)$ if and only if $\Phi|_4W_N=-\Phi$, and then the period is $\xi=L(\Phi,3)=4\pi^3\Lambda(3)$, $\Lambda(j):=\int_0^\infty y^{j-1}\Phi(iy)\,dy$. Moreover, for any such $\Phi$ and any host of level $N$,
+$$\xi=\Theta(q_c)+\frac{2\pi}{\sqrt N}(D\Theta)(q_c),\qquad q_c=e^{-2\pi/\sqrt N}.$$
+\end{theorem}
+\begin{proof}
+Since $x\circ W_N=x$, $W_N$ fixes $\tau_c$ and acts near it as the non-trivial deck transformation of the double cover $\tau\mapsto x$; a function analytic near $\tau_c$ is analytic in $x$ near $x(\tau_c)$ iff it is $W_N$-invariant. Now $F(W_N\tau)=-N\tau^2F(\tau)$ and $\Theta(W_N\tau)=N^{-1}\tau^{-2}(\Theta|_{-2}W_N)(\tau)$, so
+$$[F(\Theta-\xi)]\circ W_N=-F\bigl[\Theta|_{-2}W_N-N\tau^2\xi\bigr],$$
+and $B-\xi F=F(\Theta-\xi)$ is $W_N$-invariant iff
+\begin{equation}\label{eq:star}
+\Theta|_{-2}W_N+\Theta=\xi(N\tau^2+1).
+\end{equation}
+With $\Theta=\frac{(2\pi i)^3}2\int_{i\infty}^\tau(\tau-v)^2\Phi(v)\,dv$ and $\Phi(-1/(Nv))=\varepsilon N^2v^4\Phi(v)$ for $\Phi|_4W_N=\varepsilon\Phi$, the substitution $u=-1/(Nv)$ gives $\Theta|_{-2}W_N=\varepsilon(\Theta+P_0)$ with $P_0(\tau)=\frac{(2\pi i)^3}2\int_0^{i\infty}(\tau-v)^2\Phi(v)dv=4\pi^3\bigl[\Lambda(1)\tau^2-2i\Lambda(2)\tau-\Lambda(3)\bigr]$. If $\Phi=\Phi_++\Phi_-$ in $W_N$-eigencomponents, \eqref{eq:star} reads $2\Theta_++P_0^+-P_0^-=\xi(N\tau^2+1)$, forcing $\Theta_+$ to be a polynomial, i.e.\ $\Phi_+=0$. For $\varepsilon=-1$, \eqref{eq:star} reads $-P_0=\xi(N\tau^2+1)$: $\Lambda(2)=0$, $4\pi^3\Lambda(3)=\xi$, $-4\pi^3\Lambda(1)=N\xi$. The functional equation $\Lambda(s)=\varepsilon N^{2-s}\Lambda(4-s)$ (from $\Phi(i/(Ny))=\varepsilon N^2y^4\Phi(iy)$) gives $\Lambda(2)=0$ and $\Lambda(1)=-N\Lambda(3)$ automatically, so \eqref{eq:star} holds with $\xi=4\pi^3\Lambda(3)=(2\pi)^3\Gamma(3)^{-1}\cdot\Gamma(3)(2\pi)^{-3}L(\Phi,3)\cdot4\pi^3/(4\pi^3)=L(\Phi,3)$ (indeed $\Lambda(3)=\Gamma(3)(2\pi)^{-3}L(\Phi,3)=L(\Phi,3)/(4\pi^3)$). Finally differentiate \eqref{eq:star} at $\tau_c$, where $N\tau_c^2=-1$: $\frac d{d\tau}[N\tau^2\Theta(-1/(N\tau))]=2N\tau\Theta(W_N\tau)+\Theta'(W_N\tau)$, so $2N\tau_c\Theta(\tau_c)+2\Theta'(\tau_c)=2\xi N\tau_c$, i.e.\ $\xi=\Theta(\tau_c)+\Theta'(\tau_c)/(N\tau_c)=\Theta(\tau_c)+\frac{2\pi}{\sqrt N}D\Theta(\tau_c)$.
+\end{proof}
+
+For $\varepsilon=+1$ the limit $B_n/A_n$ still exists but converges like $\xi+c/n$ and is not $L(\Phi,3)$ (measured ratio $0.99000$ against $((n-1)/n)^2$ at $n=200$ on all twelve hosts, \texttt{lattice/cuspform\_sources/10\_plus.gp}); no Eisenstein admixture repairs it, since $M_4=\mathrm{Eis}\oplus S_4$ is $W_N$-stable. The census (\texttt{01\_forms.gp}, exact): $\dim S_4(\Gamma_0(N))^{W_N=-1}=0$ for $N=5,\dots,9$ --- the newforms $5.4.a.a,\dots,9.4.a.a$ all have Fricke sign $+1$ --- so no cusp form is regular on either Ap\'ery-perfect host ($N=6,7$); the anti-invariant directions that exist are oldform combinations $f-d^2f(d\tau)$, and there are five (host, source) pairs, Table \ref{tab:cusp}. Where the constant $K_-$ of $A_n\xi-B_n\sim K_-\lambda_2^nn^{-3/2}$ was identified (\texttt{11\_kminus.gp}, \texttt{14\_kclosed.gp}, $50$ digits), it is the \emph{central} value $L(f,2)$, non-zero because the newform's own sign is $+1$; we record this as an observation. The companions satisfy no three-term recurrence (minimal order $3$ or $4$), so the Casoratian formula of \cite[Thm.~4.5]{Companions} does not apply. The Diophantine content is nil: the best host misses the entry condition by $4.4$ nats.
+
+\begin{table}[ht]
+\caption{Fold-regular cusp-form sources on Fricke hosts (\texttt{lattice/cuspform\_sources/}, limits to $144$ digits on the first two rows).}\label{tab:cusp}
+\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lllll@{}}\toprule
+host $(N,B,C)$ & source & $\xi$ & rate $\lambda_2/\lambda_1$ & $K_-$\\\midrule
+Cooper $s_{10}$ $(10,6,25)$ & $f_5-4f_5(2\tau)$ & $L(5.4.a.a,3)/2$ & $1/4$ & not identified\\
+Domb $(12,10,9)$ & $f_6-4f_6(2\tau)$ & $L(6.4.a.a,3)/2=0.364556728783\ldots$ & $1/4$ & $L(6.4.a.a,2)/\sqrt\pi$\\
+level $12$, $(12,34,1)$ & $f_6-4f_6(2\tau)$ & $L(6.4.a.a,3)/2$ & $8/9$ & not identified\\
+Cooper $s_{18}$ $(18,14,1)$ & $f_6-9f_6(3\tau)$ & $2L(6.4.a.a,3)/3$ & $3/4$ & $\sqrt3L(6.4.a.a,2)/\sqrt\pi$\\
+Cooper $s_{18}$ $(18,14,1)$ & $f_9-4f_9(2\tau)$ & $L(9.4.a.a,3)/2$ & $3/4$ & not identified\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Periods at folds}\label{sec:folds}
+
+\emph{[Placeholder: a section on fold periods, with theorems from the period-matrix computation, is being prepared separately and will replace this paragraph.]} For the rows $\gamma$ (Ap\'ery's $\zeta(3)$), $\varepsilon$ and $\zeta$ the far singularity is a second $W_N$-fixed point, not a cusp, and its period matches no cusp of the source level. By continuation (\texttt{lattice/cusp\_periods/06\_mono3.gp}, \texttt{09\_cooper.gp}, $100$ digits) the far periods are
+$$\gamma:\ \tfrac16\zeta(3)+\tfrac{2\pi^3}{15}i\ \text{at }17+12\sqrt2,\qquad \varepsilon:\ \tfrac7{32}\zeta(3)+\tfrac{\pi^3}{24}i\ \text{at }\tfrac{3+2\sqrt2}4,\qquad \zeta:\ -\tfrac72\cdot\tfrac13L(3,\chi_{-3})\ \text{at }-0.71823351279\ldots,$$
+against cusp values $\tfrac16\zeta(3)+\tfrac{\pi^3}{27}i$ (cusp $\tfrac13$), $\tfrac7{32}\zeta(3)+\tfrac{\pi^3}{64}i$ (cusp $\tfrac14$) and factors $1,-\tfrac12$: the ratios $\tfrac{18}5$, $\tfrac83$ and the factor $-\tfrac72$ have no $q$-side derivation here. The near-fold periods equal $L(\Phi,r)=\Pq_0$ in all three cases, which is the content of Theorem \ref{thm:fricke} and of \cite[Thm.~B]{ProjSources}, not of Theorem \ref{thm:period}. The fold analogue of Theorem \ref{thm:expansion} is a $W_N$-twisted Mellin split of the Eichler integral at $\tau_c$; the constant $\xi=\Theta(q_c)+\frac{2\pi}{\sqrt N}D\Theta(q_c)$ of Theorem \ref{thm:fricke} is its near-fold instance.
+
+\section{Consequences for linear-independence proofs}\label{sec:dioph}
+
+Let $K$ be a real quadratic field and suppose one wants to prove that $1,\ \zeta(2),\ \xi$ are linearly independent over $K=\Q(\sqrt5)$ by the arithmetic-holonomy method of \cite{CDT} run over $K$, on Ap\'ery's $\zeta(2)$ host with the two-dimensional fold-regular source space $\langle\Phi_D,\Phinew\rangle$. The method builds, from a hypothesized relation
+\begin{equation}\tag{i}
+a+b\,\zeta(2)/5+c\,\xi=0,\qquad a,b,c\in K,
+\end{equation}
+a conditional function $H=aA+bB_D+cB_{\rm new}$ that is regular at the fold at the first real place, and needs its conjugate $\sigma H$ to be regular at the fold at the second place. The Picard--Fuchs operator has rational coefficients, so its singular set $\{0,\varphi^{-5},-\varphi^5,\infty\}$ is the same at both places, but the puncture of the pure module, $s=1/\lambda_2=-\varphi^5\in K$, moves: the point to be removed at the second place is $t_2=-\varphi^5$, the image of the cusp $1/2$. There the periods are those of \eqref{eq:g15}, and regularity of $\sigma H$ is
+\begin{equation}\tag{ii}
+\sigma(a)-11\,\sigma(b)\,\zeta(2)/5+\sigma(c)\,\sigma(\xi)=0 .
+\end{equation}
+By Theorem \ref{thm:dichotomy}, (ii) is $\sigma$ applied to the $K$-coefficients of (i) \emph{except} in the $\zeta(2)$ slot, where the outer orientation of $\Phi_D$ inserts the factor $-11$; on the inner $\xi$-line the equivariance is exact. Consequently (i) does not imply (ii) whenever $c\ne0$: writing (i) as $\Lambda\cdot(1,\zeta(2)/5,\Re L,\Im L)=0$ with $\Lambda=(a,b,-c,c\varphi^5)$, (ii) is $\Lambda'=\sigma(\Lambda)-12\sigma(b)e_2$, and $\Lambda'\in K^\times\Lambda$ forces $\sigma(\varphi^5)=\varphi^5$ or $c=0$. So a single $K$-relation buys a conditional function at one place only, and the construction refutes the doubled hypothesis (i)$\wedge$(ii) --- two independent $\Q$-relations among $\{1,\zeta(2),\Re L,\Im L\}\cdot\{1,\sqrt5\}$ --- rather than (i). This \emph{hypothesis tax} is therefore an orientation theorem: it is absent exactly when the source is inner at both cusps involved, and a two-place construction over a real quadratic field has a Galois-equivariant hypothesis iff its fold-regular space is spanned by inner directions at the near and at the far cusp. (For the record, the transported bound on $\Gamma_1(5)$ falls short by $1.44$ nats on (i)$\wedge$(ii) and by $4.40$ nats on (i) alone, for geometric reasons at the second place that are independent of the orientation; the accounting is in \texttt{lattice/gamma15/REPORT.md}.)
+
+Two further consequences. \emph{Fold-regularity is computable exactly:} it is the joint kernel of the constant-term functionals at $\infty$ and at the near cusp (Theorem \ref{thm:polar}, Proposition \ref{prop:third}), all of which are algebraic multiples of $\pi^{r+1}$ (critical values, Corollary \ref{cor:innerpolar}); the far period of a fold-regular source is a twisted $L(r)$-value with an explicit root-of-unity weight (Corollary \ref{cor:field}), which is all the Diophantine information the far cusp carries. \emph{One recurrence, many periods:} each fold-regular cusp $\cc$ gives an exact linear form $A_n\Pc-B^{(\cc)}_n$ in $\Pc$ with the same $d_n^{\,r}$ denominators, but only the one at the nearest singularity converges.
+
+\section{Open questions}\label{sec:open}
+\begin{enumerate}
+\item The representative statement of Remark \ref{rem:rep}: $\Pq_{\gamma\cc}-\Pq_{\cc}$ should be the period polynomial of $\Phi$ under $\gamma$ evaluated at the cusp.
+\item The fold analogue of Theorem \ref{thm:expansion}, which would derive $\tfrac{2\pi^3}{15}$, $\tfrac{\pi^3}{24}$ and $-\tfrac72$ of Section \ref{sec:folds}.
+\item The imaginary parts of the periods of $\Phinew$ at the width-one cusps of $\Gamma_1(5)$ ($7.0335782469643621718\ldots$, $0.3171086774431510891\ldots$), presumably in $\Q(\zeta_5,\varphi)\pi^2$; \texttt{lindep} against $\pi^2\{1,5^{1/4},\sqrt5,5^{3/4}\}$ finds nothing at $40$ digits.
+\item The cusp-to-$x$ dictionary for the rows $\mathbf B,\delta,\eta$ with complex conjugate singularities, not verified by continuation.
+\item A host whose \emph{outer} direction has uniform cusp weights (Lambert rather than polylogarithm orientation) would remove the hypothesis tax of Section \ref{sec:dioph}; the host sweep of the project found no Ap\'ery-perfect host at levels $\le120$ other than $5$ and $6$.
+\end{enumerate}
+
+\section{Computations}\label{sec:comp}
+All computations are in PARI/GP 2.15. The cusp formula, the census, the polar identity, the monodromy dictionary and the Galois test are in \texttt{lattice/cusp\_periods/} (18 scripts, \texttt{REPORT.md}); the $\Gamma_1(5)$ far-cusp periods in \texttt{lattice/gamma15/task2/}; the new period $\xi$ and its source in \texttt{lattice/hostscan/} (\S10 of its report, $128$ digits); the cusp-form census in \texttt{lattice/cuspform\_sources/}. The independent re-derivations for this paper are in \texttt{paper/cusp\_periods/check/}: \texttt{01\_cuspformula.gp} (the formula \eqref{eq:expansion} implemented from scratch: $\zeta(2)/5$, $-\tfrac{11}5\zeta(2)$, $\zeta(2)/4$, $-\tfrac34\zeta(2)$, $\xi$, $\sigma(\xi)$, and the imaginary parts of $\mathbf C$ at $\tfrac13$ and $\mathbf E$ at $\tfrac14$, all to $76$ digits), \texttt{02\_L3identity.gp} (Proposition \ref{prop:L3}), \texttt{03\_showcase.gp} (the showcase page).
+
+\begin{thebibliography}{99}
+\bibitem{AZ} G. Almkvist, W. Zudilin, Differential equations, mirror maps and zeta values, in: Mirror Symmetry V, AMS/IP Stud. Adv. Math. 38 (2006), 481--515.
+\bibitem{Beukers1987} F. Beukers, Irrationality proofs using modular forms, Ast\'erisque 147--148 (1987), 271--283.
+\bibitem{Bol} G. Bol, Invarianten linearer Differentialgleichungen, Abh. Math. Sem. Univ. Hamburg 16 (1949), 1--28.
+\bibitem{CDT} F. Calegari, V. Dimitrov, Y. Tang, The linear independence of $1$, $\zeta(2)$, and $L(2,\chi_{-3})$, arXiv:2408.15403.
+\bibitem{Cooper} S. Cooper, Sporadic sequences, modular forms and new series for $1/\pi$, Ramanujan J. 29 (2012), 163--183.
+\bibitem{DS} F. Diamond, J. Shurman, A First Course in Modular Forms, Grad. Texts in Math. 228, Springer, 2005.
+\bibitem{FS} P. Flajolet, R. Sedgewick, Analytic Combinatorics, Cambridge University Press, 2009.
+\bibitem{MalikStraub} A. Malik, A. Straub, Divisibility properties of sporadic Ap\'ery-like numbers, Res. Number Theory 2 (2016), Art. 5.
+\bibitem{Manin} Yu. I. Manin, Periods of parabolic forms and $p$-adic Hecke series, Math. USSR Sb. 21 (1973), 371--393.
+\bibitem{PasolZudilin} V. Pa\c sol, W. Zudilin, Magnetic (quasi-)modular forms, Nagoya Math. J. 248 (2022), 815--837.
+\bibitem{ProjSources} River, Claude, Modular Ap\'ery systems: sources, companions and $p$-adic limits (in preparation; \texttt{paper/main.tex} of the project repository).
+\bibitem{Companions} Claude (Fable), River, Explicit companions of modular Ap\'ery sequences: arithmetic, Lucas congruences, and exact asymptotics (companion paper; \texttt{paper/companions/main.tex}).
+\bibitem{Zagier} D. Zagier, Integral solutions of Ap\'ery-like recurrence equations, in: Groups and Symmetries, CRM Proc. Lecture Notes 47 (2009), 349--366.
+\end{thebibliography}
+\end{document}
