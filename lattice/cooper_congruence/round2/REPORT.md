@@ -1,4 +1,4 @@
-# Cooper's magnetic congruence, round 2: $\gamma$ identified as a twisted CM trace, and the master conjecture shown to be a general property of Shimura–Borcherds lifts
+# Cooper's magnetic congruence, round 2: $\gamma$ identified as a twisted CM trace, the master conjecture shown to be a general property of Shimura–Borcherds lifts (and proved at level one), and its clean form $d\mid c(d)$
 
 *Working note, 2026-09-02.  PARI/GP 2.15.4; all divisibility claims are exact integer
 arithmetic, all CM evaluations are floating point with the precision quoted.  Scripts
@@ -54,7 +54,7 @@ range), **[num, digits]**, **[refuted, range]**, **[conjectural]**.
 | **P2** | An **exact** $T_{p^2}$ eigen-identity behind Paşol–Zudilin's Theorem 1, with a tower: $f|T_{p^2}=\chi_{-m_0}(p)pf+p^3c\,g_{m_0p^2}$ and $g_{m_0p^{2r}}|T_{p^2}=g_{m_0p^{2r-2}}+p^3g_{m_0p^{2r+2}}$; and $v_p(a(p^{2j}m^2))\ge3j+v_p(a(m^2))$ $\iff$ $\lambda\equiv p\pmod{p^3}$ | **[proved / verified $p\le17$]** `FINDINGS_PZ.md` |
 | **GAP** | $n^2\mid\beta(n)$: still open, but now in three interlocking precise forms — (i) $n^2$ divides the twisted CM trace $\mathrm{Tr}_{D_0n^2}(\widehat f)$; (ii) the $T_{p^2}$ eigenvalue of the weight-$5/2$ input is $\equiv p\pmod{p^3}$ together with the tower relation; (iii) the $x$-line congruence W6 | **open** §8 |
 
-**Headline.**  Two things changed.  *First*, the kernel $K$ of Conjecture 4.1 is identified:
+**Headline.**  Three things changed.  *First*, the kernel $K$ of Conjecture 4.1 is identified:
 $\gamma(m)=\lambda m^{-2}\mathrm{Tr}_{D_0m^2}(\widehat f)$, where $\widehat f=-R_{-2}f/4\pi$
 is the first Shimura–Maass derivative of the weight-$(-2)$ weakly holomorphic form
 $f=1/(xF)$ and $\mathrm{Tr}$ is the genus-character-twisted Heegner trace; the master
@@ -73,9 +73,13 @@ and divisibility at *every* prime.  Two of the three inputs that the level-one p
 are now in place at level $28$ as well — uniqueness, from
 $\dim S_4(\Gamma_0(7))^{W_7=-1}=0$ (P4), and the eigenvalue $\lambda\equiv p\pmod{p^2}$
 with a trivial middle character (P5) — so the single genuinely missing ingredient is an
-integral basis of $M^!_{5/2}(\rho_L)$.  And the statement to aim at is sharper than
-Conjecture 4.1: $p^{2a}\mid c(p^{2a}d)$ for the trace coefficients $c(d)$, of which the
-conjecture is the case $d=1$ (P3).
+integral basis of $M^!_{5/2}(\rho_L)$.  *Third*, the statement to aim at is cleaner than
+Conjecture 4.1: with $c(d)$ the twisted CM trace coefficients,
+$$d\mid c(d)\qquad\text{for every admissible }d$$
+(all $690$ admissible $d\le2500$, zero failures), of which Conjecture 4.1 is the case
+$d=m^2$; the quotient $G(d)=c(d)/d$ extends Cooper's kernel $\gamma$ from the squares to all
+discriminants, and its sharpness fingerprint picks out exactly round 1's two anomalous cells
+$(s_7,2)$ and $(s_7,5)$ (P6).
 
 ---
 
