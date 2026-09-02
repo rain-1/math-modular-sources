@@ -6,6 +6,15 @@ Newest entries on top.
 
 ---
 
+## 2026-09-02 — Cooper's magnetic congruence: two cells proved, the rest reduced, and a master conjecture
+
+`consolidation/COOPER_CONGRUENCE.md` + `lattice/cooper_congruence/`.
+
+- **Reduction (proved).** eq:magnetic (Φ|U_{p^n} ≡ (ψ(p)p)^n Φ mod p^{n+2} for all n) ⟺ Ξ|U_p ≡ ψ(p)Ξ mod p² for Ξ = D⁻¹Φ ∈ Z[[q]] ⟺ rad(n)² | β(n), β = c' ⋆ μψ.
+- **Theorem.** Φ_{s₇}|U₇ = 7Φ_{s₇} and Φ_{s₁₀}|U₅ = 5Φ_{s₁₀} identically (Fricke sign −1, Atkin–Lehner trace to level N/p, valence formula, two exact coefficients). These are the cells with ε_p = −ψ(p).
+- **Mechanism located.** c'(m) = Res_x(η q(x)^{−m}) with η = l(x)dx/(x√P F) = Ξ dq/q; (S) mod p ⟺ Cartier eigenvector C(η) ≡ ψ(p)η ⟺ a_{pj+p−1} ≡ ψ(p)a_j mod p (verified p ≤ 101); a_{p−1} ≡ ψ(p) manufactures χ₋₃ for s₁₈ on the x-side. For ψ = 1 it is a mirror-map-type integrality exp∫η ∈ Z_p[[x]]. Paşol–Zudilin's level-one magnetic forms FAIL (S): the congruence is not generic magnetism.
+- **Master conjecture (verified n ≤ 1500, sharp):** n² | β(n); equivalently Φ = D³[Σ_e ψ(e)e⁻²K(q^e)] with K = Σγ(d)q^d integral, i.e. Ξ is an inner weight-3 Eisenstein series whose Lambert kernel q/(1−q) is replaced by an integral non-multiplicative K, and L(Φ,s) = L(s−1,ψ)·Σγ(d)d^{3−s}. Implies (S) and supercongruences such as c'(p²) ≡ ψ(p)c'(p) mod p⁴. In Shimura–Borcherds terms: a(|D|m²) = m³γ(m).
+
 ## 2026-09-02 — Cusp periods (one recurrence, many periods) and cusp-form sources
 
 `consolidation/CUSP_PERIODS.md` + `lattice/cusp_periods/`; `consolidation/CUSPFORM_SOURCES.md` + `lattice/cuspform_sources/`.
