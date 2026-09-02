@@ -1,0 +1,64 @@
+/* 05_mono.gp -- (P4): the cusp period by monodromy for the second-order rows,
+   at both finite singular points x = 1/lambda_1 (near) and 1/lambda_2 (far),
+   matched against the q-side formula.                                        */
+read("lib.gp");
+read("mono.gp");
+default(parisizemax, 20000000000);
+default(realprecision, 120);
+NC = 620;
+Arow(a,b,c) = my(v=vector(NC+1)); v[1]=1; v[2]=b; for(n=1,NC-1, v[n+2]=((a*n^2+a*n+b)*v[n+1]-c*n^2*v[n])/(n+1)^2); v;
+Brow(a,b,c) = my(v=vector(NC+1)); v[1]=0; v[2]=1; for(n=1,NC-1, v[n+2]=((a*n^2+a*n+b)*v[n+1]-c*n^2*v[n])/(n+1)^2); v;
+PCof(a,b,c) = [[-b, c], [1, -2*a, 3*c], [0, 1, -a, c]];
+RC0(x) = vector(MT+1, i, 0);
+RC1(x) = vector(MT+1, i, if(i==1, 1, 0));
+doloop(nm, a, b, c, xs, appr0, rho, Nc) = {
+  my(PC = PCof(a,b,c), Av=Arow(a,b,c), Bv=Brow(a,b,c));
+  my(SG = concat([0], Vec(polroots(1 - a*'x + c*'x^2))));
+  my(xb = xs + rho);
+  my(appr = concat(appr0, [xb]));
+  my(circ = vector(Nc+1, i, xs + rho*exp(2*Pi*I*(i-1)/Nc)));
+  my(path = concat(appr, circ[2..Nc+1]));
+  my(x0 = appr[1]);
+  my(sA = runp(PC, SG, RC0, evs(Av,x0,2), appr));
+  my(sB = runp(PC, SG, RC1, evs(Bv,x0,2), appr));
+  my(gA = runp(PC, SG, RC0, evs(Av,x0,2), path));
+  my(gB = runp(PC, SG, RC1, evs(Bv,x0,2), path));
+  my(dA = gA[1]-sA[1], dB = gB[1]-sB[1], dAp = gA[2]-sA[2], dBp = gB[2]-sB[2]);
+  print("  ", nm, " x* = ", xs, "   period = ", dB/dA);
+  print("        cross-check from y' : ", dBp/dAp);
+  dB/dA;
+}
+mcmp(nm, mv, qv) = my(d = abs(mv-qv)); print("     ", nm, "  |monodromy - q-side| = ", d);
+print("=== Zagier A  (7,2,-8):  near 1/8, far -1;  source outer chi_-3 level 6");
+mA1 = doloop("near", 7,2,-8, 1/8., [0.02, 0.02+0.06*I, 0.16+0.06*I], 0.035, 48);
+mA2 = doloop("far ", 7,2,-8, -1., [-0.02,-0.1,-0.25,-0.4], 0.5, 48);
+mcmp("cusp 0  ", mA1, cperiod(srcbyname("A"),0,1)[1]);
+mcmp("cusp 1/2", mA2, cperiod(srcbyname("A"),1,2)[1]);
+print();
+print("=== Zagier C (10,3,9):  near 1/9, far 1;  source inner chi_-3 level 6 (CDT)");
+mC1 = doloop("near", 10,3,9, 1/9., [0.02, 0.02+0.05*I, 0.15+0.05*I], 0.033, 48);
+mC2 = doloop("far ", 10,3,9, 1., [0.02, 0.02+0.5*I, 1.6+0.5*I], 0.5, 48);
+mcmp("cusp 0  ", mC1, cperiod(srcbyname("C"),0,1)[1]);
+mcmp("cusp 1/3", mC2, cperiod(srcbyname("C"),1,3)[1]);
+print();
+print("=== Zagier E (12,4,32): near 1/8, far 1/4;  source inner chi_-4 level 8 (Catalan)");
+mE1 = doloop("near", 12,4,32, 1/8., [0.02, 0.02+0.04*I, 0.155+0.04*I], 0.03, 48);
+mE2 = doloop("far ", 12,4,32, 1/4., [0.02, 0.02+0.09*I, 0.33+0.09*I], 0.08, 48);
+mcmp("cusp 0  ", mE1, cperiod(srcbyname("E"),0,1)[1]);
+mcmp("cusp 1/4", mE2, cperiod(srcbyname("E"),1,4)[1]);
+print();
+print("=== Zagier F (17,6,72): near 1/9, far 1/8;  source inner chi_-3 level 12");
+mF1 = doloop("near", 17,6,72, 1/9., [0.01, 0.01+0.02*I, 0.1191+0.02*I], 0.008, 48);
+mF2 = doloop("far ", 17,6,72, 1/8., [0.01, 0.01+0.02*I, 0.133+0.02*I], 0.008, 48);
+mcmp("cusp 0  ", mF1, cperiod(srcbyname("F"),0,1)[1]);
+mcmp("cusp 1/4", mF2, cperiod(srcbyname("F"),1,4)[1]);
+mcmp("cusp 1/3", mF2, cperiod(srcbyname("F"),1,3)[1]);
+mcmp("cusp 1/6", mF2, cperiod(srcbyname("F"),1,6)[1]);
+mcmp("cusp 1/12", mF2, cperiod(srcbyname("F"),1,12)[1]);
+print();
+print("=== Zagier D (11,3,-1): near phi^-5, far -phi^5;  source outer, Gamma_1(5)");
+mD1 = doloop("near", 11,3,-1, (5*sqrt(5)-11)/2, [0.02, 0.02+0.04*I, 0.13+0.04*I], 0.03, 48);
+mD2 = doloop("far ", 11,3,-1, -(11+5*sqrt(5))/2, [-0.05,-0.5,-2.,-5.,-8.], 5.0, 48);
+mcmp("cusp 0  ", mD1, cperiod(srcbyname("D"),0,1)[1]);
+mcmp("cusp 1/2", mD2, cperiod(srcbyname("D"),1,2)[1]);
+quit;
