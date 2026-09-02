@@ -9,7 +9,7 @@ All arithmetic exact (PARI/GP 2.15.4).  Tags: **[proved]** = proof written out b
 
 ## 0.  Summary of what changed
 
-Four things came out of this that bear directly on `consolidation/COOPER_CONGRUENCE.md`:
+Five things came out of this that bear directly on `consolidation/COOPER_CONGRUENCE.md`:
 
 1. **The "negative control" in §3 of the ledger is wrong.**  Paşol–Zudilin's level-one
    magnetic forms *do* satisfy Cooper's congruence $(S)$ — one just has to use the
@@ -45,6 +45,15 @@ Four things came out of this that bear directly on `consolidation/COOPER_CONGRUE
    ($\dim S_4=0$, and the integral basis $\{g_M\}$) both fail, and the character comes out
    as $\chi_{-3}$ rather than $\mathbf 1$ — which is precisely why the correct level-$4N$
    model must be the **twisted** (genus-character) lift.
+
+5. **At level 28 the input is vector-valued, and two of the three obstacles are now gone.**
+   The scalar Kohnen-plus model is refuted (§4.4: an irrationality at $d=8$, plus a support
+   law $-3d\equiv\square\ (28)$ that is the Weil-representation index condition).  Against the
+   companion strand's twisted-trace coefficients $c(d)$: the uniqueness input survives
+   ($\dim S_4(\Gamma_0(7))^{W_7=-1}=0$, §4.5(i)); the eigenvalue comes out as
+   $\lambda\equiv p\pmod{p^2}$ with a **trivial** middle character at every $p\le19$
+   (§4.5(ii)) — exactly the hypothesis §2.7 needs; and there is a new sharp divisibility
+   $p^{2a}\mid c(p^{2a}d)$ at *every* index $d$, not just squares (§4.5(iii)).
 
 ---
 
@@ -428,7 +437,7 @@ So the pipeline is validated end to end.
 | $1$ | $56$ | $17$ (all with pole order exactly $3$) | $m\le20$ | **no solution** |
 | $2$ | $104$ | $31$ | $m\le20$ | a solution exists — but $31$ parameters against $20$ equations, so the test is **underdetermined and proves nothing** |
 | $1$ | $56$ | $17$ | $m\le40$ | **no solution**; rank $17$ of the $40\times17$ system and the longest matchable prefix is exactly $k=17=\dim$, i.e. the system behaves like a generic one — no near-miss |
-| $2$ | $104$ | $31$ | $m\le40$ | DECISIVE_PLACEHOLDER |
+| $2$ | $104$ | $31$ | $m\le40$ | not run to completion — superseded by §4.4, which refutes the scalar model outright |
 
 The $r=1$ answer is the honest one at that pole bound; the $r=2$/$m\le20$ "match" must not
 be read as a positive identification.  The decisive run ($40$ equations, $31$ unknowns) is
@@ -443,13 +452,84 @@ scalar plus space at level $4N$.  So the $s_7$ input does **not** live in the sc
 space of $\Gamma_0(28)$; it lives in the proper subspace $V'_r\subset V_r$ defined by that
 support law.  This is independent confirmation of §3, and it explains the $r=1$ negative:
 $V_1$ is simultaneously too big (it contains forms with the wrong support) and does not
-contain the right object.  `39_v28.gp` redoes the search inside $V'_r$.
+contain the right object.  (`39_v28.gp` would redo the search inside $V'_r$; it was not
+needed once §4.4 refuted the scalar model outright, for a reason that no amount of extra
+$r$ could fix.)
 
 **Caveat on any negative answer.**  $W_r$ bounds the pole order at *every* cusp of
 $\Gamma_0(28)$, so a failure at $r=1,2$ does not by itself exclude a preimage with larger
 poles at the other five cusps.  What makes the negative reading credible is §2.7 + §3:
 at level $4N$ the scalar single-index model would force $\lambda_p=\chi_{-3}(p)p$, i.e.
 $\psi=\chi_{-3}$, which is **refuted** by the verified $\psi_{s_7}=\mathbf 1$.
+
+### 4.4  The scalar model is refuted; the input is vector-valued  **[established]**
+
+Two independent facts kill the scalar model, so the search of §4.3 was searching the
+wrong space.
+
+**(a) Irrationality.**  The companion strand computes the twisted CM traces
+$c(d)=\sqrt{-3}\sum_Q\chi_{-3}(Q)\,\omega_Q^{-1}\hat f(\alpha_Q)$ over the $\Gamma_0(7)$-classes
+of Heegner forms of discriminant $-3d$ (file `70_cd_s7.txt`, $115$ values, $d\le400$),
+with $c(m^2)=\beta_{s_7}(m)$ and $c(d)\in\mathbf Z$ at every admissible $d$.  At level one the
+analogue satisfies $\mathrm{Tr}_{-3d}(\hat f)=t(d)\sqrt d$ with $t(d)$ rational, which is why
+$a(d)=\sqrt d\,\mathrm{Tr}/192$ is rational.  At level $7$ that fails: $c(8)=16$ exactly, and
+both $c(8)/\sqrt8$ and $c(8)\sqrt8$ are irrational.  Matching the square indices would force
+$a(d)=\sqrt d\,c(d)$, which is irrational at $d=8$.  **No rational scalar $q$-series has these
+coefficients.**
+
+**(b) The support law.**  $c(d)\ne0$ only for
+$$-3d\equiv\square\ (\mathrm{mod}\ 28)\qquad\Longleftrightarrow\qquad d\equiv0,1\ (4)\ \text{ and }\ d\equiv0,1,2,4\ (7),$$
+which is *strictly* stronger than the scalar Kohnen plus condition.  It is the index law
+$d\equiv\beta^2\ (4N)$ of a **vector-valued** form for the Weil representation of the
+discriminant form $\mathbf Z/2N$ ($N=7$), components indexed by $\beta$ mod $14$; the sign
+flip $\beta\mapsto-\beta$ is $\hat f\mid W_7=-\hat f$.  So the $s_7$ input is a weakly
+holomorphic weight-$5/2$ form for that Weil representation (equivalently a skew-Jacobi
+object of weight $3$ and index $7$), not a scalar plus form.
+
+Consequently the §4.3 negative should be read as **"scalar model refuted"**, not as a
+failure of the Shimura–Borcherds identification.
+
+### 4.5  The three obstacles, revisited — and one of them is gone  **[verified]**
+
+`39_vv.log`:
+
+**(i) Uniqueness.**  The weight-$4$ newform on $\Gamma_0(7)$ has $a_7=-7$, hence classical
+Fricke eigenvalue $\varepsilon=-a_7/7^{k/2-1}=+1$ (PARI `mfatkineigenvalues` agrees).
+Cooper's source satisfies $\Phi\mid_4W_7=-\Phi$, so it lives in the $\varepsilon=-1$
+eigenspace, where
+$$\dim S_4(\Gamma_0(7))^{W_7=-1}=0 .$$
+**So PZ's uniqueness input — "a weakly holomorphic form is determined by its principal
+part" — IS available at level $28$, on the $W_7$-antiinvariant part.**  This was the first
+of the three obstacles of §2.6 and it is removed.
+
+**(ii) The eigenvalue.**  Fitting $\lambda$ from
+$c(p^2d)+\tau\,p\,c(d)+p^3c(d/p^2)=\lambda\,c(d)$ with $\tau=+1$ (trivial middle character)
+over every admissible $d\le400/p^2$ with $p\nmid c(d)$:
+
+| $p$ | $2$ | $3$ | $5$ | $11$ | $13$ | $17$ | $19$ |
+|---|---|---|---|---|---|---|---|
+| $\lambda \bmod p^2$ | $\mathbf 2$ | $\mathbf 3$ | $\mathbf 5$ | $\mathbf{11}$ | $\mathbf{13}$ | $\mathbf{17}$ | $\mathbf{19}$ |
+
+i.e. **$\lambda\equiv p \pmod{p^2}$ at every prime tested, constant across $d$** — and with
+$\tau=+1$, meaning the middle Hecke term carries the *trivial* character: the genus character
+has squared away, $\chi_{-3}(p)^2=1$.  This is precisely the mechanism predicted in §3 and
+precisely the hypothesis $\lambda\equiv p$ that §2.5/§2.7 need.  (Mod $p^3$ it is constant only
+at $p=2,5$, where $v_p(\beta_{s_7}(p))=3$; generically $v_p(\beta_{s_7}(p))=2$, so
+$\lambda-p\sim\beta_{s_7}(p)$ has $v_p$ exactly $2$.  In the $c$-normalisation
+$c(m^2)=\beta(m)$ — with no extra factor $m$ — the target $n^2\mid\beta(n)$ is
+$v_p(c(p^{2a}m^2))\ge2a$, and the criterion of §2.5 correspondingly reads $\lambda\equiv p
+\pmod{p^{2}}$, which is exactly what is observed.)
+
+*Caveat.*  Every tested $d$ is coprime to $p$, so the vanishing of the middle term when
+$p\mid d$ — which a genuine $T_{p^2}$ requires — is **not** tested by this fit.  The fit is
+strong evidence, not a verification of the operator.
+
+**(iii) A new divisibility.**  The same table gives, unconditionally,
+$$p^{2a}\ \big|\ c\bigl(p^{2a}d\bigr)\qquad\text{for every admissible }d\text{ with }p\nmid d,$$
+verified for $p\le19$, $a\le3$, $p^{2a}d\le400$ (`39_vv.log`, part B), with minimal excess $0$
+so it is sharp.  This **extends Cooper's $n^2\mid\beta(n)$ from the square indices to every
+index** — $\beta(n)=c(n^2)$ is only the $d=1$ case — and it is the natural statement for the
+vector-valued object.  It is the level-$28$ analogue of the level-one identity of §2.7.
 
 ---
 
@@ -508,7 +588,11 @@ no published theorem that gives the exact-eigenvalue statement; that is the gap.
 | 18 | Cooper's rows have $\psi=\mathbf 1$, hence need $\lambda_p=p$ at every $p$; a single-index principal part cannot deliver this | **[proved]** modulo the level-$4N$ uniqueness caveat of §2.6 |
 | 19 | the twisted (genus-character) lift restores $\lambda_p=p$ at every $p$ | **[conjectural]**, but forced by 16–18 |
 | 20 | PARI can build $M_{5/2}(\Gamma_0(28))$, $S_{5/2}$, `mfkohnenbasis`, and $M_{5/2+12r}(\Gamma_0(28))$ for $r=1,2$ | **[verified]** — no obstruction |
-| 21 | existence in $V_r(28)$ of a form with $a(m^2)=m\beta_{s_7}(m)$, $r=1,2$ | see §4.3 |
+| 21 | no $f\in V_1(28)$ (scalar plus space, pole $q^{-3}$) has $a(m^2)=m\beta_{s_7}(m)$ | **[verified]** $m\le40$, rank $17=\dim$, generic |
+| 22 | the $s_7$ input is **not** a scalar plus form: $a(d)=\sqrt d\,c(d)$ is irrational at $d=8$, and the support law is $-3d\equiv\square\ (28)$ | **[established]** |
+| 23 | $\dim S_4(\Gamma_0(7))^{W_7=-1}=0$, so PZ's uniqueness input survives at level 28 on the $W_7$-antiinvariant part | **[proved]** ($a_7=-7\Rightarrow\varepsilon=+1$) |
+| 24 | $\lambda\equiv p\pmod{p^2}$ with **trivial** middle character, constant in $d$, for $p\le19$ | **[verified]**, with the $p\mid d$ caveat of §4.5 |
+| 25 | $p^{2a}\mid c(p^{2a}d)$ for every admissible $d$ coprime to $p$ — Cooper's $n^2\mid\beta(n)$ at **all** indices, not only squares | **[verified]** $p\le19$, $a\le3$, $p^{2a}d\le400$; sharp |
 
 ---
 
@@ -525,5 +609,27 @@ no published theorem that gives the exact-eigenvalue statement; that is the gap.
 | `36_mf28.gp/.log` | Task 4: what PARI's `mf` package can do at level 28 |
 | `37_thm.gp/.log` | verification of the §2.7 theorem: $v_p(S_a(m))\ge3a$ and $64S_a(1)/p^{3a}\in\mathbf Z$ |
 | `38_wh.gp` → `38_wh_out.txt`, `38_wh40.gp` → `38_wh40_out.txt` | Task 4: the weakly holomorphic search in $V_r(28)$, with the level-4 control |
+| `39_vv.gp/.log` | the vector-valued reading: Fricke data at level 7, $p^{2a}\mid c(p^{2a}d)$, and the $\lambda\equiv p$ fit (uses the companion strand's `70_cd_s7.txt`) |
+| `39_v28.gp` | the $V'_r$ (support-law) search — written, not needed once §4.4 refuted the scalar model |
 
 Nothing outside this directory was touched, and nothing was committed.
+
+## 8.  What remains
+
+At level one, Conjecture 4.1 is a theorem (§2.7).  For Cooper's rows the proof would go
+through verbatim once the three inputs are supplied in the vector-valued setting:
+
+| input | level 1 | level 28 | status |
+|---|---|---|---|
+| principal part determines the form | $\dim S_4(\mathrm{SL}_2(\mathbf Z))=0$ | $\dim S_4(\Gamma_0(7))^{W_7=-1}=0$ | **done** (§4.5) |
+| integral basis $\{g_M\}$ | Borcherds/Zagier, [8, Prop. 2] | integral basis of $M^!_{5/2}(\rho_L)$ indexed by $(\beta,d)$ | **open** — the one genuinely missing ingredient |
+| the eigen-identity (T1) with $\lambda\equiv p$ | proved, $\lambda=\chi_{-m_0}(p)p$ | $\lambda\equiv p\ (p^2)$, trivial middle character | **numerically strong, not proved**; the $p\mid d$ cells are untested |
+| the tower (T2) | proved | not yet formulated for $\rho_L$ | **open** |
+
+With those, the Lemma and the double induction of §2.7 apply unchanged, with the target
+exponent $2a$ rather than $3a$ because in the $c$-normalisation $c(m^2)=\beta(m)$ carries no
+extra factor $m$.  That is the whole of the remaining proof.
+
+The single sharpest new statement to aim at, which subsumes Conjecture 4.1 and is
+independently interesting, is §4.5(iii):
+$$p^{2a}\ \big|\ c\bigl(p^{2a}d\bigr)\qquad\text{for every }d\text{ coprime to }p .$$

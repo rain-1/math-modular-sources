@@ -47,6 +47,9 @@ range), **[num, digits]**, **[refuted, range]**, **[conjectural]**.
 | **W3–W7** | Its correct form is a real reduction: $f|U_p\equiv f_0+\sum_{n\ge1}[x^{pn}](fH)x^n\pmod p$ with $H=(\sqrt PF)^{p-1}\equiv P^{(p-1)/2}/F_{<p}$, where $F_{<p}=\sum_{n<p}A_nx^n$ is the **supersingular polynomial** of $X_0(N)/\mathbf F_p$ in the coordinate $x$ ($\deg F_{<p}=\lfloor\mu(N)(p-1)/(6\deg x)\rfloor$ exactly).  Round 1's smallest missing brick becomes $[x^{pn}]\bigl(l\,P^{(p-1)/2}/F_{<p}\bigr)\equiv\psi(p)L_n\pmod p$ | **[proved]** (equivalence) + **[verified, $p\le53$]** `FINDINGS_XSIDE.md` |
 | **W11** | **New supercongruence** $A_{p-1}\equiv\kappa\,\psi(p)\,p\pmod{p^2}$, $\kappa=-2,-3,-3$; for $s_{18}$ it manufactures $\chi_{-3}$ from the Apéry-like recurrence alone | **[verified, $5\le p\le300$]**, **[proved for $s_{10}$]** `FINDINGS_XSIDE.md` |
 | **W20** | The **$\psi$-twisted Dieudonné–Dwork tower** $a_{pn-1}\equiv\psi(p)a_{n-1}\pmod{p^{1+v_p(n)}}$ holds for all three rows, extending round 1's V19 to the character row | **[verified, $p\le31$]** `FINDINGS_XSIDE.md` |
+| **P3** | **THE SHARPEST FORM, and a strict generalisation of Conjecture 4.1.**  With $c(d)$ the trace coefficients of §2.8, $$p^{2a}\ \Bigm|\ c\bigl(p^{2a}d\bigr)\qquad\text{for every prime }p,\ a\ge1,\ \text{every admissible }d,$$ which contains $n^2\mid\beta_{s_7}(n)$ as the case $d=1$ (since $\beta(n)=c(n^2)$).  Verified in $193$ tests, $0$ failures, $p\le23$, $a\le4$, $p^{2a}d\le1600$ — **including the $76$ cells with $p\mid d$**, and sharp (minimal excess $0$ at $p=3,11,13,17,19,23$) | **[verified]** §5.5 |
+| **P4** | **Uniqueness survives at level $28$.**  $\dim S_4(\Gamma_0(7))=1$, its eigenform has $a_7=-7$ hence Fricke eigenvalue $+1$, so $\dim S_4(\Gamma_0(7))^{W_7=-1}=0$ — and $\Phi|_4W_7=-\Phi$ lives exactly there.  This replaces $\dim S_4(\mathrm{SL}_2(\mathbf Z))=0$ in the level-one proof.  ($\dim M_4(\Gamma_0(7))=3$, so one also needs that $\Phi$ vanishes at both cusps, which it does) | **[proved]** §5.5 |
+| **P5** | **The Hecke eigenvalue is right on the nose.**  Fitting $c(p^2d)+p\,c(d)+p^3c(d/p^2)=\lambda\,c(d)$ over all admissible $d$ gives $\lambda\equiv p\pmod{p^2}$, **constant in $d$**, with a **trivial** middle character ($\chi_{-3}(p)^2=1$), for $p=2,3,5,11,13,17,19$.  In the $c$-normalisation the target exponent is $2a$ (not $3a$), for which $\lambda\equiv p\ (p^2)$ is exactly what is needed | **[verified, $p\le19$]** `FINDINGS_PZ.md` §4.5 |
 | **P2** | An **exact** $T_{p^2}$ eigen-identity behind Paşol–Zudilin's Theorem 1, with a tower: $f|T_{p^2}=\chi_{-m_0}(p)pf+p^3c\,g_{m_0p^2}$ and $g_{m_0p^{2r}}|T_{p^2}=g_{m_0p^{2r-2}}+p^3g_{m_0p^{2r+2}}$; and $v_p(a(p^{2j}m^2))\ge3j+v_p(a(m^2))$ $\iff$ $\lambda\equiv p\pmod{p^3}$ | **[proved / verified $p\le17$]** `FINDINGS_PZ.md` |
 | **GAP** | $n^2\mid\beta(n)$: still open, but now in three interlocking precise forms — (i) $n^2$ divides the twisted CM trace $\mathrm{Tr}_{D_0n^2}(\widehat f)$; (ii) the $T_{p^2}$ eigenvalue of the weight-$5/2$ input is $\equiv p\pmod{p^3}$ together with the tower relation; (iii) the $x$-line congruence W6 | **open** §8 |
 
@@ -65,8 +68,13 @@ $f\in S^{!,+}_{5/2}(\Gamma_0(4))$ with a single-index principal part the stateme
 **proved** (A0), covering every entry of Paşol–Zudilin's Table 1.  Cooper's rows are the
 level-$4N$, genus-character-twisted analogue: the $\chi_{D_0}(Q)$ twist inside the trace is
 exactly what turns the Hecke eigenvalue $\chi_{D_0}(p)p$ into $p$, hence $\psi=\mathbf1$
-and divisibility at *every* prime, and the remaining gap is the level-$4N$ analogue of the
-two eigen-identities.
+and divisibility at *every* prime.  Two of the three inputs that the level-one proof needs
+are now in place at level $28$ as well — uniqueness, from
+$\dim S_4(\Gamma_0(7))^{W_7=-1}=0$ (P4), and the eigenvalue $\lambda\equiv p\pmod{p^2}$
+with a trivial middle character (P5) — so the single genuinely missing ingredient is an
+integral basis of $M^!_{5/2}(\rho_L)$.  And the statement to aim at is sharper than
+Conjecture 4.1: $p^{2a}\mid c(p^{2a}d)$ for the trace coefficients $c(d)$, of which the
+conjecture is the case $d=1$ (P3).
 
 ---
 
@@ -511,6 +519,39 @@ so the principal part no longer determines the form; (ii) there are six cusps, s
 principal-part datum is a vector, not a single index, and $T_{p^2}$ mixes them; (iii)
 Borcherds–Zagier's integral basis $\{g_M\}$ is a level-$4$ statement.  See §8.
 
+### 5.5 The level-$28$ inputs: two of the three obstacles removed
+
+`72_check.gp/.log`, `FINDINGS_PZ.md` §§4.4, 4.5, 8.
+
+**Uniqueness [proved].**  $\dim S_4(\Gamma_0(7))=1$; PARI gives the eigenform
+$q-q^2-2q^3-7q^4+16q^5+2q^6-7q^7+\cdots$ with $a_7=-7$, hence Fricke eigenvalue
+$-a_7/7^{k/2-1}=+1$ (confirmed by `mfatkineigenvalues`).  Since $\Phi|_4W_7=-\Phi$ — and
+$\widehat f|W_7=-\widehat f$ is precisely what forces the trace onto one $\beta$-class — the
+object lives in the $W_7=-1$ eigenspace, where
+$$\dim S_4(\Gamma_0(7))^{W_7=-1}=0 .$$
+So a weakly holomorphic form is determined by its principal part there, exactly as
+$\dim S_4(\mathrm{SL}_2(\mathbf Z))=0$ does at level one, and Paşol–Zudilin's uniqueness step
+survives at level $28$ with no vector-valued dimension formula.  (Note
+$\dim M_4(\Gamma_0(7))=3$, so the anti-invariant part of $M_4$ is *not* zero; the argument
+also uses that $\Phi$ vanishes at both cusps, which it does.)
+
+**The eigenvalue [verified, $p\le19$].**  Fitting
+$c(p^2d)+\tau\,p\,c(d)+p^3c(d/p^2)=\lambda\,c(d)$ against the table of §2.8 with $\tau=+1$
+(no Kronecker symbol) returns $\lambda\equiv p\pmod{p^2}$, **constant in $d$**, at
+$p=2,3,5,11,13,17,19$ — the genus character squaring away, $\chi_{-3}(p)^2=1$, exactly the
+predicted mechanism.  In the $c$-normalisation $c(m^2)=\beta(m)$ (no extra factor $m$, unlike
+the level-one $a(m^2)=m\beta(m)$), so the target is $v_p(c(p^{2a}m^2))\ge2a$, for which
+$\lambda\equiv p\ (p^2)$ is the exact requirement.
+
+**The sharpest statement [verified, 193 tests, 0 failures].**  Independently of any Hecke
+normalisation, the table gives
+$$\boxed{\ p^{2a}\ \bigm|\ c\bigl(p^{2a}d\bigr)\ }\qquad p\ \text{prime},\ a\ge1,\ d\ \text{admissible},$$
+verified for $p\le23$, $a\le4$, $p^{2a}d\le1600$ (458 entries of the table), sharp
+(minimal excess $0$ at $p=3,11,13,17,19,23$).  **This strictly generalises Conjecture 4.1**,
+which is the case $d=1$, since $\beta_{s_7}(n)=c(n^2)$.  The $76$ cells with $p\mid d$ —
+which `FINDINGS_PZ.md` could not reach — are included and pass (minimal excess $3$ at $p=2$,
+$2$ at $p=3,5$), so the divisibility is not an artefact of restricting to $d$ prime to $p$.
+
 ---
 
 ## 6. The mod-$p$ structure of $\gamma$
@@ -619,9 +660,11 @@ $n^2\mid\beta(n)$ is still open.  It is now equivalent to each of:
    $a(m^2)=m\beta_{s_7}(m)$ for $m\le40$, while the same pipeline recovers $f_{4a}$ exactly
    at level $4$.  So what is needed is: (i) vanishing of the space of holomorphic
    vector-valued weight-$5/2$ cusp forms for that Weil representation (the analogue of
-   $\dim S_4=0$, a computable dimension), (ii) the principal-part *vector*, which §2.8 makes
-   explicit, and (iii) an integral basis of the vector-valued space indexed by
-   $(\beta,d)$.  Everything after that is the induction of §5.4 verbatim.
+   $\dim S_4=0$) — **done**, see P4: the Atkin–Lehner sign gives it, no dimension formula
+   needed; (ii) the principal-part *vector*, which §2.8 makes explicit; and (iii) an
+   **integral basis of $M^!_{5/2}(\rho_L)$ indexed by $(\beta,d)$** together with the tower
+   relation (T2) written for $\rho_L$.  Only (iii) is genuinely missing.  Everything after
+   that is the induction of §5.4 with target exponent $2a$ in place of $3a$.
 3. **($x$-line, mod $p$ only)**
    $[x^{pn}]\bigl(l\,P^{(p-1)/2}/F_{<p}\bigr)\equiv\psi(p)L_n\pmod p$, with $F_{<p}$ the
    supersingular polynomial; plus the round-1 lift to mod $p^2$, which is now the single
@@ -681,6 +724,15 @@ space of half-integral weight forms, and the level-one case is already a theorem
    attack" is **reinstated**: §3's objection was based on the wrong character.
 6. The identification R1 supplies what `COOPER_CONGRUENCE.md` §5 calls "the lever":
    $K$ is the generating function of twisted CM traces of $\widehat f$.
+7. `COOPER_CONGRUENCE.md` §4's Shimura–Borcherds reading "$a(|D|m^2)=m^3\gamma(m)$" is
+   correct in the $|D|=D_k$ (i.e. $D=1$ for $k$ even) reading, **not** with $|D|$ the pole
+   discriminant.
+8. The plain-text dump `pz.txt` mangles Paşol–Zudilin's Lemma 1: the correct normalisations
+   are $f_{4a}=\tfrac1{64}q^{-3}+q-506q^4+\cdots$ and $f_{4b}=-\tfrac1{108}q^{-4}+q+\cdots$
+   (the $1/64$ and $1/108$ sit on the denominator line of the two-line display and read as
+   part of the linear combination).
+9. Conjecture 4.1 should be superseded by the sharper P3: $p^{2a}\mid c(p^{2a}d)$ for the
+   trace coefficients $c(d)$ of §2.8, of which it is the case $d=1$.
 
 ---
 
