@@ -351,6 +351,8 @@ $\zeta(7)$ level 24) is out of reach by margins of $-26$ to $-370$ and is not a 
 
 ---
 
+> **Addendum 2026-09-02 (Fable).** Two of the §4 B–C / §7 scenarios are now closed by `INVENTORY_BOUND.md` and `lattice/inventory/REPORT.md`: (i) $u_1=1$ is a theorem (Pólya–Carlson), so the "$u_j=m/2$" rows are impossible; (ii) the complete admissible supply at $\max e\le1$ is CDT's fourteen functions, the single-layer functions form the arcsine ladder with one new function per exponent, and the best margin over *all* inventories is $-8.04$ for Catalan (level 8) and $-6.99$ for $X_1(5)$ Sym$^2$. The entry deficits quoted in §4A and §6 ($-0.0765$, $-0.435$) are artefacts of transporting the $m=14$ array: entry passes on both hosts with small inventories; the margin is what fails. Also settled: the number-field bound is the average over places (`NUMBER_FIELD_HOLONOMY.md`), and the host sweep `lattice/hostscan/REPORT.md` finds no new Apéry-perfect host but a new period on Zagier D's $\Gamma_1(5)$: $\xi=\varphi^5\,\mathrm{Im}\,L(2,\psi_4)-\mathrm{Re}\,L(2,\psi_4)$, $k=2$, scored exactly like CDT's own host.
+
 ## 8. Computed vs. estimated — the honest ledger
 
 **Computed exactly (this task).** $\tau^\flat,\tau^\sharp,I_u^v(w)$ and CDT's
