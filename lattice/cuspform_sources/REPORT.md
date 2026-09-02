@@ -403,6 +403,9 @@ Not done:
 ## 11. Scripts and data
 
 `gp -q <file>`; every script terminates in seconds (the slowest, `11b_kminus_hi.gp`, is 5 s).
+The `.out` files listed below are on disk in this directory but are **not** committed
+(`*.out` is in the repository `.gitignore`, as for `lattice/hostscan`); rerunning the scripts
+regenerates them exactly.
 
 | script | what it does | output |
 |---|---|---|
