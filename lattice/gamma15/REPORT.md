@@ -214,6 +214,23 @@ keep coefficients in ℤ[φ] and the denominator types of the descent are CDT's,
 [1..n]^k ↦ [1..2n]^k. Normalised coordinate **Y := y/s**, so the ℤ/2 point is at Y = 4 and CDT's
 own series for B₁,…,B₇ apply verbatim.
 
+**The conditional ODE.** With θ = x d/dx the row operator is
+θ² − x(11θ²+11θ+3) − x²(θ+1)², i.e.
+
+$$\mathcal L\,y \;=\; x(1-11x-x^2)\,y'' \;+\; (1-22x-3x^2)\,y' \;-\; (3+x)\,y ,$$
+
+singular at 0, t₁, t₂, ∞ (1−11x−x² = −(x−t₁)(x−t₂)). Verified on the exact series (221
+coefficients, `farcusp.py`):
+
+  **L A = 0**,  **L B_D = 1**,  **L B_new = 2/(1 − x/t₂)**,  **L B′_new = 2/(1 − x/t₁)**,
+
+so the conditional generator satisfies L H = b + 2c/(1 − x/t₂) — the exact analogue of CDT's
+b + c/(1−x) (their Prop. 11.1.4). More generally L(c₃B₃+c₄B₄) = 2(c₃−c₄x)/(−(x−t₁)(x−t₂)):
+the pole at t₁ cancels iff c₃ = c₄t₁, the pole at t₂ iff c₃ = c₄t₂. **[verified]**
+Sharp denominators on the x-line: d_n²B_{D,n} ∈ ℤ and d_n²B_{new,n} ∈ ℤ[φ] for all n ≤ 200,
+with d_n¹ failing at 199 resp. 197 of the 200 indices — type exactly [1..n]², i.e. **k = 2**
+(`task2/`). **[verified, n ≤ 200]**
+
 ### 3.1 The measured denominator array  **[verified, exact rationals, n ≤ 80]** (`task3/`)
 
 Every clause of CDT's Lemma `bdenominators` was re-measured on the exact rational series in
@@ -515,7 +532,8 @@ So **everything turns on the single conjugate pair of preimages at \|z\| = 0.213
 (bottom rows (2,±1), i.e. the images of the principal preimage under
 $\left(\begin{smallmatrix}1&0\\ \pm2&1\end{smallmatrix}\right)$): if they are harmless the
 margin is **+0.51** and the theorem follows; if not, it is **−1.44**. Dropping preimages at v₁
-buys almost nothing (+0.04), because v₁'s geometry is already better than CDT's. **[open]**
+buys almost nothing (+0.04), because v₁'s geometry is already better than CDT's. The next
+paragraph settles it: **they are not harmless.**
 
 **Closure of the loophole** (`monodromy.py` → `monodromy.txt`, `monodromy_robust.txt`).
 Let ρ be the monodromy of the rank-4 system ⟨A, A₂, B_D, B_new⟩ on **P**¹∖{0,t₁,t₂,∞}. For any
