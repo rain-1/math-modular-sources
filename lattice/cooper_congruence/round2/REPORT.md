@@ -1,5 +1,5 @@
-# Cooper's magnetic congruence, round 2: the kernel $\gamma$ identified as a twisted CM
-# trace, and the master conjecture as a divisibility of traces of singular moduli
+# Cooper's magnetic congruence, round 2: $\gamma$ identified as a twisted CM trace, and the
+# master conjecture shown to be a general property of Shimura–Borcherds lifts
 
 *Working note, 2026-09-02.  PARI/GP 2.15.4; all divisibility claims are exact integer
 arithmetic, all CM evaluations are floating point with the precision quoted.  Scripts
@@ -19,39 +19,46 @@ range), **[num, digits]**, **[refuted, range]**, **[conjectural]**.
 
 | # | statement | status |
 |---|---|---|
+| **A1** | **THE MASTER CONJECTURE IS NOT SPECIAL TO COOPER'S ROWS.**  Round 1's negative control (V6, `COOPER_CONGRUENCE.md` §3) used the *wrong character*.  With $\psi=\chi_{D_0}$, $D_0$ the discriminant of the pole, and with Paşol–Zudilin's own integralising constants, $n^2\mid\beta_\psi(n)$ holds for $64\,\Delta/E_4^2$ ($\psi=\chi_{-3}$) and $108\,E_4\Delta/E_6^2$ ($\psi=\chi_{-4}$) at **every** prime | **[verified, $n\le500$]** §5.1 |
+| **A2** | The same holds across **all** of Paşol–Zudilin's Table 1 of strong magnetic weight-$4$ forms $\Psi(f_m)$: $m=7,8,11,19,43,67,163,15$ and the two $T_4$-twisted entries — magnetism $m\mid c(m)$ and $n^2\mid\beta_{\chi_{-m}}(n)$ in every case, and **sharp** ($\min_n\bigl(v_p(\beta(n))-2v_p(n)\bigr)=0$ for $p\ge7$) | **[verified, $n\le150$]** §5.2 |
+| **A3** | So Conjecture 4.1 should be restated as a statement about **Shimura–Borcherds lifts**: if $\Phi=\Psi(f)$ with $f\in S^{!,+}_{5/2}$ having a single-index principal part $c\,q^{-m_0}$, then with $\psi=\chi_{-m_0}$ one has $n^2\mid\beta_\psi(n)$.  Route (D), closed by round 1 on the strength of the negative control, is **reopened** and is now the main route | **[conjectural]**, mechanism in `FINDINGS_PZ.md` §5.3 |
+| **A4** | Magnetism is a genuine constraint: the naive family $E_4/H_D(j)^2$ (weight $4$, double poles exactly on the disc-$D$ Heegner divisor) is **not** magnetic for $D=-7,-8,-11,-19,-43,-67,-163,-15$ | **[refuted, $m\le260$]** §5.2 |
 | **R1** | **THE IDENTIFICATION (row $s_7$).**  Let $f=1/(xF)=q^{-1}+5+19q+52q^2+\cdots$, the weakly holomorphic modular form of **weight $-2$** on $\Gamma_0(7)$ with a simple pole at the cusps, $f|_{-2}W_7=-f$; let $\widehat f:=Df+\dfrac{f}{2\pi y}=-\dfrac{R_{-2}f}{4\pi}$ ($R_{-2}$ = Maass raising), a real-analytic $\Gamma_0(7)$-invariant weight-$0$ function.  Then $$\beta_{s_7}(m)=\sqrt{-3}\sum_{Q}\chi_{-3}(Q)\,\frac{\widehat f(\alpha_Q)}{\omega_Q},$$ the sum over the $\Gamma_0(7)$-classes of Heegner forms $[A,B,C]$ of discriminant $-3m^2$ with $7\mid A$, $B\equiv5m\ (14)$ | **[verified, every $m\le45$ with $7\nmid m$, $\ge70$ significant digits]** §2 |
-| **R2** | $f$ is weight $-2$, weakly holomorphic, holomorphic on $\mathbf H$ (vanishing to order $1$ at the polar CM points), $f|W_7=-f$; it is the unique such form with pole order $\le1$ at both cusps | **[proved]** §2.1 |
-| **R3** | $\widehat f$ is $\Gamma_0(7)$-invariant of weight $0$; computed two independent ways (closed form via $E_2^*,E_4$ and $\mathrm{SL}_2(\mathbf Z)$-reduction; $q$-series with $\Gamma_0(7)+7$-reduction) agreeing to $50$ digits | **[proved]** (invariance) + **[num, 50]** §2.2 |
-| **R4** | **The formula is general, not special to Cooper.**  With $f=E_4E_6/\Delta=q^{-1}-240-\cdots$ on $\mathrm{SL}_2(\mathbf Z)$ and the same $\widehat f$: $\beta_{F_{4a}}(m)=\mathrm{Tr}_{-3m^2}(\widehat f)/192$ and $\beta_{F_{4b}}(m)=-\mathrm{Tr}_{-4m^2}(\widehat f)/432$ for Paşol–Zudilin's $F_{4a}=\Delta/E_4^2$, $F_{4b}=E_4\Delta/E_6^2$ | **[verified, $m\le12$, 50 digits]** §2.5 |
-| **R5** | **The constant is the polar coefficient.**  If $\Phi=A_2(\tau-\tau_0)^{-2}+\cdots$ then $\lambda=4\pi^2A_2$ up to sign: $4\pi^2A_2=1/192,\ -1/432$ for $F_{4a},F_{4b}$ (exactly the observed constants), and $|4\pi^2A_2|=\nu^2/|g'(u_0)|=\sqrt3,\,2,\,2/\sqrt3$ for $s_7,s_{10},s_{18}$ — matching $|\sqrt{-3}|=\sqrt3$ for $s_7$ | **[proved]** (the level-one values) + **[verified]** §2.5 |
-| **R6** | **Consequence: the master conjecture is a divisibility of traces of singular moduli.**  $n^2\mid\beta(n)$ $\iff$ $n^2$ divides the twisted CM trace of the first Shimura–Maass derivative of a weight $-2$ form — the Ahlgren–Ono/Edixhoven setting.  Route (B) of the task is now a precisely stated problem | **[proved, given R1]** §2.6 |
-| **R7** | **Why the naive route (A)(1) fails.**  $\beta(m)$ is **not** a $\mathbf Q$-linear combination of twisted CM traces of modular *functions* at the discriminants $D_0m^2$: those are exponential polynomials $\sum_j2\operatorname{Re}(c_jq_0^{-jm})+O(R^{\theta m})$ with constant $c_j$, whereas $\beta(m)$ carries a $1/m$ tail, $\beta(m)=\lambda_0(1-\kappa/m)R^m\sin(\cdot)+O(R^{\theta m})$, $\kappa=1/(2\pi\operatorname{Im}\tau_0)\notin\mathbf Q$.  Numerically $m\beta(m)/((m-\kappa)\tau_H(m))\to3$ to $11$ digits at $m=33$ | **[proved]** + **[verified, $m\le34$]** §3.1 |
-| **R8** | Route (A)(3) is closed: $K=\sum\gamma(n)q^n$ is **not** a weakly holomorphic (or holomorphic, or quasi-, or meromorphic) modular form of any weight and level, and $K$ is **not holonomic** over $\mathbf Q(q)$ — its radius of convergence $e^{-\pi\sqrt{|D_0|}/(2N)}$ is transcendental by Gelfond–Schneider, while a holonomic series has algebraic singularities.  The same for $DK$ and $D^2K$ | **[proved]** §3.2 |
-| **R9** | $\Phi^\flat:=\sum_e\mu(e)\psi(e)\,e\,\Phi(e\tau)=D^3K$, whose coefficients are $n\beta(n)=a(n^2)$, is **not** a modular form: it has poles at $\tau_0/e$ for every squarefree $e$, infinitely many $\Gamma_0(N)$-inequivalent points | **[proved]**; the ratio $\Phi^\flat/\Phi$ is not a rational function of $u$ of degree $\le6$ **[refuted, 60 coefficients]** §3.3 |
-| **R10** | **Dictionary to the half-integral-weight side, calibrated.**  If $\Phi=\Psi(f_{5/2})$ is the Shimura–Borcherds lift (Paşol–Zudilin (5), $k=2$) of $f_{5/2}=\sum a(n)q^n$, then $\beta(m)=a(m^2)/m$ exactly, so the master conjecture is $m^3\mid a(m^2)$.  Calibrated against the literature: for $F_{4a}$ one gets $a(1)=1$, $a(4)=-506$, matching Paşol–Zudilin's $64f_{4a}=q^{-3}+q-506q^4+\cdots$ | **[proved]** + **[verified]** §4.1 |
-| **R11** | Equivalent shapes of the master conjecture: $\;\Xi=\sum_e\psi(e)(D^2K)(q^e)$; $\;D^{-3}\Phi=\sum_n\gamma(n)\mathrm{Li}_2^\psi(q^n)$ (a **dilogarithm ladder**); $\;\mathfrak g=\prod_n\bigl((1-q^n)^n\bigr)^{-\gamma(n)}$; $\;\Phi^\flat$ is **triply magnetic**; $\;c(pn)\equiv\psi(p)p\,c(n)\pmod{p^{3(1+v_p(n))}}$ | **[proved]** (equivalences) §4.2 |
-| **R12** | $n^2\mid\beta(n)$, all three rows | **[verified, $n\le12000$]** (round 1 had $1500$) `FINDINGS_MODP.md` |
-| **M1–M10** | **A genuine mod-$p$ structure exists, and only at $p=2$ (all rows) and $p=3$ ($s_{18}$).**  $\gamma(n)$ is odd $\iff$ $2^{1+v_2(N)}\nmid n$ and $P\nmid n$ ($P=7,5,3$); so $\gamma\bmod2$ is multiplicative and $K\bmod2$ is a **rational** function of $q$ (periods $14,20,12$).  For $s_{18}$, $K\equiv(q+2q^2+2q^3)/(1+q)^3\pmod3$.  Mod $2$ the whole conjecture degenerates to a weight-$3$ Eisenstein/theta identity: $c'(m)$ is odd $\iff$ the $2P$-free part of $m$ is a perfect square | **[verified, $n\le12000$]** `FINDINGS_MODP.md` |
-| **M4, L1–L6, N1** | Outside those four cells $K\bmod p$ is neither rational nor algebraic; all Lucas/Dwork laws for $\gamma$ fail massively; $\gamma(p)\bmod p$ matches nothing in a sweep of several hundred arithmetic candidates over $42$ primes (best score $5/42$ = noise) and is equidistributed | **[refuted, stated ranges]** `FINDINGS_MODP.md` |
-| **M9** | New unbounded divisibilities: $v_3(\gamma_{s_7}(n))\ge v_3(n)-1$ and $v_2(\gamma_{s_{10}}(n))\ge v_2(n)-1$, both sharp — so $n^2\mid\beta(n)$ is **not** sharp at $(s_7,3)$ and $(s_{10},2)$, neither of which is an Atkin–Lehner cell | **[verified, $n\le12000$]** `FINDINGS_MODP.md` |
-| **W1** | The task's route (A) on the $x$-line is **empty as posed**: in weight $0$ the Hecke correspondence is $T_p=p\,U_p+V_p$, so the Kronecker congruence mod $p$ reads $p\,U_pf\equiv0$, a tautology | **[proved]** `FINDINGS_XSIDE.md` |
-| **W3–W7** | Its correct form is a real reduction.  With $H=(\sqrt PF)^{p-1}$, $f|U_p\equiv f_0+\sum_{n\ge1}[x^{pn}](fH)x^n \pmod p$, and $H\equiv P^{(p-1)/2}/F_{<p}$ where $F_{<p}=\sum_{n<p}A_nx^n$ is the **supersingular polynomial** of $X_0(N)/\mathbf F_p$ in the coordinate $x$ ($\deg F_{<p}=\lfloor\mu(N)(p-1)/(6\deg x)\rfloor$ exactly, $20$ primes $\times$ $3$ rows).  So round 1's smallest missing brick becomes $$\bigl[x^{pn}\bigr]\Bigl(l(x)\,P(x)^{(p-1)/2}/F_{<p}(x)\Bigr)\equiv\psi(p)L_n\pmod p$$ — an ordinarity statement at the supersingular divisor | **[proved]** (equivalence) + **[verified, $p\le53$]** `FINDINGS_XSIDE.md` |
-| **W11** | **New supercongruence:** $A_{p-1}\equiv\kappa\,\psi(p)\,p\pmod{p^2}$ with $\kappa=-2,-3,-3$; for $s_{18}$ this manufactures $\chi_{-3}$ from the Apéry-like recurrence alone | **[verified, $5\le p\le300$]**, **[proved for $s_{10}$]** `FINDINGS_XSIDE.md` |
+| **R2** | $f$ is weight $-2$, weakly holomorphic, holomorphic on $\mathbf H$ (vanishing to order $1$ at the polar CM points), $f|W_N=-f$; unique with pole order $\le1$ at both cusps.  The construction $f=1/(xF)$ is uniform across the three rows | **[proved]** §2.1 |
+| **R3** | $\widehat f$ is $\Gamma_0(N)$-invariant of weight $0$; computed two independent ways (closed form via $E_2^*,E_4$ and $\mathrm{SL}_2(\mathbf Z)$-reduction; $q$-series with $\Gamma_0(N)+N$-reduction) agreeing to $50$ digits | **[proved]** (invariance) + **[num, 50]** §2.2 |
+| **R4** | **The trace formula is general.**  With $f=E_4E_6/\Delta=q^{-1}-240-\cdots$ on $\mathrm{SL}_2(\mathbf Z)$ and the same $\widehat f$: $\beta_{F_{4a}}(m)=\mathrm{Tr}_{-3m^2}(\widehat f)/192$ and $\beta_{F_{4b}}(m)=-\mathrm{Tr}_{-4m^2}(\widehat f)/432$ (both with $\psi=\mathbf1$; the untwisted trace gives $\beta_{\chi_{D_0}}$ instead, so the genus character in the trace and the character $\psi$ are dual) | **[verified, $m\le12$, 50 digits]** §2.5 |
+| **R5** | **The constant is the polar coefficient.**  If $\Phi=A_2(\tau-\tau_0)^{-2}+\cdots$ then $\lambda=4\pi^2A_2$ up to sign: $4\pi^2A_2=1/192,\ -1/432$ for $F_{4a},F_{4b}$ (exactly the observed constants), and $|4\pi^2A_2|=\nu^2/|g'(u_0)|=\sqrt3,\,2,\,2/\sqrt3$ for $s_7,s_{10},s_{18}$, matching $|\sqrt{-3}|=\sqrt3$ | **[proved]** (level one) + **[verified]** §2.5 |
+| **R6** | **The master conjecture is a divisibility of traces of singular moduli:** $n^2\mid\beta(n)\iff n^2\mid\lambda\,\mathrm{Tr}_{D_0n^2}(\widehat f)$ — the Ahlgren–Ono/Edixhoven setting, for the first Shimura–Maass derivative of a weight $-2$ form rather than for a modular function.  Route (B) is now precisely stated | **[proved, given R1]** §2.6 |
+| **R7** | **Why the naive route (A)(1) fails.**  $\beta(m)$ is **not** a $\mathbf Q$-linear combination of twisted CM traces of modular *functions* at the discriminants $D_0m^2$: those are exponential polynomials with constant coefficients, whereas $\beta(m)$ carries a $1/m$ tail, $\beta(m)=\lambda_0(1-\kappa/m)R^m\sin(\cdot)+O(R^{\theta m})$, $\kappa=1/(2\pi\operatorname{Im}\tau_0)\notin\mathbf Q$.  Numerically $m\beta(m)/((m-\kappa)\tau_H(m))\to3$ to $11$ digits at $m=33$ | **[proved]** + **[verified, $m\le40$, all rows]** §3.1 |
+| **R8** | Route (A)(3) is closed: $K=\sum\gamma(n)q^n$ is not a weakly holomorphic, holomorphic, quasi- or meromorphic modular form of any weight and level, and is **not holonomic** over $\mathbf Q(q)$ — its radius of convergence $e^{-\pi\sqrt{|D_0|}/(2N)}$ is transcendental (Gelfond–Schneider) while a holonomic series has algebraic singularities.  Same for $DK$, $D^2K$ | **[proved]** §3.2 |
+| **R9** | $\Phi^\flat:=\sum_e\mu(e)\psi(e)e\,\Phi(e\tau)=D^3K$, whose coefficients are $n\beta(n)=a(n^2)$, is **not** a modular form (poles at $\tau_0/e$ for every squarefree $e$) | **[proved]**; $\Phi^\flat/\Phi$ not rational in $u$ of degree $\le6$ **[refuted]** §3.3 |
+| **R10** | **Dictionary, calibrated.**  $\beta(m)=a(m^2)/m$ for the weight-$5/2$ Shimura–Borcherds input, so the master conjecture is $m^3\mid a(m^2)$.  Checked against the literature: for $F_{4a}$ this gives $a(1)=1$, $a(4)=-506$, matching $64f_{4a}=q^{-3}+q-506q^4+\cdots$ | **[proved]** + **[verified]** §4.1 |
+| **R11** | Equivalent shapes: $\Xi=\sum_e\psi(e)(D^2K)(q^e)$; the **dilogarithm ladder** $D^{-3}\Phi=\sum_n\gamma(n)\mathrm{Li}_2^\psi(q^n)$; $\mathfrak g=\prod_n((1-q^n)^n)^{-\gamma(n)}$; $\Phi^\flat$ **triply magnetic**; $c(pn)\equiv\psi(p)p\,c(n)\pmod{p^{3(1+v_p(n))}}$; $m^3\mid a(m^2)$; $n^2\mid\mathrm{Tr}$ | **[proved]** (equivalences) §4.2 |
+| **R12** | $n^2\mid\beta(n)$, all three rows | **[verified, $n\le12000$]** (round 1 had $1500$) |
+| **M1–M3** | **A genuine mod-$p$ structure, only at $p=2$ (all rows) and $p=3$ ($s_{18}$).**  $\gamma(n)$ is odd $\iff$ $2^{1+v_2(N)}\nmid n$ and $P\nmid n$ ($P=7,5,3$); so $\gamma\bmod2$ is **multiplicative** and $K\bmod2$ is a **rational** function of $q$ (periods $14,20,12$); $K_{s_{18}}\equiv(q+2q^2+2q^3)/(1+q)^3\pmod3$ | **[verified, $n\le12000$]** `FINDINGS_MODP.md` |
+| **M10** | Mod $2$ the whole conjecture degenerates to a weight-$3$ Eisenstein/theta identity: $c'(m)$ is odd $\iff$ the $2P$-free part of $m$ is a perfect square.  A concrete finite-looking target whose proof gives eq:magnetic at $p=2$ unconditionally | **[verified, $m\le6000$]** `FINDINGS_MODP.md` |
+| **M4, L1–L6, N1** | Outside those four cells $K\bmod p$ is neither rational nor algebraic; all Lucas/Dwork laws for $\gamma$ fail massively; $\gamma(p)\bmod p$ matches nothing in a sweep of several hundred arithmetic candidates over $42$ primes (best $5/42$ = noise) and is equidistributed | **[refuted, stated ranges]** `FINDINGS_MODP.md` |
+| **M9** | New unbounded divisibilities: $v_3(\gamma_{s_7}(n))\ge v_3(n)-1$ and $v_2(\gamma_{s_{10}}(n))\ge v_2(n)-1$, both sharp — $n^2\mid\beta(n)$ is **not** sharp at $(s_7,3)$, $(s_{10},2)$ | **[verified, $n\le12000$]** `FINDINGS_MODP.md` |
+| **W1** | The task's $x$-side route (A) is **empty as posed**: in weight $0$, $T_p=p\,U_p+V_p$, so the Kronecker congruence mod $p$ reads $p\,U_pf\equiv0$ | **[proved]** `FINDINGS_XSIDE.md` |
+| **W3–W7** | Its correct form is a real reduction: $f|U_p\equiv f_0+\sum_{n\ge1}[x^{pn}](fH)x^n\pmod p$ with $H=(\sqrt PF)^{p-1}\equiv P^{(p-1)/2}/F_{<p}$, where $F_{<p}=\sum_{n<p}A_nx^n$ is the **supersingular polynomial** of $X_0(N)/\mathbf F_p$ in the coordinate $x$ ($\deg F_{<p}=\lfloor\mu(N)(p-1)/(6\deg x)\rfloor$ exactly).  Round 1's smallest missing brick becomes $[x^{pn}]\bigl(l\,P^{(p-1)/2}/F_{<p}\bigr)\equiv\psi(p)L_n\pmod p$ | **[proved]** (equivalence) + **[verified, $p\le53$]** `FINDINGS_XSIDE.md` |
+| **W11** | **New supercongruence** $A_{p-1}\equiv\kappa\,\psi(p)\,p\pmod{p^2}$, $\kappa=-2,-3,-3$; for $s_{18}$ it manufactures $\chi_{-3}$ from the Apéry-like recurrence alone | **[verified, $5\le p\le300$]**, **[proved for $s_{10}$]** `FINDINGS_XSIDE.md` |
 | **W20** | The **$\psi$-twisted Dieudonné–Dwork tower** $a_{pn-1}\equiv\psi(p)a_{n-1}\pmod{p^{1+v_p(n)}}$ holds for all three rows, extending round 1's V19 to the character row | **[verified, $p\le31$]** `FINDINGS_XSIDE.md` |
-| **GAP** | $n^2\mid\beta(n)$: still open.  It is now exactly the statement that the twisted CM traces $\mathrm{Tr}_{D_0n^2}(\widehat f)$ are divisible by $n^2$ | **open** §7 |
+| **P2** | An **exact** $T_{p^2}$ eigen-identity behind Paşol–Zudilin's Theorem 1, with a tower: $f|T_{p^2}=\chi_{-m_0}(p)pf+p^3c\,g_{m_0p^2}$ and $g_{m_0p^{2r}}|T_{p^2}=g_{m_0p^{2r-2}}+p^3g_{m_0p^{2r+2}}$; and $v_p(a(p^{2j}m^2))\ge3j+v_p(a(m^2))$ $\iff$ $\lambda\equiv p\pmod{p^3}$ | **[proved / verified $p\le17$]** `FINDINGS_PZ.md` |
+| **GAP** | $n^2\mid\beta(n)$: still open, but now in three interlocking precise forms — (i) $n^2$ divides the twisted CM trace $\mathrm{Tr}_{D_0n^2}(\widehat f)$; (ii) the $T_{p^2}$ eigenvalue of the weight-$5/2$ input is $\equiv p\pmod{p^3}$ together with the tower relation; (iii) the $x$-line congruence W6 | **open** §8 |
 
-**Headline.**  The kernel $K$ of Conjecture 4.1 is identified: $\gamma(m)=\lambda\,m^{-2}
-\mathrm{Tr}_{D_0m^2}(\widehat f)$, where $\widehat f$ is the first Shimura–Maass derivative
-of the weight-$(-2)$ weakly holomorphic form $f=1/(xF)$ and $\mathrm{Tr}$ is the
-genus-character-twisted Heegner trace.  This is *not* a peculiarity of Cooper's rows — the
-same formula computes $\beta$ for Paşol–Zudilin's level-one magnetic forms, with
-$\lambda=4\pi^2A_2$ the polar coefficient in both cases — so the identity is a theta lift,
-and **what is special about Cooper's rows is purely the arithmetic of the traces**:
-$m^2\mid\beta(m)$ holds for them and fails already at $m=2$ for Paşol–Zudilin's.  The master
-conjecture is therefore an Ahlgren–Ono/Edixhoven divisibility of traces of singular moduli,
-for a Maass-raised weight $-2$ input rather than for a modular function.  Round 1's
-"smallest missing brick" is independently reduced (`FINDINGS_XSIDE.md`) to a finite,
-explicit congruence whose kernel is the supersingular polynomial.
+**Headline.**  Two things changed.  *First*, the kernel $K$ of Conjecture 4.1 is identified:
+$\gamma(m)=\lambda m^{-2}\mathrm{Tr}_{D_0m^2}(\widehat f)$, where $\widehat f=-R_{-2}f/4\pi$
+is the first Shimura–Maass derivative of the weight-$(-2)$ weakly holomorphic form
+$f=1/(xF)$ and $\mathrm{Tr}$ is the genus-character-twisted Heegner trace; the master
+conjecture becomes an Ahlgren–Ono/Edixhoven divisibility of traces of singular moduli.
+*Second, and more consequential*: the congruence is **not** special to Cooper's rows.
+Round 1's negative control tested the wrong character; with $\psi=\chi_{D_0}$ the master
+congruence holds for Paşol–Zudilin's level-one magnetic forms and for every entry of their
+Table 1 that we could transcribe.  Conjecture 4.1 is therefore a general statement about
+Shimura–Borcherds lifts of weight-$5/2$ forms, route (D) is reopened, and
+`FINDINGS_PZ.md` supplies a candidate mechanism (an exact $T_{p^2}$ eigen-identity plus a
+tower, with $n^3\mid a(n^2)$ equivalent to the eigenvalue being $\equiv p\bmod p^3$; the
+genus-character twist is exactly what turns $\chi_{D_0}(p)p$ into $p$ for Cooper's rows).
 
 ---
 
@@ -155,7 +162,13 @@ $$\beta_{F_{4a}}(m)=\frac{\operatorname{Tr}_{-3m^2}(\widehat f)}{192},\qquad
 \beta_{F_{4b}}(m)=-\frac{\operatorname{Tr}_{-4m^2}(\widehat f)}{432}
 \qquad\textbf{[verified, }m\le12\textbf{, 50 digits]}$$
 for Paşol–Zudilin's $F_{4a}=\Delta/E_4^2$ (double pole at $\rho$) and $F_{4b}=E_4\Delta/E_6^2$
-(at $i$).  Writing $\Phi=A_2(\tau-\tau_0)^{-2}+\cdots$, one computes
+(at $i$).  A third discriminant confirms it: for $\Psi(f_7)$ of Table 1 (pole discriminant
+$-7$) one gets $\beta_{\mathbf1}(m)=\tfrac17\operatorname{Tr}^{\chi_{-7}}_{-7m^2}(\widehat f)$
+**and** $\beta_{\chi_{-7}}(m)=\tfrac17\operatorname{Tr}^{\mathbf1}_{-7m^2}(\widehat f)$,
+both **[verified, $m\le12$, 45 digits]** (`65_trace7disc.gp`) — so the genus character in
+the trace and the character $\psi$ in the Möbius inversion are exactly dual, and the
+*master* divisibility (which needs $\psi=\chi_{D_0}$) is the divisibility of the
+**untwisted** CM trace by $n^2$.  Writing $\Phi=A_2(\tau-\tau_0)^{-2}+\cdots$, one computes
 $A_2(F_{4a})=\Delta(\rho)/E_4'(\rho)^2=1/(768\pi^2)$ and
 $A_2(F_{4b})=E_4(i)\Delta(i)/E_6'(i)^2=-1/(1728\pi^2)$, so in both cases
 $$\lambda=4\pi^2A_2 .$$
@@ -259,6 +272,13 @@ for $F_{4a}$ one gets $\beta=1,-253,60083,-14090996,\dots$, hence
 $a(m^2)=m\beta(m)=1,-506,180249,\dots$, and $a(1)=1$, $a(4)=-506$ agree with Paşol–Zudilin's
 $64f_{4a}=q^{-3}+q-506q^4+\cdots$ (Lemma 1(a)).  See also `FINDINGS_PZ.md`.
 
+*Caveat on the character.*  The identity $\beta(m)=a(m^2)/m$ is for the untwisted lift
+($\psi=\mathbf1$, $D=1$).  For the $\psi$-twisted lift
+$c(n)=\sum_{d\mid n}\psi(d)\,d\,a(|D|n^2/d^2)$ with $\chi_D=\psi$ the same computation
+gives $\beta_\psi(m)=a(|D|m^2)/m$, so with $\psi=\chi_{D_0}$ (the character for which the
+master congruence holds at level one, §5) the conjecture reads $m^3\mid a(|D_0|m^2)$ — the
+form stated in `COOPER_CONGRUENCE.md` §4.
+
 ### 4.2 Equivalent shapes **[proved]**
 
 With $K=\sum\gamma(d)q^d$ and $\Lambda_\psi$ the $\psi$-Lambert kernel, the following are
@@ -279,3 +299,218 @@ equivalent to $\gamma\in\mathbf Z$ (i.e. to $n^2\mid\beta(n)$):
 
 (All six are formal rewritings; (1)–(3) verified to $n\le400$ in `08_struct.gp`, (4)
 follows from (1) by the computation of round 1 Prop. 2.2 applied at each prime power.)
+
+---
+
+## 5. The master conjecture is not special to Cooper's rows
+
+### 5.1 Round 1's negative control was the wrong character **[verified, $n\le500$]**
+
+`60_pzcheck.gp`, `61_pznorm.gp`.  Round 1 §3 (= `COOPER_CONGRUENCE.md` §3, V6) tested
+$\operatorname{rad}(n)^2\mid\beta(n)$ for Paşol–Zudilin's $F_{4a}=\Delta/E_4^2$ and
+$F_{4b}=E_4\Delta/E_6^2$ **with $\psi=\mathbf1$** and found immediate failure
+($\beta_{F_{4a}}(2)=-253$).  But the character attached to these forms is the genus
+character of the **pole discriminant**: $\chi_{-3}$ for $F_{4a}$ (double pole at $\rho$)
+and $\chi_{-4}$ for $F_{4b}$ (double pole at $i$).  With those characters:
+
+| form | $\psi$ | scale | $n^2\mid\beta(n)$, $n\le500$ | $\min_n\bigl(v_p(\beta(n))-2v_p(n)\bigr)$, $p=2,3,5,7,\dots$ |
+|---|---|---|---|---|
+| $\Delta/E_4^2$ | $\chi_{-3}$ | $1$ | **no**, only at even $n$ | $-2,\,0,\,1,\,0,\,0,\dots$ |
+| $\Delta/E_4^2$ | $\chi_{-3}$ | $64$ | **YES** | $4,\,0,\,1,\,0,\,0,\dots$ |
+| $E_4\Delta/E_6^2$ | $\chi_{-4}$ | $1$ | **no**, only at multiples of $3$ | $0,\,-2,\,1,\,0,\dots$ |
+| $E_4\Delta/E_6^2$ | $\chi_{-4}$ | $108$ | **YES** | $2,\,1,\,1,\,0,\dots$ |
+
+The scales $64$ and $108$ are exactly Paşol–Zudilin's own constants — the ones making the
+weight-$5/2$ input integral ($f_{4a}\in\frac1{64}q^{-3}\mathbf Z[[q]]$,
+$f_{4b}\in\frac1{108}q^{-4}\mathbf Z[[q]]$, their Lemma 1) — and they cure exactly the bad
+prime.  The divisibility is **sharp**: the minimum of $v_p(\beta(n))-2v_p(n)$ is $0$ for
+every $p\ge7$.
+
+**Therefore round 1's V6 and the sentence "no argument that only uses meromorphic weight $4$
+with a double pole at a CM point can prove it" are wrong, and route (D) is reopened.**
+
+### 5.2 The whole of Paşol–Zudilin's Table 1 **[verified, $n\le150$]**
+
+`63_table1.gp`, `64_table1b.gp`.  Table 1 of `pz.txt` lists strong magnetic weight-$4$ forms
+as $\Psi(c^{-1}f_m)$ with explicit expressions $E_4\cdot(\text{polynomial in }j)/H_{-m}(j)^2$.
+Rescaling to $\Psi(f_m)$ and taking $\psi=\chi_{-m}$:
+
+| form | $m$ | $h(-m)$ | $m\mid c(m)$ | $n^2\mid\beta(n)$ | sharp at $p\ge7$ |
+|---|---|---|---|---|---|
+| $\Psi(f_7)$ | $7$ | 1 | yes | **YES** | yes |
+| $\Psi(f_8)$ | $8$ | 1 | yes | **YES** | yes |
+| $\Psi(f_{11})$ | $11$ | 1 | yes | **YES** | yes |
+| $\Psi(f_{19})$ | $19$ | 1 | yes | **YES** | yes |
+| $\Psi(f_{43})$ | $43$ | 1 | yes | **YES** | yes |
+| $\Psi(f_{67})$ | $67$ | 1 | yes | **YES** | yes |
+| $\Psi(f_{163})$ | $163$ | 1 | yes | **YES** | yes |
+| $\Psi(f_{15})$ | $15$ | 2 | yes | **YES** | yes |
+| $\Psi(f_3|T_4)$ | $3$ | 1 | yes | **YES** | yes |
+| $\Psi(f_4|(1-\tfrac12T_4))$ | $4$ | 1 | yes | **YES** | yes |
+
+($\Psi(f_{20})$ and $\Psi(f_{23})$ already fail magnetism at $m=7$ in our transcription; the
+numerator coefficients of those two entries are ambiguous in the plain-text dump of the
+paper, so we treat them as untested, not as counterexamples.)
+
+**A control.**  Magnetism is a real constraint, not automatic for forms with the right
+polar divisor: the naive family $\Phi_D=E_4/H_D(j)^2$ — weight $4$, holomorphic at the
+cusp, double poles exactly on the disc-$D$ Heegner divisor — is **not** magnetic for
+$D=-7,-8,-11,-19,-43,-67,-163,-15$ (already $2\nmid c(2)=1$), `62_family.gp`.  So the
+statement really is about Shimura–Borcherds lifts, i.e. about the polar divisor *together
+with* the correct linear combination.
+
+### 5.3 The mechanism, and why Cooper's rows have $\psi=\mathbf1$
+
+`FINDINGS_PZ.md` establishes, for $f\in S^{!,+}_{5/2}$ at level $4$ with single-index
+principal part $c\,q^{-m_0}$ (so that $\dim S_{5/2}=0$ forces uniqueness):
+$$f|T_{p^2}=\chi_{-m_0}(p)\,p\,f+p^3c\,g_{m_0p^2},\qquad
+g_{m_0p^{2r}}|T_{p^2}=g_{m_0p^{2r-2}}+p^3g_{m_0p^{2r+2}}\ (r\ge1),$$
+**exactly** (not merely as a congruence), and deduces
+$$v_p\bigl(a(p^{2j}m^2)\bigr)\ \ge\ 3j+v_p\bigl(a(m^2)\bigr)\ \text{ for all }j
+\quad\Longleftrightarrow\quad \lambda\equiv p\pmod{p^3},$$
+with the exact formula $a(p^{2j}m^2)=p^{3j}h_j(m^2)$ under that hypothesis.  Since
+$\lambda=\chi_{-m_0}(p)p$, a *single-index untwisted* input has $n^3\mid a(n^2)$ exactly at
+the split primes — which is precisely the observation that $\psi=\chi_{D_0}$ is the right
+character for the level-one forms, since the $\psi$-twisted Möbius inversion contributes a
+second factor $\chi_{D_0}(p)$ and turns the eigenvalue into $\chi_{D_0}(p)^2p=p$.
+
+For Cooper's rows $\psi=\mathbf1,\mathbf1,\chi_{-3}$ while $D_0=-3,-4,-36$, so the character
+is *not* $\chi_{D_0}$; consistently, the genus character $\chi_{D_0}$ appears instead **inside
+the trace** (R1) — and the two are dual (R4).  In other words, the $\chi_{-3}(Q)$ twist in
+$$\beta_{s_7}(m)=\sqrt{-3}\sum_Q\chi_{-3}(Q)\,\omega_Q^{-1}\widehat f(\alpha_Q)$$
+is not cosmetic: it is exactly what converts the eigenvalue $\chi_{-3}(p)p$ into $p$ and so
+delivers the divisibility at *every* prime rather than only at the split ones.
+
+---
+
+## 6. The mod-$p$ structure of $\gamma$
+
+Full details in `FINDINGS_MODP.md` (scripts `20_`–`29_`).  Summary of what is new:
+
+* **Mod-$2$ law.**  $\gamma(n)$ is odd $\iff$ $2^{1+v_2(N)}\nmid n$ and $P\nmid n$, with
+  $P=7,5,3$ the distinguished prime of the row.  Hence $\gamma\bmod2$ is *multiplicative*
+  (although $\gamma$ is not) and $K\bmod2$ is a *rational* function of $q$ with denominator
+  $1-q^{14},1-q^{20},1-q^{12}$. **[verified, $n\le12000$]**
+* **Mod-$3$ law for $s_{18}$** ($\psi(3)=0$): $K_{s_{18}}\equiv(q+2q^2+2q^3)/(1+q)^3\pmod3$,
+  period $6$; in particular $3\nmid\gamma_{s_{18}}(n)$ ever, and
+  $\gamma(n)\gamma(n+1)\equiv-1\pmod9$ for $n\equiv1\ (3)$, sharp.
+* Those four cells are the **only** ones: elsewhere $K\bmod p$ is neither rational
+  (degree $\le250$) nor algebraic (boxes $(40,6),(20,20),(60,4)$), and the $p$-kernel is
+  infinite, so Christol fails. **[refuted, $p\le43$]**
+* Every Lucas/Dwork law for $\gamma$ fails massively; round 1's $(S)$ does **not** descend
+  to $\gamma$.  $\gamma(p)\bmod p$ (= round 1's $\lambda(p)$) matched nothing in a sweep of
+  several hundred arithmetic candidates over $42$ primes, and is equidistributed.
+* **Mod $2$ the whole conjecture degenerates**: $c'(m)$ is odd $\iff$ the $2P$-free part of
+  $m$ is a perfect square — a weight-$3$ Eisenstein/theta identity.  Proving it gives
+  eq:magnetic at $p=2$ for all three rows unconditionally.  This is the most concrete
+  finite-looking target produced by this round.
+* New unbounded divisibilities $v_3(\gamma_{s_7}(n))\ge v_3(n)-1$,
+  $v_2(\gamma_{s_{10}}(n))\ge v_2(n)-1$ (both sharp): $n^2\mid\beta(n)$ is not sharp at
+  $(s_7,3)$ and $(s_{10},2)$, neither of which is an Atkin–Lehner cell.
+* $\gamma_{s_7}(n)=0\iff7\mid n$ and $\gamma_{s_{10}}(n)=0\iff5\mid n$ — the "$\Leftarrow$"
+  half **proved** from round 1's exact cells; $\gamma_{s_{18}}$ never vanishes and has sign
+  $(-1)^{n-1}$.
+
+---
+
+## 7. The $x$-side: what became of round 1's "smallest missing brick"
+
+Full details in `FINDINGS_XSIDE.md` (scripts `40_`–`47_`).
+
+* Route (A) **as posed in the task is empty**: in weight $0$ the Hecke correspondence is
+  $T_p=p\,U_p+V_p$, so the Kronecker congruence $\Phi_p(X,Y)\equiv(X^p-Y)(X-Y^p)\bmod p$
+  says $p\,U_pf\equiv0$, a tautology.  One needs the modular polynomial mod $p^2$. **[proved]**
+* Its **correct** form is a genuine reduction.  With $H=(\sqrt PF)^{p-1}$,
+  $f|U_p\equiv f_0+\sum_{n\ge1}[x^{pn}](fH)x^n\pmod p$, and the Lucas law
+  $A_{pj+r}\equiv A_jA_r$ (proved, Malik–Straub) gives $H\equiv P^{(p-1)/2}/F_{<p}$.  So the
+  brick is the **finite explicit** congruence
+  $$\bigl[x^{pn}\bigr]\Bigl(l(x)\,P(x)^{(p-1)/2}\big/F_{<p}(x)\Bigr)\equiv\psi(p)L_n\pmod p .$$
+  **[verified, all $p\le53$, $x^{1200}$, all rows]**
+* $\deg F_{<p}=\lfloor\mu(N)(p-1)/(6\deg x)\rfloor$ **exactly** for all $20$ primes
+  $p\le79$ and all three rows: $F_{<p}$ is the **supersingular polynomial** of
+  $X_0(N)/\mathbf F_p$ in the coordinate $x$ (the Hasse invariant of the family).  The brick
+  is an ordinarity/unit-root statement at the supersingular divisor.
+* New supercongruence $A_{p-1}\equiv\kappa\psi(p)p\pmod{p^2}$, $\kappa=-2,-3,-3$,
+  **[verified $5\le p\le300$]**, **[proved for $s_{10}$]** — for $s_{18}$ it manufactures
+  $\chi_{-3}$ from the Apéry-like recurrence alone, with no modular input.
+* The $\psi$-twisted Dieudonné–Dwork tower $a_{pn-1}\equiv\psi(p)a_{n-1}\pmod{p^{1+v_p(n)}}$
+  holds for all three rows (round 1 had only the $\psi=\mathbf1$ case).
+* Negatives: no binomial-sum representation of $s_{18}$ was found; Beukers' congruence
+  $A_{mp^s}\equiv A_{mp^{s-1}}\ (p^{3s})$ holds for $s_7,s_{10}$ but only to $p^{2s}$ for
+  $s_{18}$; Lucas fails for $L_n$, $a_j$, $b_j$; $\eta_1$ has no description in the span of
+  the obvious differentials.
+
+---
+
+## 8. The gap, stated three ways
+
+$n^2\mid\beta(n)$ is still open.  It is now equivalent to each of:
+
+1. **(Traces)** $n^2$ divides $\lambda\operatorname{Tr}_{D_0n^2}(\widehat f)$, the
+   genus-character-twisted Heegner trace of the first Shimura–Maass derivative of the
+   weight-$(-2)$ form $f=1/(xF)$.  This is an Ahlgren–Ono/Edixhoven statement; what is
+   needed beyond the literature is the **weight-$5/2$, twisted, exact-eigenvalue** version
+   (the published results are weight $3/2$, untwisted, and give a congruence mod $p$
+   conditional on splitting).
+2. **(Hecke)** the weight-$5/2$ input $f_{5/2}$ satisfies $f|T_{p^2}=\lambda f+p^3h_1$ with
+   $\lambda\equiv p\pmod{p^3}$, together with the tower
+   $h_r|T_{p^2}=h_{r-1}+p^3h_{r+1}$.  At level $4$ with a single-index principal part both
+   are **proved** (`FINDINGS_PZ.md`); the open part is the level-$4N$ / twisted analogue.
+3. **($x$-line, mod $p$ only)**
+   $[x^{pn}]\bigl(l\,P^{(p-1)/2}/F_{<p}\bigr)\equiv\psi(p)L_n\pmod p$, with $F_{<p}$ the
+   supersingular polynomial; plus the round-1 lift to mod $p^2$, which is now the single
+   assertion "$\eta_1$ is exact".
+
+Of these, (2) is the most likely to close: it is a finite-dimensional statement about a
+space of half-integral weight forms, and the level-one case is already a theorem.
+
+---
+
+## 9. Consequences for the repository
+
+1. **`consolidation/COOPER_CONGRUENCE.md` §3 (the negative control) must be corrected.**
+   $(S)$ does **not** fail for Paşol–Zudilin's level-one magnetic forms; it fails only for
+   $\psi=\mathbf1$, which is the wrong character for them.  With $\psi=\chi_{D_0}$ and their
+   own integralising constants it holds at every prime, and the same is true for all of
+   their Table 1.  The sentence "no argument that only uses meromorphic weight $4$ with a
+   double pole at a CM point can prove it" is false, and the "Routes closed" line about
+   route (D) must be withdrawn.
+2. Conjecture 4.1 should be **restated in the generality it actually has**: for
+   $\Phi=\Psi(f)$ a Shimura–Borcherds lift of $f\in S^{!,+}_{5/2}$ with principal part
+   $c\,q^{-m_0}$, one has $n^2\mid\beta_{\chi_{-m_0}}(n)$; Cooper's rows are the level-$N$
+   twisted case, where the genus character makes $\psi=\mathbf1$ (resp. $\chi_{-3}$).
+3. Round 1's V4 verification extends from $n\le1500$ to $n\le12000$.
+4. Round 1's V19 (the Dieudonné–Dwork form of the brick) extends to the character row
+   $s_{18}$ in the $\psi$-twisted form W20.
+5. `cooper_sources/REPORT.md` §7's proposal of the Paşol–Zudilin route as "the natural
+   attack" is **reinstated**: §3's objection was based on the wrong character.
+6. The identification R1 supplies what `COOPER_CONGRUENCE.md` §5 calls "the lever":
+   $K$ is the generating function of twisted CM traces of $\widehat f$.
+
+---
+
+## 10. Files
+
+| file | contents |
+|---|---|
+| `lib.gp` | rows, eta quotients, $F$, $x$, $\Phi$, $c$, $c'$, $\beta$ (copied from round 1) |
+| `heeg.gp` | reduced forms of a discriminant, $\Gamma_0(N)$-Heegner representatives with a fixed $\beta$-class, stabiliser orders, genus characters |
+| `e2.gp` | $E_2^*$ by reduction to the $\mathrm{SL}_2(\mathbf Z)$ fundamental domain |
+| `wt2.gp`, `wt2b.gp` | first versions of $f=1/(xF)$ and $\widehat f$ for $s_7$ (closed form; $q$-series) |
+| `maass.gp`, `maass2.gp` | $\widehat f$ for all three rows, two independent evaluations, with the $q$-series fallback at the zeros of $F$ |
+| `01_data.gp` | $c,c',\beta,\gamma$ for $n\le600$; $n^2\mid\beta(n)$ |
+| `02`–`07` | twisted CM traces of modular *functions*; the double-pole obstruction (`NOTES_TRACE.md`) |
+| `08_struct.gp` | the structural reformulations, exact, $n\le400$ |
+| `09_gamma_probe.gp` | Dirichlet inverse and growth of $\gamma$ |
+| `10`, `10b` | $\Phi^\flat$ is not modular |
+| `11`–`13`, `17` | **the identification** for $s_7$ (`NOTES_IDENT.md`) |
+| `14`, `15`, `16` | first attempts for $s_{10}$, $s_{18}$ (superseded by `FINDINGS_ROWS.md`) |
+| `18`, `19` | the level-one control: the trace formula for $F_{4a}$, $F_{4b}$ |
+| `20`–`29` | mod-$p$ structure of $\gamma$ (`FINDINGS_MODP.md`) |
+| `30`–`39` | Paşol–Zudilin calibration, the $T_{p^2}$ eigen-identity and tower, level-$28$ feasibility (`FINDINGS_PZ.md`) |
+| `40`–`47` | the $x$-side (`FINDINGS_XSIDE.md`) |
+| `50`–`59` | the three rows: traces, obstruction, master verification to $n\le12000$ (`FINDINGS_ROWS.md`) |
+| `60`–`64` | **the correction**: the master congruence for Paşol–Zudilin's forms and for their Table 1 |
+| `beta_s*.txt`, `gamma_s*.txt`, `cp_s*.txt` and the `20*`, `22_`, `50_` variants | data |
+
+Run with `gp -q <file>`; the CM evaluations (`11`–`19`, `50`–`59`) are the slow ones.
