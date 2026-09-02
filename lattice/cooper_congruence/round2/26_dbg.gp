@@ -1,0 +1,13 @@
+G = read("22_gamma_s7.txt");
+N = #G;
+p = 2;
+P = 'q^11 + 'q^7 + 'q^5 + 'q;
+Q = 'q^12 + 'q^10 + 'q^8 + 'q^6 + 'q^4 + 'q^2 + 1;
+K = sum(n=1,N,(G[n]%p)*'q^n) + O('q^(N+1));
+R = Q*K - P;
+print("deg of first nonzero: ", valuation(R,'q));
+print("Q*K-P mod 2, valuation = ", valuation(Q*K-P+O('q^(N+1)),'q));
+S = Mod(1,p)*(Q*K-P);
+print("first 40 coeffs of (Q*K-P) mod 2: ", vector(40,i,lift(polcoeff(S,i-1))));
+print("any nonzero up to N: ", sum(i=0,N,if(lift(polcoeff(S,i))!=0,1,0)));
+quit;
