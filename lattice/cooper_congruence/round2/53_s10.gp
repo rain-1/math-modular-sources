@@ -58,9 +58,22 @@ for(m=1,MMAX,
 }
 print();
 print("== integrality of T1/(2i) and T0 ==");
+TT = vector(MMAX);
 { for(m=1,MMAX,
    my(a=TAU[m]/(2*I), b=TAU0[m]);
+   TT[m] = if(abs(a-round(real(a)))<1e-40, round(real(a)), 0);
    print("  m=",m,"  T1/(2i) -> ",round(real(a)),"  err=",abs(a-round(real(a))),
          "     T0 -> ",round(real(b)),"  err=",abs(b-round(real(b)))));
+}
+print();
+print("tau_chi(1..",MMAX,") = ",TT,"   (0 = anomalous, 5|m)");
+write("53_tau_s10.txt", TT);
+print();
+print("== ratio test: beta(m)/tau(m) and m beta(m)/((m-kappa) tau(m)) ==");
+print("   m     beta/tau                 m*beta/((m-kappa)*tau)          (r2-limit)*R^(m/2)");
+{ for(m=1,MMAX,
+   if(TT[m]==0, print("   ",m,"   anomalous (5|m): the two beta-classes merge, T1 is real"); next);
+   my(r1=bet[m]/TT[m], r2=m*bet[m]/((m-KAP)*TT[m]));
+   print("   ",m,"   ",r1,"   ",r2,"   ",(r2-2)*RR^(m/2)));
 }
 quit;

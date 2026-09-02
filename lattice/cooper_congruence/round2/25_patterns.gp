@@ -1,0 +1,20 @@
+\\ 25_patterns.gp -- the explicit periodic patterns of gamma mod 2, 4 and mod 3.
+read("lib.gp");
+G  = [read("20c_gamma_s7.txt"), read("20c_gamma_s10.txt"), read("20c_gamma_s18.txt")];
+N  = #G[1];
+print("N = ", N);
+print();
+print("gamma mod 2, one full period:");
+print("  s7  (period 14): ", vector(14,n,lift(Mod(G[1][n],2))));
+print("  s10 (period 20): ", vector(20,n,lift(Mod(G[2][n],2))));
+print("  s18 (period 12): ", vector(12,n,lift(Mod(G[3][n],2))));
+print();
+print("gamma mod 4, one full period (s10, s18 only; s7 is not periodic mod 4):");
+print("  s10 (period 40): ", vector(40,n,lift(Mod(G[2][n],4))));
+print("  s18 (period 24): ", vector(24,n,lift(Mod(G[3][n],4))));
+print();
+print("gamma mod 3, s18 (period 6): ", vector(6,n,lift(Mod(G[3][n],3))));
+print("gamma mod 9, s18 on n coprime to 3 (period 18): ", vector(18,n,if(n%3==0,-1,lift(Mod(G[3][n],9)))));
+print();
+print("v_2(gamma_s18(n)) as a function of n mod 24: ", vector(24,n,valuation(G[3][n],2)));
+quit;
