@@ -1,0 +1,12 @@
+[0;31m  ***   Warning: new stack size = 4000000000 (3814.697 Mbytes).[0m
+phi_{-2,1}:  q^0 coefficients r=-3..3: [0, 0, 1, -2, 1, 0, 0]
+             q^1 coefficients r=-3..3: [0, -2, 8, -12, 8, -2, 0]
+phi_{0,1}:   q^0 coefficients r=-3..3: [0, 0, 1, 10, 1, 0, 0]
+             q^1 coefficients r=-3..3: [0, 10, -64, 108, -64, 10, 0]
+phi_{-1,2}:  q^0 coefficients r=-3..3: [0, 0, -1, 0, 1, 0, 0]
+             q^1 coefficients r=-4..4: [0, 1, 0, -3, 0, 3, 0, -1, 0]
+E4: [1, 240, 2160, 6720, 17520]
+Delta: [0, 1, -24, 252, -1472]
+phi_{-2,1}: index-1 consistency violations = 0
+phi_{0,1}: index-1 consistency violations = 0
+phi_{-1,2}: index-2 consistency violations = 0

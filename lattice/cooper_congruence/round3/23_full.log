@@ -1,0 +1,7 @@
+[0;31m  ***   Warning: new stack size = 12000000000 (11444.092 Mbytes).[0m
+n=0  dim=7  eqs=280  rank=8  kernel=0
+   longest matchable prefix (in d) = 7
+n=1  dim=13  eqs=280  rank=14  kernel=0
+   longest matchable prefix (in d) = 13
+n=2  dim=19  eqs=276  rank=20  kernel=0
+   longest matchable prefix (in d) = 19

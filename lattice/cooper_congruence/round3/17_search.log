@@ -1,0 +1,6 @@
+[0;31m  ***   Warning: new stack size = 6000000000 (5722.046 Mbytes).[0m
+dim J^weak_{3,7} = 7,  dim J^weak_{15,7} = 13
+n=0  dim=7  polar unknowns=14  equations=573  rank=20
+   NO SOLUTION
+n=1  dim=13  polar unknowns=22  equations=534  rank=32
+   NO SOLUTION

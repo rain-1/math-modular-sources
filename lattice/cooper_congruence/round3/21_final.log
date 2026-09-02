@@ -1,0 +1,23 @@
+[0;31m  ***   Warning: new stack size = 12000000000 (11444.092 Mbytes).[0m
+index-7 consistency violations in the J^weak_{3,7} basis: [0, 0, 0, 0, 0, 0, 0]
+kappa=3 n=0 t=0  dim=7  eqs=30  rank=8  kernel=0
+kappa=3 n=0 t=1  dim=7  eqs=30  rank=8  kernel=0
+kappa=3 n=1 t=0  dim=13  eqs=30  rank=14  kernel=0
+kappa=3 n=1 t=1  dim=13  eqs=30  rank=14  kernel=0
+kappa=3 n=2 t=0  dim=19  eqs=30  rank=20  kernel=0
+kappa=3 n=2 t=1  dim=19  eqs=30  rank=20  kernel=0
+kappa=3 n=3 t=0  dim=25  eqs=30  rank=26  kernel=0
+kappa=3 n=3 t=1  dim=25  eqs=30  rank=26  kernel=0
+kappa=3 n=4 t=0  dim=31  eqs=30  rank=30  kernel=2
+kappa=3 n=4 t=1  dim=31  eqs=30  rank=30  kernel=2
+kappa=1 n=0 t=0  dim=6  eqs=30  rank=7  kernel=0
+kappa=1 n=0 t=1  dim=6  eqs=30  rank=7  kernel=0
+kappa=1 n=1 t=0  dim=12  eqs=30  rank=13  kernel=0
+kappa=1 n=1 t=1  dim=12  eqs=30  rank=13  kernel=0
+kappa=1 n=2 t=0  dim=18  eqs=30  rank=19  kernel=0
+kappa=1 n=2 t=1  dim=18  eqs=30  rank=19  kernel=0
+kappa=1 n=3 t=0  dim=24  eqs=30  rank=25  kernel=0
+kappa=1 n=3 t=1  dim=24  eqs=30  rank=25  kernel=0
+kappa=1 n=4 t=0  dim=30  eqs=30  rank=30  kernel=1
+kappa=1 n=4 t=1  dim=30  eqs=30  rank=30  kernel=1
+kappa=5 n=0 t=0  dim=8  eqs=30  rank=9  kernel=0

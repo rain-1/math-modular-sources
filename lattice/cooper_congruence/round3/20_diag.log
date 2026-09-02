@@ -1,0 +1,8 @@
+[0;31m  ***   Warning: new stack size = 6000000000 (5722.046 Mbytes).[0m
+Milgram sum = 2.645751311064590590501615753639260425710 + 2.645751311064590590501615753639260425710*I   |S| = 3.741657386773941385583748732316549301756  sqrt(14) = 3.741657386773941385583748732316549301756
+   sig/8 from arg: 1.000000000000000000000000000000000000000   => sig = 1 mod 8
+dual: sig = -1 mod 8
+n=0: dim J^weak_{3,7} = 7, #principal slots = 14, rank of principal-part map = 7, holomorphic subspace dim = 0
+n=1: dim J^weak_{15,7} = 13, #principal slots = 22, rank of principal-part map = 13, holomorphic subspace dim = 0
+n=2: dim J^weak_{27,7} = 19, #principal slots = 30, rank of principal-part map = 19, holomorphic subspace dim = 0
+antisymmetry c(N,-r) = -c(N,r): [[47864488320, -47864488320], [-30392978496, 30392978496], [4210956160, -4210956160], [600410248, -600410248], [-84360320, 84360320], [-2969228, 2969228]]

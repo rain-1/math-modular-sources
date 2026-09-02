@@ -1,0 +1,12 @@
+[0;31m  ***   Warning: new stack size = 2000000000 (1907.349 Mbytes).[0m
+[0;31m[0;31m  ***   at top-level: [0;35mM=[0;35mmfinit([28,77/2])
+[0;31m[0;31m  ***                   ^-----------------
+  *** mfinit: the PARI stack overflows !
+  current stack size: 2000000000 (1907.349 Mbytes)
+  [hint] set 'parisizemax' to a nonzero value in your GPRC
+[0m
+... skipping file '03_dims.gp'
+[0;31m[0;31m  ***   at top-level: ...[0;35mnt("dim M_{77/2}(28) = ",[0;35mmfdim(M),"  time=",ge
+[0;31m[0;31m  ***                                             ^---------------------
+  *** mfdim: incorrect type in checkNK (t_POL).[0m
+dim M_{53/2}(28) = 104  time=517817

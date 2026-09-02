@@ -1,0 +1,6 @@
+[0;31m  ***   Warning: new stack size = 6000000000 (5722.046 Mbytes).[0m
+unknown indices: [-3, 0, 49, 196, 245, 392, 441]
+r=3 weight=40 chi=1 dim=159 -> NO SOLUTION
+r=4 weight=52 chi=1 dim=207 -> NO SOLUTION
+r=5 weight=64 chi=1 dim=255 -> NO SOLUTION
+r=6 weight=76 chi=1 dim=303 -> NO SOLUTION

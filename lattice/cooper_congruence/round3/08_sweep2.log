@@ -1,0 +1,15 @@
+[0;31m  ***   Warning: new stack size = 8000000000 (7629.395 Mbytes).[0m
+j=1 wt=1/2  r=3 L=28 PM=3 dim=159 nunk=7 -> NO
+j=3 wt=3/2  r=3 L=28 PM=3 dim=159 nunk=7 -> NO
+j=5 wt=5/2  r=3 L=28 PM=3 dim=159 nunk=7 -> NO
+j=7 wt=7/2  r=3 L=28 PM=3 dim=159 nunk=7 -> NO
+--- bigger principal part (PM=31), needs Delta^3*Delta(28tau): use r=3 and L=28 with PM=3 only; instead raise r ---
+j=1 wt=1/2  r=4 L=28 PM=3 dim=207 nunk=7 -> NO
+j=3 wt=3/2  r=4 L=28 PM=3 dim=207 nunk=7 -> NO
+j=5 wt=5/2  r=4 L=28 PM=3 dim=207 nunk=7 -> NO
+j=7 wt=7/2  r=4 L=28 PM=3 dim=207 nunk=7 -> NO
+j=1 wt=1/2  r=3 L=56 PM=3 dim=316 nunk=7 -> NO
+j=3 wt=3/2  r=3 L=56 PM=3 dim=316 nunk=7 -> NO
+j=5 wt=5/2  r=3 L=56 PM=3 dim=316 nunk=7 -> NO
+j=7 wt=7/2  r=3 L=56 PM=3 dim=316 nunk=7 -> NO
+j=1 wt=1/2  r=3 L=112 PM=3 dim=630 nunk=7 -> YES  c(-3)=0

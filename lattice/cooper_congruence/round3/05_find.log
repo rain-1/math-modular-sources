@@ -1,0 +1,7 @@
+[0;31m  ***   Warning: new stack size = 4000000000 (3814.697 Mbytes).[0m
+entries=715  DEGEN=[49, 196, 245, 392, 441, 588, 637, 784, 833, 980, 1029, 1176, 1225, 1372, 1421, 1568, 1617, 1764, 1813, 1960, 2009, 2156, 2205, 2352, 2401]
+P valuation = 0
+unknowns at d = [-3, 49, 196, 245, 392, 441, 588]
+dim=[601, 159] time=6077
+matrix size [601, 166]  rank=166
+NO SOLUTION -- F is NOT in the space
