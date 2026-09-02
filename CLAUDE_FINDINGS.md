@@ -6,6 +6,16 @@ Newest entries on top.
 
 ---
 
+## 2026-09-02 — Cusp periods (one recurrence, many periods) and cusp-form sources
+
+`consolidation/CUSP_PERIODS.md` + `lattice/cusp_periods/`; `consolidation/CUSPFORM_SOURCES.md` + `lattice/cuspform_sources/`.
+
+- **Cusp-period formula.** The Eichler integral of an Eisenstein source splits by orientation, D^{-r}E^{ψ,φ} = Σ_f ψ(f)f^{-r}Λ_φ(q^f) with Λ_φ = N_φ/(1−z^Q) rational; at a cusp a/c the expansion is ρ/t + Π + o(1) with absolutely convergent finite formulas, every cusp period a Q(ζ_M)-combination of L(r,χ), χ mod M = lcm(c, conductors). Validated to 60 digits; the monodromy period at fold-regular cusps equals it (100–135 digits, six rows).
+- **Polar part = constant term, exactly:** ρ = (2πi)^{r+1}a₀(Φ|γ)/(r! c^{r+1}) (77 digits). Inner orientation: ρ ∝ ψ(c)L(r+1,ψ), a critical-value condition; Track D's identity Re L(3,ψ₄) = φ⁵ Im L(3,ψ₄) is exactly this condition on Γ₁(5), now proved from generalised Bernoulli numbers.
+- **Third regularity condition:** a₀(Φ,∞) = 0 is also necessary (otherwise the inhomogeneity is not rational and is singular at the near cusp); fold-regular space = {a₀(∞)=0} ∩ {a₀(near)=0}. Resolves the hostscan §10.3 slow modes.
+- **Orientation dichotomy (one line):** Re[z/(1−z)] = −1/2 on the whole circle, so inner rows have factor +1 at every cusp and are Galois-equivariant across cusps (Φ_new realises ξ and its conjugate σ(ξ), at every cusp of Γ₁(5), 77 digits); outer rows pick up [2^{-r}Λ(1)+(1−2^{-r})Λ(−1)]/Λ(1): −11 (Zagier D), −3 (Zagier A). Cooper's meromorphic rows obey the same dichotomy (−5, −2, +1 matching ψ = 1, 1, χ₋₃).
+- **Cusp-form sources on Fricke hosts (r=3):** fold-regular iff Φ|W_N = −Φ, then ξ = L(Φ,3) (period-polynomial conditions automatic). No weight-4 newform of level 5–9 has sign −1, so nothing on the Apéry-perfect hosts; five oldform combinations f − d²f(dτ) give new Apéry-like rows in 1 and L(f,3) for f = 5.4.a.a, 6.4.a.a, 9.4.a.a (e.g. Domb numbers with ξ = L(6.4.a.a,3)/2, rate 1/4, K₋ = L(6.4.a.a,2)/√π, the central value). No irrationality (−4.4 nats).
+
 ## 2026-09-02 — Bucket 4 closed: inventory, host sweep, two-variable systems, and the Γ₁(5) theorem attempt
 
 Four tracks (`consolidation/GAMMA15_CLOSURE.md` §6 for the table; `INVENTORY_BOUND.md` §4, `lattice/hostscan/REPORT.md`, `TWO_VARIABLE_HOLONOMY.md` §6, `lattice/gamma15/REPORT.md`).
