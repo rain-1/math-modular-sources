@@ -1,0 +1,60 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper,margin=1.55cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,microtype}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\begin{document}
+\begin{center}
+{\Large\bfseries An explicit modular approximation to $\zeta(5)$, with its exact asymptotics}\\[3pt]
+{\small River \& Claude (Fable) --- modular Ap\'ery project, level $12$ CM-isogeny system --- 2 September 2026}
+\end{center}
+
+\textbf{The host.} On $X_0(12)$ take the Hauptmodul $h=\eta_1^3\eta_4\eta_6^2/(\eta_2^2\eta_3\eta_{12}^3)=q^{-1}-3+2q+\cdots$ and the Fricke-invariant coordinate
+\[
+x=\frac{h}{(h+3)(h+4)}=q-4q^2+2q^3+12q^4-17q^5-\cdots,\qquad x\bigl(i/\sqrt{12}\bigr)=x_+=7-4\sqrt3 .
+\]
+The map $q\mapsto x$ folds at the Fricke point $\tau_*=i/\sqrt{12}$; the only finite singularities of everything below are $x=-1,\ 7\mp4\sqrt3$.
+
+\textbf{The source and its companions.} The weight-$6$ Eisenstein combination
+$\widetilde F=-\tfrac1{504}\bigl(E_6-176E_6(2\tau)+2079E_6(3\tau)-4928E_6(4\tau)+4752E_6(6\tau)-1728E_6(12\tau)\bigr)=q-143q^2+2323q^3-\cdots$
+has Dirichlet polynomial $P(s)=1-176\cdot2^{-s}+2079\cdot3^{-s}-4928\cdot4^{-s}+4752\cdot6^{-s}-1728\cdot12^{-s}$ with $P(0)=P(2)=P(3)=P(4)=P(6)=0$: every period except $\zeta(5)$ is annihilated, and $L(\widetilde F,5)=P(5)\zeta(5)\zeta(0)=\tfrac{11}{144}\zeta(5)$. Let $f=\sum A_nn^{-5}q^n$ be its fifth Eichler integral ($\widetilde F=\sum A_nq^n$), let $E=\tfrac17(-9E_4(3\tau)+16E_4(4\tau))$ (anti-Fricke, weight $4$) and $Q(x)=143x^3+189x^2+21x+7$. Define
+\[
+U=\frac{7E}{Q(x)}=\sum_{n\ge0}c_nx^n,\qquad V=U\cdot f=\sum_{n\ge0}d_nx^n .
+\]
+Then $c_n\in\Z$ and $D_n^5d_n\in\Z$ with $D_n=\mathrm{lcm}(1,\dots,n)$:
+\[
+c_n:\ 1,\,-3,\,-18,\,-194,\,-2025,\,-22125,\,-249284,\,\dots\qquad
+\tfrac{144}{11}\tfrac{d_n}{c_n}:\ -\tfrac{48}{11},\ \tfrac{111}{44},\ \tfrac{99409}{115236},\ \tfrac{4516373}{4276800},\ \dots
+\]
+Both sequences satisfy one explicit $14$-term recurrence $\sum_{j=0}^{14}P_j(n)\,y_{n-j}=0$ (resp.\ $=13\cdot2^{18}(-1)^{n+1}$ for $d_n$) with $\deg P_j=5$, $P_0(n)=n^5$, $P_{14-j}(n)=-P_j(11-n)$, e.g. $P_1(n)=-66n^5+305n^4-570n^3+550n^2-269n+53$; its characteristic polynomial is $(\lambda+1)^4(\lambda^2-14\lambda+1)^5$, i.e.\ the roots are $-1$ and $7\pm4\sqrt3$, the reciprocals of the singular values.
+
+\textbf{Theorem (limit and rate).}
+\[
+\frac{144}{11}\,\frac{d_n}{c_n}\ \longrightarrow\ \zeta(5),\qquad
+\frac{d_n}{c_n}-\frac{11}{144}\zeta(5)\ \sim\ \frac{13}{96K}\,(-1)^n\,(7-4\sqrt3)^n\,n^{1/2}(\log n)^4,
+\]
+where $c_n\sim-K(7+4\sqrt3)^nn^{-3/2}$ and the constant $K$ is, in closed form,
+\[
+\boxed{\ K=\frac{\Gamma(1/3)^{12}}{\pi^{17/2}}\cdot\frac{3^{8/3}\,(15\sqrt3-23)\,\sqrt{(12+7\sqrt3)/2}}{2^{37/3}\,(2205-1273\sqrt3)\,(45+26\sqrt3)^{1/3}}=0.68537184849053440595143004488\ldots\ }
+\]
+\emph{Why.} Fricke invariance makes $V-\frac{11}{144}\zeta(5)U$ regular at the fold $x_+$, so the linear form is driven by the next singularity $x=-1$, where the regularised solution behaves as $\frac{13}{480}\log^5(1+x)$; that gives the $(\log n)^4/n$ law for $d_n-\frac{11}{144}\zeta(5)c_n$. The denominator $c_n$ has a square-root singularity at $x_+$ whose amplitude is a derivative at the CM point: $K^2=49\,x_+\,(DE)(\tau_*)^2\big/\bigl(2\pi\,Q(x_+)^2\,(-D^2x)(\tau_*)\bigr)$, $D=q\,d/dq$. Two facts make it a Chowla--Selberg value: $E(\tau_*)=0$ (the anti-Fricke form vanishes at the Fricke point, so $DE(\tau_*)$ is a genuine weight-$6$ CM value), and $D^2x(\tau_*)=x''(2\sqrt3)\,(Dh)(\tau_*)^2$ with $Dh$ a genuine weight-$2$ form. With $\Omega^2=\Gamma(1/3)^6/\pi^4$ one finds $DE(\tau_*)/\Omega^6=\frac{243(23-15\sqrt3)}{14336}$ and $\bigl(Dh(\tau_*)/\Omega^2\bigr)^3=-\frac{81(45+26\sqrt3)}{2048}$ (discriminant $-48$: a conductor-$4$ point, hence the cube root); the formula follows, and agrees with the recurrence to $51$ digits.
+
+\textbf{Numbers.} Exact $c_n,d_n$ to $n=400$ from the recurrence, $540$-digit arithmetic:
+\begin{center}\small
+\begin{tabular}{@{}rcccc@{}}\toprule
+$n$ & digits of $\zeta(5)$ in $\frac{144d_n}{11c_n}$ & $\lvert d_n/c_n-\tfrac{11}{144}\zeta(5)\rvert^{1/n}$ & error / leading asymptotic \\\midrule
+5 & 2.7 & 0.1708 & 25.7\\
+10 & 8.0 & 0.1225 & 11.9\\
+20 & 19.0 & 0.0984 & 7.67\\
+50 & 52.8 & 0.0834 & 5.37\\
+100 & 109.7 & 0.0780 & 4.46\\
+200 & 223.7 & 0.0751 & 3.86\\
+400 & 452.2 & 0.0736 & 3.44\\\bottomrule
+\end{tabular}
+\end{center}
+The $n$-th root of the error tends to $7-4\sqrt3=0.07180$; the ratio to the leading term $\frac{13}{96K}(7-4\sqrt3)^n\sqrt n(\log n)^4$ tends to $1$ only logarithmically, as the $(\log n)^3,\dots$ corrections dictate.
+
+\textbf{What it does and does not do.} The rate $\log\frac1{7-4\sqrt3}=2.634$ against the denominator growth $\log D_n^5\sim5n$ gives no irrationality proof (Ap\'ery's $\zeta(3)$ form wins with $4\log(1+\sqrt2)=3.53>3$; here $2.63<5$). What is new is that the system is fully explicit --- modular source, companion, recurrence, limit, and the complete leading asymptotics with a closed-form constant --- and that every period other than $\zeta(5)$ has been removed by construction. Files: \texttt{consolidation/ZETA5\_K\_CLOSED\_FORM.md}, \texttt{lattice/zeta5\_K/}, and the level-12 research notes in \texttt{packages/}.
+\end{document}
