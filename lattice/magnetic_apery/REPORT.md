@@ -125,7 +125,7 @@ $-C$ (magnetic) or blows up (not), reproducing `hostscan` §4.4's free-integrati
 
 | family | space | range | hits |
 |---|---|---|---|
-| $Q=(W+b)^2$, $\rho(\infty)=0$ | dim 1 | $\lvert b\rvert\le800$ | none |
+| $Q=(W+b)^2$, $\rho(\infty)=0$ | dim 3 | $\lvert b\rvert\le800$ | none |
 | $Q=(W+b)^2$, widest | dim 4 | $\lvert b\rvert\le800$ | none |
 | $Q=(W+b)^{1,3}$, widest | dim 2, 6 | $\lvert b\rvert\le300$ | $b=17$, order 3 (the cusp tower) |
 | $Q=(aW+b)^2$, widest | dim 4 | $2\le a\le40$, $\lvert b\rvert\le40a$ | none |
@@ -134,6 +134,11 @@ $-C$ (magnetic) or blows up (not), reproducing `hostscan` §4.4's free-integrati
 | $Q=(h_ih_jh_k)^2$, triples | dim 5–20 | $\deg\le5$ | none new |
 | $Q=\bigl(\prod_{\deg\le2}h_i\bigr)^2$ (all nine orbits at once) | **dim 59 / 60** | — | none new |
 | $Q=(72w+17)^d$, antiinvariant | dim $d-1$, $d\le12$ | — | a $(d-2)$-dim magnetic space, all Bol-trivial (§5) |
+
+("$\rho(\infty)=0$" is $\{uP(u)/Q(u):\deg P\le\deg Q-2\}$, i.e. $a_0(\Phi)=0$ at both cusps
+$\infty$ and $0$; "widest" is $\deg P\le\deg Q-1$, $a_0=0$ at $\infty$ only.  **Both contain the
+$W_6$-antiinvariant subspace** $\{v\,P(w)/Q(w)\}$, so no antiinvariant magnetic form can escape
+them; the last row uses the antiinvariant basis directly.)
 
 CM data: `02_cm.gp`, `02b_cmpoly.gp`, `14_Wpoly.gp` enumerate the $\Gamma_0(6)$-orbits of CM
 points for $D=-8,\dots,-163$ by primitive forms $[6k,b,c]$, dedupe by $u(\tau_0)$ at 150

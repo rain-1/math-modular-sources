@@ -4,6 +4,8 @@ NQ = 405; MA=60; MB=150; MC=400;
 HH = HOSTS[3]; C=HH[2]; B=HH[3]; dv=HH[4]; rv=HH[5];
 us = useries(dv,rv,NQ); Fs = Fseries(dv,rv,NQ); F2 = Fs^2;
 print("### Apery host: CM-guided scan.  W-minimal polynomials from 14_Wpoly.out.");
+\\ NOTE: the labels "[anti]"/"[wide]" below mean: rho with a_0=0 at BOTH cusps
+\\ (xibasisU, which CONTAINS the W_6-antiinvariant subspace) / a_0=0 at infinity only.
 CMN = ["D-8","D-12","D-15","D-20","D-23","D-24fold","D-32","D-36","D-44","D-48","D-72","D-80","cusp"];
 {
 CMW = [W+16, W+18, W^2+27*W+171, W^2+16*W-16,

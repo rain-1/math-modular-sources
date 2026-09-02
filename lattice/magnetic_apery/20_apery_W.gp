@@ -18,10 +18,10 @@ tryh(hW, mult, wide, lab) = my(Qp, qv, Xs, T, res);
   0;
 }
 print("");
-print("-- A1: single rational pole pair, Q = (W+b)^2, anti-invariant (dim 1), |b| <= 800");
+print("-- A1: single rational pole pair, Q = (W+b)^2, space with a_0=0 at both cusps (dim 3), |b| <= 800");
 {for(b=-800, 800, tryh(W+b, 2, 0, concat("h=W+",b)));}
 print("   done A1");
-print("-- A2: same, widest space (dim 4), |b| <= 800");
+print("-- A2: same, widest space a_0=0 at infinity only (dim 4), |b| <= 800");
 {for(b=-800, 800, tryh(W+b, 2, 1, concat("h=W+",b)));}
 print("   done A2");
 print("-- A3: pole orders 1 and 3, widest space, |b| <= 300");
