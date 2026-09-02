@@ -30,8 +30,9 @@ print("=== (c4) s10 at p=2:  Tr^10_5(Phi) = Phi + (1/2)Phi|W_2|U_2;  test Tr = 2
 { my(T = vector(M\2,m,CV[2][m] + CV[2][2*m]/2));
   print("   Phi + (1/2)Phi|U_2, m=1..14 : ",vector(14,m,T[m]));
   print("   mod 4 vs 2*Phi : ",vector(14,m,lift(Mod(T[m]-2*CV[2][m],4))));
+  print("   all Tr = 2 Phi mod 4 for m<=",M\2,"? ",#select(m->(T[m]-2*CV[2][m])%4!=0,vector(M\2,m,m))==0);
   my(T2 = vector(M\2,m,CV[2][m] - CV[2][2*m]/2));
-  print("   Phi - (1/2)Phi|U_2, m=1..14 : ",vector(14,m,T2[m]));
+  print("   (wrong sign) Phi - (1/2)Phi|U_2, m=1..14 : ",vector(14,m,T2[m]));
   print("   mod 4 vs 2*Phi : ",vector(14,m,lift(Mod(T2[m]-2*CV[2][m],4)))); }
 print();
 print("=== (c5) s7 at p=2,5 (p nmid 7): no AL; record Phi|U_p - p Phi over p^3 ===");
