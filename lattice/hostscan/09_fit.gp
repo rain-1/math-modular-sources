@@ -1,0 +1,13 @@
+default(parisizemax, 8000000000);
+NQ = 90; NA = 76;
+useries(dv, r, nq) = q*prod(t=1, #dv, eta(q^dv[t] + O(q^nq))^r[t]);
+Fseries(dv, r, nq) = 1 - sum(t=1, #dv, r[t]*dv[t]*sum(n=1, (nq-1)\dv[t], sigma(n)*q^(dv[t]*n))) + O(q^nq);
+peel2(Fs, xs, na, nq) = my(a=vector(na+1), G=Fs, xp=1+O(q^nq)); for(n=0, na, my(c=polcoeff(G,n)); a[n+1]=c; if(c!=0, G=G-c*xp); xp=xp*xs); a;
+fitrecR(av, ord, dg) = my(nv=(ord+1)*(dg+1), rows=List()); for(n=0, #av-ord-2, my(row=vector(nv)); for(j=0,ord, for(e=0,dg, row[j*(dg+1)+e+1] = n^e*av[n+j+1])); listput(rows,row)); matker(matconcat(Vec(rows)~));
+tryall(dv,r,C,B) = my(us=useries(dv,r,NQ), Fs=Fseries(dv,r,NQ), xs=us/(1+B*us+C*us^2)); my(a=peel2(Fs,xs,NA,NQ)); print("  a=",vector(8,i,a[i])); for(o=2,5, for(d=3,7, my(k=fitrecR(a,o,d)); if(matsize(k)[2]>0, print("  ord=",o," deg=",d," dim=",matsize(k)[2]); return(0))));  print("  none up to ord5 deg7");
+print("N=10 C=20 B=9:"); tryall([1,2,5,10],[-3,1,-1,3],20,9);
+print("N=12 C=12 B=7:"); tryall([1,2,3,4,6,12],[-3,2,1,-1,-2,3],12,7);
+print("N=18 C=6 B=5:"); tryall([1,2,3,6,9,18],[-2,1,1,-1,-1,2],6,5);
+print("N=6 C=72 B=17 (control):"); tryall([1,2,3,6],[-5,1,-1,5],72,17);
+print("N=10 C=20 B=8:"); tryall([1,2,5,10],[-3,1,-1,3],20,8);
+quit;

@@ -1,0 +1,17 @@
+mf=mfinit([1,4],3);
+B=mfbasis(mf);
+print("lvl1 dim=",#B," coefs=",mfcoefs(B[1],4));
+print("slash0=",mfslashexpansion(mf,B[1],[0,-1;1,0],2,1));
+mf5=mfinit([5,4,Mod(4,5)],3);
+B5=mfbasis(mf5);
+print("N5 chi5 dim=",#B5);
+for(i=1,#B5,print("  ",mfcoefs(B5[i],6)));
+for(i=1,#B5,print("  slash0=",mfslashexpansion(mf5,B5[i],[0,-1;1,0],1,1)));
+mf5t=mfinit([5,4,1],3);
+B5t=mfbasis(mf5t);
+print("N5 triv dim=",#B5t);
+for(i=1,#B5t,print("  ",mfcoefs(B5t[i],6)));
+for(i=1,#B5t,print("  slash0=",mfslashexpansion(mf5t,B5t[i],[0,-1;1,0],1,1)));
+print("eis test ", mfcoefs(mfeisenstein(4,Mod(4,5),1),6));
+print("eis test2 ", mfcoefs(mfeisenstein(4,1,Mod(4,5)),6));
+quit;

@@ -1,0 +1,8 @@
+==============================================================================
+CASE z2_D3   dim=2   x_c=['1', '1']
+   basis limits: B_0 -> 0 + (0)P ; B_1 -> 1 + (0)P
+   ROW           x=(1, 1)       type [(0, 0)]         excess {(0, 0): 1}   limit 1
+   SMALL (limit 0) directions among |x_i|<=6 : [(1, 0)]
+      x=(1, 0)       type [(0, 1)]         excess {(0, 1): 1}   limit 0
+   BEST COMPANION (period coeff != 0) over |x_i|<=4 :
+      NO direction in the whole solution space has a nonzero period coefficient

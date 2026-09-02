@@ -1,0 +1,73 @@
+==============================================================================
+z3_D1  a-recurrence: order 2, coefficient degree 3   (0.1s)
+   verified on 0<=a,b<=30 except 0 points: []
+   LEADING  P_2 = (a + 2)**3
+   TRAILING P_0 = (a + 1)**3
+   leading depends on the OTHER variable (b): False
+   P_1 = -(2*a + 3)*(a**2 + 3*a + 2*b**2 + 2*b + 3)
+==============================================================================
+z3_D1  b-recurrence: order 2, coefficient degree 3   (0.1s)
+   verified on 0<=a,b<=30 except 0 points: []
+   LEADING  P_2 = (b + 2)**3
+   TRAILING P_0 = (b + 1)**3
+   leading depends on the OTHER variable (a): False
+   P_1 = -(2*b + 3)*(2*a**2 + 2*a + b**2 + 3*b + 3)
+==============================================================================
+z2_D1  a-recurrence: order 2, coefficient degree 2   (0.0s)
+   verified on 0<=a,b<=30 except 0 points: []
+   LEADING  P_2 = (a + 2)**2
+   TRAILING P_0 = (a + 1)**2
+   leading depends on the OTHER variable (b): False
+   P_1 = -2*a**2 - 6*a - b**2 - b - 5
+==============================================================================
+z2_D1  b-recurrence: order 2, coefficient degree 2   (0.0s)
+   verified on 0<=a,b<=30 except 0 points: []
+   LEADING  P_2 = (b + 2)**2
+   TRAILING P_0 = -(b + 1)**2
+   leading depends on the OTHER variable (a): False
+   P_1 = -(2*a + 1)*(2*b + 3)
+==============================================================================
+z2_D2  a-recurrence: order 2, coefficient degree 2   (0.0s)
+   verified on 0<=a,b<=30 except 0 points: []
+   LEADING  P_2 = (a + 2)**2
+   TRAILING P_0 = -(a + 1)**2
+   leading depends on the OTHER variable (b): False
+   P_1 = -(2*a + 3)*(2*b + 1)
+==============================================================================
+z2_D2  b-recurrence: order 2, coefficient degree 2   (0.0s)
+   verified on 0<=a,b<=30 except 0 points: []
+   LEADING  P_2 = (b + 2)**2
+   TRAILING P_0 = (b + 1)**2
+   leading depends on the OTHER variable (a): False
+   P_1 = -a**2 - a - 2*b**2 - 6*b - 5
+==============================================================================
+z2_D3  a-recurrence: order 2, coefficient degree 2   (0.0s)
+   verified on 0<=a,b<=30 except 0 points: []
+   LEADING  P_2 = (a + 2)**2
+   TRAILING P_0 = (2*a - b + 1)*(2*a - b + 2)
+   leading depends on the OTHER variable (b): False
+   P_1 = -5*a**2 - 2*a*b - 16*a - 3*b - 13
+==============================================================================
+z2_D3  b-recurrence: order 2, coefficient degree 2   (0.0s)
+   verified on 0<=a,b<=30 except 0 points: []
+   LEADING  P_2 = (b + 2)*(2*a - b - 1)
+   TRAILING P_0 = -(b + 1)**2
+   leading depends on the OTHER variable (a): True
+   P_1 = -a**2 - 2*a*b - 4*a + 2*b**2 + 5*b + 3
+==============================================================================
+E_D1  a-recurrence: order 3, coefficient degree 2   (0.0s)
+   verified on 0<=a,b<=30 except 0 points: []
+   LEADING  P_3 = (a + 3)*(2*a - 2*b + 5)
+   TRAILING P_0 = -4*(a + 1)*(a + 2)
+   leading depends on the OTHER variable (b): True
+   P_1 = 2*(a + 2)*(5*a - 2*b + 9)
+   P_2 = -8*a**2 + 6*a*b - 37*a + 15*b - 43
+==============================================================================
+E_D1  b-recurrence: order 3, coefficient degree 2   (0.0s)
+   verified on 0<=a,b<=30 except 0 points: []
+   LEADING  P_3 = (b + 3)**2
+   TRAILING P_0 = -32*(b + 1)*(2*a - 2*b - 1)
+   leading depends on the OTHER variable (a): False
+   P_1 = 8*(4*a*b + 7*a - 2*b**2 - 6*b - 5)
+   P_2 = -2*(2*a*b + 5*a + 2*b**2 + 9*b + 11)
+saved ['z3_D1', 'z2_D1', 'z2_D2', 'z2_D3', 'E_D1']

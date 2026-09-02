@@ -1,0 +1,15 @@
+p=t^4+t^3+t^2+t+1;
+print(Mod(0,p)==0, " ", Mod(1,p)==0);
+mf5=mfinit([5,4,Mod(4,5)],3);
+B5=mfbasis(mf5);
+e=mfslashexpansion(mf5,B5[1],[0,-1;1,0],0,1,&pp);
+print("e=",e," pp=",pp);
+e2=mfslashexpansion(mf5,B5[2],[0,-1;1,0],0,1,&pp2);
+print("e2=",e2," pp2=",pp2);
+mf1=mfinit([1,4],3); B1=mfbasis(mf1);
+e3=mfslashexpansion(mf1,B1[1],[0,-1;1,0],0,1,&pp3);
+print("e3=",e3," pp3=",pp3);
+mf3=mfinit([3,3,Mod(2,3)],3); B3=mfbasis(mf3);
+print("N3k3 dim=",#B3);
+for(i=1,#B3, print("  c=",mfcoefs(B3[i],3)," s0=",mfslashexpansion(mf3,B3[i],[0,-1;1,0],0,1,&q)," par=",q));
+quit;

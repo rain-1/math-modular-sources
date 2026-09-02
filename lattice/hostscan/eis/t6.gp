@@ -1,0 +1,10 @@
+G3=znstar(3,1); G12=znstar(12,1); G4=znstar(4,1);
+v=zncharinduce(G3,2,12);
+print("v=",v," exp=",znconreyexp(G12,v));
+w=zncharinduce(G4,3,12);
+print("w=",w," exp=",znconreyexp(G12,w));
+print("charmul=",charmul(G12,v,w), " exp=",znconreyexp(G12,charmul(G12,v,w)));
+print("labelprod mod 12 = ", lift(Mod(znconreyexp(G12,v)*znconreyexp(G12,w),12)));
+print("isodd prod ", zncharisodd(G12,charmul(G12,v,w)));
+print("cond prod ", znconreyconductor(G12,charmul(G12,v,w)));
+quit;

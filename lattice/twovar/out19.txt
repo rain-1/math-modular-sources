@@ -1,0 +1,46 @@
+--------------------------------------------------------------------------
+z3_D1
+   x=(1, 1)        max-type: r=0 (bounded excess 1)  min-type: r=0 (bounded excess 1)
+   x=(0, 1)        max-type: r=3 (bounded excess 1)  min-type: r=>7 (bounded excess -)
+--------------------------------------------------------------------------
+z2_D1
+   x=(1, 1)        max-type: r=0 (bounded excess 1)  min-type: r=0 (bounded excess 1)
+   x=(0, 1)        max-type: r=2 (bounded excess 2)  min-type: r=>7 (bounded excess -)
+--------------------------------------------------------------------------
+z2_D2
+   x=(1, 1)        max-type: r=0 (bounded excess 1)  min-type: r=0 (bounded excess 1)
+   x=(0, 1)        max-type: r=2 (bounded excess 1)  min-type: r=>7 (bounded excess -)
+--------------------------------------------------------------------------
+z2_D3
+   x=(1, 1)        max-type: r=0 (bounded excess 1)  min-type: r=0 (bounded excess 1)
+   x=(1, 0)        max-type: r=1 (bounded excess 1)  min-type: r=>7 (bounded excess -)
+--------------------------------------------------------------------------
+z3_D2
+   x=(2, 1, 1)     max-type: r=0 (bounded excess 1)  min-type: r=0 (bounded excess 1)
+   x=(0, 1, 0)     max-type: r=1 (bounded excess 1)  min-type: r=>7 (bounded excess -)
+   x=(1, 0, 0)     max-type: r=>7 (bounded excess -)  min-type: r=>7 (bounded excess -)
+--------------------------------------------------------------------------
+z3_D3
+   x=(3, 1, 1)     max-type: r=0 (bounded excess 1)  min-type: r=0 (bounded excess 1)
+   x=(0, 1, 0)     max-type: r=1 (bounded excess 1)  min-type: r=>7 (bounded excess -)
+   x=(1, 0, 0)     max-type: r=3 (bounded excess 7)  min-type: r=>7 (bounded excess -)
+--------------------------------------------------------------------------
+z3_D4
+   x=(1, 1, 1)     max-type: r=0 (bounded excess 1)  min-type: r=0 (bounded excess 1)
+   x=(1, 0, 0)     max-type: r=1 (bounded excess 1)  min-type: r=>7 (bounded excess -)
+   x=(0, 1, 0)     max-type: r=3 (bounded excess 1)  min-type: r=>7 (bounded excess -)
+--------------------------------------------------------------------------
+E_D1
+   x=(6, 2, 1)     max-type: r=0 (bounded excess 1)  min-type: r=0 (bounded excess 1)
+   x=(2, 1, 0)     max-type: r=1 (bounded excess 1)  min-type: r=>7 (bounded excess -)
+   x=(1, 0, 0)     max-type: r=>7 (bounded excess -)  min-type: r=>7 (bounded excess -)
+--------------------------------------------------------------------------
+s10_D1
+   x=(1, 1, 1)     max-type: r=0 (bounded excess 1)  min-type: r=0 (bounded excess 1)
+   x=(3, 2, 0)     max-type: r=1 (bounded excess 1)  min-type: r=>7 (bounded excess -)
+   x=(1, 0, 0)     max-type: r=2 (bounded excess 1)  min-type: r=>7 (bounded excess -)
+--------------------------------------------------------------------------
+s10_D2
+   x=(1, 1, 1)     max-type: r=0 (bounded excess 1)  min-type: r=0 (bounded excess 1)
+   x=(2, 1, 0)     max-type: r=1 (bounded excess 1)  min-type: r=>7 (bounded excess -)
+   x=(1, 0, 0)     max-type: r=2 (bounded excess 8)  min-type: r=>7 (bounded excess -)

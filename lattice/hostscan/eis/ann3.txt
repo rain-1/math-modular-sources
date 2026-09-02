@@ -1,0 +1,30 @@
+G1ANN 1 4 1 0 rk=1
+  ROW 1 4 1 psi=[1,1,odd0] phi=[1,1,odd0] d=1 eps=0 int=1 a0inf=1 a00=1 nm=zeta(3)
+  PER 1 4 zeta(3) survives=0
+  ELEM 1 4 survives=0 nonzero=0
+G1ANN 2 4 2 0 rk=2
+  ROW 2 4 1 psi=[1,1,odd0] phi=[1,1,odd0] d=1 eps=1 int=1 a0inf=1 a00=1 nm=zeta(3)
+  ROW 2 4 2 psi=[1,1,odd0] phi=[1,1,odd0] d=2 eps=1 int=1 a0inf=1 a00=1 nm=zeta(3)
+  PER 2 4 zeta(3) survives=0
+  ELEM 2 4 survives=0 nonzero=0
+G1ANN 3 3 2 0 rk=2
+  ROW 3 3 1 psi=[1,1,odd0] phi=[3,2,odd1] d=1 eps=2 int=0 a0inf=1 a00=0 nm=zeta(2)
+  ROW 3 3 2 psi=[3,2,odd1] phi=[1,1,odd0] d=1 eps=2 int=1 a0inf=0 a00=1 nm=L(2,chi_-3)
+  PER 3 3 L(2,chi_-3) survives=0
+  ELEM 3 3 survives=0 nonzero=1
+G1ANN 3 4 2 0 rk=2
+  ROW 3 4 1 psi=[1,1,odd0] phi=[1,1,odd0] d=1 eps=1 int=1 a0inf=1 a00=1 nm=zeta(3)
+  ROW 3 4 2 psi=[1,1,odd0] phi=[1,1,odd0] d=3 eps=1 int=1 a0inf=1 a00=1 nm=zeta(3)
+  PER 3 4 zeta(3) survives=0
+  ELEM 3 4 survives=0 nonzero=0
+G1ANN 4 3 2 0 rk=2
+  ROW 4 3 1 psi=[1,1,odd0] phi=[4,3,odd1] d=1 eps=3 int=0 a0inf=1 a00=0 nm=zeta(2)
+  ROW 4 3 2 psi=[4,3,odd1] phi=[1,1,odd0] d=1 eps=3 int=1 a0inf=0 a00=1 nm=L(2,chi_-4)
+  PER 4 3 L(2,chi_-4) survives=0
+  ELEM 4 3 survives=0 nonzero=1
+G1ANN 4 4 3 1 rk=2
+  ROW 4 4 1 psi=[1,1,odd0] phi=[1,1,odd0] d=1 eps=1 int=1 a0inf=1 a00=1 nm=zeta(3)
+  ROW 4 4 2 psi=[1,1,odd0] phi=[1,1,odd0] d=2 eps=1 int=1 a0inf=1 a00=1 nm=zeta(3)
+  ROW 4 4 3 psi=[1,1,odd0] phi=[1,1,odd0] d=4 eps=1 int=1 a0inf=1 a00=1 nm=zeta(3)
+  PER 4 4 zeta(3) survives=1
+  ELEM 4 4 survives=0 nonzero=0

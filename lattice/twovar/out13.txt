@@ -1,0 +1,20 @@
+z3_D1   (order_a=2, order_b=2):  dim on grid  6:2 8:2 10:2 12:2 14:2 16:2
+        free cells (N=12): [(0, 1), (0, 0)]
+z2_D1   (order_a=2, order_b=2):  dim on grid  6:2 8:2 10:2 12:2 14:2 16:2
+        free cells (N=12): [(0, 1), (0, 0)]
+z2_D2   (order_a=2, order_b=2):  dim on grid  6:2 8:2 10:2 12:2 14:2 16:2
+        free cells (N=12): [(0, 1), (0, 0)]
+z2_D3   (order_a=2, order_b=2):  dim on grid  6:2 8:2 10:2 12:2 14:2 16:2
+        free cells (N=12): [(0, 1), (0, 0)]
+E_D1    (order_a=3, order_b=3):  dim on grid  6:3 8:3 10:3 12:3 14:3 16:3
+        free cells (N=12): [(0, 2), (0, 1), (0, 0)]
+z3_D2   (order_a=3, order_b=3):  dim on grid  6:3 8:3 10:3 12:3 14:3 16:3
+        free cells (N=12): [(1, 0), (0, 1), (0, 0)]
+z3_D3   (order_a=3, order_b=3):  dim on grid  6:3 8:3 10:3 12:3 14:3 16:3
+        free cells (N=12): [(1, 0), (0, 1), (0, 0)]
+z3_D4   (order_a=3, order_b=3):  dim on grid  6:3 8:3 10:3 12:3 14:3 16:3
+        free cells (N=12): [(1, 0), (0, 1), (0, 0)]
+s10_D1  (order_a=3, order_b=3):  dim on grid  6:3 8:3 10:3 12:3 14:3 16:3
+        free cells (N=12): [(0, 2), (0, 1), (0, 0)]
+s10_D2  (order_a=3, order_b=3):  dim on grid  6:3 8:3 10:3 12:3 14:3 16:3
+        free cells (N=12): [(1, 0), (0, 1), (0, 0)]

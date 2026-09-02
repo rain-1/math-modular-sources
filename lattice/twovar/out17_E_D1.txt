@@ -1,0 +1,27 @@
+==============================================================================
+CASE E_D1   dim=3   row coefficients x_c = [Fraction(6, 1), Fraction(2, 1), Fraction(1, 1)]   grid 2..22
+
+(A) per basis solution
+   B_0 : minimal (r1,r2)=[]             extra prime? (6, 2, 7)
+         limit B_0/c (a=b=64) = -0.91596559417721901499 = 0 + (-1)*G
+   B_1 : minimal (r1,r2)=[]             extra prime? (6, 2, 7)
+         limit B_1/c (a=b=64) = 1.83193118835443803 = 0 + (2)*G
+   B_2 : minimal (r1,r2)=[]             extra prime? (6, 2, 7)
+         limit B_2/c (a=b=64) = 2.83193118835443803 = 1 + (2)*G
+   row  : minimal (r1,r2)=[(0, 0)]  (integral)
+
+(B) extra primes: which x kill them?
+   12 of 289 primitive small-height directions are of lcm type (excess over lcm^4 lcm^4 BOUNDED on nested grids 2..10/16/22)
+
+(C) SUMMARY over the lcm-type directions: (r1,r2) vs the period coefficient
+   (r1,r2) in [(1, 1)]        period coeff nonzero: False   12 directions, e.g. ['x=(0, 1, -1) -> -1 + 0*P', 'x=(2, -3, 4) -> 4 + 0*P', 'x=(2, -2, 3) -> 3 + 0*P']
+
+   BEST (r1,r2) among directions WITH a nonzero period coefficient:
+      NONE - no lcm-type direction has a nonzero period coefficient
+
+   BEST (r1,r2) among ALL non-row lcm-type directions:
+      (r1,r2)=(1, 1)  x=(0, 1, -1)  period-coeff-nonzero=False
+      (r1,r2)=(1, 1)  x=(2, -3, 4)  period-coeff-nonzero=False
+      (r1,r2)=(1, 1)  x=(2, -2, 3)  period-coeff-nonzero=False
+      (r1,r2)=(1, 1)  x=(2, -1, 2)  period-coeff-nonzero=False
+      (12 directions attain r1+r2=2)

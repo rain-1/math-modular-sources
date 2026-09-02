@@ -1,0 +1,12 @@
+default(parisizemax, 8000000000);
+NQ = 140;
+NA = 108;
+NB = 420;
+useries(dv, r, nq) = q*prod(t=1, #dv, eta(q^dv[t] + O(q^nq))^r[t]);
+Fseries(dv, r, nq) = 1 - sum(t=1, #dv, r[t]*dv[t]*sum(n=1, (nq-1)\dv[t], sigma(n)*q^(dv[t]*n))) + O(q^nq);
+peel2(Fs, xs, na, nq) = my(a=vector(na+1), G=Fs, xp=1+O(q^nq)); for(n=0, na, my(c=polcoeff(G,n)); a[n+1]=c; if(c!=0, G=G-c*xp); xp=xp*xs); a;
+fitrec(av, dg) = my(nv=3*(dg+1), rows=List()); for(n=0, #av-4, my(row=vector(nv)); for(j=0,2, for(e=0,dg, row[j*(dg+1)+e+1] = n^e*av[n+j+1])); listput(rows,row)); matker(matconcat(Vec(rows)~));
+polsof(kv, dg) = vector(3, j, sum(e=0, dg, kv[(j-1)*(dg+1)+e+1]*x^e));
+normP(P) = my(g=content(concat(concat(Vec(P[1]),Vec(P[2])),Vec(P[3])))); vector(3,j,P[j]/g);
+freetest(a, nn) = my(f=1); for(n=1, nn, if(a[n+1] % (n+1) != 0, f=0; break)); f;
+denexp(bb, nn) = my(dn=1, km=0); for(n=1, nn, dn=lcm(dn,n); my(bn=bb[n+1]); if(bn!=0, my(de=denominator(bn), kj=0, t=de); while(t>1 && kj<12, kj++; t=t/gcd(t,dn)); if(kj>km, km=kj))); km;

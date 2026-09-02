@@ -1,0 +1,229 @@
+CHK 1 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 2 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 2 4 psi=1,1 phi=1,1 d=2 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 3 3 psi=1,1 phi=3,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 3 3 psi=3,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 3 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 3 4 psi=1,1 phi=1,1 d=3 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 4 3 psi=1,1 phi=4,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 4 3 psi=4,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/128*t, t^2 + 1)
+CHK 4 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 4 4 psi=1,1 phi=1,1 d=2 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 4 4 psi=1,1 phi=1,1 d=4 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 5 3 psi=1,1 phi=5,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 5 3 psi=1,1 phi=5,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 5 3 psi=5,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/625*t^7 + 3/625*t^6 + 1/625*t^5 + 1/625*t^4 - 3/625*t^3 + 2/625*t^2 + 2/625*t - 1/625, t^8 - t^6 + t^4 - t^2 + 1)
+CHK 5 3 psi=5,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-1/625*t^7 + 3/625*t^6 - 1/625*t^5 + 1/625*t^4 + 3/625*t^3 + 2/625*t^2 - 2/625*t - 1/625, t^8 - t^6 + t^4 - t^2 + 1)
+CHK 5 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 5 4 psi=1,1 phi=1,1 d=5 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 5 4 psi=1,1 phi=5,4 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 5 4 psi=5,4 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-2/625*t^3 - 2/625*t^2 - 1/625, t^4 + t^3 + t^2 + t + 1)
+CHK 6 3 psi=1,1 phi=3,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 6 3 psi=1,1 phi=3,2 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 6 3 psi=3,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 6 3 psi=3,2 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 6 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 6 4 psi=1,1 phi=1,1 d=2 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 6 4 psi=1,1 phi=1,1 d=3 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 6 4 psi=1,1 phi=1,1 d=6 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 7 3 psi=1,1 phi=7,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 7 3 psi=1,1 phi=7,5 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 7 3 psi=1,1 phi=7,6 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 7 3 psi=7,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-2/343*t^10 + 2/343*t^9 + 1/343*t^8 - 1/343*t^7 + 1/343*t^6 + 1/343*t^5 + 1/343*t^2 - 1/343*t, t^12 - t^11 + t^9 - t^8 + t^6 - t^4 + t^3 - t + 1)
+CHK 7 3 psi=7,5 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-1/343*t^11 + 2/343*t^10 + 2/343*t^9 - 2/343*t^8 + 1/343*t^7 + 2/343*t^6 - 1/343*t^5 - 1/343*t^4 + 3/343*t^3 - 1/343*t^2 + 2/343, t^12 - t^11 + t^9 - t^8 + t^6 - t^4 + t^3 - t + 1)
+CHK 7 3 psi=7,6 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(16/2401*t^4 + 16/2401*t^2 + 16/2401*t + 8/2401, t^6 + t^5 + t^4 + t^3 + t^2 + t + 1)
+CHK 7 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 7 4 psi=1,1 phi=1,1 d=7 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 7 4 psi=1,1 phi=7,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 7 4 psi=1,1 phi=7,4 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 7 4 psi=7,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-81/16807*t^11 + 38/16807*t^10 - 38/16807*t^8 + 27/16807*t^7 + 38/16807*t^6 - 43/16807*t^5 - 43/16807*t^4 + 81/16807*t^3 - 43/16807*t^2 - 38/16807*t + 54/16807, t^12 - t^11 + t^9 - t^8 + t^6 - t^4 + t^3 - t + 1)
+CHK 7 4 psi=7,4 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-38/16807*t^10 + 5/16807*t^8 - 27/16807*t^7 - 5/16807*t^6 + 43/16807*t^5 - 38/16807*t^4 + 43/16807*t^2 + 5/16807*t - 16/16807, t^12 - t^11 + t^9 - t^8 + t^6 - t^4 + t^3 - t + 1)
+CHK 8 3 psi=1,1 phi=4,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 8 3 psi=1,1 phi=4,3 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 8 3 psi=1,1 phi=8,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 8 3 psi=4,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/128*t, t^2 + 1)
+CHK 8 3 psi=4,3 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/128*t, t^2 + 1)
+CHK 8 3 psi=8,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(3/512*t^3 + 3/512*t, t^4 + 1)
+CHK 8 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 8 4 psi=1,1 phi=1,1 d=2 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 8 4 psi=1,1 phi=1,1 d=4 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 8 4 psi=1,1 phi=1,1 d=8 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 8 4 psi=1,1 phi=8,5 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 8 4 psi=8,5 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-11/4096*t^3 + 11/4096*t, t^4 + 1)
+CHK 9 3 psi=1,1 phi=3,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 9 3 psi=1,1 phi=3,2 d=3 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 9 3 psi=1,1 phi=9,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 9 3 psi=1,1 phi=9,5 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 9 3 psi=3,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 9 3 psi=3,2 phi=1,1 d=3 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 9 3 psi=9,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/729*t^5 + 7/729*t^2, t^6 + t^3 + 1)
+CHK 9 3 psi=9,5 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(5/729*t^4 + 7/729*t, t^6 + t^3 + 1)
+CHK 9 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 9 4 psi=1,1 phi=1,1 d=3 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 9 4 psi=1,1 phi=1,1 d=9 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 9 4 psi=1,1 phi=9,4 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 9 4 psi=1,1 phi=9,7 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 9 4 psi=3,2 phi=3,2 d=1 a0nz=0 psi1=0 c0nz=0 phi1=0 scal=0
+CHK 9 4 psi=9,4 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-17/6561*t^4 + 11/6561*t, t^6 + t^3 + 1)
+CHK 9 4 psi=9,7 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-28/6561*t^5 - 11/6561*t^2, t^6 + t^3 + 1)
+CHK 10 3 psi=1,1 phi=5,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 10 3 psi=1,1 phi=5,2 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 10 3 psi=1,1 phi=5,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 10 3 psi=1,1 phi=5,3 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 10 3 psi=5,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/625*t^7 + 3/625*t^6 + 1/625*t^5 + 1/625*t^4 - 3/625*t^3 + 2/625*t^2 + 2/625*t - 1/625, t^8 - t^6 + t^4 - t^2 + 1)
+CHK 10 3 psi=5,2 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/625*t^7 + 3/625*t^6 + 1/625*t^5 + 1/625*t^4 - 3/625*t^3 + 2/625*t^2 + 2/625*t - 1/625, t^8 - t^6 + t^4 - t^2 + 1)
+CHK 10 3 psi=5,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-1/625*t^7 + 3/625*t^6 - 1/625*t^5 + 1/625*t^4 + 3/625*t^3 + 2/625*t^2 - 2/625*t - 1/625, t^8 - t^6 + t^4 - t^2 + 1)
+CHK 10 3 psi=5,3 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-1/625*t^7 + 3/625*t^6 - 1/625*t^5 + 1/625*t^4 + 3/625*t^3 + 2/625*t^2 - 2/625*t - 1/625, t^8 - t^6 + t^4 - t^2 + 1)
+CHK 10 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 10 4 psi=1,1 phi=1,1 d=2 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 10 4 psi=1,1 phi=1,1 d=5 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 10 4 psi=1,1 phi=1,1 d=10 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 10 4 psi=1,1 phi=5,4 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 10 4 psi=1,1 phi=5,4 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 10 4 psi=5,4 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-2/625*t^3 - 2/625*t^2 - 1/625, t^4 + t^3 + t^2 + t + 1)
+CHK 10 4 psi=5,4 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-2/625*t^3 - 2/625*t^2 - 1/625, t^4 + t^3 + t^2 + t + 1)
+CHK 12 3 psi=1,1 phi=3,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 12 3 psi=1,1 phi=3,2 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 12 3 psi=1,1 phi=3,2 d=4 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 12 3 psi=1,1 phi=4,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 12 3 psi=1,1 phi=4,3 d=3 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 12 3 psi=3,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 12 3 psi=3,2 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 12 3 psi=3,2 phi=1,1 d=4 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 12 3 psi=4,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/128*t, t^2 + 1)
+CHK 12 3 psi=4,3 phi=1,1 d=3 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/128*t, t^2 + 1)
+CHK 12 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 12 4 psi=1,1 phi=1,1 d=2 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 12 4 psi=1,1 phi=1,1 d=3 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 12 4 psi=1,1 phi=1,1 d=4 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 12 4 psi=1,1 phi=1,1 d=6 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 12 4 psi=1,1 phi=1,1 d=12 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 12 4 psi=1,1 phi=12,11 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 12 4 psi=3,2 phi=4,3 d=1 a0nz=0 psi1=0 c0nz=0 phi1=0 scal=0
+CHK 12 4 psi=4,3 phi=3,2 d=1 a0nz=0 psi1=0 c0nz=0 phi1=0 scal=0
+CHK 12 4 psi=12,11 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-23/10368*t^3 + 23/5184*t, t^4 - t^2 + 1)
+CHK 13 3 psi=1,1 phi=13,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 13 3 psi=1,1 phi=13,5 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 13 3 psi=1,1 phi=13,6 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 13 3 psi=1,1 phi=13,7 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 13 3 psi=1,1 phi=13,8 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 13 3 psi=1,1 phi=13,11 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 13 3 psi=13,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/1014*t^47 - 1/169*t^46 - 1/169*t^45 + 1/1014*t^44 + 1/338*t^43 + 1/507*t^42 + 5/1014*t^41 + 1/507*t^39 - 2/507*t^38 + 5/507*t^37 + 7/1014*t^36 + 7/1014*t^35 - 3/338*t^34 + 1/1014*t^32 - 1/507*t^31 - 2/507*t^30 - 7/507*t^29 + 5/507*t^28 - 5/1014*t^27 - 1/507*t^26 - 1/1014*t^25 + 11/1014*t^24 + 5/507*t^23 - 1/507*t^22 - 1/1014*t^21 + 3/338*t^20 - 1/169*t^19 - 7/1014*t^18 + 1/169*t^17 - 1/507*t^16 + 5/507*t^14 - 5/1014*t^13 - 3/169*t^12 + 1/507*t^11 + 5/507*t^10 - 7/1014*t^9 + 1/169*t^8 + 1/1014*t^7 - 2/507*t^6 - 17/1014*t^5 - 1/338*t^4 + 2/169*t^3 + 2/507*t^2 + 7/1014*t - 5/1014, t^48 + t^46 - t^42 - t^40 + t^36 + t^34 - t^30 - t^28 + t^24 - t^20 - t^18 + t^14 + t^12 - t^8 - t^6 + t^2 + 1)
+CHK 13 3 psi=13,5 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(87/28561*t^22 - 87/28561*t^21 + 33/28561*t^19 + 120/28561*t^18 - 87/28561*t^16 + 33/28561*t^15 + 87/28561*t^14 - 60/28561*t^13 - 33/28561*t^12 + 87/28561*t^11 + 33/28561*t^10 - 120/28561*t^9 + 87/28561*t^7 + 120/28561*t^6 - 33/28561*t^5 - 33/28561*t^4 + 120/28561*t^3 + 120/28561*t^2 - 120/28561*t - 60/28561, t^24 - t^22 + t^20 - t^18 + t^16 - t^14 + t^12 - t^10 + t^8 - t^6 + t^4 - t^2 + 1)
+CHK 13 3 psi=13,6 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/507*t^45 - 3/169*t^43 + 2/169*t^42 + 2/507*t^41 + 8/507*t^39 - 8/507*t^38 + 1/507*t^37 + 4/507*t^36 - 5/507*t^35 + 10/507*t^34 - 14/507*t^33 - 2/169*t^31 + 4/507*t^30 - 7/507*t^29 - 1/169*t^28 - 1/507*t^27 + 7/507*t^26 - 1/507*t^25 - 8/507*t^24 + 1/169*t^23 + 4/507*t^22 - 4/507*t^21 - 5/507*t^20 - 4/507*t^19 + 4/507*t^18 + 3/169*t^17 + 4/169*t^16 + 2/169*t^15 + 7/507*t^14 - 2/507*t^13 - 2/507*t^12 + 5/507*t^11 + 4/507*t^9 + 1/169*t^8 + 2/169*t^7 - 1/169*t^6 + 2/507*t^5 - 8/507*t^4 - 5/507*t^3 - 3/169*t^2 - 11/507*t + 1/169, t^48 + t^46 - t^42 - t^40 + t^36 + t^34 - t^30 - t^28 + t^24 - t^20 - t^18 + t^14 + t^12 - t^8 - t^6 + t^2 + 1)
+CHK 13 3 psi=13,7 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-2/169*t^43 - 2/169*t^42 - 2/169*t^40 + 4/169*t^39 - 1/169*t^38 - 1/169*t^37 + 5/169*t^36 - 9/338*t^35 + 4/169*t^33 + 1/169*t^32 + 7/338*t^31 + 1/338*t^29 + 5/338*t^28 + 1/338*t^27 - 4/169*t^26 - 1/338*t^25 + 9/338*t^23 + 5/169*t^22 + 9/338*t^21 - 11/338*t^19 - 3/169*t^17 - 6/169*t^16 - 5/338*t^15 - 7/169*t^14 - 9/338*t^13 + 1/169*t^12 + 1/26*t^11 + 9/338*t^9 - 5/169*t^8 - 1/338*t^7 - 2/169*t^6 - 1/338*t^5 + 9/338*t^3 + 7/338*t^2 + 1/169, t^48 + t^46 - t^42 - t^40 + t^36 + t^34 - t^30 - t^28 + t^24 - t^20 - t^18 + t^14 + t^12 - t^8 - t^6 + t^2 + 1)
+CHK 13 3 psi=13,8 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(15/9464*t^23 - 15/4732*t^22 - 17/9464*t^21 + 8/1183*t^20 + 3/4732*t^19 - 99/9464*t^18 + 17/4732*t^17 + 31/2366*t^16 - 11/2366*t^15 + 97/9464*t^14 - 37/4732*t^13 + 11/1183*t^12 - 179/9464*t^11 + 155/9464*t^10 - 17/4732*t^9 + 3/338*t^8 - 1/4732*t^7 - 17/4732*t^6 - 1/338*t^5 - 121/9464*t^4 - 11/1183*t^3 + 23/2366*t^2 + 27/2366*t + 1/1183, t^24 - t^22 + t^20 - t^18 + t^16 - t^14 + t^12 - t^10 + t^8 - t^6 + t^4 - t^2 + 1)
+CHK 13 3 psi=13,11 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/1521*t^44 + 1/1521*t^42 - 1/507*t^41 + 11/1521*t^40 + 2/1521*t^39 + 1/169*t^38 - 1/507*t^37 - 1/1521*t^36 - 1/507*t^35 + 2/507*t^34 - 7/1521*t^33 + 5/1521*t^32 - 5/1521*t^31 + 2/1521*t^30 + 8/1521*t^29 - 2/1521*t^28 - 2/1521*t^27 - 7/1521*t^26 - 5/1521*t^25 - 2/1521*t^24 - 4/507*t^23 - 8/1521*t^22 + 7/1521*t^21 - 2/1521*t^20 + 10/1521*t^19 + 1/507*t^18 + 2/507*t^17 - 5/1521*t^16 + 8/1521*t^15 + 1/1521*t^14 + 1/117*t^13 - 1/507*t^12 - 11/1521*t^11 - 1/169*t^10 + 11/1521*t^9 - 2/1521*t^8 + 4/1521*t^7 - 1/169*t^6 + 2/507*t^5 + 5/1521*t^4 - 4/507*t^3 + 2/507*t^2 + 1/1521*t - 1/1521, t^48 + t^46 - t^42 - t^40 + t^36 + t^34 - t^30 - t^28 + t^24 - t^20 - t^18 + t^14 + t^12 - t^8 - t^6 + t^2 + 1)
+CHK 13 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 13 4 psi=1,1 phi=1,1 d=13 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 13 4 psi=1,1 phi=13,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 13 4 psi=1,1 phi=13,4 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 13 4 psi=1,1 phi=13,9 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 13 4 psi=1,1 phi=13,10 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 13 4 psi=1,1 phi=13,12 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 13 4 psi=13,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-1/9295*t^23 - 72/9295*t^22 - 133/9295*t^21 + 32/9295*t^20 + 1/715*t^19 - 79/9295*t^18 + 6/1859*t^17 - 1/715*t^16 + 103/9295*t^15 + 4/169*t^14 - 134/9295*t^13 - 136/9295*t^12 - 74/9295*t^11 - 31/9295*t^10 + 108/9295*t^9 + 3/715*t^8 + 4/9295*t^7 - 147/9295*t^6 + 2/1859*t^5 + 19/1859*t^4 + 58/9295*t^3 - 166/9295*t^2 - 1/1859*t - 6/9295, t^24 - t^23 + t^21 - t^20 + t^18 - t^17 + t^15 - t^14 + t^12 - t^10 + t^9 - t^7 + t^6 - t^4 + t^3 - t + 1)
+CHK 13 4 psi=13,4 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-19/28561*t^23 - 55/28561*t^22 + 55/28561*t^21 - 36/28561*t^20 - 17/28561*t^19 + 55/28561*t^18 + 36/28561*t^17 - 53/28561*t^16 - 17/28561*t^14 - 36/28561*t^13 + 17/28561*t^12 + 19/28561*t^11 - 72/28561*t^10 - 36/28561*t^9 + 72/28561*t^8 - 53/28561*t^7 + 36/28561*t^6 + 72/28561*t^5 - 19/28561*t^4 + 19/28561*t^3 + 19/28561*t^2 - 17/28561*t, t^24 - t^23 + t^21 - t^20 + t^18 - t^17 + t^15 - t^14 + t^12 - t^10 + t^9 - t^7 + t^6 - t^4 + t^3 - t + 1)
+CHK 13 4 psi=13,9 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/65*t^23 - 12/4225*t^22 + 96/4225*t^21 + 34/4225*t^20 + 124/4225*t^19 - 43/4225*t^18 - 19/325*t^17 - 6/845*t^16 - 8/325*t^15 - 61/4225*t^14 + 63/4225*t^13 - 33/4225*t^12 - 2/4225*t^11 + 14/845*t^10 + 106/4225*t^9 + 17/845*t^8 - 24/4225*t^7 - 38/4225*t^6 + 79/4225*t^5 + 6/325*t^4 + 36/4225*t^3 - 74/4225*t^2 - 24/4225*t - 83/4225, t^24 - t^23 + t^21 - t^20 + t^18 - t^17 + t^15 - t^14 + t^12 - t^10 + t^9 - t^7 + t^6 - t^4 + t^3 - t + 1)
+CHK 13 4 psi=13,10 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-7/2197*t^23 + 55/28561*t^22 + 2/28561*t^21 - 72/28561*t^20 + 17/28561*t^19 + 2/28561*t^18 - 38/28561*t^17 + 53/28561*t^16 - 36/28561*t^14 + 36/28561*t^13 + 36/28561*t^12 - 19/28561*t^11 - 38/28561*t^10 + 38/28561*t^9 - 72/28561*t^8 - 55/28561*t^7 + 72/28561*t^6 - 72/28561*t^5 + 17/28561*t^4 + 7/2197*t^3 - 19/28561*t^2 - 36/28561*t + 55/28561, t^24 - t^23 + t^21 - t^20 + t^18 - t^17 + t^15 - t^14 + t^12 - t^10 + t^9 - t^7 + t^6 - t^4 + t^3 - t + 1)
+CHK 13 4 psi=13,12 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-58/28561*t^11 - 58/28561*t^8 - 58/28561*t^7 - 58/28561*t^6 - 58/28561*t^5 - 58/28561*t^2 - 29/28561, t^12 + t^11 + t^10 + t^9 + t^8 + t^7 + t^6 + t^5 + t^4 + t^3 + t^2 + t + 1)
+CHK 16 3 psi=1,1 phi=4,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 16 3 psi=1,1 phi=4,3 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 16 3 psi=1,1 phi=4,3 d=4 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 16 3 psi=1,1 phi=8,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 16 3 psi=1,1 phi=8,3 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 16 3 psi=1,1 phi=16,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 16 3 psi=1,1 phi=16,11 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 16 3 psi=4,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/128*t, t^2 + 1)
+CHK 16 3 psi=4,3 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/128*t, t^2 + 1)
+CHK 16 3 psi=4,3 phi=1,1 d=4 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/128*t, t^2 + 1)
+CHK 16 3 psi=8,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(3/512*t^3 + 3/512*t, t^4 + 1)
+CHK 16 3 psi=8,3 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(3/512*t^3 + 3/512*t, t^4 + 1)
+CHK 16 3 psi=16,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(15/2048*t^5 + 7/2048*t, t^8 + 1)
+CHK 16 3 psi=16,11 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(7/2048*t^7 + 15/2048*t^3, t^8 + 1)
+CHK 16 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 16 4 psi=1,1 phi=1,1 d=2 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 16 4 psi=1,1 phi=1,1 d=4 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 16 4 psi=1,1 phi=1,1 d=8 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 16 4 psi=1,1 phi=1,1 d=16 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 16 4 psi=1,1 phi=8,5 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 16 4 psi=1,1 phi=8,5 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 16 4 psi=1,1 phi=16,5 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 16 4 psi=1,1 phi=16,13 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 16 4 psi=4,3 phi=4,3 d=1 a0nz=0 psi1=0 c0nz=0 phi1=0 scal=0
+CHK 16 4 psi=8,5 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-11/4096*t^3 + 11/4096*t, t^4 + 1)
+CHK 16 4 psi=8,5 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-11/4096*t^3 + 11/4096*t, t^4 + 1)
+CHK 16 4 psi=16,5 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-117/32768*t^7 + 47/32768*t^3, t^8 + 1)
+CHK 16 4 psi=16,13 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-47/32768*t^5 + 117/32768*t, t^8 + 1)
+CHK 18 3 psi=1,1 phi=3,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 3 psi=1,1 phi=3,2 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 3 psi=1,1 phi=3,2 d=3 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 3 psi=1,1 phi=3,2 d=6 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 3 psi=1,1 phi=9,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 3 psi=1,1 phi=9,2 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 3 psi=1,1 phi=9,5 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 3 psi=1,1 phi=9,5 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 3 psi=3,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 18 3 psi=3,2 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 18 3 psi=3,2 phi=1,1 d=3 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 18 3 psi=3,2 phi=1,1 d=6 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/243*t + 1/243, t^2 + t + 1)
+CHK 18 3 psi=9,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/729*t^5 + 7/729*t^2, t^6 + t^3 + 1)
+CHK 18 3 psi=9,2 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/729*t^5 + 7/729*t^2, t^6 + t^3 + 1)
+CHK 18 3 psi=9,5 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(5/729*t^4 + 7/729*t, t^6 + t^3 + 1)
+CHK 18 3 psi=9,5 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(5/729*t^4 + 7/729*t, t^6 + t^3 + 1)
+CHK 18 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 18 4 psi=1,1 phi=1,1 d=2 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 18 4 psi=1,1 phi=1,1 d=3 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 18 4 psi=1,1 phi=1,1 d=6 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 18 4 psi=1,1 phi=1,1 d=9 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 18 4 psi=1,1 phi=1,1 d=18 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 18 4 psi=1,1 phi=9,4 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 4 psi=1,1 phi=9,4 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 4 psi=1,1 phi=9,7 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 4 psi=1,1 phi=9,7 d=2 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 18 4 psi=3,2 phi=3,2 d=1 a0nz=0 psi1=0 c0nz=0 phi1=0 scal=0
+CHK 18 4 psi=3,2 phi=3,2 d=2 a0nz=0 psi1=0 c0nz=0 phi1=0 scal=0
+CHK 18 4 psi=9,4 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-17/6561*t^4 + 11/6561*t, t^6 + t^3 + 1)
+CHK 18 4 psi=9,4 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-17/6561*t^4 + 11/6561*t, t^6 + t^3 + 1)
+CHK 18 4 psi=9,7 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-28/6561*t^5 - 11/6561*t^2, t^6 + t^3 + 1)
+CHK 18 4 psi=9,7 phi=1,1 d=2 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-28/6561*t^5 - 11/6561*t^2, t^6 + t^3 + 1)
+CHK 25 3 psi=1,1 phi=5,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=1,1 phi=5,2 d=5 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=1,1 phi=5,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=1,1 phi=5,3 d=5 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=1,1 phi=25,2 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=1,1 phi=25,3 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=1,1 phi=25,8 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=1,1 phi=25,12 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=1,1 phi=25,13 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=1,1 phi=25,17 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=1,1 phi=25,22 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=1,1 phi=25,23 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=5,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/625*t^7 + 3/625*t^6 + 1/625*t^5 + 1/625*t^4 - 3/625*t^3 + 2/625*t^2 + 2/625*t - 1/625, t^8 - t^6 + t^4 - t^2 + 1)
+CHK 25 3 psi=5,2 phi=1,1 d=5 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/625*t^7 + 3/625*t^6 + 1/625*t^5 + 1/625*t^4 - 3/625*t^3 + 2/625*t^2 + 2/625*t - 1/625, t^8 - t^6 + t^4 - t^2 + 1)
+CHK 25 3 psi=5,2 phi=5,4 d=1 a0nz=0 psi1=0 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=5,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-1/625*t^7 + 3/625*t^6 - 1/625*t^5 + 1/625*t^4 + 3/625*t^3 + 2/625*t^2 - 2/625*t - 1/625, t^8 - t^6 + t^4 - t^2 + 1)
+CHK 25 3 psi=5,3 phi=1,1 d=5 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-1/625*t^7 + 3/625*t^6 - 1/625*t^5 + 1/625*t^4 + 3/625*t^3 + 2/625*t^2 - 2/625*t - 1/625, t^8 - t^6 + t^4 - t^2 + 1)
+CHK 25 3 psi=5,3 phi=5,4 d=1 a0nz=0 psi1=0 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=5,4 phi=5,2 d=1 a0nz=0 psi1=0 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=5,4 phi=5,3 d=1 a0nz=0 psi1=0 c0nz=0 phi1=0 scal=0
+CHK 25 3 psi=25,2 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/1875*t^39 - 1/375*t^38 - 11/1875*t^37 - 11/1875*t^36 + 14/1875*t^35 + 1/625*t^34 - 8/1875*t^33 + 8/1875*t^32 + 2/625*t^31 - 28/1875*t^30 - 7/1875*t^29 + 11/1875*t^28 + 2/625*t^27 + 11/1875*t^26 + 4/375*t^25 - 2/625*t^24 - 2/375*t^23 + 1/125*t^22 + 1/625*t^21 - 11/1875*t^20 + 8/1875*t^19 + 1/625*t^18 - 1/625*t^17 - 1/125*t^16 + 13/1875*t^15 - 1/125*t^14 + 2/625*t^13 + 16/1875*t^12 - 2/1875*t^11 + 8/1875*t^10 + 2/375*t^9 - 4/375*t^8 + 4/1875*t^7 - 1/125*t^6 + 1/125*t^5 + 1/625*t^3 + 8/1875*t^2 - 3/625*t - 22/1875, t^40 - t^30 + t^20 - t^10 + 1)
+CHK 25 3 psi=25,3 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(13/3125*t^38 + 1/125*t^37 - 13/3125*t^36 - 3/3125*t^35 - 7/3125*t^34 + 4/3125*t^32 - 1/3125*t^31 + 2/3125*t^30 - 7/3125*t^29 + 9/3125*t^28 + 4/3125*t^27 + 9/3125*t^26 - 3/625*t^25 - 8/3125*t^24 + 3/3125*t^23 - 9/3125*t^22 + 8/625*t^21 + 3/3125*t^20 - 1/625*t^19 + 3/3125*t^18 + 9/3125*t^17 - 16/3125*t^16 - 14/3125*t^15 + 4/3125*t^14 - 17/3125*t^13 + 4/3125*t^12 - 2/625*t^11 + 22/3125*t^10 + 13/3125*t^9 - 8/3125*t^7 - 17/3125*t^6 + 11/3125*t^5 - 1/625*t^4 - 1/3125*t^3 + 4/3125*t^2 + 7/3125*t + 2/625, t^40 - t^30 + t^20 - t^10 + 1)
+CHK 25 3 psi=25,8 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(4/625*t^36 + 3/625*t^35 - 8/625*t^34 + 2/625*t^33 - 1/625*t^32 + 2/625*t^31 - 2/625*t^30 - 13/1250*t^29 - 1/250*t^28 - 1/1250*t^27 - 17/1250*t^26 - 1/250*t^25 + 13/1250*t^24 - 7/625*t^23 + 13/1250*t^22 + 18/625*t^21 + 3/1250*t^20 + 9/1250*t^19 - 4/625*t^18 - 3/625*t^17 + 1/50*t^16 - 9/1250*t^15 - 3/1250*t^14 - 1/1250*t^13 + 7/1250*t^12 - 2/625*t^11 + 1/250*t^10 - 11/1250*t^9 - 3/250*t^8 - 1/1250*t^7 + 1/125*t^6 + 1/1250*t^5 + 1/250*t^4 + 1/125*t^3 - 8/625*t^2 - 4/625*t - 3/1250, t^40 - t^30 + t^20 - t^10 + 1)
+CHK 25 3 psi=25,12 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-1/4375*t^39 - 1/625*t^38 - 2/875*t^37 + 6/4375*t^36 - 18/4375*t^35 - 8/4375*t^34 + 16/4375*t^32 + 1/625*t^31 + 3/4375*t^30 + 2/625*t^29 + 22/4375*t^28 + 12/4375*t^26 - 1/625*t^24 - 1/625*t^23 + 6/4375*t^22 - 1/875*t^21 + 9/4375*t^20 - 2/625*t^19 - 12/4375*t^18 - 2/4375*t^17 - 1/625*t^16 + 34/4375*t^15 - 8/4375*t^14 + 1/625*t^13 + 6/4375*t^12 + 9/4375*t^11 - 1/4375*t^10 - 11/4375*t^9 + 3/4375*t^8 - 12/4375*t^7 + 3/4375*t^6 + 4/4375*t^5 + 8/4375*t^4 - 3/875*t^3 - 9/4375*t^2 - 2/4375*t + 1/875, t^40 - t^30 + t^20 - t^10 + 1)
+CHK 25 3 psi=25,13 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(-3/4375*t^39 + 17/4375*t^38 + 2/4375*t^37 + 11/4375*t^36 - 6/875*t^35 - 1/875*t^34 + 16/4375*t^33 - 1/875*t^32 + 2/4375*t^31 + 4/4375*t^30 + 1/875*t^29 - 9/4375*t^28 + 12/4375*t^27 + 3/4375*t^26 + 1/875*t^25 - 12/4375*t^24 - 1/4375*t^23 + 11/4375*t^22 + 9/4375*t^21 + 1/4375*t^20 - 1/4375*t^17 + 3/4375*t^16 + 1/625*t^15 - 2/4375*t^14 - 1/875*t^13 + 8/4375*t^12 - 4/4375*t^11 - 6/4375*t^10 + 2/4375*t^9 + 16/4375*t^8 - 2/4375*t^7 + 3/4375*t^6 + 1/875*t^5 - 8/4375*t^4 - 2/4375*t^3 + 8/4375*t^2 - 23/4375*t + 11/4375, t^40 - t^30 + t^20 - t^10 + 1)
+CHK 25 3 psi=25,17 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(4/6875*t^38 - 4/6875*t^37 - 2/6875*t^34 + 4/6875*t^33 + 17/6875*t^32 - 9/6875*t^31 + 9/6875*t^30 - 8/6875*t^29 + 1/625*t^28 + 4/6875*t^27 + 4/6875*t^26 + 26/6875*t^25 - 14/6875*t^24 - 16/6875*t^23 - 7/6875*t^22 + 14/6875*t^21 + 8/6875*t^20 + 6/6875*t^19 + 1/1375*t^18 - 2/1375*t^17 + 23/6875*t^16 + 7/6875*t^15 - 6/6875*t^14 - 1/1375*t^13 - 3/1375*t^12 + 3/6875*t^11 - 2/1375*t^10 + 7/6875*t^9 + 7/6875*t^8 + 2/6875*t^7 + 7/6875*t^6 - 1/625*t^4 - 6/6875*t^3 - 2/6875*t^2 + 1/1375*t + 13/6875, t^40 - t^30 + t^20 - t^10 + 1)
+CHK 25 3 psi=25,22 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(2/4375*t^39 + 6/4375*t^38 - 8/4375*t^37 - 4/4375*t^36 - 18/4375*t^35 - 3/4375*t^34 + 13/4375*t^33 - 1/4375*t^32 - 2/625*t^31 + 17/4375*t^30 + 2/4375*t^29 + 13/4375*t^28 + 2/4375*t^27 + 17/4375*t^26 + 6/4375*t^25 - 1/875*t^24 + 2/4375*t^23 + 4/875*t^22 - 18/4375*t^21 + 1/875*t^20 - 4/4375*t^19 - 4/4375*t^18 - 13/4375*t^17 - 2/4375*t^16 - 8/4375*t^15 + 17/4375*t^14 + 9/4375*t^13 - 11/4375*t^12 + 6/4375*t^11 + 1/625*t^10 + 6/4375*t^9 + 8/4375*t^8 + 19/4375*t^7 + 2/4375*t^6 + 1/625*t^5 - 17/4375*t^4 - 16/4375*t^3 - 1/625*t^2 - 13/4375*t + 2/875, t^40 - t^30 + t^20 - t^10 + 1)
+CHK 25 3 psi=25,23 phi=1,1 d=1 a0nz=0 psi1=0 c0nz=1 phi1=1 scal=Mod(1/625*t^38 - 1/1875*t^37 + 2/625*t^36 - 1/1875*t^35 + 4/1875*t^34 + 7/1875*t^33 - 13/1875*t^32 + 2/625*t^31 - 13/1875*t^30 - 2/375*t^29 - 2/375*t^28 + 1/625*t^27 + 1/625*t^26 + 3/625*t^25 - 2/625*t^24 + 1/625*t^23 + 1/625*t^22 + 8/1875*t^21 + 4/625*t^20 + 7/1875*t^19 - 7/625*t^18 + 16/1875*t^17 - 13/1875*t^16 + 2/625*t^15 + 6/625*t^14 + 1/375*t^13 + 2/375*t^12 - 1/125*t^11 - 4/625*t^10 - 11/1875*t^9 + 3/625*t^8 + 14/1875*t^7 - 2/1875*t^6 - 13/1875*t^5 + 4/1875*t^4 - 1/625*t^3 - 2/1875*t - 1/1875, t^40 - t^30 + t^20 - t^10 + 1)
+CHK 25 4 psi=1,1 phi=1,1 d=1 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 25 4 psi=1,1 phi=1,1 d=5 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 25 4 psi=1,1 phi=1,1 d=25 a0nz=1 psi1=1 c0nz=1 phi1=1 scal=1/240
+CHK 25 4 psi=1,1 phi=5,4 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 4 psi=1,1 phi=5,4 d=5 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 4 psi=1,1 phi=25,4 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 4 psi=1,1 phi=25,6 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 4 psi=1,1 phi=25,9 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 4 psi=1,1 phi=25,11 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 4 psi=1,1 phi=25,14 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 4 psi=1,1 phi=25,16 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 4 psi=1,1 phi=25,19 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0
+CHK 25 4 psi=1,1 phi=25,21 d=1 a0nz=1 psi1=1 c0nz=0 phi1=0 scal=0

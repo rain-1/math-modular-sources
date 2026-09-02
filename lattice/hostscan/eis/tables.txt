@@ -1,0 +1,230 @@
+### A. census
+| N | dim E3(G1) | #eps(odd) | #INT dirs | distinct interesting wt-3 periods | dim E4(G1) | dim E4(G0) | #INT dirs | distinct interesting wt-4 periods |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 0 | 0 | 0 | - | 1 | 1 | 1 | zeta(3) |
+| 2 | 0 | 0 | 0 | - | 2 | 2 | 2 | zeta(3) |
+| 3 | 2 | 1 | 1 | L(2,chi_-3) | 2 | 2 | 2 | zeta(3) |
+| 4 | 2 | 1 | 1 | L(2,chi_-4) | 3 | 3 | 3 | zeta(3) |
+| 5 | 4 | 2 | 2 | L(2,chi_5#2), L(2,chi_5#3) | 4 | 2 | 3 | L(3,chi_5), zeta(3) |
+| 6 | 4 | 1 | 2 | L(2,chi_-3) | 4 | 4 | 4 | zeta(3) |
+| 7 | 6 | 3 | 3 | L(2,chi_-7), L(2,chi_7#3), L(2,chi_7#5) | 6 | 2 | 4 | L(3,chi_7#2), L(3,chi_7#4), zeta(3) |
+| 8 | 6 | 2 | 3 | L(2,chi_-4), L(2,chi_-8) | 6 | 4 | 5 | L(3,chi_8), zeta(3) |
+| 9 | 8 | 3 | 4 | L(2,chi_-3), L(2,chi_9#2), L(2,chi_9#5) | 8 | 4 | 5 | L(3,chi_9#4), L(3,chi_9#7), zeta(3) |
+| 10 | 8 | 2 | 4 | L(2,chi_5#2), L(2,chi_5#3) | 8 | 4 | 6 | L(3,chi_5), zeta(3) |
+| 11 | 10 | 5 | 5 | L(2,chi_-11), L(2,chi_11#2), L(2,chi_11#6), L(2,chi_11#7), L(2,chi_11#8) | 10 | 2 | 6 | L(3,chi_11#3), L(3,chi_11#4), L(3,chi_11#5), L(3,chi_11#9), zeta(3) |
+| 12 | 10 | 2 | 5 | L(2,chi_-3), L(2,chi_-4) | 10 | 6 | 7 | L(3,chi_12), zeta(3) |
+| 13 | 12 | 6 | 6 | L(2,chi_13#11), L(2,chi_13#2), L(2,chi_13#5), L(2,chi_13#6), L(2,chi_13#7), L(2,chi_13#8) | 12 | 2 | 7 | L(3,chi_13#10), L(3,chi_13#3), L(3,chi_13#4), L(3,chi_13#9), L(3,chi_13), zeta(3) |
+| 14 | 12 | 3 | 6 | L(2,chi_-7), L(2,chi_7#3), L(2,chi_7#5) | 12 | 4 | 8 | L(3,chi_7#2), L(3,chi_7#4), zeta(3) |
+| 15 | 16 | 4 | 7 | L(2,chi_-15), L(2,chi_-3), L(2,chi_5#2), L(2,chi_5#3) | 16 | 4 | 8 | L(3,chi_15#2), L(3,chi_15#8), L(3,chi_5), zeta(3) |
+| 16 | 14 | 4 | 7 | L(2,chi_-4), L(2,chi_-8), L(2,chi_16#11), L(2,chi_16#3) | 14 | 6 | 9 | L(3,chi_16#13), L(3,chi_16#5), L(3,chi_8), zeta(3) |
+| 17 | 16 | 8 | 8 | L(2,chi_17#10), L(2,chi_17#11), L(2,chi_17#12), L(2,chi_17#14), L(2,chi_17#3), L(2,chi_17#5), L(2,chi_17#6), L(2,chi_17#7) | 16 | 2 | 9 | L(3,chi_17#13), L(3,chi_17#15), L(3,chi_17#2), L(3,chi_17#4), L(3,chi_17#8), L(3,chi_17#9), L(3,chi_17), zeta(3) |
+| 18 | 16 | 3 | 8 | L(2,chi_-3), L(2,chi_9#2), L(2,chi_9#5) | 16 | 8 | 10 | L(3,chi_9#4), L(3,chi_9#7), zeta(3) |
+| 19 | 18 | 9 | 9 | L(2,chi_-19), L(2,chi_19#10), L(2,chi_19#12), L(2,chi_19#13), L(2,chi_19#14), L(2,chi_19#15), L(2,chi_19#2), L(2,chi_19#3), L(2,chi_19#8) | 18 | 2 | 10 | L(3,chi_19#11), L(3,chi_19#16), L(3,chi_19#17), L(3,chi_19#4), L(3,chi_19#5), L(3,chi_19#6), L(3,chi_19#7), L(3,chi_19#9), zeta(3) |
+| 20 | 20 | 4 | 9 | L(2,chi_-20), L(2,chi_-4), L(2,chi_5#2), L(2,chi_5#3) | 20 | 6 | 11 | L(3,chi_20#3), L(3,chi_20#7), L(3,chi_5), zeta(3) |
+| 21 | 24 | 6 | 10 | L(2,chi_-3), L(2,chi_-7), L(2,chi_21#11), L(2,chi_21#2), L(2,chi_7#3), L(2,chi_7#5) | 24 | 4 | 11 | L(3,chi_21#17), L(3,chi_21#5), L(3,chi_21), L(3,chi_7#2), L(3,chi_7#4), zeta(3) |
+| 22 | 20 | 5 | 10 | L(2,chi_-11), L(2,chi_11#2), L(2,chi_11#6), L(2,chi_11#7), L(2,chi_11#8) | 20 | 4 | 12 | L(3,chi_11#3), L(3,chi_11#4), L(3,chi_11#5), L(3,chi_11#9), zeta(3) |
+| 23 | 22 | 11 | 11 | L(2,chi_-23), L(2,chi_23#10), L(2,chi_23#11), L(2,chi_23#14), L(2,chi_23#15), L(2,chi_23#17), L(2,chi_23#19), L(2,chi_23#20), L(2,chi_23#21), L(2,chi_23#5), L(2,chi_23#7) | 22 | 2 | 12 | L(3,chi_23#12), L(3,chi_23#13), L(3,chi_23#16), L(3,chi_23#18), L(3,chi_23#2), L(3,chi_23#3), L(3,chi_23#4), L(3,chi_23#6), L(3,chi_23#8), L(3,chi_23#9), zeta(3) |
+| 24 | 24 | 4 | 11 | L(2,chi_-24), L(2,chi_-3), L(2,chi_-4), L(2,chi_-8) | 24 | 8 | 13 | L(3,chi_12), L(3,chi_24), L(3,chi_8), zeta(3) |
+| 25 | 28 | 10 | 12 | L(2,chi_25#12), L(2,chi_25#13), L(2,chi_25#17), L(2,chi_25#2), L(2,chi_25#22), L(2,chi_25#23), L(2,chi_25#3), L(2,chi_25#8), L(2,chi_5#2), L(2,chi_5#3) | 28 | 6 | 13 | L(3,chi_25#11), L(3,chi_25#14), L(3,chi_25#16), L(3,chi_25#19), L(3,chi_25#21), L(3,chi_25#4), L(3,chi_25#6), L(3,chi_25#9), L(3,chi_5), zeta(3) |
+| 26 | 24 | 6 | 12 | L(2,chi_13#11), L(2,chi_13#2), L(2,chi_13#5), L(2,chi_13#6), L(2,chi_13#7), L(2,chi_13#8) | 24 | 4 | 14 | L(3,chi_13#10), L(3,chi_13#3), L(3,chi_13#4), L(3,chi_13#9), L(3,chi_13), zeta(3) |
+| 27 | 30 | 9 | 13 | L(2,chi_-3), L(2,chi_27#11), L(2,chi_27#14), L(2,chi_27#2), L(2,chi_27#20), L(2,chi_27#23), L(2,chi_27#5), L(2,chi_9#2), L(2,chi_9#5) | 30 | 6 | 14 | L(3,chi_27#13), L(3,chi_27#16), L(3,chi_27#22), L(3,chi_27#25), L(3,chi_27#4), L(3,chi_27#7), L(3,chi_9#4), L(3,chi_9#7), zeta(3) |
+| 28 | 30 | 6 | 13 | L(2,chi_-4), L(2,chi_-7), L(2,chi_28#11), L(2,chi_28#23), L(2,chi_7#3), L(2,chi_7#5) | 30 | 6 | 15 | L(3,chi_28#19), L(3,chi_28#3), L(3,chi_28), L(3,chi_7#2), L(3,chi_7#4), zeta(3) |
+| 29 | 28 | 14 | 14 | L(2,chi_29#10), L(2,chi_29#11), L(2,chi_29#12), L(2,chi_29#14), L(2,chi_29#15), L(2,chi_29#17), L(2,chi_29#18), L(2,chi_29#19), L(2,chi_29#2), L(2,chi_29#21), L(2,chi_29#26), L(2,chi_29#27), L(2,chi_29#3), L(2,chi_29#8) | 28 | 2 | 15 | L(3,chi_29#13), L(3,chi_29#16), L(3,chi_29#20), L(3,chi_29#22), L(3,chi_29#23), L(3,chi_29#24), L(3,chi_29#25), L(3,chi_29#4), L(3,chi_29#5), L(3,chi_29#6), L(3,chi_29#7), L(3,chi_29#9), L(3,chi_29), zeta(3) |
+| 30 | 32 | 4 | 14 | L(2,chi_-15), L(2,chi_-3), L(2,chi_5#2), L(2,chi_5#3) | 32 | 8 | 16 | L(3,chi_15#2), L(3,chi_15#8), L(3,chi_5), zeta(3) |
+| 31 | 30 | 15 | 15 | L(2,chi_-31), L(2,chi_31#11), L(2,chi_31#12), L(2,chi_31#13), L(2,chi_31#15), L(2,chi_31#17), L(2,chi_31#21), L(2,chi_31#22), L(2,chi_31#23), L(2,chi_31#24), L(2,chi_31#26), L(2,chi_31#27), L(2,chi_31#29), L(2,chi_31#3), L(2,chi_31#6) | 30 | 2 | 16 | L(3,chi_31#10), L(3,chi_31#14), L(3,chi_31#16), L(3,chi_31#18), L(3,chi_31#19), L(3,chi_31#2), L(3,chi_31#20), L(3,chi_31#25), L(3,chi_31#28), L(3,chi_31#4), L(3,chi_31#5), L(3,chi_31#7), L(3,chi_31#8), L(3,chi_31#9), zeta(3) |
+| 32 | 32 | 8 | 15 | L(2,chi_-4), L(2,chi_-8), L(2,chi_16#11), L(2,chi_16#3), L(2,chi_32#11), L(2,chi_32#19), L(2,chi_32#27), L(2,chi_32#3) | 32 | 8 | 17 | L(3,chi_16#13), L(3,chi_16#5), L(3,chi_32#13), L(3,chi_32#21), L(3,chi_32#29), L(3,chi_32#5), L(3,chi_8), zeta(3) |
+| 33 | 40 | 10 | 16 | L(2,chi_-11), L(2,chi_-3), L(2,chi_11#2), L(2,chi_11#6), L(2,chi_11#7), L(2,chi_11#8), L(2,chi_33#14), L(2,chi_33#20), L(2,chi_33#26), L(2,chi_33#5) | 40 | 4 | 17 | L(3,chi_11#3), L(3,chi_11#4), L(3,chi_11#5), L(3,chi_11#9), L(3,chi_33#17), L(3,chi_33#2), L(3,chi_33#29), L(3,chi_33#8), L(3,chi_33), zeta(3) |
+| 34 | 32 | 8 | 16 | L(2,chi_17#10), L(2,chi_17#11), L(2,chi_17#12), L(2,chi_17#14), L(2,chi_17#3), L(2,chi_17#5), L(2,chi_17#6), L(2,chi_17#7) | 32 | 4 | 18 | L(3,chi_17#13), L(3,chi_17#15), L(3,chi_17#2), L(3,chi_17#4), L(3,chi_17#8), L(3,chi_17#9), L(3,chi_17), zeta(3) |
+| 35 | 48 | 12 | 17 | L(2,chi_-35), L(2,chi_-7), L(2,chi_35#18), L(2,chi_35#19), L(2,chi_35#2), L(2,chi_35#23), L(2,chi_35#24), L(2,chi_35#32), L(2,chi_5#2), L(2,chi_5#3), L(2,chi_7#3), L(2,chi_7#5) | 48 | 4 | 18 | L(3,chi_35#12), L(3,chi_35#13), L(3,chi_35#17), L(3,chi_35#27), L(3,chi_35#3), L(3,chi_35#33), L(3,chi_35#4), L(3,chi_35#9), L(3,chi_5), L(3,chi_7#2), L(3,chi_7#4), zeta(3) |
+| 36 | 40 | 6 | 17 | L(2,chi_-3), L(2,chi_-4), L(2,chi_36#31), L(2,chi_36#7), L(2,chi_9#2), L(2,chi_9#5) | 40 | 12 | 19 | L(3,chi_12), L(3,chi_36#11), L(3,chi_36#23), L(3,chi_9#4), L(3,chi_9#7), zeta(3) |
+| 37 | 36 | 18 | 18 | L(2,chi_37#13), L(2,chi_37#14), L(2,chi_37#15), L(2,chi_37#17), L(2,chi_37#18), L(2,chi_37#19), L(2,chi_37#2), L(2,chi_37#20), L(2,chi_37#22), L(2,chi_37#23), L(2,chi_37#24), L(2,chi_37#29), L(2,chi_37#31), L(2,chi_37#32), L(2,chi_37#35), L(2,chi_37#5), L(2,chi_37#6), L(2,chi_37#8) | 36 | 2 | 19 | L(3,chi_37#10), L(3,chi_37#11), L(3,chi_37#12), L(3,chi_37#16), L(3,chi_37#21), L(3,chi_37#25), L(3,chi_37#26), L(3,chi_37#27), L(3,chi_37#28), L(3,chi_37#3), L(3,chi_37#30), L(3,chi_37#33), L(3,chi_37#34), L(3,chi_37#4), L(3,chi_37#7), L(3,chi_37#9), L(3,chi_37), zeta(3) |
+| 38 | 36 | 9 | 18 | L(2,chi_-19), L(2,chi_19#10), L(2,chi_19#12), L(2,chi_19#13), L(2,chi_19#14), L(2,chi_19#15), L(2,chi_19#2), L(2,chi_19#3), L(2,chi_19#8) | 36 | 4 | 20 | L(3,chi_19#11), L(3,chi_19#16), L(3,chi_19#17), L(3,chi_19#4), L(3,chi_19#5), L(3,chi_19#6), L(3,chi_19#7), L(3,chi_19#9), zeta(3) |
+| 39 | 48 | 12 | 19 | L(2,chi_-3), L(2,chi_-39), L(2,chi_13#11), L(2,chi_13#2), L(2,chi_13#5), L(2,chi_13#6), L(2,chi_13#7), L(2,chi_13#8), L(2,chi_39#17), L(2,chi_39#23), L(2,chi_39#29), L(2,chi_39#35) | 48 | 4 | 20 | L(3,chi_13#10), L(3,chi_13#3), L(3,chi_13#4), L(3,chi_13#9), L(3,chi_13), L(3,chi_39#11), L(3,chi_39#2), L(3,chi_39#20), L(3,chi_39#32), L(3,chi_39#5), L(3,chi_39#8), zeta(3) |
+| 40 | 48 | 8 | 19 | L(2,chi_-20), L(2,chi_-4), L(2,chi_-40), L(2,chi_-8), L(2,chi_40#13), L(2,chi_40#37), L(2,chi_5#2), L(2,chi_5#3) | 48 | 8 | 21 | L(3,chi_20#3), L(3,chi_20#7), L(3,chi_40#27), L(3,chi_40#3), L(3,chi_40), L(3,chi_5), L(3,chi_8), zeta(3) |
+| 41 | 40 | 20 | 20 | L(2,chi_41#11), L(2,chi_41#12), L(2,chi_41#13), L(2,chi_41#14), L(2,chi_41#15), L(2,chi_41#17), L(2,chi_41#19), L(2,chi_41#22), L(2,chi_41#24), L(2,chi_41#26), L(2,chi_41#27), L(2,chi_41#28), L(2,chi_41#29), L(2,chi_41#3), L(2,chi_41#30), L(2,chi_41#34), L(2,chi_41#35), L(2,chi_41#38), L(2,chi_41#6), L(2,chi_41#7) | 40 | 2 | 21 | L(3,chi_41#10), L(3,chi_41#16), L(3,chi_41#18), L(3,chi_41#2), L(3,chi_41#20), L(3,chi_41#21), L(3,chi_41#23), L(3,chi_41#25), L(3,chi_41#31), L(3,chi_41#32), L(3,chi_41#33), L(3,chi_41#36), L(3,chi_41#37), L(3,chi_41#39), L(3,chi_41#4), L(3,chi_41#5), L(3,chi_41#8), L(3,chi_41#9), L(3,chi_41), zeta(3) |
+| 42 | 48 | 6 | 20 | L(2,chi_-3), L(2,chi_-7), L(2,chi_21#11), L(2,chi_21#2), L(2,chi_7#3), L(2,chi_7#5) | 48 | 8 | 22 | L(3,chi_21#17), L(3,chi_21#5), L(3,chi_21), L(3,chi_7#2), L(3,chi_7#4), zeta(3) |
+| 43 | 42 | 21 | 21 | L(2,chi_-43), L(2,chi_43#12), L(2,chi_43#18), L(2,chi_43#19), L(2,chi_43#2), L(2,chi_43#20), L(2,chi_43#22), L(2,chi_43#26), L(2,chi_43#27), L(2,chi_43#28), L(2,chi_43#29), L(2,chi_43#3), L(2,chi_43#30), L(2,chi_43#32), L(2,chi_43#33), L(2,chi_43#34), L(2,chi_43#37), L(2,chi_43#39), L(2,chi_43#5), L(2,chi_43#7), L(2,chi_43#8) | 42 | 2 | 22 | L(3,chi_43#10), L(3,chi_43#11), L(3,chi_43#13), L(3,chi_43#14), L(3,chi_43#15), L(3,chi_43#16), L(3,chi_43#17), L(3,chi_43#21), L(3,chi_43#23), L(3,chi_43#24), L(3,chi_43#25), L(3,chi_43#31), L(3,chi_43#35), L(3,chi_43#36), L(3,chi_43#38), L(3,chi_43#4), L(3,chi_43#40), L(3,chi_43#41), L(3,chi_43#6), L(3,chi_43#9), zeta(3) |
+| 44 | 50 | 10 | 21 | L(2,chi_-11), L(2,chi_-4), L(2,chi_11#2), L(2,chi_11#6), L(2,chi_11#7), L(2,chi_11#8), L(2,chi_44#15), L(2,chi_44#27), L(2,chi_44#3), L(2,chi_44#31) | 50 | 6 | 23 | L(3,chi_11#3), L(3,chi_11#4), L(3,chi_11#5), L(3,chi_11#9), L(3,chi_44#19), L(3,chi_44#35), L(3,chi_44#39), L(3,chi_44#7), L(3,chi_44), zeta(3) |
+| 45 | 64 | 12 | 22 | L(2,chi_-15), L(2,chi_-3), L(2,chi_45#13), L(2,chi_45#14), L(2,chi_45#22), L(2,chi_45#29), L(2,chi_45#43), L(2,chi_45#7), L(2,chi_5#2), L(2,chi_5#3), L(2,chi_9#2), L(2,chi_9#5) | 64 | 8 | 23 | L(3,chi_15#2), L(3,chi_15#8), L(3,chi_45#2), L(3,chi_45#23), L(3,chi_45#32), L(3,chi_45#34), L(3,chi_45#38), L(3,chi_45#4), L(3,chi_5), L(3,chi_9#4), L(3,chi_9#7), zeta(3) |
+| 46 | 44 | 11 | 22 | L(2,chi_-23), L(2,chi_23#10), L(2,chi_23#11), L(2,chi_23#14), L(2,chi_23#15), L(2,chi_23#17), L(2,chi_23#19), L(2,chi_23#20), L(2,chi_23#21), L(2,chi_23#5), L(2,chi_23#7) | 44 | 4 | 24 | L(3,chi_23#12), L(3,chi_23#13), L(3,chi_23#16), L(3,chi_23#18), L(3,chi_23#2), L(3,chi_23#3), L(3,chi_23#4), L(3,chi_23#6), L(3,chi_23#8), L(3,chi_23#9), zeta(3) |
+| 47 | 46 | 23 | 23 | L(2,chi_-47), L(2,chi_47#10), L(2,chi_47#11), L(2,chi_47#13), L(2,chi_47#15), L(2,chi_47#19), L(2,chi_47#20), L(2,chi_47#22), L(2,chi_47#23), L(2,chi_47#26), L(2,chi_47#29), L(2,chi_47#30), L(2,chi_47#31), L(2,chi_47#33), L(2,chi_47#35), L(2,chi_47#38), L(2,chi_47#39), L(2,chi_47#40), L(2,chi_47#41), L(2,chi_47#43), L(2,chi_47#44), L(2,chi_47#45), L(2,chi_47#5) | 46 | 2 | 24 | L(3,chi_47#12), L(3,chi_47#14), L(3,chi_47#16), L(3,chi_47#17), L(3,chi_47#18), L(3,chi_47#2), L(3,chi_47#21), L(3,chi_47#24), L(3,chi_47#25), L(3,chi_47#27), L(3,chi_47#28), L(3,chi_47#3), L(3,chi_47#32), L(3,chi_47#34), L(3,chi_47#36), L(3,chi_47#37), L(3,chi_47#4), L(3,chi_47#42), L(3,chi_47#6), L(3,chi_47#7), L(3,chi_47#8), L(3,chi_47#9), zeta(3) |
+| 48 | 56 | 8 | 23 | L(2,chi_-24), L(2,chi_-3), L(2,chi_-4), L(2,chi_-8), L(2,chi_16#11), L(2,chi_16#3), L(2,chi_48#29), L(2,chi_48#5) | 56 | 12 | 25 | L(3,chi_12), L(3,chi_16#13), L(3,chi_16#5), L(3,chi_24), L(3,chi_48#11), L(3,chi_48#35), L(3,chi_8), zeta(3) |
+| 49 | 60 | 21 | 24 | L(2,chi_-7), L(2,chi_49#10), L(2,chi_49#12), L(2,chi_49#13), L(2,chi_49#17), L(2,chi_49#20), L(2,chi_49#24), L(2,chi_49#26), L(2,chi_49#27), L(2,chi_49#3), L(2,chi_49#33), L(2,chi_49#34), L(2,chi_49#38), L(2,chi_49#40), L(2,chi_49#41), L(2,chi_49#45), L(2,chi_49#47), L(2,chi_49#5), L(2,chi_49#6), L(2,chi_7#3), L(2,chi_7#5) | 60 | 8 | 25 | L(3,chi_49#11), L(3,chi_49#15), L(3,chi_49#16), L(3,chi_49#2), L(3,chi_49#22), L(3,chi_49#23), L(3,chi_49#25), L(3,chi_49#29), L(3,chi_49#32), L(3,chi_49#36), L(3,chi_49#37), L(3,chi_49#39), L(3,chi_49#4), L(3,chi_49#43), L(3,chi_49#44), L(3,chi_49#46), L(3,chi_49#8), L(3,chi_49#9), L(3,chi_7#2), L(3,chi_7#4), zeta(3) |
+| 50 | 56 | 10 | 24 | L(2,chi_25#12), L(2,chi_25#13), L(2,chi_25#17), L(2,chi_25#2), L(2,chi_25#22), L(2,chi_25#23), L(2,chi_25#3), L(2,chi_25#8), L(2,chi_5#2), L(2,chi_5#3) | 56 | 12 | 26 | L(3,chi_25#11), L(3,chi_25#14), L(3,chi_25#16), L(3,chi_25#19), L(3,chi_25#21), L(3,chi_25#4), L(3,chi_25#6), L(3,chi_25#9), L(3,chi_5), zeta(3) |
+| 51 | 64 | 16 | 25 | L(2,chi_-3), L(2,chi_-51), L(2,chi_17#10), L(2,chi_17#11), L(2,chi_17#12), L(2,chi_17#14), L(2,chi_17#3), L(2,chi_17#5), L(2,chi_17#6), L(2,chi_17#7), L(2,chi_51#2), L(2,chi_51#26), L(2,chi_51#32), L(2,chi_51#38), L(2,chi_51#47), L(2,chi_51#8) | 64 | 4 | 26 | L(3,chi_17#13), L(3,chi_17#15), L(3,chi_17#2), L(3,chi_17#4), L(3,chi_17#8), L(3,chi_17#9), L(3,chi_17), L(3,chi_51#11), L(3,chi_51#14), L(3,chi_51#20), L(3,chi_51#23), L(3,chi_51#29), L(3,chi_51#41), L(3,chi_51#44), L(3,chi_51#5), zeta(3) |
+| 52 | 60 | 12 | 25 | L(2,chi_-4), L(2,chi_-52), L(2,chi_13#11), L(2,chi_13#2), L(2,chi_13#5), L(2,chi_13#6), L(2,chi_13#7), L(2,chi_13#8), L(2,chi_52#23), L(2,chi_52#3), L(2,chi_52#35), L(2,chi_52#43) | 60 | 6 | 27 | L(3,chi_13#10), L(3,chi_13#3), L(3,chi_13#4), L(3,chi_13#9), L(3,chi_13), L(3,chi_52#11), L(3,chi_52#15), L(3,chi_52#19), L(3,chi_52#31), L(3,chi_52#47), L(3,chi_52#7), zeta(3) |
+| 53 | 52 | 26 | 26 | L(2,chi_53#12), L(2,chi_53#14), L(2,chi_53#18), L(2,chi_53#19), L(2,chi_53#2), L(2,chi_53#20), L(2,chi_53#21), L(2,chi_53#22), L(2,chi_53#23), L(2,chi_53#26), L(2,chi_53#27), L(2,chi_53#3), L(2,chi_53#30), L(2,chi_53#31), L(2,chi_53#32), L(2,chi_53#33), L(2,chi_53#34), L(2,chi_53#35), L(2,chi_53#39), L(2,chi_53#41), L(2,chi_53#45), L(2,chi_53#48), L(2,chi_53#5), L(2,chi_53#50), L(2,chi_53#51), L(2,chi_53#8) | 52 | 2 | 27 | L(3,chi_53#10), L(3,chi_53#11), L(3,chi_53#13), L(3,chi_53#15), L(3,chi_53#16), L(3,chi_53#17), L(3,chi_53#24), L(3,chi_53#25), L(3,chi_53#28), L(3,chi_53#29), L(3,chi_53#36), L(3,chi_53#37), L(3,chi_53#38), L(3,chi_53#4), L(3,chi_53#40), L(3,chi_53#42), L(3,chi_53#43), L(3,chi_53#44), L(3,chi_53#46), L(3,chi_53#47), L(3,chi_53#49), L(3,chi_53#6), L(3,chi_53#7), L(3,chi_53#9), L(3,chi_53), zeta(3) |
+| 54 | 60 | 9 | 26 | L(2,chi_-3), L(2,chi_27#11), L(2,chi_27#14), L(2,chi_27#2), L(2,chi_27#20), L(2,chi_27#23), L(2,chi_27#5), L(2,chi_9#2), L(2,chi_9#5) | 60 | 12 | 28 | L(3,chi_27#13), L(3,chi_27#16), L(3,chi_27#22), L(3,chi_27#25), L(3,chi_27#4), L(3,chi_27#7), L(3,chi_9#4), L(3,chi_9#7), zeta(3) |
+| 55 | 80 | 20 | 27 | L(2,chi_-11), L(2,chi_-55), L(2,chi_11#2), L(2,chi_11#6), L(2,chi_11#7), L(2,chi_11#8), L(2,chi_5#2), L(2,chi_5#3), L(2,chi_55#19), L(2,chi_55#24), L(2,chi_55#27), L(2,chi_55#29), L(2,chi_55#3), L(2,chi_55#37), L(2,chi_55#38), L(2,chi_55#39), L(2,chi_55#42), L(2,chi_55#47), L(2,chi_55#48), L(2,chi_55#53) | 80 | 4 | 28 | L(3,chi_11#3), L(3,chi_11#4), L(3,chi_11#5), L(3,chi_11#9), L(3,chi_5), L(3,chi_55#13), L(3,chi_55#14), L(3,chi_55#17), L(3,chi_55#18), L(3,chi_55#2), L(3,chi_55#28), L(3,chi_55#32), L(3,chi_55#4), L(3,chi_55#43), L(3,chi_55#49), L(3,chi_55#52), L(3,chi_55#7), L(3,chi_55#8), L(3,chi_55#9), zeta(3) |
+| 56 | 72 | 12 | 27 | L(2,chi_-4), L(2,chi_-56), L(2,chi_-7), L(2,chi_-8), L(2,chi_28#11), L(2,chi_28#23), L(2,chi_56#11), L(2,chi_56#45), L(2,chi_56#5), L(2,chi_56#51), L(2,chi_7#3), L(2,chi_7#5) | 72 | 8 | 29 | L(3,chi_28#19), L(3,chi_28#3), L(3,chi_28), L(3,chi_56#19), L(3,chi_56#3), L(3,chi_56#37), L(3,chi_56#53), L(3,chi_56), L(3,chi_7#2), L(3,chi_7#4), L(3,chi_8), zeta(3) |
+| 57 | 72 | 18 | 28 | L(2,chi_-19), L(2,chi_-3), L(2,chi_19#10), L(2,chi_19#12), L(2,chi_19#13), L(2,chi_19#14), L(2,chi_19#15), L(2,chi_19#2), L(2,chi_19#3), L(2,chi_19#8), L(2,chi_57#11), L(2,chi_57#17), L(2,chi_57#23), L(2,chi_57#26), L(2,chi_57#35), L(2,chi_57#44), L(2,chi_57#47), L(2,chi_57#5) | 72 | 4 | 29 | L(3,chi_19#11), L(3,chi_19#16), L(3,chi_19#17), L(3,chi_19#4), L(3,chi_19#5), L(3,chi_19#6), L(3,chi_19#7), L(3,chi_19#9), L(3,chi_57#14), L(3,chi_57#2), L(3,chi_57#29), L(3,chi_57#32), L(3,chi_57#41), L(3,chi_57#50), L(3,chi_57#53), L(3,chi_57#8), L(3,chi_57), zeta(3) |
+| 58 | 56 | 14 | 28 | L(2,chi_29#10), L(2,chi_29#11), L(2,chi_29#12), L(2,chi_29#14), L(2,chi_29#15), L(2,chi_29#17), L(2,chi_29#18), L(2,chi_29#19), L(2,chi_29#2), L(2,chi_29#21), L(2,chi_29#26), L(2,chi_29#27), L(2,chi_29#3), L(2,chi_29#8) | 56 | 4 | 30 | L(3,chi_29#13), L(3,chi_29#16), L(3,chi_29#20), L(3,chi_29#22), L(3,chi_29#23), L(3,chi_29#24), L(3,chi_29#25), L(3,chi_29#4), L(3,chi_29#5), L(3,chi_29#6), L(3,chi_29#7), L(3,chi_29#9), L(3,chi_29), zeta(3) |
+| 59 | 58 | 29 | 29 | L(2,chi_-59), L(2,chi_59#10), L(2,chi_59#11), L(2,chi_59#13), L(2,chi_59#14), L(2,chi_59#18), L(2,chi_59#2), L(2,chi_59#23), L(2,chi_59#24), L(2,chi_59#30), L(2,chi_59#31), L(2,chi_59#32), L(2,chi_59#33), L(2,chi_59#34), L(2,chi_59#37), L(2,chi_59#38), L(2,chi_59#39), L(2,chi_59#40), L(2,chi_59#42), L(2,chi_59#43), L(2,chi_59#44), L(2,chi_59#47), L(2,chi_59#50), L(2,chi_59#52), L(2,chi_59#54), L(2,chi_59#55), L(2,chi_59#56), L(2,chi_59#6), L(2,chi_59#8) | 58 | 2 | 30 | L(3,chi_59#12), L(3,chi_59#15), L(3,chi_59#16), L(3,chi_59#17), L(3,chi_59#19), L(3,chi_59#20), L(3,chi_59#21), L(3,chi_59#22), L(3,chi_59#25), L(3,chi_59#26), L(3,chi_59#27), L(3,chi_59#28), L(3,chi_59#29), L(3,chi_59#3), L(3,chi_59#35), L(3,chi_59#36), L(3,chi_59#4), L(3,chi_59#41), L(3,chi_59#45), L(3,chi_59#46), L(3,chi_59#48), L(3,chi_59#49), L(3,chi_59#5), L(3,chi_59#51), L(3,chi_59#53), L(3,chi_59#57), L(3,chi_59#7), L(3,chi_59#9), zeta(3) |
+| 60 | 80 | 8 | 29 | L(2,chi_-15), L(2,chi_-20), L(2,chi_-3), L(2,chi_-4), L(2,chi_5#2), L(2,chi_5#3), L(2,chi_60#23), L(2,chi_60#47) | 80 | 12 | 31 | L(3,chi_12), L(3,chi_15#2), L(3,chi_15#8), L(3,chi_20#3), L(3,chi_20#7), L(3,chi_5), L(3,chi_60), zeta(3) |
+
+### B. quadratic interesting periods reachable
+| N | wt3: L(2,chi_-D) available | wt4: L(3,chi_D) available |
+|---|---|---|
+| 1 | - | zeta(3) |
+| 2 | - | zeta(3) |
+| 3 | -3 | zeta(3) |
+| 4 | -4 | zeta(3) |
+| 5 | - | zeta(3), 5 |
+| 6 | -3 | zeta(3) |
+| 7 | -7 | zeta(3) |
+| 8 | -4, -8 | zeta(3), 8 |
+| 9 | -3 | zeta(3) |
+| 10 | - | zeta(3), 5 |
+| 11 | -11 | zeta(3) |
+| 12 | -3, -4 | zeta(3), 12 |
+| 13 | - | zeta(3), 13 |
+| 14 | -7 | zeta(3) |
+| 15 | -3, -15 | zeta(3), 5 |
+| 16 | -4, -8 | zeta(3), 8 |
+| 17 | - | zeta(3), 17 |
+| 18 | -3 | zeta(3) |
+| 19 | -19 | zeta(3) |
+| 20 | -4, -20 | zeta(3), 5 |
+| 21 | -3, -7 | zeta(3), 21 |
+| 22 | -11 | zeta(3) |
+| 23 | -23 | zeta(3) |
+| 24 | -3, -4, -8, -24 | zeta(3), 8, 12, 24 |
+| 25 | - | zeta(3), 5 |
+| 26 | - | zeta(3), 13 |
+| 27 | -3 | zeta(3) |
+| 28 | -4, -7 | zeta(3), 28 |
+| 29 | - | zeta(3), 29 |
+| 30 | -3, -15 | zeta(3), 5 |
+| 31 | -31 | zeta(3) |
+| 32 | -4, -8 | zeta(3), 8 |
+| 33 | -3, -11 | zeta(3), 33 |
+| 34 | - | zeta(3), 17 |
+| 35 | -7, -35 | zeta(3), 5 |
+| 36 | -3, -4 | zeta(3), 12 |
+| 37 | - | zeta(3), 37 |
+| 38 | -19 | zeta(3) |
+| 39 | -3, -39 | zeta(3), 13 |
+| 40 | -4, -8, -20, -40 | zeta(3), 5, 8, 40 |
+| 41 | - | zeta(3), 41 |
+| 42 | -3, -7 | zeta(3), 21 |
+| 43 | -43 | zeta(3) |
+| 44 | -4, -11 | zeta(3), 44 |
+| 45 | -3, -15 | zeta(3), 5 |
+| 46 | -23 | zeta(3) |
+| 47 | -47 | zeta(3) |
+| 48 | -3, -4, -8, -24 | zeta(3), 8, 12, 24 |
+| 49 | -7 | zeta(3) |
+| 50 | - | zeta(3), 5 |
+| 51 | -3, -51 | zeta(3), 17 |
+| 52 | -4, -52 | zeta(3), 13 |
+| 53 | - | zeta(3), 53 |
+| 54 | -3 | zeta(3) |
+| 55 | -11, -55 | zeta(3), 5 |
+| 56 | -4, -7, -8, -56 | zeta(3), 8, 28, 56 |
+| 57 | -3, -19 | zeta(3), 57 |
+| 58 | - | zeta(3), 29 |
+| 59 | -59 | zeta(3) |
+| 60 | -3, -4, -15, -20 | zeta(3), 5, 12, 60 |
+
+### C. smallest level realising each named value
+L(2,chi_-7): smallest N = 7 ; all N<=60: [7, 14, 21, 28, 35, 42, 49, 56]
+L(2,chi_-8): smallest N = 8 ; all N<=60: [8, 16, 24, 32, 40, 48, 56]
+L(2,chi_-11): smallest N = 11 ; all N<=60: [11, 22, 33, 44, 55]
+L(2,chi_-15): smallest N = 15 ; all N<=60: [15, 30, 45, 60]
+L(2,chi_-20): smallest N = 20 ; all N<=60: [20, 40, 60]
+L(2,chi_-23): smallest N = 23 ; all N<=60: [23, 46]
+L(2,chi_-24): smallest N = 24 ; all N<=60: [24, 48]
+L(3,chi_5) : smallest N = 5 ; all N<=60: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
+L(3,chi_8) : smallest N = 8 ; all N<=60: [8, 16, 24, 32, 40, 48, 56]
+L(3,chi_12) : smallest N = 12 ; all N<=60: [12, 24, 36, 48, 60]
+L(3,chi_13) : smallest N = 13 ; all N<=60: [13, 26, 39, 52]
+L(3,chi_17) : smallest N = 17 ; all N<=60: [17, 34, 51]
+L(3,chi_24) : smallest N = 24 ; all N<=60: [24, 48]
+
+### D. within a fixed nebentypus: distinct interesting periods
+counts of (weight, #distinct interesting periods in one nebentypus): {(3, 1): 550, (4, 1): 552}
+cases with >=2 : []  total: 0
+
+### E. weight 3: pairs (pi^2/zeta(2), L(2,psi)) inside ONE nebentypus
+levels N where SOME nebentypus carries both zeta(2) and an interesting L(2,psi): [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+nebentypus components carrying an interesting L(2,psi) but NOT zeta(2): []
+
+quadratic version: N such that eps=chi_-D gives {zeta(2), L(2,chi_-D)} in one nebentypus
+  chi_-3: N = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60]
+  chi_-4: N = [4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60]
+  chi_-7: N = [7, 14, 21, 28, 35, 42, 49, 56]
+  chi_-8: N = [8, 16, 24, 32, 40, 48, 56]
+  chi_-11: N = [11, 22, 33, 44, 55]
+  chi_-15: N = [15, 30, 45, 60]
+  chi_-19: N = [19, 38, 57]
+  chi_-20: N = [20, 40, 60]
+  chi_-23: N = [23, 46]
+  chi_-24: N = [24, 48]
+  chi_-31: N = [31]
+  chi_-35: N = [35]
+  chi_-39: N = [39]
+  chi_-40: N = [40]
+  chi_-43: N = [43]
+  chi_-47: N = [47]
+  chi_-51: N = [51]
+  chi_-52: N = [52]
+  chi_-55: N = [55]
+  chi_-56: N = [56]
+  chi_-59: N = [59]
+
+### F. weight 4: (zeta(3), L(3,chi)) mixed pairs across nebentypus components
+  N=5: 2 interesting: L(3,chi_5), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=7: 3 interesting: L(3,chi_7#2), L(3,chi_7#4), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=8: 2 interesting: L(3,chi_8), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=9: 3 interesting: L(3,chi_9#4), L(3,chi_9#7), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=10: 2 interesting: L(3,chi_5), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=11: 5 interesting: L(3,chi_11#3), L(3,chi_11#4), L(3,chi_11#5), L(3,chi_11#9), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=12: 2 interesting: L(3,chi_12), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=13: 6 interesting: L(3,chi_13#10), L(3,chi_13#3), L(3,chi_13#4), L(3,chi_13#9), L(3,chi_13), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=14: 3 interesting: L(3,chi_7#2), L(3,chi_7#4), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=15: 4 interesting: L(3,chi_15#2), L(3,chi_15#8), L(3,chi_5), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=16: 4 interesting: L(3,chi_16#13), L(3,chi_16#5), L(3,chi_8), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=17: 8 interesting: L(3,chi_17#13), L(3,chi_17#15), L(3,chi_17#2), L(3,chi_17#4), L(3,chi_17#8), L(3,chi_17#9), L(3,chi_17), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=18: 3 interesting: L(3,chi_9#4), L(3,chi_9#7), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=19: 9 interesting: L(3,chi_19#11), L(3,chi_19#16), L(3,chi_19#17), L(3,chi_19#4), L(3,chi_19#5), L(3,chi_19#6), L(3,chi_19#7), L(3,chi_19#9), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=20: 4 interesting: L(3,chi_20#3), L(3,chi_20#7), L(3,chi_5), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=21: 6 interesting: L(3,chi_21#17), L(3,chi_21#5), L(3,chi_21), L(3,chi_7#2), L(3,chi_7#4), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=22: 5 interesting: L(3,chi_11#3), L(3,chi_11#4), L(3,chi_11#5), L(3,chi_11#9), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=23: 11 interesting: L(3,chi_23#12), L(3,chi_23#13), L(3,chi_23#16), L(3,chi_23#18), L(3,chi_23#2), L(3,chi_23#3), L(3,chi_23#4), L(3,chi_23#6), L(3,chi_23#8), L(3,chi_23#9), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=24: 4 interesting: L(3,chi_12), L(3,chi_24), L(3,chi_8), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=25: 10 interesting: L(3,chi_25#11), L(3,chi_25#14), L(3,chi_25#16), L(3,chi_25#19), L(3,chi_25#21), L(3,chi_25#4), L(3,chi_25#6), L(3,chi_25#9), L(3,chi_5), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=26: 6 interesting: L(3,chi_13#10), L(3,chi_13#3), L(3,chi_13#4), L(3,chi_13#9), L(3,chi_13), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=27: 9 interesting: L(3,chi_27#13), L(3,chi_27#16), L(3,chi_27#22), L(3,chi_27#25), L(3,chi_27#4), L(3,chi_27#7), L(3,chi_9#4), L(3,chi_9#7), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=28: 6 interesting: L(3,chi_28#19), L(3,chi_28#3), L(3,chi_28), L(3,chi_7#2), L(3,chi_7#4), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=29: 14 interesting: L(3,chi_29#13), L(3,chi_29#16), L(3,chi_29#20), L(3,chi_29#22), L(3,chi_29#23), L(3,chi_29#24), L(3,chi_29#25), L(3,chi_29#4), L(3,chi_29#5), L(3,chi_29#6), L(3,chi_29#7), L(3,chi_29#9), L(3,chi_29), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=30: 4 interesting: L(3,chi_15#2), L(3,chi_15#8), L(3,chi_5), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=31: 15 interesting: L(3,chi_31#10), L(3,chi_31#14), L(3,chi_31#16), L(3,chi_31#18), L(3,chi_31#19), L(3,chi_31#2), L(3,chi_31#20), L(3,chi_31#25), L(3,chi_31#28), L(3,chi_31#4), L(3,chi_31#5), L(3,chi_31#7), L(3,chi_31#8), L(3,chi_31#9), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=32: 8 interesting: L(3,chi_16#13), L(3,chi_16#5), L(3,chi_32#13), L(3,chi_32#21), L(3,chi_32#29), L(3,chi_32#5), L(3,chi_8), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=33: 10 interesting: L(3,chi_11#3), L(3,chi_11#4), L(3,chi_11#5), L(3,chi_11#9), L(3,chi_33#17), L(3,chi_33#2), L(3,chi_33#29), L(3,chi_33#8), L(3,chi_33), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=34: 8 interesting: L(3,chi_17#13), L(3,chi_17#15), L(3,chi_17#2), L(3,chi_17#4), L(3,chi_17#8), L(3,chi_17#9), L(3,chi_17), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=35: 12 interesting: L(3,chi_35#12), L(3,chi_35#13), L(3,chi_35#17), L(3,chi_35#27), L(3,chi_35#3), L(3,chi_35#33), L(3,chi_35#4), L(3,chi_35#9), L(3,chi_5), L(3,chi_7#2), L(3,chi_7#4), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=36: 6 interesting: L(3,chi_12), L(3,chi_36#11), L(3,chi_36#23), L(3,chi_9#4), L(3,chi_9#7), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=37: 18 interesting: L(3,chi_37#10), L(3,chi_37#11), L(3,chi_37#12), L(3,chi_37#16), L(3,chi_37#21), L(3,chi_37#25), L(3,chi_37#26), L(3,chi_37#27), L(3,chi_37#28), L(3,chi_37#3), L(3,chi_37#30), L(3,chi_37#33), L(3,chi_37#34), L(3,chi_37#4), L(3,chi_37#7), L(3,chi_37#9), L(3,chi_37), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=38: 9 interesting: L(3,chi_19#11), L(3,chi_19#16), L(3,chi_19#17), L(3,chi_19#4), L(3,chi_19#5), L(3,chi_19#6), L(3,chi_19#7), L(3,chi_19#9), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=39: 12 interesting: L(3,chi_13#10), L(3,chi_13#3), L(3,chi_13#4), L(3,chi_13#9), L(3,chi_13), L(3,chi_39#11), L(3,chi_39#2), L(3,chi_39#20), L(3,chi_39#32), L(3,chi_39#5), L(3,chi_39#8), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=40: 8 interesting: L(3,chi_20#3), L(3,chi_20#7), L(3,chi_40#27), L(3,chi_40#3), L(3,chi_40), L(3,chi_5), L(3,chi_8), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=41: 20 interesting: L(3,chi_41#10), L(3,chi_41#16), L(3,chi_41#18), L(3,chi_41#2), L(3,chi_41#20), L(3,chi_41#21), L(3,chi_41#23), L(3,chi_41#25), L(3,chi_41#31), L(3,chi_41#32), L(3,chi_41#33), L(3,chi_41#36), L(3,chi_41#37), L(3,chi_41#39), L(3,chi_41#4), L(3,chi_41#5), L(3,chi_41#8), L(3,chi_41#9), L(3,chi_41), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=42: 6 interesting: L(3,chi_21#17), L(3,chi_21#5), L(3,chi_21), L(3,chi_7#2), L(3,chi_7#4), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=43: 21 interesting: L(3,chi_43#10), L(3,chi_43#11), L(3,chi_43#13), L(3,chi_43#14), L(3,chi_43#15), L(3,chi_43#16), L(3,chi_43#17), L(3,chi_43#21), L(3,chi_43#23), L(3,chi_43#24), L(3,chi_43#25), L(3,chi_43#31), L(3,chi_43#35), L(3,chi_43#36), L(3,chi_43#38), L(3,chi_43#4), L(3,chi_43#40), L(3,chi_43#41), L(3,chi_43#6), L(3,chi_43#9), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=44: 10 interesting: L(3,chi_11#3), L(3,chi_11#4), L(3,chi_11#5), L(3,chi_11#9), L(3,chi_44#19), L(3,chi_44#35), L(3,chi_44#39), L(3,chi_44#7), L(3,chi_44), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=45: 12 interesting: L(3,chi_15#2), L(3,chi_15#8), L(3,chi_45#2), L(3,chi_45#23), L(3,chi_45#32), L(3,chi_45#34), L(3,chi_45#38), L(3,chi_45#4), L(3,chi_5), L(3,chi_9#4), L(3,chi_9#7), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=46: 11 interesting: L(3,chi_23#12), L(3,chi_23#13), L(3,chi_23#16), L(3,chi_23#18), L(3,chi_23#2), L(3,chi_23#3), L(3,chi_23#4), L(3,chi_23#6), L(3,chi_23#8), L(3,chi_23#9), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=47: 23 interesting: L(3,chi_47#12), L(3,chi_47#14), L(3,chi_47#16), L(3,chi_47#17), L(3,chi_47#18), L(3,chi_47#2), L(3,chi_47#21), L(3,chi_47#24), L(3,chi_47#25), L(3,chi_47#27), L(3,chi_47#28), L(3,chi_47#3), L(3,chi_47#32), L(3,chi_47#34), L(3,chi_47#36), L(3,chi_47#37), L(3,chi_47#4), L(3,chi_47#42), L(3,chi_47#6), L(3,chi_47#7), L(3,chi_47#8), L(3,chi_47#9), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=48: 8 interesting: L(3,chi_12), L(3,chi_16#13), L(3,chi_16#5), L(3,chi_24), L(3,chi_48#11), L(3,chi_48#35), L(3,chi_8), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=49: 21 interesting: L(3,chi_49#11), L(3,chi_49#15), L(3,chi_49#16), L(3,chi_49#2), L(3,chi_49#22), L(3,chi_49#23), L(3,chi_49#25), L(3,chi_49#29), L(3,chi_49#32), L(3,chi_49#36), L(3,chi_49#37), L(3,chi_49#39), L(3,chi_49#4), L(3,chi_49#43), L(3,chi_49#44), L(3,chi_49#46), L(3,chi_49#8), L(3,chi_49#9), L(3,chi_7#2), L(3,chi_7#4), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=50: 10 interesting: L(3,chi_25#11), L(3,chi_25#14), L(3,chi_25#16), L(3,chi_25#19), L(3,chi_25#21), L(3,chi_25#4), L(3,chi_25#6), L(3,chi_25#9), L(3,chi_5), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=51: 16 interesting: L(3,chi_17#13), L(3,chi_17#15), L(3,chi_17#2), L(3,chi_17#4), L(3,chi_17#8), L(3,chi_17#9), L(3,chi_17), L(3,chi_51#11), L(3,chi_51#14), L(3,chi_51#20), L(3,chi_51#23), L(3,chi_51#29), L(3,chi_51#41), L(3,chi_51#44), L(3,chi_51#5), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=52: 12 interesting: L(3,chi_13#10), L(3,chi_13#3), L(3,chi_13#4), L(3,chi_13#9), L(3,chi_13), L(3,chi_52#11), L(3,chi_52#15), L(3,chi_52#19), L(3,chi_52#31), L(3,chi_52#47), L(3,chi_52#7), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=53: 26 interesting: L(3,chi_53#10), L(3,chi_53#11), L(3,chi_53#13), L(3,chi_53#15), L(3,chi_53#16), L(3,chi_53#17), L(3,chi_53#24), L(3,chi_53#25), L(3,chi_53#28), L(3,chi_53#29), L(3,chi_53#36), L(3,chi_53#37), L(3,chi_53#38), L(3,chi_53#4), L(3,chi_53#40), L(3,chi_53#42), L(3,chi_53#43), L(3,chi_53#44), L(3,chi_53#46), L(3,chi_53#47), L(3,chi_53#49), L(3,chi_53#6), L(3,chi_53#7), L(3,chi_53#9), L(3,chi_53), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=54: 9 interesting: L(3,chi_27#13), L(3,chi_27#16), L(3,chi_27#22), L(3,chi_27#25), L(3,chi_27#4), L(3,chi_27#7), L(3,chi_9#4), L(3,chi_9#7), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=55: 20 interesting: L(3,chi_11#3), L(3,chi_11#4), L(3,chi_11#5), L(3,chi_11#9), L(3,chi_5), L(3,chi_55#13), L(3,chi_55#14), L(3,chi_55#17), L(3,chi_55#18), L(3,chi_55#2), L(3,chi_55#28), L(3,chi_55#32), L(3,chi_55#4), L(3,chi_55#43), L(3,chi_55#49), L(3,chi_55#52), L(3,chi_55#7), L(3,chi_55#8), L(3,chi_55#9), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=56: 12 interesting: L(3,chi_28#19), L(3,chi_28#3), L(3,chi_28), L(3,chi_56#19), L(3,chi_56#3), L(3,chi_56#37), L(3,chi_56#53), L(3,chi_56), L(3,chi_7#2), L(3,chi_7#4), L(3,chi_8), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=57: 18 interesting: L(3,chi_19#11), L(3,chi_19#16), L(3,chi_19#17), L(3,chi_19#4), L(3,chi_19#5), L(3,chi_19#6), L(3,chi_19#7), L(3,chi_19#9), L(3,chi_57#14), L(3,chi_57#2), L(3,chi_57#29), L(3,chi_57#32), L(3,chi_57#41), L(3,chi_57#50), L(3,chi_57#53), L(3,chi_57#8), L(3,chi_57), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=58: 14 interesting: L(3,chi_29#13), L(3,chi_29#16), L(3,chi_29#20), L(3,chi_29#22), L(3,chi_29#23), L(3,chi_29#24), L(3,chi_29#25), L(3,chi_29#4), L(3,chi_29#5), L(3,chi_29#6), L(3,chi_29#7), L(3,chi_29#9), L(3,chi_29), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=59: 29 interesting: L(3,chi_59#12), L(3,chi_59#15), L(3,chi_59#16), L(3,chi_59#17), L(3,chi_59#19), L(3,chi_59#20), L(3,chi_59#21), L(3,chi_59#22), L(3,chi_59#25), L(3,chi_59#26), L(3,chi_59#27), L(3,chi_59#28), L(3,chi_59#29), L(3,chi_59#3), L(3,chi_59#35), L(3,chi_59#36), L(3,chi_59#4), L(3,chi_59#41), L(3,chi_59#45), L(3,chi_59#46), L(3,chi_59#48), L(3,chi_59#49), L(3,chi_59#5), L(3,chi_59#51), L(3,chi_59#53), L(3,chi_59#57), L(3,chi_59#7), L(3,chi_59#9), zeta(3)   [each period sits in exactly one nebentypus: True]
+  N=60: 8 interesting: L(3,chi_12), L(3,chi_15#2), L(3,chi_15#8), L(3,chi_20#3), L(3,chi_20#7), L(3,chi_5), L(3,chi_60), zeta(3)   [each period sits in exactly one nebentypus: True]

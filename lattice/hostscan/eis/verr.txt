@@ -1,0 +1,9 @@
+[0;31m  ***   Warning: new stack size = 1200000000 (1144.409 Mbytes).[0m
+[0;31m[0;31m  ***   at top-level: ...[0;35m=1,#GZ,N=GZ[t];for(k=3,4,[0;35mchk(N,k)))
+[0;31m[0;31m  ***                                             ^----------
+[0;31m  ***   in function chk: ...[0;35mk,Mod(DD[i][8],N)],3));F=[0;35mmkE(k,DD[i]);a0=mfcoe
+[0;31m[0;31m  ***                                                ^---------------------
+[0;31m  ***   in function mkE: [0;35mmfbd([0;35mmfeisenstein(k,chOf(D[4],D[5]),chOf(D[1],
+[0;31m[0;31m  ***                         ^-----------------------------------------
+  *** mfeisenstein: sorry, mfeisenstein for these characters is not yet implemented.[0m
+... skipping file 'verify.gp'

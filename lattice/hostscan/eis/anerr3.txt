@@ -1,0 +1,11 @@
+[0;31m  ***   Warning: new stack size = 1200000000 (1144.409 Mbytes).[0m
+[0;31m[0;31m  ***   at top-level: ...[0;35m=1,#GZ,N=GZ[t];for(k=3,4,[0;35mrun(N,k)))
+[0;31m[0;31m  ***                                             ^----------
+[0;31m  ***   in function run: ...[0;35mr2[i]=ct(mf,F,g2));rk=if([0;35mgram2(r1,r2)>1e-25,2,
+[0;31m[0;31m  ***                                                ^---------------------
+[0;31m  ***   in function gram2: [0;35mmy(M,A,B);A=[0;35mnrm(a);B=nrm(b);M=matrix(2,2);M[1,
+[0;31m[0;31m  ***                                  ^----------------------------------
+[0;31m  ***   in function nrm: [0;35mmy(s);s=sqrt(sum(i=1,#v,[0;35mabs(v[i])^2));if(s==0.
+[0;31m[0;31m  ***                                            ^----------------------
+  *** abs: incorrect type in gabs (t_POLMOD).[0m
+... skipping file 'ann3.gp'

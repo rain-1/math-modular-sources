@@ -1,0 +1,8 @@
+==============================================================================
+CASE z3_D2   dim=3   x_c=['2', '1', '1']
+   basis limits: B_0 -> 0 + (1/2)P ; B_1 -> 0 + (0)P ; B_2 -> 1 + (-1)P
+   ROW           x=(2, 1, 1)    type [(0, 0)]         excess {(0, 0): 1}   limit 1
+   SMALL (limit 0) directions among |x_i|<=6 : [(0, 1, 0)]
+      x=(0, 1, 0)    type [(0, 1)]         excess {(0, 1): 1}   limit 0
+   BEST COMPANION (period coeff != 0) over |x_i|<=4 :
+      NONE of lcm type; e.g. x=(-1, -1, -1) has UNBOUNDED excess over lcm^4 lcm^4

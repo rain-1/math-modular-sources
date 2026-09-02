@@ -1,0 +1,8 @@
+z3_D1   a-rec:  order=2  degree=3  nullspace_dim=1   (0.1s, 728 pts)
+z3_D1   b-rec:  order=2  degree=3  nullspace_dim=1   (0.1s, 728 pts)
+z3_D2   a-rec:  order=3  degree=6  nullspace_dim=1   (0.3s, 700 pts)
+z3_D2   b-rec:  order=3  degree=6  nullspace_dim=1   (0.3s, 700 pts)
+z3_D3   a-rec:  order=3  degree=6  nullspace_dim=1   (0.3s, 700 pts)
+z3_D3   b-rec:  order=3  degree=3  nullspace_dim=1   (0.2s, 700 pts)
+z3_D4   a-rec:  order=3  degree=6  nullspace_dim=1   (0.3s, 700 pts)
+z3_D4   b-rec:  order=3  degree=3  nullspace_dim=1   (0.2s, 700 pts)

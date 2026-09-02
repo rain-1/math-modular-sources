@@ -1,0 +1,8 @@
+==============================================================================
+CASE s10_D2   dim=3   x_c=['1', '1', '1']
+   basis limits: B_0 -> 0 + (1/2)P ; B_1 -> 0 + (-1)P ; B_2 -> 1 + (1/2)P
+   ROW           x=(1, 1, 1)    type [(0, 0)]         excess {(0, 0): 1}   limit 1
+   SMALL (limit 0) directions among |x_i|<=6 : [(2, 1, 0)]
+      x=(2, 1, 0)    type [(1, 1)]         excess {(1, 1): 1}   limit 0
+   BEST COMPANION (period coeff != 0) over |x_i|<=4 :
+      x=(-4, -4, -3) type [(2, 2)]         excess {(2, 2): 2}   limit -3 + (1/2)P

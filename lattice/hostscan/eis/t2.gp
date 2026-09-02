@@ -1,0 +1,12 @@
+print(mfdim([5,4,0],3));
+print(mfdim([5,3,0],3));
+print(mfdim([6,3,0],3));
+print(mfdim([12,4,0],3));
+print(mfdim([1,4,0],3));
+print(mfdim([13,3,0],3));
+mf=mfinit([5,4,0],3); print(mfdim(mf)); print(mfparams(mf));
+B=mfbasis(mf); print(#B);
+for(i=1,#B, print(mfcoefs(B[i],5)));
+print(mfcusps(5));
+print(mfslashexpansion(mf,B[1],[0,-1;1,0],3,1));
+quit;

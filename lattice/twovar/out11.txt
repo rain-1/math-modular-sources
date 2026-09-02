@@ -1,0 +1,12 @@
+z3_D2   a-rec order-2 relation up to degree 12: NONE
+z3_D2   b-rec order-2 relation up to degree 12: NONE
+z3_D3   a-rec order-2 relation up to degree 12: NONE
+z3_D3   b-rec order-2 relation up to degree 12: NONE
+z3_D4   a-rec order-2 relation up to degree 12: NONE
+z3_D4   b-rec order-2 relation up to degree 12: NONE
+E_D1    a-rec order-2 relation up to degree 12: NONE
+E_D1    b-rec order-2 relation up to degree 12: NONE
+s10_D1  a-rec order-2 relation up to degree 12: NONE
+s10_D1  b-rec order-2 relation up to degree 12: NONE
+s10_D2  a-rec order-2 relation up to degree 12: NONE
+s10_D2  b-rec order-2 relation up to degree 12: NONE
