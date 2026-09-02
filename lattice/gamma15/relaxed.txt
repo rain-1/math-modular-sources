@@ -1,0 +1,6 @@
+  v1 : required |z| = [0.536032, 0.536032]
+    best: R=0.80 c=7.5 T=0.75 #slits=6 |psi|=0.725673 L=7.630581 BC=15.67637 14L-BC=91.15177
+  v2 : required |z| = [0.213693, 0.213693]
+    best: R=0.80 c=7.5 T=0.85 #slits=8 |psi|=0.398697 L=2.219566 BC=6.54823 14L-BC=24.52569
+
+  RELAXED margin = -1.45770   (fully constrained: -1.4416)

@@ -31,6 +31,7 @@ No margin is ever rounded in the favourable direction.*
 | **No inventory rescues it.** Adding functions to CDT's fourteen forces max eᵢ ≥ 2, and τ jumps 4.2355 → 4.4482; the bound goes from 16.13 to 23.5 and the margin from −1.44 to −3.96. Every m ≠ 14 is worse. (`INVENTORY_BOUND.md` R1/R4 already proves 14 is the complete supply at max eᵢ ≤ 1.) | **[verified]** §6 |
 | **The second place also taxes the HYPOTHESIS, not just the geometry.** The far-cusp periods are computed exactly: the homogeneous-solution obstruction at t₂ gives π(B_D) = **−(11/5)ζ(2)** and π(B′_new) = **ξ′ = −Re L − φ⁻⁵ Im L** (both to 12 digits; the same construction at the near cusp returns ζ(2)/5 and ξ, calibrating it). So regularity of σH at the v₂-fold t₂ is **(ii)** σ(a) − (11σ(b)/5)ζ(2) + σ(c)ξ′ = 0, which is σ applied to (i) *except* in the ζ(2) slot (+1/5 ↦ −11/5): **(i) ⇏ (ii)**. One K-relation gives a conditional function at one place only. The *sources* are nevertheless perfectly Galois-equivariant (L B_new = 2/(1−x/t₂), L B′_new = 2/(1−x/t₁); Φ_new kills the cusp over t₁, Φ′_new the cusp over t₂). | **[verified, 12 digits]** §3.4 |
 | **Both branches are negative.** Assuming the *doubled* hypothesis (i)∧(ii): margin **−1.4424**. Keeping the single, correct hypothesis and letting Ω₂ avoid *every* preimage of Y₂ (principal included, at \|z\| = 0.074191, cap 0.2572): margin **−4.4038**. | **[verified]** §5.2 |
+| **The verdict does not rest on any unproved exclusion.** Enforcing *only* the two exclusions proved necessary in §6(b) and letting every other bad preimage be kept or cut, whichever is better, the optimum still cuts them all (they sit near the boundary, cost almost nothing, and lower BC): relaxed margin **−1.4577**, against −1.4416 fully constrained. | **[verified]** §6(b′) |
 | **The one loophole, and its closure.** We exclude *every* non-principal h-preimage of Y_v, as CDT do; only the ones at which the continued conditional function is really singular need go. If the single conjugate pair at \|z\| = 0.213693 at v₂ were harmless the margin would be **+0.51**. It is not harmless: those two preimages are the images of z₀ under the parabolic generator (2,±1) of Γ₀(2) at the cusp y = ∞, whose loop on the x-line encircles the outer cusp t₂, so the continuation changes H by a nonzero multiple of u_{t₂}, the homogeneous solution holomorphic at t₂; and **u_{t₁} and u_{t₂} are distinct lines** (numerically \|u_{t₁} ∧ u_{t₂}\| = 0.318 on Γ₁(5), 0.737 on CDT's Γ₀(6); both monodromies unipotent to 10⁻¹³). So the continued H is singular at the fold: the pair must be excluded. | **[verified]** §6(b) |
 
 **One sentence.** *Everything arithmetic about the target is as good as CDT's own — the same
@@ -598,8 +599,27 @@ margin from +0.025 to **+0.652**; they won by 0.0053 and still demanded a *uniqu
 Lemma A.4.4 — consistent with the computation above, which says the refinement does not exist
 for this pair on either host. **What remains genuinely open** is only the status of the
 *other*, shallower preimages (bottom rows (4,±1), (6,±1), (2,±3), …): each is a separate
-cocycle condition Δ_γ ∈ ⟨u_{t₁}⟩. Dropping every one of them while keeping the proved (2,±1)
-exclusions is the relaxed problem of §6(b′).
+cocycle condition Δ_γ ∈ ⟨u_{t₁}⟩ for the corresponding γ ∈ Γ₀(2). Dropping every one of them
+while keeping the proved (2,±1) exclusions is the relaxed problem of §6(b′).
+
+### 6(b′) The relaxed problem: only the proved exclusions  **[verified]** (`relaxed.py` → `relaxed.txt`)
+
+Enforcing **only** the two proved exclusions at each place and letting every other bad preimage
+be slit or not, whichever is better (search over R, the lune parameter c, and the set of optional
+points with |z| < T):
+
+| place | required exclusions | best R, c, T | #slits | \|ψ_v′\| | L_v | BC_v | 14L−BC |
+|---|---|---|---|---|---|---|---|
+| v₁ | \|z\| = 0.536032 (×2) | 0.80, 7.5, 0.75 | 6 | 0.725673 | 7.630581 | 15.67637 | 91.15177 |
+| v₂ | \|z\| = 0.213693 (×2) | 0.80, 7.5, 0.85 | 8 | 0.398697 | 2.219566 | 6.54823 | 24.52569 |
+
+**relaxed margin = −1.4577**, and since the fully constrained design is itself feasible for the
+relaxed problem, the true relaxed optimum lies in [−1.4416, −1.44]. In other words the optimiser,
+given permission to keep the unproved bad preimages inside Ω, **declines**: the shallow preimages
+sit near the boundary, so slitting them costs almost nothing in |ψ′(0)| and *reduces* BC. Only the
+deep exclusions bind, and the deepest — the (2,±1) pair — is the one proved necessary in §6(b).
+
+> **The verdict is therefore independent of every unproved exclusion.** −1.44 either way.
 
 **(c) Not descending at v₂.** Using the Y(2) (λ-)uniformisation instead of Y₀(2) doubles both
 log|φ′(0)| and BC while leaving τ alone — CDT's own Basic Remark (equivalently: τ halves and the
@@ -624,7 +644,11 @@ Jensen reduction of the Bost–Charles integral; the fact that exclusion holds b
 11.845; the six bad preimages of −1/72 and the failure of their Lemma A.4.4 for the published
 θᵢ (argument principle + winding numbers); BC(their published φ) = 12.1207 by two evaluators;
 all bad-preimage tables; the certified contours at both places, with exclusion verified twice;
-BC at N = 16384 with the orbit truncation converged; the attribution table; the inventory sweep.
+BC at N = 16384 with the orbit truncation converged; the attribution table; the inventory sweep;
+the monodromy matrices at t₁ and t₂ on both hosts and the distinctness of their fixed lines
+(§6(b)); the far-cusp periods −11ζ(2)/5 and ξ′ (12 digits here, 174 in `task2/`, with the
+near-cusp calibration to 212 digits and an independent Abel-summation cross-check); the
+non-proportionality of the v₁ and v₂ relations; branch B's margin −4.4038.
 
 **Cited, not recomputed.**
 CDT's Remark BCboundK and their convexity bounds 13.730/13.7206/13.678/13.621; Beukers'
@@ -640,11 +664,16 @@ frozen shapes at the caps would give +2.7. What settles it is the *saturation* o
 the family's own frontier — together with the exact decoupled optimisation of §4.3.
 A domain outside the family "disc ∖ (one lune ∪ slits)" is not excluded by anything proved here.
 
-(iii) The monodromy refinement of §6(b) is **closed for the decisive (2,±1) pair** by the
-computation of §6(b), and remains open for the shallower preimages — bounded by §6(b′).
-(iv) Fold-regularity at the second place is analysed in `task2/`; the K(y)-independence of the
-fourteen (degree ≤ 5) in `task3/`. Unbounded-degree K(y)-independence — CDT's Lemma 12.1.1, a
-monodromy argument — is **[assumed]**, not transported.
+(iii) The monodromy refinement is **closed for the decisive (2,±1) pair** (§6(b)) and *moot*
+for the shallower ones: §6(b′) shows that granting them all changes the margin by less than
+0.02, because the optimiser slits them anyway.
+(iv) Unbounded-degree K(y)-independence of the fourteen — CDT's Lemma 12.1.1, a monodromy
+argument — is **[assumed]**, not transported; only degree ≤ 5 is certified (§3.3).
+(v) The factor **−11 = t₁ + t₂** in the far-cusp period of B_D is measured, not explained; the
+diamond ⟨2⟩ observation of §3.4 is a partial structural reason only. **[open]**
+(vi) The identification of the analytic conditions (i), (ii) with fold-regularity at the two
+places rests on the standard dictionary "Apéry limit = period at the cusp = log coefficient of
+the Eichler integral", verified here at the near cusp to 212 digits; it is not proved.
 
 ---
 
@@ -667,7 +696,7 @@ monodromy argument — is **[assumed]**, not transported.
 | `curves.json` | the measured (R, #bad, \|ψ′\|, L, BC) curves at both places |
 | `whatif.py` → `whatif.txt`, `whatif_cdt.txt` | the monodromy loophole, quantified at both places and on CDT's own host |
 | `monodromy.py` → `monodromy.txt`, `monodromy_robust.txt` | the monodromy computation that CLOSES the loophole for the decisive (2,±1) pair |
-| `worstcase.py` → `worstcase.txt` | the relaxed problem: only the proved (2,±1) exclusions enforced |
+| `relaxed.py` → `relaxed.txt` | the relaxed problem: only the proved (2,±1) exclusions enforced |
 | `farcusp_data.gp`, `farcusp.py` → `farcusp_robust.txt` | the far-cusp periods −11ζ(2)/5 and ξ′, with the near-cusp calibration and a robustness sweep |
 | `single_hypothesis.py` → `single_hypothesis.txt` | branch B: the variant needing only the single hypothesis |
 | `saturation.txt` | the R → 1 saturation of the conformal radii at both places |
