@@ -1,0 +1,1281 @@
+MAGNETIC (QUASI-)MODULAR FORMS
+
+arXiv:2009.14609v3 [math.NT] 3 Feb 2022
+
+VICENŢIU PAŞOL AND WADIM ZUDILIN
+Abstract.
+conjecture states that no holomorphic modular form
+P∞ A (folklore?)
+n
+F
+(τ
+)
+=
+a
+q
+∈
+qZ[[q]]
+exists, where q = e2πiτ , such that its anti-derivative
+n=1 n
+P∞
+n
+n=1 an q /n has integral coefficients in the q-expansion. A recent observation
+of Broadhurst and Zudilin, rigorously accomplished by Li and Neururer, led to
+examples of meromorphic modular forms possessing the integrality property. In
+this note we investigate the arithmetic phenomenon from a systematic perspective
+and discuss related transcendental extensions of the differentially closed ring of
+quasi-modular forms.
+
+1. Introduction
+One of the arithmetic features of modular and quasi-modular forms is integrality
+of the coefficients in their Fourier expansions. This is trivially seen on the generators
+∞
+∞
+∞
+X
+X
+X
+nq n
+n3 q n
+n5 q n
+E2 (τ ) = 1−24
+,
+E
+(τ
+)
+=
+1+240
+,
+E
+(τ
+)
+=
+1−504
+4
+6
+1 − qn
+1 − qn
+1 − qn
+n=1
+n=1
+n=1
+(1)
+of the ring of quasi-modular forms, as well as on the ‘discriminant’ cusp form
+∞
+Y
+E 3 − E62
+∆(τ ) = q
+(1 − q m )24 = 4
+,
+1728
+m=1
+where q = q(τ ) = e2πiτ for τ from the upper half-plane Im τ > 0. All q-expansions
+above converge for q inside the unit disk, and in fact have polynomial growth of
+the coefficients. A more suprising fact, brought to the mathematical community by
+Ramanujan [21] more than 100 years ago, is that the three Eisenstein series in (1)
+satisfy the algebraic system of differential equations
+1
+1
+1
+δE2 = (E22 − E4 ), δE4 = (E2 E4 − E6 ), δE6 = (E2 E6 − E42 ),
+(2)
+12
+3
+2
+where
+1 d
+d
+δ=
+=q .
+2πi dτ
+dq
+Ramanujan’s notation for the Eisenstein series (1) was P (q), Q(q), R(q), respectively,
+as he mainly viewed them as functions of the q-nome. Since the functions E2 , E4 , E6
+are algebraically independent over C, and even over C(q) and over C(τ, q) [19, 22],
+Date: 8 October 2020. Revised : 3 February 2022.
+2020 Mathematics Subject Classification. 11F33 (Primary), 11F11, 11F32, 11F37, 13N99.
+Key words and phrases. Ramanujan’s mathematics; modular forms; quasi-modular forms;
+Shimura–Borcherds lift.
+1
+
+2
+
+VICENŢIU PAŞOL AND WADIM ZUDILIN
+
+this fine structure gives rise to remarkable applications in transcendental number
+theory to the values of quasi-modular forms. One particular notable example in this
+direction is a famous theorem of Nesterenko [20], which states that, given a complex
+number q with 0 < |q| < 1, at least three of the four quantities q, P (q), Q(q), R(q)
+are algebraically independent over Q.
+Establishing transformation properties of a double integral, which characterises
+the output voltage of a Hall plate affected by the shape of the plates and sizes of the
+contacts and which is — for this reason — dubbed magnetic, in the work [5] Broadhurst and the second author came across a meromorphic modular form (on a congruence subgroup), whose anti-derivative had integral coefficients in its q-expansion
+and was not a modular object itself. This arithmetic observation was subsequently
+proven by Li and Neururer in [17] who also noticed that the formal anti-derivative
+  Z q
+∆
+∆ dq
+−1
+F̃4a = δ
+=
+2
+E42
+0 E4 q
+of the meromorphic modular form F4a (τ ) = ∆/E42 has integer coefficients in its qexpansion. (They proved a slightly weaker version about the integrality of the antiderivative of 64∆/E42 .) The function F4a (τ ) has weight 4 and possesses the double
+pole at τ = ρ = e2πi/3 in the fundamental domain, and a simple analysis reveals
+that it is not the image under δ of an element from the (differentially closed) field
+C(q, E2 , E4 , E6 ). This implies that the anti-derivative F̃4a = δ −1 F4a is transcendental
+over the field, hence the addition of F̃4a to the latter increases the transcendence
+degree by 1. Following the background in [5], Li and Neururer coined the name
+‘magnetic modular form’ to a meromorphic modular form like F4a . A principal goal
+of this note is to investigate the ‘magnetic modular’ phenomenon further and to give
+more examples of those.
+Theorem 1. The meromorphic modular forms F4a (τ ) = ∆/E42 and F4b (τ ) = E4 ∆/E62
+of weight 4 are magnetic. In other words, their anti-derivatives δ −1 F4a and δ −1 F4b
+have integral q-expansions.
+Theorem 2. The meromorphic modular form F6 (τ ) = E6 ∆/E43 of weight 6 is doubly
+magnetic: its first and second anti-derivatives δ −1 F6 and δ −2 F6 have integral q-expansions.
+There are other instances in the literature of related integrality phenomena; however the existing methods of proofs seem to be quite different from what we use
+below. Investigating the solution space of the linear differential equation
+k+1
+k(k + 1)
+Dk f (τ ) = 0, where Dk = δ 2 −
+E2 (τ )δ +
+δE2 (τ ),
+6
+12
+in [13] Honda and Kaneko found that, when k = 4, it is spanned by E4 and
+ 5/6 
+−1 ∆
+∈ q 5/6 Q[[q]].
+Ẽ4 = E4 · δ
+E42
+They numerically observed and proved some related results about the p-integrality
+of Ẽ4 for primes p ≡ 1 mod 3. This theme was later analysed and generalised in
+
+MAGNETIC (QUASI-)MODULAR FORMS
+
+3
+
+[2, 11, 12]. Bringing some parallel to that investigations, it is easy to check that the
+functions E4 and E4 δ −1 (∆/E42 ) (both with integer coefficients in their q-expansions!)
+span the solution space of the differential equation Df = 0, where
+
+
+
+
+1
+E2 E6
+1
+δE4
+2
+2
+D = δ − E2 δ +
+7E2 − 5E4 − 2
+= D5 +
+E2
+− 5δE2 .
+36
+E4
+6
+E4
+At the same time, the only quasi-modular solutions of D5 y = 0 are spanned by δE4
+(see [15, Theorem 2]).
+A somewhat different account of strong divisibility of the coefficients of modular
+forms shows up in the context of arithmetic properties of traces of singular moduli
+initiated in Zagier’s work [23]. As this topic remains quite popular, we only list
+a selection of contributions [1, 3, 8, 9, 10, 14]. The methods involved make use
+of the Shimura correspondence, which is also the main ingredient of our proof of
+Theorems 1 and 2.
+2. Magnetic quasi-modular forms
+In this part we formalise the notion of magnetic forms and give results, which
+may be thought of as generalisations of Theorems 1 and 2 but use the theorems as
+principal steps.
+Consider the family
+fa,b,c = E2a E4b E6c ,
+
+where a, b, c ∈ Z, a ≥ 0,
+
+of meromorphic quasi-modular forms. Their q-expansions all belong to Z[[q]]. For
+k ∈ Z even, denote by Wk the Q-vector space in Q ⊗Z Z[[q]] (the q-series f ∈ Q[[q]]
+with Nf ∈ Z[[q]] for some N ∈ Z>0 ) spanned by the q-expansions of the forms fa,b,c
+of weight k, that is, with 2a + 4b + 6c = k. Because
+k−a
+a
+b
+c
+δfa,b,c =
+fa+1,b,c − fa−1,b+1,c − fa,b−1,c+1 − fa,b+2,c−1 ,
+(3)
+12
+12
+3
+2
+the differential operator δ defines a well defined map Wk → Wk+2 . Clearly, the
+0
+image δWk in Wk+2 is a Q-subspace in Q ⊗Z qZ[[q]]; we will call Wk+2
+the cuspidal
+subspace of Wk+2 , that is, the set of all elements in Wk+2 with vanishing constant
+term in their q-expansion.
+We will say that an element v ∈ Wk0 is magnetic if its formal anti-derivative
+Z q
+dq
+−1
+δ v=
+v
+∈ Q ⊗Z qZ[[q]].
+q
+0
+We also call it strongly magnetic if δ −1 v ∈ qZ[[q]]. With the magnetic property, we
+can associate the equivalence relation ∼ on Wk writing v ∼ w if and only if the
+difference v − w is in Wk0 and is magnetic.
+Let Vk (respectively, Vk0 ) be the Q-vector subspace of Wk (respectively, of Wk0 )
+generated by the forms fa,b,c with a ∈ {0, 1, . . . , k − 2}. According to relation (3)
+this range of a makes the subspace Vk stable under the δ-differentiation. Notice that
+δV2 ⊆ V40 .
+
+Theorem 3. Any element of V40 is magnetic.
+
+4
+
+VICENŢIU PAŞOL AND WADIM ZUDILIN
+
+Remark 1. It seems that the elements of W40 with a > 2 (that is, outside the
+range assumed in V40 ) with the magnetic property are those that come as linear
+combinations of δ-derivatives of elements from W2 . In other words, we expect that
+the choice of V40 in the theorem as a magnetic space of weight 4 to be sharp.
+Derivation of Theorem 3 from Theorem 1. It follows from Theorem 1 that the forms
+f0,1,0 − f0,−2,2 = 1728F4a
+
+and f1,2,−1 − f0,1,0 = 6δf0,2,−1 − 5184F4b
+
+are magnetic; in other words, we have the equivalences f0,−2,2 ∼ f0,1,0 and f1,2,−1 ∼
+f0,1,0 .
+Any element in V4 can be written as E2a P (E4 , E6 )/(E4m E6n ), for some a, m, n nonnegative integers, a ≤ 2, and P (x, y) ∈ Q[x, y]. Such an expression clearly splits
+into a linear combination of the form fa,b,c ∈ V4 with 0 ≤ a ≤ 2 and either b ≥ 0 or
+c ≥ 0. If both b ≥ 0 and c ≥ 0 then we get only two elements in V4 , namely, f0,1,0
+and f2,0,0 = f0,1,0 + 12δf1,0,0 , both equivalent to f0,1,0 . Therefore, we only need to
+prove the theorem in two situations: b ≥ 0 and c < 0, or b < 0 and c ≥ 0.
+If b ≥ 0 and c < 0, then there is only one form fa,b,c ∈ V4 with c = −1. Indeed,
+solving 4 = 2a + 4b + 6c = 2a + 4b − 6 we get a = 1, b = 2. By the hypothesis, this
+form f1,2,−1 ∼ f0,1,0 . For c ≤ −2 we use equation (3) (with k = 2) in the form
+c+1
+a
+b−2
+a−2
+fa,b,c = −δfa,b−2,c+1 − fa−1,b−1,c+1 −
+fa,b−3,c+2 −
+fa+1,b−2,c+1 ,
+2
+12
+3
+12
+and induction on −c to conclude that fa,b,c is equivalent to a linear combination of
+f1,2,−1 and f0,1,0 , hence to f0,1,0 alone. (Notice that prefactors a/12 and (a − 2)/12
+leave the terms on the right-hand side in V4 .)
+If b < 0 (and c ≥ 0), we use equation (3) in the form
+
+b+1
+a−2
+a
+c−1
+fa,b,c = −δfa,b+1,c−1 −
+fa+1,b+1,c−1 − fa−1,b+2,c−1 −
+fa,b+3,c−2 . (4)
+3
+12
+12
+2
+When b = −1 and b = −2, the only forms fa,b,c ∈ V4 possible with c ≥ 0 are f1,−1,1
+and f0,−2,2 , respectively. Substituting a = 0, b = −2, c = 2 in (4) leads to
+1
+1
+1
+− f0,−2,2 = −δf0,−1,1 + f1,−1,1 − f0,1,0
+3
+6
+2
+implying f1,−1,1 ∼ f0,−2,2 ∼ f0,1,0 from the hypothesis. For b ≤ −3 we use (4) to
+conclude by induction on −b that any such fa,b,c is equivalent to a linear combination
+of f0,−2,2 , f1,−1,1 and f0,1,0 , hence to f0,1,0 . This completes the proof of the theorem.
+
+
+Remark 2. It follows from the proof that we can replace the generator f0,−2,2 −
+f0,1,0 with f1,−1,1 − f0,1,0 . Furthermore, alternative choices for f0,−2,2 − f0,1,0 and
+f1,2,−1 − f0,1,0 are F̃j = E2 · (δEj )/Ej or F̂j = (δ 2 Ej )/Ej for j = 4, 6.
+For weight 6 the situation is slightly different. Only the following is true.
+Theorem 4. Let U6 be the subspace of V6 spanned over Q by fa,b,c with the additional
+constraint c ≥ 0, and U60 = U6 ∩ V60 its cuspidal subspace. Then any element of U60
+is magnetic.
+
+MAGNETIC (QUASI-)MODULAR FORMS
+
+5
+
+Remark 3. In fact, it seems that the space U60 possesses the strongly magnetic
+property: the anti-derivative of any difference of two fa,b,c from U6 has an integral
+q-expansion.
+Proof. For c = 0, we only have two elements f3,0,0 and f1,1,0 in U6 , and f3,0,0 ∼ f1,1,0
+since f3,0,0 − f1,1,0 = 6δf2,0,0 . Moreover, they are both strongly equivalent to f0,0,1 ,
+because f1,1,0 − f0,0,1 = 3δE4 .
+For c = 1, we find out that f0,0,1 , f2,−1,1 and f4,−2,1 are in U6 . Then f4,−2,1 is
+strongly equivalent to any of f3,0,0 , f1,1,0 and f0,0,1 in accordance with f4,−2,1 −f3,0,0 =
+3δf4,−1,0 and the above. With the help of Theorem 2 and derivation
+f2,−1,1 − f0,0,1 = 4δf1,−1,1 − 4δf0,−2,2 + 2(f1,1,0 − f0,0,1 ) − 4608F6,
+
+we see that the same is true for f2,−1,1 .
+We have just shown that any element in the subspace U60 generated by fa,b,c with
+c ∈ {0, 1} does have the (strongly) magnetic property. For the rest of our theorem,
+we proceed by induction over c using the following consequence of equation (3) when
+k = 4:
+b
+4−a
+a
+c
+fa,b−1,c+1 = −δfa,b,c +
+fa+1,b,c − fa−1,b+1,c − fa,b+2,c−1 .
+
+3
+12
+12
+2
+3. A magnetic extension of the field of quasi-modular forms
+The functions τ, q, E2 , E4 , E6 are algebraically independent over C (see [19, 22]).
+We can identify the differential field Chτ, q, E2 , E4 , E6 i generated by them over C
+with the differential field K = Chτ, q, X, Y, Zi equipped with the derivation
+∂
+1
+∂
+1
+∂
+1
+∂
+1 ∂
++q
++ (X 2 − Y )
++ (XY − Z)
++ (XZ − Y 2 )
+.
+D=
+2πi ∂τ
+∂q 12
+∂X 3
+∂Y
+2
+∂Z
+Our goal is to demonstrate that the elements
+XZ
+XY 2
+v1 =
+− Y and v2 =
+− Z,
+Y
+Z
+corresponding to f1,−1,1 − f0,1,0 and f1,2,−1 − f0,1,0 , do not have D-anti-derivatives in
+K (not even in KhD −1 v2 i and KhD −1 v1 i, respectively). This follows trivially from
+noticing that ordY v1 = −1 and ordZ v2 = −1, so that if either D −1 v1 or D −1 v2 existed then ordY D −1 v1 < 0 and ordZ D −1 v2 < 0, hence ordY v1 = ordY D(D −1 v1 ) ≤
+−2 and similarly ordZ v2 ≤ −2, contradiction.
+By [16, Lemma 3.9] applied twice, the anti-derivatives
+Ẽ4a = δ −1 (f1,−1,1 − f0,1,0 ) and Ẽ4b = δ −1 (f1,2,−1 − f0,1,0 )
+
+are algebraically independent over the field Chτ, q, E2 , E4 , E6 i, the extended differential field
+Chτ, q, E2 , E4 , E6 , Ẽ4a , Ẽ4b i
+has transcendence degree 7 over C and is a Picard–Vessiot extension of the differential field Chτ, q, E2 , E4 , E6 i. Again, by identifying the former through the isomorphism
+ϕ : E2 7→ X, E4 7→ Y, E6 7→ Z, Ẽ4a 7→ S, Ẽ4b 7→ T
+
+6
+
+VICENŢIU PAŞOL AND WADIM ZUDILIN
+
+with the differential field K̂ = Chτ, q, X, Y, Z, S, T i equipped with the derivation
+1 ∂
+∂
+1
+∂
+1
+∂
+1
+∂
+D̂ =
++q
++ (X 2 − Y )
++ (XY − Z)
++ (XZ − Y 2 )
+2πi ∂τ
+∂q 12
+∂X 3
+∂Y
+2
+∂Z
+
+
+
+
+2
+XZ
+∂
+XY
+∂
++
+−Y
++
+−Z
+,
+Y
+∂S
+Z
+∂T
+we want to demonstrate that the element
+X 2Z
+v3 =
+−Z
+Y
+corresponding to f2,−1,1 − f0,0,1 does not have a D̂-anti-derivative in K̂.
+Assume on the contrary that there is an element u3 ∈ K̂ such that D̂u3 = v3 .
+Notice that the functions τ , q = e2πiτ , E2 (τ ), E4 (τ ) and E6 (τ ) are all analytic at
+τ = ρ = e2πi/3 , the latter three having the values
+√
+
+
+3Γ( 31 )6 3
+2 3
+E2 (ρ) =
+, E4 (ρ) = 0, E6 (ρ) =
+.
+π
+8π 4
+With the help of Ramanujan’s system (2) we find out that
+
+2πi
+E6 (ρ)(τ − ρ) + O (τ − ρ)2 as τ → ρ,
+E4 (τ ) = −
+3
+so that
+3iE2 (ρ) 1
+f1,−1,1 − f0,1,0 =
++ O(1),
+2π τ − ρ
+as τ → ρ
+3iE2 (ρ)2 1
++ O(1)
+f2,−1,1 − f0,0,1 =
+2π
+τ −ρ
+and f1,2,−1 − f0,1,0 is analytic at τ = ρ. In turn, this implies that
+−1
+
+Ẽ4a = −3E2 (ρ) ln(τ − ρ) + g1 (τ ),
+
+δ (f2,−1,1 − f0,0,1 ) = −3E2 (ρ)2 ln(τ − ρ) + g3 (τ )
+
+as τ → ρ
+
+for some functions g1 (τ ) and g3 (τ ) analytic at τ = ρ, while Ẽ4b (τ ) is analytic there.
+To summarise, the function
+√
+2 3
+−1
+δ (f2,−1,1 − f0,0,1 ) −
+Ẽ4a (τ ) = δ −1 (f2,−1,1 − f0,0,1 ) − E2 (ρ)Ẽ4a (τ )
+π
+is analytic at τ = ρ, hence only representable as a rational function of τ, q, E2 , E4 ,
+E6 , Ẽ4b . Using the isomorphism ϕ we conclude that
+√
+2 3
+S ∈ K̂
+u = u3 −
+π
+is a polynomial in τ, q, X, Y, Z, T . The √latter is seen to be impossible after the
+2 3
+S leading to a rational expression of S
+operator D̂ is applied to u and to u3 −
+π
+in terms of the other generators of K̂. The contradiction we arrive at implies that
+the anti-derivative
+Ẽ6 = δ −1 (f2,−1,1 − f0,0,1 )
+
+MAGNETIC (QUASI-)MODULAR FORMS
+
+7
+
+is transcendental over the field Chτ, q, E2 , E4 , E6 , Ẽ4a , Ẽ4b i. On replacing the generators of the latter with the anti-derivatives of magnetic modular forms from Theorems 1 and 2 we obtain the following result.
+Theorem 5. The differentially closed field
+Chτ, q, E2, E4 , E6 , F̃4a , F̃4b , F̃6 i,
+generated by τ , q = e2πiτ , the Eisenstein series (1) and the anti-derivatives
+ 
+
+
+
+
+∆
+−1
+−1 E4 ∆
+−1 E6 ∆
+F̃4a = δ
+, F̃4b = δ
+, F̃6 = δ
+E42
+E62
+E43
+with integral coefficients in their q-expansions, has transcendence degree 8 over C.
+Remark 4. Another way to see that no u3 exists in K̂ such that D̂u3 = v3 is by
+casting u3 in the form p/q with p, q in the ring R[S], where R = Chτ, q, X, Y, Z, T i,
+and gcd(p, q) = 1. After clearing the denominators in D̂(p/q) = v3 and comparing
+the degree in S on both sides, one concludes that D̂q = uq for some u ∈ R (that is,
+independent of S). This leads to conclusion q ∈ R, so that u3 is a polynomial in S.
+Finally, the equation D̂u3 = X 2 Z/Y − Z is seen to be impossible by comparing the
+order in Y on both sides.
+Exercise 1. We leave to the reader the exercise to prove that the anti-derivative
+of F̃6 (in turn, the second anti-derivative of F6 ) is transcendental over the field in
+Theorem 5.
+4. Half-integral weight weakly holomorphic modular forms
+Following the ideas in [17], we will cast magnetic modular forms of weight 2k as
+the images of weakly holomorphic eigenforms of weight k + 1/2 underPthe Shimura–
+Borcherds lift. In our settings, an input for the lift is a form f (τ ) = n≫−∞ a(n)q n
+!,+
+from the Kohnen plus space Mk+1/2
+(meaning that a(n) vanishes when (−1)k n 6≡
+P
+0, 1 mod 4); the output is the meromorphic modular form Ψ(f )(τ ) = n>0 A(n)q n
+with
+X d 
+dk−1 a(|D| n2/d2 ),
+(5)
+A(n) =
+D
+d|n
+
+where D = Dk = 1 for k even (so that the Kronecker–Jacobi symbol Dd is always 1)
+and D = Dk = −3 for k odd. In other words,
+X
+X X d 
+n
+Ψ = Ψk : f =
+a(n)q 7→ F =
+qn
+dk−1a(|Dk | n2 /d2 ),
+(6)
+D
+k
+n≫−∞
+n>0
+d|n
+
+P
+n
+
+k−1
+and the latter expression is just F = n>0 q
+a(n2 /d2 ) when k is even. We
+d|n d
+!,+
+!,+
+will also distinguish the Kohnen plus cuspidal space Sk+1/2
+in Mk+1/2
+by imposing
+the additional constraint a(0) = 0.
+
+P
+
+8
+
+VICENŢIU PAŞOL AND WADIM ZUDILIN
+
+!,+
+Our examples of forms from Mk+1/2
+with k = 2 involved in the proof of Theorem 1
+are the following three:
+
+g0 (τ ) = θ(τ ) (θ(τ )4 − 20E2,4 (τ ))
+
+= 1 − 10q − 70q 4 − 48q 5 − 120q 8 − 250q 9 − · · · − 550q 16 − · · ·
+− 1210q 25 − · · · − 1750q 36 − · · · − 3370q 49 − · · · ,
+
+θ(τ )E4 (4τ )2 E6 (4τ )
+∆(4τ )
+−4
+= q + 2q −3 + 2 − 196884q 4 − · · · − 85975040q 9 − · · ·
+
+g1 (τ ) =
+
+− 86169224844q 16 − · · · − 51186246451200q 25 − · · ·
+
+− 35015148280961780q 36 − · · · − 21434928162930081792q 49 − · · · ,
+
+g0 (τ )E4 (4τ )3
+∆(4τ )
+−4
+= q − 10q −3 + 674 − 7488q + 144684q 4 − · · · − 224574272q 9 − · · ·
+
+g2 (τ ) =
+
+− 42882054732q 16 − · · · − 63793268216640q 25 − · · ·
+
+− 31501841125150388q 36 − · · · − 22385069000981561664q 49 − · · · ,
+P
+2
+where θ(τ ) = n∈Z q n and
+∞
+X
+X
+−E2 (τ ) + 3E2 (2τ ) − 2E2 (4τ )
+=
+qn
+d.
+E2,4 (τ ) =
+24
+n=1
+n odd
+
+(7)
+
+d|n
+
+The modular form g0 (τ ) is known by the name of normalised Cohen–Eisenstein series
+of weight 5/2.
+Lemma 1. (a) The weight 5/2 weakly holomorphic modular form
+7
+1
+1
+1
+f4a (τ ) = g0 (τ ) +
+g1 (τ ) −
+g2 (τ ) = q −3 + q − 506q 4 + · · ·
+8
+768
+768
+64
+!,+
+lies in the Kohnen plus cuspidal space S5/2
+and its Shimura–Borcherds lift Ψ(f4a )
+2
+is F4a = ∆/E4 .
+(b) The weight 5/2 weakly holomorphic modular form
+
+f4b (τ ) =
+
+19
+5
+1
+1 −4
+g0 (τ ) −
+g1 (τ ) −
+g2 (τ ) = −
+q + q + 1222q 4 + · · ·
+18
+648
+648
+108
+
+!,+
+lies in the Kohnen plus cuspidal space S5/2
+and its Shimura–Borcherds lift Ψ(f4b )
+2
+is E4 ∆/E6 .
+1 −3
+1 −4
+Moreover, f4a ∈ 64
+q Z[[q]] and f4b ∈ 108
+q Z[[q]].
+
+The identification Ψ(f4a ) = F4a is already in Borcherds’ [7, Example 14.4].
+Proof. Indeed, we only need to check that f4a , f4b have vanishing constant term
+and that the first three coefficients in the q-expansions of Ψ(f4a ), Ψ(f4b ) agree with
+
+MAGNETIC (QUASI-)MODULAR FORMS
+
+9
+
+those of the predicted meromorphic modular forms; we choose to check the first
+seven coefficients.
+For the integrality statement, we use the alternative expressions
+∗
+f14+1/2
+(τ )
+64f4a (τ ) =
+∆(4τ )
+and
+∗
+f14+1/2 (τ ) (j(4τ ) − 674) + 10f14+1/2
+(τ )
+,
+−108f4b (τ ) =
+∆(4τ )
+∗
+where the forms fb+1/2 (τ ), fb+1/2
+(τ ) are the holomorphic modular forms of weight
+b + 1/2 with integral q-expansions from the table in [8, Appendix] and j(τ ) =
+E4 (τ )3 /∆(τ ) is the elliptic modular invariant.
+
+P
+!,+
+As we will see further, for certain forms n≫−∞ a(n)q n ∈ S5/2
+with integral qexpansions (in particular, for the forms 64f4a and 108f4b ) one can make use of Hecke
+operators to conclude with the divisibility n | a(n2 ) for n > 0. This readily implies
+that 64F4a and 108F4b in Theorem 1 are strongly magnetic modular forms, since the
+relation in (5) translates the divisibility into
+A(n) X a(n2 /d2 ) X a(d2 )
+=
+=
+∈ Z.
+n
+n/d
+d
+d|n
+
+d|n
+
+A detailed analysis below reveals that the factors 64 and 108 can be also removed.
+5. The square part and Hecke operators
+We refer the reader to [8] and [4] for the definition of Hecke operators Tp and
+Tp2 on integral weight 2k and half-integral weight k + 1/2 modular forms (including
+weakly holomorphic or meromorphic), respectively. As in the case of the Shimura–
+Borcherds P
+lift Ψ = Ψk in (6), these definitions make perfect sense for any Laurent
+series f = n≫−∞ a(n)q n , not necessarily of modular origin but
+P with the weight 2k
+or k + 1/2 additionally supplied. We refer to the finite sum n<0 a(n)q n as to the
+principal part of f . We take
+X
+X
+X
+χ(n)a(n)q n
+f | Up =
+a(np)q n , f | Vp =
+a(n)q np , f | χ =
+n≫−∞
+
+n≫−∞
+
+n≫−∞
+
+for a character χ : Z → C, and define
+and
+
+f | Tp = f | (Tp , 2k) = f | Up + p2k−1 Vp
+
+f | Tp2 = f | (Tp2 , k + 1/2) = f | Up2 + pk−1 χp + p2k−1 Vp2 ,
+k 
+where χp (n) = χp,k (n) = (−1)p n is the Kronecker–Jacobi symbol.
+
+A simple calculation shows that Ψk (f ) | (Tp , 2k) = Ψk f | (Tp2 , k + 1/2) , which we
+can reproduce in a simplified form
+when k is fixed.
+
+Ψ(f ) | Tp = Ψ(f | Tp2 )
+
+10
+
+VICENŢIU PAŞOL AND WADIM ZUDILIN
+
+Lemma 2. Given a positive integer k, assume that there are no cusp forms of
+!,+
+weight 2k. For a prime p, let f ∈ Mk+1/2
+have p-integral coefficients and satisfy
+2
+p > − ordq (f ). Then
+f | Tpn2 ≡ 0 mod p(k−1)n .
+Proof. Following the argument in [4, proof of Lemma 3.1], we can write
+X
+b c−r
+αa,b,c,r · p(2k−1)c+(k−1)b · Upa−r
+,
+Tpn2 =
+2 χp Vp2
+
+(8)
+
+a,b,c,r≥0
+a+b+c=n
+r≤min{a,c}
+
+where αa,b,c,r are some integers. This writing can be easily deduced from Vp2 χp =
+χp Up2 = 0 and the fact that Vp2 Up2 is the identity. We only need to analyse the
+principal part of f | Tpn2 which, by the hypothesis dim S2k = 0, determines it uniquely.
+b c−r
+If r < a, then f | Upa−r
+has no principal part, because the latter is killed by
+2 χp Vp2
+a single action of Up2 (since a−p2 m = 0 for any m ≥ 0). Therefore, we may assume
+that a = r ≤ c. This implies that (2k − 1)c + (k − 1)b ≥ (k − 1)(2c + b) ≥ (k − 1)n,
+hence the principal of f | Tpn2 part is divisible by p(k−1)n . This in turn implies that
+f | Tpn2 = p(k−1)n · g for some g ∈ M!,+
+k+1/2 with p-integral coefficients, since there is a
+!,+
+basis {gm = q m + O(q) : m ∈ Z, (−1)k m ≡ 0} of Mk+1/2
+whose elements have all
+coefficients integral (see [8, Proposition 2]).
+
+
+In parallel with (6), define
+X
+X
+X d 
+n
+|Dk |n2
+Φ = Φk : g =
+b(n)q 7→
+q
+dk−1µ(d)b(n/d),
+D
+k
+n≫−∞
+n>0
+d|n
+
+where µ( · ) is the Möbius function and, as before, Dk =P
+2 · (−1)k − 1 ∈ {1, −3}. We
+further define the ‘square part’ of a Laurent series f = n≫−∞ a(n)q n as
+X
+2
+f =
+a(|Dk |n2 )q |Dk |n .
+n>0
+
+The definitions immediately lead to the following conclusions.
+Lemma 3. We have Φ(Ψ(f )) = f  . In particular, if Ψ(f ) ∈ qZ[[q]], then f  ∈
+qZ[[q]].
+
+
+Notice that f4a
+, f4b
+∈ qZ[[q]] by this lemma, because both F4a = Ψ(f4a ) and
+F4b = Ψ(f4b ) are in qZ[[q]].
+In addition to this, we list some other easily verifiable properties about the interaction of Hecke operators and square parts.
+P
+Lemma 4. Given a Laurent series f = n≫−∞ a(n)q n and positive integer k, the
+following statements are true.
+(a) Ψ(f ) | Tpn = Ψ(f | Tpn2 ) for n = 1, 2, . . . .
+(b) Ψ(f ) = Ψ(f  ).
+(c) (f | Tp2 ) = f  | Tp2 termwise, that is, (f | Up2 ) = f  | Up2 , (f | Vp2 ) =
+f  | Vp2 and (f | χp ) = f  | χp .
+
+MAGNETIC (QUASI-)MODULAR FORMS
+
+11
+
+(d) If the coefficients of f are integral and k ≥ 2, then f | Tp2 ≡ f | Up2 mod p.
+Proof of Theorem 1. Consider f ∈ {f4a , f4b }. For a prime p ≥ 5, the form f is pintegral and we have ordq (f ) ≥ −4; therefore Lemma 2 with k = 2 applies to result
+in
+f | Tpn2 ≡ 0 mod pn .
+Applying Shimura–Borcherds map (6) we deduce that, for F = Ψ(f ) ∈ {F4a , F4b },
+n
+we have
+0 mod pn for all n ≥ 1, hence F | Upn ≡ 0 mod pn ; in other words,
+P F | Tp ≡ m
+F = m>0 A(m)q has the strong p-magnetic property:
+pn | m =⇒ pn | A(m)
+
+(9)
+
+for any prime p ≥ 5. This argument also works for f = f4a in the case of p = 3,
+because f4a is 3-integral.
+Consider now p = 3 and f = f4b , in which case we only know that 27f is 3-integral.
+r
+!,+
+Take the (unique!) element gr ∈ M5/2
+with q-expansion gr = q −4·9 + O(q); by [8,
+Proposition 2] it has integral coefficients. We first show that g0 | T9n ≡ 0 mod 3n+3 .
+
+For n = 0 this is true, because g0 = −108 · f4b and f4b
+is in qZ[[q]]. For n = 1
+1
+we observe that Ψ(− 108 g0 | T9 ) = F4b | T3 and F4b ≡ ∆ mod 3 (since both E4 , E6 ≡
+1 mod 3). This implies that F4b | T3 ≡ ∆ | T3 ≡ 0 mod 3, hence
+1 
+g | T9 = Φ(F4b | T3 ) ≡ 0 mod 3
+−
+108 0
+meaning that g0 | T9n ≡ 0 mod 3n+3 is true when n = 1. Since g0 | T9 = 27g1 − 3g0
+we also deduce from this that g1 ≡ 0 mod 3.
+For n general, we want to write g0 | T9n as a Z-linear combination of gr with
+r = 0, 1, . . . , n. Looking at the principal part of g0 | T9n , one finds out that only
+2m
+terms of the form q −4·3 appear, so that subtracting the related linear combination
+of fr leads to a holomorphic cusp form, which then must vanish. To examine this
+linear combination in more details we proceed as in the proof of Lemma 2:
+X
+g0 | T9n =
+αa,b,c,r · 33c+b · g0 | U9a−r χb3 V9c−3
+a,b,c,r
+
+(see equation (8)). As already noticed in that proof, only the terms with r = a ≤ c
+contribute to the principal part, thus to the linear combination; the terms with
+r = a contribute by the subsum
+X
+αa,b,c,a · (−1)b · 33c+b · gc−a .
+a,b,c
+
+Now notice that if 2c ≥ a + 3, then the coefficient is divisible by 3n+3 . In the
+remaining situations we have 2a ≤ 2c < a + 3, in particular a ∈ {0, 1, 2}, and we
+use the following analysis:
+(a) If a = 2, then the inequalities imply that c = 2, hence b = n − 4; the corresponding term is then a multiple of 33·2+n−4 g0 .
+(b) If a = 1, then c = 1, hence b = n − 2; the corresponding term happens to be a
+multiple of 33·1+n−2 g0 .
+
+12
+
+VICENŢIU PAŞOL AND WADIM ZUDILIN
+
+(c) If a = 0, then c ∈ {0, 1}. The term corresponding to c = 0 is a multiple of 3n g0 ,
+while the term corresponding to c = 1 is a multiple of 3n+2 · g1 .
+Gathering all the terms, we end up with an expression
+g0 | T9n = 3n+3 g + 3n+2 α · g1 + 3n β · g0 ,
+where g is integral and both α and β are integers. Taking the square parts on both
+sides and using the results for n = 0, 1 we deduce that g0 | T9n ≡ 0 mod 3n+3 for
+any n = 0, 1, . . . . Finally, we apply the Shimura–Borcherds map to this congruence
+to deduce that F4b | T3n ≡ 0 mod 3n for all n ≥ 0. In other words, this implies the
+congruences (9) for p = 3.
+Turning now our attention to the prime p = 2, notice that the Hecke operator T4
+does not respect the Kohnen plus space. However, if we define the projection
+X
+X
+a(n)q n ,
+K + = Kk+ :
+a(n)q n 7→
+n∈Z
+
+n∈Z
+(−1)k n≡0,1 mod 4
+
+!,+
+then the operator T4′ = K + ◦ T4 maps the space Mk+1/2
+onto itself and inherits all
+the properties used above for Tp2 when p > 2. We use this operator T4′ in place of
+T4 to complete the proof of our Theorem 1. Notice that in both cases f = f4a and
+f = f4b has powers of 2 in the denominator of its main term. For an ease of the
+argument, we treat the two cases separately, though the same strategy is used for
+both, along the line with the proof above of relation (9) for p = 3.
+When f = f4b , we need to prove that F4b | T2n ≡ 0 mod 2n , which is in turn
+r
+!,+
+
+implied by the congruence f4b
+| T4′ n ≡ 0 mod 2n . Introduce gr = q −4·4 + O(q) ∈ M5/2
+1
+with integral q-expansions for r = 0, 1, . . . and notice that f4b = − 108
+· g0 . The
+′
+induction on r ≥ 0 shows that the recursion gr | T4 = 8gr+1 + gr−1 takes place, with
+the convention that g−1 = 0. This in turn leads to
+n
+
+g0 | T4′ = 2n+2 g + 2n+1 α · g1 + 2n β · g0
+
+!,+
+for some integral g ∈ M5/2
+and α, β ∈ Z. Taking the square parts on both sides and
+using that F4b ≡ ∆ mod 8, hence Φ(F4b | T2 ) ≡ Φ(∆ | T2 ) ≡ 0 mod 8, we conclude
+with g0 | T4′ n ≡ 0 mod 2n+2 , hence with (9) for p = 2 and F = F4b .
+r
+!,+
+For f = f4a , we introduce the family gr = q −3·4 +O(q) ∈ M5/2
+, where r = 0, 1, . . . ,
+′
+which is invariant under the action of the operator T4 , and proceed similarly to get
+exactly the same recursion gr | T4′ = 8gr+1 + gr−1 for r ≥ 0 with g−1 = 0. On using
+1
+g0 = 64
+f4a ,
+n
+g0 | T4′ = 2n+6 g + 2n+5 α · g2 + 2n+4 β · g1 + 2n+3 γ · g0
+
+for n ≥ 3, and F4a ≡ ∆ mod 8, we conclude with g0 | T4′ n ≡ 0 mod 2n+6 implying
+F4a | T2n ≡ 0 mod 2n as required.
+
+
+Proof of Theorem 2. We now work with k = 3. Consider
+∗
+
+1 f15+1/2 (τ )
+f (τ ) = −
+∈ M!,+
+k+1/2 ,
+384 ∆(4τ )
+
+MAGNETIC (QUASI-)MODULAR FORMS
+
+13
+
+∗
+where fb+1/2
+is the weight b + 1/2 modular form from the table in [8, Appendix].
+One can easily check (through the first few coefficients) that Ψ(f ) = F6 and from
+the expression above we also know that f has p-integral coefficients for any p ≥ 5.
+It follows from Lemma 2 (applied this time with k = 3) that f | Tpn2 ≡ 0 mod p2n .
+Therefore, F6 |P
+Tpn ≡ 0 mod p2n for all n ≥ 0 implying that F6 | Upn ≡ 0 mod p2n and
+that for F6 = m>0 A(m)q m we have
+
+pn | m =⇒ p2n | A(m)
+
+(10)
+
+for any prime p ≥ 5.
+Since 384 = 3 · 27 , for p = 3 we see that 3f is 3-integral. Repeating the argument
+from Lemma 2 and using the fact that f is a multiple of the unique element in M!,+
+7/2
+with the integral q-expansion q −1 + O(q), we deduce that f | T9n = 32n · (g + αf ) with
+α an integer and g a 3-integral modular form. Indeed, the principal part of f | T9n is
+an Z-linear combination of the principal parts of
+3(2·3−1)c+(3−1)b · f | χb3 V9c−a = 32n · (3c−a f ) | χb3 V9c−a .
+
+If c − a ≥ 1 the principal part of (3c−a f ) | χb3 V9c−a is 3-integral; when c = a the
+principal part of f | χb3 will be an integral multiple of the principal part of f . Thus,
+f | T9n = 32n · (g + α · f ) implies (applying the Shimura–Borcherds lift to both sides)
+that F6 | T3n ≡ 0 mod 32n , hence we deduce that (10) is true also for p = 3.
+To prove the relation (10) for p = 2, we proceed as in the proof of Theorem 1. We
+introduce the T4′ -invariant family of weight 7/2 weakly holomorphic modular forms
+r
+gr = q −4 +O(q) with integral q-expansions with the help of [8, Proposition 2]. Again,
+we write the expression of g0 | T4′ n as Z-linear combination of gr with r = 0, 1, . . . , n
+and analyse the powers of 2 appearing in the coefficients; similarly, we can prove
+that g0 | T4′ n ≡ 0 mod 22n+7 for any n ≥ 0. For n = 0 this comes from the integrality
+of f  , while for n = 1 we get it, again, by noticing that F6 ≡ E6 ∆ mod 24 while
+E6 ∆ being an eigenform of weight 18 with slope 4 at the prime 2. The induction
+argument follows mutatis mutandis as in the proof of Theorem 1.
+
+6. Miscellania on half-integral weight modular forms
+In this part, not well related to the proofs of Theorems 1 and 2, we indicate a
+different strategy of constructing half-integral weight weakly holomorphic modular
+forms using a traditional rising operator.
+Standard examples of weight 1/2 modular forms (see [6, Sect. 14, Example 2])
+P
+2
+include the theta function θ(τ ) = n∈Z q n and
+E2,4 (τ )θ(τ ) (θ(τ )4 − 2E2,4 (τ )) (θ(τ )4 − 16E2,4 (τ )) E6 (4τ )
++ 56θ(τ )
+∆(4τ )
+= q −3 − 248q + 26752q 4 + · · · ,
+
+h0 (τ ) =
+
+where E2,4 (τ ) is given in (7). The images of 12θ and 4θ + h0 under the multiplicative
+Borcherds lift
+X
+Y
+2
+Ψmult :
+c(n)q n 7→ q −h
+(1 − q n )c(n )
+n≫−∞
+
+n>0
+
+14
+
+VICENŢIU PAŞOL AND WADIM ZUDILIN
+
+are the modular forms ∆(τ ) and E4 (τ ), respectively (see [6, Theorem 14.1] for the
+definition of h). Although it is not useful for our results in this note, we remark
+that the two weakly holomorphic modular forms can serve as constructors of some
+weight 5/2 modular forms from Section 4.
+Lemma 5. The raising operator
+D = Dk : f 7→ δf −
+
+2k + 1
+E2 (4τ ) · f
+6
+
+!,+
+!,+
+maps Mk+1/2
+onto Mk+5/2
+.
+
+Proof. Observe that E2 (τ )−4E2 (4τ ) is a modular form of weight 2 for Γ0 (4), so that
+the difference between the usual raising operator and D is the multiplication by a
+!
+!
+weight 2 modular form, thus indeed D : Mk+1/2
+→ Mk+5/2
+. On the other hand, both
+δ and multiplication by any modular form f (4τ ) preserve the Kohnen plus space
+condition, and the lemma follows.
+
+For the functions g0 , f4a and f4b in Section 4 we find out that
+6
+g0 = −6Dθ, 64f4a = − Dh0
+19
+and
+
+
+θE6 (4τ )2
+6
+.
+108f4b = − D 2h0 − 1006θ −
+25
+∆(4τ )
+7. Concluding remarks
+Though we expect that our discussion above exhausts all elements with the mag0
+netic property in W40 , many such exist for W2k
+with k > 2; for example, the q-series
+E2m · (δEj )/Ej for j = 4, 6 and m = 1, 2, 3, 4, 6 (but not for m = 5). Constructing
+magnetic modular forms — meromorphic ones with poles at quadratic irrationalities
+from the upper half-plane — is a routine on the basis of Shimura–Borcherds (SB)
+lift (6); Table 1 lists a few instances of this production explicitly in terms of the
+j-ivariant j(τ ) = E43 /∆. Generating the forms with multiple magnetic property in
+higher weights is a tougher task; one such example E42 (j − 3 · 210 )/j 2 can be found
+in the more recent work [18] of Löbrich and Schwagenscheidt; another example of a
+triply magnetic form of weight 8 is
+13j 3 − 443556j 2 + 1610452125j − 98280 · 156
+E42
+.
+(j + 153 )4
+We have observed that in all such instances the related numerators, viewed as polynomials in j, have real zeroes only. Furthermore, there are weaker divisibility conditions (resembling the Honda–Kaneko congruences [13]) for individual summands
+of magnetic forms; for example, the anti-derivatives of
+E4 j
+E4
+and
+3
+2
+(j − 2 · 30 )
+(j − 2 · 303 )2
+are already p-integral for primes p ≡ 5 (mod 6). We have not tried to investigate
+this arithmetic subphenomenon.
+
+MAGNETIC (QUASI-)MODULAR FORMS
+
+15
+
+There is a good reason to believe that all such magnetic forms originate from
+suitable Shimura–Borcherds lifts. But, maybe, there is more in this story — then
+time will show.
+Table 1. Strong magnetic modular forms of weight 4 (where fm =
+!,+
+q −m +O(q) denotes the unique weakly holomorphic cusp form in M5/2
+)
+description in terms of E4 and j = E43 /∆
+19j − 8 · 153
+Ψ(3−3 f7 )
+E4
+(j + 153 )2
+101j − 3 · 203
+Ψ(−2−3 f8 )
+E4
+(j − 203 )2
+43j − 6 · 323
+Ψ(2−6 f11 )
+E4
+(j + 323 )2
+14j + 18 · 153
+−2
+Ψ(48 f3 | T4 )
+E4
+(j − 2 · 303 )2
+611j + 404 · 333
+Ψ(108−1f4 | (1 − 21 T4 ))
+E4
+(j − 663 )2
+82451j + 5272 · 2553
+Ψ(3−3 f7 | (2 − 21 T4 ))
+E4
+(j − 2553)2
+25j − 2 · 963
+Ψ(12−3f19 )
+E4
+(j + 963 )2
+11329j − 578 · 9603
+Ψ(12−3f43 )
+E4
+(j + 9603 )2
+1221961j − 49442 · 52803
+Ψ(12−3f67 )
+E4
+(j + 52803 )2
+908855380249j − 23238932978 · 6403203
+Ψ(12−3 f163 )
+E4
+(j + 6403203)2
+3
+2
+785j − 15219684j + 28709816985j + 837864 · 4953
+−1
+Ψ(15 f15 )
+E4
+(j 2 + 191025j − 4953)2
+3
+733j + 72767680j 2 − 984198615040j + 123 · 203 · 8803
+Ψ(−80−1 f20 )
+E4
+(j 2 − 158 · 203 j − 8803 )2
+P23 (j)
+Ψ(−f23 )
+E4 3
+3
+2
+(j + 27934 · 5 j − 329683 · 56 j + 1873 · 59 )2
+where
+SB lift
+
+P23 (j) = 141826j 5 − 286458244 · 53 j 4 + 5214621227 · 56 j 3 + 3414887843776 · 59 j 2
+− 47816219216827 · 512 j + 4378632 · 1873 · 515
+
+Acknowledgements. We thank the anonymous referee for their critical reading
+and valuable comments: those really helped to reduce errors and improve the exposition.
+
+16
+
+VICENŢIU PAŞOL AND WADIM ZUDILIN
+
+References
+[1] S. Ahlgren, Hecke relations for traces of singular moduli, Bull. Lond. Math. Soc. 44 (2012),
+no. 1, 99–105.
+[2] S. Ahlgren and N. Andersen, Hecke grids and congruences for weakly holomorphic modular forms, in Ramanujan 125, Contemp. Math. 627 (Amer. Math. Soc., Providence, RI, 2014),
+pp. 1–16.
+[3] S. Ahlgren and K. Ono, Arithmetic of singular moduli and class polynomials, Compos.
+Math. 141 (2005), no. 2, 293–312.
+[4] K. Bringmann, P. Guerzhoy and B. Kane, Half-integral weight p-adic coupling of weakly
+holomorphic and holomorphic modular forms, Res. Number Theory 1 (2015), Art. 26.
+[5] D. Broadhurst and W. Zudilin, A magnetic double integral, J. Aust. Math. Soc. 107
+(2019), no. 1, 9–25.
+[6] R.E. Borcherds, Automorphic forms on Os+2,2 (R) and infinite products, Invent. Math. 120
+(1995), no. 1, 161–213.
+[7] R.E. Borcherds, Automorphic forms with singularities on Grassmannians, Invent. Math.
+132 (1998), no. 3, 491–562.
+[8] W. Duke and P. Jenkins, Integral traces of singular values of weak Maass forms, Algebra
+Number Theory 2 (2008), no. 5, 573–593.
+[9] B. Edixhoven, On the p-adic geometry of traces of singular moduli, Int. J. Number Theory
+1 (2005), no. 4, 495–497.
+[10] P. Guerzhoy, Some congruences for traces of singular moduli, J. Number Theory 122 (2007),
+no. 1, 151–156.
+[11] P. Guerzhoy, On the Honda–Kaneko congruences, in From Fourier analysis and number
+theory to Radon transforms and geometry, Dev. Math. 28 (Springer, New York, 2013), pp.
+293–302.
+[12] P. Guerzhoy, Honda–Kaneko congruences and the Mazur–Tate p-adic σ-function, J. Number
+Theory 206 (2020), 169–181.
+[13] Y. Honda and M. Kaneko, On Fourier coefficients of some meromorphic modular forms,
+Bull. Korean Math. Soc. 49 (2012), no. 6, 1349–1357.
+[14] P. Jenkins, p-adic properties for traces of singular moduli, Int. J. Number Theory 1 (2005),
+no. 1, 103–107.
+[15] M. Kaneko and M. Koike, On modular forms arising from a differential equation of hypergeometric type, Ramanujan J. 7 (2003), no. 1-3, 145–164.
+[16] I. Kaplansky, An introduction to differential algebra, Publ. Inst. Math. Univ. Nancago 5
+(Hermann, Paris, 1957).
+[17] Y. Li and M. Neururer, A magnetic modular form, Int. J. Number Theory 15 (2019), no.
+5, 907–924.
+[18] S. Löbrich and M. Schwagenscheidt, Arithmetic properties of Fourier coefficients of meromorphic modular forms, Algebra Number Theory 15 (2021), no. 9, 2381–2401.
+[19] K. Mahler, On algebraic differential equations satisfied by automorphic functions, J. Austral.
+Math. Soc. 10 (1969), 445–450.
+[20] Yu.V. Nesterenko, Modular functions and transcendence questions, Mat. Sb. 187 (1996),
+no. 9, 65–96; English transl., Sb. Math. 187 (1996), no. 9, 1319–1348.
+[21] S. Ramanujan, On certain arithmetical functions, Trans. Cambridge Philos. Soc. 22 (1916),
+no. 9, 159–184; Reprinted in Collected papers of Srinivasa Ramanujan (G.H. Hardy, P.V.
+Sechu Aiyar and B.M. Wilson, eds.) (Cambridge University Press, Cambridge, 1927 & AMS
+Chelsea Publ., Providence, RI, 2000), pp. 136–162.
+[22] H.L. Resnikoff, On differential operators and automorphic forms, Trans. Amer. Math. Soc.
+124 (1966), 334–346.
+[23] D. Zagier, Traces of singular moduli, in Motives, polylogarithms and Hodge theory, Part I
+(Irvine, CA, 1998), Int. Press Lect. Ser. 3 (Int. Press, Somerville, MA, 2002), pp. 211–244.
+
+MAGNETIC (QUASI-)MODULAR FORMS
+
+17
+
+Simion Stoilow Institute of Mathematics of the Romanian Academy, P.O. Box
+1-764, 014700 Bucharest, Romania
+Email address: vicentiu.pasol@imar.ro
+Department of Mathematics, IMAPP, Radboud University, PO Box 9010, 6500 GL
+Nijmegen, Netherlands
+Email address: w.zudilin@math.ru.nl
+
+

@@ -467,3 +467,7 @@ lattice/weight_drop/07_roots.gp    # sqrt(F) denominators; sqrt(F_7)=E_1(chi_-7)
 lattice/weight_drop/08_slots.gp    # L(Xi,2),L(Xi,3),L(Xi,4); P(2)=1/7,1/5,-1
 lattice/weight_drop/09_bogner.gp   # A_n in Z and (n+1)|A_n to n=600
 ```
+
+---
+
+**Addendum 2026-09-02 (Fable, from `lattice/cooper_sources/REPORT.md`).** Two corrections. (i) §4.3: for $s_{18}$ one has $F|_2W_9=+F$ and $\Phi|_4W_9=+\Phi$ (48 digits), not $-F$; the residue of $\Phi\,d\tau$ at $\tau_0=(3+i)/6$ does not vanish — it is $A_1=iA_2/\mathrm{Im}\,\tau_0$ with $A_2=\nu^2/(4\pi^2g'(u_0))$, and a vanishing residue would be incompatible with the even order of the pole. The corrected residue is visible in the coefficient asymptotics as the shift $m\mapsto m-1/(2\pi\,\mathrm{Im}\,\tau_0)$, confirmed to 60 digits. (ii) §3.1: the measured rate $1.178$ for $s_{10}$ is a sampling artefact of the exact relation $c(5m)=5c(m)$; the true rates $e^{2\pi\,\mathrm{Im}\,\tau_0}$ are $2.175682\ldots$, $1.874456\ldots$, $2.849653\ldots$, all still below $e^{2\pi/\sqrt N}$, so the section's conclusion stands.
