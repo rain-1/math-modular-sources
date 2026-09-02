@@ -1,0 +1,15 @@
+read("lib.gp");
+default(realprecision, 60);
+s5=sqrt(5); ph5=(11+5*s5)/2; q5=5^(1/4);
+Ep = srcbyname("E3ps"); Em = srcbyname("E3psb");
+mixw(c1,c2,a,c) = my(u=cperiod(Ep,a,c)); my(v=cperiod(Em,a,c)); c1*u[1]+c2*v[1];
+y1 = imag(mixw(1+I*ph5,1-I*ph5,2,5));
+y2 = imag(mixw(1-I/ph5,1+I/ph5,2,5));
+y3 = imag(mixw(1-I/ph5,1+I/ph5,1,5));
+BASE = [Pi^2, Pi^2*q5, Pi^2*s5, Pi^2*q5^3];
+tryit(nm,y) = print(nm, " = ", y, "   lindep = ", lindep(concat([y], BASE), 40));
+tryit("Im Pi(Phi_new, 2/5) ", y1);
+tryit("Im Pi(Phi'_new, 2/5)", y2);
+tryit("Im Pi(Phi'_new, 1/5)", y3);
+print("cot-sum cross-check for D at cusp 2/5 (outer, not needed) skipped");
+quit;

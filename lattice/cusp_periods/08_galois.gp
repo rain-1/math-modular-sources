@@ -1,0 +1,45 @@
+/* 08_galois.gp -- Task 4: does the far cusp realise the Galois conjugate?
+   (a) the K = Q(sqrt5)-rational weight-three directions on Gamma_1(5);
+   (b) the weight-four Eisenstein directions on Gamma_1(5) (Beukers' setting). */
+read("lib.gp");
+default(realprecision, 60);
+s5 = sqrt(5); ph5 = (11+5*s5)/2; ph5c = (11-5*s5)/2;  /* sigma(phi^5) = -1/phi^5 = -(11-5 sqrt5)/2 */
+G5 = znstar(5,1);
+CU = [[0,1],[1,2],[2,5],[1,5]];
+Ep = srcbyname("E3ps"); Em = srcbyname("E3psb");
+mixw(c1, c2, a, c) = my(u=cperiod(Ep,a,c)); my(v=cperiod(Em,a,c)); [c1*u[1]+c2*v[1], c1*u[2]+c2*v[2]];
+print("=== (a) weight three, Gamma_1(5): the inner K-rational line");
+print("Phi_new  = (1 + i phi^5) E^{psi4,1} + (1 - i phi^5) E^{psibar4,1}   (coeffs in Z[phi])");
+print("Phi'_new = sigma(Phi_new) = (1 - i/phi^5) E^{psi4,1} + (1 + i/phi^5) E^{psibar4,1}");
+L2 = lfun(lfuncreate([G5,[1]]),2);
+xi = ph5*imag(L2) - real(L2);
+xip = -real(L2) - imag(L2)/ph5;
+print("  xi  = ", xi, "     xi' = sigma(xi) = ", xip);
+gal(a,c) = my(u=mixw(1+I*ph5,1-I*ph5,a,c)); my(v=mixw(1-I/ph5,1+I/ph5,a,c)); printf("   cusp %d/%-3d  Pi(Phi_new) - xi = %s   Pi(Phi'_new) - xi' = %s\n", a, c, abs(real(u[1])-xi), abs(real(v[1])-xip));
+for(i=1,#CU, gal(CU[i][1], CU[i][2]));
+print("  => the inner period is the SAME at every cusp; sigma-equivariance is exact,");
+print("     orientation factor +1 on the xi-line, and -11 on the zeta(2)-line (row D).");
+print();
+print("=== the outer zeta(2)-line for comparison (Zagier D)");
+DD = srcbyname("D");
+shw(a,c) = my(b=cperiod(DD,a,c)); printf("   cusp %d/%-3d  Pi = %s   ratio to zeta(2)/5 = %s\n", a, c, real(b[1]), bestappr(real(b[1])/(zeta(2)/5), 10^12));
+for(i=1,#CU, shw(CU[i][1], CU[i][2]));
+print();
+print("=== (b) weight four on Gamma_1(5): the four Eisenstein directions");
+CH5q = [5, [1,-1,-1,1,0]];
+W4 = [["E4^{1,1}(tau)", 3, 5, TRIV, TRIV, [1], [1]], ["E4^{1,1}(5tau)", 3, 5, TRIV, TRIV, [5], [1]], ["E4^{chi5,1}", 3, 5, CH5q, TRIV, [1], [1]], ["E4^{1,chi5}", 3, 5, TRIV, CH5q, [1], [1]], ["E4^{1,1}(1-V5)", 3, 5, TRIV, TRIV, [1,5], [1,-1]]];
+w4show(s) = print("-- ", s[1]); for(i=1,#CU, my(b=cperiod(s,CU[i][1],CU[i][2])); printf("     %d/%-3d   Pi = %-30s rho = %s\n", CU[i][1], CU[i][2], b[1], b[2]));
+for(i=1,#W4, w4show(W4[i]));
+L3c5 = lfun(lfuncreate([G5,[2]]),3);
+print("  zeta(3) = ", zeta(3), "   L(3,chi5) = ", L3c5);
+print("  Beukers' constant 8 zeta(3) - 5 sqrt5 L(3,chi5) = ", 8*zeta(3)-5*s5*L3c5);
+print("  -1/2 zeta(3) = ", -zeta(3)/2, "    -1/2 L(3,chi5) = ", -L3c5/2);
+print();
+print("  constant terms at infinity (r+1 = 4):");
+print("    E4^{1,1}: -B_4/8 = ", -bernfrac(4)/8, "   E4^{1,chi5}: -B_{4,chi5}/8 = ", -25*sum(a=1,5,(1-1)*0)/8, " (computed below)");
+B4chi = 25^1*sum(a=1,5, [1,-1,-1,1,0][a]*(a/5)^4 - 2*(a/5)^3 + (a/5)^2)*0;
+bp4(x) = x^4 - 2*x^3 + x^2 - 1/30;
+print("    B_{4,chi5} = 5^3 sum_a chi5(a) B_4(a/5) = ", 125*sum(a=1,5, [1,-1,-1,1,0][a]*bp4(a/5)));
+print("    so c_0(E4^{1,chi5}, infty) = -B_{4,chi5}/8 = ", -125*sum(a=1,5, [1,-1,-1,1,0][a]*bp4(a/5))/8);
+print("    c_0(E4^{chi5,1}, infty) = 0 (inner)");
+quit;

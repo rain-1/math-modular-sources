@@ -1,0 +1,22 @@
+/* 11_g15.gp -- the Gamma_1(5) census rows, with identification. */
+read("lib.gp");
+default(realprecision, 50);
+TOL = 10^(-35);
+s5 = sqrt(5); ph = (1+s5)/2; ph5 = ph^5;
+CU = [[1,0],[0,1],[1,2],[2,5],[1,5]];
+Ep = srcbyname("E3ps"); Em = srcbyname("E3psb");
+mixw(c1,c2,a,c) = my(u=cperiod(Ep,a,c)); my(v=cperiod(Em,a,c)); [c1*u[1]+c2*v[1], c1*u[2]+c2*v[2]];
+idpi2(y) = my(t=y/Pi^2); my(b=bestappr(t,10^10)); if(abs(b-t)<TOL, return(Str(b,"*pi^2"))); t = y*s5/Pi^2; b = bestappr(t,10^10); if(abs(b-t)<TOL, return(Str(b,"*pi^2/sqrt5"))); my(v=lindep([y, Pi^2, Pi^2*s5, Pi^2/s5],35)); Str("lindep[y,pi^2,pi^2 sqrt5,pi^2/sqrt5] = ", v);
+DD = srcbyname("D");
+print("=== Zagier D on Gamma_1(5) (outer, phi = re psi4 - 2 im psi4)");
+rowd(a,c) = if(c==0, print("   infinity  Pi = 0   (x = 0)"), my(b=cperiod(DD,a,c)); printf("   %d/%-3d foldreg %s   Pi = %s   ratio to zeta(2)/5 = %s   Im = %s\n", a, c, if(abs(b[2])<TOL,"YES","no "), b[1], bestappr(real(b[1])/(zeta(2)/5),10^10), idpi2(imag(b[1]))));
+for(i=1,#CU, rowd(CU[i][1],CU[i][2]));
+print();
+print("=== Phi_new and Phi'_new (inner quartic, K = Q(sqrt5))");
+L2 = lfun(lfuncreate([znstar(5,1),[1]]),2);
+xi = ph5*imag(L2)-real(L2); xip = -real(L2)-imag(L2)/ph5;
+rown(nm,c1,c2,tg,a,c) = if(c==0, print("   ",nm," infinity  Pi = 0"), my(b=mixw(c1,c2,a,c)); printf("   %-9s %d/%-3d foldreg %s   Re Pi - target = %s   Im = %s\n", nm, a, c, if(abs(b[2])<TOL,"YES","no "), abs(real(b[1])-tg), idpi2(imag(b[1]))));
+for(i=1,#CU, rown("Phi_new", 1+I*ph5, 1-I*ph5, xi, CU[i][1], CU[i][2]));
+for(i=1,#CU, rown("Phi'_new", 1-I/ph5, 1+I/ph5, xip, CU[i][1], CU[i][2]));
+print("   xi = ", xi, "   xi' = sigma(xi) = ", xip);
+quit;

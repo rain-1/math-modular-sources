@@ -1,0 +1,22 @@
+/* 07_ident.gp -- exact identification of every cusp period. */
+read("lib.gp");
+default(realprecision, 60);
+TOL = 10^(-42);
+DS = [1,2,3,5,6,7,10,11,15];
+idim1(y, r, i) = my(t = y*sqrt(DS[i])/Pi^r); my(b = bestappr(t, 10^12)); if(abs(b-t) < TOL, Str(b, "*pi^", r, if(DS[i]==1, "", Str("/sqrt(",DS[i],")"))), "");
+idim(y, r) = if(abs(y) < TOL, return("0")); my(res=""); for(i=1,#DS, my(u=idim1(y,r,i)); if(u!="" && res=="", res=u)); if(res=="", Str("? ",y), res);
+idre(y, P0) = if(abs(P0) < TOL, return(Str(y))); my(t=y/P0); my(b=bestappr(t,10^12)); if(abs(b-t)<TOL, Str(b, " * L(Phi,r)"), Str("? ", y));
+show(s, P0, a, c) = my(bb=cperiod(s,a,c)); printf("   %d/%-3d  foldreg %s   Re = %-22s   Im = %s\n", a, c, if(abs(bb[2])<TOL,"YES","no "), idre(real(bb[1]),P0), idim(imag(bb[1]), s[2]));
+dorow(s) = my(P0=real(cperiod(s,0,1)[1])); print("== ", s[1], "  r = ", s[2], "  level ", s[3], "   L(Phi,r) = ", P0); my(cl=cusplist(s[3])); for(j=1,#cl, show(s, P0, cl[j][1], cl[j][2]));
+for(i=1,#SRC, dorow(SRC[i]));
+print();
+print("=== identification of the near-fold periods L(Phi,r)");
+G3=znstar(3,1); G4=znstar(4,1); G5=znstar(5,1);
+BAS2 = [zeta(2), lfun(lfuncreate([G3,[1]]),2), lfun(lfuncreate([G4,[1]]),2)];
+NM2 = ["zeta(2)","L(2,chi-3)","G=L(2,chi-4)"];
+BAS3 = [zeta(3), lfun(lfuncreate([G3,[1]]),3), lfun(lfuncreate([G5,[2]]),3)];
+NM3 = ["zeta(3)","L(3,chi-3)","L(3,chi5)"];
+idL(P0, B, N) = my(out=""); for(j=1,#B, my(t=P0/B[j]); my(b=bestappr(t,10^12)); if(abs(b-t)<TOL, out=Str(out,"  ",b," * ",N[j]))); if(out=="", "?", out);
+one(s) = my(P0=real(cperiod(s,0,1)[1])); print("   ", s[1], " : ", P0, "  = ", if(s[2]==2, idL(P0,BAS2,NM2), idL(P0,BAS3,NM3)));
+for(i=1,#SRC, one(SRC[i]));
+quit;
