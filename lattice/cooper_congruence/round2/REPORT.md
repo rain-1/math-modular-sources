@@ -610,12 +610,19 @@ $n^2\mid\beta(n)$ is still open.  It is now equivalent to each of:
    $\lambda\equiv p\pmod{p^3}$, together with the tower $h_r|T_{p^2}=h_{r-1}+p^3h_{r+1}$
    and $p$-integrality of the tower.  At level $4$ with a single-index principal part this
    is now a **theorem** (§5.4), so the *entire* remaining gap for Cooper's rows is the
-   level-$4N$, genus-character-twisted analogue of those two identities: (i) a uniqueness
-   statement replacing $\dim S_4=0$ (at level $28$ the plus space is $1$-dimensional, so one
-   must bound the extra cusp-form component $p$-adically), (ii) control of the
-   principal-part *vector* at the six cusps of $X_0(28)$ under $T_{p^2}$, and (iii) an
-   integral basis of $S^{!,+}_{5/2}(\Gamma_0(4N))$ indexed by principal-part vectors.
-   Everything after that is the induction of §5.4 verbatim.
+   twisted analogue of those two identities.  §2.8 pins down the setting: the support law
+   for $c(d)$ ($-3d$ a square mod $28$, i.e. $d\equiv0,1\ (4)$ **and** $d\equiv0,1,2,4\ (7)$)
+   is *not* a Kohnen plus condition inside a scalar space but the index condition of a
+   **vector-valued** form for the Weil representation of the discriminant form $\mathbf Z/2N$
+   — the $\beta$-class is the component index, and $\widehat f|W_N=-\widehat f$ is why the
+   sum over both classes vanishes.  Consistently, a direct search **[refuted]** finds no
+   scalar element of $\{g/\Delta(4\tau)\in M_{29/2}(\Gamma_0(28))\}$ (dimension $17$) with
+   $a(m^2)=m\beta_{s_7}(m)$ for $m\le40$, while the same pipeline recovers $f_{4a}$ exactly
+   at level $4$.  So what is needed is: (i) vanishing of the space of holomorphic
+   vector-valued weight-$5/2$ cusp forms for that Weil representation (the analogue of
+   $\dim S_4=0$, a computable dimension), (ii) the principal-part *vector*, which §2.8 makes
+   explicit, and (iii) an integral basis of the vector-valued space indexed by
+   $(\beta,d)$.  Everything after that is the induction of §5.4 verbatim.
 3. **($x$-line, mod $p$ only)**
    $[x^{pn}]\bigl(l\,P^{(p-1)/2}/F_{<p}\bigr)\equiv\psi(p)L_n\pmod p$, with $F_{<p}$ the
    supersingular polynomial; plus the round-1 lift to mod $p^2$, which is now the single
@@ -623,6 +630,35 @@ $n^2\mid\beta(n)$ is still open.  It is now equivalent to each of:
 
 Of these, (2) is the most likely to close: it is a finite-dimensional statement about a
 space of half-integral weight forms, and the level-one case is already a theorem.
+
+---
+
+## 8bis. New phenomena recorded this round
+
+1. **The trace identification itself** (R1, R1b, R1c) and its level-one generality (R4).
+2. **The theta lift written out**: $a(d)=\sqrt d\,\operatorname{Tr}_{-3d}(\widehat f)/192$ at
+   level one for *every* admissible $d$ (R4b) — the first explicit check we know of that
+   Paşol–Zudilin's $f_{4a}$ is the trace generating function.
+3. **The correction of the negative control** (A1, A2) and the resulting **theorem** at level
+   one (A0).
+4. **The mod-$2$ law** $\gamma(n)$ odd $\iff2^{1+v_2(N)}\nmid n$ and $P\nmid n$, and the
+   mod-$3$ law for $s_{18}$: $\gamma\bmod2$ is multiplicative and $K\bmod p$ rational in
+   exactly four cells and nowhere else (M1–M5).
+5. **$\Xi\bmod2$ is Eisenstein**: $c'(m)$ odd $\iff$ the $2P$-free part of $m$ is a square
+   (M10).
+6. **Two extra unbounded divisibilities**: $v_3(\gamma_{s_7}(n))\ge v_3(n)-1$ and
+   $v_2(\gamma_{s_{10}}(n))\ge v_2(n)-1$, sharp (M9).
+7. **$\gamma(p)\bmod p$ is structureless**: equidistributed, matching none of several hundred
+   arithmetic candidates (N1, N3) — round 1's $\lambda(p)$ question is answered negatively.
+8. **The supersingular polynomial appears** as the denominator of the $x$-line kernel (W7).
+9. **A new supercongruence** $A_{p-1}\equiv\kappa\psi(p)p\pmod{p^2}$ manufacturing $\chi_{-3}$
+   from the recurrence alone (W11), proved for $s_{10}$.
+10. **A stronger congruence at small primes**: the modulus $p^{2k}$ in
+    $c'(p^k)\equiv\psi(p)c'(p^{k-1})$ is sharp for every $p$ except $p=2,3,5$, where the
+    valuation grows like $3k-1$ or $2k+1$ up to $k=13$.
+11. **Two negatives worth recording**: the Borcherds-product test on the weight-$0$ traces is
+    refuted in all three rows; and the naive family $E_4/H_D(j)^2$ is not magnetic, so
+    magnetism is a genuine constraint (A4).
 
 ---
 
