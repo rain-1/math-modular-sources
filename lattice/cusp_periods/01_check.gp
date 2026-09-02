@@ -1,0 +1,28 @@
+/* 01_check.gp -- validation of the cusp-period machinery on Gamma_1(5). */
+read("lib.gp");
+default(realprecision, 60);
+ph5 = (11+5*sqrt(5))/2;
+CU = [[1,5],[0,1],[1,2],[2,5]];
+DD = srcbyname("D");
+Ep = srcbyname("E3ps");
+Em = srcbyname("E3psb");
+mix(cf1, cf2, a, c) = my(u=cperiod(Ep,a,c)); my(v=cperiod(Em,a,c)); [cf1*u[1]+cf2*v[1], cf1*u[2]+cf2*v[2]];
+sh(nm, b) = print("    ", nm, "   Pi = ", b[1], "     rho = ", b[2]);
+print("=== Zagier D (outer, phi = re psi_4 - 2 im psi_4) on Gamma_1(5)");
+for(k=1,4, my(cu=CU[k]); print("  cusp ",cu[1],"/",cu[2]); sh("Phi_D  ", cperiod(DD,cu[1],cu[2])));
+print("  zeta(2)/5 = ", zeta(2)/5, "    -11 zeta(2)/5 = ", -11*zeta(2)/5);
+print();
+print("=== the inner quartic directions Phi_new = R3 + phi^5 R4, Phi'_new = sigma(Phi_new)");
+for(k=1,4, my(cu=CU[k]); print("  cusp ",cu[1],"/",cu[2]); sh("Phi_new ", mix(1+I*ph5, 1-I*ph5, cu[1], cu[2])); sh("Phi'_new", mix(1-I/ph5, 1+I/ph5, cu[1], cu[2])));
+L2 = lfun(lfuncreate([znstar(5,1),[1]]),2);
+print("  xi  = ", ph5*imag(L2)-real(L2), "   xi' = ", -real(L2)-imag(L2)/ph5);
+print();
+print("=== R1, R2 (outer, NONZERO constant term at infinity)");
+R1s = srcbyname("R1"); R2s = srcbyname("R2");
+for(k=1,4, my(cu=CU[k]); print("  cusp ",cu[1],"/",cu[2]); sh("R1", cperiod(R1s,cu[1],cu[2])); sh("R2", cperiod(R2s,cu[1],cu[2])));
+print("  6 zeta(2)/5 = ", 6*zeta(2)/5, "   -2 zeta(2)/5 = ", -2*zeta(2)/5);
+print();
+print("=== Abel cross-check (direct summation to m=60000, one Richardson step)");
+ab(nm,a,c) = my(s=srcbyname(nm)); my(S1=abel(s,a,c,0.0025,60000)); my(S2=abel(s,a,c,0.00125,60000)); print("  ",nm," at ",a,"/",c,":  Richardson = ", 2*S2-S1);
+ab("D",0,1); ab("D",1,2);
+quit;
