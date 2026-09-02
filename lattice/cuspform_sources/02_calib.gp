@@ -1,0 +1,22 @@
+\\ Calibration: canonical Eisenstein source on Apery's host must give xi = zeta(3)/6, k=3.
+default(parisizemax, 8000000000);
+default(realprecision, 60);
+read("lib.gp");
+NQ = 90; NA = 70;
+dv=[1,2,3,6]; r=[-5,1,-1,5]; C=72; B=17;
+us = useries(dv,r,NQ);
+Fs = Fseries(dv,r,NQ);
+xs = us/(1+B*us+C*us^2);
+Dx = q*deriv(xs,q);
+Phi0 = Fs*Dx;
+print("Phi0 coefs = ", vector(12, i, polcoeff(Phi0, i)));
+cv = vector(NQ, i, polcoeff(Phi0, i-1));
+Th0 = thetaser(cv, 3, NQ);
+a = peel2(Fs, xs, NA, NQ);
+b = peel2(Fs*Th0, xs, NA, NQ);
+print("a = ", vector(8,i,a[i]));
+print("b = ", vector(8,i,b[i]));
+print("k = ", denexp(b, NA));
+print("b/a at n=", NA, " : ", b[NA+1]*1.0/a[NA+1]);
+print("zeta(3)/6  : ", zeta(3)/6);
+quit;
